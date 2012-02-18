@@ -1,0 +1,11 @@
+C:\Users\Ruben\clase\taimer\rubenDesign\bin\Debug\rubenDesign.exe
+C:\Users\Ruben\clase\taimer\rubenDesign\bin\Debug\rubenDesign.pdb
+C:\Users\Ruben\clase\taimer\rubenDesign\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Ruben\clase\taimer\rubenDesign\obj\x86\Debug\rubenDesign.Properties.Resources.resources
+C:\Users\Ruben\clase\taimer\rubenDesign\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\Users\Ruben\clase\taimer\rubenDesign\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\Users\Ruben\clase\taimer\rubenDesign\obj\x86\Debug\rubenDesign.exe
+C:\Users\Ruben\clase\taimer\rubenDesign\obj\x86\Debug\rubenDesign.pdb
+C:\Users\Ruben\clase\taimer\rubenDesign\obj\x86\Debug\rubenDesign.Login.resources
+C:\Users\Ruben\clase\taimer\rubenDesign\obj\x86\Debug\rubenDesign.Admin.resources
+C:\Users\Ruben\clase\taimer\rubenDesign\obj\x86\Debug\rubenDesign.Client.resources
