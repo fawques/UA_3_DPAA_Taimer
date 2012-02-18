@@ -15,5 +15,10 @@ namespace WindowsFormsApplication1
         {
             InitializeComponent();
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            label1.Visible = !label1.Visible;
+        }
     }
 }
