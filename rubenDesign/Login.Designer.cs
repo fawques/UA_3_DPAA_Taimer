@@ -40,6 +40,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -62,18 +63,17 @@
             // 
             // minimizeButton
             // 
-            this.minimizeButton.AutoEllipsis = true;
             this.minimizeButton.BackColor = System.Drawing.Color.Transparent;
             this.minimizeButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.minimizeButton.FlatAppearance.BorderSize = 0;
             this.minimizeButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.minimizeButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.minimizeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.minimizeButton.ForeColor = System.Drawing.SystemColors.ControlText;
             this.minimizeButton.Location = new System.Drawing.Point(459, 0);
             this.minimizeButton.Name = "minimizeButton";
             this.minimizeButton.Size = new System.Drawing.Size(23, 16);
             this.minimizeButton.TabIndex = 1;
+            this.minimizeButton.Tag = "Minimizar";
             this.minimizeButton.Text = "--";
             this.minimizeButton.UseVisualStyleBackColor = false;
             this.minimizeButton.Click += new System.EventHandler(this.button2_Click);
@@ -118,6 +118,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.minimizeButton);
             this.panel1.Controls.Add(this.closeButton);
             this.panel1.Location = new System.Drawing.Point(1, 0);
@@ -175,6 +176,16 @@
             this.label5.TabIndex = 11;
             this.label5.Text = "User: ruben Pass: ruben";
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(11, 9);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(57, 16);
+            this.label6.TabIndex = 2;
+            this.label6.Text = "Taimer";
+            // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -197,6 +208,7 @@
             this.Text = "Taimer";
             this.Load += new System.EventHandler(this.Login_Load);
             this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -216,6 +228,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
     }
 }
 
