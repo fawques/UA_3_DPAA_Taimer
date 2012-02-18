@@ -18,6 +18,14 @@ namespace WindowsFormsApplication1
 
         private void button2_Click(object sender, EventArgs e)
         {
+            if (label1.Visible)
+            {
+                button2.Text = "Hacerse un Horario";
+            }
+            else
+            {
+                button2.Text = "Hahahahah tonto";
+            }
             label1.Visible = !label1.Visible;
         }
     }
