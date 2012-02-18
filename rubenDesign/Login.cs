@@ -11,12 +11,24 @@ namespace rubenDesign
 {
     public partial class Login : Form
     {
+        private const int CS_DROPSHADOW = 0x20000;
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams cp = base.CreateParams;
+                cp.ClassStyle |= CS_DROPSHADOW;
+                return cp;
+            }
+        }
+
         bool dragging;
         Point offset;
 
         public Login()
         {
             InitializeComponent();
+            minimizeButton.FlatAppearance.BorderSize = 0;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -58,17 +70,54 @@ namespace rubenDesign
 
         private void button3_Click(object sender, EventArgs e)
         {
-            if (textBoxUser.Text == "admin" && textBoxPassword.Text == "admin"){
+            loginIn();
+        }
+
+        private void button2_MouseMove(object sender, MouseEventArgs e)
+        {
+            minimizeButton.ForeColor = Color.White;
+        }
+
+        private void minimizeButton_MouseLeave(object sender, EventArgs e)
+        {
+            minimizeButton.ForeColor = Color.Black;
+        }
+
+        private void button1_MouseLeave(object sender, EventArgs e)
+        {
+            closeButton.ForeColor = Color.Black;
+        }
+
+        private void button1_MouseMove(object sender, MouseEventArgs e)
+        {
+            closeButton.ForeColor = Color.Red;
+        }
+
+        private void textBoxPassword_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter){//si se presiona la tecla enter
+                loginIn();
+            }
+        }
+
+
+        /* Funcion que logea y lanza la ventana correspondiente
+         * 
+         */
+        private void loginIn()
+        {
+            if (textBoxUser.Text == "admin" && textBoxPassword.Text == "admin")
+            {
                 Program.adminWindow = new Admin();
                 Program.adminWindow.Show();
                 Hide();
             }
             else if (textBoxUser.Text == "ruben" && textBoxPassword.Text == "ruben")
-            {   
+            {
                 Program.clientWindow = new Client();
                 Program.clientWindow.Show();
                 Hide();
-            }   
+            }
         }
     }
 }
