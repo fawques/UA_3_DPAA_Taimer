@@ -27,6 +27,28 @@ namespace rubenDesign
         public Client()
         {
             InitializeComponent();
+            this.dragging = false;
+        }
+
+        private void panelMove_MouseDown(object sender, MouseEventArgs e)
+        {
+            this.dragging = true;
+            offset.X = e.X;
+            offset.Y = e.Y;
+        }
+
+        private void panelMove_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (this.dragging)
+            {
+                Point currentScreenPos = PointToScreen(e.Location);
+                Point p = new Point(currentScreenPos.X - this.offset.X, currentScreenPos.Y - this.offset.Y);
+                this.Location = p;
+            }
+        }
+        private void panelMove_MouseUp(object sender, MouseEventArgs e)
+        {
+            this.dragging = false;
         }
 
         private void buttonExitClient_Click(object sender, EventArgs e)
@@ -43,6 +65,18 @@ namespace rubenDesign
         private void minimizeButton_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (this.WindowState != FormWindowState.Maximized)
+            {
+                this.WindowState = FormWindowState.Maximized;
+            }
+            else
+            {
+                this.WindowState = FormWindowState.Normal;
+            }
         }
 
         private void minimizeButton_MouseMove(object sender, MouseEventArgs e)
@@ -64,5 +98,38 @@ namespace rubenDesign
         {
             minimizeButton.ForeColor = Color.Black;
         }
+
+        private void button2_MouseMove(object sender, MouseEventArgs e)
+        {
+            button2.Image = rubenDesign.Properties.Resources.maxmimizebuttonWhite;
+        }
+
+        private void button2_MouseLeave(object sender, EventArgs e)
+        {
+            button2.Image = rubenDesign.Properties.Resources.maxmimizebutton;
+        }
+
+        private void buttonGotoWeb_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("http://www.google.es");
+        }
+
+        private void Client_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+        }
+
+        protected override bool ProcessDialogKey(Keys keyData)
+        {
+            if ((keyData & Keys.Alt) == Keys.Alt)
+            {
+                menuStripMain.Visible = !menuStripMain.Visible;
+                return true;
+            }
+            else
+                return base.ProcessDialogKey(keyData);
+        }
+
+        
     }
 }

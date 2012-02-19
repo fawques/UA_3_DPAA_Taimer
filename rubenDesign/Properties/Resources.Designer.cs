@@ -59,5 +59,19 @@ namespace rubenDesign.Properties {
                 resourceCulture = value;
             }
         }
+        
+        internal static System.Drawing.Bitmap maxmimizebutton {
+            get {
+                object obj = ResourceManager.GetObject("maxmimizebutton", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap maxmimizebuttonWhite {
+            get {
+                object obj = ResourceManager.GetObject("maxmimizebuttonWhite", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }
