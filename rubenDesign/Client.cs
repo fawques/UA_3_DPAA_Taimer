@@ -76,7 +76,7 @@ namespace rubenDesign
             else
             {
                 this.WindowState = FormWindowState.Normal;
-            }
+            } 
         }
 
         private void minimizeButton_MouseMove(object sender, MouseEventArgs e)

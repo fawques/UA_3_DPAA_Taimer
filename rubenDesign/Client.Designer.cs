@@ -29,20 +29,20 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.TreeNode treeNode17 = new System.Windows.Forms.TreeNode("Horario1");
-            System.Windows.Forms.TreeNode treeNode18 = new System.Windows.Forms.TreeNode("Hrario2");
-            System.Windows.Forms.TreeNode treeNode19 = new System.Windows.Forms.TreeNode("Horario3");
-            System.Windows.Forms.TreeNode treeNode20 = new System.Windows.Forms.TreeNode("Horarios", new System.Windows.Forms.TreeNode[] {
-            treeNode17,
-            treeNode18,
-            treeNode19});
-            System.Windows.Forms.TreeNode treeNode21 = new System.Windows.Forms.TreeNode("Nodo5");
-            System.Windows.Forms.TreeNode treeNode22 = new System.Windows.Forms.TreeNode("Nodo6");
-            System.Windows.Forms.TreeNode treeNode23 = new System.Windows.Forms.TreeNode("Nodo7");
-            System.Windows.Forms.TreeNode treeNode24 = new System.Windows.Forms.TreeNode("Nodo4", new System.Windows.Forms.TreeNode[] {
-            treeNode21,
-            treeNode22,
-            treeNode23});
+            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Horario1");
+            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Hrario2");
+            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Horario3");
+            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Horarios", new System.Windows.Forms.TreeNode[] {
+            treeNode1,
+            treeNode2,
+            treeNode3});
+            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Nodo5");
+            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("Nodo6");
+            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("Nodo7");
+            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("Nodo4", new System.Windows.Forms.TreeNode[] {
+            treeNode5,
+            treeNode6,
+            treeNode7});
             this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.modificarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.borrarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -50,6 +50,19 @@
             this.crearNuevoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.menuStripMain = new System.Windows.Forms.MenuStrip();
+            this.archivoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.esteveEstaHastaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.martinComeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ediccionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.copiarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pegarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.amarAVictorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ayudaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.acercaDeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.albertLaNecesitaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel3 = new System.Windows.Forms.Panel();
             this.menuStrip2 = new System.Windows.Forms.MenuStrip();
             this.usuarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -63,44 +76,31 @@
             this.treeView1 = new System.Windows.Forms.TreeView();
             this.buttonCreateHor = new System.Windows.Forms.Button();
             this.buttonGotoWeb = new System.Windows.Forms.Button();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.menuStripMain = new System.Windows.Forms.MenuStrip();
-            this.archivoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ediccionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ayudaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.acercaDeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.copiarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.pegarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.amarAVictorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.esteveEstaHastaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.martinComeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.albertLaNecesitaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.panel6 = new System.Windows.Forms.Panel();
-            this.panel7 = new System.Windows.Forms.Panel();
-            this.panel8 = new System.Windows.Forms.Panel();
-            this.panel9 = new System.Windows.Forms.Panel();
             this.panel10 = new System.Windows.Forms.Panel();
-            this.shapeContainer1 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
-            this.rectangleShape1 = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
-            this.rectangleShape2 = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
-            this.rectangleShape3 = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
+            this.panel9 = new System.Windows.Forms.Panel();
+            this.panel8 = new System.Windows.Forms.Panel();
+            this.panel7 = new System.Windows.Forms.Panel();
             this.shapeContainer2 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
-            this.rectangleShape4 = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
             this.rectangleShape5 = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
+            this.rectangleShape4 = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
+            this.rectangleShape3 = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
+            this.panel6 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
+            this.shapeContainer1 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
+            this.rectangleShape2 = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
+            this.rectangleShape1 = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
             this.contextMenuStrip2.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.panel4.SuspendLayout();
+            this.menuStripMain.SuspendLayout();
             this.panel3.SuspendLayout();
             this.menuStrip2.SuspendLayout();
             this.panel2.SuspendLayout();
-            this.panel4.SuspendLayout();
-            this.menuStripMain.SuspendLayout();
             this.panel5.SuspendLayout();
-            this.panel6.SuspendLayout();
             this.panel7.SuspendLayout();
+            this.panel6.SuspendLayout();
             this.SuspendLayout();
             // 
             // contextMenuStrip2
@@ -161,6 +161,106 @@
             this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelMove_MouseDown);
             this.panel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panelMove_MouseMove);
             this.panel1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panelMove_MouseUp);
+            // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.Transparent;
+            this.panel4.Controls.Add(this.menuStripMain);
+            this.panel4.Location = new System.Drawing.Point(3, 3);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(200, 26);
+            this.panel4.TabIndex = 13;
+            // 
+            // menuStripMain
+            // 
+            this.menuStripMain.BackColor = System.Drawing.Color.Transparent;
+            this.menuStripMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.archivoToolStripMenuItem,
+            this.ediccionToolStripMenuItem,
+            this.ayudaToolStripMenuItem});
+            this.menuStripMain.Location = new System.Drawing.Point(0, 0);
+            this.menuStripMain.Name = "menuStripMain";
+            this.menuStripMain.Size = new System.Drawing.Size(200, 24);
+            this.menuStripMain.TabIndex = 10;
+            this.menuStripMain.Text = "menuStrip1";
+            // 
+            // archivoToolStripMenuItem
+            // 
+            this.archivoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.esteveEstaHastaToolStripMenuItem,
+            this.martinComeToolStripMenuItem,
+            this.salirToolStripMenuItem});
+            this.archivoToolStripMenuItem.Name = "archivoToolStripMenuItem";
+            this.archivoToolStripMenuItem.Size = new System.Drawing.Size(60, 20);
+            this.archivoToolStripMenuItem.Text = "Archivo";
+            // 
+            // esteveEstaHastaToolStripMenuItem
+            // 
+            this.esteveEstaHastaToolStripMenuItem.Name = "esteveEstaHastaToolStripMenuItem";
+            this.esteveEstaHastaToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
+            this.esteveEstaHastaToolStripMenuItem.Text = "Esteve esta hasta...";
+            // 
+            // martinComeToolStripMenuItem
+            // 
+            this.martinComeToolStripMenuItem.Name = "martinComeToolStripMenuItem";
+            this.martinComeToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
+            this.martinComeToolStripMenuItem.Text = "Martin come...";
+            // 
+            // salirToolStripMenuItem
+            // 
+            this.salirToolStripMenuItem.Name = "salirToolStripMenuItem";
+            this.salirToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
+            this.salirToolStripMenuItem.Text = "Salir";
+            this.salirToolStripMenuItem.Click += new System.EventHandler(this.buttonExitClient_Click);
+            // 
+            // ediccionToolStripMenuItem
+            // 
+            this.ediccionToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.copiarToolStripMenuItem,
+            this.pegarToolStripMenuItem,
+            this.amarAVictorToolStripMenuItem});
+            this.ediccionToolStripMenuItem.Name = "ediccionToolStripMenuItem";
+            this.ediccionToolStripMenuItem.Size = new System.Drawing.Size(64, 20);
+            this.ediccionToolStripMenuItem.Text = "Ediccion";
+            // 
+            // copiarToolStripMenuItem
+            // 
+            this.copiarToolStripMenuItem.Name = "copiarToolStripMenuItem";
+            this.copiarToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.copiarToolStripMenuItem.Text = "Copiar";
+            // 
+            // pegarToolStripMenuItem
+            // 
+            this.pegarToolStripMenuItem.Name = "pegarToolStripMenuItem";
+            this.pegarToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.pegarToolStripMenuItem.Text = "Pegar";
+            // 
+            // amarAVictorToolStripMenuItem
+            // 
+            this.amarAVictorToolStripMenuItem.Name = "amarAVictorToolStripMenuItem";
+            this.amarAVictorToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.amarAVictorToolStripMenuItem.Text = "Amar a Victor";
+            // 
+            // ayudaToolStripMenuItem
+            // 
+            this.ayudaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.acercaDeToolStripMenuItem,
+            this.albertLaNecesitaToolStripMenuItem});
+            this.ayudaToolStripMenuItem.Name = "ayudaToolStripMenuItem";
+            this.ayudaToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
+            this.ayudaToolStripMenuItem.Text = "Ayuda";
+            // 
+            // acercaDeToolStripMenuItem
+            // 
+            this.acercaDeToolStripMenuItem.Name = "acercaDeToolStripMenuItem";
+            this.acercaDeToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
+            this.acercaDeToolStripMenuItem.Text = "Acerca de...";
+            // 
+            // albertLaNecesitaToolStripMenuItem
+            // 
+            this.albertLaNecesitaToolStripMenuItem.Name = "albertLaNecesitaToolStripMenuItem";
+            this.albertLaNecesitaToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
+            this.albertLaNecesitaToolStripMenuItem.Text = "Albert la necesita";
             // 
             // panel3
             // 
@@ -278,30 +378,30 @@
             // 
             this.treeView1.Location = new System.Drawing.Point(1, 97);
             this.treeView1.Name = "treeView1";
-            treeNode17.Checked = true;
-            treeNode17.ContextMenuStrip = this.contextMenuStrip2;
-            treeNode17.Name = "Nodo1";
-            treeNode17.Text = "Horario1";
-            treeNode18.ContextMenuStrip = this.contextMenuStrip2;
-            treeNode18.Name = "Nodo2";
-            treeNode18.Text = "Hrario2";
-            treeNode19.ContextMenuStrip = this.contextMenuStrip2;
-            treeNode19.Name = "Nodo3";
-            treeNode19.Text = "Horario3";
-            treeNode20.ContextMenuStrip = this.contextMenuStrip1;
-            treeNode20.Name = "Nodo0";
-            treeNode20.Text = "Horarios";
-            treeNode21.Name = "Nodo5";
-            treeNode21.Text = "Nodo5";
-            treeNode22.Name = "Nodo6";
-            treeNode22.Text = "Nodo6";
-            treeNode23.Name = "Nodo7";
-            treeNode23.Text = "Nodo7";
-            treeNode24.Name = "Nodo4";
-            treeNode24.Text = "Nodo4";
+            treeNode1.Checked = true;
+            treeNode1.ContextMenuStrip = this.contextMenuStrip2;
+            treeNode1.Name = "Nodo1";
+            treeNode1.Text = "Horario1";
+            treeNode2.ContextMenuStrip = this.contextMenuStrip2;
+            treeNode2.Name = "Nodo2";
+            treeNode2.Text = "Hrario2";
+            treeNode3.ContextMenuStrip = this.contextMenuStrip2;
+            treeNode3.Name = "Nodo3";
+            treeNode3.Text = "Horario3";
+            treeNode4.ContextMenuStrip = this.contextMenuStrip1;
+            treeNode4.Name = "Nodo0";
+            treeNode4.Text = "Horarios";
+            treeNode5.Name = "Nodo5";
+            treeNode5.Text = "Nodo5";
+            treeNode6.Name = "Nodo6";
+            treeNode6.Text = "Nodo6";
+            treeNode7.Name = "Nodo7";
+            treeNode7.Text = "Nodo7";
+            treeNode8.Name = "Nodo4";
+            treeNode8.Text = "Nodo4";
             this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode20,
-            treeNode24});
+            treeNode4,
+            treeNode8});
             this.treeView1.Size = new System.Drawing.Size(161, 449);
             this.treeView1.TabIndex = 10;
             // 
@@ -328,106 +428,6 @@
             this.buttonGotoWeb.UseVisualStyleBackColor = false;
             this.buttonGotoWeb.Click += new System.EventHandler(this.buttonGotoWeb_Click);
             // 
-            // panel4
-            // 
-            this.panel4.BackColor = System.Drawing.Color.Transparent;
-            this.panel4.Controls.Add(this.menuStripMain);
-            this.panel4.Location = new System.Drawing.Point(3, 3);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(200, 26);
-            this.panel4.TabIndex = 13;
-            // 
-            // menuStripMain
-            // 
-            this.menuStripMain.BackColor = System.Drawing.Color.Transparent;
-            this.menuStripMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.archivoToolStripMenuItem,
-            this.ediccionToolStripMenuItem,
-            this.ayudaToolStripMenuItem});
-            this.menuStripMain.Location = new System.Drawing.Point(0, 0);
-            this.menuStripMain.Name = "menuStripMain";
-            this.menuStripMain.Size = new System.Drawing.Size(200, 24);
-            this.menuStripMain.TabIndex = 10;
-            this.menuStripMain.Text = "menuStrip1";
-            // 
-            // archivoToolStripMenuItem
-            // 
-            this.archivoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.esteveEstaHastaToolStripMenuItem,
-            this.martinComeToolStripMenuItem,
-            this.salirToolStripMenuItem});
-            this.archivoToolStripMenuItem.Name = "archivoToolStripMenuItem";
-            this.archivoToolStripMenuItem.Size = new System.Drawing.Size(60, 20);
-            this.archivoToolStripMenuItem.Text = "Archivo";
-            // 
-            // ediccionToolStripMenuItem
-            // 
-            this.ediccionToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.copiarToolStripMenuItem,
-            this.pegarToolStripMenuItem,
-            this.amarAVictorToolStripMenuItem});
-            this.ediccionToolStripMenuItem.Name = "ediccionToolStripMenuItem";
-            this.ediccionToolStripMenuItem.Size = new System.Drawing.Size(64, 20);
-            this.ediccionToolStripMenuItem.Text = "Ediccion";
-            // 
-            // ayudaToolStripMenuItem
-            // 
-            this.ayudaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.acercaDeToolStripMenuItem,
-            this.albertLaNecesitaToolStripMenuItem});
-            this.ayudaToolStripMenuItem.Name = "ayudaToolStripMenuItem";
-            this.ayudaToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
-            this.ayudaToolStripMenuItem.Text = "Ayuda";
-            // 
-            // acercaDeToolStripMenuItem
-            // 
-            this.acercaDeToolStripMenuItem.Name = "acercaDeToolStripMenuItem";
-            this.acercaDeToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
-            this.acercaDeToolStripMenuItem.Text = "Acerca de...";
-            // 
-            // salirToolStripMenuItem
-            // 
-            this.salirToolStripMenuItem.Name = "salirToolStripMenuItem";
-            this.salirToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
-            this.salirToolStripMenuItem.Text = "Salir";
-            this.salirToolStripMenuItem.Click += new System.EventHandler(this.buttonExitClient_Click);
-            // 
-            // copiarToolStripMenuItem
-            // 
-            this.copiarToolStripMenuItem.Name = "copiarToolStripMenuItem";
-            this.copiarToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.copiarToolStripMenuItem.Text = "Copiar";
-            // 
-            // pegarToolStripMenuItem
-            // 
-            this.pegarToolStripMenuItem.Name = "pegarToolStripMenuItem";
-            this.pegarToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.pegarToolStripMenuItem.Text = "Pegar";
-            // 
-            // amarAVictorToolStripMenuItem
-            // 
-            this.amarAVictorToolStripMenuItem.Name = "amarAVictorToolStripMenuItem";
-            this.amarAVictorToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.amarAVictorToolStripMenuItem.Text = "Amar a Victor";
-            // 
-            // esteveEstaHastaToolStripMenuItem
-            // 
-            this.esteveEstaHastaToolStripMenuItem.Name = "esteveEstaHastaToolStripMenuItem";
-            this.esteveEstaHastaToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
-            this.esteveEstaHastaToolStripMenuItem.Text = "Esteve esta hasta...";
-            // 
-            // martinComeToolStripMenuItem
-            // 
-            this.martinComeToolStripMenuItem.Name = "martinComeToolStripMenuItem";
-            this.martinComeToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
-            this.martinComeToolStripMenuItem.Text = "Martin come...";
-            // 
-            // albertLaNecesitaToolStripMenuItem
-            // 
-            this.albertLaNecesitaToolStripMenuItem.Name = "albertLaNecesitaToolStripMenuItem";
-            this.albertLaNecesitaToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
-            this.albertLaNecesitaToolStripMenuItem.Text = "Albert la necesita";
-            // 
             // panel5
             // 
             this.panel5.BackColor = System.Drawing.SystemColors.ControlLight;
@@ -442,32 +442,13 @@
             this.panel5.Size = new System.Drawing.Size(561, 462);
             this.panel5.TabIndex = 13;
             // 
-            // panel6
+            // panel10
             // 
-            this.panel6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel6.Controls.Add(this.label3);
-            this.panel6.Controls.Add(this.shapeContainer1);
-            this.panel6.Location = new System.Drawing.Point(3, 3);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(105, 452);
-            this.panel6.TabIndex = 0;
-            // 
-            // panel7
-            // 
-            this.panel7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel7.Controls.Add(this.shapeContainer2);
-            this.panel7.Location = new System.Drawing.Point(114, 3);
-            this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(105, 452);
-            this.panel7.TabIndex = 1;
-            // 
-            // panel8
-            // 
-            this.panel8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel8.Location = new System.Drawing.Point(225, 3);
-            this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(105, 452);
-            this.panel8.TabIndex = 1;
+            this.panel10.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel10.Location = new System.Drawing.Point(447, 3);
+            this.panel10.Name = "panel10";
+            this.panel10.Size = new System.Drawing.Size(105, 452);
+            this.panel10.TabIndex = 1;
             // 
             // panel9
             // 
@@ -477,58 +458,22 @@
             this.panel9.Size = new System.Drawing.Size(105, 452);
             this.panel9.TabIndex = 1;
             // 
-            // panel10
+            // panel8
             // 
-            this.panel10.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel10.Location = new System.Drawing.Point(447, 3);
-            this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(105, 452);
-            this.panel10.TabIndex = 1;
+            this.panel8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel8.Location = new System.Drawing.Point(225, 3);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(105, 452);
+            this.panel8.TabIndex = 1;
             // 
-            // shapeContainer1
+            // panel7
             // 
-            this.shapeContainer1.Location = new System.Drawing.Point(0, 0);
-            this.shapeContainer1.Margin = new System.Windows.Forms.Padding(0);
-            this.shapeContainer1.Name = "shapeContainer1";
-            this.shapeContainer1.Shapes.AddRange(new Microsoft.VisualBasic.PowerPacks.Shape[] {
-            this.rectangleShape2,
-            this.rectangleShape1});
-            this.shapeContainer1.Size = new System.Drawing.Size(103, 450);
-            this.shapeContainer1.TabIndex = 0;
-            this.shapeContainer1.TabStop = false;
-            // 
-            // rectangleShape1
-            // 
-            this.rectangleShape1.BackColor = System.Drawing.Color.DarkRed;
-            this.rectangleShape1.BackStyle = Microsoft.VisualBasic.PowerPacks.BackStyle.Opaque;
-            this.rectangleShape1.BorderColor = System.Drawing.SystemColors.ActiveCaption;
-            this.rectangleShape1.FillColor = System.Drawing.SystemColors.ControlDark;
-            this.rectangleShape1.FillGradientColor = System.Drawing.Color.Maroon;
-            this.rectangleShape1.Location = new System.Drawing.Point(1, 3);
-            this.rectangleShape1.Name = "rectangleShape1";
-            this.rectangleShape1.Size = new System.Drawing.Size(100, 42);
-            // 
-            // rectangleShape2
-            // 
-            this.rectangleShape2.BackColor = System.Drawing.Color.Brown;
-            this.rectangleShape2.BackStyle = Microsoft.VisualBasic.PowerPacks.BackStyle.Opaque;
-            this.rectangleShape2.BorderColor = System.Drawing.SystemColors.ActiveCaption;
-            this.rectangleShape2.FillColor = System.Drawing.SystemColors.ControlDark;
-            this.rectangleShape2.FillGradientColor = System.Drawing.Color.Maroon;
-            this.rectangleShape2.Location = new System.Drawing.Point(1, 204);
-            this.rectangleShape2.Name = "rectangleShape2";
-            this.rectangleShape2.Size = new System.Drawing.Size(100, 42);
-            // 
-            // rectangleShape3
-            // 
-            this.rectangleShape3.BackColor = System.Drawing.Color.DarkRed;
-            this.rectangleShape3.BackStyle = Microsoft.VisualBasic.PowerPacks.BackStyle.Opaque;
-            this.rectangleShape3.BorderColor = System.Drawing.SystemColors.ActiveCaption;
-            this.rectangleShape3.FillColor = System.Drawing.SystemColors.ControlDark;
-            this.rectangleShape3.FillGradientColor = System.Drawing.Color.Maroon;
-            this.rectangleShape3.Location = new System.Drawing.Point(1, 31);
-            this.rectangleShape3.Name = "rectangleShape3";
-            this.rectangleShape3.Size = new System.Drawing.Size(100, 42);
+            this.panel7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel7.Controls.Add(this.shapeContainer2);
+            this.panel7.Location = new System.Drawing.Point(114, 3);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(105, 452);
+            this.panel7.TabIndex = 1;
             // 
             // shapeContainer2
             // 
@@ -543,17 +488,6 @@
             this.shapeContainer2.TabIndex = 0;
             this.shapeContainer2.TabStop = false;
             // 
-            // rectangleShape4
-            // 
-            this.rectangleShape4.BackColor = System.Drawing.Color.Goldenrod;
-            this.rectangleShape4.BackStyle = Microsoft.VisualBasic.PowerPacks.BackStyle.Opaque;
-            this.rectangleShape4.BorderColor = System.Drawing.SystemColors.ActiveCaption;
-            this.rectangleShape4.FillColor = System.Drawing.SystemColors.ControlDark;
-            this.rectangleShape4.FillGradientColor = System.Drawing.Color.Maroon;
-            this.rectangleShape4.Location = new System.Drawing.Point(1, 121);
-            this.rectangleShape4.Name = "rectangleShape4";
-            this.rectangleShape4.Size = new System.Drawing.Size(100, 42);
-            // 
             // rectangleShape5
             // 
             this.rectangleShape5.BackColor = System.Drawing.Color.Silver;
@@ -565,6 +499,38 @@
             this.rectangleShape5.Name = "rectangleShape5";
             this.rectangleShape5.Size = new System.Drawing.Size(100, 42);
             // 
+            // rectangleShape4
+            // 
+            this.rectangleShape4.BackColor = System.Drawing.Color.Goldenrod;
+            this.rectangleShape4.BackStyle = Microsoft.VisualBasic.PowerPacks.BackStyle.Opaque;
+            this.rectangleShape4.BorderColor = System.Drawing.SystemColors.ActiveCaption;
+            this.rectangleShape4.FillColor = System.Drawing.SystemColors.ControlDark;
+            this.rectangleShape4.FillGradientColor = System.Drawing.Color.Maroon;
+            this.rectangleShape4.Location = new System.Drawing.Point(1, 121);
+            this.rectangleShape4.Name = "rectangleShape4";
+            this.rectangleShape4.Size = new System.Drawing.Size(100, 42);
+            // 
+            // rectangleShape3
+            // 
+            this.rectangleShape3.BackColor = System.Drawing.Color.DarkRed;
+            this.rectangleShape3.BackStyle = Microsoft.VisualBasic.PowerPacks.BackStyle.Opaque;
+            this.rectangleShape3.BorderColor = System.Drawing.SystemColors.ActiveCaption;
+            this.rectangleShape3.FillColor = System.Drawing.SystemColors.ControlDark;
+            this.rectangleShape3.FillGradientColor = System.Drawing.Color.Maroon;
+            this.rectangleShape3.Location = new System.Drawing.Point(1, 31);
+            this.rectangleShape3.Name = "rectangleShape3";
+            this.rectangleShape3.Size = new System.Drawing.Size(100, 42);
+            // 
+            // panel6
+            // 
+            this.panel6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel6.Controls.Add(this.label3);
+            this.panel6.Controls.Add(this.shapeContainer1);
+            this.panel6.Location = new System.Drawing.Point(3, 3);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(105, 452);
+            this.panel6.TabIndex = 0;
+            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -574,6 +540,40 @@
             this.label3.Size = new System.Drawing.Size(36, 13);
             this.label3.TabIndex = 1;
             this.label3.Text = "DPAA";
+            // 
+            // shapeContainer1
+            // 
+            this.shapeContainer1.Location = new System.Drawing.Point(0, 0);
+            this.shapeContainer1.Margin = new System.Windows.Forms.Padding(0);
+            this.shapeContainer1.Name = "shapeContainer1";
+            this.shapeContainer1.Shapes.AddRange(new Microsoft.VisualBasic.PowerPacks.Shape[] {
+            this.rectangleShape2,
+            this.rectangleShape1});
+            this.shapeContainer1.Size = new System.Drawing.Size(103, 450);
+            this.shapeContainer1.TabIndex = 0;
+            this.shapeContainer1.TabStop = false;
+            // 
+            // rectangleShape2
+            // 
+            this.rectangleShape2.BackColor = System.Drawing.Color.Brown;
+            this.rectangleShape2.BackStyle = Microsoft.VisualBasic.PowerPacks.BackStyle.Opaque;
+            this.rectangleShape2.BorderColor = System.Drawing.SystemColors.ActiveCaption;
+            this.rectangleShape2.FillColor = System.Drawing.SystemColors.ControlDark;
+            this.rectangleShape2.FillGradientColor = System.Drawing.Color.Maroon;
+            this.rectangleShape2.Location = new System.Drawing.Point(1, 204);
+            this.rectangleShape2.Name = "rectangleShape2";
+            this.rectangleShape2.Size = new System.Drawing.Size(100, 42);
+            // 
+            // rectangleShape1
+            // 
+            this.rectangleShape1.BackColor = System.Drawing.Color.DarkRed;
+            this.rectangleShape1.BackStyle = Microsoft.VisualBasic.PowerPacks.BackStyle.Opaque;
+            this.rectangleShape1.BorderColor = System.Drawing.SystemColors.ActiveCaption;
+            this.rectangleShape1.FillColor = System.Drawing.SystemColors.ControlDark;
+            this.rectangleShape1.FillGradientColor = System.Drawing.Color.Maroon;
+            this.rectangleShape1.Location = new System.Drawing.Point(1, 3);
+            this.rectangleShape1.Name = "rectangleShape1";
+            this.rectangleShape1.Size = new System.Drawing.Size(100, 42);
             // 
             // Client
             // 
@@ -594,20 +594,20 @@
             this.contextMenuStrip2.ResumeLayout(false);
             this.contextMenuStrip1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
+            this.menuStripMain.ResumeLayout(false);
+            this.menuStripMain.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.menuStrip2.ResumeLayout(false);
             this.menuStrip2.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
-            this.menuStripMain.ResumeLayout(false);
-            this.menuStripMain.PerformLayout();
             this.panel5.ResumeLayout(false);
+            this.panel7.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
-            this.panel7.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
