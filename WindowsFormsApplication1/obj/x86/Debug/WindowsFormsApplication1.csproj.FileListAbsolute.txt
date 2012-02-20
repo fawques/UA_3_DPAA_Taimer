@@ -16,3 +16,5 @@ C:\Users\Ruben\clase\taimer\WindowsFormsApplication1\obj\x86\Debug\GenerateResou
 C:\Users\Ruben\clase\taimer\WindowsFormsApplication1\obj\x86\Debug\GenerateResource.write.1.tlog
 C:\Users\Ruben\clase\taimer\WindowsFormsApplication1\obj\x86\Debug\WindowsFormsApplication1.exe
 C:\Users\Ruben\clase\taimer\WindowsFormsApplication1\obj\x86\Debug\WindowsFormsApplication1.pdb
+C:\Users\Victor\Dropbox\DPAA\ElTaimerEsElMejorProyectoDelMundoMundial\WindowsFormsApplication1\obj\x86\Debug\WindowsFormsApplication1.exe
+C:\Users\Victor\Dropbox\DPAA\ElTaimerEsElMejorProyectoDelMundoMundial\WindowsFormsApplication1\obj\x86\Debug\WindowsFormsApplication1.pdb

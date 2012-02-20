@@ -9,3 +9,5 @@ C:\Users\Ruben\clase\taimer\rubenDesign\obj\x86\Debug\rubenDesign.pdb
 C:\Users\Ruben\clase\taimer\rubenDesign\obj\x86\Debug\rubenDesign.Login.resources
 C:\Users\Ruben\clase\taimer\rubenDesign\obj\x86\Debug\rubenDesign.Admin.resources
 C:\Users\Ruben\clase\taimer\rubenDesign\obj\x86\Debug\rubenDesign.Client.resources
+C:\Users\Victor\Dropbox\DPAA\ElTaimerEsElMejorProyectoDelMundoMundial\rubenDesign\obj\x86\Debug\rubenDesign.exe
+C:\Users\Victor\Dropbox\DPAA\ElTaimerEsElMejorProyectoDelMundoMundial\rubenDesign\obj\x86\Debug\rubenDesign.pdb
