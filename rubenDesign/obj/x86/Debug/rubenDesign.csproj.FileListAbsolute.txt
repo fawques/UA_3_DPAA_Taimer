@@ -11,3 +11,14 @@ C:\Users\Ruben\clase\taimer\rubenDesign\obj\x86\Debug\rubenDesign.Admin.resource
 C:\Users\Ruben\clase\taimer\rubenDesign\obj\x86\Debug\rubenDesign.Client.resources
 C:\Users\Victor\Dropbox\DPAA\ElTaimerEsElMejorProyectoDelMundoMundial\rubenDesign\obj\x86\Debug\rubenDesign.exe
 C:\Users\Victor\Dropbox\DPAA\ElTaimerEsElMejorProyectoDelMundoMundial\rubenDesign\obj\x86\Debug\rubenDesign.pdb
+C:\Users\TOTO\ElTaimerEsElMejorProyectoDelMundoMundial\rubenDesign\bin\Debug\rubenDesign.exe
+C:\Users\TOTO\ElTaimerEsElMejorProyectoDelMundoMundial\rubenDesign\bin\Debug\rubenDesign.pdb
+C:\Users\TOTO\ElTaimerEsElMejorProyectoDelMundoMundial\rubenDesign\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\TOTO\ElTaimerEsElMejorProyectoDelMundoMundial\rubenDesign\obj\x86\Debug\rubenDesign.Admin.resources
+C:\Users\TOTO\ElTaimerEsElMejorProyectoDelMundoMundial\rubenDesign\obj\x86\Debug\rubenDesign.Client.resources
+C:\Users\TOTO\ElTaimerEsElMejorProyectoDelMundoMundial\rubenDesign\obj\x86\Debug\rubenDesign.Login.resources
+C:\Users\TOTO\ElTaimerEsElMejorProyectoDelMundoMundial\rubenDesign\obj\x86\Debug\rubenDesign.Properties.Resources.resources
+C:\Users\TOTO\ElTaimerEsElMejorProyectoDelMundoMundial\rubenDesign\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\Users\TOTO\ElTaimerEsElMejorProyectoDelMundoMundial\rubenDesign\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\Users\TOTO\ElTaimerEsElMejorProyectoDelMundoMundial\rubenDesign\obj\x86\Debug\rubenDesign.exe
+C:\Users\TOTO\ElTaimerEsElMejorProyectoDelMundoMundial\rubenDesign\obj\x86\Debug\rubenDesign.pdb
