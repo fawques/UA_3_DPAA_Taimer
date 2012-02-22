@@ -1,4 +1,10 @@
+# Ignorar archivos .o y .a (normalmente binarios de compilación)
 *.[oa]
+
+# Ignorar archivos .suo (binario del VisualStudio)
+*.suo
+
+# Ignorar carpetas bin y obj, en cualquier subcarpeta
 */bin
 */obj
-#Esto es un comentario de prueba
+
