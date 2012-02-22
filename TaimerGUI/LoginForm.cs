@@ -130,5 +130,29 @@ namespace TaimerGUI {
         private void btClose_MouseLeave(object sender, EventArgs e) {
             // Cambiamos la imagen del boton por la del boton normal
         }
+
+        private void lbTaimer_MouseDown(object sender, MouseEventArgs e) {
+            panel1_MouseDown(sender, e);
+        }
+
+        private void lbTaimer_MouseMove(object sender, MouseEventArgs e) {
+            panel1_MouseMove(sender, e);
+        }
+
+        private void lbTaimer_MouseUp(object sender, MouseEventArgs e) {
+            panel1_MouseUp(sender, e);
+        }
+
+        private void pnSystemButtons_MouseDown(object sender, MouseEventArgs e) {
+            panel1_MouseDown(sender, e);
+        }
+
+        private void pnSystemButtons_MouseMove(object sender, MouseEventArgs e) {
+            panel1_MouseMove(sender, e);
+        }
+
+        private void pnSystemButtons_MouseUp(object sender, MouseEventArgs e) {
+            panel1_MouseUp(sender, e);
+        }
     }
 }

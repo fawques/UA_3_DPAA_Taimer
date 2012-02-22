@@ -27,7 +27,7 @@
             this.pnSystemButtons = new System.Windows.Forms.Panel();
             this.btMinimize = new System.Windows.Forms.Button();
             this.btClose = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lbTaimer = new System.Windows.Forms.Label();
             this.pnLoginContents = new System.Windows.Forms.Panel();
             this.llIrAWeb = new System.Windows.Forms.LinkLabel();
             this.llRecordarDatos = new System.Windows.Forms.LinkLabel();
@@ -47,12 +47,12 @@
             // 
             this.pnLogo.BackColor = System.Drawing.Color.Transparent;
             this.pnLogo.Controls.Add(this.pnSystemButtons);
-            this.pnLogo.Controls.Add(this.label1);
+            this.pnLogo.Controls.Add(this.lbTaimer);
             this.pnLogo.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnLogo.Location = new System.Drawing.Point(0, 0);
             this.pnLogo.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.pnLogo.Name = "pnLogo";
-            this.pnLogo.Size = new System.Drawing.Size(500, 119);
+            this.pnLogo.Size = new System.Drawing.Size(500, 109);
             this.pnLogo.TabIndex = 0;
             this.pnLogo.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseDown);
             this.pnLogo.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseMove);
@@ -63,10 +63,13 @@
             this.pnSystemButtons.Controls.Add(this.btMinimize);
             this.pnSystemButtons.Controls.Add(this.btClose);
             this.pnSystemButtons.Dock = System.Windows.Forms.DockStyle.Right;
-            this.pnSystemButtons.Location = new System.Drawing.Point(425, 0);
+            this.pnSystemButtons.Location = new System.Drawing.Point(439, 0);
             this.pnSystemButtons.Name = "pnSystemButtons";
-            this.pnSystemButtons.Size = new System.Drawing.Size(75, 119);
+            this.pnSystemButtons.Size = new System.Drawing.Size(61, 109);
             this.pnSystemButtons.TabIndex = 8;
+            this.pnSystemButtons.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnSystemButtons_MouseDown);
+            this.pnSystemButtons.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pnSystemButtons_MouseMove);
+            this.pnSystemButtons.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pnSystemButtons_MouseUp);
             // 
             // btMinimize
             // 
@@ -77,7 +80,7 @@
             this.btMinimize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btMinimize.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btMinimize.ForeColor = System.Drawing.Color.Maroon;
-            this.btMinimize.Location = new System.Drawing.Point(22, 0);
+            this.btMinimize.Location = new System.Drawing.Point(5, 0);
             this.btMinimize.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btMinimize.Name = "btMinimize";
             this.btMinimize.Size = new System.Drawing.Size(31, 27);
@@ -97,7 +100,7 @@
             this.btClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btClose.Font = new System.Drawing.Font("Arial Black", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btClose.ForeColor = System.Drawing.Color.Maroon;
-            this.btClose.Location = new System.Drawing.Point(44, 3);
+            this.btClose.Location = new System.Drawing.Point(32, 3);
             this.btClose.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btClose.Name = "btClose";
             this.btClose.Size = new System.Drawing.Size(31, 27);
@@ -108,20 +111,27 @@
             this.btClose.MouseEnter += new System.EventHandler(this.btClose_MouseEnter);
             this.btClose.MouseLeave += new System.EventHandler(this.btClose_MouseLeave);
             // 
-            // label1
+            // lbTaimer
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Calibri", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.Maroon;
-            this.label1.Location = new System.Drawing.Point(187, 9);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(161, 59);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Taimer";
+            this.lbTaimer.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbTaimer.AutoSize = true;
+            this.lbTaimer.Font = new System.Drawing.Font("Calibri", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbTaimer.ForeColor = System.Drawing.Color.Maroon;
+            this.lbTaimer.Location = new System.Drawing.Point(187, 9);
+            this.lbTaimer.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbTaimer.Name = "lbTaimer";
+            this.lbTaimer.Size = new System.Drawing.Size(161, 59);
+            this.lbTaimer.TabIndex = 0;
+            this.lbTaimer.Text = "Taimer";
+            this.lbTaimer.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lbTaimer_MouseDown);
+            this.lbTaimer.MouseMove += new System.Windows.Forms.MouseEventHandler(this.lbTaimer_MouseMove);
+            this.lbTaimer.MouseUp += new System.Windows.Forms.MouseEventHandler(this.lbTaimer_MouseUp);
             // 
             // pnLoginContents
             // 
+            this.pnLoginContents.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.pnLoginContents.BackColor = System.Drawing.Color.Transparent;
             this.pnLoginContents.Controls.Add(this.llIrAWeb);
             this.pnLoginContents.Controls.Add(this.llRecordarDatos);
@@ -132,7 +142,6 @@
             this.pnLoginContents.Controls.Add(this.lbLoginPassword);
             this.pnLoginContents.Controls.Add(this.lbLoginUser);
             this.pnLoginContents.Controls.Add(this.btLoginEntrar);
-            this.pnLoginContents.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.pnLoginContents.Location = new System.Drawing.Point(0, 106);
             this.pnLoginContents.Name = "pnLoginContents";
             this.pnLoginContents.Size = new System.Drawing.Size(500, 194);
@@ -245,8 +254,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(500, 300);
-            this.Controls.Add(this.pnLoginContents);
             this.Controls.Add(this.pnLogo);
+            this.Controls.Add(this.pnLoginContents);
             this.Font = new System.Drawing.Font("Arial Black", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
@@ -265,7 +274,7 @@
         #endregion
 
         private System.Windows.Forms.Panel pnLogo;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lbTaimer;
         private System.Windows.Forms.Panel pnSystemButtons;
         private System.Windows.Forms.Button btMinimize;
         private System.Windows.Forms.Button btClose;
