@@ -16,7 +16,7 @@ namespace TaimerGUI {
 
         protected override void OnPaint(PaintEventArgs e) {
             
-            GraphicsPath shape = RoundedRectangle.Create(0, 0, 400, 400, 20);
+            GraphicsPath shape = RoundedRectangle.Create(0, 0, this.Width, this.Height + 10, 5);
             this.Region = new System.Drawing.Region(shape); ;
             
         }
@@ -52,6 +52,14 @@ namespace TaimerGUI {
 
         private void LoginForm_Load(object sender, EventArgs e) {
             beingDragged = false;
+        }
+
+        private void btClose_Click(object sender, EventArgs e) {
+            Application.Exit();
+        }
+
+        private void btMinimize_Click(object sender, EventArgs e) {
+            this.WindowState = FormWindowState.Minimized;
         }
     }
 }
