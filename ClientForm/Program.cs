@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace TaimerGUI {
+namespace ClientForm {
     static class Program {
         /// <summary>
         /// Punto de entrada principal para la aplicación.
@@ -12,8 +12,7 @@ namespace TaimerGUI {
         static void Main() {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new LoginForm());
-
+            Application.Run(new Form1());
         }
     }
 }
