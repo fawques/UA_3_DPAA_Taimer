@@ -6,7 +6,7 @@ using System.Windows.Forms;
 namespace TaimerGUI {
     static class Program {
 
-        public static LoginForm loginForm;
+        public static ClientForm loginForm;
 
         /// <summary>
         /// Punto de entrada principal para la aplicación.
@@ -17,7 +17,7 @@ namespace TaimerGUI {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            loginForm = new LoginForm();
+            loginForm = new ClientForm();
             Application.Run(loginForm);
 
         }
