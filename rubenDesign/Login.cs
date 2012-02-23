@@ -93,13 +93,14 @@ namespace rubenDesign
             closeButton.ForeColor = Color.Red;
         }
 
-        private void textBoxPassword_KeyPress(object sender, KeyPressEventArgs e)
+        // Hay una propiedad del formulario que ya lo hace
+        /*private void textBoxPassword_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == (char)Keys.Enter){//si se presiona la tecla enter
                 loginIn();
             }
         }
-
+        */
 
         /* Funcion que logea y lanza la ventana correspondiente
          * 
