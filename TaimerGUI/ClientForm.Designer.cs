@@ -24,30 +24,20 @@
         /// </summary>
         private void InitializeComponent() {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)));
             this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.button1);
-            this.panel1.Location = new System.Drawing.Point(1, 1);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(272, 573);
+            this.panel1.Size = new System.Drawing.Size(274, 576);
             this.panel1.TabIndex = 2;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(0, 0);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(272, 142);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Horarios";
-            this.button1.UseVisualStyleBackColor = true;
             // 
             // button2
             // 
@@ -58,6 +48,15 @@
             this.button2.Text = "Panic Button";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(0, 0);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(272, 142);
+            this.button1.TabIndex = 0;
+            this.button1.Text = "Horarios";
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // ClientForm
             // 
@@ -75,6 +74,7 @@
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ClientForm";
             this.Load += new System.EventHandler(this.ClientForm_Load);
             this.panel1.ResumeLayout(false);
