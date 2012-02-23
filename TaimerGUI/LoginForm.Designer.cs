@@ -25,8 +25,6 @@
         private void InitializeComponent() {
             this.pnLogo = new System.Windows.Forms.Panel();
             this.pnSystemButtons = new System.Windows.Forms.Panel();
-            this.btMinimize = new System.Windows.Forms.Button();
-            this.btClose = new System.Windows.Forms.Button();
             this.lbTaimer = new System.Windows.Forms.Label();
             this.pnLoginContents = new System.Windows.Forms.Panel();
             this.llIrAWeb = new System.Windows.Forms.LinkLabel();
@@ -38,6 +36,8 @@
             this.lbLoginPassword = new System.Windows.Forms.Label();
             this.lbLoginUser = new System.Windows.Forms.Label();
             this.btLoginEntrar = new System.Windows.Forms.Button();
+            this.btMinimize = new System.Windows.Forms.Button();
+            this.btClose = new System.Windows.Forms.Button();
             this.pnLogo.SuspendLayout();
             this.pnSystemButtons.SuspendLayout();
             this.pnLoginContents.SuspendLayout();
@@ -52,7 +52,7 @@
             this.pnLogo.Location = new System.Drawing.Point(0, 0);
             this.pnLogo.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.pnLogo.Name = "pnLogo";
-            this.pnLogo.Size = new System.Drawing.Size(500, 109);
+            this.pnLogo.Size = new System.Drawing.Size(500, 119);
             this.pnLogo.TabIndex = 0;
             this.pnLogo.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseDown);
             this.pnLogo.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseMove);
@@ -65,51 +65,11 @@
             this.pnSystemButtons.Dock = System.Windows.Forms.DockStyle.Right;
             this.pnSystemButtons.Location = new System.Drawing.Point(439, 0);
             this.pnSystemButtons.Name = "pnSystemButtons";
-            this.pnSystemButtons.Size = new System.Drawing.Size(61, 109);
+            this.pnSystemButtons.Size = new System.Drawing.Size(61, 119);
             this.pnSystemButtons.TabIndex = 8;
             this.pnSystemButtons.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnSystemButtons_MouseDown);
             this.pnSystemButtons.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pnSystemButtons_MouseMove);
             this.pnSystemButtons.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pnSystemButtons_MouseUp);
-            // 
-            // btMinimize
-            // 
-            this.btMinimize.BackColor = System.Drawing.Color.Transparent;
-            this.btMinimize.FlatAppearance.BorderSize = 0;
-            this.btMinimize.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btMinimize.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btMinimize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btMinimize.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btMinimize.ForeColor = System.Drawing.Color.Maroon;
-            this.btMinimize.Location = new System.Drawing.Point(5, 0);
-            this.btMinimize.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.btMinimize.Name = "btMinimize";
-            this.btMinimize.Size = new System.Drawing.Size(31, 27);
-            this.btMinimize.TabIndex = 7;
-            this.btMinimize.Text = "__";
-            this.btMinimize.UseVisualStyleBackColor = false;
-            this.btMinimize.Click += new System.EventHandler(this.btMinimize_Click);
-            this.btMinimize.MouseEnter += new System.EventHandler(this.btMinimize_MouseEnter);
-            this.btMinimize.MouseLeave += new System.EventHandler(this.btMinimize_MouseLeave);
-            // 
-            // btClose
-            // 
-            this.btClose.BackColor = System.Drawing.Color.Transparent;
-            this.btClose.FlatAppearance.BorderSize = 0;
-            this.btClose.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btClose.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btClose.Font = new System.Drawing.Font("Arial Black", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btClose.ForeColor = System.Drawing.Color.Maroon;
-            this.btClose.Location = new System.Drawing.Point(32, 3);
-            this.btClose.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.btClose.Name = "btClose";
-            this.btClose.Size = new System.Drawing.Size(31, 27);
-            this.btClose.TabIndex = 8;
-            this.btClose.Text = "X";
-            this.btClose.UseVisualStyleBackColor = false;
-            this.btClose.Click += new System.EventHandler(this.btClose_Click);
-            this.btClose.MouseEnter += new System.EventHandler(this.btClose_MouseEnter);
-            this.btClose.MouseLeave += new System.EventHandler(this.btClose_MouseLeave);
             // 
             // lbTaimer
             // 
@@ -198,7 +158,6 @@
             // 
             // tbLoginPassword
             // 
-            this.tbLoginPassword.AcceptsReturn = true;
             this.tbLoginPassword.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbLoginPassword.Location = new System.Drawing.Point(220, 50);
             this.tbLoginPassword.Name = "tbLoginPassword";
@@ -249,8 +208,53 @@
             this.btLoginEntrar.UseVisualStyleBackColor = true;
             this.btLoginEntrar.Click += new System.EventHandler(this.btLoginEntrar_Click);
             // 
+            // btMinimize
+            // 
+            this.btMinimize.BackColor = System.Drawing.Color.Transparent;
+            this.btMinimize.FlatAppearance.BorderSize = 0;
+            this.btMinimize.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btMinimize.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btMinimize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btMinimize.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btMinimize.ForeColor = System.Drawing.Color.Maroon;
+            this.btMinimize.Image = global::TaimerGUI.Properties.Resources.tbMinimizeOff;
+            this.btMinimize.Location = new System.Drawing.Point(10, 3);
+            this.btMinimize.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.btMinimize.Name = "btMinimize";
+            this.btMinimize.Size = new System.Drawing.Size(20, 20);
+            this.btMinimize.TabIndex = 7;
+            this.btMinimize.UseVisualStyleBackColor = false;
+            this.btMinimize.Click += new System.EventHandler(this.btMinimize_Click);
+            this.btMinimize.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btMinimize_MouseDown);
+            this.btMinimize.MouseEnter += new System.EventHandler(this.btMinimize_MouseEnter);
+            this.btMinimize.MouseLeave += new System.EventHandler(this.btMinimize_MouseLeave);
+            this.btMinimize.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btMinimize_MouseUp);
+            // 
+            // btClose
+            // 
+            this.btClose.BackColor = System.Drawing.Color.Transparent;
+            this.btClose.FlatAppearance.BorderSize = 0;
+            this.btClose.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btClose.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btClose.Font = new System.Drawing.Font("Arial Black", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btClose.ForeColor = System.Drawing.Color.Maroon;
+            this.btClose.Image = global::TaimerGUI.Properties.Resources.tbCloseOff;
+            this.btClose.Location = new System.Drawing.Point(33, 3);
+            this.btClose.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.btClose.Name = "btClose";
+            this.btClose.Size = new System.Drawing.Size(20, 20);
+            this.btClose.TabIndex = 8;
+            this.btClose.UseVisualStyleBackColor = false;
+            this.btClose.Click += new System.EventHandler(this.btClose_Click);
+            this.btClose.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btClose_MouseDown);
+            this.btClose.MouseEnter += new System.EventHandler(this.btClose_MouseEnter);
+            this.btClose.MouseLeave += new System.EventHandler(this.btClose_MouseLeave);
+            this.btClose.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btClose_MouseUp);
+            // 
             // LoginForm
             // 
+            this.AcceptButton = this.btLoginEntrar;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(500, 300);
