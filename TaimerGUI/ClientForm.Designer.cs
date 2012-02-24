@@ -26,6 +26,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ClientForm));
             this.pnlMenu = new System.Windows.Forms.Panel();
+            this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.iconNotifClient = new System.Windows.Forms.NotifyIcon(this.components);
             this.ctxtMenuTray = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -48,7 +49,7 @@
             this.btMaximize = new System.Windows.Forms.Button();
             this.btClose = new System.Windows.Forms.Button();
             this.btMinimize = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.pnlMenu.SuspendLayout();
             this.ctxtMenuTray.SuspendLayout();
             this.pnlTittle.SuspendLayout();
@@ -69,6 +70,15 @@
             this.pnlMenu.Name = "pnlMenu";
             this.pnlMenu.Size = new System.Drawing.Size(200, 611);
             this.pnlMenu.TabIndex = 2;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(6, 542);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(193, 63);
+            this.button2.TabIndex = 1;
+            this.button2.Text = "Ir a la página";
+            this.button2.UseVisualStyleBackColor = true;
             // 
             // button1
             // 
@@ -158,6 +168,7 @@
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlTittle.BackColor = System.Drawing.Color.Transparent;
             this.pnlTittle.BackgroundImage = global::TaimerGUI.Properties.Resources.pruba11;
+            this.pnlTittle.Controls.Add(this.label1);
             this.pnlTittle.Controls.Add(this.panel1);
             this.pnlTittle.Controls.Add(this.panel3);
             this.pnlTittle.Location = new System.Drawing.Point(-1, -5);
@@ -214,21 +225,21 @@
             // perfilToolStripMenuItem
             // 
             this.perfilToolStripMenuItem.Name = "perfilToolStripMenuItem";
-            this.perfilToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.perfilToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
             this.perfilToolStripMenuItem.Text = "Perfil";
             this.perfilToolStripMenuItem.Click += new System.EventHandler(this.perfilToolStripMenuItem_Click);
             // 
             // cerrarSesiónToolStripMenuItem
             // 
             this.cerrarSesiónToolStripMenuItem.Name = "cerrarSesiónToolStripMenuItem";
-            this.cerrarSesiónToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.cerrarSesiónToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
             this.cerrarSesiónToolStripMenuItem.Text = "Cerrar sesión";
             this.cerrarSesiónToolStripMenuItem.Click += new System.EventHandler(this.toolStripCloseSesion_Click);
             // 
             // salirToolStripMenuItem1
             // 
             this.salirToolStripMenuItem1.Name = "salirToolStripMenuItem1";
-            this.salirToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.salirToolStripMenuItem1.Size = new System.Drawing.Size(142, 22);
             this.salirToolStripMenuItem1.Text = "Salir";
             this.salirToolStripMenuItem1.Click += new System.EventHandler(this.toolStripExit_Click);
             // 
@@ -297,14 +308,20 @@
             this.btMinimize.UseVisualStyleBackColor = false;
             this.btMinimize.Click += new System.EventHandler(this.btMinimize_Click);
             // 
-            // button2
+            // label1
             // 
-            this.button2.Location = new System.Drawing.Point(6, 542);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(193, 63);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "Ir a la página";
-            this.button2.UseVisualStyleBackColor = true;
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Calibri", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Maroon;
+            this.label1.Location = new System.Drawing.Point(420, 8);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(161, 59);
+            this.label1.TabIndex = 9;
+            this.label1.Text = "Taimer";
+            this.label1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlTittle_MouseDown);
+            this.label1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pnlTittle_MouseMove);
+            this.label1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pnlTittle_MouseUp);
             // 
             // ClientForm
             // 
@@ -324,6 +341,7 @@
             this.pnlMenu.ResumeLayout(false);
             this.ctxtMenuTray.ResumeLayout(false);
             this.pnlTittle.ResumeLayout(false);
+            this.pnlTittle.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -360,6 +378,7 @@
         private System.Windows.Forms.ToolStripMenuItem cerrarSesiónToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem salirToolStripMenuItem1;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Label label1;
 
 
     }
