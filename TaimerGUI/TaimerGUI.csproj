@@ -111,6 +111,24 @@
   <ItemGroup>
     <None Include="Resources\orange-user-md.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tbCloseClick.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tbCloseOn.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tbCloseOff.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tbMinimizeOn.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tbMinimizeOff.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tbMinimizeClick.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
