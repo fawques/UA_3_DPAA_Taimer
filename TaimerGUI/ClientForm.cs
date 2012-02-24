@@ -10,7 +10,36 @@ using System.Windows.Forms;
 namespace TaimerGUI {
     public partial class ClientForm : Form {
 
-        bool exitOfAplication;
+        bool exitOfAplication = false;
+
+        /*     MOVER VENTANA     */
+        bool beingDragged;
+        Point mouseOffset;
+
+        private void pnlTittle_MouseDown(object sender, MouseEventArgs e)
+        {
+            this.beingDragged = true;
+            this.mouseOffset.X = e.X;
+            this.mouseOffset.Y = e.Y;
+        }
+
+        private void pnlTittle_MouseUp(object sender, MouseEventArgs e)
+        {
+            this.beingDragged = false;
+        }
+
+        private void pnlTittle_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (this.beingDragged)
+            {
+                Point currentScreenPos = PointToScreen(e.Location);
+                Point p = new Point(currentScreenPos.X - this.mouseOffset.X, currentScreenPos.Y - this.mouseOffset.Y);
+                this.Location = p;
+            }
+        }
+        /*     ---------------     */
+
+        
         public ClientForm() {
             InitializeComponent();
         }
@@ -29,10 +58,13 @@ namespace TaimerGUI {
         private void ClientForm_Load(object sender, EventArgs e)
         {
             Bienvenida init = new Bienvenida();
+            init.PointToClient(new Point(150, 150));
+
             init.MdiParent = this;
             init.Show();
 
             exitOfAplication = false;
+            beingDragged = false;
         }
 
         private void iconNotifClient_MouseDoubleClick(object sender, MouseEventArgs e)

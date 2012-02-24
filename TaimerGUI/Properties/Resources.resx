@@ -118,22 +118,25 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="tbCloseClick" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\tbCloseClick.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="tbCloseOff" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\tbCloseOff.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="tbCloseOn" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\tbCloseOn.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="tbMinimizeOn" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\tbMinimizeOn.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="tbMinimizeClick" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\tbMinimizeClick.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="tbCloseOff" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\tbCloseOff.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="tbMinimizeOff" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\tbMinimizeOff.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="tbMinimizeOn" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\tbMinimizeOn.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="tbCloseClick" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\tbCloseClick.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="orange-user-md" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\orange-user-md.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

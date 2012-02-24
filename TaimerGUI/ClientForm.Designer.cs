@@ -28,29 +28,39 @@
             this.pnlMenu = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
             this.pnlTittle = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.btMaximize = new System.Windows.Forms.Button();
+            this.btClose = new System.Windows.Forms.Button();
+            this.btMinimize = new System.Windows.Forms.Button();
             this.iconNotifClient = new System.Windows.Forms.NotifyIcon(this.components);
             this.ctxtMenuTray = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.btClose = new System.Windows.Forms.Button();
-            this.btMinimize = new System.Windows.Forms.Button();
-            this.btMaximize = new System.Windows.Forms.Button();
-            this.panel3 = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.userToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pefilToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cerrarSesionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlMenu.SuspendLayout();
             this.pnlTittle.SuspendLayout();
-            this.ctxtMenuTray.SuspendLayout();
             this.panel3.SuspendLayout();
+            this.ctxtMenuTray.SuspendLayout();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlMenu
             // 
             this.pnlMenu.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)));
-            this.pnlMenu.BackColor = System.Drawing.Color.Khaki;
+            this.pnlMenu.BackColor = System.Drawing.Color.Cornsilk;
             this.pnlMenu.Controls.Add(this.button1);
-            this.pnlMenu.Location = new System.Drawing.Point(1, 83);
+            this.pnlMenu.Location = new System.Drawing.Point(1, 75);
             this.pnlMenu.Name = "pnlMenu";
-            this.pnlMenu.Size = new System.Drawing.Size(165, 573);
+            this.pnlMenu.Size = new System.Drawing.Size(165, 581);
             this.pnlMenu.TabIndex = 2;
             // 
             // button1
@@ -66,47 +76,45 @@
             // 
             this.pnlTittle.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.pnlTittle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.pnlTittle.BackColor = System.Drawing.Color.Cornsilk;
+            this.pnlTittle.Controls.Add(this.panel1);
             this.pnlTittle.Controls.Add(this.panel3);
             this.pnlTittle.Location = new System.Drawing.Point(1, 1);
             this.pnlTittle.Name = "pnlTittle";
-            this.pnlTittle.Size = new System.Drawing.Size(935, 83);
+            this.pnlTittle.Size = new System.Drawing.Size(935, 76);
             this.pnlTittle.TabIndex = 4;
+            this.pnlTittle.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlTittle_MouseDown);
+            this.pnlTittle.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pnlTittle_MouseMove);
+            this.pnlTittle.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pnlTittle_MouseUp);
             // 
-            // iconNotifClient
+            // panel3
             // 
-            this.iconNotifClient.BalloonTipIcon = System.Windows.Forms.ToolTipIcon.Info;
-            this.iconNotifClient.BalloonTipText = "Taimer horario";
-            this.iconNotifClient.ContextMenuStrip = this.ctxtMenuTray;
-            this.iconNotifClient.Icon = ((System.Drawing.Icon)(resources.GetObject("iconNotifClient.Icon")));
-            this.iconNotifClient.Text = "notifyIcon1";
-            this.iconNotifClient.Visible = true;
-            this.iconNotifClient.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.iconNotifClient_MouseDoubleClick);
+            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel3.Controls.Add(this.btMaximize);
+            this.panel3.Controls.Add(this.btClose);
+            this.panel3.Controls.Add(this.btMinimize);
+            this.panel3.Location = new System.Drawing.Point(825, 3);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(107, 36);
+            this.panel3.TabIndex = 7;
             // 
-            // ctxtMenuTray
+            // btMaximize
             // 
-            this.ctxtMenuTray.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem1,
-            this.toolStripMenuItem2});
-            this.ctxtMenuTray.Name = "ctxtMenuTray";
-            this.ctxtMenuTray.Size = new System.Drawing.Size(143, 48);
-            // 
-            // toolStripMenuItem1
-            // 
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(142, 22);
-            this.toolStripMenuItem1.Text = "Cerrar sesion";
-            this.toolStripMenuItem1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
-            // 
-            // toolStripMenuItem2
-            // 
-            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(142, 22);
-            this.toolStripMenuItem2.Text = "Salir";
-            this.toolStripMenuItem2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.toolStripMenuItem2.TextDirection = System.Windows.Forms.ToolStripTextDirection.Horizontal;
-            this.toolStripMenuItem2.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
+            this.btMaximize.BackColor = System.Drawing.Color.Transparent;
+            this.btMaximize.FlatAppearance.BorderSize = 0;
+            this.btMaximize.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btMaximize.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btMaximize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btMaximize.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btMaximize.ForeColor = System.Drawing.Color.Maroon;
+            this.btMaximize.Location = new System.Drawing.Point(43, 0);
+            this.btMaximize.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.btMaximize.Name = "btMaximize";
+            this.btMaximize.Size = new System.Drawing.Size(31, 27);
+            this.btMaximize.TabIndex = 11;
+            this.btMaximize.Text = "O";
+            this.btMaximize.UseVisualStyleBackColor = false;
+            this.btMaximize.Click += new System.EventHandler(this.btMaximize_Click);
             // 
             // btClose
             // 
@@ -144,34 +152,101 @@
             this.btMinimize.UseVisualStyleBackColor = false;
             this.btMinimize.Click += new System.EventHandler(this.btMinimize_Click);
             // 
-            // btMaximize
+            // iconNotifClient
             // 
-            this.btMaximize.BackColor = System.Drawing.Color.Transparent;
-            this.btMaximize.FlatAppearance.BorderSize = 0;
-            this.btMaximize.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btMaximize.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btMaximize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btMaximize.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btMaximize.ForeColor = System.Drawing.Color.Maroon;
-            this.btMaximize.Location = new System.Drawing.Point(43, 0);
-            this.btMaximize.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.btMaximize.Name = "btMaximize";
-            this.btMaximize.Size = new System.Drawing.Size(31, 27);
-            this.btMaximize.TabIndex = 11;
-            this.btMaximize.Text = "O";
-            this.btMaximize.UseVisualStyleBackColor = false;
-            this.btMaximize.Click += new System.EventHandler(this.btMaximize_Click);
+            this.iconNotifClient.BalloonTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            this.iconNotifClient.BalloonTipText = "Taimer horario";
+            this.iconNotifClient.ContextMenuStrip = this.ctxtMenuTray;
+            this.iconNotifClient.Icon = ((System.Drawing.Icon)(resources.GetObject("iconNotifClient.Icon")));
+            this.iconNotifClient.Text = "notifyIcon1";
+            this.iconNotifClient.Visible = true;
+            this.iconNotifClient.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.iconNotifClient_MouseDoubleClick);
             // 
-            // panel3
+            // ctxtMenuTray
             // 
-            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel3.Controls.Add(this.btMaximize);
-            this.panel3.Controls.Add(this.btClose);
-            this.panel3.Controls.Add(this.btMinimize);
-            this.panel3.Location = new System.Drawing.Point(825, 3);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(107, 36);
-            this.panel3.TabIndex = 7;
+            this.ctxtMenuTray.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem1,
+            this.toolStripMenuItem2});
+            this.ctxtMenuTray.Name = "ctxtMenuTray";
+            this.ctxtMenuTray.Size = new System.Drawing.Size(143, 48);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(142, 22);
+            this.toolStripMenuItem1.Text = "Cerrar sesion";
+            this.toolStripMenuItem1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
+            // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(142, 22);
+            this.toolStripMenuItem2.Text = "Salir";
+            this.toolStripMenuItem2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.toolStripMenuItem2.TextDirection = System.Windows.Forms.ToolStripTextDirection.Horizontal;
+            this.toolStripMenuItem2.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.pictureBox1);
+            this.panel1.Controls.Add(this.menuStrip1);
+            this.panel1.Location = new System.Drawing.Point(825, 40);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(107, 175);
+            this.panel1.TabIndex = 8;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.pictureBox1.Image = global::TaimerGUI.Properties.Resources.orange_user_md;
+            this.pictureBox1.ImageLocation = "";
+            this.pictureBox1.InitialImage = null;
+            this.pictureBox1.Location = new System.Drawing.Point(85, 0);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(22, 22);
+            this.pictureBox1.TabIndex = 1;
+            this.pictureBox1.TabStop = false;
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.BackColor = System.Drawing.Color.Transparent;
+            this.menuStrip1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.userToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(107, 24);
+            this.menuStrip1.TabIndex = 3;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // userToolStripMenuItem
+            // 
+            this.userToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.pefilToolStripMenuItem,
+            this.cerrarSesionToolStripMenuItem,
+            this.salirToolStripMenuItem});
+            this.userToolStripMenuItem.Name = "userToolStripMenuItem";
+            this.userToolStripMenuItem.Size = new System.Drawing.Size(74, 20);
+            this.userToolStripMenuItem.Text = "Martin Mola";
+            // 
+            // pefilToolStripMenuItem
+            // 
+            this.pefilToolStripMenuItem.Name = "pefilToolStripMenuItem";
+            this.pefilToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
+            this.pefilToolStripMenuItem.Text = "Pefil";
+            // 
+            // cerrarSesionToolStripMenuItem
+            // 
+            this.cerrarSesionToolStripMenuItem.Name = "cerrarSesionToolStripMenuItem";
+            this.cerrarSesionToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
+            this.cerrarSesionToolStripMenuItem.Text = "Cerrar sesion";
+            // 
+            // salirToolStripMenuItem
+            // 
+            this.salirToolStripMenuItem.Name = "salirToolStripMenuItem";
+            this.salirToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
+            this.salirToolStripMenuItem.Text = "Salir";
             // 
             // ClientForm
             // 
@@ -191,8 +266,13 @@
             this.Load += new System.EventHandler(this.ClientForm_Load);
             this.pnlMenu.ResumeLayout(false);
             this.pnlTittle.ResumeLayout(false);
-            this.ctxtMenuTray.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
+            this.ctxtMenuTray.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -210,6 +290,13 @@
         private System.Windows.Forms.Button btMaximize;
         private System.Windows.Forms.Button btMinimize;
         private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem userToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem pefilToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem cerrarSesionToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem salirToolStripMenuItem;
 
 
     }
