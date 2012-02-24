@@ -20,7 +20,7 @@ namespace TaimerGUI {
             
             PathGradientBrush pgb = new PathGradientBrush(shape);
 
-            pgb.CenterPoint = new PointF(this.Width / 2, this.Height / 2);
+            pgb.CenterPoint = new PointF(this.Width * 2 / 3, this.Height / 2);
             pgb.CenterColor = Color.White;
             pgb.SurroundColors = new Color[] { Color.Cornsilk };
 
