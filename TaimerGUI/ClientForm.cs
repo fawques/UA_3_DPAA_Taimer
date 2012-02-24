@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
@@ -11,6 +12,7 @@ namespace TaimerGUI {
     public partial class ClientForm : Form {
 
         bool exitOfAplication = false;
+        bool closeForm = false;
 
         /*     MOVER VENTANA     */
         bool beingDragged;
@@ -42,19 +44,15 @@ namespace TaimerGUI {
         
         public ClientForm() {
             InitializeComponent();
+            //Redondeado de bordes
+            GraphicsPath shape = RoundedRectangle.Create(0, 0, this.Width, this.Height, 10);
+            this.Region = new System.Drawing.Region(shape);
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
+        /*     ---------------     */
 
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
-
+        //////////////// MDI //////////////////////////
         private void ClientForm_Load(object sender, EventArgs e)
         {
             Bienvenida init = new Bienvenida();
@@ -62,6 +60,7 @@ namespace TaimerGUI {
 
             init.MdiParent = this;
             init.Show();
+            init.Location = new Point(100, 100);
 
             exitOfAplication = false;
             beingDragged = false;
@@ -77,8 +76,11 @@ namespace TaimerGUI {
         {
             if (!exitOfAplication)
             {
-                e.Cancel = true;
-                Hide();
+                if (!closeForm)
+                {
+                    e.Cancel = true;
+                    Hide();
+                }
             }
             else
             {
@@ -87,16 +89,16 @@ namespace TaimerGUI {
                 
         }
 
-        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        private void toolStripExit_Click(object sender, EventArgs e)
         {
             exitOfAplication = true;
-            Program.loginForm.Show();
             Close();
         }
 
-        private void toolStripMenuItem2_Click(object sender, EventArgs e)
+        private void toolStripCloseSesion_Click(object sender, EventArgs e)
         {
-            exitOfAplication = true;
+            closeForm = true;
+            Program.loginForm.Show();
             Close();
         }
 
@@ -134,6 +136,11 @@ namespace TaimerGUI {
             }
             // desactivamos el maximizado para que deje de mostrar el borde
             this.FormBorderStyle = FormBorderStyle.None;
+        }
+
+        private void perfilToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("http://penis.com/");
         }
 
         
