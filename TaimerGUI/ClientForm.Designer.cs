@@ -38,6 +38,7 @@
             this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.pnlTittle = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.mnUserOption = new System.Windows.Forms.MenuStrip();
@@ -49,7 +50,6 @@
             this.btMaximize = new System.Windows.Forms.Button();
             this.btClose = new System.Windows.Forms.Button();
             this.btMinimize = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
             this.pnlMenu.SuspendLayout();
             this.ctxtMenuTray.SuspendLayout();
             this.pnlTittle.SuspendLayout();
@@ -168,6 +168,7 @@
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlTittle.BackColor = System.Drawing.Color.Transparent;
             this.pnlTittle.BackgroundImage = global::TaimerGUI.Properties.Resources.pruba11;
+            this.pnlTittle.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pnlTittle.Controls.Add(this.label1);
             this.pnlTittle.Controls.Add(this.panel1);
             this.pnlTittle.Controls.Add(this.panel3);
@@ -179,8 +180,24 @@
             this.pnlTittle.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pnlTittle_MouseMove);
             this.pnlTittle.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pnlTittle_MouseUp);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Calibri", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Maroon;
+            this.label1.Location = new System.Drawing.Point(14, 9);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(161, 59);
+            this.label1.TabIndex = 9;
+            this.label1.Text = "Taimer";
+            this.label1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlTittle_MouseDown);
+            this.label1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pnlTittle_MouseMove);
+            this.label1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pnlTittle_MouseUp);
+            // 
             // panel1
             // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.mnUserOption);
             this.panel1.Location = new System.Drawing.Point(887, 46);
@@ -307,21 +324,6 @@
             this.btMinimize.Text = "__";
             this.btMinimize.UseVisualStyleBackColor = false;
             this.btMinimize.Click += new System.EventHandler(this.btMinimize_Click);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Calibri", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.Maroon;
-            this.label1.Location = new System.Drawing.Point(420, 8);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(161, 59);
-            this.label1.TabIndex = 9;
-            this.label1.Text = "Taimer";
-            this.label1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlTittle_MouseDown);
-            this.label1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pnlTittle_MouseMove);
-            this.label1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pnlTittle_MouseUp);
             // 
             // ClientForm
             // 

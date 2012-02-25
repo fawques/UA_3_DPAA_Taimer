@@ -14,6 +14,9 @@ namespace TaimerGUI {
         bool exitOfAplication = false;
         bool closeForm = false;
 
+        //Mascara de redondeado inicializada en el constructor
+        GraphicsPath shape;
+
         /*     MOVER VENTANA     */
         bool beingDragged;
         Point mouseOffset;
@@ -44,8 +47,9 @@ namespace TaimerGUI {
         
         public ClientForm() {
             InitializeComponent();
+
             //Redondeado de bordes
-            GraphicsPath shape = RoundedRectangle.Create(0, 0, this.Width, this.Height, 10);
+            shape = RoundedRectangle.Create(0, 0, this.Width, this.Height, 10);
             this.Region = new System.Drawing.Region(shape);
         }
 
@@ -118,24 +122,30 @@ namespace TaimerGUI {
         private void btMinimize_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
+            
         }
 
         private void btMaximize_Click(object sender, EventArgs e)
         {
+            
             //Desactivamos el borderless para hacer el maxmizado normal, si no se pone a pantalla completa
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
-
+            
             if (this.WindowState != FormWindowState.Maximized)
             {
+                //Quitamos la mascara de redondeado
+                this.Region = new Region();
                 this.WindowState = FormWindowState.Maximized;
             }
             else
             {
+                //Restauramos la mascara de redondeado
+                this.Region = new System.Drawing.Region(shape);
                 this.WindowState = FormWindowState.Normal;
-
             }
             // desactivamos el maximizado para que deje de mostrar el borde
             this.FormBorderStyle = FormBorderStyle.None;
+            
         }
 
         private void perfilToolStripMenuItem_Click(object sender, EventArgs e)
