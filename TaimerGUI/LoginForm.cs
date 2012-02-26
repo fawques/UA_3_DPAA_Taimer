@@ -178,5 +178,14 @@ namespace TaimerGUI {
             panel1_MouseUp(sender, e);
         }
 
+
+        //Puente para no tardar tanto en abrir la ventana
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ClientForm client = new ClientForm();
+            client.Show();
+            this.Hide();
+        }
+
     }
 }
