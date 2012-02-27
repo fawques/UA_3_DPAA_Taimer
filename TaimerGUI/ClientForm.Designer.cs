@@ -25,6 +25,20 @@
         private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ClientForm));
+            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Nodo1");
+            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Nodo2");
+            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Nodo3");
+            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Horarios", new System.Windows.Forms.TreeNode[] {
+            treeNode1,
+            treeNode2,
+            treeNode3});
+            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Nodo5");
+            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("Nodo6");
+            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("Nodo7");
+            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("Actividades", new System.Windows.Forms.TreeNode[] {
+            treeNode5,
+            treeNode6,
+            treeNode7});
             this.pnlMenu = new System.Windows.Forms.Panel();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
@@ -36,8 +50,15 @@
             this.pefilToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cerrarSesionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.mnStUser = new System.Windows.Forms.MenuStrip();
             this.pnlTittle = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.mnStMain = new System.Windows.Forms.MenuStrip();
+            this.archivoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.editarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.herramientasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ayudaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.acercaDeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -50,9 +71,13 @@
             this.btMaximize = new System.Windows.Forms.Button();
             this.btClose = new System.Windows.Forms.Button();
             this.btMinimize = new System.Windows.Forms.Button();
+            this.pnlResize = new System.Windows.Forms.Panel();
+            this.treeView1 = new System.Windows.Forms.TreeView();
             this.pnlMenu.SuspendLayout();
             this.ctxtMenuTray.SuspendLayout();
             this.pnlTittle.SuspendLayout();
+            this.panel2.SuspendLayout();
+            this.mnStMain.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.mnUserOption.SuspendLayout();
@@ -61,30 +86,32 @@
             // 
             // pnlMenu
             // 
-            this.pnlMenu.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)));
             this.pnlMenu.BackColor = System.Drawing.Color.Cornsilk;
+            this.pnlMenu.Controls.Add(this.treeView1);
             this.pnlMenu.Controls.Add(this.button2);
             this.pnlMenu.Controls.Add(this.button1);
-            this.pnlMenu.Location = new System.Drawing.Point(-5, 69);
+            this.pnlMenu.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pnlMenu.Location = new System.Drawing.Point(0, 75);
             this.pnlMenu.Name = "pnlMenu";
-            this.pnlMenu.Size = new System.Drawing.Size(200, 611);
+            this.pnlMenu.Size = new System.Drawing.Size(200, 600);
             this.pnlMenu.TabIndex = 2;
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(6, 542);
+            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.button2.Location = new System.Drawing.Point(-1, 535);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(193, 63);
+            this.button2.Size = new System.Drawing.Size(200, 63);
             this.button2.TabIndex = 1;
             this.button2.Text = "Ir a la página";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(7, 0);
+            this.button1.Location = new System.Drawing.Point(-1, 0);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(193, 73);
+            this.button1.Size = new System.Drawing.Size(201, 73);
             this.button1.TabIndex = 0;
             this.button1.Text = "Horarios";
             this.button1.UseVisualStyleBackColor = true;
@@ -137,42 +164,43 @@
             // pefilToolStripMenuItem
             // 
             this.pefilToolStripMenuItem.Name = "pefilToolStripMenuItem";
-            this.pefilToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
+            this.pefilToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
             this.pefilToolStripMenuItem.Text = "Pefil";
             // 
             // cerrarSesionToolStripMenuItem
             // 
             this.cerrarSesionToolStripMenuItem.Name = "cerrarSesionToolStripMenuItem";
-            this.cerrarSesionToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
+            this.cerrarSesionToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
             this.cerrarSesionToolStripMenuItem.Text = "Cerrar sesion";
             // 
             // salirToolStripMenuItem
             // 
             this.salirToolStripMenuItem.Name = "salirToolStripMenuItem";
-            this.salirToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
+            this.salirToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
             this.salirToolStripMenuItem.Text = "Salir";
             // 
-            // menuStrip1
+            // mnStUser
             // 
-            this.menuStrip1.BackColor = System.Drawing.Color.Transparent;
-            this.menuStrip1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(107, 24);
-            this.menuStrip1.TabIndex = 3;
-            this.menuStrip1.Text = "menuStrip1";
+            this.mnStUser.BackColor = System.Drawing.Color.Transparent;
+            this.mnStUser.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.mnStUser.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
+            this.mnStUser.Location = new System.Drawing.Point(0, 0);
+            this.mnStUser.Name = "mnStUser";
+            this.mnStUser.Size = new System.Drawing.Size(107, 24);
+            this.mnStUser.TabIndex = 3;
+            this.mnStUser.Text = "menuStrip1";
             // 
             // pnlTittle
             // 
-            this.pnlTittle.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlTittle.BackColor = System.Drawing.Color.Transparent;
             this.pnlTittle.BackgroundImage = global::TaimerGUI.Properties.Resources.pruba11;
             this.pnlTittle.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pnlTittle.Controls.Add(this.panel2);
             this.pnlTittle.Controls.Add(this.label1);
             this.pnlTittle.Controls.Add(this.panel1);
             this.pnlTittle.Controls.Add(this.panel3);
-            this.pnlTittle.Location = new System.Drawing.Point(-1, -5);
+            this.pnlTittle.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlTittle.Location = new System.Drawing.Point(0, 0);
             this.pnlTittle.Name = "pnlTittle";
             this.pnlTittle.Size = new System.Drawing.Size(1000, 75);
             this.pnlTittle.TabIndex = 4;
@@ -180,15 +208,69 @@
             this.pnlTittle.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pnlTittle_MouseMove);
             this.pnlTittle.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pnlTittle_MouseUp);
             // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.mnStMain);
+            this.panel2.Location = new System.Drawing.Point(3, 3);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(274, 27);
+            this.panel2.TabIndex = 11;
+            // 
+            // mnStMain
+            // 
+            this.mnStMain.BackColor = System.Drawing.Color.Transparent;
+            this.mnStMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.archivoToolStripMenuItem,
+            this.editarToolStripMenuItem,
+            this.herramientasToolStripMenuItem,
+            this.ayudaToolStripMenuItem});
+            this.mnStMain.Location = new System.Drawing.Point(0, 0);
+            this.mnStMain.Name = "mnStMain";
+            this.mnStMain.Size = new System.Drawing.Size(274, 24);
+            this.mnStMain.TabIndex = 11;
+            this.mnStMain.Text = "menuStrip2";
+            // 
+            // archivoToolStripMenuItem
+            // 
+            this.archivoToolStripMenuItem.Name = "archivoToolStripMenuItem";
+            this.archivoToolStripMenuItem.Size = new System.Drawing.Size(51, 20);
+            this.archivoToolStripMenuItem.Text = "Taimer";
+            // 
+            // editarToolStripMenuItem
+            // 
+            this.editarToolStripMenuItem.Name = "editarToolStripMenuItem";
+            this.editarToolStripMenuItem.Size = new System.Drawing.Size(59, 20);
+            this.editarToolStripMenuItem.Text = "Horarios";
+            // 
+            // herramientasToolStripMenuItem
+            // 
+            this.herramientasToolStripMenuItem.Name = "herramientasToolStripMenuItem";
+            this.herramientasToolStripMenuItem.Size = new System.Drawing.Size(76, 20);
+            this.herramientasToolStripMenuItem.Text = "Asignaturas";
+            // 
+            // ayudaToolStripMenuItem
+            // 
+            this.ayudaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.acercaDeToolStripMenuItem});
+            this.ayudaToolStripMenuItem.Name = "ayudaToolStripMenuItem";
+            this.ayudaToolStripMenuItem.Size = new System.Drawing.Size(50, 20);
+            this.ayudaToolStripMenuItem.Text = "Ayuda";
+            // 
+            // acercaDeToolStripMenuItem
+            // 
+            this.acercaDeToolStripMenuItem.Name = "acercaDeToolStripMenuItem";
+            this.acercaDeToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
+            this.acercaDeToolStripMenuItem.Text = "Acerca de...";
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Calibri", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Calibri", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Maroon;
-            this.label1.Location = new System.Drawing.Point(14, 9);
+            this.label1.Location = new System.Drawing.Point(7, 27);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(161, 59);
+            this.label1.Size = new System.Drawing.Size(124, 45);
             this.label1.TabIndex = 9;
             this.label1.Text = "Taimer";
             this.label1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlTittle_MouseDown);
@@ -231,32 +313,34 @@
             // 
             // martinMolaToolStripMenuItem
             // 
+            this.martinMolaToolStripMenuItem.BackColor = System.Drawing.Color.Transparent;
             this.martinMolaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.perfilToolStripMenuItem,
             this.cerrarSesiónToolStripMenuItem,
             this.salirToolStripMenuItem1});
+            this.martinMolaToolStripMenuItem.ForeColor = System.Drawing.Color.Black;
             this.martinMolaToolStripMenuItem.Name = "martinMolaToolStripMenuItem";
-            this.martinMolaToolStripMenuItem.Size = new System.Drawing.Size(84, 20);
+            this.martinMolaToolStripMenuItem.Size = new System.Drawing.Size(74, 20);
             this.martinMolaToolStripMenuItem.Text = "Martin mola";
             // 
             // perfilToolStripMenuItem
             // 
             this.perfilToolStripMenuItem.Name = "perfilToolStripMenuItem";
-            this.perfilToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
+            this.perfilToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
             this.perfilToolStripMenuItem.Text = "Perfil";
             this.perfilToolStripMenuItem.Click += new System.EventHandler(this.perfilToolStripMenuItem_Click);
             // 
             // cerrarSesiónToolStripMenuItem
             // 
             this.cerrarSesiónToolStripMenuItem.Name = "cerrarSesiónToolStripMenuItem";
-            this.cerrarSesiónToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
+            this.cerrarSesiónToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
             this.cerrarSesiónToolStripMenuItem.Text = "Cerrar sesión";
             this.cerrarSesiónToolStripMenuItem.Click += new System.EventHandler(this.toolStripCloseSesion_Click);
             // 
             // salirToolStripMenuItem1
             // 
             this.salirToolStripMenuItem1.Name = "salirToolStripMenuItem1";
-            this.salirToolStripMenuItem1.Size = new System.Drawing.Size(142, 22);
+            this.salirToolStripMenuItem1.Size = new System.Drawing.Size(138, 22);
             this.salirToolStripMenuItem1.Text = "Salir";
             this.salirToolStripMenuItem1.Click += new System.EventHandler(this.toolStripExit_Click);
             // 
@@ -325,13 +409,54 @@
             this.btMinimize.UseVisualStyleBackColor = false;
             this.btMinimize.Click += new System.EventHandler(this.btMinimize_Click);
             // 
+            // pnlResize
+            // 
+            this.pnlResize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlResize.BackColor = System.Drawing.Color.Cornsilk;
+            this.pnlResize.BackgroundImage = global::TaimerGUI.Properties.Resources.resize2;
+            this.pnlResize.Cursor = System.Windows.Forms.Cursors.SizeNWSE;
+            this.pnlResize.Location = new System.Drawing.Point(978, 653);
+            this.pnlResize.Name = "pnlResize";
+            this.pnlResize.Size = new System.Drawing.Size(20, 20);
+            this.pnlResize.TabIndex = 6;
+            this.pnlResize.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlResize_MouseDown);
+            this.pnlResize.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pnlResize_MouseMove);
+            this.pnlResize.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pnlResize_MouseUp);
+            // 
+            // treeView1
+            // 
+            this.treeView1.Location = new System.Drawing.Point(0, 73);
+            this.treeView1.Name = "treeView1";
+            treeNode1.Name = "Nodo1";
+            treeNode1.Text = "Nodo1";
+            treeNode2.Name = "Nodo2";
+            treeNode2.Text = "Nodo2";
+            treeNode3.Name = "Nodo3";
+            treeNode3.Text = "Nodo3";
+            treeNode4.Name = "Nodo0";
+            treeNode4.Text = "Horarios";
+            treeNode5.Name = "Nodo5";
+            treeNode5.Text = "Nodo5";
+            treeNode6.Name = "Nodo6";
+            treeNode6.Text = "Nodo6";
+            treeNode7.Name = "Nodo7";
+            treeNode7.Text = "Nodo7";
+            treeNode8.Name = "Nodo4";
+            treeNode8.Text = "Actividades";
+            this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
+            treeNode4,
+            treeNode8});
+            this.treeView1.Size = new System.Drawing.Size(200, 456);
+            this.treeView1.TabIndex = 2;
+            // 
             // ClientForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.BackColor = System.Drawing.Color.Cornsilk;
             this.ClientSize = new System.Drawing.Size(1000, 675);
-            this.Controls.Add(this.pnlTittle);
             this.Controls.Add(this.pnlMenu);
+            this.Controls.Add(this.pnlResize);
+            this.Controls.Add(this.pnlTittle);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.IsMdiContainer = true;
             this.Name = "ClientForm";
@@ -344,6 +469,10 @@
             this.ctxtMenuTray.ResumeLayout(false);
             this.pnlTittle.ResumeLayout(false);
             this.pnlTittle.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
+            this.mnStMain.ResumeLayout(false);
+            this.mnStMain.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -374,13 +503,22 @@
         private System.Windows.Forms.ToolStripMenuItem pefilToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cerrarSesionToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem salirToolStripMenuItem;
-        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.MenuStrip mnStUser;
         private System.Windows.Forms.ToolStripMenuItem martinMolaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem perfilToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cerrarSesiónToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem salirToolStripMenuItem1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Panel pnlResize;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.MenuStrip mnStMain;
+        private System.Windows.Forms.ToolStripMenuItem archivoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem editarToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem herramientasToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ayudaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem acercaDeToolStripMenuItem;
+        private System.Windows.Forms.TreeView treeView1;
 
 
     }

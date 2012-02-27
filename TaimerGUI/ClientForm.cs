@@ -14,6 +14,47 @@ namespace TaimerGUI {
         bool exitOfAplication = false;
         bool closeForm = false;
 
+        
+        private void ClientForm_Load(object sender, EventArgs e)
+        {
+            //////////////// MDI //////////////////////////
+
+            //Esto para el color de fondo
+            // Loop through all of the form's controls looking
+            // for the control of type MdiClient.
+            foreach (Control ctl in this.Controls)
+            {
+                try
+                {
+                    // Attempt to cast the control to type MdiClient.
+                    MdiClient ctlMDI = (MdiClient)ctl;
+
+                    // Set the BackColor of the MdiClient control.
+                    ctlMDI.BackColor = this.BackColor;
+                }
+                catch (InvalidCastException exc)
+                {
+                    // Catch and ignore the error if casting failed.
+                }
+            }
+
+            Bienvenida init = new Bienvenida();
+            init.PointToClient(new Point(150, 150));
+
+            init.MdiParent = this;
+            init.Show();
+            //////////////// --- //////////////////////////
+
+
+            exitOfAplication = false;
+            beingDragged = false;
+            beingResized = false;
+
+            this.FormBorderStyle = FormBorderStyle.None;
+            this.DoubleBuffered = true;
+            this.SetStyle(ControlStyles.ResizeRedraw, true);
+        }
+
         //Mascara de redondeado inicializada en el constructor
         GraphicsPath shape;
 
@@ -42,9 +83,56 @@ namespace TaimerGUI {
                 this.Location = p;
             }
         }
+
         /*     ---------------     */
 
+
+
+        /*     Redimensionar VENTANA     */
+        bool beingResized = false;
         
+        private void pnlResize_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (this.WindowState != FormWindowState.Maximized)
+            {
+                //Quitamos la mascara de redondeado
+                this.Region = new Region();
+
+                this.beingResized = true;
+                this.mouseOffset = e.Location;
+            }
+            
+        }
+
+        private void pnlResize_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (beingResized)
+            {
+                this.beingResized = false;
+                // Recalculamos la mascara de recorte
+                shape = RoundedRectangle.Create(0, 0, this.Width, this.Height, 10);
+                //Aplicamos la mascara
+                this.Region = new System.Drawing.Region(shape);
+            }
+            
+        }
+
+        private void pnlResize_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (this.beingResized)
+            {
+
+                Size adj = new Size(e.Location.X - mouseOffset.X, e.Location.Y - mouseOffset.Y);
+                this.Size += adj;
+                mouseOffset = e.Location - adj;  // NOTA: Tienes que mover tambien la localizacion
+
+                this.Refresh();
+            }
+        }
+        /*     ---------------     */
+        
+
+
         public ClientForm() {
             InitializeComponent();
 
@@ -53,22 +141,10 @@ namespace TaimerGUI {
             this.Region = new System.Drawing.Region(shape);
         }
 
-        /*     ---------------     */
 
 
-        //////////////// MDI //////////////////////////
-        private void ClientForm_Load(object sender, EventArgs e)
-        {
-            Bienvenida init = new Bienvenida();
-            init.PointToClient(new Point(150, 150));
 
-            init.MdiParent = this;
-            init.Show();
-            init.Location = new Point(100, 100);
-
-            exitOfAplication = false;
-            beingDragged = false;
-        }
+       
 
         private void iconNotifClient_MouseDoubleClick(object sender, MouseEventArgs e)
         {
@@ -150,8 +226,18 @@ namespace TaimerGUI {
 
         private void perfilToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start("http://penis.com/");
+            System.Diagnostics.Process.Start("http://plus.google.com/");
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("http://google.es/");
+        }
+
+        
+
+       
+
 
         
 
