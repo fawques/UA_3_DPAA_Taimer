@@ -27,18 +27,18 @@
             this.btMaximize = new System.Windows.Forms.Button();
             this.btMinimize = new System.Windows.Forms.Button();
             this.btClose = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.pnSideMenu = new System.Windows.Forms.Panel();
             this.btSidePanelEstad = new System.Windows.Forms.Button();
             this.btSidePanelAsig = new System.Windows.Forms.Button();
             this.btSidePanelUser = new System.Windows.Forms.Button();
             this.lbProvisional = new System.Windows.Forms.Label();
             this.pnTop.SuspendLayout();
-            this.panel1.SuspendLayout();
+            this.pnSideMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnTop
             // 
-            this.pnTop.BackColor = System.Drawing.Color.Transparent;
+            this.pnTop.BackColor = System.Drawing.Color.Cornsilk;
             this.pnTop.Controls.Add(this.btMaximize);
             this.pnTop.Controls.Add(this.btMinimize);
             this.pnTop.Controls.Add(this.btClose);
@@ -89,16 +89,16 @@
             this.btClose.Click += new System.EventHandler(this.btClose_Click);
             this.btClose.MouseClick += new System.Windows.Forms.MouseEventHandler(this.btMinimize_MouseClick);
             // 
-            // panel1
+            // pnSideMenu
             // 
-            this.panel1.Controls.Add(this.btSidePanelEstad);
-            this.panel1.Controls.Add(this.btSidePanelAsig);
-            this.panel1.Controls.Add(this.btSidePanelUser);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel1.Location = new System.Drawing.Point(0, 100);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(100, 462);
-            this.panel1.TabIndex = 1;
+            this.pnSideMenu.Controls.Add(this.btSidePanelEstad);
+            this.pnSideMenu.Controls.Add(this.btSidePanelAsig);
+            this.pnSideMenu.Controls.Add(this.btSidePanelUser);
+            this.pnSideMenu.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pnSideMenu.Location = new System.Drawing.Point(0, 100);
+            this.pnSideMenu.Name = "pnSideMenu";
+            this.pnSideMenu.Size = new System.Drawing.Size(100, 451);
+            this.pnSideMenu.TabIndex = 1;
             // 
             // btSidePanelEstad
             // 
@@ -138,26 +138,27 @@
             this.lbProvisional.AutoSize = true;
             this.lbProvisional.Location = new System.Drawing.Point(377, 282);
             this.lbProvisional.Name = "lbProvisional";
-            this.lbProvisional.Size = new System.Drawing.Size(14, 13);
+            this.lbProvisional.Size = new System.Drawing.Size(92, 13);
             this.lbProvisional.TabIndex = 2;
-            this.lbProvisional.Text = "S";
+            this.lbProvisional.Text = "Bienvenido Admin";
             // 
             // AdminForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Cornsilk;
-            this.ClientSize = new System.Drawing.Size(884, 562);
+            this.ClientSize = new System.Drawing.Size(884, 551);
             this.Controls.Add(this.lbProvisional);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.pnSideMenu);
             this.Controls.Add(this.pnTop);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.IsMdiContainer = true;
             this.Name = "AdminForm";
             this.Text = "AdminForm";
             this.Load += new System.EventHandler(this.AdminForm_Load);
             this.pnTop.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
+            this.pnSideMenu.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -169,7 +170,7 @@
         private System.Windows.Forms.Button btClose;
         private System.Windows.Forms.Button btMaximize;
         private System.Windows.Forms.Button btMinimize;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel pnSideMenu;
         private System.Windows.Forms.Button btSidePanelEstad;
         private System.Windows.Forms.Button btSidePanelAsig;
         private System.Windows.Forms.Button btSidePanelUser;

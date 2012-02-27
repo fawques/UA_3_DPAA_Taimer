@@ -10,35 +10,27 @@ using System.Windows.Forms;
 
 namespace TaimerGUI {
     public partial class LoginForm : Form {
+
+        GraphicsPath shape;
+        PathGradientBrush pgb;
+
         public LoginForm() {
             InitializeComponent();
-        }
 
-        protected override void OnPaint(PaintEventArgs e) {
-
-            GraphicsPath shape = RoundedRectangle.Create(0, 0, this.Width, this.Height, 10);
-            
-            PathGradientBrush pgb = new PathGradientBrush(shape);
+            shape = RoundedRectangle.Create(0, 0, this.Width, this.Height, 10);
+            pgb = new PathGradientBrush(shape);
 
             pgb.CenterPoint = new PointF(this.Width * 2 / 3, this.Height / 2);
             pgb.CenterColor = Color.White;
             pgb.SurroundColors = new Color[] { Color.Cornsilk };
+        }
 
+        protected override void OnPaint(PaintEventArgs e) {
             e.Graphics.FillPath(pgb, shape);
-            
             this.Region = new System.Drawing.Region(shape);
 
         }
-        /*
-        private const int CS_DROPSHADOW = 0x00020000;
-        protected override CreateParams CreateParams {
-            get {
-                CreateParams p = base.CreateParams;
-                p.ClassStyle |= CS_DROPSHADOW;
-                return p;
-            }
-        }
-        */
+
         bool beingDragged;
         Point mouseOffset;
         private void panel1_MouseDown(object sender, MouseEventArgs e) {
