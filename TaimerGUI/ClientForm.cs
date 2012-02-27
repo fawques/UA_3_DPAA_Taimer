@@ -14,6 +14,15 @@ namespace TaimerGUI {
         bool exitOfAplication = false;
         bool closeForm = false;
 
+        ClientBienvenida formWelcome;
+        ClientHorHome formHorHome;
+        ClientHorVer formHorDetails;
+        ClientCrearHor1 formCreateHor1;
+        ClientCrearHor2 formCreateHor2;
+
+        ClientMatriculacionActiv formMatric;
+        ClientVerActividades formVerAct;
+        ClientCrearActiv formCrearAct;
         
         private void ClientForm_Load(object sender, EventArgs e)
         {
@@ -38,11 +47,32 @@ namespace TaimerGUI {
                 }
             }
 
-            Bienvenida init = new Bienvenida();
-            init.PointToClient(new Point(150, 150));
+            formWelcome = new ClientBienvenida();
+            formHorHome = new ClientHorHome();
+            formHorDetails = new ClientHorVer();
+            formCreateHor1 = new ClientCrearHor1();
+            formCreateHor2 = new ClientCrearHor2();
+            formMatric = new ClientMatriculacionActiv();
+            formVerAct = new ClientVerActividades();
+            formCrearAct = new ClientCrearActiv();
 
-            init.MdiParent = this;
-            init.Show();
+            
+
+            //Para comunicarse entre ellos
+            formCreateHor1.setContinueForm(formCreateHor2);
+            formCreateHor2.setBackForm(formCreateHor1);
+
+            formWelcome.MdiParent = this;
+            formHorHome.MdiParent = this;
+            formHorDetails.MdiParent = this;
+            formCreateHor1.MdiParent = this;
+            formCreateHor2.MdiParent = this;
+            formMatric.MdiParent = this;
+            formVerAct.MdiParent = this;
+            formCrearAct.MdiParent = this;
+
+
+            formWelcome.Show();
             //////////////// --- //////////////////////////
 
 
@@ -54,6 +84,34 @@ namespace TaimerGUI {
             this.DoubleBuffered = true;
             this.SetStyle(ControlStyles.ResizeRedraw, true);
         }
+
+        //////////////// MDI //////////////////////////
+        public void hideAllChilds()
+        {
+            formWelcome.Hide();
+            formHorHome.Hide();
+            formHorDetails.Hide();
+            formCreateHor1.Hide();
+            formCreateHor2.Hide();
+            formMatric.Hide();
+            formVerAct.Hide();
+            formCrearAct.Hide();
+        }
+
+        public void positionAllChilds()
+        {
+            //Esto se tiene que poder hacer mas facil
+            formWelcome.Location = new Point(0, 0);
+            formHorHome.Location = new Point(0, 0);
+            formHorDetails.Location = new Point(0, 0);
+            formCreateHor1.Location = new Point(0, 0);
+            formCreateHor2.Location = new Point(0, 0);
+            formMatric.Location = new Point(0, 0);
+            formVerAct.Location = new Point(0, 0);
+            formCrearAct.Location = new Point(0, 0);
+        }
+        //////////////// --- //////////////////////////
+
 
         //Mascara de redondeado inicializada en el constructor
         GraphicsPath shape;
@@ -233,6 +291,63 @@ namespace TaimerGUI {
         {
             System.Diagnostics.Process.Start("http://google.es/");
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            hideAllChilds();
+            formHorHome.Show();
+            positionAllChilds();
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+            hideAllChilds();
+            formWelcome.Show();
+            positionAllChilds();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            hideAllChilds();
+            formCreateHor1.Show();
+            positionAllChilds();
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+            hideAllChilds();
+            formHorHome.Show();
+            positionAllChilds();
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+            hideAllChilds();
+            formHorDetails.Show();
+            positionAllChilds();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            hideAllChilds();
+            formCrearAct.Show();
+            positionAllChilds();
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            hideAllChilds();
+            formMatric.Show();
+            positionAllChilds();
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            hideAllChilds();
+            formVerAct.Show();
+            positionAllChilds();
+        }
+
 
         
 
