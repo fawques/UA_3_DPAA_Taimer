@@ -30,6 +30,7 @@
             this.btClose = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.pnLoginContents = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.llIrAWeb = new System.Windows.Forms.LinkLabel();
             this.llRecordarDatos = new System.Windows.Forms.LinkLabel();
             this.cbLoginRemeberData = new System.Windows.Forms.CheckBox();
@@ -39,7 +40,7 @@
             this.lbLoginPassword = new System.Windows.Forms.Label();
             this.lbLoginUser = new System.Windows.Forms.Label();
             this.btLoginEntrar = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btPuenteAdmin = new System.Windows.Forms.Button();
             this.pnLogo.SuspendLayout();
             this.pnSystemButtons.SuspendLayout();
             this.pnLoginContents.SuspendLayout();
@@ -132,6 +133,7 @@
             // pnLoginContents
             // 
             this.pnLoginContents.BackColor = System.Drawing.Color.Transparent;
+            this.pnLoginContents.Controls.Add(this.btPuenteAdmin);
             this.pnLoginContents.Controls.Add(this.button1);
             this.pnLoginContents.Controls.Add(this.llIrAWeb);
             this.pnLoginContents.Controls.Add(this.llRecordarDatos);
@@ -147,6 +149,16 @@
             this.pnLoginContents.Name = "pnLoginContents";
             this.pnLoginContents.Size = new System.Drawing.Size(500, 194);
             this.pnLoginContents.TabIndex = 1;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(358, 19);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(121, 23);
+            this.button1.TabIndex = 9;
+            this.button1.Text = "Puente cliente";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // llIrAWeb
             // 
@@ -250,15 +262,15 @@
             this.btLoginEntrar.UseVisualStyleBackColor = true;
             this.btLoginEntrar.Click += new System.EventHandler(this.btLoginEntrar_Click);
             // 
-            // button1
+            // btPuenteAdmin
             // 
-            this.button1.Location = new System.Drawing.Point(358, 19);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(121, 23);
-            this.button1.TabIndex = 9;
-            this.button1.Text = "Puente cliente";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btPuenteAdmin.Location = new System.Drawing.Point(358, 47);
+            this.btPuenteAdmin.Name = "btPuenteAdmin";
+            this.btPuenteAdmin.Size = new System.Drawing.Size(121, 23);
+            this.btPuenteAdmin.TabIndex = 10;
+            this.btPuenteAdmin.Text = "Puente admin";
+            this.btPuenteAdmin.UseVisualStyleBackColor = true;
+            this.btPuenteAdmin.Click += new System.EventHandler(this.btPuenteAdmin_Click);
             // 
             // LoginForm
             // 
@@ -301,6 +313,7 @@
         private System.Windows.Forms.LinkLabel llRecordarDatos;
         private System.Windows.Forms.CheckBox cbLoginRemeberData;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btPuenteAdmin;
     }
 }
 

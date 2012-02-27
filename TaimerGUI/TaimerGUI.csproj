@@ -40,6 +40,7 @@
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -54,11 +55,35 @@
     <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ABienvenida.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ABienvenida.Designer.cs">
+      <DependentUpon>ABienvenida.cs</DependentUpon>
+    </Compile>
     <Compile Include="AdminForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="AdminForm.Designer.cs">
       <DependentUpon>AdminForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AGestAsig.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AGestAsig.Designer.cs">
+      <DependentUpon>AGestAsig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AGestTurno.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AGestTurno.Designer.cs">
+      <DependentUpon>AGestTurno.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AGestUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AGestUser.Designer.cs">
+      <DependentUpon>AGestUser.cs</DependentUpon>
     </Compile>
     <Compile Include="ClientForm.cs">
       <SubType>Form</SubType>
@@ -81,8 +106,20 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RoundedRectangle.cs" />
+    <EmbeddedResource Include="ABienvenida.resx">
+      <DependentUpon>ABienvenida.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AdminForm.resx">
       <DependentUpon>AdminForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AGestAsig.resx">
+      <DependentUpon>AGestAsig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AGestTurno.resx">
+      <DependentUpon>AGestTurno.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AGestUser.resx">
+      <DependentUpon>AGestUser.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ClientForm.resx">
       <DependentUpon>ClientForm.cs</DependentUpon>

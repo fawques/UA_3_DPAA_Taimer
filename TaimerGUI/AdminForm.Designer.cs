@@ -31,7 +31,6 @@
             this.btSidePanelEstad = new System.Windows.Forms.Button();
             this.btSidePanelAsig = new System.Windows.Forms.Button();
             this.btSidePanelUser = new System.Windows.Forms.Button();
-            this.lbProvisional = new System.Windows.Forms.Label();
             this.pnTop.SuspendLayout();
             this.pnSideMenu.SuspendLayout();
             this.SuspendLayout();
@@ -45,7 +44,7 @@
             this.pnTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnTop.Location = new System.Drawing.Point(0, 0);
             this.pnTop.Name = "pnTop";
-            this.pnTop.Size = new System.Drawing.Size(884, 100);
+            this.pnTop.Size = new System.Drawing.Size(900, 100);
             this.pnTop.TabIndex = 0;
             this.pnTop.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnTop_MouseDown);
             this.pnTop.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pnTop_MouseMove);
@@ -55,7 +54,7 @@
             // 
             this.btMaximize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btMaximize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btMaximize.Location = new System.Drawing.Point(825, 3);
+            this.btMaximize.Location = new System.Drawing.Point(841, 3);
             this.btMaximize.Name = "btMaximize";
             this.btMaximize.Size = new System.Drawing.Size(25, 25);
             this.btMaximize.TabIndex = 4;
@@ -68,7 +67,7 @@
             // 
             this.btMinimize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btMinimize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btMinimize.Location = new System.Drawing.Point(794, 3);
+            this.btMinimize.Location = new System.Drawing.Point(810, 3);
             this.btMinimize.Name = "btMinimize";
             this.btMinimize.Size = new System.Drawing.Size(25, 25);
             this.btMinimize.TabIndex = 3;
@@ -80,7 +79,7 @@
             // 
             this.btClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btClose.Location = new System.Drawing.Point(856, 3);
+            this.btClose.Location = new System.Drawing.Point(872, 3);
             this.btClose.Name = "btClose";
             this.btClose.Size = new System.Drawing.Size(25, 25);
             this.btClose.TabIndex = 0;
@@ -97,7 +96,7 @@
             this.pnSideMenu.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnSideMenu.Location = new System.Drawing.Point(0, 100);
             this.pnSideMenu.Name = "pnSideMenu";
-            this.pnSideMenu.Size = new System.Drawing.Size(100, 451);
+            this.pnSideMenu.Size = new System.Drawing.Size(100, 600);
             this.pnSideMenu.TabIndex = 1;
             // 
             // btSidePanelEstad
@@ -133,22 +132,12 @@
             this.btSidePanelUser.UseVisualStyleBackColor = true;
             this.btSidePanelUser.Click += new System.EventHandler(this.btSidePanelUser_Click);
             // 
-            // lbProvisional
-            // 
-            this.lbProvisional.AutoSize = true;
-            this.lbProvisional.Location = new System.Drawing.Point(377, 282);
-            this.lbProvisional.Name = "lbProvisional";
-            this.lbProvisional.Size = new System.Drawing.Size(92, 13);
-            this.lbProvisional.TabIndex = 2;
-            this.lbProvisional.Text = "Bienvenido Admin";
-            // 
             // AdminForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Cornsilk;
-            this.ClientSize = new System.Drawing.Size(884, 551);
-            this.Controls.Add(this.lbProvisional);
+            this.ClientSize = new System.Drawing.Size(900, 700);
             this.Controls.Add(this.pnSideMenu);
             this.Controls.Add(this.pnTop);
             this.DoubleBuffered = true;
@@ -160,7 +149,6 @@
             this.pnTop.ResumeLayout(false);
             this.pnSideMenu.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -174,6 +162,5 @@
         private System.Windows.Forms.Button btSidePanelEstad;
         private System.Windows.Forms.Button btSidePanelAsig;
         private System.Windows.Forms.Button btSidePanelUser;
-        private System.Windows.Forms.Label lbProvisional;
     }
 }

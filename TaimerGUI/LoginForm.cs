@@ -179,5 +179,11 @@ namespace TaimerGUI {
             this.Hide();
         }
 
+        private void btPuenteAdmin_Click(object sender, EventArgs e) {
+            AdminForm admin = new AdminForm();
+            admin.Show();
+            this.Hide();
+        }
+
     }
 }

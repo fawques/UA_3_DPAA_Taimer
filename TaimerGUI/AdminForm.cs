@@ -10,9 +10,29 @@ using System.Windows.Forms;
 
 namespace TaimerGUI {
     public partial class AdminForm : Form {
+
+        ABienvenida bienvenidaForm;
+        AGestUser gestionUserForm;
+        AGestAsig gestionAsigForm;
+        int currentForm;
+
         public AdminForm() {
             InitializeComponent();
+
+            bienvenidaForm = new ABienvenida();
+            bienvenidaForm.PointToClient(new Point(0, 0));
+            bienvenidaForm.MdiParent = this;
+
+            gestionUserForm = new AGestUser();
+            gestionUserForm.PointToClient(new Point(0, 0));
+            gestionUserForm.MdiParent = this;
+
+            gestionAsigForm = new AGestAsig();
+            gestionAsigForm.PointToClient(new Point(0, 0));
+            gestionAsigForm.MdiParent = this;
+
         }
+
         protected override void OnPaint(PaintEventArgs e) {
 
             GraphicsPath shape = RoundedRectangle.Create(0, 0, this.Width, this.Height, 10);
@@ -44,6 +64,27 @@ namespace TaimerGUI {
 
         private void AdminForm_Load(object sender, EventArgs e) {
             beingDragged = false;
+
+            //////////////// MDI //////////////////////////
+
+            //Esto para el color de fondo
+            // Loop through all of the form's controls looking
+            // for the control of type MdiClient.
+            foreach (Control ctl in this.Controls) {
+                try {
+                    // Attempt to cast the control to type MdiClient.
+                    MdiClient ctlMDI = (MdiClient)ctl;
+
+                    // Set the BackColor of the MdiClient control.
+                    ctlMDI.BackColor = this.BackColor;
+                } catch (InvalidCastException exc) {
+                    // Catch and ignore the error if casting failed.
+                }
+            }
+
+            bienvenidaForm.Show();
+            currentForm = 0;
+            //////////////// --- //////////////////////////
         }
 
         /*
@@ -79,15 +120,35 @@ namespace TaimerGUI {
         }
 
         private void btSidePanelUser_Click(object sender, EventArgs e) {
-            lbProvisional.Text = "Gestion de Usuarios";
+            hideCurrent();
+            currentForm++;
+
+            gestionUserForm.Show();
         }
 
         private void btSidePanelAsig_Click(object sender, EventArgs e) {
-            lbProvisional.Text = "Gestion de Asignaturas";
+            hideCurrent();
+            currentForm++;
+
+            gestionAsigForm.Show();
         }
 
         private void btSidePanelEstad_Click(object sender, EventArgs e) {
-            lbProvisional.Text = "Estadisticas de uso";
+
+        }
+
+        private void hideCurrent() {
+            switch (currentForm) {
+                case 0:
+                    bienvenidaForm.Hide();
+                    break;
+                case 1:
+                    gestionUserForm.Hide();
+                    break;
+                case 2:
+                    gestionAsigForm.Hide();
+                    break;
+            }
         }
     }
 }
