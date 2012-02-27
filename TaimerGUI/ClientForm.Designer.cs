@@ -24,7 +24,6 @@
         /// </summary>
         private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ClientForm));
             System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Nodo1");
             System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Nodo2");
             System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Nodo3");
@@ -39,7 +38,9 @@
             treeNode5,
             treeNode6,
             treeNode7});
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ClientForm));
             this.pnlMenu = new System.Windows.Forms.Panel();
+            this.treeView1 = new System.Windows.Forms.TreeView();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.iconNotifClient = new System.Windows.Forms.NotifyIcon(this.components);
@@ -72,7 +73,6 @@
             this.btClose = new System.Windows.Forms.Button();
             this.btMinimize = new System.Windows.Forms.Button();
             this.pnlResize = new System.Windows.Forms.Panel();
-            this.treeView1 = new System.Windows.Forms.TreeView();
             this.pnlMenu.SuspendLayout();
             this.ctxtMenuTray.SuspendLayout();
             this.pnlTittle.SuspendLayout();
@@ -95,6 +95,32 @@
             this.pnlMenu.Name = "pnlMenu";
             this.pnlMenu.Size = new System.Drawing.Size(200, 600);
             this.pnlMenu.TabIndex = 2;
+            // 
+            // treeView1
+            // 
+            this.treeView1.Location = new System.Drawing.Point(0, 73);
+            this.treeView1.Name = "treeView1";
+            treeNode1.Name = "Nodo1";
+            treeNode1.Text = "Nodo1";
+            treeNode2.Name = "Nodo2";
+            treeNode2.Text = "Nodo2";
+            treeNode3.Name = "Nodo3";
+            treeNode3.Text = "Nodo3";
+            treeNode4.Name = "Nodo0";
+            treeNode4.Text = "Horarios";
+            treeNode5.Name = "Nodo5";
+            treeNode5.Text = "Nodo5";
+            treeNode6.Name = "Nodo6";
+            treeNode6.Text = "Nodo6";
+            treeNode7.Name = "Nodo7";
+            treeNode7.Text = "Nodo7";
+            treeNode8.Name = "Nodo4";
+            treeNode8.Text = "Actividades";
+            this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
+            treeNode4,
+            treeNode8});
+            this.treeView1.Size = new System.Drawing.Size(200, 456);
+            this.treeView1.TabIndex = 2;
             // 
             // button2
             // 
@@ -164,19 +190,19 @@
             // pefilToolStripMenuItem
             // 
             this.pefilToolStripMenuItem.Name = "pefilToolStripMenuItem";
-            this.pefilToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
+            this.pefilToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
             this.pefilToolStripMenuItem.Text = "Pefil";
             // 
             // cerrarSesionToolStripMenuItem
             // 
             this.cerrarSesionToolStripMenuItem.Name = "cerrarSesionToolStripMenuItem";
-            this.cerrarSesionToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
+            this.cerrarSesionToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
             this.cerrarSesionToolStripMenuItem.Text = "Cerrar sesion";
             // 
             // salirToolStripMenuItem
             // 
             this.salirToolStripMenuItem.Name = "salirToolStripMenuItem";
-            this.salirToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
+            this.salirToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
             this.salirToolStripMenuItem.Text = "Salir";
             // 
             // mnStUser
@@ -233,19 +259,19 @@
             // archivoToolStripMenuItem
             // 
             this.archivoToolStripMenuItem.Name = "archivoToolStripMenuItem";
-            this.archivoToolStripMenuItem.Size = new System.Drawing.Size(51, 20);
+            this.archivoToolStripMenuItem.Size = new System.Drawing.Size(56, 20);
             this.archivoToolStripMenuItem.Text = "Taimer";
             // 
             // editarToolStripMenuItem
             // 
             this.editarToolStripMenuItem.Name = "editarToolStripMenuItem";
-            this.editarToolStripMenuItem.Size = new System.Drawing.Size(59, 20);
+            this.editarToolStripMenuItem.Size = new System.Drawing.Size(64, 20);
             this.editarToolStripMenuItem.Text = "Horarios";
             // 
             // herramientasToolStripMenuItem
             // 
             this.herramientasToolStripMenuItem.Name = "herramientasToolStripMenuItem";
-            this.herramientasToolStripMenuItem.Size = new System.Drawing.Size(76, 20);
+            this.herramientasToolStripMenuItem.Size = new System.Drawing.Size(81, 20);
             this.herramientasToolStripMenuItem.Text = "Asignaturas";
             // 
             // ayudaToolStripMenuItem
@@ -253,13 +279,13 @@
             this.ayudaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.acercaDeToolStripMenuItem});
             this.ayudaToolStripMenuItem.Name = "ayudaToolStripMenuItem";
-            this.ayudaToolStripMenuItem.Size = new System.Drawing.Size(50, 20);
+            this.ayudaToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
             this.ayudaToolStripMenuItem.Text = "Ayuda";
             // 
             // acercaDeToolStripMenuItem
             // 
             this.acercaDeToolStripMenuItem.Name = "acercaDeToolStripMenuItem";
-            this.acercaDeToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
+            this.acercaDeToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
             this.acercaDeToolStripMenuItem.Text = "Acerca de...";
             // 
             // label1
@@ -267,7 +293,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Calibri", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Maroon;
-            this.label1.Location = new System.Drawing.Point(7, 27);
+            this.label1.Location = new System.Drawing.Point(11, 27);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(124, 45);
@@ -320,27 +346,27 @@
             this.salirToolStripMenuItem1});
             this.martinMolaToolStripMenuItem.ForeColor = System.Drawing.Color.Black;
             this.martinMolaToolStripMenuItem.Name = "martinMolaToolStripMenuItem";
-            this.martinMolaToolStripMenuItem.Size = new System.Drawing.Size(74, 20);
+            this.martinMolaToolStripMenuItem.Size = new System.Drawing.Size(84, 20);
             this.martinMolaToolStripMenuItem.Text = "Martin mola";
             // 
             // perfilToolStripMenuItem
             // 
             this.perfilToolStripMenuItem.Name = "perfilToolStripMenuItem";
-            this.perfilToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
+            this.perfilToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
             this.perfilToolStripMenuItem.Text = "Perfil";
             this.perfilToolStripMenuItem.Click += new System.EventHandler(this.perfilToolStripMenuItem_Click);
             // 
             // cerrarSesiónToolStripMenuItem
             // 
             this.cerrarSesiónToolStripMenuItem.Name = "cerrarSesiónToolStripMenuItem";
-            this.cerrarSesiónToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
+            this.cerrarSesiónToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
             this.cerrarSesiónToolStripMenuItem.Text = "Cerrar sesión";
             this.cerrarSesiónToolStripMenuItem.Click += new System.EventHandler(this.toolStripCloseSesion_Click);
             // 
             // salirToolStripMenuItem1
             // 
             this.salirToolStripMenuItem1.Name = "salirToolStripMenuItem1";
-            this.salirToolStripMenuItem1.Size = new System.Drawing.Size(138, 22);
+            this.salirToolStripMenuItem1.Size = new System.Drawing.Size(142, 22);
             this.salirToolStripMenuItem1.Text = "Salir";
             this.salirToolStripMenuItem1.Click += new System.EventHandler(this.toolStripExit_Click);
             // 
@@ -422,32 +448,6 @@
             this.pnlResize.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlResize_MouseDown);
             this.pnlResize.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pnlResize_MouseMove);
             this.pnlResize.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pnlResize_MouseUp);
-            // 
-            // treeView1
-            // 
-            this.treeView1.Location = new System.Drawing.Point(0, 73);
-            this.treeView1.Name = "treeView1";
-            treeNode1.Name = "Nodo1";
-            treeNode1.Text = "Nodo1";
-            treeNode2.Name = "Nodo2";
-            treeNode2.Text = "Nodo2";
-            treeNode3.Name = "Nodo3";
-            treeNode3.Text = "Nodo3";
-            treeNode4.Name = "Nodo0";
-            treeNode4.Text = "Horarios";
-            treeNode5.Name = "Nodo5";
-            treeNode5.Text = "Nodo5";
-            treeNode6.Name = "Nodo6";
-            treeNode6.Text = "Nodo6";
-            treeNode7.Name = "Nodo7";
-            treeNode7.Text = "Nodo7";
-            treeNode8.Name = "Nodo4";
-            treeNode8.Text = "Actividades";
-            this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode4,
-            treeNode8});
-            this.treeView1.Size = new System.Drawing.Size(200, 456);
-            this.treeView1.TabIndex = 2;
             // 
             // ClientForm
             // 
