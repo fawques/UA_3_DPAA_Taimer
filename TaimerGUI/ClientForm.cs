@@ -14,15 +14,37 @@ namespace TaimerGUI {
         bool exitOfAplication = false;
         bool closeForm = false;
 
-        //////////////// MDI //////////////////////////
+        
         private void ClientForm_Load(object sender, EventArgs e)
         {
+            //////////////// MDI //////////////////////////
+
+            //Esto para el color de fondo
+            // Loop through all of the form's controls looking
+            // for the control of type MdiClient.
+            foreach (Control ctl in this.Controls)
+            {
+                try
+                {
+                    // Attempt to cast the control to type MdiClient.
+                    MdiClient ctlMDI = (MdiClient)ctl;
+
+                    // Set the BackColor of the MdiClient control.
+                    ctlMDI.BackColor = this.BackColor;
+                }
+                catch (InvalidCastException exc)
+                {
+                    // Catch and ignore the error if casting failed.
+                }
+            }
+
             Bienvenida init = new Bienvenida();
             init.PointToClient(new Point(150, 150));
 
             init.MdiParent = this;
             init.Show();
-            init.Location = new Point(200, 75);
+            //////////////// --- //////////////////////////
+
 
             exitOfAplication = false;
             beingDragged = false;
@@ -204,7 +226,12 @@ namespace TaimerGUI {
 
         private void perfilToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start("http://penis.com/");
+            System.Diagnostics.Process.Start("http://plus.google.com/");
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("http://google.es/");
         }
 
         
