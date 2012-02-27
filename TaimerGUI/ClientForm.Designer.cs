@@ -24,7 +24,6 @@
         /// </summary>
         private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ClientForm));
             System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Nodo1");
             System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Nodo2");
             System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Nodo3");
@@ -39,9 +38,10 @@
             treeNode5,
             treeNode6,
             treeNode7});
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ClientForm));
             this.pnlMenu = new System.Windows.Forms.Panel();
+            this.treeView1 = new System.Windows.Forms.TreeView();
             this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.iconNotifClient = new System.Windows.Forms.NotifyIcon(this.components);
             this.ctxtMenuTray = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -72,7 +72,6 @@
             this.btClose = new System.Windows.Forms.Button();
             this.btMinimize = new System.Windows.Forms.Button();
             this.pnlResize = new System.Windows.Forms.Panel();
-            this.treeView1 = new System.Windows.Forms.TreeView();
             this.pnlMenu.SuspendLayout();
             this.ctxtMenuTray.SuspendLayout();
             this.pnlTittle.SuspendLayout();
@@ -89,12 +88,37 @@
             this.pnlMenu.BackColor = System.Drawing.Color.Cornsilk;
             this.pnlMenu.Controls.Add(this.treeView1);
             this.pnlMenu.Controls.Add(this.button2);
-            this.pnlMenu.Controls.Add(this.button1);
             this.pnlMenu.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlMenu.Location = new System.Drawing.Point(0, 75);
             this.pnlMenu.Name = "pnlMenu";
             this.pnlMenu.Size = new System.Drawing.Size(200, 600);
             this.pnlMenu.TabIndex = 2;
+            // 
+            // treeView1
+            // 
+            this.treeView1.Location = new System.Drawing.Point(0, 3);
+            this.treeView1.Name = "treeView1";
+            treeNode1.Name = "Nodo1";
+            treeNode1.Text = "Nodo1";
+            treeNode2.Name = "Nodo2";
+            treeNode2.Text = "Nodo2";
+            treeNode3.Name = "Nodo3";
+            treeNode3.Text = "Nodo3";
+            treeNode4.Name = "Nodo0";
+            treeNode4.Text = "Horarios";
+            treeNode5.Name = "Nodo5";
+            treeNode5.Text = "Nodo5";
+            treeNode6.Name = "Nodo6";
+            treeNode6.Text = "Nodo6";
+            treeNode7.Name = "Nodo7";
+            treeNode7.Text = "Nodo7";
+            treeNode8.Name = "Nodo4";
+            treeNode8.Text = "Actividades";
+            this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
+            treeNode4,
+            treeNode8});
+            this.treeView1.Size = new System.Drawing.Size(200, 526);
+            this.treeView1.TabIndex = 2;
             // 
             // button2
             // 
@@ -106,15 +130,6 @@
             this.button2.Text = "Ir a la página";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(-1, 0);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(201, 73);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Horarios";
-            this.button1.UseVisualStyleBackColor = true;
             // 
             // iconNotifClient
             // 
@@ -423,32 +438,6 @@
             this.pnlResize.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pnlResize_MouseMove);
             this.pnlResize.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pnlResize_MouseUp);
             // 
-            // treeView1
-            // 
-            this.treeView1.Location = new System.Drawing.Point(0, 73);
-            this.treeView1.Name = "treeView1";
-            treeNode1.Name = "Nodo1";
-            treeNode1.Text = "Nodo1";
-            treeNode2.Name = "Nodo2";
-            treeNode2.Text = "Nodo2";
-            treeNode3.Name = "Nodo3";
-            treeNode3.Text = "Nodo3";
-            treeNode4.Name = "Nodo0";
-            treeNode4.Text = "Horarios";
-            treeNode5.Name = "Nodo5";
-            treeNode5.Text = "Nodo5";
-            treeNode6.Name = "Nodo6";
-            treeNode6.Text = "Nodo6";
-            treeNode7.Name = "Nodo7";
-            treeNode7.Text = "Nodo7";
-            treeNode8.Name = "Nodo4";
-            treeNode8.Text = "Actividades";
-            this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode4,
-            treeNode8});
-            this.treeView1.Size = new System.Drawing.Size(200, 456);
-            this.treeView1.TabIndex = 2;
-            // 
             // ClientForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -486,7 +475,6 @@
         #endregion
 
         private System.Windows.Forms.Panel pnlMenu;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Panel pnlTittle;
         private System.Windows.Forms.NotifyIcon iconNotifClient;
         private System.Windows.Forms.ContextMenuStrip ctxtMenuTray;
