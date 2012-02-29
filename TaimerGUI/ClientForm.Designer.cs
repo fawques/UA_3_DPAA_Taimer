@@ -24,25 +24,6 @@
         /// </summary>
         private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
-<<<<<<< HEAD
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Nodo1");
-            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Nodo2");
-            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Nodo3");
-            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Horarios", new System.Windows.Forms.TreeNode[] {
-            treeNode1,
-            treeNode2,
-            treeNode3});
-            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Nodo5");
-            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("Nodo6");
-            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("Nodo7");
-            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("Actividades", new System.Windows.Forms.TreeNode[] {
-            treeNode5,
-            treeNode6,
-            treeNode7});
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ClientForm));
-            this.pnlMenu = new System.Windows.Forms.Panel();
-            this.treeView1 = new System.Windows.Forms.TreeView();
-=======
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ClientForm));
             this.pnlMenu = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
@@ -51,7 +32,6 @@
             this.button6 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
->>>>>>> 94e736c9aba28f99290635e1fe0d92d12854e92a
             this.button2 = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
@@ -128,33 +108,6 @@
             this.pnlMenu.Size = new System.Drawing.Size(200, 600);
             this.pnlMenu.TabIndex = 2;
             // 
-<<<<<<< HEAD
-            // treeView1
-            // 
-            this.treeView1.Location = new System.Drawing.Point(0, 73);
-            this.treeView1.Name = "treeView1";
-            treeNode1.Name = "Nodo1";
-            treeNode1.Text = "Nodo1";
-            treeNode2.Name = "Nodo2";
-            treeNode2.Text = "Nodo2";
-            treeNode3.Name = "Nodo3";
-            treeNode3.Text = "Nodo3";
-            treeNode4.Name = "Nodo0";
-            treeNode4.Text = "Horarios";
-            treeNode5.Name = "Nodo5";
-            treeNode5.Text = "Nodo5";
-            treeNode6.Name = "Nodo6";
-            treeNode6.Text = "Nodo6";
-            treeNode7.Name = "Nodo7";
-            treeNode7.Text = "Nodo7";
-            treeNode8.Name = "Nodo4";
-            treeNode8.Text = "Actividades";
-            this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode4,
-            treeNode8});
-            this.treeView1.Size = new System.Drawing.Size(200, 456);
-            this.treeView1.TabIndex = 2;
-=======
             // panel5
             // 
             this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -213,7 +166,6 @@
             this.label3.Size = new System.Drawing.Size(78, 13);
             this.label3.TabIndex = 0;
             this.label3.Text = "ACTIVIDADES";
->>>>>>> 94e736c9aba28f99290635e1fe0d92d12854e92a
             // 
             // button2
             // 
@@ -480,10 +432,6 @@
             this.crearToolStripMenuItem1,
             this.recientesToolStripMenuItem});
             this.herramientasToolStripMenuItem.Name = "herramientasToolStripMenuItem";
-<<<<<<< HEAD
-            this.herramientasToolStripMenuItem.Size = new System.Drawing.Size(81, 20);
-            this.herramientasToolStripMenuItem.Text = "Asignaturas";
-=======
             this.herramientasToolStripMenuItem.Size = new System.Drawing.Size(80, 20);
             this.herramientasToolStripMenuItem.Text = "Actividades";
             // 
@@ -525,7 +473,6 @@
             this.actiPers2ToolStripMenuItem.Name = "actiPers2ToolStripMenuItem";
             this.actiPers2ToolStripMenuItem.Size = new System.Drawing.Size(129, 22);
             this.actiPers2ToolStripMenuItem.Text = "Acti Pers 2";
->>>>>>> 94e736c9aba28f99290635e1fe0d92d12854e92a
             // 
             // ayudaToolStripMenuItem
             // 
@@ -546,7 +493,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Calibri", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Maroon;
-            this.label1.Location = new System.Drawing.Point(11, 27);
+            this.label1.Location = new System.Drawing.Point(7, 27);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(124, 45);

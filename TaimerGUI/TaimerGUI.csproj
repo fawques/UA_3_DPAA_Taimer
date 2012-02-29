@@ -58,7 +58,7 @@
     <Compile Include="ABienvenida.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ABienvenida.Designer.cs">
+    <Compile Include="ABienvenida.designer.cs">
       <DependentUpon>ABienvenida.cs</DependentUpon>
     </Compile>
     <Compile Include="AdminForm.cs">
@@ -67,25 +67,24 @@
     <Compile Include="AdminForm.Designer.cs">
       <DependentUpon>AdminForm.cs</DependentUpon>
     </Compile>
-<<<<<<< HEAD
     <Compile Include="AGestAsig.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AGestAsig.Designer.cs">
+    <Compile Include="AGestAsig.designer.cs">
       <DependentUpon>AGestAsig.cs</DependentUpon>
     </Compile>
     <Compile Include="AGestTurno.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AGestTurno.Designer.cs">
+    <Compile Include="AGestTurno.designer.cs">
       <DependentUpon>AGestTurno.cs</DependentUpon>
     </Compile>
     <Compile Include="AGestUser.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AGestUser.Designer.cs">
+    <Compile Include="AGestUser.designer.cs">
       <DependentUpon>AGestUser.cs</DependentUpon>
-=======
+    </Compile>
     <Compile Include="ClientCrearActiv.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -103,7 +102,6 @@
     </Compile>
     <Compile Include="ClientCrearHor2.Designer.cs">
       <DependentUpon>ClientCrearHor2.cs</DependentUpon>
->>>>>>> 94e736c9aba28f99290635e1fe0d92d12854e92a
     </Compile>
     <Compile Include="ClientForm.cs">
       <SubType>Form</SubType>
@@ -156,7 +154,6 @@
     <EmbeddedResource Include="AdminForm.resx">
       <DependentUpon>AdminForm.cs</DependentUpon>
     </EmbeddedResource>
-<<<<<<< HEAD
     <EmbeddedResource Include="AGestAsig.resx">
       <DependentUpon>AGestAsig.cs</DependentUpon>
     </EmbeddedResource>
@@ -165,7 +162,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AGestUser.resx">
       <DependentUpon>AGestUser.cs</DependentUpon>
-=======
+    </EmbeddedResource>
     <EmbeddedResource Include="ClientCrearActiv.resx">
       <DependentUpon>ClientCrearActiv.cs</DependentUpon>
     </EmbeddedResource>
@@ -174,7 +171,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ClientCrearHor2.resx">
       <DependentUpon>ClientCrearHor2.cs</DependentUpon>
->>>>>>> 94e736c9aba28f99290635e1fe0d92d12854e92a
     </EmbeddedResource>
     <EmbeddedResource Include="ClientForm.resx">
       <DependentUpon>ClientForm.cs</DependentUpon>
