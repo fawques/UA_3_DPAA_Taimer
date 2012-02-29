@@ -28,7 +28,6 @@ namespace TaimerGUI {
             gestionUserForm.MdiParent = this;
 
             gestionAsigForm = new AGestAsig();
-            gestionAsigForm.PointToClient(new Point(0, 0));
             gestionAsigForm.MdiParent = this;
 
         }
@@ -113,24 +112,20 @@ namespace TaimerGUI {
             Application.Exit();
         }
 
-        private void iconNotifAdmin_MouseDoubleClick(object sender, MouseEventArgs e) {
-            Show();
-            WindowState = FormWindowState.Normal;
-        
-        }
-
         private void btSidePanelUser_Click(object sender, EventArgs e) {
             hideCurrent();
-            currentForm++;
+            currentForm = 1;
 
             gestionUserForm.Show();
+            gestionUserForm.Location = new Point(0, 0);
         }
 
         private void btSidePanelAsig_Click(object sender, EventArgs e) {
             hideCurrent();
-            currentForm++;
+            currentForm = 2;
 
             gestionAsigForm.Show();
+            gestionAsigForm.Location = new Point(0, 0);
         }
 
         private void btSidePanelEstad_Click(object sender, EventArgs e) {
