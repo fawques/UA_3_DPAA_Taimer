@@ -30,6 +30,7 @@
             this.btClose = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.pnLoginContents = new System.Windows.Forms.Panel();
+            this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.llIrAWeb = new System.Windows.Forms.LinkLabel();
             this.llRecordarDatos = new System.Windows.Forms.LinkLabel();
@@ -40,7 +41,7 @@
             this.lbLoginPassword = new System.Windows.Forms.Label();
             this.lbLoginUser = new System.Windows.Forms.Label();
             this.btLoginEntrar = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
             this.pnLogo.SuspendLayout();
             this.pnSystemButtons.SuspendLayout();
             this.pnLoginContents.SuspendLayout();
@@ -133,6 +134,7 @@
             // pnLoginContents
             // 
             this.pnLoginContents.BackColor = System.Drawing.Color.Transparent;
+            this.pnLoginContents.Controls.Add(this.button3);
             this.pnLoginContents.Controls.Add(this.button2);
             this.pnLoginContents.Controls.Add(this.button1);
             this.pnLoginContents.Controls.Add(this.llIrAWeb);
@@ -149,6 +151,16 @@
             this.pnLoginContents.Name = "pnLoginContents";
             this.pnLoginContents.Size = new System.Drawing.Size(500, 194);
             this.pnLoginContents.TabIndex = 1;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(358, 50);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(121, 23);
+            this.button2.TabIndex = 10;
+            this.button2.Text = "Puente admin";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button1
             // 
@@ -262,15 +274,15 @@
             this.btLoginEntrar.UseVisualStyleBackColor = true;
             this.btLoginEntrar.Click += new System.EventHandler(this.btLoginEntrar_Click);
             // 
-            // button2
+            // button3
             // 
-            this.button2.Location = new System.Drawing.Point(358, 50);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(121, 23);
-            this.button2.TabIndex = 10;
-            this.button2.Text = "Puente admin";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.button3.Location = new System.Drawing.Point(13, 20);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(109, 23);
+            this.button3.TabIndex = 11;
+            this.button3.Text = "Los dos";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // LoginForm
             // 
@@ -314,6 +326,7 @@
         private System.Windows.Forms.CheckBox cbLoginRemeberData;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button3;
     }
 }
 

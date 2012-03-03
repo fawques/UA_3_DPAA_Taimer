@@ -109,7 +109,14 @@ namespace TaimerGUI {
         }
 
         private void btClose_Click(object sender, EventArgs e) {
-            Application.Exit();
+            if (MessageBox.Show("¿Seguro que desea salir?",
+                "¿Salir?",
+                MessageBoxButtons.OKCancel,
+                MessageBoxIcon.Question,
+                MessageBoxDefaultButton.Button2) == DialogResult.OK)
+            {
+                Application.Exit();
+            }
         }
 
         private void btSidePanelUser_Click(object sender, EventArgs e) {
