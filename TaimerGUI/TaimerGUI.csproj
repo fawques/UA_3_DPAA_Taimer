@@ -55,6 +55,24 @@
     <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AAddAsig.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AAddAsig.designer.cs">
+      <DependentUpon>AAddAsig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AAddTurn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AAddTurn.designer.cs">
+      <DependentUpon>AAddTurn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AAddUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AAddUser.designer.cs">
+      <DependentUpon>AAddUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="ABienvenida.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -66,6 +84,12 @@
     </Compile>
     <Compile Include="AdminForm.Designer.cs">
       <DependentUpon>AdminForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AEstadisticas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AEstadisticas.designer.cs">
+      <DependentUpon>AEstadisticas.cs</DependentUpon>
     </Compile>
     <Compile Include="AGestAsig.cs">
       <SubType>Form</SubType>
@@ -148,11 +172,23 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RoundedRectangle.cs" />
+    <EmbeddedResource Include="AAddAsig.resx">
+      <DependentUpon>AAddAsig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AAddTurn.resx">
+      <DependentUpon>AAddTurn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AAddUser.resx">
+      <DependentUpon>AAddUser.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ABienvenida.resx">
       <DependentUpon>ABienvenida.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AdminForm.resx">
       <DependentUpon>AdminForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AEstadisticas.resx">
+      <DependentUpon>AEstadisticas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AGestAsig.resx">
       <DependentUpon>AGestAsig.cs</DependentUpon>
