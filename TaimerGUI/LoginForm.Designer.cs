@@ -30,6 +30,7 @@
             this.btClose = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.pnLoginContents = new System.Windows.Forms.Panel();
+            this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.llIrAWeb = new System.Windows.Forms.LinkLabel();
@@ -41,7 +42,6 @@
             this.lbLoginPassword = new System.Windows.Forms.Label();
             this.lbLoginUser = new System.Windows.Forms.Label();
             this.btLoginEntrar = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
             this.pnLogo.SuspendLayout();
             this.pnSystemButtons.SuspendLayout();
             this.pnLoginContents.SuspendLayout();
@@ -151,6 +151,16 @@
             this.pnLoginContents.Name = "pnLoginContents";
             this.pnLoginContents.Size = new System.Drawing.Size(500, 194);
             this.pnLoginContents.TabIndex = 1;
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(13, 20);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(109, 23);
+            this.button3.TabIndex = 11;
+            this.button3.Text = "Los dos";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button2
             // 
@@ -273,16 +283,6 @@
             this.btLoginEntrar.Text = "Entrar";
             this.btLoginEntrar.UseVisualStyleBackColor = true;
             this.btLoginEntrar.Click += new System.EventHandler(this.btLoginEntrar_Click);
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(13, 20);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(109, 23);
-            this.button3.TabIndex = 11;
-            this.button3.Text = "Los dos";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // LoginForm
             // 

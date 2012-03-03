@@ -29,7 +29,7 @@ namespace TaimerGUI {
             this.Region = new System.Drawing.Region(shape);
 
         }
-        /*
+        
         private const int CS_DROPSHADOW = 0x00020000;
         protected override CreateParams CreateParams {
             get {
@@ -38,7 +38,7 @@ namespace TaimerGUI {
                 return p;
             }
         }
-        */
+        
         bool beingDragged;
         Point mouseOffset;
         private void panel1_MouseDown(object sender, MouseEventArgs e) {

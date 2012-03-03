@@ -33,6 +33,9 @@
             this.label3 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
@@ -81,12 +84,10 @@
             this.btClose = new System.Windows.Forms.Button();
             this.btMinimize = new System.Windows.Forms.Button();
             this.pnlResize = new System.Windows.Forms.Panel();
-            this.panel6 = new System.Windows.Forms.Panel();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
             this.pnlMenu.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel4.SuspendLayout();
+            this.panel6.SuspendLayout();
             this.ctxtMenuTray.SuspendLayout();
             this.pnlTittle.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -95,7 +96,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.mnUserOption.SuspendLayout();
             this.panel3.SuspendLayout();
-            this.panel6.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlMenu
@@ -186,6 +186,34 @@
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(193, 244);
             this.panel4.TabIndex = 2;
+            // 
+            // panel6
+            // 
+            this.panel6.Controls.Add(this.label6);
+            this.panel6.Controls.Add(this.label5);
+            this.panel6.Controls.Add(this.label4);
+            this.panel6.Location = new System.Drawing.Point(10, 124);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(160, 159);
+            this.panel6.TabIndex = 9;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(28, 83);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(35, 13);
+            this.label6.TabIndex = 10;
+            this.label6.Text = "label6";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(28, 51);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(35, 13);
+            this.label5.TabIndex = 9;
+            this.label5.Text = "label5";
             // 
             // label4
             // 
@@ -353,13 +381,13 @@
             // cerrarSesionToolStripMenuItem1
             // 
             this.cerrarSesionToolStripMenuItem1.Name = "cerrarSesionToolStripMenuItem1";
-            this.cerrarSesionToolStripMenuItem1.Size = new System.Drawing.Size(142, 22);
+            this.cerrarSesionToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.cerrarSesionToolStripMenuItem1.Text = "Cerrar sesion";
             // 
             // salirToolStripMenuItem2
             // 
             this.salirToolStripMenuItem2.Name = "salirToolStripMenuItem2";
-            this.salirToolStripMenuItem2.Size = new System.Drawing.Size(142, 22);
+            this.salirToolStripMenuItem2.Size = new System.Drawing.Size(152, 22);
             this.salirToolStripMenuItem2.Text = "Salir";
             // 
             // editarToolStripMenuItem
@@ -375,14 +403,14 @@
             // verToolStripMenuItem
             // 
             this.verToolStripMenuItem.Name = "verToolStripMenuItem";
-            this.verToolStripMenuItem.Size = new System.Drawing.Size(115, 22);
-            this.verToolStripMenuItem.Text = "Ver...";
+            this.verToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.verToolStripMenuItem.Text = "Ver";
             // 
             // crearToolStripMenuItem
             // 
             this.crearToolStripMenuItem.Name = "crearToolStripMenuItem";
-            this.crearToolStripMenuItem.Size = new System.Drawing.Size(115, 22);
-            this.crearToolStripMenuItem.Text = "Crear...";
+            this.crearToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.crearToolStripMenuItem.Text = "Crear";
             // 
             // ultimosToolStripMenuItem
             // 
@@ -391,25 +419,25 @@
             this.horario2ToolStripMenuItem,
             this.horario3ToolStripMenuItem});
             this.ultimosToolStripMenuItem.Name = "ultimosToolStripMenuItem";
-            this.ultimosToolStripMenuItem.Size = new System.Drawing.Size(115, 22);
+            this.ultimosToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.ultimosToolStripMenuItem.Text = "Ultimos";
             // 
             // horario1ToolStripMenuItem
             // 
             this.horario1ToolStripMenuItem.Name = "horario1ToolStripMenuItem";
-            this.horario1ToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
+            this.horario1ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.horario1ToolStripMenuItem.Text = "Horario1";
             // 
             // horario2ToolStripMenuItem
             // 
             this.horario2ToolStripMenuItem.Name = "horario2ToolStripMenuItem";
-            this.horario2ToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
+            this.horario2ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.horario2ToolStripMenuItem.Text = "Horario2";
             // 
             // horario3ToolStripMenuItem
             // 
             this.horario3ToolStripMenuItem.Name = "horario3ToolStripMenuItem";
-            this.horario3ToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
+            this.horario3ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.horario3ToolStripMenuItem.Text = "Horario3";
             // 
             // herramientasToolStripMenuItem
@@ -426,19 +454,19 @@
             // verToolStripMenuItem1
             // 
             this.verToolStripMenuItem1.Name = "verToolStripMenuItem1";
-            this.verToolStripMenuItem1.Size = new System.Drawing.Size(147, 22);
+            this.verToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.verToolStripMenuItem1.Text = "Ver";
             // 
             // matriculacionToolStripMenuItem
             // 
             this.matriculacionToolStripMenuItem.Name = "matriculacionToolStripMenuItem";
-            this.matriculacionToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
+            this.matriculacionToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.matriculacionToolStripMenuItem.Text = "Matriculacion";
             // 
             // crearToolStripMenuItem1
             // 
             this.crearToolStripMenuItem1.Name = "crearToolStripMenuItem1";
-            this.crearToolStripMenuItem1.Size = new System.Drawing.Size(147, 22);
+            this.crearToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.crearToolStripMenuItem1.Text = "Crear";
             // 
             // recientesToolStripMenuItem
@@ -447,7 +475,7 @@
             this.actiPers1ToolStripMenuItem,
             this.actiPers2ToolStripMenuItem});
             this.recientesToolStripMenuItem.Name = "recientesToolStripMenuItem";
-            this.recientesToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
+            this.recientesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.recientesToolStripMenuItem.Text = "Recientes";
             // 
             // actiPers1ToolStripMenuItem
@@ -473,7 +501,7 @@
             // acercaDeToolStripMenuItem
             // 
             this.acercaDeToolStripMenuItem.Name = "acercaDeToolStripMenuItem";
-            this.acercaDeToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
+            this.acercaDeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.acercaDeToolStripMenuItem.Text = "Acerca de...";
             // 
             // label1
@@ -638,34 +666,6 @@
             this.pnlResize.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pnlResize_MouseMove);
             this.pnlResize.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pnlResize_MouseUp);
             // 
-            // panel6
-            // 
-            this.panel6.Controls.Add(this.label6);
-            this.panel6.Controls.Add(this.label5);
-            this.panel6.Controls.Add(this.label4);
-            this.panel6.Location = new System.Drawing.Point(10, 124);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(160, 159);
-            this.panel6.TabIndex = 9;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(28, 51);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(35, 13);
-            this.label5.TabIndex = 9;
-            this.label5.Text = "label5";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(28, 83);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(35, 13);
-            this.label6.TabIndex = 10;
-            this.label6.Text = "label6";
-            // 
             // ClientForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -687,6 +687,8 @@
             this.panel5.PerformLayout();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
+            this.panel6.ResumeLayout(false);
+            this.panel6.PerformLayout();
             this.ctxtMenuTray.ResumeLayout(false);
             this.pnlTittle.ResumeLayout(false);
             this.pnlTittle.PerformLayout();
@@ -700,8 +702,6 @@
             this.mnUserOption.ResumeLayout(false);
             this.mnUserOption.PerformLayout();
             this.panel3.ResumeLayout(false);
-            this.panel6.ResumeLayout(false);
-            this.panel6.PerformLayout();
             this.ResumeLayout(false);
 
         }

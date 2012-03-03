@@ -132,9 +132,9 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(531, 159);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(97, 13);
+            this.label4.Size = new System.Drawing.Size(89, 13);
             this.label4.TabIndex = 8;
-            this.label4.Text = "lalala@mipolla.com";
+            this.label4.Text = "lalala@lalala.com";
             // 
             // label5
             // 

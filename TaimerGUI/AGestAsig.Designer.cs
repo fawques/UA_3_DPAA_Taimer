@@ -57,9 +57,9 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(523, 202);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(66, 13);
+            this.label5.Size = new System.Drawing.Size(31, 13);
             this.label5.TabIndex = 21;
-            this.label5.Text = "La pava esa";
+            this.label5.Text = "Irene";
             // 
             // label4
             // 
