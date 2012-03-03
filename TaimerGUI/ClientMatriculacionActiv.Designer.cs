@@ -33,15 +33,15 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.Codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Descrip = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Código = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nom = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.Codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Descrip = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -53,18 +53,20 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(454, 137);
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(448, 137);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(68, 13);
+            this.label4.Size = new System.Drawing.Size(73, 13);
             this.label4.TabIndex = 27;
-            this.label4.Text = "Para agregar";
+            this.label4.Text = "Matriculado";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(36, 137);
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(23, 137);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(48, 13);
+            this.label3.Size = new System.Drawing.Size(56, 13);
             this.label3.TabIndex = 26;
             this.label3.Text = "Actuales";
             // 
@@ -98,6 +100,21 @@
             this.dataGridView2.Size = new System.Drawing.Size(331, 373);
             this.dataGridView2.TabIndex = 23;
             // 
+            // Código
+            // 
+            this.Código.HeaderText = "Código";
+            this.Código.Name = "Código";
+            // 
+            // Nom
+            // 
+            this.Nom.HeaderText = "Nombre";
+            this.Nom.Name = "Nom";
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Descipcion";
+            this.Column1.Name = "Column1";
+            // 
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -109,25 +126,6 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(331, 373);
             this.dataGridView1.TabIndex = 21;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(12, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(187, 31);
-            this.label1.TabIndex = 20;
-            this.label1.Text = "Matriculacion";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(36, 76);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(332, 13);
-            this.label2.TabIndex = 28;
-            this.label2.Text = "Agrega y elimina las asignaturas en las que deseas estar matriculado.";
             // 
             // Codigo
             // 
@@ -144,20 +142,24 @@
             this.Descrip.HeaderText = "Descripcion";
             this.Descrip.Name = "Descrip";
             // 
-            // Código
+            // label1
             // 
-            this.Código.HeaderText = "Código";
-            this.Código.Name = "Código";
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(12, 9);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(133, 31);
+            this.label1.TabIndex = 20;
+            this.label1.Text = "Matrícula";
             // 
-            // Nom
+            // label2
             // 
-            this.Nom.HeaderText = "Nombre";
-            this.Nom.Name = "Nom";
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Descipcion";
-            this.Column1.Name = "Column1";
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(36, 76);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(332, 13);
+            this.label2.TabIndex = 28;
+            this.label2.Text = "Agrega y elimina las asignaturas en las que deseas estar matriculado.";
             // 
             // label5
             // 
