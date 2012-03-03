@@ -107,7 +107,7 @@
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(198, 25);
             this.label8.TabIndex = 12;
-            this.label8.Text = "Ultimas actividades";
+            this.label8.Text = "Últimas actividades";
             // 
             // panel3
             // 
@@ -174,7 +174,7 @@
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(167, 25);
             this.label7.TabIndex = 10;
-            this.label7.Text = "Ultimos horarios";
+            this.label7.Text = "Últimos horarios";
             // 
             // panel2
             // 
