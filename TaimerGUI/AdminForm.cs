@@ -14,6 +14,7 @@ namespace TaimerGUI {
         ABienvenida bienvenidaForm;
         AGestUser gestionUserForm;
         AGestAsig gestionAsigForm;
+        AGestTurno gestionTurnForm;
         AAddAsig addAsigForm;
         AAddUser addUserForm;
         AAddTurn addTurnForm;
@@ -27,6 +28,7 @@ namespace TaimerGUI {
             bienvenidaForm = new ABienvenida();
             gestionUserForm = new AGestUser();
             gestionAsigForm = new AGestAsig();
+            gestionTurnForm = new AGestTurno();
             addAsigForm = new AAddAsig();
             addUserForm = new AAddUser();
             addTurnForm = new AAddTurn();
@@ -35,8 +37,9 @@ namespace TaimerGUI {
             gestionUserForm.setChild(addUserForm);
             addUserForm.setParent(gestionUserForm);
 
-            gestionAsigForm.setChild(addAsigForm);
+            gestionAsigForm.setChild(addAsigForm, gestionTurnForm);
             addAsigForm.setParent(gestionAsigForm);
+            gestionTurnForm.setParent(gestionAsigForm);
 
             addAsigForm.setChild(addTurnForm);
             addTurnForm.setParent(addAsigForm);
@@ -44,6 +47,7 @@ namespace TaimerGUI {
             bienvenidaForm.MdiParent = this;
             gestionUserForm.MdiParent = this;
             gestionAsigForm.MdiParent = this;
+            gestionTurnForm.MdiParent = this;
             addAsigForm.MdiParent = this;
             addUserForm.MdiParent = this;
             addTurnForm.MdiParent = this;
@@ -158,6 +162,7 @@ namespace TaimerGUI {
             bienvenidaForm.Hide();
             gestionUserForm.Hide();
             gestionAsigForm.Hide();
+            gestionTurnForm.Hide();
             estadForm.Hide();
             addAsigForm.Hide();
             addUserForm.Hide();
@@ -168,6 +173,7 @@ namespace TaimerGUI {
             bienvenidaForm.Location = new Point(0, 0);
             gestionUserForm.Location = new Point(0, 0);
             gestionAsigForm.Location = new Point(0, 0);
+            gestionTurnForm.Location = new Point(0, 0);
             estadForm.Location = new Point(0, 0);
             addAsigForm.Location = new Point(0, 0);
             addUserForm.Location = new Point(0, 0);
