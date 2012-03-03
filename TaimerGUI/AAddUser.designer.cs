@@ -120,10 +120,10 @@
             this.radioButton2.AutoSize = true;
             this.radioButton2.Location = new System.Drawing.Point(50, 364);
             this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(91, 17);
+            this.radioButton2.Size = new System.Drawing.Size(88, 17);
             this.radioButton2.TabIndex = 59;
             this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "Administradoe";
+            this.radioButton2.Text = "Administrador";
             this.radioButton2.UseVisualStyleBackColor = true;
             // 
             // button3

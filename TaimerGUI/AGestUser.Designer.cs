@@ -25,7 +25,6 @@
         private void InitializeComponent() {
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.tbUsers = new System.Windows.Forms.DataGridView();
-            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lbUserName = new System.Windows.Forms.Label();
             this.btNewUser = new System.Windows.Forms.Button();
             this.lbName = new System.Windows.Forms.Label();
@@ -37,37 +36,30 @@
             this.label6 = new System.Windows.Forms.Label();
             this.btBuscarUSer = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.tbUsers)).BeginInit();
             this.SuspendLayout();
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(96, 104);
+            this.textBox1.Location = new System.Drawing.Point(93, 104);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(219, 20);
+            this.textBox1.Size = new System.Drawing.Size(222, 20);
             this.textBox1.TabIndex = 0;
             // 
             // tbUsers
             // 
-            this.tbUsers.AllowUserToAddRows = false;
-            this.tbUsers.AllowUserToDeleteRows = false;
             this.tbUsers.AllowUserToOrderColumns = true;
             this.tbUsers.BackgroundColor = System.Drawing.Color.Wheat;
             this.tbUsers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tbUsers.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column1,
             this.Nombre});
-            this.tbUsers.Location = new System.Drawing.Point(96, 130);
+            this.tbUsers.Location = new System.Drawing.Point(93, 132);
             this.tbUsers.Name = "tbUsers";
-            this.tbUsers.ReadOnly = true;
-            this.tbUsers.Size = new System.Drawing.Size(300, 334);
+            this.tbUsers.Size = new System.Drawing.Size(303, 334);
             this.tbUsers.TabIndex = 1;
-            // 
-            // Nombre
-            // 
-            this.Nombre.HeaderText = "Nombre";
-            this.Nombre.Name = "Nombre";
-            this.Nombre.ReadOnly = true;
-            this.Nombre.Width = 255;
             // 
             // lbUserName
             // 
@@ -175,6 +167,18 @@
             this.label7.TabIndex = 12;
             this.label7.Text = "Gestionar Usuarios";
             // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "ID";
+            this.Column1.Name = "Column1";
+            this.Column1.Width = 30;
+            // 
+            // Nombre
+            // 
+            this.Nombre.HeaderText = "Nombre";
+            this.Nombre.Name = "Nombre";
+            this.Nombre.Width = 230;
+            // 
             // AGestUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -207,7 +211,6 @@
 
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.DataGridView tbUsers;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
         private System.Windows.Forms.Label lbUserName;
         private System.Windows.Forms.Button btNewUser;
         private System.Windows.Forms.Label lbName;
@@ -219,5 +222,7 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button btBuscarUSer;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
     }
 }
