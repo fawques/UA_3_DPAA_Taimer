@@ -118,6 +118,7 @@
             this.btNewUser.TabIndex = 15;
             this.btNewUser.Text = "Nueva Asignatura";
             this.btNewUser.UseVisualStyleBackColor = true;
+            this.btNewUser.Click += new System.EventHandler(this.btNewUser_Click_1);
             // 
             // lbUserName
             // 
@@ -201,7 +202,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Cornsilk;
-            this.ClientSize = new System.Drawing.Size(800, 600);
+            this.ClientSize = new System.Drawing.Size(795, 595);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.btBuscarUSer);
             this.Controls.Add(this.label5);

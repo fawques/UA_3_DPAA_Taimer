@@ -8,10 +8,9 @@ using System.Text;
 using System.Windows.Forms;
 
 namespace TaimerGUI {
-    public partial class ABienvenida : Form {
-        public ABienvenida() {
+    public partial class AEstadistica : Form {
+        public AEstadistica() {
             InitializeComponent();
         }
-
     }
 }

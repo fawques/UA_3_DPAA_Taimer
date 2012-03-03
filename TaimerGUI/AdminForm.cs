@@ -14,22 +14,40 @@ namespace TaimerGUI {
         ABienvenida bienvenidaForm;
         AGestUser gestionUserForm;
         AGestAsig gestionAsigForm;
+        AAddAsig addAsigForm;
+        AAddUser addUserForm;
+        AAddTurn addTurnForm;
+        AEstadistica estadForm;
+
         int currentForm;
 
         public AdminForm() {
             InitializeComponent();
 
             bienvenidaForm = new ABienvenida();
-            bienvenidaForm.PointToClient(new Point(0, 0));
-            bienvenidaForm.MdiParent = this;
-
             gestionUserForm = new AGestUser();
-            gestionUserForm.PointToClient(new Point(0, 0));
-            gestionUserForm.MdiParent = this;
-
             gestionAsigForm = new AGestAsig();
-            gestionAsigForm.MdiParent = this;
+            addAsigForm = new AAddAsig();
+            addUserForm = new AAddUser();
+            addTurnForm = new AAddTurn();
+            estadForm = new AEstadistica();
 
+            gestionUserForm.setChild(addUserForm);
+            addUserForm.setParent(gestionUserForm);
+
+            gestionAsigForm.setChild(addAsigForm);
+            addAsigForm.setParent(gestionAsigForm);
+
+            addAsigForm.setChild(addTurnForm);
+            addTurnForm.setParent(addAsigForm);
+
+            bienvenidaForm.MdiParent = this;
+            gestionUserForm.MdiParent = this;
+            gestionAsigForm.MdiParent = this;
+            addAsigForm.MdiParent = this;
+            addUserForm.MdiParent = this;
+            addTurnForm.MdiParent = this;
+            estadForm.MdiParent = this;
         }
 
         protected override void OnPaint(PaintEventArgs e) {
@@ -113,44 +131,53 @@ namespace TaimerGUI {
                 "¿Salir?",
                 MessageBoxButtons.OKCancel,
                 MessageBoxIcon.Question,
-                MessageBoxDefaultButton.Button2) == DialogResult.OK)
-            {
+                MessageBoxDefaultButton.Button2) == DialogResult.OK) {
                 Application.Exit();
             }
         }
 
         private void btSidePanelUser_Click(object sender, EventArgs e) {
-            hideCurrent();
-            currentForm = 1;
-
+            hideChilds();
             gestionUserForm.Show();
-            gestionUserForm.Location = new Point(0, 0);
+            positionChilds();
         }
 
         private void btSidePanelAsig_Click(object sender, EventArgs e) {
-            hideCurrent();
-            currentForm = 2;
-
+            hideChilds();
             gestionAsigForm.Show();
-            gestionAsigForm.Location = new Point(0, 0);
+            positionChilds();
         }
 
         private void btSidePanelEstad_Click(object sender, EventArgs e) {
-
+            hideChilds();
+            estadForm.Show();
+            positionChilds();
         }
 
-        private void hideCurrent() {
-            switch (currentForm) {
-                case 0:
-                    bienvenidaForm.Hide();
-                    break;
-                case 1:
-                    gestionUserForm.Hide();
-                    break;
-                case 2:
-                    gestionAsigForm.Hide();
-                    break;
-            }
+        public void hideChilds() {
+            bienvenidaForm.Hide();
+            gestionUserForm.Hide();
+            gestionAsigForm.Hide();
+            estadForm.Hide();
+            addAsigForm.Hide();
+            addUserForm.Hide();
+            addTurnForm.Hide();
+        }
+
+        public void positionChilds() {
+            bienvenidaForm.Location = new Point(0, 0);
+            gestionUserForm.Location = new Point(0, 0);
+            gestionAsigForm.Location = new Point(0, 0);
+            estadForm.Location = new Point(0, 0);
+            addAsigForm.Location = new Point(0, 0);
+            addUserForm.Location = new Point(0, 0);
+            addTurnForm.Location = new Point(0, 0);
+        }
+
+        private void label1_Click(object sender, EventArgs e) {
+            hideChilds();
+            bienvenidaForm.Show();
+            positionChilds();
         }
     }
 }

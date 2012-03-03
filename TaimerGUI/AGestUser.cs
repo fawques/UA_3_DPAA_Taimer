@@ -9,8 +9,25 @@ using System.Windows.Forms;
 
 namespace TaimerGUI {
     public partial class AGestUser : Form {
+
+        AAddUser childForm = null;
+
         public AGestUser() {
             InitializeComponent();
+        }
+
+        public void setChild(AAddUser form) {
+            childForm = form;
+        }
+
+        private void btNewUser_Click(object sender, EventArgs e) {
+            if (childForm != null) {
+                Hide();
+                childForm.Show();
+
+                AdminForm parent = (AdminForm)this.MdiParent;
+                parent.positionChilds();
+            }
         }
     }
 }

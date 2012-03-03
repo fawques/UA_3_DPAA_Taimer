@@ -192,6 +192,7 @@
             this.label1.Size = new System.Drawing.Size(124, 45);
             this.label1.TabIndex = 10;
             this.label1.Text = "Taimer";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // panel1
             // 

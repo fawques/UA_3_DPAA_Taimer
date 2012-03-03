@@ -64,7 +64,7 @@
     <Compile Include="AAddTurn.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AAddTurn.designer.cs">
+    <Compile Include="AAddTurn.Designer.cs">
       <DependentUpon>AAddTurn.cs</DependentUpon>
     </Compile>
     <Compile Include="AAddUser.cs">
@@ -85,11 +85,11 @@
     <Compile Include="AdminForm.Designer.cs">
       <DependentUpon>AdminForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="AEstadisticas.cs">
+    <Compile Include="AEstadistica.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AEstadisticas.designer.cs">
-      <DependentUpon>AEstadisticas.cs</DependentUpon>
+    <Compile Include="AEstadistica.Designer.cs">
+      <DependentUpon>AEstadistica.cs</DependentUpon>
     </Compile>
     <Compile Include="AGestAsig.cs">
       <SubType>Form</SubType>
@@ -187,8 +187,8 @@
     <EmbeddedResource Include="AdminForm.resx">
       <DependentUpon>AdminForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AEstadisticas.resx">
-      <DependentUpon>AEstadisticas.cs</DependentUpon>
+    <EmbeddedResource Include="AEstadistica.resx">
+      <DependentUpon>AEstadistica.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AGestAsig.resx">
       <DependentUpon>AGestAsig.cs</DependentUpon>
