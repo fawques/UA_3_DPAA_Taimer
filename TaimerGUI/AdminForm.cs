@@ -10,9 +10,50 @@ using System.Windows.Forms;
 
 namespace TaimerGUI {
     public partial class AdminForm : Form {
+
+        ABienvenida bienvenidaForm;
+        AGestUser gestionUserForm;
+        AGestAsig gestionAsigForm;
+        AGestTurno gestionTurnForm;
+        AAddAsig addAsigForm;
+        AAddUser addUserForm;
+        AAddTurn addTurnForm;
+        AEstadistica estadForm;
+
+        int currentForm;
+
         public AdminForm() {
             InitializeComponent();
+
+            bienvenidaForm = new ABienvenida();
+            gestionUserForm = new AGestUser();
+            gestionAsigForm = new AGestAsig();
+            gestionTurnForm = new AGestTurno();
+            addAsigForm = new AAddAsig();
+            addUserForm = new AAddUser();
+            addTurnForm = new AAddTurn();
+            estadForm = new AEstadistica();
+
+            gestionUserForm.setChild(addUserForm);
+            addUserForm.setParent(gestionUserForm);
+
+            gestionAsigForm.setChild(addAsigForm, gestionTurnForm);
+            addAsigForm.setParent(gestionAsigForm);
+            gestionTurnForm.setParent(gestionAsigForm);
+
+            addAsigForm.setChild(addTurnForm);
+            addTurnForm.setParent(addAsigForm);
+
+            bienvenidaForm.MdiParent = this;
+            gestionUserForm.MdiParent = this;
+            gestionAsigForm.MdiParent = this;
+            gestionTurnForm.MdiParent = this;
+            addAsigForm.MdiParent = this;
+            addUserForm.MdiParent = this;
+            addTurnForm.MdiParent = this;
+            estadForm.MdiParent = this;
         }
+
         protected override void OnPaint(PaintEventArgs e) {
 
             GraphicsPath shape = RoundedRectangle.Create(0, 0, this.Width, this.Height, 10);
@@ -44,6 +85,27 @@ namespace TaimerGUI {
 
         private void AdminForm_Load(object sender, EventArgs e) {
             beingDragged = false;
+
+            //////////////// MDI //////////////////////////
+
+            //Esto para el color de fondo
+            // Loop through all of the form's controls looking
+            // for the control of type MdiClient.
+            foreach (Control ctl in this.Controls) {
+                try {
+                    // Attempt to cast the control to type MdiClient.
+                    MdiClient ctlMDI = (MdiClient)ctl;
+
+                    // Set the BackColor of the MdiClient control.
+                    ctlMDI.BackColor = this.BackColor;
+                } catch (InvalidCastException exc) {
+                    // Catch and ignore the error if casting failed.
+                }
+            }
+
+            bienvenidaForm.Show();
+            currentForm = 0;
+            //////////////// --- //////////////////////////
         }
 
         /*
@@ -69,25 +131,59 @@ namespace TaimerGUI {
         }
 
         private void btClose_Click(object sender, EventArgs e) {
-            Application.Exit();
-        }
-
-        private void iconNotifAdmin_MouseDoubleClick(object sender, MouseEventArgs e) {
-            Show();
-            WindowState = FormWindowState.Normal;
-        
+            if (MessageBox.Show("¿Seguro que desea salir?",
+                "¿Salir?",
+                MessageBoxButtons.OKCancel,
+                MessageBoxIcon.Question,
+                MessageBoxDefaultButton.Button2) == DialogResult.OK) {
+                Application.Exit();
+            }
         }
 
         private void btSidePanelUser_Click(object sender, EventArgs e) {
-            lbProvisional.Text = "Gestion de Usuarios";
+            hideChilds();
+            gestionUserForm.Show();
+            positionChilds();
         }
 
         private void btSidePanelAsig_Click(object sender, EventArgs e) {
-            lbProvisional.Text = "Gestion de Asignaturas";
+            hideChilds();
+            gestionAsigForm.Show();
+            positionChilds();
         }
 
         private void btSidePanelEstad_Click(object sender, EventArgs e) {
-            lbProvisional.Text = "Estadisticas de uso";
+            hideChilds();
+            estadForm.Show();
+            positionChilds();
+        }
+
+        public void hideChilds() {
+            bienvenidaForm.Hide();
+            gestionUserForm.Hide();
+            gestionAsigForm.Hide();
+            gestionTurnForm.Hide();
+            estadForm.Hide();
+            addAsigForm.Hide();
+            addUserForm.Hide();
+            addTurnForm.Hide();
+        }
+
+        public void positionChilds() {
+            bienvenidaForm.Location = new Point(0, 0);
+            gestionUserForm.Location = new Point(0, 0);
+            gestionAsigForm.Location = new Point(0, 0);
+            gestionTurnForm.Location = new Point(0, 0);
+            estadForm.Location = new Point(0, 0);
+            addAsigForm.Location = new Point(0, 0);
+            addUserForm.Location = new Point(0, 0);
+            addTurnForm.Location = new Point(0, 0);
+        }
+
+        private void label1_Click(object sender, EventArgs e) {
+            hideChilds();
+            bienvenidaForm.Show();
+            positionChilds();
         }
     }
 }

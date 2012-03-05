@@ -26,8 +26,13 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginForm));
             this.pnLogo = new System.Windows.Forms.Panel();
             this.pnSystemButtons = new System.Windows.Forms.Panel();
+            this.btMinimize = new System.Windows.Forms.Button();
+            this.btClose = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.pnLoginContents = new System.Windows.Forms.Panel();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.llIrAWeb = new System.Windows.Forms.LinkLabel();
             this.llRecordarDatos = new System.Windows.Forms.LinkLabel();
             this.cbLoginRemeberData = new System.Windows.Forms.CheckBox();
@@ -37,8 +42,6 @@
             this.lbLoginPassword = new System.Windows.Forms.Label();
             this.lbLoginUser = new System.Windows.Forms.Label();
             this.btLoginEntrar = new System.Windows.Forms.Button();
-            this.btMinimize = new System.Windows.Forms.Button();
-            this.btClose = new System.Windows.Forms.Button();
             this.pnLogo.SuspendLayout();
             this.pnSystemButtons.SuspendLayout();
             this.pnLoginContents.SuspendLayout();
@@ -69,6 +72,50 @@
             this.pnSystemButtons.Size = new System.Drawing.Size(75, 119);
             this.pnSystemButtons.TabIndex = 8;
             // 
+            // btMinimize
+            // 
+            this.btMinimize.BackColor = System.Drawing.Color.Transparent;
+            this.btMinimize.FlatAppearance.BorderSize = 0;
+            this.btMinimize.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btMinimize.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btMinimize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btMinimize.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btMinimize.ForeColor = System.Drawing.Color.Maroon;
+            this.btMinimize.Image = ((System.Drawing.Image)(resources.GetObject("btMinimize.Image")));
+            this.btMinimize.Location = new System.Drawing.Point(15, 1);
+            this.btMinimize.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.btMinimize.Name = "btMinimize";
+            this.btMinimize.Size = new System.Drawing.Size(30, 30);
+            this.btMinimize.TabIndex = 7;
+            this.btMinimize.UseVisualStyleBackColor = false;
+            this.btMinimize.Click += new System.EventHandler(this.btMinimize_Click);
+            this.btMinimize.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btMinimize_MouseDown);
+            this.btMinimize.MouseEnter += new System.EventHandler(this.btMinimize_MouseEnter);
+            this.btMinimize.MouseLeave += new System.EventHandler(this.btMinimize_MouseLeave);
+            this.btMinimize.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btMinimize_MouseUp);
+            // 
+            // btClose
+            // 
+            this.btClose.BackColor = System.Drawing.Color.Transparent;
+            this.btClose.FlatAppearance.BorderSize = 0;
+            this.btClose.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btClose.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btClose.Font = new System.Drawing.Font("Arial Black", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btClose.ForeColor = System.Drawing.Color.Maroon;
+            this.btClose.Image = ((System.Drawing.Image)(resources.GetObject("btClose.Image")));
+            this.btClose.Location = new System.Drawing.Point(44, 3);
+            this.btClose.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.btClose.Name = "btClose";
+            this.btClose.Size = new System.Drawing.Size(30, 30);
+            this.btClose.TabIndex = 8;
+            this.btClose.UseVisualStyleBackColor = false;
+            this.btClose.Click += new System.EventHandler(this.btClose_Click);
+            this.btClose.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btClose_MouseDown);
+            this.btClose.MouseEnter += new System.EventHandler(this.btClose_MouseEnter);
+            this.btClose.MouseLeave += new System.EventHandler(this.btClose_MouseLeave);
+            this.btClose.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btClose_MouseUp);
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -87,6 +134,9 @@
             // pnLoginContents
             // 
             this.pnLoginContents.BackColor = System.Drawing.Color.Transparent;
+            this.pnLoginContents.Controls.Add(this.button3);
+            this.pnLoginContents.Controls.Add(this.button2);
+            this.pnLoginContents.Controls.Add(this.button1);
             this.pnLoginContents.Controls.Add(this.llIrAWeb);
             this.pnLoginContents.Controls.Add(this.llRecordarDatos);
             this.pnLoginContents.Controls.Add(this.cbLoginRemeberData);
@@ -101,6 +151,36 @@
             this.pnLoginContents.Name = "pnLoginContents";
             this.pnLoginContents.Size = new System.Drawing.Size(500, 194);
             this.pnLoginContents.TabIndex = 1;
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(13, 20);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(109, 23);
+            this.button3.TabIndex = 11;
+            this.button3.Text = "Los dos";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(358, 50);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(121, 23);
+            this.button2.TabIndex = 10;
+            this.button2.Text = "Puente admin";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(358, 19);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(121, 23);
+            this.button1.TabIndex = 9;
+            this.button1.Text = "Puente cliente";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // llIrAWeb
             // 
@@ -204,50 +284,6 @@
             this.btLoginEntrar.UseVisualStyleBackColor = true;
             this.btLoginEntrar.Click += new System.EventHandler(this.btLoginEntrar_Click);
             // 
-            // btMinimize
-            // 
-            this.btMinimize.BackColor = System.Drawing.Color.Transparent;
-            this.btMinimize.FlatAppearance.BorderSize = 0;
-            this.btMinimize.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btMinimize.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btMinimize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btMinimize.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btMinimize.ForeColor = System.Drawing.Color.Maroon;
-            this.btMinimize.Image = ((System.Drawing.Image)(resources.GetObject("btMinimize.Image")));
-            this.btMinimize.Location = new System.Drawing.Point(15, 1);
-            this.btMinimize.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.btMinimize.Name = "btMinimize";
-            this.btMinimize.Size = new System.Drawing.Size(30, 30);
-            this.btMinimize.TabIndex = 7;
-            this.btMinimize.UseVisualStyleBackColor = false;
-            this.btMinimize.Click += new System.EventHandler(this.btMinimize_Click);
-            this.btMinimize.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btMinimize_MouseDown);
-            this.btMinimize.MouseEnter += new System.EventHandler(this.btMinimize_MouseEnter);
-            this.btMinimize.MouseLeave += new System.EventHandler(this.btMinimize_MouseLeave);
-            this.btMinimize.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btMinimize_MouseUp);
-            // 
-            // btClose
-            // 
-            this.btClose.BackColor = System.Drawing.Color.Transparent;
-            this.btClose.FlatAppearance.BorderSize = 0;
-            this.btClose.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btClose.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btClose.Font = new System.Drawing.Font("Arial Black", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btClose.ForeColor = System.Drawing.Color.Maroon;
-            this.btClose.Image = ((System.Drawing.Image)(resources.GetObject("btClose.Image")));
-            this.btClose.Location = new System.Drawing.Point(44, 3);
-            this.btClose.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.btClose.Name = "btClose";
-            this.btClose.Size = new System.Drawing.Size(30, 30);
-            this.btClose.TabIndex = 8;
-            this.btClose.UseVisualStyleBackColor = false;
-            this.btClose.Click += new System.EventHandler(this.btClose_Click);
-            this.btClose.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btClose_MouseDown);
-            this.btClose.MouseEnter += new System.EventHandler(this.btClose_MouseEnter);
-            this.btClose.MouseLeave += new System.EventHandler(this.btClose_MouseLeave);
-            this.btClose.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btClose_MouseUp);
-            // 
             // LoginForm
             // 
             this.AcceptButton = this.btLoginEntrar;
@@ -288,6 +324,9 @@
         private System.Windows.Forms.LinkLabel llIrAWeb;
         private System.Windows.Forms.LinkLabel llRecordarDatos;
         private System.Windows.Forms.CheckBox cbLoginRemeberData;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button3;
     }
 }
 

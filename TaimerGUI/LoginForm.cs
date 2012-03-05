@@ -29,7 +29,7 @@ namespace TaimerGUI {
             this.Region = new System.Drawing.Region(shape);
 
         }
-        /*
+        
         private const int CS_DROPSHADOW = 0x00020000;
         protected override CreateParams CreateParams {
             get {
@@ -38,7 +38,7 @@ namespace TaimerGUI {
                 return p;
             }
         }
-        */
+        
         bool beingDragged;
         Point mouseOffset;
         private void panel1_MouseDown(object sender, MouseEventArgs e) {
@@ -176,6 +176,32 @@ namespace TaimerGUI {
 
         private void pnSystemButtons_MouseUp(object sender, MouseEventArgs e) {
             panel1_MouseUp(sender, e);
+        }
+
+
+        //Puente para no tardar tanto en abrir la ventana
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ClientForm client = new ClientForm();
+            client.Show();
+            this.Hide();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            AdminForm admin = new AdminForm();
+            admin.Show();
+            this.Hide();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            ClientForm client = new ClientForm();
+            client.Show();
+            this.Hide();
+            AdminForm admin = new AdminForm();
+            admin.Show();
+            this.Hide();
         }
 
     }

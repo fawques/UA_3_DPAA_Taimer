@@ -34,10 +34,13 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="Microsoft.VisualBasic.PowerPacks.Vs, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -52,11 +55,77 @@
     <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AAddAsig.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AAddAsig.designer.cs">
+      <DependentUpon>AAddAsig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AAddTurn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AAddTurn.Designer.cs">
+      <DependentUpon>AAddTurn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AAddUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AAddUser.designer.cs">
+      <DependentUpon>AAddUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ABienvenida.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ABienvenida.designer.cs">
+      <DependentUpon>ABienvenida.cs</DependentUpon>
+    </Compile>
     <Compile Include="AdminForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="AdminForm.Designer.cs">
       <DependentUpon>AdminForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AEstadistica.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AEstadistica.Designer.cs">
+      <DependentUpon>AEstadistica.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AGestAsig.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AGestAsig.designer.cs">
+      <DependentUpon>AGestAsig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AGestTurno.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AGestTurno.designer.cs">
+      <DependentUpon>AGestTurno.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AGestUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AGestUser.designer.cs">
+      <DependentUpon>AGestUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ClientCrearActiv.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ClientCrearActiv.Designer.cs">
+      <DependentUpon>ClientCrearActiv.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ClientCrearHor1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ClientCrearHor1.Designer.cs">
+      <DependentUpon>ClientCrearHor1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ClientCrearHor2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ClientCrearHor2.Designer.cs">
+      <DependentUpon>ClientCrearHor2.cs</DependentUpon>
     </Compile>
     <Compile Include="ClientForm.cs">
       <SubType>Form</SubType>
@@ -64,11 +133,35 @@
     <Compile Include="ClientForm.Designer.cs">
       <DependentUpon>ClientForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Bienvenida.cs">
+    <Compile Include="ClientBienvenida.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Bienvenida.Designer.cs">
-      <DependentUpon>Bienvenida.cs</DependentUpon>
+    <Compile Include="ClientBienvenida.Designer.cs">
+      <DependentUpon>ClientBienvenida.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ClientHorHome.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ClientHorHome.Designer.cs">
+      <DependentUpon>ClientHorHome.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ClientHorVer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ClientHorVer.Designer.cs">
+      <DependentUpon>ClientHorVer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ClientMatriculacionActiv.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ClientMatriculacionActiv.Designer.cs">
+      <DependentUpon>ClientMatriculacionActiv.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ClientVerActividades.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ClientVerActividades.Designer.cs">
+      <DependentUpon>ClientVerActividades.cs</DependentUpon>
     </Compile>
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
@@ -79,14 +172,59 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RoundedRectangle.cs" />
+    <EmbeddedResource Include="AAddAsig.resx">
+      <DependentUpon>AAddAsig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AAddTurn.resx">
+      <DependentUpon>AAddTurn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AAddUser.resx">
+      <DependentUpon>AAddUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ABienvenida.resx">
+      <DependentUpon>ABienvenida.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AdminForm.resx">
       <DependentUpon>AdminForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AEstadistica.resx">
+      <DependentUpon>AEstadistica.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AGestAsig.resx">
+      <DependentUpon>AGestAsig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AGestTurno.resx">
+      <DependentUpon>AGestTurno.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AGestUser.resx">
+      <DependentUpon>AGestUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ClientCrearActiv.resx">
+      <DependentUpon>ClientCrearActiv.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ClientCrearHor1.resx">
+      <DependentUpon>ClientCrearHor1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ClientCrearHor2.resx">
+      <DependentUpon>ClientCrearHor2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ClientForm.resx">
       <DependentUpon>ClientForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Bienvenida.resx">
-      <DependentUpon>Bienvenida.cs</DependentUpon>
+    <EmbeddedResource Include="ClientBienvenida.resx">
+      <DependentUpon>ClientBienvenida.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ClientHorHome.resx">
+      <DependentUpon>ClientHorHome.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ClientHorVer.resx">
+      <DependentUpon>ClientHorVer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ClientMatriculacionActiv.resx">
+      <DependentUpon>ClientMatriculacionActiv.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ClientVerActividades.resx">
+      <DependentUpon>ClientVerActividades.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
@@ -134,6 +272,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\pruba11.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\resize2.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
