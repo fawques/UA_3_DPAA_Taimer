@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 
 namespace Taimer {
-    class Hora {
+    public class Hora {
         public int hora;
         public int min;
         public Hora(int hora_, int min_) {
@@ -13,7 +13,7 @@ namespace Taimer {
         }
     }
 
-    class Turno {
+    public class Turno {
         
         //PARTE PRIVADA
 

@@ -5,8 +5,8 @@ using System.Linq;
 using System.Text;
 
 namespace Taimer {
-    class Horario {
-
+    public class Horario {
+        
         //PARTE PRIVADA
 
         private string nom;
@@ -49,6 +49,33 @@ namespace Taimer {
         //Obtener ArrayList de turnos
         public ArrayList getTurnos() {
             return turnos;
+        }
+
+        //Prueba de generar Horarios
+        public Horario generarHorario1() {
+            Horario probando = new Horario("prueba",1);
+            bool correcto = true;
+
+            Actividad_p actP = new Actividad_p("nombre","descripcion",6,"pepito");
+            Actividad_p actP2 = new Actividad_p("nombre2", "descripcion2", 7, "pepito2");
+            ArrayList arrayP = new ArrayList();
+            arrayP.Add(actP);
+            arrayP.Add(actP2);
+
+            foreach (Actividad_p personal in arrayP)
+            {
+
+                foreach (Turno item in personal.getTurnos())
+                {
+                    if (item.getNom() != "hola")
+                    {
+                        ArithmeticException ex = new ArithmeticException("prueba de que funciona");
+                        throw ex;
+                    }
+                }
+                
+            }
+            return probando;
         }
     }
 }
