@@ -25,7 +25,7 @@ namespace algoritmo
             {
                 foreach (Turno item in h.getTurnos())
                 {
-                    texto += "/ " + item.getNom();
+                    texto += item.getNom() + " ";
                 }
 
                 MessageBox.Show("Los turnos son: " + texto);
