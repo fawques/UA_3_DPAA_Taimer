@@ -19,8 +19,17 @@ namespace algoritmo
 
         private void btGenerar_Click(object sender, EventArgs e)
         {
+            string texto = "";
+            Horario h = new Horario("prueba", 1);
+            if (h.generarHorario1())
+            {
+                foreach (Turno item in h.getTurnos())
+                {
+                    texto += "/ " + item.getNom();
+                }
 
-            Horario h = new Horario("", 1);
+                MessageBox.Show("Los turnos son: " + texto);
+            }
         }
     }
 }
