@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 
 namespace Taimer {
-    abstract class Actividad {
+    public abstract class Actividad {
         // PARTE PRIVADA
 
         private string nom;     // Nombre

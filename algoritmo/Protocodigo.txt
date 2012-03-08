@@ -46,7 +46,7 @@ return horario;
 
 //=========================================================== BACKTRACKING ==========================================================================
 
-función generarVoraz(vector<ActA> aAcademicas, vector<ActP> aPersonales, #parámetros...) - devuelve Horario (o Horario*){
+función generarBT(vector<ActA> aAcademicas, vector<ActP> aPersonales, #parámetros...) - devuelve Horario {
 
 // en la pilaAMedias guardaremos los horarios que no hayan recorrido todas las actividades
 Pila<Horario> pilaAMedias;
@@ -57,9 +57,9 @@ bool correcto = true;
 
 pilaAMedias.apilar(horario_optimo); // crea una copia
 while(!pilaAMedias.vacia()){
-	Opción 1:
+	Opción 1 - recorrido por niveles:
 		desapilar -> crear todas las posibilidades para ese horario, para cada una -> añadir un nuevo horario -> si el horario está completo apilar en pilaPosibles, si no, apilar en AMedias. 
-	Opción 2:
+	Opción 2 - recorrido en profundidad:
 		sacar la cima -> añadir un nuevo horario -> si el horario está completo apilar en pilaPosibles, si se han recorrido todas las asignaturas, desapilar de AMedias, si no está completo, apilar en AMedias. 
 
 // la opción 2 consigue una solución antes, aunque en total tarda lo mismo que la 1.

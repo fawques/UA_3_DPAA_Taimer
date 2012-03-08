@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using Taimer;
 
 namespace algoritmo
 {
@@ -14,6 +15,12 @@ namespace algoritmo
         public Form1()
         {
             InitializeComponent();
+        }
+
+        private void btGenerar_Click(object sender, EventArgs e)
+        {
+
+            Horario h = new Horario("", 1);
         }
     }
 }

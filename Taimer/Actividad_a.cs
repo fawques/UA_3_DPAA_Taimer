@@ -6,7 +6,7 @@ using System.Text;
 
 
 namespace Taimer {
-    class Actividad_a : Actividad {
+    public class Actividad_a : Actividad {
         
         //PARTE PRIVADA
        
