@@ -30,6 +30,10 @@ namespace algoritmo
 
                 MessageBox.Show("Los turnos son: " + texto);
             }
+            else
+            {
+                MessageBox.Show("Ha habido algún error en el proceso");
+            }
         }
     }
 }
