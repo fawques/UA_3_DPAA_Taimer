@@ -37,8 +37,11 @@ namespace Taimer {
             {
                 if (item.getDia().Equals(turno.getDia()))
                 {
+                    // si se superponen
                     if((item.getHoraF() > turno.getHoraI() && item.getHoraF() <= turno.getHoraF()) ||
-                        (turno.getHoraF() > item.getHoraI() && turno.getHoraF() <= item.getHoraF()))
+                        (turno.getHoraF() > item.getHoraI() && turno.getHoraF() <= item.getHoraF()) ||
+                        (item.getHoraI() >= turno.getHoraI() && item.getHoraI() < turno.getHoraF()) ||
+                        (turno.getHoraI() >= item.getHoraI() && turno.getHoraI() < item.getHoraF()))
                         {
                             Exception ex = new Exception("Turnos solapados");
                             throw ex;
