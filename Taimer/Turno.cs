@@ -11,6 +11,66 @@ namespace Taimer {
             hora = hora_;
             min = min_;
         }
+
+        public static bool operator >(Hora h1, Hora h2)
+        {
+            if(h1.hora > h2.hora)
+                return true;
+            else if (h1.hora == h2.hora)
+            {
+                if(h1.min > h2.min)
+                    return true;
+                else
+                    return false;
+            }
+            else
+                return false;
+        }
+
+        public static bool operator ==(Hora h1, Hora h2)
+        {
+            if (h1.hora == h2.hora){
+                if (h1.min == h2.min)
+                    return true;
+                else
+                    return false;
+            }
+            else
+                return false;
+        }
+
+        public static bool operator !=(Hora h1, Hora h2)
+        {
+            if (h1 == h2)
+                return false;
+            else
+                return true;
+        }
+
+        public static bool operator <(Hora h1, Hora h2)
+        {
+            if (h1 > h2 || h1 == h2)
+                return false;
+            else
+                return true;
+        }
+
+        public static bool operator <=(Hora h1, Hora h2)
+        {
+            if (h1 < h2 || h1 == h2)
+                return true;
+            else
+                return false;
+        }
+
+        public static bool operator >=(Hora h1, Hora h2)
+        {
+            if (h1 > h2 || h1 == h2)
+                return true;
+            else
+                return false;
+        }
+
     }
 
     public class Turno {

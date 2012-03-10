@@ -21,7 +21,7 @@ namespace algoritmo
         {
             string texto = "";
             Horario h = new Horario("prueba", 1);
-            if (h.generarHorario1())
+            if (h.generarHorarioVoraz())
             {
                 foreach (Turno item in h.getTurnos())
                 {
