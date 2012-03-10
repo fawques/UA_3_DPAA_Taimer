@@ -26,16 +26,15 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ClientForm));
             this.pnlMenu = new System.Windows.Forms.Panel();
-            this.panel5 = new System.Windows.Forms.Panel();
+            this.pnlMenuActivi = new System.Windows.Forms.Panel();
+            this.groupBoxUltActivi = new System.Windows.Forms.GroupBox();
             this.button4 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
+            this.pnlMenuHorarios = new System.Windows.Forms.Panel();
+            this.groupBoxUltimosHorarios = new System.Windows.Forms.GroupBox();
             this.button3 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
@@ -74,7 +73,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.mnUserOption = new System.Windows.Forms.MenuStrip();
-            this.martinMolaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.userTlSMnItem = new System.Windows.Forms.ToolStripMenuItem();
             this.perfilToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cerrarSesiónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.salirToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -83,13 +82,9 @@
             this.btClose = new System.Windows.Forms.Button();
             this.btMinimize = new System.Windows.Forms.Button();
             this.pnlResize = new System.Windows.Forms.Panel();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
             this.pnlMenu.SuspendLayout();
-            this.panel5.SuspendLayout();
-            this.panel4.SuspendLayout();
+            this.pnlMenuActivi.SuspendLayout();
+            this.pnlMenuHorarios.SuspendLayout();
             this.ctxtMenuTray.SuspendLayout();
             this.pnlTittle.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -98,39 +93,48 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.mnUserOption.SuspendLayout();
             this.panel3.SuspendLayout();
-            this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlMenu
             // 
             this.pnlMenu.BackColor = System.Drawing.Color.Wheat;
-            this.pnlMenu.Controls.Add(this.panel5);
+            this.pnlMenu.Controls.Add(this.pnlMenuActivi);
             this.pnlMenu.Controls.Add(this.button2);
-            this.pnlMenu.Controls.Add(this.panel4);
+            this.pnlMenu.Controls.Add(this.pnlMenuHorarios);
             this.pnlMenu.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlMenu.Location = new System.Drawing.Point(0, 75);
             this.pnlMenu.Name = "pnlMenu";
             this.pnlMenu.Size = new System.Drawing.Size(200, 600);
             this.pnlMenu.TabIndex = 2;
             // 
-            // panel5
+            // pnlMenuActivi
             // 
-            this.panel5.AutoScroll = true;
-            this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel5.Controls.Add(this.groupBox2);
-            this.panel5.Controls.Add(this.button4);
-            this.panel5.Controls.Add(this.button6);
-            this.panel5.Controls.Add(this.button7);
-            this.panel5.Controls.Add(this.label3);
-            this.panel5.Location = new System.Drawing.Point(4, 257);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(193, 298);
-            this.panel5.TabIndex = 4;
+            this.pnlMenuActivi.AutoScroll = true;
+            this.pnlMenuActivi.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlMenuActivi.Controls.Add(this.groupBoxUltActivi);
+            this.pnlMenuActivi.Controls.Add(this.button4);
+            this.pnlMenuActivi.Controls.Add(this.button6);
+            this.pnlMenuActivi.Controls.Add(this.button7);
+            this.pnlMenuActivi.Controls.Add(this.label3);
+            this.pnlMenuActivi.Location = new System.Drawing.Point(4, 273);
+            this.pnlMenuActivi.Name = "pnlMenuActivi";
+            this.pnlMenuActivi.Size = new System.Drawing.Size(193, 260);
+            this.pnlMenuActivi.TabIndex = 4;
+            this.pnlMenuActivi.MouseEnter += new System.EventHandler(this.pnlMenuActivi_MouseEnter);
+            // 
+            // groupBoxUltActivi
+            // 
+            this.groupBoxUltActivi.AutoSize = true;
+            this.groupBoxUltActivi.Location = new System.Drawing.Point(11, 139);
+            this.groupBoxUltActivi.Name = "groupBoxUltActivi";
+            this.groupBoxUltActivi.Size = new System.Drawing.Size(157, 107);
+            this.groupBoxUltActivi.TabIndex = 11;
+            this.groupBoxUltActivi.TabStop = false;
+            this.groupBoxUltActivi.Text = "Últimas Actividades";
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(26, 97);
+            this.button4.Location = new System.Drawing.Point(11, 96);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(118, 23);
             this.button4.TabIndex = 3;
@@ -140,7 +144,7 @@
             // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(26, 39);
+            this.button6.Location = new System.Drawing.Point(11, 38);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(118, 23);
             this.button6.TabIndex = 2;
@@ -150,7 +154,7 @@
             // 
             // button7
             // 
-            this.button7.Location = new System.Drawing.Point(26, 68);
+            this.button7.Location = new System.Drawing.Point(11, 67);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(118, 23);
             this.button7.TabIndex = 1;
@@ -171,58 +175,42 @@
             // 
             this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.button2.BackColor = System.Drawing.Color.Orange;
-            this.button2.Location = new System.Drawing.Point(0, 561);
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Location = new System.Drawing.Point(0, 539);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(200, 39);
+            this.button2.Size = new System.Drawing.Size(200, 58);
             this.button2.TabIndex = 1;
-            this.button2.Text = "Ir a la página";
+            this.button2.Text = "Ir a la web";
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // panel4
+            // pnlMenuHorarios
             // 
-            this.panel4.AutoScroll = true;
-            this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel4.Controls.Add(this.groupBox1);
-            this.panel4.Controls.Add(this.button3);
-            this.panel4.Controls.Add(this.button1);
-            this.panel4.Controls.Add(this.label2);
-            this.panel4.Location = new System.Drawing.Point(4, 7);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(193, 244);
-            this.panel4.TabIndex = 2;
+            this.pnlMenuHorarios.AutoScroll = true;
+            this.pnlMenuHorarios.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlMenuHorarios.Controls.Add(this.groupBoxUltimosHorarios);
+            this.pnlMenuHorarios.Controls.Add(this.button3);
+            this.pnlMenuHorarios.Controls.Add(this.button1);
+            this.pnlMenuHorarios.Controls.Add(this.label2);
+            this.pnlMenuHorarios.Location = new System.Drawing.Point(4, 7);
+            this.pnlMenuHorarios.Name = "pnlMenuHorarios";
+            this.pnlMenuHorarios.Size = new System.Drawing.Size(193, 260);
+            this.pnlMenuHorarios.TabIndex = 2;
+            this.pnlMenuHorarios.MouseEnter += new System.EventHandler(this.pnlMenuHorarios_MouseEnter);
             // 
-            // label6
+            // groupBoxUltimosHorarios
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(11, 93);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(50, 13);
-            this.label6.TabIndex = 10;
-            this.label6.Text = "Horario 3";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(11, 55);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(50, 13);
-            this.label5.TabIndex = 9;
-            this.label5.Text = "Horario 2";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(11, 22);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(50, 13);
-            this.label4.TabIndex = 8;
-            this.label4.Text = "Horario 1";
-            this.label4.Click += new System.EventHandler(this.label4_Click);
+            this.groupBoxUltimosHorarios.AutoSize = true;
+            this.groupBoxUltimosHorarios.Location = new System.Drawing.Point(11, 109);
+            this.groupBoxUltimosHorarios.Name = "groupBoxUltimosHorarios";
+            this.groupBoxUltimosHorarios.Size = new System.Drawing.Size(157, 137);
+            this.groupBoxUltimosHorarios.TabIndex = 10;
+            this.groupBoxUltimosHorarios.TabStop = false;
+            this.groupBoxUltimosHorarios.Text = "Últimos Horarios";
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(24, 64);
+            this.button3.Location = new System.Drawing.Point(11, 65);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(118, 23);
             this.button3.TabIndex = 2;
@@ -232,7 +220,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(24, 35);
+            this.button1.Location = new System.Drawing.Point(11, 36);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(118, 23);
             this.button1.TabIndex = 1;
@@ -253,11 +241,13 @@
             // iconNotifClient
             // 
             this.iconNotifClient.BalloonTipIcon = System.Windows.Forms.ToolTipIcon.Info;
-            this.iconNotifClient.BalloonTipText = "Taimer horario";
+            this.iconNotifClient.BalloonTipText = "Minimizado en el area de notificación. Presione con el segundo boton para mostrar" +
+                " más opciones.";
             this.iconNotifClient.ContextMenuStrip = this.ctxtMenuTray;
             this.iconNotifClient.Icon = ((System.Drawing.Icon)(resources.GetObject("iconNotifClient.Icon")));
-            this.iconNotifClient.Text = "notifyIcon1";
+            this.iconNotifClient.Text = "Taimer";
             this.iconNotifClient.Visible = true;
+            this.iconNotifClient.BalloonTipClicked += new System.EventHandler(this.iconNotifClient_MouseDoubleClick);
             this.iconNotifClient.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.iconNotifClient_MouseDoubleClick);
             // 
             // ctxtMenuTray
@@ -496,8 +486,9 @@
             // acercaDeToolStripMenuItem
             // 
             this.acercaDeToolStripMenuItem.Name = "acercaDeToolStripMenuItem";
-            this.acercaDeToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
+            this.acercaDeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.acercaDeToolStripMenuItem.Text = "Acerca de...";
+            this.acercaDeToolStripMenuItem.Click += new System.EventHandler(this.acercaDeToolStripMenuItem_Click);
             // 
             // label1
             // 
@@ -542,43 +533,43 @@
             this.mnUserOption.BackColor = System.Drawing.Color.Transparent;
             this.mnUserOption.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.mnUserOption.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.martinMolaToolStripMenuItem});
+            this.userTlSMnItem});
             this.mnUserOption.Location = new System.Drawing.Point(0, 0);
             this.mnUserOption.Name = "mnUserOption";
             this.mnUserOption.Size = new System.Drawing.Size(111, 24);
             this.mnUserOption.TabIndex = 3;
             this.mnUserOption.Text = "menuStrip1";
             // 
-            // martinMolaToolStripMenuItem
+            // userTlSMnItem
             // 
-            this.martinMolaToolStripMenuItem.BackColor = System.Drawing.Color.Transparent;
-            this.martinMolaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.userTlSMnItem.BackColor = System.Drawing.Color.Transparent;
+            this.userTlSMnItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.perfilToolStripMenuItem,
             this.cerrarSesiónToolStripMenuItem,
             this.salirToolStripMenuItem1});
-            this.martinMolaToolStripMenuItem.ForeColor = System.Drawing.Color.Black;
-            this.martinMolaToolStripMenuItem.Name = "martinMolaToolStripMenuItem";
-            this.martinMolaToolStripMenuItem.Size = new System.Drawing.Size(84, 20);
-            this.martinMolaToolStripMenuItem.Text = "Martin mola";
+            this.userTlSMnItem.ForeColor = System.Drawing.Color.Black;
+            this.userTlSMnItem.Name = "userTlSMnItem";
+            this.userTlSMnItem.Size = new System.Drawing.Size(64, 20);
+            this.userTlSMnItem.Text = "Problem";
             // 
             // perfilToolStripMenuItem
             // 
             this.perfilToolStripMenuItem.Name = "perfilToolStripMenuItem";
-            this.perfilToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
+            this.perfilToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.perfilToolStripMenuItem.Text = "Perfil";
             this.perfilToolStripMenuItem.Click += new System.EventHandler(this.perfilToolStripMenuItem_Click);
             // 
             // cerrarSesiónToolStripMenuItem
             // 
             this.cerrarSesiónToolStripMenuItem.Name = "cerrarSesiónToolStripMenuItem";
-            this.cerrarSesiónToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
+            this.cerrarSesiónToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.cerrarSesiónToolStripMenuItem.Text = "Cerrar sesión";
             this.cerrarSesiónToolStripMenuItem.Click += new System.EventHandler(this.toolStripCloseSesion_Click);
             // 
             // salirToolStripMenuItem1
             // 
             this.salirToolStripMenuItem1.Name = "salirToolStripMenuItem1";
-            this.salirToolStripMenuItem1.Size = new System.Drawing.Size(142, 22);
+            this.salirToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.salirToolStripMenuItem1.Text = "Salir";
             this.salirToolStripMenuItem1.Click += new System.EventHandler(this.toolStripExit_Click);
             // 
@@ -614,38 +605,48 @@
             // btClose
             // 
             this.btClose.BackColor = System.Drawing.Color.Transparent;
+            this.btClose.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btClose.FlatAppearance.BorderSize = 0;
             this.btClose.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.btClose.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btClose.Font = new System.Drawing.Font("Arial Black", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btClose.ForeColor = System.Drawing.Color.Maroon;
+            this.btClose.Image = global::TaimerGUI.Properties.Resources.tbCloseOff;
             this.btClose.Location = new System.Drawing.Point(70, -3);
             this.btClose.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btClose.Name = "btClose";
             this.btClose.Size = new System.Drawing.Size(31, 27);
             this.btClose.TabIndex = 9;
-            this.btClose.Text = "X";
             this.btClose.UseVisualStyleBackColor = false;
             this.btClose.Click += new System.EventHandler(this.btClose_Click);
+            this.btClose.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btClose_MouseDown);
+            this.btClose.MouseEnter += new System.EventHandler(this.btClose_MouseEnter);
+            this.btClose.MouseLeave += new System.EventHandler(this.btClose_MouseLeave);
+            this.btClose.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btClose_MouseUp);
             // 
             // btMinimize
             // 
             this.btMinimize.BackColor = System.Drawing.Color.Transparent;
+            this.btMinimize.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btMinimize.FlatAppearance.BorderSize = 0;
             this.btMinimize.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.btMinimize.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btMinimize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btMinimize.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btMinimize.ForeColor = System.Drawing.Color.Maroon;
+            this.btMinimize.Image = global::TaimerGUI.Properties.Resources.tbMinimizeOff;
             this.btMinimize.Location = new System.Drawing.Point(7, -6);
             this.btMinimize.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btMinimize.Name = "btMinimize";
             this.btMinimize.Size = new System.Drawing.Size(31, 27);
             this.btMinimize.TabIndex = 10;
-            this.btMinimize.Text = "__";
             this.btMinimize.UseVisualStyleBackColor = false;
             this.btMinimize.Click += new System.EventHandler(this.btMinimize_Click);
+            this.btMinimize.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btMinimize_MouseDown);
+            this.btMinimize.MouseEnter += new System.EventHandler(this.btMinimize_MouseEnter);
+            this.btMinimize.MouseLeave += new System.EventHandler(this.btMinimize_MouseLeave);
+            this.btMinimize.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btMinimize_MouseUp);
             // 
             // pnlResize
             // 
@@ -660,47 +661,6 @@
             this.pnlResize.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlResize_MouseDown);
             this.pnlResize.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pnlResize_MouseMove);
             this.pnlResize.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pnlResize_MouseUp);
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Location = new System.Drawing.Point(7, 106);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(157, 151);
-            this.groupBox1.TabIndex = 10;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Últimos Horarios";
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.label8);
-            this.groupBox2.Controls.Add(this.label9);
-            this.groupBox2.Location = new System.Drawing.Point(11, 142);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(157, 151);
-            this.groupBox2.TabIndex = 11;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Últimas Actividades";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(11, 22);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(36, 13);
-            this.label8.TabIndex = 8;
-            this.label8.Text = "DPAA";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(11, 55);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(60, 13);
-            this.label9.TabIndex = 9;
-            this.label9.Text = "Actividad 2";
             // 
             // ClientForm
             // 
@@ -719,10 +679,10 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ClientForm_FormClosing);
             this.Load += new System.EventHandler(this.ClientForm_Load);
             this.pnlMenu.ResumeLayout(false);
-            this.panel5.ResumeLayout(false);
-            this.panel5.PerformLayout();
-            this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
+            this.pnlMenuActivi.ResumeLayout(false);
+            this.pnlMenuActivi.PerformLayout();
+            this.pnlMenuHorarios.ResumeLayout(false);
+            this.pnlMenuHorarios.PerformLayout();
             this.ctxtMenuTray.ResumeLayout(false);
             this.pnlTittle.ResumeLayout(false);
             this.pnlTittle.PerformLayout();
@@ -736,10 +696,6 @@
             this.mnUserOption.ResumeLayout(false);
             this.mnUserOption.PerformLayout();
             this.panel3.ResumeLayout(false);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -764,7 +720,7 @@
         private System.Windows.Forms.ToolStripMenuItem cerrarSesionToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem salirToolStripMenuItem;
         private System.Windows.Forms.MenuStrip mnStUser;
-        private System.Windows.Forms.ToolStripMenuItem martinMolaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem userTlSMnItem;
         private System.Windows.Forms.ToolStripMenuItem perfilToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cerrarSesiónToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem salirToolStripMenuItem1;
@@ -778,11 +734,11 @@
         private System.Windows.Forms.ToolStripMenuItem herramientasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ayudaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem acercaDeToolStripMenuItem;
-        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.Panel pnlMenuActivi;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Panel pnlMenuHorarios;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label2;
@@ -801,13 +757,8 @@
         private System.Windows.Forms.ToolStripMenuItem actiPers2ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cerrarSesionToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem salirToolStripMenuItem2;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.GroupBox groupBoxUltimosHorarios;
+        private System.Windows.Forms.GroupBox groupBoxUltActivi;
 
 
     }

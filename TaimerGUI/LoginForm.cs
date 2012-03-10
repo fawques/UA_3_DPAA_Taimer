@@ -80,7 +80,7 @@ namespace TaimerGUI {
 
                 case 2:     // Es un usuario
                     lbLoginBadUserPass.Visible = false;
-                    ClientForm client = new ClientForm();
+                    ClientForm client = new ClientForm(user);
                     client.Show();
                     this.Hide();
                     break;
@@ -182,7 +182,7 @@ namespace TaimerGUI {
         //Puente para no tardar tanto en abrir la ventana
         private void button1_Click(object sender, EventArgs e)
         {
-            ClientForm client = new ClientForm();
+            ClientForm client = new ClientForm("Tester");
             client.Show();
             this.Hide();
         }
@@ -196,7 +196,7 @@ namespace TaimerGUI {
 
         private void button3_Click(object sender, EventArgs e)
         {
-            ClientForm client = new ClientForm();
+            ClientForm client = new ClientForm("Tester");
             client.Show();
             this.Hide();
             AdminForm admin = new AdminForm();
