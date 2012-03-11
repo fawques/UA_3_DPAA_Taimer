@@ -20,6 +20,12 @@ namespace Taimer {
         public Horario(string nom_, int id_) {
             nom = nom_;
             id = id_;
+
+            for (int i = 0; i < 7; i++)
+            {
+                turnos[i] = new ArrayList();
+            }
+
         }
 
         //Cambiar el nombre
