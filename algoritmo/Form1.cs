@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
@@ -23,12 +24,17 @@ namespace algoritmo
             Horario h = new Horario("prueba", 1);
             if (h.generarHorarioVoraz())
             {
-                foreach (Turno item in h.getTurnos())
+                foreach (ArrayList dia in h.getTurnos())
                 {
-                    texto += item.getNom() + " ";
+                    foreach (Turno item in dia)
+                    {
+                        texto += item.getNom() + " ";
+                    }
                 }
 
                 MessageBox.Show("Los turnos son: " + texto);
+                int puntDias = Horario.puntuarDias(h);
+                MessageBox.Show("Tiene una puntuación según los días de : " + puntDias);
             }
             else
             {
