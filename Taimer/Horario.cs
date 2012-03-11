@@ -67,7 +67,56 @@ namespace Taimer {
             return turnos;
         }
 
-        //Prueba de generar Horarios
+        // Puntuar un horario según el número de días. Puntuará de 0 a 7, añadirá uno por cada día en el que haya turnos.
+        public static int puntuarDias(Horario horario)
+        {
+            int puntuacion = 0;
+            bool[] dias = new bool[7];
+            foreach (Turno item in horario.getTurnos())
+            {
+                switch (item.getDia())
+                {
+                    case 'L': dias[0] = true;
+                        break;
+                    case 'M': dias[1] = true;
+                        break;
+                    case 'X': dias[2] = true;
+                        break;
+                    case 'J': dias[3] = true;
+                        break;
+                    case 'V': dias[4] = true;
+                        break;
+                    case 'S': dias[5] = true;
+                        break;
+                    case 'D': dias[6] = true;
+                        break;
+                }
+
+            }
+
+            for (int i = 0; i < 7; i++)
+            {
+                if (dias[i] == true)
+                    puntuacion++;
+            }
+
+            return puntuacion;
+        }
+
+        // Puntuar un horario según el número de horas de hueco. Añadirá uno por cada hora en la que haya huecos entre turnos.
+        public static int puntuarHorasHueco(Horario horario)
+        {
+            int puntuacion = 0;
+
+            foreach (Turno item in horario.getTurnos())
+            {
+                
+            }
+
+            return puntuacion;
+        }
+
+        //Generación de un Horario de forma Voraz
         public bool generarHorarioVoraz() {
 
             Turno t1 = new Turno(new Hora(10, 30), new Hora(12, 30), 'L', "turno1", "L04", 1);
@@ -147,5 +196,12 @@ namespace Taimer {
 
             return true;
         }
+
+        public bool generarHorarioBT()
+        {
+
+            return true;
+        }
+
     }
 }
