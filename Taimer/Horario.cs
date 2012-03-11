@@ -90,13 +90,13 @@ namespace Taimer
                         (item.getHoraI() >= turno.getHoraI() && item.getHoraI() < turno.getHoraF()) ||
                         (turno.getHoraI() >= item.getHoraI() && turno.getHoraI() < item.getHoraF()))
                     {
-                        Exception ex = new Exception("Turnos solapados");
+                        NotSupportedException ex = new NotSupportedException("Turnos solapados");
                         throw ex;
                     }
                 }
             }
         }
-
+        
         //Obtener nombre
         public string getNom()
         {
@@ -194,7 +194,7 @@ namespace Taimer
                     {
                         AddTurno(item);
                     }
-                    catch (Exception)
+                    catch (NotSupportedException)
                     {
                         return false;
                     }
@@ -214,7 +214,7 @@ namespace Taimer
                         AddTurno(item);
                         asignado = true;
                     }
-                    catch (Exception)
+                    catch (NotSupportedException)
                     {
                         asignado = false;
                     }
