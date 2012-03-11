@@ -11,7 +11,8 @@ namespace Taimer {
 
         private string nom;
         private int id;
-        private ArrayList turnos = new ArrayList();
+        private ArrayList[] turnos = new ArrayList[7];
+        
 
         //PARTE PUBLICA
 
@@ -33,7 +34,23 @@ namespace Taimer {
 
         //Añadir turnos
         public void AddTurno(Turno turno) {
-            turnos.Add(turno);
+            switch (turno.getDia())
+            {
+                case 'L': turnos[0].Add(turno);
+                    break;
+                case 'M': turnos[1].Add(turno);
+                    break;
+                case 'X': turnos[2].Add(turno);
+                    break;
+                case 'J': turnos[3].Add(turno);
+                    break;
+                case 'V': turnos[4].Add(turno);
+                    break;
+                case 'S': turnos[5].Add(turno);
+                    break;
+                case 'D': turnos[6].Add(turno);
+                    break;
+            }
         }
 
         //Obtener nombre
@@ -47,7 +64,7 @@ namespace Taimer {
         }
 
         //Obtener ArrayList de turnos
-        public ArrayList getTurnos() {
+        public ArrayList[] getTurnos() {
             return turnos;
         }
 
