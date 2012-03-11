@@ -79,6 +79,12 @@
     <Compile Include="ABienvenida.designer.cs">
       <DependentUpon>ABienvenida.cs</DependentUpon>
     </Compile>
+    <Compile Include="About.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="About.Designer.cs">
+      <DependentUpon>About.cs</DependentUpon>
+    </Compile>
     <Compile Include="AdminForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -184,6 +190,9 @@
     <EmbeddedResource Include="ABienvenida.resx">
       <DependentUpon>ABienvenida.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="About.resx">
+      <DependentUpon>About.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AdminForm.resx">
       <DependentUpon>AdminForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -275,6 +284,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\resize2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Taimer\Taimer.csproj">
+      <Project>{329AECE9-732D-4307-AF83-AFDAE3E04AA4}</Project>
+      <Name>Taimer</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

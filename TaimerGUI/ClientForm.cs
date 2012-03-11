@@ -14,6 +14,8 @@ namespace TaimerGUI {
         bool exitOfAplication = false;
         bool closeForm = false;
 
+        Taimer.User usuario;
+
         ClientBienvenida formWelcome;
         ClientHorHome formHorHome;
         ClientHorVer formHorDetails;
@@ -26,6 +28,9 @@ namespace TaimerGUI {
         
         private void ClientForm_Load(object sender, EventArgs e)
         {
+            this.WindowState = FormWindowState.Minimized;
+            this.WindowState = FormWindowState.Normal;
+
             //////////////// MDI //////////////////////////
 
             //Esto para el color de fondo
@@ -83,6 +88,43 @@ namespace TaimerGUI {
             this.FormBorderStyle = FormBorderStyle.None;
             this.DoubleBuffered = true;
             this.SetStyle(ControlStyles.ResizeRedraw, true);
+
+            pnlMenuHorarios.Focus();
+            loadLastHorarios();
+            pnlMenuActivi.Focus();
+            loadLastActividades();
+        }
+
+        private void loadLastHorarios()
+        {
+            int posY = 20;
+            for (int i = 0; i < 10; i++)
+            {
+                Label auxlbl = new Label();
+                auxlbl.Text = "Horario " + i;
+                auxlbl.Location = new Point(25, posY);
+                auxlbl.Cursor = Cursors.Hand;
+                auxlbl.MouseEnter += new EventHandler(label_MouseEnter);
+                auxlbl.MouseLeave += new EventHandler(label_MouseLeave);
+                posY += 25;
+                groupBoxUltimosHorarios.Controls.Add(auxlbl);
+            }
+        }
+
+        private void loadLastActividades()
+        {
+            int posY = 20;
+            for (int i = 0; i < 10; i++)
+            {
+                Label auxlbl = new Label();
+                auxlbl.Text = "Horario " + i;
+                auxlbl.Location = new Point(25, posY);
+                auxlbl.Cursor = Cursors.Hand;
+                auxlbl.MouseEnter += new EventHandler(label_MouseEnter);
+                auxlbl.MouseLeave += new EventHandler(label_MouseLeave);
+                posY += 25;
+                groupBoxUltActivi.Controls.Add(auxlbl);
+            }
         }
 
         //////////////// MDI //////////////////////////
@@ -188,11 +230,15 @@ namespace TaimerGUI {
             }
         }
         /*     ---------------     */
-        
 
 
-        public ClientForm() {
+        /** CONSTRUCTOR **/
+        public ClientForm(string usr)
+        {
             InitializeComponent();
+            //TODO: Hay que hacer esto como se tenga que hacer
+            usuario = new Taimer.User(usr, usr, usr, usr, usr, usr, 1);
+            userTlSMnItem.Text = usuario.getNom();
 
             //Redondeado de bordes
             shape = RoundedRectangle.Create(0, 0, this.Width, this.Height, 10);
@@ -229,28 +275,36 @@ namespace TaimerGUI {
 
         private void toolStripExit_Click(object sender, EventArgs e)
         {
-            exitOfAplication = true;
-            Close();
-        }
-
-        private void toolStripCloseSesion_Click(object sender, EventArgs e)
-        {
-            closeForm = true;
-            Program.loginForm.Show();
-            Close();
-        }
-
-        private void btClose_Click(object sender, EventArgs e)
-        {
             if (MessageBox.Show("¿Seguro que desea salir?",
                 "¿Salir?",
-                MessageBoxButtons.OKCancel,
+                MessageBoxButtons.YesNo,
                 MessageBoxIcon.Question,
-                MessageBoxDefaultButton.Button2) == DialogResult.OK)
+                MessageBoxDefaultButton.Button2) == DialogResult.Yes)
             {
                 exitOfAplication = true;
                 Close();
             }
+        }
+
+        private void toolStripCloseSesion_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("¿Seguro que desea cerrar sesión?",
+                "¿Cerrar sesión?",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question,
+                MessageBoxDefaultButton.Button2) == DialogResult.Yes)
+            {
+                closeForm = true;
+                Program.loginForm.Show();
+                Close();
+            }
+           
+        }
+
+        private void btClose_Click(object sender, EventArgs e)
+        {
+            iconNotifClient.ShowBalloonTip(0);
+            Close();
         }
 
         private void btMinimize_Click(object sender, EventArgs e)
@@ -353,8 +407,78 @@ namespace TaimerGUI {
 
        
 
+        /**   Cambio de imagen botones **/
+        private void btMinimize_MouseEnter(object sender, EventArgs e)
+        {
+            btMinimize.Image = TaimerGUI.Properties.Resources.tbMinimizeOn;
+        }
 
-        
+        private void btMinimize_MouseLeave(object sender, EventArgs e)
+        {
+            btMinimize.Image = TaimerGUI.Properties.Resources.tbMinimizeOff;
+        }
+
+        private void btMinimize_MouseDown(object sender, MouseEventArgs e)
+        {
+            btMinimize.Image = TaimerGUI.Properties.Resources.tbMinimizeClick;
+        }
+
+        private void btMinimize_MouseUp(object sender, MouseEventArgs e)
+        {
+            btMinimize.Image = TaimerGUI.Properties.Resources.tbMinimizeOn;
+        }
+
+        private void btClose_MouseEnter(object sender, EventArgs e)
+        {
+            btClose.Image = TaimerGUI.Properties.Resources.tbCloseOn;
+        }
+
+        private void btClose_MouseLeave(object sender, EventArgs e)
+        {
+            btClose.Image = TaimerGUI.Properties.Resources.tbCloseOff;
+        }
+
+        private void btClose_MouseDown(object sender, MouseEventArgs e)
+        {
+            btClose.Image = TaimerGUI.Properties.Resources.tbCloseClick;
+        }
+
+        private void btClose_MouseUp(object sender, MouseEventArgs e)
+        {
+            btClose.Image = TaimerGUI.Properties.Resources.tbCloseOn;
+        }
+
+        private void label_MouseEnter(object sender, EventArgs e)
+        {
+            ((Label)sender).BackColor = Color.White;
+        }
+        private void label_MouseLeave(object sender, EventArgs e)
+        {
+            ((Label)sender).BackColor = Color.Transparent;
+        }
+
+        private void pnlMenuHorarios_MouseEnter(object sender, EventArgs e)
+        {
+            pnlMenuHorarios.Focus();
+        }
+
+        private void pnlMenuActivi_MouseEnter(object sender, EventArgs e)
+        {
+            pnlMenuActivi.Focus();
+        }
+
+        private void iconNotifClient_MouseDoubleClick(object sender, EventArgs e)
+        {
+            Show();
+            WindowState = FormWindowState.Normal;
+        }
+
+        private void acercaDeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            About ab = new About();
+            ab.ShowDialog();
+            ab.Dispose();
+        }
 
     }
 }
