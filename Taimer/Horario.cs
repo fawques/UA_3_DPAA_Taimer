@@ -11,7 +11,7 @@ namespace Taimer {
 
         private string nom;
         private int id;
-        private ArrayList[] turnos = new ArrayList[7];
+        private ArrayList[] arrayTurnos = new ArrayList[7];
         
 
         //PARTE PUBLICA
@@ -23,7 +23,7 @@ namespace Taimer {
 
             for (int i = 0; i < 7; i++)
             {
-                turnos[i] = new ArrayList();
+                arrayTurnos[i] = new ArrayList();
             }
 
         }
@@ -42,19 +42,19 @@ namespace Taimer {
         public void AddTurno(Turno turno) {
             switch (turno.getDia())
             {
-                case 'L': turnos[0].Add(turno);
+                case 'L': arrayTurnos[0].Add(turno);
                     break;
-                case 'M': turnos[1].Add(turno);
+                case 'M': arrayTurnos[1].Add(turno);
                     break;
-                case 'X': turnos[2].Add(turno);
+                case 'X': arrayTurnos[2].Add(turno);
                     break;
-                case 'J': turnos[3].Add(turno);
+                case 'J': arrayTurnos[3].Add(turno);
                     break;
-                case 'V': turnos[4].Add(turno);
+                case 'V': arrayTurnos[4].Add(turno);
                     break;
-                case 'S': turnos[5].Add(turno);
+                case 'S': arrayTurnos[5].Add(turno);
                     break;
-                case 'D': turnos[6].Add(turno);
+                case 'D': arrayTurnos[6].Add(turno);
                     break;
             }
         }
@@ -71,7 +71,7 @@ namespace Taimer {
 
         //Obtener ArrayList de turnos
         public ArrayList[] getTurnos() {
-            return turnos;
+            return arrayTurnos;
         }
 
         //Prueba de generar Horarios
