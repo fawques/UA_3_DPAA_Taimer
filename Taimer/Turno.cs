@@ -1,15 +1,56 @@
-﻿using System;
+﻿// Este archivo define las clases Hora y Turno.
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
 namespace Taimer {
     public class Hora {
-        public int hora;
-        public int min;
+
+        // PARTE PRIVADA ******************************************************************
+        private int hora;
+        private int min;
+
+
+        // PARTE PÚBLICA ******************************************************************
+
+        // Constructor
         public Hora(int hora_, int min_) {
-            hora = hora_;
-            min = min_;
+            setHora(hora_);
+            setMin(min_);
+        }
+
+        // Devolver hora
+        public int getHora(){
+            return hora;
+        }
+
+        // Devolver minutos
+        public int getMin(){
+            return min;
+        }
+
+        // Ajustar hora
+        public void setHora(int hora_){
+            if (hora_ >= 0 && hora_ <= 23)
+                hora = hora_;
+            else
+                throw new ArgumentOutOfRangeException();    // ¿Error?
+        }
+
+        // Ajustar minutos
+        public void setMin(int min_){
+            if (min_ >= 0 && min_ <= 59)
+                min = min_;
+            else
+                throw new ArgumentOutOfRangeException();    // ¿Error?
+        }
+
+        // Ajustar hora y minutos
+        public void setTiempo(int hora_, int min_){
+            setHora(hora_);
+            setMin(min_);
         }
         public Hora(string hora_) {
             string[] vect = hora_.Split(':');
@@ -57,98 +98,122 @@ namespace Taimer {
         }
     }
 
-    public class Turno {
-        
-        //PARTE PRIVADA
 
-        private Hora horaI;
-        private Hora horaF;
-        char dia;
-        string nom;
-        string ubic;
-        int codProf;
+    class Turno {
 
-        //PARTE PUBLICA
+        // PARTE PRIVADA ******************************************************************
 
-        //Constructor
+        private Hora horaInicio;
+        private Hora horaFin;
+        int diasemana;                    // Día de la semana: 1 es lunes, 7 es domingo
+        string nombre;
+        string ubicacion;
+        int codigoProfesor;
+
+        // PARTE PÚBLICA ******************************************************************
+
+        // Constructor
         public Turno(Hora horaI_, Hora horaF_, char dia_, string nom_, string ubic_, int codProf_) {
-            horaI = horaI_;
-            horaF = horaF_;
-            dia = dia_;
-            nom = nom_;
-            ubic = ubic_;
-            codProf = codProf_;
+            horaInicio = horaI_;
+            horaFin = horaF_;
+            diasemana = dia_;
+            nombre = nom_;
+            ubicacion = ubic_;
+            codigoProfesor = codProf_;
         }
 
-        //Cambiar Hora Inicio
-        public void setHoraI(Hora horaI_) {
-            horaI = horaI_;
+
+
+
+        // Cambiar Hora Inicio
+        public void setHoraInicio(int hora, int min) {
+            horaInicio = new Hora(hora, min);
         }
 
-        //Cambiar Hora Inicio
-        public void setHoraI(int hora, int min) {
-            horaI = new Hora(hora, min);
+        // Obtener Hora de inicio
+        public Hora getHoraInicio()
+        {
+            return horaInicio;
         }
 
-        //Cambiar Hora Fin
-        public void setHoraF(Hora horaF_) {
-            horaF = horaF_;
+
+
+
+        // Cambiar Hora Fin
+        public void setHoraFin(int hora, int min) {
+            horaFin = new Hora(hora, min);
         }
 
-        //Cambiar Hora Fin
-        public void setHoraF(int hora, int min) {
-            horaF = new Hora(hora, min);
+        // Obtener Hora de fin
+        public Hora getHoraFin()
+        {
+            return horaFin;
         }
 
-        //Cambiar día de la semana
-        public void setDia(char dia_) {
-            dia = dia_;
+
+
+
+        // Cambiar día de la semana
+        public void setDia(int dia_) {
+            if(dia_ >= 1 && dia_ <= 7)
+                diasemana = dia_;
+            else
+                throw new ArgumentOutOfRangeException();    // ¿Error?
         }
 
-        //Cambiar nombre
-        public void setNom(string nom_) {
-            nom = nom_;
+        // Obtener dia de la semana
+        public int getDia() {
+            return diasemana;
         }
 
-        //Cambiar ubicacion
-        public void setUbic(string ubic_) {
-            ubic = ubic_;
+
+
+
+        // Cambiar nombre
+        public void setNombre(string nom_) {
+            nombre = nom_;
         }
+
+        // Obtener nombre
+        public string getNombre()
+        {
+            return nombre;
+        }
+
+
+
+
+        // Cambiar ubicacion
+        public void setUbicacion(string ubic_) {
+            ubicacion = ubic_;
+        }
+
+        // Obtener ubicación
+        public string getUbicacion() {
+            return ubicacion;
+        }
+
+
+
 
         //Cambiar Codigo del profesor
-        public void setCodProf(int codProf_) {
-            codProf = codProf_;
-        }
-
-        //Obtener Hora de inicio
-        public Hora getHoraI() {
-            return horaI;
-        }
-
-        //Obtener Hora de fin
-        public Hora getHoraF() {
-            return horaF;
-        }
-
-        //Obtener dia de la semana
-        public char getDia() {
-            return dia;
-        }
-
-        //Obtener nombre
-        public string getNom() {
-            return nom;
+        public void setCodigoProfesor(int codProf_) {
+            codigoProfesor = codProf_;
         }
 
         //Obtener codigo del profesor
-        public int getCodProf() {
-            return codProf;
+        public int getCodigoProfesor() {
+            return codigoProfesor;
         }
 
-        //Obtener nombre del profesor
-        public string getNomProf() {    //Cuando este la base de datos se accederá
-            string nomProf = "";        // y con el código obtendremos el nombre
-            return nomProf;
+
+
+
+        // **** EXTRAS (En construcción) ****
+
+        // Obtener nombre del profesor
+        public string getNombreProfesor() {
+            return "";
         }
     }
 }

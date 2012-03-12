@@ -7,59 +7,94 @@ using System.Text;
 namespace Taimer {
     public class Titulacion {
 
-        //PARTE PRIVADA
-        
-        private string nom;
-        private string cod;
-        private ArrayList opt = new ArrayList();
-        private ArrayList cursos = new ArrayList();
+        // PARTE PRIVADA
 
-        //PARTE PUBLICA
+        private string codigo;                                              // Clave principal
+        private string nombre;
+        private List<string> actividadesAcademicas = new List<string>();    // Una titulación tiene (0,N) act. académicas
+        private List<string> usuarios = new List<string>();                 // Una titulación tiene (0,N) usuarios
 
-        //Constructor
-        public Titulacion(string nom_, string cod_) {
-            nom = nom_;
-            cod =  cod_;
+
+        // PARTE PUBLICA
+
+        // Constructor básico
+        public Titulacion(string nom_, string cod_)
+        {
+            nombre = nom_;
+            codigo = cod_;
         }
 
-        //Cambiar nombre
-        public void setNom(string nom_) {
-            nom = nom_;
+
+        // Constructor avanzado
+        public Titulacion(string nom_, string cod_, List<string> actAcam_, List<string> usu_) {
+            nombre = nom_;
+            codigo = cod_;
+            actividadesAcademicas = actAcam_;
+            usuarios = usu_;
         }
 
-        //Cambiar codigo
-        public void setCod(string cod_) {
-            cod = cod_;
+
+        // Ajustar/obtener nombre
+        public string Nombre
+        {
+            get { return nombre; }
+            set { nombre = value; }
         }
 
-        //Añadir optativa
-        public void AddOpt(Actividad_a activ) {
-            opt.Add(activ);
+
+        // Ajustar/obtener código
+        public string Codigo
+        {
+            get { return codigo; }
+            set { codigo = value; }
         }
 
-        //Añadir cursos
-        public void AddCursos(Curso curso) {
-            cursos.Add(curso);
+
+        // Añadir actividad académica a la lista
+        public void AddActividadAcademica(string activ)
+        {
+            actividadesAcademicas.Add(activ);
         }
 
-        //Obtener nombre
-        public string getNom() {
-            return nom;
+
+        // Borrar actividad académica de la lista (a partir de su código)
+        // Devuelve TRUE si consigue encontrarla y borrarla, FALSE en caso contrario.
+        public bool BorraActividadAcademica(string codigobuscado)
+        {
+            foreach (string act in actividadesAcademicas)
+            {
+                if (act == codigobuscado)
+                {
+                    actividadesAcademicas.Remove(act);
+                    return true;
+                }
+            }
+
+            return false;
         }
 
-        //Obtener codigo
-        public string getCod() {
-            return cod;
+
+        // Añadir usuario a la lista
+        public void AddUsuario(string usu)
+        {
+            usuarios.Add(usu);
         }
 
-        //Obtener ArrayList de actividades academicas
-        public ArrayList getOpt() {
-            return opt;
-        }
 
-        //Obtener ArrayList de cursos
-        public ArrayList getCursos() {
-            return cursos;
+        // Borrar usuario de la lista (a partir de su código)
+        // Devuelve TRUE si consigue encontrarla y borrarla, FALSE en caso contrario.
+        public bool BorraUsuario(string codigobuscado)
+        {
+            foreach (string usu in usuarios)
+            {
+                if (usu == codigobuscado)
+                {
+                    usuarios.Remove(usu);
+                    return true;
+                }
+            }
+
+            return false;
         }
     }
 }

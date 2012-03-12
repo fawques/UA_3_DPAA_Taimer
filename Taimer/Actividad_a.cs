@@ -7,61 +7,56 @@ using System.Text;
 
 namespace Taimer {
     public class Actividad_a : Actividad {
-        
-        //PARTE PRIVADA
-       
-        private int codCoord;
-        private ArrayList teoria = new ArrayList();     //será de tipo turno
-        private ArrayList practica = new ArrayList();   //será de tipo turno
 
-        //PARTE PUBLICA
+        // PARTE PRIVADA ******************************************************************
 
-        //NO LO PONGO POR SEGURIDAD DEL LOS ARRAYLIST
-        /*//Constructor
-        public Actividad_a(string nom_, string desc_, int cod_, int codCoord_, ArrayList teoria_, ArrayList practica_) 
+        // (Nombre, descripción y código vienen de la clase Actividad)
+
+        private int codCoord;                                           // Código del coordinador de la asignatura
+
+        private List<string> turnos = new List<string>();
+
+
+        // PARTE PÚBLICA ******************************************************************
+
+        // Constructor
+        public Actividad_a(string nom_, string desc_, int cod_, int codCoord_, List<string> turnos_)
             : base(nom_, desc_, cod_) {
 
             codCoord = codCoord_;
-            teoria = teoria_;
-            practica = practica_;
-        }*/ 
-
-        //Constructor
-        public Actividad_a(string nom_, string desc_, int cod_, int codCoord_)
-            : base(nom_, desc_, cod_) {
-
-            codCoord = codCoord_;
+            turnos = turnos_;
         }
         
-        //Cambia el codigo del coordinador
-        public void setCodCoord(int codCoord_) {
-            codCoord = codCoord_;
+
+        // Cambiar/obtener código del coordinador
+        public int CodCoord
+        {
+            get { return codCoord; }
+            set { codCoord = value; }
         }
 
-        //Añade un turno de teoria
-        public void AddTurnoTeoria(Turno turno) {
-            teoria.Add(turno);
+
+        // Añadir turno a la lista
+        public void AddTurno(string tur)
+        {
+            turnos.Add(tur);
         }
 
-        //Añade un turno de practica
-        public void AddTurnoPractica(Turno turno) {
-            practica.Add(turno);
-        }
 
-        //Obtener el codigo del coordinador
-        public int getCodCoord() {
-            return codCoord;
-        }
+        // Borrar turno de la lista (a partir de su código)
+        // Devuelve TRUE si consigue encontrarla y borrarla, FALSE en caso contrario.
+        public bool BorraTurno(string codigobuscado)
+        {
+            foreach (string tur in turnos)
+            {
+                if (tur == codigobuscado)
+                {
+                    turnos.Remove(tur);
+                    return true;
+                }
+            }
 
-        //Obtener el ArrayList de teoria
-        public ArrayList getTurnosTeoria() {
-            return teoria;
+            return false;
         }
-
-        //Obtener el ArrayList de practica
-        public ArrayList getTurnosPractica() {
-            return practica;
-        }
-
     }
 }

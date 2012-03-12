@@ -234,8 +234,8 @@ namespace TaimerGUI {
         {
             InitializeComponent();
             //TODO: Hay que hacer esto como se tenga que hacer
-            usuario = new Taimer.User(usr, usr, usr, usr, usr, usr, 1);
-            userTlSMnItem.Text = usuario.getNom();
+            Taimer.User usuario = new Taimer.User(usr, usr, usr, usr, usr, 1);
+            userTlSMnItem.Text = usuario.Nombre;
 
             //Redondeado de bordes
             shape = RoundedRectangle.Create(0, 0, this.Width, this.Height, 10);

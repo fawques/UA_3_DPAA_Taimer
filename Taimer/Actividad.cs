@@ -4,51 +4,46 @@ using System.Linq;
 using System.Text;
 
 namespace Taimer {
-    public abstract class Actividad {
-        // PARTE PRIVADA
+    abstract public class Actividad {
 
-        private string nom;     // Nombre
-        private string desc;    // Descripción
-        private int cod;        // Código
+        // PARTE PRIVADA ******************************************************************
+
+        private int codigo;                                     // Clave principal
+        private string nombre;
+        private string descripcion;
 
 
-        //PARTE PUBLICA
+        // PARTE PÚBLICA ******************************************************************
 
-        //Constructor
+        // Constructor
         public Actividad(string nom_, string desc_, int cod_) {
-            nom = nom_;
-            desc = desc_;
-            cod = cod_;
+            nombre = nom_;
+            descripcion = desc_;
+            codigo = cod_;
         }
 
-        // Cambiar nombre
-        public void setNom(string nom_) {
-            nom = nom_;
+
+        // Cambiar/obtener nombre
+        public string Nombre
+        {
+            get { return nombre; }
+            set { nombre = value; }
         }
 
-        // Cambiar descripción
-        public void setDesc(string desc_) {
-            desc = desc_;
+
+        // Cambiar/obtener descripción
+        public string Descripcion
+        {
+            get { return descripcion; }
+            set { descripcion = value; }
         }
 
-        // Cambiar código
-        public void setCod(int cod_) {
-            cod = cod_;
-        }
 
-        // Devolver nombre
-        public string getNom() {
-            return nom;
-        }
-
-        // Devolver descripción
-        public string getDesc() {
-            return desc;
-        }
-
-        // Devolver código
-        public int getCod() {
-            return cod;
+        // Cambiar/obtener código
+        public int Codigo
+        {
+            get { return codigo; }
+            set { codigo = value; }
         }
     }
 }
