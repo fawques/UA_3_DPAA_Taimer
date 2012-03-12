@@ -71,6 +71,17 @@ namespace Taimer {
                 return false;
         }
 
+        public static Hora operator -(Hora h1, Hora h2)
+        {
+            Hora resultado = new Hora(0, 0);
+            if (h1 < h2)
+                throw new Exception("Orden de los operandos invertido");
+            else
+            {
+                throw new NotImplementedException();
+            }
+        }
+
     }
 
     public class Turno {
@@ -82,18 +93,17 @@ namespace Taimer {
         char dia;
         string nom;
         string ubic;
-        int codProf;
 
         //PARTE PUBLICA
 
         //Constructor
-        public Turno(Hora horaI_, Hora horaF_, char dia_, string nom_, string ubic_, int codProf_) {
+        public Turno(Hora horaI_, Hora horaF_, char dia_, string nom_, string ubic_)
+        {
             horaI = horaI_;
             horaF = horaF_;
             dia = dia_;
             nom = nom_;
             ubic = ubic_;
-            codProf = codProf_;
         }
 
         //Cambiar Hora Inicio
