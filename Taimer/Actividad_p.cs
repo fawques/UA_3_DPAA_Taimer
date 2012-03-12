@@ -5,49 +5,64 @@ using System.Linq;
 using System.Text;
 
 namespace Taimer {
-    public class Actividad_p : Actividad {
+    class Actividad_p : Actividad {
 
-        //PARTE PRIVADA
-        
+        // PARTE PRIVADA ******************************************************************
+
+        // (Nombre, descripción y código vienen de la clase Actividad)
+
         private string responsable;
-        private ArrayList turnos = new ArrayList();
 
-        //PARTE PUBLICA
+        private List<string> turnos = new List<string>();
 
-        //NO LO PONGO POR SEGURIDAD DEL LOS ARRAYLIST
-        /*//Constructor
-        public Actividad_p(string nom_, string desc_, int cod_, string responsable_, ArrayList turnos_)
-            : base(nom_, desc_, cod_) {
 
-            responsable = responsable_;
-            turnos = turnos_;         
-        }*/
 
-        //Constructor
+        // PARTE PÚBLICA ******************************************************************
+
+        // Constructor básico (sin lista de turnos)
         public Actividad_p(string nom_, string desc_, int cod_, string responsable_)
+            : base(nom_, desc_, cod_)
+        {
+            responsable = responsable_;
+        }
+
+
+        // Constructor avanzado (con lista de turnos)
+        public Actividad_p(string nom_, string desc_, int cod_, string responsable_, List<string> turnos_)
             : base(nom_, desc_, cod_) {
 
             responsable = responsable_;
+            turnos = turnos_;
         }
 
-        //Cambiar responsable
-        public void setResponsable(string responsable_) {
-            responsable = responsable_;
+
+        // Cambiar/obtener responsable
+        public string Responsable
+        {
+            get { return responsable; }
+            set { responsable = value; }
         }
 
-        //Añadir turno
-        public void AddTurno(Turno turno) {
+
+        // Añadir turno
+        public void AddTurno(string turno) {
             turnos.Add(turno);
         }
 
-        //Obtener responsable
-        public string getResponsable() {
-            return responsable;
-        }
 
-        //Obtener turnos
-        public ArrayList getTurnos() {
-            return turnos;
+        // Borrar turno (a partir de su código, si se encuentra)
+        public bool BorraTurno(string codigobuscado)
+        {
+            foreach (string tur in turnos)
+            {
+                if (tur == codigobuscado)
+                {
+                    turnos.Remove(tur);
+                    return true;
+                }
+            }
+
+            return false;
         }
     }
 }
