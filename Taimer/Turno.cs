@@ -5,12 +5,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-
-// ¡BETA!
-
-
 namespace Taimer {
-    class Hora {
+    public class Hora {
 
         // PARTE PRIVADA ******************************************************************
         private int hora;

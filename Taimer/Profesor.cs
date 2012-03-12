@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Taimer
 {
-    class Profesor
+    public class Profesor
     {
         // PARTE PRIVADA ******************************************************************
         string codigo;              // Clave principal
@@ -13,7 +13,8 @@ namespace Taimer
         string dni;
         string departamento;
         private List<string> actividadesAcademicas = new List<string>();    // Un prof. pertenece a (0,N) act. acad.
-        private List<string> turnos = new List<string>();                   // Un prof. pertenece a (0,N) turnos
+
+        //private List<string> turnos = new List<string>();                 // Un prof. pertenece a (0,N) turnos (ELIMINADO)
 
         // PARTE PÚBLICA ******************************************************************
         
@@ -77,6 +78,10 @@ namespace Taimer
         }
 
 
+
+        // Profesores y turnos (ELIMINADO)
+
+        /*
         // Añadir turno a la lista
         public void AddTurno(string turno)
         {
@@ -99,7 +104,6 @@ namespace Taimer
 
             return false;
         }
-
-
+        */
     }
 }

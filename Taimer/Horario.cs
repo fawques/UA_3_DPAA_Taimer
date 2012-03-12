@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 
 namespace Taimer {
-    class Horario {
+    public class Horario {
 
         // PARTE PRIVADA ******************************************************************
 

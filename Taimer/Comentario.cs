@@ -5,12 +5,12 @@ using System.Text;
 
 namespace Taimer
 {
-    class Comentario
+    public class Comentario
     {
         // PARTE PRIVADA ******************************************************************
 
         int id;                                 // Clave principal
-        string comentario;                      // Comentario en sí (mensaje).
+        string mensaje;                      // Comentario en sí (mensaje).
         string codigoActividadAcademica;        // Un comentario es contenido por (1,1) actividades académicas
         string usuario;                         // Un comentario es escrito por (1,1) usuarios
 
@@ -18,9 +18,9 @@ namespace Taimer
         // PARTE PÚBLICA ******************************************************************
         
         // Constructor
-        public Comentario(int id_, string coment_, string actcod_, string usu_) {
+        public Comentario(int id_, string mens_, string actcod_, string usu_) {
             id = id_;
-            comentario = coment_;
+            mensaje = mens_;
             codigoActividadAcademica = actcod_;
             usuario = usu_;
         }
@@ -35,10 +35,10 @@ namespace Taimer
 
         
         // Ajustar/obtener comentario (mensaje)
-        public string Comentario
+        public string Mensaje
         {
-            get { return comentario; }
-            set { comentario = value; }
+            get { return mensaje; }
+            set { mensaje = value; }
         }
 
 

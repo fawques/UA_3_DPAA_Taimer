@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 
 namespace Taimer {
-    class User {
+    public class User {
 
         // PARTE PRIVADA ******************************************************************
 
