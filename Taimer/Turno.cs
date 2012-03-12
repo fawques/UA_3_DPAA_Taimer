@@ -141,11 +141,6 @@ namespace Taimer {
             ubic = ubic_;
         }
 
-        //Cambiar Codigo del profesor
-        public void setCodProf(int codProf_) {
-            codProf = codProf_;
-        }
-
         //Obtener Hora de inicio
         public Hora getHoraI() {
             return horaI;
@@ -164,11 +159,6 @@ namespace Taimer {
         //Obtener nombre
         public string getNom() {
             return nom;
-        }
-
-        //Obtener codigo del profesor
-        public int getCodProf() {
-            return codProf;
         }
 
         //Obtener nombre del profesor
