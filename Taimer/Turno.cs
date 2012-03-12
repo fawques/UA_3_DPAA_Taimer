@@ -11,6 +11,50 @@ namespace Taimer {
             hora = hora_;
             min = min_;
         }
+        public Hora(string hora_) {
+            string[] vect = hora_.Split(':');
+            if (vect.Length == 2) {
+                try {
+                    hora = Convert.ToInt32(vect[0]);
+                    min = Convert.ToInt32(vect[1]);
+                } catch {
+                }
+            }
+        }
+        public static bool operator ==(Hora hor1, Hora hor2) {
+            return (hor1.hora == hor2.hora && hor1.min == hor2.min);
+        }
+        public static bool operator !=(Hora hor1, Hora hor2) {
+            return !(hor1==hor2);
+        }
+
+        public static bool operator<(Hora hor1,Hora Hor2){
+            bool menor = false;
+            if (hor1.hora < Hor2.hora) {
+                menor = true;
+            } else if (hor1.hora == Hor2.hora && hor1.min < Hor2.min) {
+                menor = true;
+            }
+            return menor;
+        }
+        public static bool operator >(Hora hor1, Hora Hor2) {
+            bool mayor = false;
+            if (hor1.hora > Hor2.hora) {
+                mayor = true;
+            } else if (hor1.hora == Hor2.hora && hor1.min > Hor2.min) {
+                mayor = true;
+            }
+            return mayor;
+        }
+        public string toString() {
+            string hr = hora.ToString();
+            string mn = min.ToString();
+            if (hora < 10)
+                hr = "0" + hr;
+            if (min < 10)
+                mn = "0" + mn;
+            return hr + ":" + mn;
+        }
     }
 
     public class Turno {
