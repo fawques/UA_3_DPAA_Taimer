@@ -35,20 +35,27 @@
             this.panel8 = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.chkBxLunes = new System.Windows.Forms.CheckBox();
+            this.chkBxMartes = new System.Windows.Forms.CheckBox();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
             this.trackBar1 = new System.Windows.Forms.TrackBar();
             this.trackBar2 = new System.Windows.Forms.TrackBar();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.chkBoxMiercoles = new System.Windows.Forms.CheckBox();
+            this.chkBoxJueves = new System.Windows.Forms.CheckBox();
+            this.chkBoxViernes = new System.Windows.Forms.CheckBox();
+            this.chkBoxSabado = new System.Windows.Forms.CheckBox();
+            this.chkBoxDomingo = new System.Windows.Forms.CheckBox();
+            this.groubBoxDias = new System.Windows.Forms.GroupBox();
+            this.chkBxAll = new System.Windows.Forms.CheckBox();
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar2)).BeginInit();
             this.groupBox1.SuspendLayout();
+            this.groubBoxDias.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -63,6 +70,7 @@
             // 
             // panel5
             // 
+            this.panel5.AutoScroll = true;
             this.panel5.BackColor = System.Drawing.SystemColors.ControlLight;
             this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel5.Controls.Add(this.panel10);
@@ -72,7 +80,7 @@
             this.panel5.Controls.Add(this.panel6);
             this.panel5.Location = new System.Drawing.Point(12, 61);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(561, 405);
+            this.panel5.Size = new System.Drawing.Size(450, 405);
             this.panel5.TabIndex = 22;
             // 
             // panel10
@@ -115,85 +123,72 @@
             this.panel6.Size = new System.Drawing.Size(105, 452);
             this.panel6.TabIndex = 0;
             // 
-            // checkBox1
+            // chkBxLunes
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(19, 40);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(80, 17);
-            this.checkBox1.TabIndex = 23;
-            this.checkBox1.Text = "checkBox1";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.chkBxLunes.AutoSize = true;
+            this.chkBxLunes.Location = new System.Drawing.Point(18, 40);
+            this.chkBxLunes.Name = "chkBxLunes";
+            this.chkBxLunes.Size = new System.Drawing.Size(55, 17);
+            this.chkBxLunes.TabIndex = 23;
+            this.chkBxLunes.Text = "Lunes";
+            this.chkBxLunes.UseVisualStyleBackColor = true;
             // 
-            // checkBox2
+            // chkBxMartes
             // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(19, 64);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(80, 17);
-            this.checkBox2.TabIndex = 24;
-            this.checkBox2.Text = "checkBox2";
-            this.checkBox2.UseVisualStyleBackColor = true;
+            this.chkBxMartes.AutoSize = true;
+            this.chkBxMartes.Location = new System.Drawing.Point(18, 64);
+            this.chkBxMartes.Name = "chkBxMartes";
+            this.chkBxMartes.Size = new System.Drawing.Size(58, 17);
+            this.chkBxMartes.TabIndex = 24;
+            this.chkBxMartes.Text = "Martes";
+            this.chkBxMartes.UseVisualStyleBackColor = true;
             // 
             // radioButton1
             // 
             this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(19, 97);
+            this.radioButton1.Location = new System.Drawing.Point(31, 142);
             this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(85, 17);
+            this.radioButton1.Size = new System.Drawing.Size(95, 17);
             this.radioButton1.TabIndex = 25;
             this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "radioButton1";
+            this.radioButton1.Text = "Menos huecos";
             this.radioButton1.UseVisualStyleBackColor = true;
             // 
             // radioButton2
             // 
             this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(19, 121);
+            this.radioButton2.Location = new System.Drawing.Point(31, 166);
             this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(85, 17);
+            this.radioButton2.Size = new System.Drawing.Size(79, 17);
             this.radioButton2.TabIndex = 26;
             this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "radioButton2";
+            this.radioButton2.Text = "Menos dias";
             this.radioButton2.UseVisualStyleBackColor = true;
-            // 
-            // radioButton3
-            // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Location = new System.Drawing.Point(19, 145);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(85, 17);
-            this.radioButton3.TabIndex = 27;
-            this.radioButton3.TabStop = true;
-            this.radioButton3.Text = "radioButton3";
-            this.radioButton3.UseVisualStyleBackColor = true;
             // 
             // trackBar1
             // 
-            this.trackBar1.Location = new System.Drawing.Point(19, 184);
+            this.trackBar1.Location = new System.Drawing.Point(31, 211);
             this.trackBar1.Name = "trackBar1";
             this.trackBar1.Size = new System.Drawing.Size(139, 45);
             this.trackBar1.TabIndex = 28;
             // 
             // trackBar2
             // 
-            this.trackBar2.Location = new System.Drawing.Point(19, 226);
+            this.trackBar2.Location = new System.Drawing.Point(31, 293);
             this.trackBar2.Name = "trackBar2";
             this.trackBar2.Size = new System.Drawing.Size(139, 45);
             this.trackBar2.TabIndex = 29;
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.checkBox1);
+            this.groupBox1.Controls.Add(this.groubBoxDias);
             this.groupBox1.Controls.Add(this.trackBar2);
-            this.groupBox1.Controls.Add(this.checkBox2);
             this.groupBox1.Controls.Add(this.trackBar1);
             this.groupBox1.Controls.Add(this.radioButton1);
-            this.groupBox1.Controls.Add(this.radioButton3);
             this.groupBox1.Controls.Add(this.radioButton2);
-            this.groupBox1.Location = new System.Drawing.Point(596, 66);
+            this.groupBox1.Location = new System.Drawing.Point(572, 66);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(176, 400);
+            this.groupBox1.Size = new System.Drawing.Size(200, 400);
             this.groupBox1.TabIndex = 30;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Restricciones";
@@ -217,6 +212,84 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
+            // chkBoxMiercoles
+            // 
+            this.chkBoxMiercoles.AutoSize = true;
+            this.chkBoxMiercoles.Location = new System.Drawing.Point(18, 87);
+            this.chkBoxMiercoles.Name = "chkBoxMiercoles";
+            this.chkBoxMiercoles.Size = new System.Drawing.Size(71, 17);
+            this.chkBoxMiercoles.TabIndex = 30;
+            this.chkBoxMiercoles.Text = "Miercoles";
+            this.chkBoxMiercoles.UseVisualStyleBackColor = true;
+            // 
+            // chkBoxJueves
+            // 
+            this.chkBoxJueves.AutoSize = true;
+            this.chkBoxJueves.Location = new System.Drawing.Point(105, 17);
+            this.chkBoxJueves.Name = "chkBoxJueves";
+            this.chkBoxJueves.Size = new System.Drawing.Size(60, 17);
+            this.chkBoxJueves.TabIndex = 31;
+            this.chkBoxJueves.Text = "Jueves";
+            this.chkBoxJueves.UseVisualStyleBackColor = true;
+            // 
+            // chkBoxViernes
+            // 
+            this.chkBoxViernes.AutoSize = true;
+            this.chkBoxViernes.Location = new System.Drawing.Point(105, 40);
+            this.chkBoxViernes.Name = "chkBoxViernes";
+            this.chkBoxViernes.Size = new System.Drawing.Size(61, 17);
+            this.chkBoxViernes.TabIndex = 32;
+            this.chkBoxViernes.Text = "Viernes";
+            this.chkBoxViernes.UseVisualStyleBackColor = true;
+            // 
+            // chkBoxSabado
+            // 
+            this.chkBoxSabado.AutoSize = true;
+            this.chkBoxSabado.Location = new System.Drawing.Point(105, 63);
+            this.chkBoxSabado.Name = "chkBoxSabado";
+            this.chkBoxSabado.Size = new System.Drawing.Size(63, 17);
+            this.chkBoxSabado.TabIndex = 33;
+            this.chkBoxSabado.Text = "Sabado";
+            this.chkBoxSabado.UseVisualStyleBackColor = true;
+            // 
+            // chkBoxDomingo
+            // 
+            this.chkBoxDomingo.AutoSize = true;
+            this.chkBoxDomingo.Location = new System.Drawing.Point(105, 86);
+            this.chkBoxDomingo.Name = "chkBoxDomingo";
+            this.chkBoxDomingo.Size = new System.Drawing.Size(68, 17);
+            this.chkBoxDomingo.TabIndex = 34;
+            this.chkBoxDomingo.Text = "Domingo";
+            this.chkBoxDomingo.UseVisualStyleBackColor = true;
+            // 
+            // groubBoxDias
+            // 
+            this.groubBoxDias.Controls.Add(this.chkBxAll);
+            this.groubBoxDias.Controls.Add(this.chkBxLunes);
+            this.groubBoxDias.Controls.Add(this.chkBoxDomingo);
+            this.groubBoxDias.Controls.Add(this.chkBxMartes);
+            this.groubBoxDias.Controls.Add(this.chkBoxSabado);
+            this.groubBoxDias.Controls.Add(this.chkBoxMiercoles);
+            this.groubBoxDias.Controls.Add(this.chkBoxViernes);
+            this.groubBoxDias.Controls.Add(this.chkBoxJueves);
+            this.groubBoxDias.Location = new System.Drawing.Point(12, 19);
+            this.groubBoxDias.Name = "groubBoxDias";
+            this.groubBoxDias.Size = new System.Drawing.Size(175, 117);
+            this.groubBoxDias.TabIndex = 35;
+            this.groubBoxDias.TabStop = false;
+            this.groubBoxDias.Text = "Dias";
+            // 
+            // chkBxAll
+            // 
+            this.chkBxAll.AutoSize = true;
+            this.chkBxAll.Location = new System.Drawing.Point(19, 17);
+            this.chkBxAll.Name = "chkBxAll";
+            this.chkBxAll.Size = new System.Drawing.Size(56, 17);
+            this.chkBxAll.TabIndex = 35;
+            this.chkBxAll.Text = "Todos";
+            this.chkBxAll.UseVisualStyleBackColor = true;
+            this.chkBxAll.CheckedChanged += new System.EventHandler(this.chkBxAll_CheckedChanged);
+            // 
             // ClientCrearHor2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -236,6 +309,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.trackBar2)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.groubBoxDias.ResumeLayout(false);
+            this.groubBoxDias.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -250,15 +325,21 @@
         private System.Windows.Forms.Panel panel8;
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.Panel panel6;
-        private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.CheckBox checkBox2;
+        private System.Windows.Forms.CheckBox chkBxLunes;
+        private System.Windows.Forms.CheckBox chkBxMartes;
         private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton3;
         private System.Windows.Forms.TrackBar trackBar1;
         private System.Windows.Forms.TrackBar trackBar2;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.CheckBox chkBoxDomingo;
+        private System.Windows.Forms.CheckBox chkBoxSabado;
+        private System.Windows.Forms.CheckBox chkBoxViernes;
+        private System.Windows.Forms.CheckBox chkBoxJueves;
+        private System.Windows.Forms.CheckBox chkBoxMiercoles;
+        private System.Windows.Forms.GroupBox groubBoxDias;
+        private System.Windows.Forms.CheckBox chkBxAll;
     }
 }
