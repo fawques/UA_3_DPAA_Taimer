@@ -96,7 +96,7 @@ namespace Taimer
                 }
             }
         }
-        
+
         //Obtener nombre
         public string getNom()
         {
@@ -135,13 +135,46 @@ namespace Taimer
 
             foreach (ArrayList dia in horario.getTurnos())
             {
-                foreach (Turno item in dia)
+                try
                 {
-                    // hacer cosas
+                    // WARNING! Para que esto funcione bien, los turnos tienen que estar ordenados
+                    Hora mindia = new Hora(99, 99);
+                    Hora maxdia = new Hora(0, 0);
+                    Horario.horasLimitesDia(dia, ref mindia, ref maxdia);
+
+                    Hora initHueco = new Hora(0, 0);
+                    Hora finHueco = new Hora(0, 0);
+                    Turno aux = (Turno)dia[0];
+                    initHueco = aux.getHoraI();
+                    foreach (Turno item in dia)
+                    {
+                        finHueco = item.getHoraF();
+
+                        // sumar la diferencia a puntuacion --> hacer funcion operator-
+                    }
                 }
+                catch(IndexOutOfRangeException)
+                {}
 
             }
             return puntuacion;
+        }
+
+        //Devuelve por referencia la primera hora del día y la última de una lista de Turnos
+        public static void horasLimitesDia(ArrayList dia, ref Hora horaini, ref Hora horafin)
+        {
+            horaini.hora = horaini.min = 99;
+            horafin.hora = horafin.min = 0;
+            foreach (Turno item in dia)
+            {
+                if (item.getHoraI() < horaini)
+                    horaini = item.getHoraI();
+                if (item.getHoraF() > horafin)
+                    horafin = item.getHoraF();
+            }
+
+            if (horaini.hora == 99)
+                throw new IndexOutOfRangeException("Día vacío");
         }
 
         //Generación de un Horario de forma Voraz
@@ -228,7 +261,7 @@ namespace Taimer
 
         public bool generarHorarioBT()
         {
-
+            throw new NotImplementedException();
             return true;
         }
 
