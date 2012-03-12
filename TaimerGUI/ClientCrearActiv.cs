@@ -57,7 +57,7 @@ namespace TaimerGUI
                     Taimer.Hora horI = new Taimer.Hora(filas.Cells["horaInicio"].Value.ToString());
                     Taimer.Hora horF = new Taimer.Hora(filas.Cells["horaFin"].Value.ToString());
                     Taimer.Turno turn = new Taimer.Turno(horI,horF,comboBoxDia.Text[0],"Que?","",-1);
-                    actividad.AddTurno(turn);
+                    //actividad.AddTurno(turn);
                 }
                 this.Hide();
             }

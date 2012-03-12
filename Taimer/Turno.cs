@@ -99,7 +99,7 @@ namespace Taimer {
     }
 
 
-    class Turno {
+    public class Turno {
 
         // PARTE PRIVADA ******************************************************************
 
