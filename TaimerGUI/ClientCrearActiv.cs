@@ -1,4 +1,5 @@
 ﻿using System;
+using Taimer;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -54,9 +55,11 @@ namespace TaimerGUI
                 actividad = new Taimer.Actividad_p(tBNombre.Text, rTBDescripcion.Text, -1, tBResponsable.Text);
                 
                 foreach (DataGridViewRow filas in gVHorasTemp.Rows){
-                    Taimer.Hora horI = new Taimer.Hora(filas.Cells["horaInicio"].Value.ToString());
-                    Taimer.Hora horF = new Taimer.Hora(filas.Cells["horaFin"].Value.ToString());
-                    Taimer.Turno turn = new Taimer.Turno(horI,horF,comboBoxDia.Text[0],"Que?","",-1);
+                    Hora horI = new Hora(filas.Cells["horaInicio"].Value.ToString());
+                    Hora horF = new Hora(filas.Cells["horaFin"].Value.ToString());
+                    Profesor prof = new Profesor("001", "Iginio Mora", "11111111I", "tic");
+                    char d = comboBoxDia.Text[0];
+                    Turno turn = new Turno(1, horI, horF, d, "IB", "poli1", prof);
                     //actividad.AddTurno(turn);
                 }
                 this.Hide();

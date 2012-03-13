@@ -7,34 +7,37 @@ using System.Text;
 namespace Taimer {
     public class Actividad_p : Actividad {
 
-        // PARTE PRIVADA ******************************************************************
-
+        #region PARTE PRIVADA
         // (Nombre, descripción y código vienen de la clase Actividad)
 
         private string responsable;
+        private List<Turno> turnos = new List<Turno>();
 
-        private List<string> turnos = new List<string>();
+        #endregion
 
-
-
-        // PARTE PÚBLICA ******************************************************************
+        #region PARTE PUBLICA
 
         // Constructor básico (sin lista de turnos)
         public Actividad_p(string nom_, string desc_, int cod_, string responsable_)
-            : base(nom_, desc_, cod_)
-        {
+            : base(nom_, desc_, cod_) {
             responsable = responsable_;
         }
 
 
         // Constructor avanzado (con lista de turnos)
-        public Actividad_p(string nom_, string desc_, int cod_, string responsable_, List<string> turnos_)
+        public Actividad_p(string nom_, string desc_, int cod_, string responsable_, List<Turno> turnos_)
             : base(nom_, desc_, cod_) {
 
             responsable = responsable_;
             turnos = turnos_;
         }
 
+        // Constructor de copia
+        public Actividad_p(Actividad_p act)
+            : base(act) {
+            responsable = act.responsable;
+            turnos = act.turnos;    
+        }
 
         // Cambiar/obtener responsable
         public string Responsable
@@ -45,24 +48,24 @@ namespace Taimer {
 
 
         // Añadir turno
-        public void AddTurno(string turno) {
+        public void AddTurno(Turno turno) {
             turnos.Add(turno);
         }
 
+        //Cambiar/obtener turnos
+        public List<Turno> Turnos {
+            set { turnos = value; }
+            get { return turnos; }
+        }
 
         // Borrar turno (a partir de su código, si se encuentra)
-        public bool BorraTurno(string codigobuscado)
-        {
-            foreach (string tur in turnos)
-            {
-                if (tur == codigobuscado)
-                {
-                    turnos.Remove(tur);
-                    return true;
-                }
+        public bool BorraTurno(int codigobuscado) {
+            foreach (Turno t in turnos) {
+                if (t.Codigo == codigobuscado)
+                    return Turnos.Remove(t);
             }
-
             return false;
         }
+        #endregion
     }
 }

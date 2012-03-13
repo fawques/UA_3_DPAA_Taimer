@@ -1,4 +1,5 @@
 ﻿using System;
+using Taimer;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -234,7 +235,8 @@ namespace TaimerGUI {
         {
             InitializeComponent();
             //TODO: Hay que hacer esto como se tenga que hacer
-            Taimer.User usuario = new Taimer.User(usr, usr, usr, usr, usr, 1);
+            Titulacion t = new Titulacion("II", "001");
+            User usuario = new User(usr, "11111111P", usr+"@gmail.com", "*****", t, 3);
             userTlSMnItem.Text = usuario.Nombre;
 
             //Redondeado de bordes

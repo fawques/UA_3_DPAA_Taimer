@@ -6,69 +6,81 @@ using System.Linq;
 using System.Text;
 
 namespace Taimer {
+
+    #region CLASE HORA
+   
     public class Hora {
 
-        // PARTE PRIVADA ******************************************************************
+        #region PARTE PRIVADA
+
         private int hora;
         private int min;
 
+        #endregion
 
-        // PARTE PÚBLICA ******************************************************************
+        #region PARTE PÚBLICA
 
         // Constructor
         public Hora(int hora_, int min_) {
-            setHora(hora_);
-            setMin(min_);
+            Hor = hora_;
+            Min = min_;
         }
 
-        // Devolver hora
-        public int getHora(){
-            return hora;
+        // Constructor de copia
+        public Hora(Hora h) {
+            hora = h.hora;
+            min = h.min;
         }
 
-        // Devolver minutos
-        public int getMin(){
-            return min;
+        //Obtener/modificar hora
+        public int Hor {
+            set {
+                if (value >= 0 && value <= 23)
+                    hora = value;
+                else
+                    throw new ArgumentOutOfRangeException(); 
+            }
+            get { return hora; }
         }
 
-        // Ajustar hora
-        public void setHora(int hora_){
-            if (hora_ >= 0 && hora_ <= 23)
-                hora = hora_;
-            else
-                throw new ArgumentOutOfRangeException();    // ¿Error?
+        //Obtener/modificar minutos
+        public int Min {
+            set {
+                if (value >= 0 && value <= 59)
+                    min = value;
+                else
+                    throw new ArgumentOutOfRangeException(); 
+            }
+            get { return min; }
         }
 
-        // Ajustar minutos
-        public void setMin(int min_){
-            if (min_ >= 0 && min_ <= 59)
-                min = min_;
-            else
-                throw new ArgumentOutOfRangeException();    // ¿Error?
-        }
 
         // Ajustar hora y minutos
         public void setTiempo(int hora_, int min_){
-            setHora(hora_);
-            setMin(min_);
+            Hor = hora_;
+            Min = min_;
         }
+
+        //Ajustar hora y minutos a partir de un string
         public Hora(string hora_) {
             string[] vect = hora_.Split(':');
             if (vect.Length == 2) {
-                try {
-                    hora = Convert.ToInt32(vect[0]);
-                    min = Convert.ToInt32(vect[1]);
-                } catch {
-                }
+               hora = Convert.ToInt32(vect[0]);
+               min = Convert.ToInt32(vect[1]);
             }
         }
+
+        // Operador ==
         public static bool operator ==(Hora hor1, Hora hor2) {
             return (hor1.hora == hor2.hora && hor1.min == hor2.min);
         }
+
+        //Operador !=
         public static bool operator !=(Hora hor1, Hora hor2) {
             return !(hor1==hor2);
         }
 
+        //Operador <
         public static bool operator<(Hora hor1,Hora Hor2){
             bool menor = false;
             if (hor1.hora < Hor2.hora) {
@@ -78,6 +90,8 @@ namespace Taimer {
             }
             return menor;
         }
+
+        //Operador >
         public static bool operator >(Hora hor1, Hora Hor2) {
             bool mayor = false;
             if (hor1.hora > Hor2.hora) {
@@ -87,6 +101,8 @@ namespace Taimer {
             }
             return mayor;
         }
+
+
         public string toString() {
             string hr = hora.ToString();
             string mn = min.ToString();
@@ -96,124 +112,118 @@ namespace Taimer {
                 mn = "0" + mn;
             return hr + ":" + mn;
         }
+
+        #endregion
     }
 
+    #endregion
 
+    #region CLASE TURNO
     public class Turno {
 
-        // PARTE PRIVADA ******************************************************************
+        #region PARTE PRIVADA
 
+        private int codigo;
         private Hora horaInicio;
         private Hora horaFin;
-        int diasemana;                    // Día de la semana: 1 es lunes, 7 es domingo
-        string nombre;
-        string ubicacion;
-        int codigoProfesor;
+        private char diasemana;
+        private string nombre;
+        private string ubicacion;
+        private Profesor profesor;
 
-        // PARTE PÚBLICA ******************************************************************
+        #endregion
+
+        #region PARTE PÚBLICA
 
         // Constructor
-        public Turno(Hora horaI_, Hora horaF_, char dia_, string nom_, string ubic_, int codProf_) {
+        public Turno(int codigo_, Hora horaI_, Hora horaF_, char dia_, string nom_, string ubic_,  Profesor codProf_) {
+            codigo = codigo_;
             horaInicio = horaI_;
             horaFin = horaF_;
             diasemana = dia_;
             nombre = nom_;
             ubicacion = ubic_;
-            codigoProfesor = codProf_;
+            profesor = codProf_;
         }
 
+        // Constructor de copia
+        public Turno(Turno t) {
+            codigo = t.codigo;
+            horaInicio = t.horaInicio;
+            horaFin = t.horaFin;
+            diasemana = t.diasemana;
+            nombre = t.nombre;
+            ubicacion = t.ubicacion;
+            profesor = t.profesor;
+        }
 
-
+        //Cambiar/obtener codigo
+        public int Codigo {
+            set { codigo = value; }
+            get { return codigo; }
+        }
 
         // Cambiar Hora Inicio
-        public void setHoraInicio(int hora, int min) {
+        public void HoraI(int hora, int min) {
             horaInicio = new Hora(hora, min);
         }
 
-        // Obtener Hora de inicio
-        public Hora getHoraInicio()
-        {
-            return horaInicio;
-        }
-
-
-
-
         // Cambiar Hora Fin
-        public void setHoraFin(int hora, int min) {
+        public void HoraF(int hora, int min) {
             horaFin = new Hora(hora, min);
         }
 
-        // Obtener Hora de fin
-        public Hora getHoraFin()
-        {
-            return horaFin;
+        // Obtener/Cambiar Hora de inicio
+        public Hora HoraInicio {
+            set { horaInicio = value; }
+            get { return horaInicio; }
         }
 
 
-
-
-        // Cambiar día de la semana
-        public void setDia(int dia_) {
-            if(dia_ >= 1 && dia_ <= 7)
-                diasemana = dia_;
-            else
-                throw new ArgumentOutOfRangeException();    // ¿Error?
-        }
-
-        // Obtener dia de la semana
-        public int getDia() {
-            return diasemana;
+        // Obtener/Cambiar Hora de Fin
+        public Hora HoraFin {
+            set { horaFin = value; }
+            get { return horaFin; }
         }
 
 
-
-
-        // Cambiar nombre
-        public void setNombre(string nom_) {
-            nombre = nom_;
+        //Obtener/Cambiar dia de la semana
+        public char Dia{
+            get { return diasemana; }
+            set {
+                char d = value.ToString().ToUpper().ToCharArray()[0];
+                if (d == 'L' || d == 'M' || d == 'X' || d == 'J' || d == 'V' || d == 'S' || d == 'D')
+                    diasemana = d;
+                else
+                    throw new ArgumentOutOfRangeException();
+            }
         }
 
-        // Obtener nombre
-        public string getNombre()
-        {
-            return nombre;
+        //Cambiar/Obtener nombre
+        public string Nombre {
+            set { nombre = value; }
+            get { return nombre; }
         }
 
-
-
-
-        // Cambiar ubicacion
-        public void setUbicacion(string ubic_) {
-            ubicacion = ubic_;
+        // Cambiar/Obtener ubicacion
+        public string Ubicacion {
+            set { ubicacion = value; }
+            get { return ubicacion; }
         }
 
-        // Obtener ubicación
-        public string getUbicacion() {
-            return ubicacion;
+        //Cambiar/Obtener profesor
+        public Profesor Profesor {
+            set { profesor = value; }
+            get { return profesor; }
         }
-
-
-
-
-        //Cambiar Codigo del profesor
-        public void setCodigoProfesor(int codProf_) {
-            codigoProfesor = codProf_;
-        }
-
-        //Obtener codigo del profesor
-        public int getCodigoProfesor() {
-            return codigoProfesor;
-        }
-
-
-
 
         // **** EXTRAS (En construcción) ****
 
         // Obtener nombre del profesor
         public string getNombreProfesor() {
-            return "";
+            return Profesor.Nombre;
         }
+        #endregion
     }
+    #endregion
 }

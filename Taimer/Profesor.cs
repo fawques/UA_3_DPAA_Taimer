@@ -5,19 +5,21 @@ using System.Text;
 
 namespace Taimer
 {
-    public class Profesor
-    {
-        // PARTE PRIVADA ******************************************************************
+    public class Profesor {
+
+        #region PARTE PRIVADA
         string codigo;              // Clave principal
         string nombre;
         string dni;
         string departamento;
-        private List<string> actividadesAcademicas = new List<string>();    // Un prof. pertenece a (0,N) act. acad.
+        private List<Actividad_a> actividadesAcademicas = new List<Actividad_a>();    // Un prof. pertenece a (0,N) act. acad.
 
         //private List<string> turnos = new List<string>();                 // Un prof. pertenece a (0,N) turnos (ELIMINADO)
 
-        // PARTE PÚBLICA ******************************************************************
-        
+        #endregion
+
+        #region PARTE PÚBLICA
+
         // Constructor
         public Profesor(string cod_, string nom_, string dni_, string dep_) {
             codigo = cod_;
@@ -25,7 +27,15 @@ namespace Taimer
             dni = dni_;
             departamento = dep_;
         }
-        
+
+        //Constructor de copia
+        public Profesor(Profesor p) {
+            codigo = p.codigo;
+            nombre = p.nombre;
+            dni = p.dni;
+            departamento = p.departamento;
+            actividadesAcademicas = p.actividadesAcademicas;
+        }
 
         // Ajustar/obtener código
         public string Codigo {
@@ -56,22 +66,17 @@ namespace Taimer
 
 
         // Añadir actividad académica a la lista
-        public void AddActividadAcademica(string activ) {
+        public void AddActividadAcademica(Actividad_a activ) {
             actividadesAcademicas.Add(activ);
         }
 
 
         // Borrar actividad académica de la lista (a partir de su código)
         // Devuelve TRUE si consigue encontrarla y borrarla, FALSE en caso contrario.
-        public bool BorraActividadAcademica(string codigobuscado)
-        {
-            foreach (string act in actividadesAcademicas)
-            {
-                if (act == codigobuscado)
-                {
-                    actividadesAcademicas.Remove(act);
-                    return true;
-                }
+        public bool BorraActividadAcademica(int codigobuscado, bool tipo) {
+            foreach (Actividad_a act in actividadesAcademicas) {
+                if (act.Codigo == codigobuscado && act.Tipo == tipo)
+                    return actividadesAcademicas.Remove(act);
             }
 
             return false;
@@ -105,5 +110,6 @@ namespace Taimer
             return false;
         }
         */
+        #endregion
     }
 }

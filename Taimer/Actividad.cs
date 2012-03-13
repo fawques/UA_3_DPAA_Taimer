@@ -6,14 +6,15 @@ using System.Text;
 namespace Taimer {
     abstract public class Actividad {
 
-        // PARTE PRIVADA ******************************************************************
+        #region PARTE PROTECTED
 
-        private int codigo;                                     // Clave principal
-        private string nombre;
-        private string descripcion;
+        protected int codigo;                                     // Clave principal
+        protected string nombre;
+        protected string descripcion;
 
+        #endregion
 
-        // PARTE PÚBLICA ******************************************************************
+        #region PARTE PÚBLICA
 
         // Constructor
         public Actividad(string nom_, string desc_, int cod_) {
@@ -22,28 +23,32 @@ namespace Taimer {
             codigo = cod_;
         }
 
+        public Actividad(Actividad act) {
+            nombre = act.nombre;
+            descripcion = act.descripcion;
+            codigo = act.codigo;
+        }
 
         // Cambiar/obtener nombre
-        public string Nombre
-        {
+        public string Nombre {
             get { return nombre; }
             set { nombre = value; }
         }
 
 
         // Cambiar/obtener descripción
-        public string Descripcion
-        {
+        public string Descripcion {
             get { return descripcion; }
             set { descripcion = value; }
         }
 
 
         // Cambiar/obtener código
-        public int Codigo
-        {
+        public int Codigo {
             get { return codigo; }
             set { codigo = value; }
         }
+
+        #endregion
     }
 }

@@ -5,7 +5,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "rubenDesign", "rubenDesign\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaimerGUI", "TaimerGUI\TaimerGUI.csproj", "{068FD849-C8FB-4D04-BFB2-A42689E5BB44}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Taimer", "Taimer\Taimer.csproj", "{329AECE9-732D-4307-AF83-AFDAE3E04AA4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaimerEN", "Taimer\TaimerEN.csproj", "{329AECE9-732D-4307-AF83-AFDAE3E04AA4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
