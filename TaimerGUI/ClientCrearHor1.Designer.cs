@@ -33,7 +33,7 @@
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lblNombre = new System.Windows.Forms.Label();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -47,6 +47,8 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
+            this.tBxNombre = new System.Windows.Forms.TextBox();
+            this.lblErrorNombre = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
@@ -63,6 +65,7 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
@@ -70,6 +73,7 @@
             this.Column3});
             this.dataGridView1.Location = new System.Drawing.Point(37, 183);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(271, 287);
             this.dataGridView1.TabIndex = 13;
             // 
@@ -88,18 +92,19 @@
             this.Column3.HeaderText = "Descipcion";
             this.Column3.Name = "Column3";
             // 
-            // label2
+            // lblNombre
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(48, 85);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(176, 16);
-            this.label2.TabIndex = 14;
-            this.label2.Text = "Nombre del horario editable";
+            this.lblNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNombre.Location = new System.Drawing.Point(49, 82);
+            this.lblNombre.Name = "lblNombre";
+            this.lblNombre.Size = new System.Drawing.Size(176, 16);
+            this.lblNombre.TabIndex = 14;
+            this.lblNombre.Visible = false;
+            this.lblNombre.Click += new System.EventHandler(this.lblNombre_Click);
             // 
             // dataGridView2
             // 
+            this.dataGridView2.AllowUserToAddRows = false;
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column4,
@@ -107,6 +112,7 @@
             this.Column6});
             this.dataGridView2.Location = new System.Drawing.Point(429, 183);
             this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.ReadOnly = true;
             this.dataGridView2.Size = new System.Drawing.Size(271, 287);
             this.dataGridView2.TabIndex = 15;
             // 
@@ -205,12 +211,33 @@
             this.textBox2.Size = new System.Drawing.Size(167, 20);
             this.textBox2.TabIndex = 23;
             // 
+            // tBxNombre
+            // 
+            this.tBxNombre.Location = new System.Drawing.Point(52, 77);
+            this.tBxNombre.Name = "tBxNombre";
+            this.tBxNombre.Size = new System.Drawing.Size(173, 20);
+            this.tBxNombre.TabIndex = 25;
+            this.tBxNombre.Leave += new System.EventHandler(this.tBxNombre_Leave);
+            // 
+            // lblErrorNombre
+            // 
+            this.lblErrorNombre.AutoSize = true;
+            this.lblErrorNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblErrorNombre.ForeColor = System.Drawing.Color.Red;
+            this.lblErrorNombre.Location = new System.Drawing.Point(232, 83);
+            this.lblErrorNombre.Name = "lblErrorNombre";
+            this.lblErrorNombre.Size = new System.Drawing.Size(92, 12);
+            this.lblErrorNombre.TabIndex = 26;
+            this.lblErrorNombre.Text = "No puede estar vacio";
+            this.lblErrorNombre.Visible = false;
+            // 
             // ClientCrearHor1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Cornsilk;
             this.ClientSize = new System.Drawing.Size(784, 562);
+            this.Controls.Add(this.lblErrorNombre);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.label5);
@@ -221,12 +248,14 @@
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.dataGridView2);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.lblNombre);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.tBxNombre);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "ClientCrearHor1";
             this.Text = "ClientCrearHor1";
+            this.Load += new System.EventHandler(this.ClientCrearHor1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.ResumeLayout(false);
@@ -238,7 +267,7 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblNombre;
         private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
@@ -255,5 +284,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
+        private System.Windows.Forms.TextBox tBxNombre;
+        private System.Windows.Forms.Label lblErrorNombre;
     }
 }

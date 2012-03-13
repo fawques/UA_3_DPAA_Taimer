@@ -1,46 +1,63 @@
-﻿using System;
+﻿//TODO: ajustar gets y sets
+
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Taimer
-{
-    public class Horario
-    {
 
-        //PARTE PRIVADA
+namespace Taimer {
+    public class Horario {
 
-        private string nom;
-        private int id;
-        private ArrayList[] arrayTurnos = new ArrayList[7];
+        #region PARTE PRIVADA
+        private int id;                                     // Clave principal
+        private string nombre;
+        private List<Turno>[] arrayTurnos = new List<Turno>[7];     // Un horario tiene (0,N) turnos
+        private User usuario;                             // Un horario es creado por (1,1) usuarios
+        #endregion
 
+    #region PARTE PÚBLICA 
 
-        //PARTE PUBLICA
-
-        //Constructor
-        public Horario(string nom_, int id_)
-        {
-            nom = nom_;
+        // Constructor
+        public Horario(int id_, string nom_, User usu_) {
             id = id_;
+            nombre = nom_;
+            usuario = usu_;
 
             for (int i = 0; i < 7; i++)
             {
-                arrayTurnos[i] = new ArrayList();
+                arrayTurnos[i] = new List<Turno>();
             }
         }
 
-        //Cambiar el nombre
-        public void setNom(string nom_)
-        {
-            nom = nom_;
+        // Constructor de copia
+        public Horario(Horario h) {
+            id = h.id;
+            nombre = h.nombre;
+            usuario = h.usuario;
         }
 
-        //Cambiar la id
-        public void setId(int id_)
-        {
-            id = id_;
+        // Ajustar/obtener nombre
+        public string Nombre {
+            get { return nombre; }
+            set { nombre = value; }
         }
+
+
+        // Ajustar/obtener id
+        public int ID {
+            get { return id; }
+            set { id = value; }
+        }
+
+
+        // Ajustar/obtener usuario
+        public User Usuario {
+            get { return usuario; }
+            set { usuario = value; }
+        }
+
 
         //Añadir turnos
         public void AddTurno(Turno turno)
@@ -82,13 +99,13 @@ namespace Taimer
         {
             foreach (Turno item in arrayTurnos[dia])
             {
-                if (item.getDia().Equals(turno.getDia()))
+                if (item.Dia.Equals(turno.Dia))
                 {
                     // si se superponen
-                    if ((item.getHoraF() > turno.getHoraI() && item.getHoraF() <= turno.getHoraF()) ||
-                        (turno.getHoraF() > item.getHoraI() && turno.getHoraF() <= item.getHoraF()) ||
-                        (item.getHoraI() >= turno.getHoraI() && item.getHoraI() < turno.getHoraF()) ||
-                        (turno.getHoraI() >= item.getHoraI() && turno.getHoraI() < item.getHoraF()))
+                    if ((item.HoraFin > turno.HoraInicio && item.HoraFin <= turno.HoraFin) ||
+                        (turno.HoraFin > item.HoraInicio && turno.HoraFin <= item.HoraFin) ||
+                        (item.HoraInicio >= turno.HoraInicio && item.HoraInicio < turno.HoraFin) ||
+                        (turno.HoraInicio >= item.HoraInicio && turno.HoraInicio < item.HoraFin))
                     {
                         NotSupportedException ex = new NotSupportedException("Turnos solapados");
                         throw ex;
@@ -97,23 +114,25 @@ namespace Taimer
             }
         }
 
-        //Obtener nombre
-        public string getNom()
-        {
-            return nom;
+        // Cambiar/Obtener turnos
+        public List<Turno>[] ArrayTurnos {
+            set { arrayTurnos = value; }
+            get { return arrayTurnos; }
         }
 
-        //Obtener id
-        public int getId()
-        {
-            return id;
+        // Borrar turno (a partir de su código, si se encuentra)
+        public bool BorraTurno(int codigobuscado) {
+
+            foreach (Turno t in turnos) {
+                if (t.Codigo == codigobuscado) 
+                    return turnos.Remove(t);
+            }
+            return false;
         }
 
-        //Obtener ArrayList de turnos
-        public ArrayList[] getTurnos()
-        {
-            return arrayTurnos;
-        }
+        
+        #region ALGORITMO
+
 
         // Puntuar un horario según el número de días. Puntuará de 0 a 7, añadirá uno por cada día en el que haya turnos.
         public static int puntuarDias(Horario horario)
@@ -121,7 +140,7 @@ namespace Taimer
             int puntuacion = 0;
             for (int i = 0; i < 7; i++)
             {
-                if (horario.getTurnos()[i].Count > 0)
+                if (horario.Turnos[i].Count() > 0)
                     puntuacion++;
             }
 
@@ -133,7 +152,7 @@ namespace Taimer
         {
             int puntuacion = 0;
 
-            foreach (ArrayList dia in horario.getTurnos())
+            foreach (ArrayList dia in horario.Turnos)
             {
                 try
                 {
@@ -145,12 +164,12 @@ namespace Taimer
                     Hora initHueco = new Hora(0, 0);
                     Hora finHueco = new Hora(0, 0);
                     Turno aux = (Turno)dia[0];
-                    initHueco = aux.getHoraI();
+                    initHueco = aux.HoraInicio;
                     foreach (Turno item in dia)
                     {
-                        finHueco = item.getHoraF();
+                        finHueco = item.HoraFin;
 
-                        // sumar la diferencia a puntuacion --> hacer funcion operator-
+                        //TODO: sumar la diferencia a puntuacion --> hacer funcion operator-
                     }
                 }
                 catch(IndexOutOfRangeException)
@@ -163,17 +182,17 @@ namespace Taimer
         //Devuelve por referencia la primera hora del día y la última de una lista de Turnos
         public static void horasLimitesDia(ArrayList dia, ref Hora horaini, ref Hora horafin)
         {
-            horaini.hora = horaini.min = 99;
-            horafin.hora = horafin.min = 0;
+            horaini.Hor = horaini.Min = 99;
+            horafin.Hor = horafin.Min = 0;
             foreach (Turno item in dia)
             {
-                if (item.getHoraI() < horaini)
-                    horaini = item.getHoraI();
-                if (item.getHoraF() > horafin)
-                    horafin = item.getHoraF();
+                if (item.HoraInicio < horaini)
+                    horaini = item.HoraInicio;
+                if (item.HoraFin > horafin)
+                    horafin = item.HoraFin;
             }
 
-            if (horaini.hora == 99)
+            if (horaini.Hor == 99)
                 throw new IndexOutOfRangeException("Día vacío");
         }
 
@@ -181,9 +200,9 @@ namespace Taimer
         public bool generarHorarioVoraz()
         {
 
-            Turno t1 = new Turno(new Hora(10, 30), new Hora(12, 30), 'L', "turno1", "L04");
-            Turno t2 = new Turno(new Hora(11, 30), new Hora(13, 30), 'L', "turno2", "L04");
-            Turno t3 = new Turno(new Hora(12, 30), new Hora(14, 30), 'L', "turno3", "L04");
+            Turno t1 = new Turno(1,new Hora(10, 30), new Hora(12, 30), 'L', "turno1", "L04");
+            Turno t2 = new Turno(2,new Hora(11, 30), new Hora(13, 30), 'L', "turno2", "L04");
+            Turno t3 = new Turno(3,new Hora(12, 30), new Hora(14, 30), 'L', "turno3", "L04");
 
             Turno t4 = new Turno(new Hora(10, 30), new Hora(12, 30), 'X', "turno4", "L04");
             Turno t5 = new Turno(new Hora(12, 30), new Hora(14, 30), 'X', "turno5", "L04");
@@ -202,13 +221,13 @@ namespace Taimer
             actP2.AddTurno(t6);
 
             Actividad_a actA = new Actividad_a("nombre2", "descripcion2", 7, 1);
-            actA.AddTurnoTeoria(t3);
-            actA.AddTurnoTeoria(t2);
+            actA.AddTurno(t3);
+            actA.AddTurno(t2);
 
             Actividad_a actA2 = new Actividad_a("nombre2", "descripcion2", 7, 1);
-            actA2.AddTurnoTeoria(t7);
-            actA2.AddTurnoTeoria(t8);
-            actA2.AddTurnoTeoria(t9);
+            actA2.AddTurno(t7);
+            actA2.AddTurno(t8);
+            actA2.AddTurno(t9);
 
             ArrayList arrayP = new ArrayList();
             ArrayList arrayA = new ArrayList();
@@ -221,7 +240,7 @@ namespace Taimer
 
             foreach (Actividad_p personal in arrayP)
             {
-                foreach (Turno item in personal.getTurnos())
+                foreach (Turno item in personal.Turnos)
                 {
                     try
                     {
@@ -238,7 +257,7 @@ namespace Taimer
             foreach (Actividad_a asig in arrayA)
             {
                 asignado = false;
-                foreach (Turno item in asig.getTurnosTeoria())
+                foreach (Turno item in asig.Turnos)
                 {
                     if (asignado)
                         break;
@@ -264,6 +283,7 @@ namespace Taimer
             throw new NotImplementedException();
             return true;
         }
-
+        #endregion
+        #endregion
     }
 }

@@ -4,51 +4,51 @@ using System.Linq;
 using System.Text;
 
 namespace Taimer {
-    public abstract class Actividad {
-        // PARTE PRIVADA
+    abstract public class Actividad {
 
-        private string nom;     // Nombre
-        private string desc;    // Descripción
-        private int cod;        // Código
+        #region PARTE PROTECTED
 
+        protected int codigo;                                     // Clave principal
+        protected string nombre;
+        protected string descripcion;
 
-        //PARTE PUBLICA
+        #endregion
 
-        //Constructor
+        #region PARTE PÚBLICA
+
+        // Constructor
         public Actividad(string nom_, string desc_, int cod_) {
-            nom = nom_;
-            desc = desc_;
-            cod = cod_;
+            nombre = nom_;
+            descripcion = desc_;
+            codigo = cod_;
         }
 
-        // Cambiar nombre
-        public void setNom(string nom_) {
-            nom = nom_;
+        public Actividad(Actividad act) {
+            nombre = act.nombre;
+            descripcion = act.descripcion;
+            codigo = act.codigo;
         }
 
-        // Cambiar descripción
-        public void setDesc(string desc_) {
-            desc = desc_;
+        // Cambiar/obtener nombre
+        public string Nombre {
+            get { return nombre; }
+            set { nombre = value; }
         }
 
-        // Cambiar código
-        public void setCod(int cod_) {
-            cod = cod_;
+
+        // Cambiar/obtener descripción
+        public string Descripcion {
+            get { return descripcion; }
+            set { descripcion = value; }
         }
 
-        // Devolver nombre
-        public string getNom() {
-            return nom;
+
+        // Cambiar/obtener código
+        public int Codigo {
+            get { return codigo; }
+            set { codigo = value; }
         }
 
-        // Devolver descripción
-        public string getDesc() {
-            return desc;
-        }
-
-        // Devolver código
-        public int getCod() {
-            return cod;
-        }
+        #endregion
     }
 }

@@ -286,9 +286,9 @@
     <None Include="Resources\resize2.png" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Taimer\Taimer.csproj">
+    <ProjectReference Include="..\Taimer\TaimerEN.csproj">
       <Project>{329AECE9-732D-4307-AF83-AFDAE3E04AA4}</Project>
-      <Name>Taimer</Name>
+      <Name>TaimerEN</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

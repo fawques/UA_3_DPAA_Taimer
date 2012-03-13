@@ -7,124 +7,155 @@ using System.Text;
 namespace Taimer {
     public class User {
 
-        //PARTE PRIVADA
+        #region PARTE PRIVADA
 
-        private string nom;
-        private string ape;
+        private string nombre;
         private string dni;
         private string email;
-        private string pass;
-        private string codTitulacion;
+        private string password;
         private int curso;
-        private ArrayList activ = new ArrayList();
-        private ArrayList horarios = new ArrayList();
+        private Titulacion titulacion;                                   // Un usuario tiene (1,1) titulaciones
+        private List<Actividad> actividades = new List<Actividad>();          // Un usuario tiene (0,N) actividades
+        private List<Comentario> comentarios = new List<Comentario>();          // Un usuario escribe (0,N) comentarios
+        private List<Horario> horarios = new List<Horario>();                   // Un usuario tiene (0,N) horarios
 
-        //PARTE PUBLICA
-        
-        //Constructor
-        public User(string nom_, string ape_, string dni_, string email_, string pass_, string codTitulacion_, int curso_) {
-            nom = nom_;
-            ape =ape_;
-            pass = pass_;
-            email = email_;
-            codTitulacion = codTitulacion_;
-            curso = curso_;
-        }
+        #endregion
 
-        //Cambiar nombre
-        public void setNom(string nom_){
-            nom =nom_;
-        }
+        #region PARTE PÚBLICA
 
-        //Cambiar apellidos
-        public void setApe(string ape_){
-            ape = ape_;
-        }
-
-        //Cambiar dni
-        public void setDni(string dni_){
+        // Constructor
+        public User(string nom_, string dni_, string email_, string pass_, Titulacion titulacion_, int curso_) {
+            nombre = nom_;
             dni = dni_;
-        }
-
-        //Cambiar email
-        public void setEmail(string email_){
+            password = pass_;
             email = email_;
-        }
-
-        //Cambiar contraseña
-        public void setPass(string pass_) {
-            pass = pass_;
-        }
-
-        //Cambiar el codigo de la titulacion
-        public void setCodTitulacion(string codTitulacion_) {
-            codTitulacion = codTitulacion_;
-        }
-
-        //Cambair el curso
-        public void setCurso(int curso_) {
+            titulacion = titulacion_;
             curso = curso_;
         }
 
-        //Añadir Actividad
-        public void AddActividad(Actividad actividad) {
-            activ.Add(actividad);
+        // Constructor de copia
+        public User(User u) {
+            dni = u.dni;
+            nombre = u.nombre;
+            email = u.email;
+            password = u.password;
+            curso = u.curso;
+            titulacion = u.titulacion;
+            actividades = u.actividades;
+            comentarios = u.comentarios;
+            horarios = u.horarios;
         }
 
-        //Añadir Horario
+
+        // Cambiar/obtener nombre
+        public string Nombre {
+            get { return nombre; }
+            set { nombre = value; }
+        }
+
+
+        // Cambiar/obtener DNI
+        public string DNI {
+            get { return dni; }
+            set { dni = value; }
+        }
+
+
+        // Cambiar/obtener e-mail
+        public string Email {
+            get { return email; }
+            set { email = value; }
+        }
+
+
+        // Cambiar/obtener contraseña
+        public string Password {
+            get { return password; }
+            set { password = value; }
+        }
+
+
+        // Cambiar/obtener código de la titulación
+        public Titulacion CodTitulacion {
+            get { return titulacion; }
+            set { titulacion = value; }
+        }
+
+
+        // Cambiar/obtener número de curso
+        public int Curso {
+            get { return curso; }
+            set { curso = value; }
+        }
+
+
+        //Cambiar/obtener actividades
+        public List<Actividad> Actividades {
+            set { actividades = value; }
+            get { return actividades; }
+        }
+
+        // Añadir actividad
+        public void AddActividad(Actividad actividad) {
+            actividades.Add(actividad);
+        }
+
+
+        // Borrar actividad (a partir de su código, si se encuentra)
+        public bool BorraActividad(int codigobuscado) {
+            foreach (Actividad act in actividades) {
+                if(act.Codigo == codigobuscado) 
+                    return actividades.Remove(act);
+            }
+            return false;
+        }
+
+
+        //Cambiar/Obtener Comentarios
+        public List<Comentario> Comentarios {
+            set { comentarios = value; }
+            get { return comentarios; }
+        }
+
+
+        // Añadir comentario
+        public void AddComentario(Comentario comentario) {
+            comentarios.Add(comentario);
+        }
+
+
+        // Borrar comentario (a partir de su código, si se encuentra)
+        public bool BorraComentario(int id) {
+            foreach (Comentario com in comentarios) {
+                if (com.ID == id) 
+                    return comentarios.Remove(com);
+            }
+
+            return false;
+        }
+
+        //Cambiar/Obtener horarios
+        public List<Horario> Horarios {
+            set { horarios = value; }
+            get { return horarios; }
+        }
+
+
+        // Añadir horario
         public void AddHorario(Horario horario) {
             horarios.Add(horario);
         }
 
-        //Obtener nombre
-        public string getNom() {
-            return nom;
+
+        // Borrar horario (a partir de su identificador ID)
+        public bool BorrarHorario (int idbuscado) {
+            foreach (Horario hor in horarios) {
+                if(hor.ID == idbuscado) 
+                    return horarios.Remove(hor);
+            }
+            return false;
         }
 
-        //Obtener apellidos
-        public string getApe() {
-            return ape;
-        }
-
-        //Obtener dni
-        public string getDni() {
-            return dni;
-        }
-
-        //Obtener email
-        public string getEmail() {
-            return email;
-        }
-
-        //Obtener contraseñas
-        public string getPass() {
-            return pass;
-        }
-
-        //Obtener codigo de titulacion
-        public string getCodTitulacio() {
-            return codTitulacion;
-        }
-
-        //Obtener nombre de la titulacion
-        public string getNomTitulacion(){
-            string nomTitulacion ="";       //Cuando este la base de datos se accederá
-            return nomTitulacion;           // y con el código obtendremos el nombre
-        }
-
-        //Obtener Curso
-        public int getCurso() {
-            return curso;
-        }
-
-        //Obtener ArrayList de actividades
-        public ArrayList getActiv() {
-            return activ;
-        }
-
-        //Obtener ArrayList de horarios
-        public ArrayList getHorarios() {
-            return horarios;
-        }
+        #endregion
     }
 }
