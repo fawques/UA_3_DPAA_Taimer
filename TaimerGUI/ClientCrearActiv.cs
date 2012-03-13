@@ -59,7 +59,7 @@ namespace TaimerGUI
                     Hora horF = new Hora(filas.Cells["horaFin"].Value.ToString());
                     Profesor prof = new Profesor("001", "Iginio Mora", "11111111I", "tic");
                     char d = comboBoxDia.Text[0];
-                    Turno turn = new Turno(1, horI, horF, d, "IB", "poli1", prof);
+                    Turno turn = new Turno(horI, horF, 'D', "IB", "poli1");
                     //actividad.AddTurno(turn);
                 }
                 this.Hide();

@@ -169,8 +169,9 @@ namespace Taimer {
         #region PARTE PÚBLICA
 
         // Constructor
-        public Turno(int codigo_, Hora horaI_, Hora horaF_, char dia_, string nom_, string ubic_) {
-            codigo = codigo_;
+        public Turno(/*int codigo_,*/ Hora horaI_, Hora horaF_, char dia_, string nom_, string ubic_) {
+            //codigo = codigo_;
+            codigo = 0;
             horaInicio = horaI_;
             horaFin = horaF_;
             diasemana = dia_;
@@ -243,11 +244,6 @@ namespace Taimer {
         }
 
         // **** EXTRAS (En construcción) ****
-
-        // Obtener nombre del profesor
-        public string getNombreProfesor() {
-            return Profesor.Nombre;
-        }
         #endregion
     }
     #endregion

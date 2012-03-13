@@ -29,6 +29,15 @@ namespace Taimer {
             turnos = turnos_;
         }
 
+        public Actividad_a(string nom_, string desc_, int cod_, int codCoord_, bool tipo_)
+            : base(nom_, desc_, cod_)
+        {
+
+            codCoord = codCoord_;
+            tipo = tipo_;
+            turnos = new List<Turno>();
+        }
+
         // Constructor de copia
         public Actividad_a(Actividad_a act)
             : base(act) {

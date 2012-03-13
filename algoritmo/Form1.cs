@@ -21,14 +21,15 @@ namespace algoritmo
         private void btGenerar_Click(object sender, EventArgs e)
         {
             string texto = "";
-            Horario h = new Horario("prueba", 1);
+            User u = new User("hola", "25", "aaa", "aaa", new Titulacion("aa", "1"), 2);
+            Horario h = new Horario("prueba", u);
             if (h.generarHorarioVoraz())
             {
-                foreach (ArrayList dia in h.getTurnos())
+                foreach (List<Turno> dia in h.ArrayTurnos)
                 {
                     foreach (Turno item in dia)
                     {
-                        texto += item.getNom() + " ";
+                        texto += item.Nombre + " ";
                     }
                 }
 
