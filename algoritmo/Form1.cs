@@ -34,7 +34,7 @@ namespace algoritmo
                 }
 
                 MessageBox.Show("Los turnos son: " + texto);
-                int puntDias = Horario.puntuarHorasHueco(h);
+                int puntDias = Horario.puntuarDias(h);
                 MessageBox.Show("Tiene una puntuación según los huecos de : " + puntDias);
             }
             else

@@ -17,7 +17,7 @@ namespace Taimer {
         private User usuario;                             // Un horario es creado por (1,1) usuarios
         #endregion
 
-    #region PARTE PÚBLICA 
+        #region PARTE PÚBLICA 
 
         // Constructor
         public Horario(int id_, string nom_, User usu_) {
@@ -149,7 +149,6 @@ namespace Taimer {
         
         #region ALGORITMO
 
-
         // Puntuar un horario según el número de días. Puntuará de 0 a 7, añadirá uno por cada día en el que haya turnos.
         public static int puntuarDias(Horario horario)
         {
@@ -161,59 +160,6 @@ namespace Taimer {
             }
 
             return puntuacion;
-        }
-
-        // Puntuar un horario según el número de horas de hueco. Añadirá uno por cada hora en la que haya huecos entre turnos.
-        public static int puntuarHorasHueco(Horario horario)
-        {
-            int puntuacion = 0;
-
-            foreach (List<Turno> dia in horario.ArrayTurnos)
-            {
-                try
-                {
-                    // WARNING! Para que esto funcione bien, los turnos tienen que estar ordenados
-                    Hora mindia = new Hora(23, 59);
-                    Hora maxdia = new Hora(0, 0);
-                    Horario.horasLimitesDia(dia, ref mindia, ref maxdia);
-
-                    Hora initHueco = new Hora(0, 0);
-                    Hora finHueco = new Hora(0, 0);
-                    if (dia.Count > 0)
-                    {
-                        Turno aux = (Turno)dia[0];
-                        initHueco = aux.HoraInicio;
-                        foreach (Turno item in dia)
-                        {
-                            finHueco = item.HoraFin;
-                            throw new NotImplementedException();
-                            //TODO: sumar la diferencia a puntuacion --> hacer funcion operator-
-                        }
-                    }
-                }
-                catch (OutOfMemoryException) //esta excepción tendrá que ser distinta
-                { }
-
-            }
-            return puntuacion;
-        }
-
-        //Devuelve por referencia la primera hora del día y la última de una lista de Turnos
-        public static void horasLimitesDia(List<Turno> dia, ref Hora horaini, ref Hora horafin)
-        {
-            horaini.Hor = 23;
-            horaini.Min = 59;
-            horafin.Hor = horafin.Min = 0;
-            foreach (Turno item in dia)
-            {
-                if (item.HoraInicio < horaini)
-                    horaini = item.HoraInicio;
-                if (item.HoraFin > horafin)
-                    horafin = item.HoraFin;
-            }
-
-            if (horaini.Hor == 99)
-                throw new IndexOutOfRangeException("Día vacío");
         }
 
         //Generación de un Horario de forma Voraz
@@ -295,12 +241,6 @@ namespace Taimer {
                     return false;
             }
 
-            return true;
-        }
-
-        public bool generarHorarioBT()
-        {
-            throw new NotImplementedException();
             return true;
         }
         #endregion
