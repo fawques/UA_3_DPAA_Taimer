@@ -47,7 +47,6 @@
     <Compile Include="Actividad_p.cs" />
     <Compile Include="Comentario.cs" />
     <Compile Include="Hora.cs" />
-    <Compile Include="Profesor.cs" />
     <Compile Include="Horario.cs" />
     <Compile Include="User.cs" />
     <Compile Include="Turno.cs" />
