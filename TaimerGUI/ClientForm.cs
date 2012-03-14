@@ -16,15 +16,15 @@ namespace TaimerGUI {
 
         Taimer.User usuario;
 
-        ClientBienvenida formWelcome;
-        ClientHorHome formHorHome;
-        ClientHorVer formHorDetails;
-        ClientCrearHor1 formCreateHor1;
-        ClientCrearHor2 formCreateHor2;
+        public ClientBienvenida formWelcome;
+        public ClientHorHome formHorHome;
+        public ClientHorVer formHorDetails;
+        public ClientCrearHor1 formCreateHor1;
+        public ClientCrearHor2 formCreateHor2;
 
-        ClientMatriculacionActiv formMatric;
-        ClientVerActividades formVerAct;
-        ClientCrearActiv formCrearAct;
+        public ClientMatriculacionActiv formMatric;
+        public ClientVerActividades formVerAct;
+        public ClientCrearActiv formCrearAct;
         
         private void ClientForm_Load(object sender, EventArgs e)
         {
@@ -52,7 +52,7 @@ namespace TaimerGUI {
                 }
             }
 
-            formWelcome = new ClientBienvenida();
+            formWelcome = new ClientBienvenida(this);
             formHorHome = new ClientHorHome();
             formHorDetails = new ClientHorVer();
             formCreateHor1 = new ClientCrearHor1();
@@ -306,6 +306,7 @@ namespace TaimerGUI {
                 //Quitamos la mascara de redondeado
                 this.Region = new Region();
                 this.WindowState = FormWindowState.Maximized;
+                this.formHorDetails.WindowState = FormWindowState.Maximized;
             }
             else
             {
@@ -328,7 +329,7 @@ namespace TaimerGUI {
             System.Diagnostics.Process.Start("http://google.es/");
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void verHorarios_Click(object sender, EventArgs e)
         {
             hideAllChilds();
             formHorHome.Show();
@@ -342,7 +343,7 @@ namespace TaimerGUI {
             positionAllChilds();
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        public void crearHorario_Click(object sender, EventArgs e)
         {
             hideAllChilds();
             formCreateHor1.Show();
@@ -364,21 +365,21 @@ namespace TaimerGUI {
             positionAllChilds();
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        public void crearActividad_Click(object sender, EventArgs e)
         {
             hideAllChilds();
             formCrearAct.Show();
             positionAllChilds();
         }
 
-        private void button7_Click(object sender, EventArgs e)
+        private void matriculacion_Click(object sender, EventArgs e)
         {
             hideAllChilds();
             formMatric.Show();
             positionAllChilds();
         }
 
-        private void button6_Click(object sender, EventArgs e)
+        private void verActividades_Click(object sender, EventArgs e)
         {
             hideAllChilds();
             formVerAct.Show();

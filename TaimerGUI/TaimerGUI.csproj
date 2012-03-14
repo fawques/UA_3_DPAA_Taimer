@@ -115,6 +115,12 @@
     <Compile Include="AGestUser.designer.cs">
       <DependentUpon>AGestUser.cs</DependentUpon>
     </Compile>
+    <Compile Include="ClientCreandoAlgoritmo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ClientCreandoAlgoritmo.Designer.cs">
+      <DependentUpon>ClientCreandoAlgoritmo.cs</DependentUpon>
+    </Compile>
     <Compile Include="ClientCrearActiv.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -208,6 +214,9 @@
     <EmbeddedResource Include="AGestUser.resx">
       <DependentUpon>AGestUser.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ClientCreandoAlgoritmo.resx">
+      <DependentUpon>ClientCreandoAlgoritmo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ClientCrearActiv.resx">
       <DependentUpon>ClientCrearActiv.cs</DependentUpon>
     </EmbeddedResource>
@@ -290,6 +299,12 @@
       <Project>{329AECE9-732D-4307-AF83-AFDAE3E04AA4}</Project>
       <Name>TaimerEN</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\flechaRight.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\flechaLeft.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

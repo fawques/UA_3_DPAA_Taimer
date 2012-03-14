@@ -150,11 +150,12 @@
             // 
             // button1
             // 
+            this.button1.BackgroundImage = global::TaimerGUI.Properties.Resources.flechaRight;
+            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.button1.Location = new System.Drawing.Point(254, 389);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(43, 46);
             this.button1.TabIndex = 37;
-            this.button1.Text = "Add =>";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
