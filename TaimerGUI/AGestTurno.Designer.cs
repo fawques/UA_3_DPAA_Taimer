@@ -24,8 +24,8 @@
         /// </summary>
         private void InitializeComponent() {
             this.btBuscarUSer = new System.Windows.Forms.Button();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
+            this.lbHoraIni = new System.Windows.Forms.Label();
+            this.lbDia = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -37,13 +37,20 @@
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
+            this.lbHoraFin = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btCancel = new System.Windows.Forms.Button();
+            this.btConfirm = new System.Windows.Forms.Button();
+            this.tbUbi = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.lbUbi = new System.Windows.Forms.Label();
+            this.cbDia = new System.Windows.Forms.ComboBox();
+            this.udHoraIni = new System.Windows.Forms.NumericUpDown();
+            this.udMinIni = new System.Windows.Forms.NumericUpDown();
+            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.udHoraIni)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.udMinIni)).BeginInit();
             this.SuspendLayout();
             // 
             // btBuscarUSer
@@ -55,23 +62,25 @@
             this.btBuscarUSer.Text = "Buscar";
             this.btBuscarUSer.UseVisualStyleBackColor = true;
             // 
-            // label5
+            // lbHoraIni
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(515, 233);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(34, 13);
-            this.label5.TabIndex = 34;
-            this.label5.Text = "13:30";
+            this.lbHoraIni.AutoSize = true;
+            this.lbHoraIni.Location = new System.Drawing.Point(515, 233);
+            this.lbHoraIni.Name = "lbHoraIni";
+            this.lbHoraIni.Size = new System.Drawing.Size(34, 13);
+            this.lbHoraIni.TabIndex = 34;
+            this.lbHoraIni.Text = "13:00";
+            this.lbHoraIni.Click += new System.EventHandler(this.lbHoraIni_Click);
             // 
-            // label4
+            // lbDia
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(515, 195);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(36, 13);
-            this.label4.TabIndex = 33;
-            this.label4.Text = "Lunes";
+            this.lbDia.AutoSize = true;
+            this.lbDia.Location = new System.Drawing.Point(515, 195);
+            this.lbDia.Name = "lbDia";
+            this.lbDia.Size = new System.Drawing.Size(36, 13);
+            this.lbDia.TabIndex = 33;
+            this.lbDia.Text = "Lunes";
+            this.lbDia.Click += new System.EventHandler(this.lbDia_Click);
             // 
             // label3
             // 
@@ -177,33 +186,14 @@
             this.dataGridViewTextBoxColumn4.ReadOnly = true;
             this.dataGridViewTextBoxColumn4.Width = 80;
             // 
-            // label6
+            // lbHoraFin
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(448, 307);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(49, 13);
-            this.label6.TabIndex = 38;
-            this.label6.Text = "Profesor:";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(515, 270);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(34, 13);
-            this.label7.TabIndex = 39;
-            this.label7.Text = "15:00";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(515, 306);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(67, 13);
-            this.label8.TabIndex = 40;
-            this.label8.Text = "Pepito Perez";
+            this.lbHoraFin.AutoSize = true;
+            this.lbHoraFin.Location = new System.Drawing.Point(515, 270);
+            this.lbHoraFin.Name = "lbHoraFin";
+            this.lbHoraFin.Size = new System.Drawing.Size(34, 13);
+            this.lbHoraFin.TabIndex = 39;
+            this.lbHoraFin.Text = "15:00";
             // 
             // label9
             // 
@@ -215,24 +205,111 @@
             this.label9.TabIndex = 41;
             this.label9.Text = "Gestionar Turnos";
             // 
-            // button3
+            // btCancel
             // 
-            this.button3.Location = new System.Drawing.Point(667, 515);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(105, 35);
-            this.button3.TabIndex = 43;
-            this.button3.Text = "Cancelar";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.btCancel.Location = new System.Drawing.Point(667, 515);
+            this.btCancel.Name = "btCancel";
+            this.btCancel.Size = new System.Drawing.Size(105, 35);
+            this.btCancel.TabIndex = 43;
+            this.btCancel.Text = "Cancelar";
+            this.btCancel.UseVisualStyleBackColor = true;
+            this.btCancel.Click += new System.EventHandler(this.btCancel_Click);
             // 
-            // button2
+            // btConfirm
             // 
-            this.button2.Location = new System.Drawing.Point(543, 515);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(105, 35);
-            this.button2.TabIndex = 42;
-            this.button2.Text = "Confirmar";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btConfirm.Location = new System.Drawing.Point(543, 515);
+            this.btConfirm.Name = "btConfirm";
+            this.btConfirm.Size = new System.Drawing.Size(105, 35);
+            this.btConfirm.TabIndex = 42;
+            this.btConfirm.Text = "Confirmar";
+            this.btConfirm.UseVisualStyleBackColor = true;
+            this.btConfirm.Click += new System.EventHandler(this.btConfirm_Click);
+            // 
+            // tbUbi
+            // 
+            this.tbUbi.Location = new System.Drawing.Point(514, 303);
+            this.tbUbi.Name = "tbUbi";
+            this.tbUbi.Size = new System.Drawing.Size(258, 20);
+            this.tbUbi.TabIndex = 47;
+            this.tbUbi.Visible = false;
+            this.tbUbi.Validated += new System.EventHandler(this.tbUbi_Validated);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(441, 306);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(56, 13);
+            this.label6.TabIndex = 38;
+            this.label6.Text = "Ubicación:";
+            // 
+            // lbUbi
+            // 
+            this.lbUbi.AutoSize = true;
+            this.lbUbi.Location = new System.Drawing.Point(515, 306);
+            this.lbUbi.Name = "lbUbi";
+            this.lbUbi.Size = new System.Drawing.Size(67, 13);
+            this.lbUbi.TabIndex = 40;
+            this.lbUbi.Text = "Pepito Perez";
+            this.lbUbi.Click += new System.EventHandler(this.lbUbi_Click);
+            // 
+            // cbDia
+            // 
+            this.cbDia.DisplayMember = "Lunes";
+            this.cbDia.FormattingEnabled = true;
+            this.cbDia.Items.AddRange(new object[] {
+            "Lunes",
+            "Martes",
+            "Miercoles",
+            "Jueves",
+            "Viernes",
+            "Sabado",
+            "Domingo"});
+            this.cbDia.Location = new System.Drawing.Point(514, 191);
+            this.cbDia.Name = "cbDia";
+            this.cbDia.Size = new System.Drawing.Size(121, 21);
+            this.cbDia.TabIndex = 48;
+            this.cbDia.Text = "Lunes";
+            this.cbDia.Visible = false;
+            this.cbDia.Validated += new System.EventHandler(this.cbDia_Validated);
+            // 
+            // udHoraIni
+            // 
+            this.udHoraIni.Location = new System.Drawing.Point(514, 230);
+            this.udHoraIni.Maximum = new decimal(new int[] {
+            23,
+            0,
+            0,
+            0});
+            this.udHoraIni.Name = "udHoraIni";
+            this.udHoraIni.Size = new System.Drawing.Size(37, 20);
+            this.udHoraIni.TabIndex = 49;
+            this.udHoraIni.Visible = false;
+            this.udHoraIni.Validated += new System.EventHandler(this.udHoraIni_Validated);
+            // 
+            // udMinIni
+            // 
+            this.udMinIni.Location = new System.Drawing.Point(557, 230);
+            this.udMinIni.Maximum = new decimal(new int[] {
+            59,
+            0,
+            0,
+            0});
+            this.udMinIni.Name = "udMinIni";
+            this.udMinIni.Size = new System.Drawing.Size(37, 20);
+            this.udMinIni.TabIndex = 50;
+            this.udMinIni.Visible = false;
+            this.udMinIni.Validated += new System.EventHandler(this.udMinIni_Validated);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(664, 237);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(34, 13);
+            this.label4.TabIndex = 51;
+            this.label4.Text = "13:00";
             // 
             // AGestTurno
             // 
@@ -240,16 +317,17 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Cornsilk;
             this.ClientSize = new System.Drawing.Size(795, 595);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.btCancel);
+            this.Controls.Add(this.btConfirm);
             this.Controls.Add(this.label9);
-            this.Controls.Add(this.label8);
-            this.Controls.Add(this.label7);
+            this.Controls.Add(this.lbUbi);
+            this.Controls.Add(this.lbHoraFin);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.dataGridView2);
             this.Controls.Add(this.btBuscarUSer);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
+            this.Controls.Add(this.lbHoraIni);
+            this.Controls.Add(this.lbDia);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -257,10 +335,16 @@
             this.Controls.Add(this.btNewUser);
             this.Controls.Add(this.lbUserName);
             this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.tbUbi);
+            this.Controls.Add(this.cbDia);
+            this.Controls.Add(this.udMinIni);
+            this.Controls.Add(this.udHoraIni);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "AGestTurno";
             this.Text = "AGestTurno";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.udHoraIni)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.udMinIni)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -269,8 +353,8 @@
         #endregion
 
         private System.Windows.Forms.Button btBuscarUSer;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label lbHoraIni;
+        private System.Windows.Forms.Label lbDia;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
@@ -282,12 +366,17 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label lbHoraFin;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btCancel;
+        private System.Windows.Forms.Button btConfirm;
+        private System.Windows.Forms.TextBox tbUbi;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label lbUbi;
+        private System.Windows.Forms.ComboBox cbDia;
+        private System.Windows.Forms.NumericUpDown udHoraIni;
+        private System.Windows.Forms.NumericUpDown udMinIni;
+        private System.Windows.Forms.Label label4;
 
     }
 }

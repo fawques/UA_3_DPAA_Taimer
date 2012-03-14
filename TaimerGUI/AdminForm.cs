@@ -185,5 +185,27 @@ namespace TaimerGUI {
             bienvenidaForm.Show();
             positionChilds();
         }
+
+        private void salirToolStripMenuItem_Click(object sender, EventArgs e) {
+            if (MessageBox.Show("¿Seguro que desea salir?",
+               "¿Salir?",
+               MessageBoxButtons.OKCancel,
+               MessageBoxIcon.Question,
+               MessageBoxDefaultButton.Button2) == DialogResult.OK) {
+                Application.Exit();
+            }
+        }
+
+        private void cerrarSesionToolStripMenuItem_Click(object sender, EventArgs e) {
+            if (MessageBox.Show("¿Seguro que desea cerrar sesión?",
+               "¿Cerrar sesión?",
+               MessageBoxButtons.YesNo,
+               MessageBoxIcon.Question,
+               MessageBoxDefaultButton.Button2) == DialogResult.Yes) {
+                Program.loginForm.Show();
+                Close();
+            }
+        }
+
     }
 }
