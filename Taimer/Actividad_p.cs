@@ -10,40 +10,48 @@ namespace Taimer {
         #region PARTE PRIVADA
         // (Nombre, descripción y código vienen de la clase Actividad)
 
-        private string responsable;
         private List<Turno> turnos = new List<Turno>();
+        private User usuario;                               // Usuario de la actividad personal
 
         #endregion
 
         #region PARTE PUBLICA
 
         // Constructor básico (sin lista de turnos)
-        public Actividad_p(string nom_, string desc_, int cod_, string responsable_)
+        public Actividad_p(string nom_, string desc_, int cod_, User usu_)
             : base(nom_, desc_, cod_) {
-            responsable = responsable_;
+                usuario = usu_;
         }
 
 
         // Constructor avanzado (con lista de turnos)
-        public Actividad_p(string nom_, string desc_, int cod_, string responsable_, List<Turno> turnos_)
+        public Actividad_p(string nom_, string desc_, int cod_, string responsable_, List<Turno> turnos_, User usu_)
             : base(nom_, desc_, cod_) {
 
-            responsable = responsable_;
+            usuario = usu_;
             turnos = turnos_;
         }
 
         // Constructor de copia
         public Actividad_p(Actividad_p act)
             : base(act) {
-            responsable = act.responsable;
+                usuario = act.usuario;
             turnos = act.turnos;    
         }
 
-        // Cambiar/obtener responsable
-        public string Responsable
+        // Cambiar/obtener usuario
+        public User Usuario
         {
-            get { return responsable; }
-            set { responsable = value; }
+            get { return usuario; }
+            set { usuario = value; }
+        }
+
+
+        //Cambiar/obtener turnos
+        public List<Turno> Turnos
+        {
+            set { turnos = value; }
+            get { return turnos; }
         }
 
 
@@ -52,11 +60,13 @@ namespace Taimer {
             turnos.Add(turno);
         }
 
-        //Cambiar/obtener turnos
-        public List<Turno> Turnos {
-            set { turnos = value; }
-            get { return turnos; }
+
+        // Borrar turno
+        public bool BorraTurno(Turno turno)
+        {
+                    return Turnos.Remove(turno);
         }
+
 
         // Borrar turno (a partir de su código, si se encuentra)
         public bool BorraTurno(int codigobuscado) {
@@ -66,6 +76,8 @@ namespace Taimer {
             }
             return false;
         }
+
+
         #endregion
     }
 }
