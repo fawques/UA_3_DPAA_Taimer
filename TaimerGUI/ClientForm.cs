@@ -103,6 +103,7 @@ namespace TaimerGUI {
                 auxlbl.Location = new Point(25, posY);
                 auxlbl.Cursor = Cursors.Hand;
                 auxlbl.MouseEnter += new EventHandler(label_MouseEnter);
+                auxlbl.Click += new EventHandler(verHorario_Click);
                 auxlbl.MouseLeave += new EventHandler(label_MouseLeave);
                 posY += 25;
                 groupBoxUltimosHorarios.Controls.Add(auxlbl);
@@ -119,6 +120,7 @@ namespace TaimerGUI {
                 auxlbl.Location = new Point(25, posY);
                 auxlbl.Cursor = Cursors.Hand;
                 auxlbl.MouseEnter += new EventHandler(label_MouseEnter);
+                auxlbl.Click += new EventHandler(verHorario_Click);
                 auxlbl.MouseLeave += new EventHandler(label_MouseLeave);
                 posY += 25;
                 groupBoxUltActivi.Controls.Add(auxlbl);
@@ -354,9 +356,10 @@ namespace TaimerGUI {
             positionAllChilds();
         }
 
-        private void label4_Click(object sender, EventArgs e)
+        private void verHorario_Click(object sender, EventArgs e)
         {
             hideAllChilds();
+            formHorDetails.setHorario(new Taimer.Horario("Horario", (new Taimer.User("", "", "", "", new Taimer.Titulacion("", ""), 1))));
             formHorDetails.Show();
             positionAllChilds();
         }

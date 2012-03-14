@@ -81,19 +81,23 @@
             // 
             this.Column1.HeaderText = "Codigo";
             this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
             // 
             // Column2
             // 
             this.Column2.HeaderText = "Nombre";
             this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
             // 
             // Column3
             // 
             this.Column3.HeaderText = "Descipcion";
             this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
             // 
             // lblNombre
             // 
+            this.lblNombre.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.lblNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNombre.Location = new System.Drawing.Point(49, 82);
             this.lblNombre.Name = "lblNombre";
@@ -120,16 +124,19 @@
             // 
             this.Column4.HeaderText = "Codigo";
             this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
             // 
             // Column5
             // 
             this.Column5.HeaderText = "Nombre";
             this.Column5.Name = "Column5";
+            this.Column5.ReadOnly = true;
             // 
             // Column6
             // 
             this.Column6.HeaderText = "Descipcion";
             this.Column6.Name = "Column6";
+            this.Column6.ReadOnly = true;
             // 
             // button1
             // 
