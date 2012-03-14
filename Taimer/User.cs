@@ -14,7 +14,6 @@ namespace Taimer {
         private string email;
         private string password;
         private int curso;
-        private Titulacion titulacion;                                   // Un usuario tiene (1,1) titulaciones
         private List<Actividad> actividades = new List<Actividad>();          // Un usuario tiene (0,N) actividades
         private List<Comentario> comentarios = new List<Comentario>();          // Un usuario escribe (0,N) comentarios
         private List<Horario> horarios = new List<Horario>();                   // Un usuario tiene (0,N) horarios
@@ -24,12 +23,11 @@ namespace Taimer {
         #region PARTE PÚBLICA
 
         // Constructor
-        public User(string nom_, string dni_, string email_, string pass_, Titulacion titulacion_, int curso_) {
+        public User(string nom_, string dni_, string email_, string pass_, int curso_) {
             nombre = nom_;
             dni = dni_;
             password = pass_;
             email = email_;
-            titulacion = titulacion_;
             curso = curso_;
         }
 
@@ -40,7 +38,6 @@ namespace Taimer {
             email = u.email;
             password = u.password;
             curso = u.curso;
-            titulacion = u.titulacion;
             actividades = u.actividades;
             comentarios = u.comentarios;
             horarios = u.horarios;
@@ -72,13 +69,6 @@ namespace Taimer {
         public string Password {
             get { return password; }
             set { password = value; }
-        }
-
-
-        // Cambiar/obtener código de la titulación
-        public Titulacion CodTitulacion {
-            get { return titulacion; }
-            set { titulacion = value; }
         }
 
 

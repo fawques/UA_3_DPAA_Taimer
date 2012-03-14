@@ -12,44 +12,67 @@ namespace Taimer {
 
         // (Nombre, descripción y código vienen de la clase Actividad)
 
-        private int codCoord;                 // Código del coordinador de la asignatura
-        private bool tipo;                    // Nos dirá si la actividad/asignatura es de prácticas o de teoria (formará parte de la PK en la BD)
+        private string nombreCoordinador;     // Nombre del profesor coordinador de la asignatura
         private List<Turno> turnos = new List<Turno>();
+        int curso;                              // Indica el curso al que pertenece la asignatura
 
         #endregion
 
         #region PARTE PÚBLICA
 
-        // Constructor
-        public Actividad_a(string nom_, string desc_, int cod_, int codCoord_, bool tipo_, List<Turno> turnos_)
-            : base(nom_, desc_, cod_) {
 
-            codCoord = codCoord_;
-            tipo = tipo_;
-            turnos = turnos_;
-        }
-
-        public Actividad_a(string nom_, string desc_, int cod_, int codCoord_, bool tipo_)
+        // Constructor básico (sin lista de turnos ni número de curso)
+        public Actividad_a(string nom_, string desc_, int cod_, string nomCoord_)
             : base(nom_, desc_, cod_)
         {
 
-            codCoord = codCoord_;
-            tipo = tipo_;
+            nombreCoordinador = nomCoord_;
             turnos = new List<Turno>();
+            curso = 0;                      // Por defecto se asigna el número de curso a 0
         }
+
+
+        // Constructor básico (sin lista de turnos, pero sí con número de curso)
+        public Actividad_a(string nom_, string desc_, int cod_, string nomCoord_, int curso_)
+            : base(nom_, desc_, cod_)
+        {
+
+            nombreCoordinador = nomCoord_;
+            turnos = new List<Turno>();
+            curso = curso_;
+        }
+
+
+        // Constructor avanzado (con lista de turnos y curso)
+        public Actividad_a(string nom_, string desc_, int cod_, string nomCoord_, List<Turno> turnos_, int curso_)
+            : base(nom_, desc_, cod_) {
+
+            nombreCoordinador = nomCoord_;
+            turnos = turnos_;
+            curso = curso_;
+        }
+
 
         // Constructor de copia
         public Actividad_a(Actividad_a act)
             : base(act) {
-            codCoord = act.codCoord;
-            tipo = act.tipo;
+            nombreCoordinador = act.nombreCoordinador;
             turnos = act.turnos;
+            curso = act.curso;
         }
 
-        // Cambiar/obtener código del coordinador
-        public int CodCoord {
-            get { return codCoord; }
-            set { codCoord = value; }
+
+        // Cambiar/obtener número de curso de la asignatura
+        public int Curso {
+            get { return curso; }
+            set { curso = value; }
+        }
+
+
+        // Cambiar/obtener nombre del profesor coordinador
+        public string NombreCoordinador {
+            get { return nombreCoordinador; }
+            set { nombreCoordinador = value; }
         }
 
 
@@ -63,11 +86,6 @@ namespace Taimer {
         public List<Turno> Turnos {
             set { turnos = value; }
             get { return turnos; }
-        }
-
-        public bool Tipo {
-            set { tipo = value; }
-            get { return tipo; }
         }
 
 
