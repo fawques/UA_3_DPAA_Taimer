@@ -14,22 +14,40 @@ namespace Taimer {
         private string email;
         private string password;
         private int curso;
-        private List<Actividad> actividades = new List<Actividad>();          // Un usuario tiene (0,N) actividades
-        private List<Comentario> comentarios = new List<Comentario>();          // Un usuario escribe (0,N) comentarios
-        private List<Horario> horarios = new List<Horario>();                   // Un usuario tiene (0,N) horarios
+        private string titulacion;
+        private List<Actividad_a> actAcademicas = new List<Actividad_a>();          // Un usuario tiene (0,N) actividades académicas
+        private List<Actividad_p> actPersonales = new List<Actividad_p>();          // Un usuario tiene (0,N) actividades personales
+        private List<Horario> horarios = new List<Horario>();                               // Un usuario tiene (0,N) horarios
 
         #endregion
 
         #region PARTE PÚBLICA
 
-        // Constructor
-        public User(string nom_, string dni_, string email_, string pass_, int curso_) {
+        // Constructor básico (sin listas)
+        public User(string nom_, string dni_, string email_, string pass_, int curso_, string tit_) {
             nombre = nom_;
             dni = dni_;
             password = pass_;
             email = email_;
             curso = curso_;
+            titulacion = tit_;
         }
+
+
+        // Constructor avanzado (con listas)
+        public User(string nom_, string dni_, string email_, string pass_, int curso_, string tit_, List<Actividad_a> acta_, List<Actividad_p> actp_, List<Horario> hor_)
+        {
+            nombre = nom_;
+            dni = dni_;
+            password = pass_;
+            email = email_;
+            curso = curso_;
+            titulacion = tit_;
+            actAcademicas = acta_;
+            actPersonales = actp_;
+            horarios = hor_;
+        }
+
 
         // Constructor de copia
         public User(User u) {
@@ -38,9 +56,9 @@ namespace Taimer {
             email = u.email;
             password = u.password;
             curso = u.curso;
-            actividades = u.actividades;
-            comentarios = u.comentarios;
+            actAcademicas = u.actAcademicas;
             horarios = u.horarios;
+            titulacion = u.titulacion;
         }
 
 
@@ -79,52 +97,48 @@ namespace Taimer {
         }
 
 
-        //Cambiar/obtener actividades
-        public List<Actividad> Actividades {
-            set { actividades = value; }
-            get { return actividades; }
-        }
-
-        // Añadir actividad
-        public void AddActividad(Actividad actividad) {
-            actividades.Add(actividad);
+        //Cambiar/obtener lista de actividades académicas
+        public List<Actividad_a> ActAcademicas {
+            set { actAcademicas = value; }
+            get { return actAcademicas; }
         }
 
 
-        // Borrar actividad (a partir de su código, si se encuentra)
-        public bool BorraActividad(int codigobuscado) {
-            foreach (Actividad act in actividades) {
-                if(act.Codigo == codigobuscado) 
-                    return actividades.Remove(act);
-            }
-            return false;
+        //Cambiar/obtener lista de actividades personales
+        public List<Actividad_p> ActPersonales
+        {
+            set { actPersonales = value; }
+            get { return actPersonales; }
         }
 
 
-        //Cambiar/Obtener Comentarios
-        public List<Comentario> Comentarios {
-            set { comentarios = value; }
-            get { return comentarios; }
+        // Añadir actividad académica
+        public void AddActAcademica(Actividad_a act) {
+            actAcademicas.Add(act);
         }
 
 
-        // Añadir comentario
-        public void AddComentario(Comentario comentario) {
-            comentarios.Add(comentario);
+        // Borrar actividad académica (si existe). Devuelve valor booleano.
+        public bool BorraActAcademica(Actividad_a act) {
+            return actAcademicas.Remove(act);
         }
 
 
-        // Borrar comentario (a partir de su código, si se encuentra)
-        public bool BorraComentario(int id) {
-            foreach (Comentario com in comentarios) {
-                if (com.ID == id) 
-                    return comentarios.Remove(com);
-            }
-
-            return false;
+        // Añadir actividad personal
+        public void AddActPersonal(Actividad_p act)
+        {
+            actPersonales.Add(act);
         }
 
-        //Cambiar/Obtener horarios
+
+        // Borrar actividad personal (si existe). Devuelve valor booleano.
+        public bool BorraActPersonal(Actividad_p act)
+        {
+            return actPersonales.Remove(act);
+        }
+
+
+        // Cambiar/Obtener horarios
         public List<Horario> Horarios {
             set { horarios = value; }
             get { return horarios; }
@@ -134,6 +148,13 @@ namespace Taimer {
         // Añadir horario
         public void AddHorario(Horario horario) {
             horarios.Add(horario);
+        }
+
+
+        // Borrar horario
+        public bool BorraHorario(Horario hor)
+        {
+            return horarios.Remove(hor);
         }
 
 
