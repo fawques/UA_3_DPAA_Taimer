@@ -1,4 +1,5 @@
 ﻿using System;
+using Taimer;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -11,8 +12,7 @@ using System.Windows.Forms;
 namespace TaimerGUI {
     public partial class ClientForm : Form {
 
-        bool exitOfAplication = false;
-        bool closeForm = false;
+        bool closeSesion = false;
 
         Taimer.User usuario;
 
@@ -80,8 +80,6 @@ namespace TaimerGUI {
             formWelcome.Show();
             //////////////// --- //////////////////////////
 
-
-            exitOfAplication = false;
             beingDragged = false;
             beingResized = false;
 
@@ -130,7 +128,7 @@ namespace TaimerGUI {
         //////////////// MDI //////////////////////////
         public void hideAllChilds()
         {
-            formWelcome.Hide();
+            //formWelcome.Hide();
             formHorHome.Hide();
             formHorDetails.Hide();
             formCreateHor1.Hide();
@@ -237,8 +235,9 @@ namespace TaimerGUI {
         {
             InitializeComponent();
             //TODO: Hay que hacer esto como se tenga que hacer
-            usuario = new Taimer.User(usr, usr, usr, usr, usr, usr, 1);
-            userTlSMnItem.Text = usuario.getNom();
+            Titulacion t = new Titulacion("II", "001");
+            User usuario = new User(usr, "11111111P", usr+"@gmail.com", "*****", t, 3);
+            userTlSMnItem.Text = usuario.Nombre;
 
             //Redondeado de bordes
             shape = RoundedRectangle.Create(0, 0, this.Width, this.Height, 10);
@@ -258,53 +257,34 @@ namespace TaimerGUI {
 
         private void ClientForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (!exitOfAplication)
-            {
-                if (!closeForm)
-                {
-                    e.Cancel = true;
-                    Hide();
-                }
-            }
-            else
-            {
+            if (!closeSesion) {
                 Application.Exit();
+            } else {
+                Program.loginForm.Show();
             }
-                
         }
 
         private void toolStripExit_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("¿Seguro que desea salir?",
-                "¿Salir?",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Question,
-                MessageBoxDefaultButton.Button2) == DialogResult.Yes)
-            {
-                exitOfAplication = true;
-                Close();
+                    "¿Salir?",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question,
+                    MessageBoxDefaultButton.Button2) == DialogResult.Yes) {
+                        Close();
             }
         }
 
         private void toolStripCloseSesion_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("¿Seguro que desea cerrar sesión?",
-                "¿Cerrar sesión?",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Question,
-                MessageBoxDefaultButton.Button2) == DialogResult.Yes)
-            {
-                closeForm = true;
-                Program.loginForm.Show();
+            "¿Cerrar sesión?",
+            MessageBoxButtons.YesNo,
+            MessageBoxIcon.Question,
+            MessageBoxDefaultButton.Button2) == DialogResult.Yes) {
+                closeSesion = true;
                 Close();
             }
-           
-        }
-
-        private void btClose_Click(object sender, EventArgs e)
-        {
-            iconNotifClient.ShowBalloonTip(0);
-            Close();
         }
 
         private void btMinimize_Click(object sender, EventArgs e)
@@ -478,6 +458,10 @@ namespace TaimerGUI {
             About ab = new About();
             ab.ShowDialog();
             ab.Dispose();
+        }
+
+        private void btClose_ClientSizeChanged(object sender, EventArgs e) {
+
         }
 
     }
