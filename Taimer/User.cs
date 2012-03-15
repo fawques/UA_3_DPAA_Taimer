@@ -15,6 +15,8 @@ namespace Taimer {
         private string password;
         private int curso;
         private string titulacion;
+        int codActP;
+        int codHorarios;
         private List<Actividad_a> actAcademicas = new List<Actividad_a>();          // Un usuario tiene (0,N) actividades académicas
         private List<Actividad_p> actPersonales = new List<Actividad_p>();          // Un usuario tiene (0,N) actividades personales
         private List<Horario> horarios = new List<Horario>();                               // Un usuario tiene (0,N) horarios
@@ -25,6 +27,8 @@ namespace Taimer {
 
         // Constructor básico (sin listas)
         public User(string nom_, string dni_, string email_, string pass_, int curso_, string tit_) {
+            codActP = 0;
+            codHorarios = 0;
             nombre = nom_;
             dni = dni_;
             password = pass_;
@@ -35,8 +39,17 @@ namespace Taimer {
 
 
         // Constructor avanzado (con listas)
-        public User(string nom_, string dni_, string email_, string pass_, int curso_, string tit_, List<Actividad_a> acta_, List<Actividad_p> actp_, List<Horario> hor_)
-        {
+        public User(string nom_, string dni_, string email_, string pass_, int curso_, string tit_, List<Actividad_a> acta_, List<Actividad_p> actp_, List<Horario> hor_){
+            codActP = actp_.Count;
+            codHorarios = hor_.Count;
+
+            for (int i = 0; i < actp_.Count; i++)
+                actp_[i].Codigo = i;
+
+            for (int i = 0; i < hor_.Count; i++)
+                hor_[i].ID = i;
+
+            codHorarios = 0;
             nombre = nom_;
             dni = dni_;
             password = pass_;
@@ -51,6 +64,8 @@ namespace Taimer {
 
         // Constructor de copia
         public User(User u) {
+            codActP = u.codActP;
+            codHorarios = u.codHorarios;
             dni = u.dni;
             nombre = u.nombre;
             email = u.email;
@@ -96,6 +111,23 @@ namespace Taimer {
             set { curso = value; }
         }
 
+        //Cambiar/Obtener titulacion
+        public string Titulacion {
+            set { titulacion = value; }
+            get { return titulacion; }
+        }
+
+        //Cambiar/Obtener último codigo de actividad personal
+        public int CodActP {
+            set { codActP = value; }
+            get { return codActP; }
+        }
+
+        //Cambiar/Obtener último codigo de los horarios guardados
+        public int CodHorarios {
+            set { codHorarios = value; }
+            get { return codHorarios; }
+        }
 
         //Cambiar/obtener lista de actividades académicas
         public List<Actividad_a> ActAcademicas {

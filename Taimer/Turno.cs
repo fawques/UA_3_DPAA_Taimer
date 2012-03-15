@@ -10,6 +10,9 @@ using System.Linq;
 using System.Text;
 
 namespace Taimer {
+    //Donde lo esta mejor dentro de la clase o fuera ¿?
+    public enum dias { L, M, X, J, V, S, D };
+
     public class Turno {
 
         #region PARTE PRIVADA
@@ -17,8 +20,7 @@ namespace Taimer {
         private int codigo;
         private Hora horaInicio;
         private Hora horaFin;
-        private char diasemana;
-        private string nombre;
+        dias diasemana;
         private string ubicacion;
         private Actividad actividad;        // Un turno tiene (1,1) actividades
 
@@ -26,26 +28,32 @@ namespace Taimer {
 
         #region PARTE PÚBLICA
 
+        //public enum dias { L, M, X, J, V, S, D };
+
         // Constructor SIN ACTIVIDAD (eliminar en breve, creado por compatibilidad)
-        public Turno(/*int codigo_,*/ Hora horaI_, Hora horaF_, char dia_, string nom_, string ubic_) {
-            //codigo = codigo_;
-            codigo = 0;
-            horaInicio = horaI_;
-            horaFin = horaF_;
+        public Turno(Hora horaI_, Hora horaF_, dias dia_, string ubic_) {
+            codigo = 0; //HAY QUE AUTOGENERALO!!!
+            if (horaI_ < horaF_) {
+                horaInicio = horaI_;
+                horaFin = horaF_;
+            }
+            else
+                throw new Exception("horaI > horaF");
             diasemana = dia_;
-            nombre = nom_;
             ubicacion = ubic_;
         }
 
 
         // Constructor CON ACTIVIDAD
-        public Turno(Hora horaI_, Hora horaF_, char dia_, string nom_, string ubic_, Actividad act_)
-        {
-            codigo = 0;
-            horaInicio = horaI_;
-            horaFin = horaF_;
+        public Turno(Hora horaI_, Hora horaF_, dias dia_, string ubic_, Actividad act_) {
+            codigo = 0; //HAY QUE AUTOGENERALO!!!
+            if (horaI_ < horaF_) {
+                horaInicio = horaI_;
+                horaFin = horaF_;
+            }
+            else
+                throw new Exception("horaI >  horaF");
             diasemana = dia_;
-            nombre = nom_;
             ubicacion = ubic_;
             actividad = act_;
         }
@@ -57,7 +65,6 @@ namespace Taimer {
             horaInicio = t.horaInicio;
             horaFin = t.horaFin;
             diasemana = t.diasemana;
-            nombre = t.nombre;
             ubicacion = t.ubicacion;
             actividad = t.actividad;
         }
@@ -103,22 +110,16 @@ namespace Taimer {
 
 
         // Obtener/Cambiar dia de la semana
-        public char Dia{
+        public dias Dia{
             get { return diasemana; }
             set {
-                char d = value.ToString().ToUpper().ToCharArray()[0];
+                /*char d = value.ToString().ToUpper().ToCharArray()[0];
                 if (d == 'L' || d == 'M' || d == 'X' || d == 'J' || d == 'V' || d == 'S' || d == 'D')
-                    diasemana = d;
-                else
-                    throw new ArgumentOutOfRangeException();
+                    diasemana = d;*/
+                    diasemana = value;
+               /* else
+                    throw new ArgumentOutOfRangeException();*/
             }
-        }
-
-
-        // Cambiar/Obtener nombre
-        public string Nombre {
-            set { nombre = value; }
-            get { return nombre; }
         }
 
 

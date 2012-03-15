@@ -51,27 +51,27 @@ namespace TaimerGUI
 
             Hora horI = new Hora(9,0);
             Hora horF = new Hora(11,0);
-            Turno turn = new Turno(horI, horF, 'L', "IB", "poli1");
+            Turno turn = new Turno(horI, horF, dias.L, "poli1");
             turnos.Add(turn);
 
             horI = new Hora(12, 0);
             horF = new Hora(14, 0);
-            turn = new Turno(horI, horF, 'L', "DPAA", "poli1");
+            turn = new Turno(horI, horF, dias.L, "poli1");
             turnos.Add(turn);
 
             horI = new Hora(14, 0);
             horF = new Hora(15, 0);
-            turn = new Turno(horI, horF, 'L', "OTRA", "poli1");
+            turn = new Turno(horI, horF, dias.L, "poli1");
             turnos.Add(turn);
 
             horI = new Hora(15, 30);
             horF = new Hora(17, 0);
-            turn = new Turno(horI, horF, 'L', "OTRAMAS", "poli1");
+            turn = new Turno(horI, horF, dias.L, "poli1");
             turnos.Add(turn);
 
             horI = new Hora(19, 0);
             horF = new Hora(21, 0);
-            turn = new Turno(horI, horF, 'L', "EOI", "poli1");
+            turn = new Turno(horI, horF, dias.L, "poli1");
             turnos.Add(turn);
 
             int recorteArriba = (9) * 60;
@@ -85,7 +85,7 @@ namespace TaimerGUI
                 b.Height = duracion;
                 b.Width = 90;
                 b.BackColor = Color.Red;
-                b.Text = item.Nombre+Environment.NewLine+item.Ubicacion;
+                //b.Text = item.Nombre+Environment.NewLine+item.Ubicacion;
                 b.Location = new Point(0, posi);
                 b.Click += new EventHandler(asig_Click);
                 b.Tag = item.Codigo;

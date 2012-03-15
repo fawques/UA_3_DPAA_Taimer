@@ -76,31 +76,31 @@ namespace Taimer {
         {
             switch (turno.Dia)
             {
-                case 'L':
+                case dias.L:
                     CheckSolapamiento(turno, 0);
                     arrayTurnos[0].Add(turno);
                     break;
-                case 'M':
+                case dias.M:
                     CheckSolapamiento(turno, 1);
                     arrayTurnos[1].Add(turno);
                     break;
-                case 'X':
+                case dias.X:
                     CheckSolapamiento(turno, 2);
                     arrayTurnos[2].Add(turno);
                     break;
-                case 'J':
+                case dias.J:
                     CheckSolapamiento(turno, 3);
                     arrayTurnos[3].Add(turno);
                     break;
-                case 'V':
+                case dias.V:
                     CheckSolapamiento(turno, 4);
                     arrayTurnos[4].Add(turno);
                     break;
-                case 'S':
+                case dias.S:
                     CheckSolapamiento(turno, 5);
                     arrayTurnos[5].Add(turno);
                     break;
-                case 'D':
+                case dias.D:
                     CheckSolapamiento(turno, 6);
                     arrayTurnos[6].Add(turno);
                     break;
@@ -167,17 +167,17 @@ namespace Taimer {
         {
             User usertest = new User("Aitor Tilla", "12345678X", "bill_gates@hotmail.com", "password", 1, "Ingeniería de Magisterio");
 
-            Turno t1 = new Turno(new Hora(10, 30), new Hora(12, 30), 'L', "turno1", "L04");
-            Turno t2 = new Turno(new Hora(11, 30), new Hora(13, 30), 'L', "turno2", "L04");
-            Turno t3 = new Turno(new Hora(12, 30), new Hora(14, 30), 'L', "turno3", "L04");
+            Turno t1 = new Turno(new Hora(10, 30), new Hora(12, 30), dias.L, "L04");
+            Turno t2 = new Turno(new Hora(11, 30), new Hora(13, 30), dias.L, "L04");
+            Turno t3 = new Turno(new Hora(12, 30), new Hora(14, 30), dias.L, "L04");
 
-            Turno t4 = new Turno(new Hora(10, 30), new Hora(12, 30), 'X', "turno4", "L04");
-            Turno t5 = new Turno(new Hora(12, 30), new Hora(14, 30), 'X', "turno5", "L04");
-            Turno t6 = new Turno(new Hora(14, 30), new Hora(16, 30), 'X', "turno6", "L04");
+            Turno t4 = new Turno(new Hora(10, 30), new Hora(12, 30), dias.X, "L04");
+            Turno t5 = new Turno(new Hora(12, 30), new Hora(14, 30), dias.X, "L04");
+            Turno t6 = new Turno(new Hora(14, 30), new Hora(16, 30), dias.X, "L04");
 
-            Turno t7 = new Turno(new Hora(10, 30), new Hora(14, 30), 'M', "turno7", "L04");
-            Turno t8 = new Turno(new Hora(11, 30), new Hora(14, 30), 'M', "turno8", "L04");
-            Turno t9 = new Turno(new Hora(12, 30), new Hora(14, 30), 'M', "turno9", "L04");
+            Turno t7 = new Turno(new Hora(10, 30), new Hora(14, 30), dias.M, "L04");
+            Turno t8 = new Turno(new Hora(11, 30), new Hora(14, 30), dias.M, "L04");
+            Turno t9 = new Turno(new Hora(12, 30), new Hora(14, 30), dias.M, "L04");
 
             Actividad_p actP = new Actividad_p("nombre", "descripcion", 6, usertest);
             actP.AddTurno(t1);
