@@ -69,7 +69,8 @@ namespace algoritmo
 
             try
             {
-                Horario h = alg.generarHorarioVoraz(nombre_horario, usertest);
+                // se almacenará en user
+                Horario h = alg.generarHorarioBT(nombre_horario);
                 foreach (List<Turno> dia in h.ArrayTurnos)
                 {
                     foreach (Turno item in dia)
