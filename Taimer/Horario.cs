@@ -48,6 +48,11 @@ namespace Taimer {
             id = h.id;
             nombre = h.nombre;
             usuario = h.usuario;
+
+            for (int i = 0; i < 7; i++)
+            {
+                arrayTurnos[i] = new List<Turno>(h.ArrayTurnos[i]);
+            }
         }
 
         // Ajustar/obtener nombre
@@ -144,6 +149,18 @@ namespace Taimer {
                 }
             }
             return false;
+        }
+
+        public int Count()
+        {
+            int cantidad = 0;
+
+            for (int i = 0; i < 7; i++)
+            {
+                cantidad += arrayTurnos[i].Count;
+            }
+
+            return cantidad;
         }
         #endregion
     }

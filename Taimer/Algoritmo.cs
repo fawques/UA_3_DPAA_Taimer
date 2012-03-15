@@ -47,7 +47,14 @@ namespace Taimer
             {
                 foreach (Turno item in personal.Turnos)
                 {
-                    h.AddTurno(item);
+                    try
+                    {
+                        h.AddTurno(item);
+                    }
+                    catch (NotSupportedException)
+                    {
+                        throw new NotSupportedException("La actividad " + personal.Nombre + " no se puede insertar");
+                    }
                 }
 
             }
@@ -70,7 +77,7 @@ namespace Taimer
                     }
                 }
                 if (!asignado)
-                    throw new Exception();
+                    throw new NotSupportedException("La asignatura " + asig.Nombre + " no se puede insertar");
             }
 
             return h;
@@ -79,9 +86,12 @@ namespace Taimer
         public Horario generarHorarioBT(string nombre)
         {
             Queue<Horario> nodos_vivos = new Queue<Horario>();
+            Queue<Horario> soluciones = new Queue<Horario>();
             // el user será el 1er elemento de la lista de users de Program
             User usertest = new User("Aitor Tilla", "12345678X", "bill_gates@hotmail.com", "password", 1, "Ingeniería de Magisterio");
             Horario optimo = new Horario(nombre, /*Program.Usuarios[0]*/usertest);
+
+            int cant_p = 0;
 
             // como las personales siempre tienen que estar, se meten directamente en el óptimo
             foreach (Actividad_p personal in seleccionadas_p)
@@ -91,6 +101,7 @@ namespace Taimer
                     try
                     {
                         optimo.AddTurno(item);
+                        cant_p++;
                     }
                     catch (NotSupportedException)
                     {
@@ -99,31 +110,46 @@ namespace Taimer
                 }
             }
 
-            // Horario cabeza = optimo;
+            nodos_vivos.Enqueue(optimo);
+            Horario temp;
 
             // como las académicas tienen que tener un único turno, se mete cada vez en un horario distinto
             bool asignado = false;
-            foreach (Actividad_a academica in seleccionadas_a)
+
+            try
             {
-                foreach (Turno item in academica.Turnos)
+                foreach (Actividad_a academica in seleccionadas_a)
                 {
-                    try
+                    optimo = nodos_vivos.Dequeue();
+                    foreach (Turno item in academica.Turnos)
                     {
-                        Horario temp = optimo;
-                        temp.AddTurno(item);
-                        nodos_vivos.Enqueue(temp);
-                        asignado = true;
+                        temp = new Horario(optimo);
+                        try
+                        {
+                            temp.AddTurno(item);
+                            if (temp.Count() - cant_p < seleccionadas_a.Count)
+                                nodos_vivos.Enqueue(temp);
+                            else
+                                soluciones.Enqueue(temp);
+                            asignado = true;
+                        }
+                        catch (NotSupportedException)
+                        { }
                     }
-                    catch (NotSupportedException)
-                    {}
+                    if (!asignado)
+                        throw new NotSupportedException("La asignatura " + academica.Nombre + " no se puede insertar");
+
+
                 }
-                if (!asignado)
-                    throw new NotSupportedException("La asignatura " + academica.Nombre + " no se puede insertar");
-
-                optimo = nodos_vivos.Dequeue();
+                optimo = soluciones.Dequeue();
             }
-
+            catch (Exception)
+            {
+                
+                throw;
+            }
             
+            // aquí habría que comprobar las restricciones
 
 
             return optimo;

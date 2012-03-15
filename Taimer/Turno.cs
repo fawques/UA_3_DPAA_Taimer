@@ -23,7 +23,7 @@ namespace Taimer {
         dias diasemana;
         private string ubicacion;
         private Actividad actividad;        // Un turno tiene (1,1) actividades
-
+        public static int id;
         #endregion
 
         #region PARTE PÚBLICA
@@ -32,7 +32,7 @@ namespace Taimer {
 
         // Constructor SIN ACTIVIDAD (eliminar en breve, creado por compatibilidad)
         public Turno(Hora horaI_, Hora horaF_, dias dia_, string ubic_) {
-            codigo = 0; //HAY QUE AUTOGENERALO!!!
+            codigo = id; //HAY QUE AUTOGENERALO!!!
             if (horaI_ < horaF_) {
                 horaInicio = horaI_;
                 horaFin = horaF_;
