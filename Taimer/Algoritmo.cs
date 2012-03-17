@@ -35,19 +35,29 @@ namespace Taimer
             return puntuacion;
         }
 
-        // Puntuar un horario según el número de horas de hueco. Puntuará de 0 a 7, añadirá uno por cada día en el que haya turnos.
+        // Puntuar un horario según el número de horas de hueco. Añadirá uno por cada hora entre dos turnos.
         public static int puntuarHorasHueco(Horario horario)
         {
             int puntuacion = 0;
             for (int i = 0; i < 7; i++)
             {
-                if (horario.ArrayTurnos[i].Count() > 0)
-                    puntuacion++;
+                try
+                {
+                    Hora minHora = horario.minHora(i);
+                    Hora maxHora = horario.maxHora(i);
+
+                    // entre estas dos horas, hay que sumar a puntuacion las horas de hueco entre los turnos
+                    throw new NotImplementedException();
+                }
+                catch (ArgumentNullException) // el día está vacío
+                { }
             }
 
             return puntuacion;
         }
 
+
+        #region Generación de Horarios
         //Generación de un Horario de forma Voraz
         public Horario generarHorarioVoraz(string nombre)
         {
@@ -95,7 +105,7 @@ namespace Taimer
             return h;
         }
 
-        public Horario generarHorarioBT(string nombre)
+        public Horario generarHorarioBT(string nombre, bool minDias)
         {
             Queue<Horario> nodos_vivos = new Queue<Horario>();
             Queue<Horario> nodos_vivos_aux = new Queue<Horario>();
@@ -149,7 +159,7 @@ namespace Taimer
                                 asignado = true;
                             }
                             catch (NotSupportedException)
-                            {}
+                            { }
 
                         }
                     }
@@ -163,8 +173,33 @@ namespace Taimer
 
                 }
                 posibles = new List<Horario>(soluciones.ToList());
-                optimo = soluciones.Dequeue();
-                
+
+
+                int puntuacion = 99;
+                if (minDias)
+                {
+                    foreach (Horario sol in soluciones)
+                    {
+                        if (puntuarDias(sol) < puntuacion)
+                        {
+                            optimo = sol;
+                            puntuacion = puntuarDias(sol);
+                        }
+                    }
+
+                }
+                else // suponemos que o es minDias o es minHuecos
+                {
+                    foreach (Horario sol in soluciones)
+                    {
+                        if (puntuarHorasHueco(sol) < puntuacion)
+                        {
+                            optimo = sol;
+                            puntuacion = puntuarHorasHueco(sol);
+                        }
+                    }
+                }
+
             }
             catch (NotSupportedException)
             {
@@ -172,11 +207,12 @@ namespace Taimer
                 throw;
             }
 
-            // aquí habría que comprobar las restricciones
+
 
 
             return optimo;
         }
+        #endregion
         #endregion
 
     }

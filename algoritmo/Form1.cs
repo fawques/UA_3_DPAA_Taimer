@@ -24,7 +24,7 @@ namespace algoritmo
 
             // los turnos y actividades estarán almacenadas en Program
             Turno.id = 1;
-            Turno t1 = new Turno(new Hora(10, 30), new Hora(12, 30), dias.L, "L04");
+            Turno t1 = new Turno(new Hora(10, 30), new Hora(12, 30), dias.M, "L04");
             Turno.id++;
             Turno t2 = new Turno(new Hora(11, 30), new Hora(13, 30), dias.L, "L04");
             Turno.id++;
@@ -32,7 +32,7 @@ namespace algoritmo
             Turno.id++;
             Turno t4 = new Turno(new Hora(10, 30), new Hora(12, 30), dias.X, "L04");
             Turno.id++;
-            Turno t5 = new Turno(new Hora(12, 30), new Hora(14, 30), dias.V, "L04");
+            Turno t5 = new Turno(new Hora(12, 30), new Hora(14, 30), dias.X, "L04");
             Turno.id++;
             Turno t6 = new Turno(new Hora(14, 30), new Hora(16, 30), dias.L, "L04");
             Turno.id++;
@@ -57,17 +57,18 @@ namespace algoritmo
             actA.AddTurno(t3);
 
             Actividad_a actA2 = new Actividad_a("A2", "descripcion2", 7, "Otro profesor");
-            actA2.AddTurno(t7);
-            actA2.AddTurno(t8);
+            //actA2.AddTurno(t7);
+           // actA2.AddTurno(t8);
             actA2.AddTurno(t9);
 
             // las listas de actividades seleccionadas vendrán de la interfaz, según lo que seleccione el user
             listaP = new List<Actividad_p>();
             listaA = new List<Actividad_a>();
-            listaP.Add(actP);
-            //listaP.Add(actP2);
+            
             listaA.Add(actA);
+            listaP.Add(actP2);
             listaA.Add(actA2);
+            listaP.Add(actP);
         }
 
         private void btGenerar_Click(object sender, EventArgs e)
@@ -83,7 +84,7 @@ namespace algoritmo
             try
             {
                 // se almacenará en user
-                Horario h = alg.generarHorarioBT(nombre_horario);
+                Horario h = alg.generarHorarioBT(nombre_horario,true);
                 foreach (List<Turno> dia in h.ArrayTurnos)
                 {
                     foreach (Turno item in dia)
