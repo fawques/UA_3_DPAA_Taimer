@@ -75,6 +75,21 @@ namespace Taimer {
             set { usuario = value; }
         }
 
+        public int Count
+        {
+            get
+            {
+                int cantidad = 0;
+
+                for (int i = 0; i < 7; i++)
+                {
+                    cantidad += arrayTurnos[i].Count;
+                }
+
+                return cantidad;
+            }
+        }
+
 
         //Añadir turnos
         public void AddTurno(Turno turno)
@@ -151,17 +166,6 @@ namespace Taimer {
             return false;
         }
 
-        public int Count()
-        {
-            int cantidad = 0;
-
-            for (int i = 0; i < 7; i++)
-            {
-                cantidad += arrayTurnos[i].Count;
-            }
-
-            return cantidad;
-        }
         #endregion
     }
 }
