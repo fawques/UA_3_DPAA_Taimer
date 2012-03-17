@@ -17,10 +17,9 @@ namespace Taimer
 
         public Algoritmo(List<Actividad_a> sel_a, List<Actividad_p> sel_p)
         {
-//            seleccionadas_a.
             seleccionadas_a = sel_a;
             seleccionadas_p = sel_p;
-            posibles = new List<Horario>();
+            // posibles = new List<Horario>();
         }
 
         // Puntuar un horario según el número de días. Puntuará de 0 a 7, añadirá uno por cada día en el que haya turnos.
@@ -39,7 +38,7 @@ namespace Taimer
         //Generación de un Horario de forma Voraz
         public Horario generarHorarioVoraz(string nombre)
         {
-            
+
             // el user será el 1er elemento de la lista de users de Program
             User usertest = new User("Aitor Tilla", "12345678X", "bill_gates@hotmail.com", "password", 1, "Ingeniería de Magisterio");
             Horario h = new Horario(nombre, /*Program.Usuarios[0]*/usertest);
@@ -86,6 +85,7 @@ namespace Taimer
         public Horario generarHorarioBT(string nombre)
         {
             Queue<Horario> nodos_vivos = new Queue<Horario>();
+            Queue<Horario> nodos_vivos_aux = new Queue<Horario>();
             Queue<Horario> soluciones = new Queue<Horario>();
             // el user será el 1er elemento de la lista de users de Program
             User usertest = new User("Aitor Tilla", "12345678X", "bill_gates@hotmail.com", "password", 1, "Ingeniería de Magisterio");
@@ -120,35 +120,43 @@ namespace Taimer
             {
                 foreach (Actividad_a academica in seleccionadas_a)
                 {
-                    optimo = nodos_vivos.Dequeue();
-                    foreach (Turno item in academica.Turnos)
+                    while (nodos_vivos.Count > 0)
                     {
-                        temp = new Horario(optimo);
-                        try
+                        optimo = nodos_vivos.Dequeue();
+                        foreach (Turno item in academica.Turnos)
                         {
-                            temp.AddTurno(item);
-                            if (temp.Count() - cant_p < seleccionadas_a.Count)
-                                nodos_vivos.Enqueue(temp);
-                            else
-                                soluciones.Enqueue(temp);
-                            asignado = true;
+                            temp = new Horario(optimo);
+                            try
+                            {
+                                temp.AddTurno(item);
+                                if (temp.Count() - cant_p < seleccionadas_a.Count)
+                                    nodos_vivos_aux.Enqueue(temp);
+                                else
+                                    soluciones.Enqueue(temp);
+                                asignado = true;
+                            }
+                            catch (NotSupportedException)
+                            { }
+
                         }
-                        catch (NotSupportedException)
-                        { }
                     }
+                    nodos_vivos = new Queue<Horario>(nodos_vivos_aux);
+                    nodos_vivos_aux.Clear();
                     if (!asignado)
                         throw new NotSupportedException("La asignatura " + academica.Nombre + " no se puede insertar");
 
 
                 }
+                posibles = new List<Horario>(soluciones.ToList());
                 optimo = soluciones.Dequeue();
-            }
-            catch (Exception)
-            {
                 
+            }
+            catch (NotSupportedException)
+            {
+
                 throw;
             }
-            
+
             // aquí habría que comprobar las restricciones
 
 

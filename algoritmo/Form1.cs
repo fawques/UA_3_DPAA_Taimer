@@ -43,8 +43,8 @@ namespace algoritmo
             Turno t9 = new Turno(new Hora(12, 30), new Hora(14, 30), dias.V, "L04");
             Turno.id++;
 
-            //Actividad_p actP = new Actividad_p("P1", "descripcion", 6, usertest);
-           // actP.AddTurno(t1);
+            Actividad_p actP = new Actividad_p("P1", "descripcion", 6, usertest);
+            actP.AddTurno(t1);
 
             Actividad_p actP2 = new Actividad_p("P2", "descripcion", 6, usertest);
             actP2.AddTurno(t4);
@@ -64,8 +64,8 @@ namespace algoritmo
             // las listas de actividades seleccionadas vendrán de la interfaz, según lo que seleccione el user
             listaP = new List<Actividad_p>();
             listaA = new List<Actividad_a>();
-            //listaP.Add(actP);
-            listaP.Add(actP2);
+            listaP.Add(actP);
+            //listaP.Add(actP2);
             listaA.Add(actA);
             listaA.Add(actA2);
         }
@@ -76,7 +76,7 @@ namespace algoritmo
 
             string nombre_horario = "Hola";
 
-            // se almacenará en Program
+            // se almacenará en Program --> se llamará a una función que compruebe que esas listas de params no estén repes. Si ya existe, devuelve el que ya existe, si no, devuelve uno nuevo --> tiene que avisar de alguna forma de que es uno antiguo, para que no se llame al BT
             Algoritmo alg = new Algoritmo(listaA, listaP);
             string texto = "";
 
@@ -109,7 +109,7 @@ namespace algoritmo
         {
             string nombre_horario = "Hola";
 
-            // se almacenará en Program
+            // se almacenará en Program --> se llamará a una función que compruebe que esas listas de params no estén repes. Si ya existe, devuelve el que ya existe, si no, devuelve uno nuevo
             Algoritmo alg = new Algoritmo(listaA, listaP);
             string texto = "";
 
