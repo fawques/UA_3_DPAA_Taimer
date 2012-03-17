@@ -35,6 +35,19 @@ namespace Taimer
             return puntuacion;
         }
 
+        // Puntuar un horario según el número de horas de hueco. Puntuará de 0 a 7, añadirá uno por cada día en el que haya turnos.
+        public static int puntuarHorasHueco(Horario horario)
+        {
+            int puntuacion = 0;
+            for (int i = 0; i < 7; i++)
+            {
+                if (horario.ArrayTurnos[i].Count() > 0)
+                    puntuacion++;
+            }
+
+            return puntuacion;
+        }
+
         //Generación de un Horario de forma Voraz
         public Horario generarHorarioVoraz(string nombre)
         {
@@ -129,19 +142,21 @@ namespace Taimer
                             try
                             {
                                 temp.AddTurno(item);
-                                if (temp.Count() - cant_p < seleccionadas_a.Count)
+                                if (temp.Count - cant_p < seleccionadas_a.Count)
                                     nodos_vivos_aux.Enqueue(temp);
                                 else
                                     soluciones.Enqueue(temp);
                                 asignado = true;
                             }
                             catch (NotSupportedException)
-                            { }
+                            {}
 
                         }
                     }
+
                     nodos_vivos = new Queue<Horario>(nodos_vivos_aux);
                     nodos_vivos_aux.Clear();
+
                     if (!asignado)
                         throw new NotSupportedException("La asignatura " + academica.Nombre + " no se puede insertar");
 
