@@ -34,10 +34,15 @@
             this.label5 = new System.Windows.Forms.Label();
             this.rTBDescripcion = new System.Windows.Forms.RichTextBox();
             this.gVHorasTemp = new System.Windows.Forms.DataGridView();
+            this.dia = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.horaInicio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.horaFin = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.borrar = new System.Windows.Forms.DataGridViewButtonColumn();
             this.button1 = new System.Windows.Forms.Button();
             this.bttnCrearActiv = new System.Windows.Forms.Button();
             this.bCancelar = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lblErrorDate = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.nmUpDwnMinHasta = new System.Windows.Forms.NumericUpDown();
@@ -50,13 +55,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.comboBoxDia = new System.Windows.Forms.ComboBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.tBResponsable = new System.Windows.Forms.TextBox();
-            this.dia = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.horaInicio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.horaFin = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.borrar = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.lblErrorDate = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.gVHorasTemp)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nmUpDwnMinHasta)).BeginInit();
@@ -124,13 +122,40 @@
             this.gVHorasTemp.TabIndex = 35;
             this.gVHorasTemp.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gVHorasTemp_CellContentClick);
             // 
+            // dia
+            // 
+            this.dia.HeaderText = "Dia";
+            this.dia.Name = "dia";
+            this.dia.ReadOnly = true;
+            // 
+            // horaInicio
+            // 
+            this.horaInicio.HeaderText = "Hora inicio";
+            this.horaInicio.Name = "horaInicio";
+            this.horaInicio.ReadOnly = true;
+            // 
+            // horaFin
+            // 
+            this.horaFin.HeaderText = "Hora fin";
+            this.horaFin.Name = "horaFin";
+            this.horaFin.ReadOnly = true;
+            // 
+            // borrar
+            // 
+            this.borrar.HeaderText = "Borrar";
+            this.borrar.Name = "borrar";
+            this.borrar.ReadOnly = true;
+            this.borrar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.borrar.Text = "Borrar";
+            // 
             // button1
             // 
+            this.button1.BackgroundImage = global::TaimerGUI.Properties.Resources.flechaRight;
+            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.button1.Location = new System.Drawing.Point(254, 389);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(43, 46);
             this.button1.TabIndex = 37;
-            this.button1.Text = "Add =>";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -175,6 +200,14 @@
             this.groupBox1.TabIndex = 57;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Hora y Dia";
+            // 
+            // lblErrorDate
+            // 
+            this.lblErrorDate.ForeColor = System.Drawing.Color.Red;
+            this.lblErrorDate.Location = new System.Drawing.Point(23, 137);
+            this.lblErrorDate.Name = "lblErrorDate";
+            this.lblErrorDate.Size = new System.Drawing.Size(166, 46);
+            this.lblErrorDate.TabIndex = 60;
             // 
             // label11
             // 
@@ -303,64 +336,12 @@
             this.comboBoxDia.Size = new System.Drawing.Size(121, 21);
             this.comboBoxDia.TabIndex = 0;
             // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(35, 128);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(69, 13);
-            this.label7.TabIndex = 58;
-            this.label7.Text = "Responsable";
-            // 
-            // tBResponsable
-            // 
-            this.tBResponsable.Location = new System.Drawing.Point(35, 149);
-            this.tBResponsable.Name = "tBResponsable";
-            this.tBResponsable.Size = new System.Drawing.Size(183, 20);
-            this.tBResponsable.TabIndex = 59;
-            // 
-            // dia
-            // 
-            this.dia.HeaderText = "Dia";
-            this.dia.Name = "dia";
-            this.dia.ReadOnly = true;
-            // 
-            // horaInicio
-            // 
-            this.horaInicio.HeaderText = "Hora inicio";
-            this.horaInicio.Name = "horaInicio";
-            this.horaInicio.ReadOnly = true;
-            // 
-            // horaFin
-            // 
-            this.horaFin.HeaderText = "Hora fin";
-            this.horaFin.Name = "horaFin";
-            this.horaFin.ReadOnly = true;
-            // 
-            // borrar
-            // 
-            this.borrar.HeaderText = "Borrar";
-            this.borrar.Name = "borrar";
-            this.borrar.ReadOnly = true;
-            this.borrar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.borrar.Text = "Borrar";
-            // 
-            // lblErrorDate
-            // 
-            this.lblErrorDate.ForeColor = System.Drawing.Color.Red;
-            this.lblErrorDate.Location = new System.Drawing.Point(23, 137);
-            this.lblErrorDate.Name = "lblErrorDate";
-            this.lblErrorDate.Size = new System.Drawing.Size(166, 46);
-            this.lblErrorDate.TabIndex = 60;
-            // 
             // ClientCrearActiv
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Cornsilk;
             this.ClientSize = new System.Drawing.Size(795, 595);
-            this.Controls.Add(this.tBResponsable);
-            this.Controls.Add(this.label7);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.bCancelar);
             this.Controls.Add(this.bttnCrearActiv);
@@ -403,8 +384,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox comboBoxDia;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox tBResponsable;
         private System.Windows.Forms.NumericUpDown nmUpDwnHorHasta;
         private System.Windows.Forms.NumericUpDown nmUpDwnHorDesde;
         private System.Windows.Forms.Label label9;

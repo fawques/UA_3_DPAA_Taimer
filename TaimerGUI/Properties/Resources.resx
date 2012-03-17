@@ -124,6 +124,9 @@
   <data name="tbCloseClick" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\tbCloseClick.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="resize2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\resize2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="pruba11" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\pruba11.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -139,10 +142,13 @@
   <data name="orange-user-md" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\orange-user-md.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="flechaRight" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\flechaRight.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="tbMinimizeOn" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\tbMinimizeOn.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="resize2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\resize2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="flechaLeft" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\flechaLeft.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

@@ -52,7 +52,7 @@ namespace TaimerGUI
             MessageBoxButtons.YesNo,
             MessageBoxIcon.Question,
             MessageBoxDefaultButton.Button2) == DialogResult.Yes) {
-                actividad = new Taimer.Actividad_p(tBNombre.Text, rTBDescripcion.Text, -1, tBResponsable.Text);
+                actividad = new Taimer.Actividad_p(tBNombre.Text, rTBDescripcion.Text, -1, "");
                 
                 foreach (DataGridViewRow filas in gVHorasTemp.Rows){
                     Hora horI = new Hora(filas.Cells["horaInicio"].Value.ToString());
@@ -60,7 +60,7 @@ namespace TaimerGUI
                     Profesor prof = new Profesor("001", "Iginio Mora", "11111111I", "tic");
                     char d = comboBoxDia.Text[0];
                     Turno turn = new Turno(horI, horF, 'D', "IB", "poli1");
-                    //actividad.AddTurno(turn);
+                    actividad.AddTurno(turn);
                 }
                 this.Hide();
             }

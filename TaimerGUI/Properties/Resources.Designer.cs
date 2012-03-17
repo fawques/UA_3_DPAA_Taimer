@@ -60,6 +60,20 @@ namespace TaimerGUI.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap flechaLeft {
+            get {
+                object obj = ResourceManager.GetObject("flechaLeft", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap flechaRight {
+            get {
+                object obj = ResourceManager.GetObject("flechaRight", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap orange_user_md {
             get {
                 object obj = ResourceManager.GetObject("orange-user-md", resourceCulture);

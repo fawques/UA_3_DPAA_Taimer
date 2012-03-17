@@ -81,19 +81,23 @@
             // 
             this.Column1.HeaderText = "Codigo";
             this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
             // 
             // Column2
             // 
             this.Column2.HeaderText = "Nombre";
             this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
             // 
             // Column3
             // 
             this.Column3.HeaderText = "Descipcion";
             this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
             // 
             // lblNombre
             // 
+            this.lblNombre.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.lblNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNombre.Location = new System.Drawing.Point(49, 82);
             this.lblNombre.Name = "lblNombre";
@@ -120,29 +124,35 @@
             // 
             this.Column4.HeaderText = "Codigo";
             this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
             // 
             // Column5
             // 
             this.Column5.HeaderText = "Nombre";
             this.Column5.Name = "Column5";
+            this.Column5.ReadOnly = true;
             // 
             // Column6
             // 
             this.Column6.HeaderText = "Descipcion";
             this.Column6.Name = "Column6";
+            this.Column6.ReadOnly = true;
             // 
             // button1
             // 
+            this.button1.BackgroundImage = global::TaimerGUI.Properties.Resources.flechaRight;
+            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.button1.Location = new System.Drawing.Point(344, 213);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(47, 42);
             this.button1.TabIndex = 16;
-            this.button1.Text = "=>";
             this.button1.UseVisualStyleBackColor = true;
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(344, 330);
+            this.button2.BackgroundImage = global::TaimerGUI.Properties.Resources.flechaLeft;
+            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.button2.Location = new System.Drawing.Point(344, 379);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(47, 43);
             this.button2.TabIndex = 17;
@@ -171,11 +181,13 @@
             // 
             // button3
             // 
+            this.button3.Image = global::TaimerGUI.Properties.Resources.flechaRight;
+            this.button3.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.button3.Location = new System.Drawing.Point(610, 499);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(146, 42);
             this.button3.TabIndex = 20;
-            this.button3.Text = "Continuar =>";
+            this.button3.Text = "Continuar";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
