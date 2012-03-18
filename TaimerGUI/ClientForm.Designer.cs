@@ -24,13 +24,13 @@
         /// </summary>
         private void InitializeComponent() {
             this.pnlMenu = new System.Windows.Forms.Panel();
+            this.button2 = new System.Windows.Forms.Button();
             this.pnlMenuActivi = new System.Windows.Forms.Panel();
             this.groupBoxUltActivi = new System.Windows.Forms.GroupBox();
             this.button4 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
             this.pnlMenuHorarios = new System.Windows.Forms.Panel();
             this.groupBoxUltimosHorarios = new System.Windows.Forms.GroupBox();
             this.button3 = new System.Windows.Forms.Button();
@@ -76,6 +76,7 @@
             this.btMaximize = new System.Windows.Forms.Button();
             this.btClose = new System.Windows.Forms.Button();
             this.btMinimize = new System.Windows.Forms.Button();
+            this.menuTruco = new System.Windows.Forms.MenuStrip();
             this.pnlMenu.SuspendLayout();
             this.pnlMenuActivi.SuspendLayout();
             this.pnlMenuHorarios.SuspendLayout();
@@ -99,6 +100,20 @@
             this.pnlMenu.Name = "pnlMenu";
             this.pnlMenu.Size = new System.Drawing.Size(200, 600);
             this.pnlMenu.TabIndex = 2;
+            // 
+            // button2
+            // 
+            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.button2.BackColor = System.Drawing.Color.BurlyWood;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.Location = new System.Drawing.Point(0, 539);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(200, 58);
+            this.button2.TabIndex = 1;
+            this.button2.Text = "Ir a la web";
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // pnlMenuActivi
             // 
@@ -163,20 +178,6 @@
             this.label3.Size = new System.Drawing.Size(78, 13);
             this.label3.TabIndex = 0;
             this.label3.Text = "ACTIVIDADES";
-            // 
-            // button2
-            // 
-            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.button2.BackColor = System.Drawing.Color.BurlyWood;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(0, 539);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(200, 58);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "Ir a la web";
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // pnlMenuHorarios
             // 
@@ -632,16 +633,27 @@
             this.btMinimize.MouseLeave += new System.EventHandler(this.btMinimize_MouseLeave);
             this.btMinimize.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btMinimize_MouseUp);
             // 
+            // menuTruco
+            // 
+            this.menuTruco.Location = new System.Drawing.Point(200, 75);
+            this.menuTruco.Name = "menuTruco";
+            this.menuTruco.Size = new System.Drawing.Size(800, 24);
+            this.menuTruco.TabIndex = 9;
+            this.menuTruco.Text = "menuStrip1";
+            this.menuTruco.Visible = false;
+            // 
             // ClientForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.Cornsilk;
             this.ClientSize = new System.Drawing.Size(1000, 675);
+            this.Controls.Add(this.menuTruco);
             this.Controls.Add(this.pnlMenu);
             this.Controls.Add(this.pnlResize);
             this.Controls.Add(this.pnlTittle);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.IsMdiContainer = true;
+            this.MainMenuStrip = this.menuTruco;
             this.Name = "ClientForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ClientForm";
@@ -665,6 +677,7 @@
             this.mnUserOption.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -723,6 +736,7 @@
         private System.Windows.Forms.ToolStripMenuItem salirToolStripMenuItem2;
         private System.Windows.Forms.GroupBox groupBoxUltimosHorarios;
         private System.Windows.Forms.GroupBox groupBoxUltActivi;
+        private System.Windows.Forms.MenuStrip menuTruco;
 
 
     }

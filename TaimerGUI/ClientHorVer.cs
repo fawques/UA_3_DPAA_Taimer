@@ -37,6 +37,8 @@ namespace TaimerGUI
         }
 
         private void ClientHorVer_Load(object sender, EventArgs e) {
+            this.MainMenuStrip = null;
+
             loadHorario();
         }
 

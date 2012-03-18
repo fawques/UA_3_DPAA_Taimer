@@ -280,7 +280,6 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "ClientHorVer";
-            this.Text = "ClientHorVer";
             this.Load += new System.EventHandler(this.ClientHorVer_Load);
             this.pnlHorario.ResumeLayout(false);
             this.pnlHorario.PerformLayout();

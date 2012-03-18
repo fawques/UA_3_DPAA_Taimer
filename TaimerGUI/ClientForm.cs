@@ -54,7 +54,11 @@ namespace TaimerGUI {
 
             formWelcome = new ClientBienvenida(this);
             formHorHome = new ClientHorHome();
+
             formHorDetails = new ClientHorVer();
+            //this.formHorDetails.Dock = DockStyle.Fill;
+            //this.formHorDetails.WindowState = FormWindowState.Maximized;
+
             formCreateHor1 = new ClientCrearHor1();
             formCreateHor2 = new ClientCrearHor2();
             formMatric = new ClientMatriculacionActiv();
@@ -76,7 +80,7 @@ namespace TaimerGUI {
             formVerAct.MdiParent = this;
             formCrearAct.MdiParent = this;
 
-
+            //formHorDetails.Show();
             formWelcome.Show();
             //////////////// --- //////////////////////////
 
@@ -316,7 +320,7 @@ namespace TaimerGUI {
         {
             
             //Desactivamos el borderless para hacer el maxmizado normal, si no se pone a pantalla completa
-            //this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
             
             if (this.WindowState != FormWindowState.Maximized)
             {
@@ -324,6 +328,8 @@ namespace TaimerGUI {
                 this.Region = new Region();
                 this.WindowState = FormWindowState.Maximized;
 
+                this.formHorDetails.WindowState = FormWindowState.Maximized;
+                this.formHorDetails.Dock = DockStyle.Fill;
             }
             else
             {
@@ -334,7 +340,7 @@ namespace TaimerGUI {
                 this.formHorDetails.WindowState = FormWindowState.Normal;
             }
             // desactivamos el maximizado para que deje de mostrar el borde
-            //this.FormBorderStyle = FormBorderStyle.None;
+            this.FormBorderStyle = FormBorderStyle.None;
             
         }
 
