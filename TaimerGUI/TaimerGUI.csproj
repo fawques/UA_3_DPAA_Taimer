@@ -306,6 +306,18 @@
   <ItemGroup>
     <None Include="Resources\flechaLeft.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\maximizeOff.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\maximizeOff1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\maximizeClick.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\maximizeOn.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

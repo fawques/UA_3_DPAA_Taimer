@@ -41,6 +41,7 @@
             this.cerrarSesionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnStUser = new System.Windows.Forms.MenuStrip();
+            this.pnlResize = new System.Windows.Forms.Panel();
             this.pnlTittle = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.mnStMain = new System.Windows.Forms.MenuStrip();
@@ -75,7 +76,6 @@
             this.btMaximize = new System.Windows.Forms.Button();
             this.btClose = new System.Windows.Forms.Button();
             this.btMinimize = new System.Windows.Forms.Button();
-            this.pnlResize = new System.Windows.Forms.Panel();
             this.pnlMenu.SuspendLayout();
             this.pnlMenuActivi.SuspendLayout();
             this.pnlMenuHorarios.SuspendLayout();
@@ -91,8 +91,8 @@
             // pnlMenu
             // 
             this.pnlMenu.BackColor = System.Drawing.Color.Wheat;
-            this.pnlMenu.Controls.Add(this.pnlMenuActivi);
             this.pnlMenu.Controls.Add(this.button2);
+            this.pnlMenu.Controls.Add(this.pnlMenuActivi);
             this.pnlMenu.Controls.Add(this.pnlMenuHorarios);
             this.pnlMenu.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlMenu.Location = new System.Drawing.Point(0, 75);
@@ -271,6 +271,21 @@
             this.mnStUser.TabIndex = 3;
             this.mnStUser.Text = "menuStrip1";
             // 
+            // pnlResize
+            // 
+            this.pnlResize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlResize.BackColor = System.Drawing.Color.Cornsilk;
+            this.pnlResize.BackgroundImage = global::TaimerGUI.Properties.Resources.resize2;
+            this.pnlResize.Cursor = System.Windows.Forms.Cursors.SizeNWSE;
+            this.pnlResize.Location = new System.Drawing.Point(978, 653);
+            this.pnlResize.Name = "pnlResize";
+            this.pnlResize.Size = new System.Drawing.Size(20, 20);
+            this.pnlResize.TabIndex = 6;
+            this.pnlResize.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlResize_Paint);
+            this.pnlResize.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlResize_MouseDown);
+            this.pnlResize.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pnlResize_MouseMove);
+            this.pnlResize.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pnlResize_MouseUp);
+            // 
             // pnlTittle
             // 
             this.pnlTittle.BackColor = System.Drawing.Color.Transparent;
@@ -400,21 +415,21 @@
             // verToolStripMenuItem1
             // 
             this.verToolStripMenuItem1.Name = "verToolStripMenuItem1";
-            this.verToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.verToolStripMenuItem1.Size = new System.Drawing.Size(147, 22);
             this.verToolStripMenuItem1.Text = "Ver";
             this.verToolStripMenuItem1.Click += new System.EventHandler(this.verActividades_Click);
             // 
             // matriculacionToolStripMenuItem
             // 
             this.matriculacionToolStripMenuItem.Name = "matriculacionToolStripMenuItem";
-            this.matriculacionToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.matriculacionToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
             this.matriculacionToolStripMenuItem.Text = "Matriculacion";
             this.matriculacionToolStripMenuItem.Click += new System.EventHandler(this.matriculacion_Click);
             // 
             // crearToolStripMenuItem1
             // 
             this.crearToolStripMenuItem1.Name = "crearToolStripMenuItem1";
-            this.crearToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.crearToolStripMenuItem1.Size = new System.Drawing.Size(147, 22);
             this.crearToolStripMenuItem1.Text = "Crear";
             this.crearToolStripMenuItem1.Click += new System.EventHandler(this.crearActividad_Click);
             // 
@@ -557,14 +572,18 @@
             this.btMaximize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btMaximize.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btMaximize.ForeColor = System.Drawing.Color.Maroon;
+            this.btMaximize.Image = global::TaimerGUI.Properties.Resources.maximizeOff1;
             this.btMaximize.Location = new System.Drawing.Point(41, -1);
             this.btMaximize.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btMaximize.Name = "btMaximize";
             this.btMaximize.Size = new System.Drawing.Size(31, 27);
             this.btMaximize.TabIndex = 11;
-            this.btMaximize.Text = "O";
             this.btMaximize.UseVisualStyleBackColor = false;
             this.btMaximize.Click += new System.EventHandler(this.btMaximize_Click);
+            this.btMaximize.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btMaximize_MouseDown);
+            this.btMaximize.MouseEnter += new System.EventHandler(this.btMaximize_MouseEnter);
+            this.btMaximize.MouseLeave += new System.EventHandler(this.btMaximize_MouseLeave);
+            this.btMaximize.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btMaximize_MouseUp);
             // 
             // btClose
             // 
@@ -613,20 +632,6 @@
             this.btMinimize.MouseLeave += new System.EventHandler(this.btMinimize_MouseLeave);
             this.btMinimize.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btMinimize_MouseUp);
             // 
-            // pnlResize
-            // 
-            this.pnlResize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.pnlResize.BackColor = System.Drawing.Color.Cornsilk;
-            this.pnlResize.BackgroundImage = global::TaimerGUI.Properties.Resources.resize2;
-            this.pnlResize.Cursor = System.Windows.Forms.Cursors.SizeNWSE;
-            this.pnlResize.Location = new System.Drawing.Point(978, 653);
-            this.pnlResize.Name = "pnlResize";
-            this.pnlResize.Size = new System.Drawing.Size(20, 20);
-            this.pnlResize.TabIndex = 6;
-            this.pnlResize.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlResize_MouseDown);
-            this.pnlResize.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pnlResize_MouseMove);
-            this.pnlResize.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pnlResize_MouseUp);
-            // 
             // ClientForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -635,7 +640,6 @@
             this.Controls.Add(this.pnlMenu);
             this.Controls.Add(this.pnlResize);
             this.Controls.Add(this.pnlTittle);
-            this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.IsMdiContainer = true;
             this.Name = "ClientForm";

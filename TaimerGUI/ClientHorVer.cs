@@ -16,7 +16,7 @@ namespace TaimerGUI
         public ClientHorVer()
         {
             InitializeComponent();
-            
+            this.Dock = DockStyle.Fill;
         }
 
         private void initPanelHorario(int minHor, int maxHor) {
@@ -124,5 +124,23 @@ namespace TaimerGUI
             pnlDomingo.Height -= (recorteArriba + recorteAbajo);
 
         }
+
+        protected override void WndProc(ref Message m)
+            {
+              const int WM_SYSCOMMAND = 0x0112;
+              const int SC_MOVE = 0xF010;
+              //ShowScrollBar(this.Handle, (int)ScrollBarDirection.SB_BOTH, false);
+              switch (m.Msg)
+              {
+                case WM_SYSCOMMAND:
+                  int command = m.WParam.ToInt32() & 0xfff0;
+                  if (command == SC_MOVE)
+                    return;
+                  break;
+               }
+               base.WndProc(ref m);
+             }
+            
+
     }
 }

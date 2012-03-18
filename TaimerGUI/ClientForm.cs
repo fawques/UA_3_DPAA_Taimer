@@ -221,10 +221,27 @@ namespace TaimerGUI {
         {
             if (this.beingResized)
             {
-
-                Size adj = new Size(e.Location.X - mouseOffset.X, e.Location.Y - mouseOffset.Y);
-                this.Size += adj;
-                mouseOffset = e.Location - adj;  // NOTA: Tienes que mover tambien la localizacion
+                Size adj = this.Size;
+                if (e.Location.Y - mouseOffset.Y < 0 && e.Location.X - mouseOffset.X < 0) {
+                    if (this.Size.Height > 300 && this.Size.Width > 300) {
+                        if (this.Size.Width <= 300) {
+                            adj = new Size(this.Size.Height, e.Location.Y - mouseOffset.Y);
+                        } else if (this.Size.Width <= 300) {
+                            adj = new Size(e.Location.X - mouseOffset.X, this.Size.Width);
+                        } else {
+                            adj = new Size(e.Location.X - mouseOffset.X, e.Location.Y - mouseOffset.Y);
+                        }
+                        this.Size += adj;
+                        mouseOffset = e.Location - adj;  // NOTA: Tienes que mover tambien la localizacion
+                    }
+                    
+                } else {
+                    adj = new Size(e.Location.X - mouseOffset.X, e.Location.Y - mouseOffset.Y);
+                    this.Size += adj;
+                    mouseOffset = e.Location - adj;  // NOTA: Tienes que mover tambien la localizacion
+                }
+                
+               
 
                 this.Refresh();
             }
@@ -299,23 +316,25 @@ namespace TaimerGUI {
         {
             
             //Desactivamos el borderless para hacer el maxmizado normal, si no se pone a pantalla completa
-            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            //this.FormBorderStyle = FormBorderStyle.FixedSingle;
             
             if (this.WindowState != FormWindowState.Maximized)
             {
                 //Quitamos la mascara de redondeado
                 this.Region = new Region();
                 this.WindowState = FormWindowState.Maximized;
-                this.formHorDetails.WindowState = FormWindowState.Maximized;
+
             }
             else
             {
                 //Restauramos la mascara de redondeado
                 this.Region = new System.Drawing.Region(shape);
                 this.WindowState = FormWindowState.Normal;
+
+                this.formHorDetails.WindowState = FormWindowState.Normal;
             }
             // desactivamos el maximizado para que deje de mostrar el borde
-            this.FormBorderStyle = FormBorderStyle.None;
+            //this.FormBorderStyle = FormBorderStyle.None;
             
         }
 
@@ -465,6 +484,26 @@ namespace TaimerGUI {
         }
 
         private void btClose_ClientSizeChanged(object sender, EventArgs e) {
+
+        }
+
+        private void btMaximize_MouseEnter(object sender, EventArgs e) {
+            btMaximize.Image = TaimerGUI.Properties.Resources.maximizeOn;
+        }
+
+        private void btMaximize_MouseLeave(object sender, EventArgs e) {
+            btMaximize.Image = TaimerGUI.Properties.Resources.maximizeOff1;
+        }
+
+        private void btMaximize_MouseDown(object sender, MouseEventArgs e) {
+            btMaximize.Image = TaimerGUI.Properties.Resources.maximizeClick;
+        }
+
+        private void btMaximize_MouseUp(object sender, MouseEventArgs e) {
+            btMaximize.Image = TaimerGUI.Properties.Resources.maximizeOn;
+        }
+
+        private void pnlResize_Paint(object sender, PaintEventArgs e) {
 
         }
 
