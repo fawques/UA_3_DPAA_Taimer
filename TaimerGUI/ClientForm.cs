@@ -29,7 +29,6 @@ namespace TaimerGUI {
         private void ClientForm_Load(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
-            this.WindowState = FormWindowState.Normal;
 
             //////////////// MDI //////////////////////////
 
@@ -97,10 +96,11 @@ namespace TaimerGUI {
             this.DoubleBuffered = true;
             this.SetStyle(ControlStyles.ResizeRedraw, true);
 
-            pnlMenuHorarios.Focus();
             loadLastHorarios();
-            pnlMenuActivi.Focus();
             loadLastActividades();
+
+
+            this.WindowState = FormWindowState.Normal;
         }
 
         private void loadLastHorarios()
