@@ -54,11 +54,7 @@ namespace TaimerGUI {
 
             formWelcome = new ClientBienvenida(this);
             formHorHome = new ClientHorHome();
-
             formHorDetails = new ClientHorVer();
-            //this.formHorDetails.Dock = DockStyle.Fill;
-            //this.formHorDetails.WindowState = FormWindowState.Maximized;
-
             formCreateHor1 = new ClientCrearHor1();
             formCreateHor2 = new ClientCrearHor2();
             formMatric = new ClientMatriculacionActiv();
@@ -69,7 +65,7 @@ namespace TaimerGUI {
 
             //Para comunicarse entre ellos
             formCreateHor1.setContinueForm(formCreateHor2);
-            formCreateHor2.setBackForm(formCreateHor1);
+            formCreateHor2.setBackForm(formCreateHor1);            
 
             formWelcome.MdiParent = this;
             formHorHome.MdiParent = this;
@@ -80,8 +76,18 @@ namespace TaimerGUI {
             formVerAct.MdiParent = this;
             formCrearAct.MdiParent = this;
 
-            //formHorDetails.Show();
+
+
             formWelcome.Show();
+            formHorHome.Show();
+            formHorDetails.Show();
+            formCreateHor1.Show();
+            formCreateHor2.Show();
+            formMatric.Show();
+            formVerAct.Show();
+            formCrearAct.Show();
+            formWelcome.Show();
+            formWelcome.Focus();
             //////////////// --- //////////////////////////
 
             beingDragged = false;
@@ -134,27 +140,27 @@ namespace TaimerGUI {
         //////////////// MDI //////////////////////////
         public void hideAllChilds()
         {
-            //formWelcome.Hide();
+            /*formWelcome.Hide();
             formHorHome.Hide();
             formHorDetails.Hide();
             formCreateHor1.Hide();
             formCreateHor2.Hide();
             formMatric.Hide();
             formVerAct.Hide();
-            formCrearAct.Hide();
+            formCrearAct.Hide();*/
         }
 
         public void positionAllChilds()
         {
             //Esto se tiene que poder hacer mas facil
-            formWelcome.Location = new Point(0, 0);
+            /*formWelcome.Location = new Point(0, 0);
             formHorHome.Location = new Point(0, 0);
             formHorDetails.Location = new Point(0, 0);
             formCreateHor1.Location = new Point(0, 0);
             formCreateHor2.Location = new Point(0, 0);
             formMatric.Location = new Point(0, 0);
             formVerAct.Location = new Point(0, 0);
-            formCrearAct.Location = new Point(0, 0);
+            formCrearAct.Location = new Point(0, 0);*/
         }
         //////////////// --- //////////////////////////
 
@@ -328,16 +334,13 @@ namespace TaimerGUI {
                 this.Region = new Region();
                 this.WindowState = FormWindowState.Maximized;
 
-                this.formHorDetails.WindowState = FormWindowState.Maximized;
-                this.formHorDetails.Dock = DockStyle.Fill;
+                
             }
             else
             {
                 //Restauramos la mascara de redondeado
                 this.Region = new System.Drawing.Region(shape);
                 this.WindowState = FormWindowState.Normal;
-
-                this.formHorDetails.WindowState = FormWindowState.Normal;
             }
             // desactivamos el maximizado para que deje de mostrar el borde
             this.FormBorderStyle = FormBorderStyle.None;
@@ -358,13 +361,15 @@ namespace TaimerGUI {
         {
             hideAllChilds();
             formHorHome.Show();
+            formHorHome.Focus();
             positionAllChilds();
         }
 
         private void label1_Click(object sender, EventArgs e)
         {
             hideAllChilds();
-            formWelcome.Show();
+            formHorHome.Show();
+            formWelcome.Focus();
             positionAllChilds();
         }
 
@@ -372,6 +377,7 @@ namespace TaimerGUI {
         {
             hideAllChilds();
             formCreateHor1.Show();
+            formCreateHor1.Focus();
             positionAllChilds();
         }
 
@@ -379,6 +385,7 @@ namespace TaimerGUI {
         {
             hideAllChilds();
             formHorHome.Show();
+            formHorHome.Focus();
             positionAllChilds();
         }
 
@@ -387,13 +394,17 @@ namespace TaimerGUI {
             hideAllChilds();
             formHorDetails.setHorario(new Taimer.Horario("Horario", (new Taimer.User("", "", "", "", new Taimer.Titulacion("", ""), 1))));
             formHorDetails.Show();
+            formHorDetails.Focus();
             positionAllChilds();
+            
+            
         }
 
         public void crearActividad_Click(object sender, EventArgs e)
         {
             hideAllChilds();
             formCrearAct.Show();
+            formCrearAct.Focus();
             positionAllChilds();
         }
 
@@ -401,6 +412,7 @@ namespace TaimerGUI {
         {
             hideAllChilds();
             formMatric.Show();
+            formMatric.Focus();
             positionAllChilds();
         }
 
@@ -408,6 +420,7 @@ namespace TaimerGUI {
         {
             hideAllChilds();
             formVerAct.Show();
+            formVerAct.Focus();
             positionAllChilds();
         }
 

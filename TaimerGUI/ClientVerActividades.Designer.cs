@@ -32,29 +32,29 @@
             this.label2 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.pnlOficiales = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
+            this.pnlOficiales = new System.Windows.Forms.Panel();
+            this.shapeContainer1 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
             this.lineShape2 = new Microsoft.VisualBasic.PowerPacks.LineShape();
-            this.pnlPersonales = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
+            this.pnlPersonales = new System.Windows.Forms.Panel();
+            this.shapeContainer3 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
             this.lineShape1 = new Microsoft.VisualBasic.PowerPacks.LineShape();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.lblDescripcion = new System.Windows.Forms.Label();
             this.lblNombre = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.shapeContainer3 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.shapeContainer1 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
             this.txtBoxNombre = new System.Windows.Forms.TextBox();
-            this.btnFiltrar = new System.Windows.Forms.Button();
             this.txtBoxDescripcion = new System.Windows.Forms.RichTextBox();
-            this.label5 = new System.Windows.Forms.Label();
+            this.btnFiltrar = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
-            this.groupBox1.SuspendLayout();
-            this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
+            this.panel2.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -94,13 +94,17 @@
             this.panel1.Size = new System.Drawing.Size(358, 398);
             this.panel1.TabIndex = 24;
             // 
-            // pnlOficiales
+            // panel3
             // 
-            this.pnlOficiales.AutoSize = true;
-            this.pnlOficiales.Location = new System.Drawing.Point(10, 48);
-            this.pnlOficiales.Name = "pnlOficiales";
-            this.pnlOficiales.Size = new System.Drawing.Size(322, 36);
-            this.pnlOficiales.TabIndex = 1;
+            this.panel3.AutoSize = true;
+            this.panel3.Controls.Add(this.label4);
+            this.panel3.Controls.Add(this.pnlOficiales);
+            this.panel3.Controls.Add(this.shapeContainer1);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel3.Location = new System.Drawing.Point(0, 93);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(354, 87);
+            this.panel3.TabIndex = 3;
             // 
             // label4
             // 
@@ -111,6 +115,25 @@
             this.label4.TabIndex = 1;
             this.label4.Text = "OFICIALES";
             // 
+            // pnlOficiales
+            // 
+            this.pnlOficiales.AutoSize = true;
+            this.pnlOficiales.Location = new System.Drawing.Point(10, 48);
+            this.pnlOficiales.Name = "pnlOficiales";
+            this.pnlOficiales.Size = new System.Drawing.Size(322, 36);
+            this.pnlOficiales.TabIndex = 1;
+            // 
+            // shapeContainer1
+            // 
+            this.shapeContainer1.Location = new System.Drawing.Point(0, 0);
+            this.shapeContainer1.Margin = new System.Windows.Forms.Padding(0);
+            this.shapeContainer1.Name = "shapeContainer1";
+            this.shapeContainer1.Shapes.AddRange(new Microsoft.VisualBasic.PowerPacks.Shape[] {
+            this.lineShape2});
+            this.shapeContainer1.Size = new System.Drawing.Size(354, 87);
+            this.shapeContainer1.TabIndex = 2;
+            this.shapeContainer1.TabStop = false;
+            // 
             // lineShape2
             // 
             this.lineShape2.Name = "lineShape2";
@@ -119,13 +142,17 @@
             this.lineShape2.Y1 = 36;
             this.lineShape2.Y2 = 36;
             // 
-            // pnlPersonales
+            // panel2
             // 
-            this.pnlPersonales.AutoSize = true;
-            this.pnlPersonales.Location = new System.Drawing.Point(13, 51);
-            this.pnlPersonales.Name = "pnlPersonales";
-            this.pnlPersonales.Size = new System.Drawing.Size(323, 39);
-            this.pnlPersonales.TabIndex = 0;
+            this.panel2.AutoSize = true;
+            this.panel2.Controls.Add(this.label3);
+            this.panel2.Controls.Add(this.pnlPersonales);
+            this.panel2.Controls.Add(this.shapeContainer3);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(354, 93);
+            this.panel2.TabIndex = 2;
             // 
             // label3
             // 
@@ -135,6 +162,25 @@
             this.label3.Size = new System.Drawing.Size(79, 13);
             this.label3.TabIndex = 0;
             this.label3.Text = "PERSONALES";
+            // 
+            // pnlPersonales
+            // 
+            this.pnlPersonales.AutoSize = true;
+            this.pnlPersonales.Location = new System.Drawing.Point(13, 51);
+            this.pnlPersonales.Name = "pnlPersonales";
+            this.pnlPersonales.Size = new System.Drawing.Size(323, 39);
+            this.pnlPersonales.TabIndex = 0;
+            // 
+            // shapeContainer3
+            // 
+            this.shapeContainer3.Location = new System.Drawing.Point(0, 0);
+            this.shapeContainer3.Margin = new System.Windows.Forms.Padding(0);
+            this.shapeContainer3.Name = "shapeContainer3";
+            this.shapeContainer3.Shapes.AddRange(new Microsoft.VisualBasic.PowerPacks.Shape[] {
+            this.lineShape1});
+            this.shapeContainer3.Size = new System.Drawing.Size(354, 93);
+            this.shapeContainer3.TabIndex = 1;
+            this.shapeContainer3.TabStop = false;
             // 
             // lineShape1
             // 
@@ -159,6 +205,15 @@
             this.groupBox1.TabIndex = 34;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Datos";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(48, 202);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(129, 13);
+            this.label5.TabIndex = 44;
+            this.label5.Text = "No se si abran mas datos.";
             // 
             // btnCancelar
             // 
@@ -203,52 +258,6 @@
             this.lblNombre.Text = "Diseño y programación de aplicaciones avanzadas";
             this.lblNombre.Click += new System.EventHandler(this.lblNombre_Click);
             // 
-            // panel2
-            // 
-            this.panel2.AutoSize = true;
-            this.panel2.Controls.Add(this.label3);
-            this.panel2.Controls.Add(this.pnlPersonales);
-            this.panel2.Controls.Add(this.shapeContainer3);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(354, 93);
-            this.panel2.TabIndex = 2;
-            // 
-            // shapeContainer3
-            // 
-            this.shapeContainer3.Location = new System.Drawing.Point(0, 0);
-            this.shapeContainer3.Margin = new System.Windows.Forms.Padding(0);
-            this.shapeContainer3.Name = "shapeContainer3";
-            this.shapeContainer3.Shapes.AddRange(new Microsoft.VisualBasic.PowerPacks.Shape[] {
-            this.lineShape1});
-            this.shapeContainer3.Size = new System.Drawing.Size(354, 93);
-            this.shapeContainer3.TabIndex = 1;
-            this.shapeContainer3.TabStop = false;
-            // 
-            // panel3
-            // 
-            this.panel3.AutoSize = true;
-            this.panel3.Controls.Add(this.label4);
-            this.panel3.Controls.Add(this.pnlOficiales);
-            this.panel3.Controls.Add(this.shapeContainer1);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel3.Location = new System.Drawing.Point(0, 93);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(354, 87);
-            this.panel3.TabIndex = 3;
-            // 
-            // shapeContainer1
-            // 
-            this.shapeContainer1.Location = new System.Drawing.Point(0, 0);
-            this.shapeContainer1.Margin = new System.Windows.Forms.Padding(0);
-            this.shapeContainer1.Name = "shapeContainer1";
-            this.shapeContainer1.Shapes.AddRange(new Microsoft.VisualBasic.PowerPacks.Shape[] {
-            this.lineShape2});
-            this.shapeContainer1.Size = new System.Drawing.Size(354, 87);
-            this.shapeContainer1.TabIndex = 2;
-            this.shapeContainer1.TabStop = false;
-            // 
             // txtBoxNombre
             // 
             this.txtBoxNombre.Location = new System.Drawing.Point(37, 48);
@@ -257,16 +266,6 @@
             this.txtBoxNombre.TabIndex = 42;
             this.txtBoxNombre.Visible = false;
             this.txtBoxNombre.Leave += new System.EventHandler(this.txtBoxNombre_Leave);
-            // 
-            // btnFiltrar
-            // 
-            this.btnFiltrar.Location = new System.Drawing.Point(263, 103);
-            this.btnFiltrar.Name = "btnFiltrar";
-            this.btnFiltrar.Size = new System.Drawing.Size(75, 23);
-            this.btnFiltrar.TabIndex = 35;
-            this.btnFiltrar.Text = "Buscar";
-            this.btnFiltrar.UseVisualStyleBackColor = true;
-            this.btnFiltrar.Click += new System.EventHandler(this.btnFiltrar_Click);
             // 
             // txtBoxDescripcion
             // 
@@ -278,14 +277,15 @@
             this.txtBoxDescripcion.Visible = false;
             this.txtBoxDescripcion.Leave += new System.EventHandler(this.txtBoxDescripcion_Leave);
             // 
-            // label5
+            // btnFiltrar
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(48, 202);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(129, 13);
-            this.label5.TabIndex = 44;
-            this.label5.Text = "No se si abran mas datos.";
+            this.btnFiltrar.Location = new System.Drawing.Point(263, 103);
+            this.btnFiltrar.Name = "btnFiltrar";
+            this.btnFiltrar.Size = new System.Drawing.Size(75, 23);
+            this.btnFiltrar.TabIndex = 35;
+            this.btnFiltrar.Text = "Buscar";
+            this.btnFiltrar.UseVisualStyleBackColor = true;
+            this.btnFiltrar.Click += new System.EventHandler(this.btnFiltrar_Click);
             // 
             // ClientVerActividades
             // 
@@ -302,15 +302,16 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "ClientVerActividades";
             this.Text = "ClientVerActividades";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.ClientVerActividades_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 

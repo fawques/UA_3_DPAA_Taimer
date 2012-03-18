@@ -355,6 +355,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "ClientCrearActiv";
             this.Text = "ClientCrearActiv";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.ClientCrearActiv_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gVHorasTemp)).EndInit();
             this.groupBox1.ResumeLayout(false);

@@ -98,7 +98,7 @@
             this.pnlMenu.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlMenu.Location = new System.Drawing.Point(0, 75);
             this.pnlMenu.Name = "pnlMenu";
-            this.pnlMenu.Size = new System.Drawing.Size(200, 600);
+            this.pnlMenu.Size = new System.Drawing.Size(200, 625);
             this.pnlMenu.TabIndex = 2;
             // 
             // button2
@@ -107,7 +107,7 @@
             this.button2.BackColor = System.Drawing.Color.BurlyWood;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(0, 539);
+            this.button2.Location = new System.Drawing.Point(0, 564);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(200, 58);
             this.button2.TabIndex = 1;
@@ -278,7 +278,7 @@
             this.pnlResize.BackColor = System.Drawing.Color.Cornsilk;
             this.pnlResize.BackgroundImage = global::TaimerGUI.Properties.Resources.resize2;
             this.pnlResize.Cursor = System.Windows.Forms.Cursors.SizeNWSE;
-            this.pnlResize.Location = new System.Drawing.Point(978, 653);
+            this.pnlResize.Location = new System.Drawing.Point(1007, 678);
             this.pnlResize.Name = "pnlResize";
             this.pnlResize.Size = new System.Drawing.Size(20, 20);
             this.pnlResize.TabIndex = 6;
@@ -299,7 +299,7 @@
             this.pnlTittle.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlTittle.Location = new System.Drawing.Point(0, 0);
             this.pnlTittle.Name = "pnlTittle";
-            this.pnlTittle.Size = new System.Drawing.Size(1000, 75);
+            this.pnlTittle.Size = new System.Drawing.Size(1029, 75);
             this.pnlTittle.TabIndex = 4;
             this.pnlTittle.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlTittle_MouseDown);
             this.pnlTittle.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pnlTittle_MouseMove);
@@ -491,7 +491,7 @@
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.mnUserOption);
-            this.panel1.Location = new System.Drawing.Point(887, 46);
+            this.panel1.Location = new System.Drawing.Point(916, 46);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(111, 175);
             this.panel1.TabIndex = 8;
@@ -559,7 +559,7 @@
             this.panel3.Controls.Add(this.btMaximize);
             this.panel3.Controls.Add(this.btClose);
             this.panel3.Controls.Add(this.btMinimize);
-            this.panel3.Location = new System.Drawing.Point(900, 4);
+            this.panel3.Location = new System.Drawing.Point(929, 4);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(95, 26);
             this.panel3.TabIndex = 7;
@@ -635,9 +635,10 @@
             // 
             // menuTruco
             // 
+            this.menuTruco.Dock = System.Windows.Forms.DockStyle.Left;
             this.menuTruco.Location = new System.Drawing.Point(200, 75);
             this.menuTruco.Name = "menuTruco";
-            this.menuTruco.Size = new System.Drawing.Size(800, 24);
+            this.menuTruco.Size = new System.Drawing.Size(98, 625);
             this.menuTruco.TabIndex = 9;
             this.menuTruco.Text = "menuStrip1";
             this.menuTruco.Visible = false;
@@ -646,7 +647,7 @@
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.Cornsilk;
-            this.ClientSize = new System.Drawing.Size(1000, 675);
+            this.ClientSize = new System.Drawing.Size(1029, 700);
             this.Controls.Add(this.menuTruco);
             this.Controls.Add(this.pnlMenu);
             this.Controls.Add(this.pnlResize);
