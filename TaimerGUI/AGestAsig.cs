@@ -39,8 +39,8 @@ namespace TaimerGUI {
                 childTur.clearRows();
                 foreach (DataGridViewRow row in dgTurns.Rows) {
                     childTur.addRow(row.Cells["Dia"].Value.ToString(),
-                        row.Cells["HoraInicio"].Value.ToString(),
-                        row.Cells["HoraFin"].Value.ToString(),
+                        row.Cells["Inicio"].Value.ToString(),
+                        row.Cells["Fin"].Value.ToString(),
                         row.Cells["Ubicacion"].Value.ToString());
                 }
 

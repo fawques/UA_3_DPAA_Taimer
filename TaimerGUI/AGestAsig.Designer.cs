@@ -36,9 +36,6 @@
             this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.dgTurns = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.HoraInicio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.HoraFin = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label6 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.btCancel = new System.Windows.Forms.Button();
@@ -46,6 +43,9 @@
             this.tbName = new System.Windows.Forms.TextBox();
             this.tbDesc = new System.Windows.Forms.TextBox();
             this.tbCoord = new System.Windows.Forms.TextBox();
+            this.Dia = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Inicio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Fin = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ubicacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.tbUsers)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgTurns)).BeginInit();
@@ -178,36 +178,15 @@
             this.dgTurns.BackgroundColor = System.Drawing.Color.Wheat;
             this.dgTurns.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgTurns.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1,
-            this.HoraInicio,
-            this.HoraFin,
+            this.Dia,
+            this.Inicio,
+            this.Fin,
             this.Ubicacion});
             this.dgTurns.Location = new System.Drawing.Point(519, 273);
             this.dgTurns.Name = "dgTurns";
             this.dgTurns.ReadOnly = true;
             this.dgTurns.Size = new System.Drawing.Size(246, 140);
             this.dgTurns.TabIndex = 24;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.HeaderText = "Día";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            this.dataGridViewTextBoxColumn1.Width = 30;
-            // 
-            // HoraInicio
-            // 
-            this.HoraInicio.HeaderText = "Hora Inicio";
-            this.HoraInicio.Name = "HoraInicio";
-            this.HoraInicio.ReadOnly = true;
-            this.HoraInicio.Width = 90;
-            // 
-            // HoraFin
-            // 
-            this.HoraFin.HeaderText = "Hora Fin";
-            this.HoraFin.Name = "HoraFin";
-            this.HoraFin.ReadOnly = true;
-            this.HoraFin.Width = 80;
             // 
             // label6
             // 
@@ -277,6 +256,27 @@
             this.tbCoord.Visible = false;
             this.tbCoord.Validated += new System.EventHandler(this.tbCoord_Validated);
             // 
+            // Dia
+            // 
+            this.Dia.HeaderText = "Dia";
+            this.Dia.Name = "Dia";
+            this.Dia.ReadOnly = true;
+            this.Dia.Width = 60;
+            // 
+            // Inicio
+            // 
+            this.Inicio.HeaderText = "Inicio";
+            this.Inicio.Name = "Inicio";
+            this.Inicio.ReadOnly = true;
+            this.Inicio.Width = 70;
+            // 
+            // Fin
+            // 
+            this.Fin.HeaderText = "Fin";
+            this.Fin.Name = "Fin";
+            this.Fin.ReadOnly = true;
+            this.Fin.Width = 70;
+            // 
             // Ubicacion
             // 
             this.Ubicacion.HeaderText = "Ubicacion";
@@ -334,9 +334,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.DataGridView dgTurns;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn HoraInicio;
-        private System.Windows.Forms.DataGridViewTextBoxColumn HoraFin;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button btCancel;
@@ -344,6 +341,9 @@
         private System.Windows.Forms.TextBox tbName;
         private System.Windows.Forms.TextBox tbDesc;
         private System.Windows.Forms.TextBox tbCoord;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Dia;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Inicio;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Fin;
         private System.Windows.Forms.DataGridViewTextBoxColumn Ubicacion;
     }
 }
