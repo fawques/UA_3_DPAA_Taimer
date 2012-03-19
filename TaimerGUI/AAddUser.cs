@@ -29,5 +29,12 @@ namespace TaimerGUI {
                 parent.positionChilds();
             }
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            CAD.CADUser user= new CAD.CADUser();
+            user.CrearUser("0000006",textBox1.Text+" "+textBox2.Text,textBox3.Text,textBox1.Text);
+
+        }
     }
 }

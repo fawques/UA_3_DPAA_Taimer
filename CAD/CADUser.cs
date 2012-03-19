@@ -12,18 +12,18 @@ namespace CAD
 {
     public class CADUser
     {
-        string conexionTBD="Data Source=localhost\\SQLEXPRESS;InitialCatalog=BDTAIMER;Integrated Security=True;";
+        private static string conexionTBD;
         private static SqlConnection cnBD;
         public CADUser()
         {
+            conexionTBD = Conection.Conect.ConectionString;
             // Adquiere la cadena de conexión desde un único sitio
 
         }
         //Método para crear un nuevo usu
-        public bool CrearUser(string dni, string nombre, string email, string password, int curso, string titulacion, int cod_Ac, int cod_Ho)
+        public bool CrearUser(string dni, string nombre, string email, string password)
         {
-            
-            string comando = "INSERT INTO User(dni,nombre,email,password,curso,titulacion,codAct,codHorarios) VALUES('"+dni+"', '"+nombre+"', '"+email+"', '"+password+"', '"+curso+"', '"+titulacion+"', '"+cod_Ac+"', '"+cod_Ho+"')";
+            string comando = "INSERT INTO [User](dni,nombre,email,password) VALUES('" + dni + "', '" + nombre + "', '" + email + "', '" + password + "')";
             SqlConnection c=null;
             SqlCommand comandoTBD;
             bool insertado = false;
@@ -35,7 +35,6 @@ namespace CAD
                 comandoTBD.CommandType = CommandType.Text;
                 comandoTBD.ExecuteNonQuery();
                 insertado = true;
-                
             }
             catch (SqlException ex)
             {
@@ -51,7 +50,7 @@ namespace CAD
             
             bool borrado=false;
             SqlConnection c = null;
-            string comando = "DELETE FROM User WHERE dni= '" + id + "'";
+            string comando = "DELETE FROM [User] WHERE dni= '" + id + "'";
 
             try
             {
@@ -79,7 +78,7 @@ namespace CAD
 
             SqlConnection con = null;
             DataSet listUsers = null;
-            string comando = "Select * from User";
+            string comando = "Select * from [User]";
             try
             {
                 con = new SqlConnection(conexionTBD);
@@ -105,7 +104,7 @@ namespace CAD
 
             SqlConnection con = null;
             DataSet datos = null;
-            string comando = "Select * from User where dni="+dni;
+            string comando = "Select * from [User] where dni="+dni;
             try
             {
                 con = new SqlConnection(conexionTBD);
@@ -129,7 +128,7 @@ namespace CAD
         public bool modificaUser(string dni, string nombre, string email, string password, int curso, string titulacion, int cod_Ac, int cod_Ho)
         {
 
-            string comando = "UPDATE User SET dni = '" + dni + "', nombre = '" + nombre + "', email = '" + email + "', password = '" + password + "', curso = '" + curso + "', titulacion = '" + titulacion + "' WHERE dni = '" + dni + "'";
+            string comando = "UPDATE [User] SET dni = '" + dni + "', nombre = '" + nombre + "', email = '" + email + "', password = '" + password + "', curso = '" + curso + "', titulacion = '" + titulacion + "' WHERE dni = '" + dni + "'";
             SqlConnection c = null;
             SqlCommand comandoTBD;
             bool insertado = false;
@@ -153,6 +152,5 @@ namespace CAD
             }
             return insertado;
         }
-
     }
 }
