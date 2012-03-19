@@ -159,5 +159,12 @@ namespace TaimerGUI {
             dgTurnos.Rows[selectedRow].SetValues(dia, ini, fin, "", "", ubi);
         }
 
+        public void addRow(string dia, string ini, string fin, string ubi) {
+            dgTurnos.Rows.Add(dia, ini, fin, "", "", ubi);
+        }
+
+        public void clearRows() {
+            dgTurnos.Rows.Clear();
+        }
     }
 }

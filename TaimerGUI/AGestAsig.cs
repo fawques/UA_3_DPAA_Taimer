@@ -35,8 +35,16 @@ namespace TaimerGUI {
         private void button1_Click(object sender, EventArgs e) {
             if (childTur != null) {
                 Hide();
-                childTur.setParent(this);
 
+                childTur.clearRows();
+                foreach (DataGridViewRow row in dgTurns.Rows) {
+                    childTur.addRow(row.Cells["Dia"].Value.ToString(),
+                        row.Cells["HoraInicio"].Value.ToString(),
+                        row.Cells["HoraFin"].Value.ToString(),
+                        row.Cells["Ubicacion"].Value.ToString());
+                }
+
+                childTur.setParent(this);
                 childTur.Show();
 
                 AdminForm parent = (AdminForm)this.MdiParent;
