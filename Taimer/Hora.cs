@@ -153,6 +153,21 @@ namespace Taimer {
             return resultado;
         }
 
+        // Devuelve el tiempo en minutos entre h1 y h2, h1-h2
+        public static int diff(Hora h1, Hora h2)
+        {
+            int resultado = 0;
+            if (h1 < h2)
+                throw new Exception("Orden de los operandos invertido");
+            else
+            {
+                //throw new NotImplementedException();
+                resultado += (h1.Hor - h2.Hor)*60;
+                resultado += h1.Min - h2.Min;
+            }
+            return resultado;
+        }
+
         //Operator +
         public static Hora operator +(Hora h1, Hora h2) {
             Hora h = new Hora();
