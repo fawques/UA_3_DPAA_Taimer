@@ -30,8 +30,8 @@ namespace TaimerGUI
             {
                 if (formContinue != null)
                 {
-                    Hide();
                     formContinue.Show();
+                    formContinue.Focus();
                     ClientForm pare = (ClientForm)this.MdiParent;
                     pare.positionAllChilds();
                 }
