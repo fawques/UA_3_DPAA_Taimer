@@ -61,11 +61,11 @@
     <Compile Include="AAddAsig.designer.cs">
       <DependentUpon>AAddAsig.cs</DependentUpon>
     </Compile>
-    <Compile Include="AAddTurn.cs">
+    <Compile Include="AGestTurn.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AAddTurn.Designer.cs">
-      <DependentUpon>AAddTurn.cs</DependentUpon>
+    <Compile Include="AGestTurn.Designer.cs">
+      <DependentUpon>AGestTurn.cs</DependentUpon>
     </Compile>
     <Compile Include="AAddUser.cs">
       <SubType>Form</SubType>
@@ -103,11 +103,11 @@
     <Compile Include="AGestAsig.designer.cs">
       <DependentUpon>AGestAsig.cs</DependentUpon>
     </Compile>
-    <Compile Include="AGestTurno.cs">
+    <Compile Include="AModiTurn.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AGestTurno.designer.cs">
-      <DependentUpon>AGestTurno.cs</DependentUpon>
+    <Compile Include="AModiTurn.designer.cs">
+      <DependentUpon>AModiTurn.cs</DependentUpon>
     </Compile>
     <Compile Include="AGestUser.cs">
       <SubType>Form</SubType>
@@ -187,8 +187,8 @@
     <EmbeddedResource Include="AAddAsig.resx">
       <DependentUpon>AAddAsig.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AAddTurn.resx">
-      <DependentUpon>AAddTurn.cs</DependentUpon>
+    <EmbeddedResource Include="AGestTurn.resx">
+      <DependentUpon>AGestTurn.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AAddUser.resx">
       <DependentUpon>AAddUser.cs</DependentUpon>
@@ -208,8 +208,8 @@
     <EmbeddedResource Include="AGestAsig.resx">
       <DependentUpon>AGestAsig.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AGestTurno.resx">
-      <DependentUpon>AGestTurno.cs</DependentUpon>
+    <EmbeddedResource Include="AModiTurn.resx">
+      <DependentUpon>AModiTurn.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AGestUser.resx">
       <DependentUpon>AGestUser.cs</DependentUpon>

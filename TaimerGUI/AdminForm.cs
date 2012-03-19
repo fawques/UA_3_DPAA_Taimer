@@ -14,10 +14,10 @@ namespace TaimerGUI {
         ABienvenida bienvenidaForm;
         AGestUser gestionUserForm;
         AGestAsig gestionAsigForm;
-        AGestTurno gestionTurnForm;
+        AModiTurn modiTurnForm;
         AAddAsig addAsigForm;
         AAddUser addUserForm;
-        AAddTurn addTurnForm;
+        AGestTurn gestTurnForm;
         AEstadistica estadForm;
 
         int currentForm;
@@ -28,29 +28,29 @@ namespace TaimerGUI {
             bienvenidaForm = new ABienvenida();
             gestionUserForm = new AGestUser();
             gestionAsigForm = new AGestAsig();
-            gestionTurnForm = new AGestTurno();
+            modiTurnForm = new AModiTurn();
             addAsigForm = new AAddAsig();
             addUserForm = new AAddUser();
-            addTurnForm = new AAddTurn();
+            gestTurnForm = new AGestTurn();
             estadForm = new AEstadistica();
 
             gestionUserForm.setChild(addUserForm);
             addUserForm.setParent(gestionUserForm);
 
-            gestionAsigForm.setChild(addAsigForm, gestionTurnForm);
+            gestionAsigForm.setChild(addAsigForm, gestTurnForm);
             addAsigForm.setParent(gestionAsigForm);
-            gestionTurnForm.setParent(gestionAsigForm);
-
-            addAsigForm.setChild(addTurnForm);
-            addTurnForm.setParent(addAsigForm);
+            addAsigForm.setChild(gestTurnForm);
+            modiTurnForm.setParent(gestTurnForm);
+            addAsigForm.setChild(gestTurnForm);
+            gestTurnForm.setChild(modiTurnForm);
 
             bienvenidaForm.MdiParent = this;
             gestionUserForm.MdiParent = this;
             gestionAsigForm.MdiParent = this;
-            gestionTurnForm.MdiParent = this;
+            modiTurnForm.MdiParent = this;
             addAsigForm.MdiParent = this;
             addUserForm.MdiParent = this;
-            addTurnForm.MdiParent = this;
+            gestTurnForm.MdiParent = this;
             estadForm.MdiParent = this;
         }
 
@@ -162,22 +162,22 @@ namespace TaimerGUI {
             bienvenidaForm.Hide();
             gestionUserForm.Hide();
             gestionAsigForm.Hide();
-            gestionTurnForm.Hide();
+            gestTurnForm.Hide();
             estadForm.Hide();
             addAsigForm.Hide();
             addUserForm.Hide();
-            addTurnForm.Hide();
+            modiTurnForm.Hide();
         }
 
         public void positionChilds() {
             bienvenidaForm.Location = new Point(0, 0);
             gestionUserForm.Location = new Point(0, 0);
             gestionAsigForm.Location = new Point(0, 0);
-            gestionTurnForm.Location = new Point(0, 0);
+            gestTurnForm.Location = new Point(0, 0);
             estadForm.Location = new Point(0, 0);
             addAsigForm.Location = new Point(0, 0);
             addUserForm.Location = new Point(0, 0);
-            addTurnForm.Location = new Point(0, 0);
+            modiTurnForm.Location = new Point(0, 0);
         }
 
         private void label1_Click(object sender, EventArgs e) {

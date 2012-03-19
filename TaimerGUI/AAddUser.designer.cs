@@ -29,7 +29,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.tbApell = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.tbEmail = new System.Windows.Forms.TextBox();
+            this.tbDni = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.rbCli = new System.Windows.Forms.RadioButton();
             this.rbAdm = new System.Windows.Forms.RadioButton();
@@ -37,8 +37,17 @@
             this.btCreate = new System.Windows.Forms.Button();
             this.lbErrName = new System.Windows.Forms.Label();
             this.lbErrApell = new System.Windows.Forms.Label();
-            this.lbErrEmailEmpty = new System.Windows.Forms.Label();
             this.lbErrEmailBad = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.tbEmail = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.tbCurso = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.tbTitu = new System.Windows.Forms.TextBox();
+            this.lbErrTitu = new System.Windows.Forms.Label();
+            this.lbErrCurso = new System.Windows.Forms.Label();
+            this.lbErrEmail = new System.Windows.Forms.Label();
+            this.lbErrDni = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label2
@@ -70,7 +79,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(41, 174);
+            this.label3.Location = new System.Drawing.Point(419, 108);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(49, 13);
             this.label3.TabIndex = 54;
@@ -78,7 +87,7 @@
             // 
             // tbApell
             // 
-            this.tbApell.Location = new System.Drawing.Point(44, 202);
+            this.tbApell.Location = new System.Drawing.Point(422, 136);
             this.tbApell.Name = "tbApell";
             this.tbApell.Size = new System.Drawing.Size(174, 20);
             this.tbApell.TabIndex = 53;
@@ -86,23 +95,23 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(41, 243);
+            this.label4.Location = new System.Drawing.Point(41, 185);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(94, 13);
+            this.label4.Size = new System.Drawing.Size(26, 13);
             this.label4.TabIndex = 56;
-            this.label4.Text = "Correo Electronico";
+            this.label4.Text = "DNI";
             // 
-            // tbEmail
+            // tbDni
             // 
-            this.tbEmail.Location = new System.Drawing.Point(44, 271);
-            this.tbEmail.Name = "tbEmail";
-            this.tbEmail.Size = new System.Drawing.Size(174, 20);
-            this.tbEmail.TabIndex = 55;
+            this.tbDni.Location = new System.Drawing.Point(44, 213);
+            this.tbDni.Name = "tbDni";
+            this.tbDni.Size = new System.Drawing.Size(174, 20);
+            this.tbDni.TabIndex = 55;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(41, 315);
+            this.label5.Location = new System.Drawing.Point(41, 351);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(82, 13);
             this.label5.TabIndex = 57;
@@ -112,7 +121,7 @@
             // 
             this.rbCli.AutoSize = true;
             this.rbCli.Checked = true;
-            this.rbCli.Location = new System.Drawing.Point(50, 341);
+            this.rbCli.Location = new System.Drawing.Point(50, 377);
             this.rbCli.Name = "rbCli";
             this.rbCli.Size = new System.Drawing.Size(57, 17);
             this.rbCli.TabIndex = 58;
@@ -123,7 +132,7 @@
             // rbAdm
             // 
             this.rbAdm.AutoSize = true;
-            this.rbAdm.Location = new System.Drawing.Point(50, 364);
+            this.rbAdm.Location = new System.Drawing.Point(50, 400);
             this.rbAdm.Name = "rbAdm";
             this.rbAdm.Size = new System.Drawing.Size(88, 17);
             this.rbAdm.TabIndex = 59;
@@ -168,36 +177,120 @@
             this.lbErrApell.AutoSize = true;
             this.lbErrApell.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbErrApell.ForeColor = System.Drawing.Color.Maroon;
-            this.lbErrApell.Location = new System.Drawing.Point(224, 206);
+            this.lbErrApell.Location = new System.Drawing.Point(602, 140);
             this.lbErrApell.Name = "lbErrApell";
             this.lbErrApell.Size = new System.Drawing.Size(145, 13);
             this.lbErrApell.TabIndex = 63;
             this.lbErrApell.Text = "El campo no puede estar vacio";
             this.lbErrApell.Visible = false;
             // 
-            // lbErrEmailEmpty
-            // 
-            this.lbErrEmailEmpty.AutoSize = true;
-            this.lbErrEmailEmpty.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbErrEmailEmpty.ForeColor = System.Drawing.Color.Maroon;
-            this.lbErrEmailEmpty.Location = new System.Drawing.Point(224, 275);
-            this.lbErrEmailEmpty.Name = "lbErrEmailEmpty";
-            this.lbErrEmailEmpty.Size = new System.Drawing.Size(145, 13);
-            this.lbErrEmailEmpty.TabIndex = 64;
-            this.lbErrEmailEmpty.Text = "El campo no puede estar vacio";
-            this.lbErrEmailEmpty.Visible = false;
-            // 
             // lbErrEmailBad
             // 
             this.lbErrEmailBad.AutoSize = true;
             this.lbErrEmailBad.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbErrEmailBad.ForeColor = System.Drawing.Color.Maroon;
-            this.lbErrEmailBad.Location = new System.Drawing.Point(224, 278);
+            this.lbErrEmailBad.Location = new System.Drawing.Point(602, 217);
             this.lbErrEmailBad.Name = "lbErrEmailBad";
             this.lbErrEmailBad.Size = new System.Drawing.Size(168, 13);
             this.lbErrEmailBad.TabIndex = 65;
             this.lbErrEmailBad.Text = "El email introducido no es correcto";
             this.lbErrEmailBad.Visible = false;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(419, 185);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(94, 13);
+            this.label7.TabIndex = 67;
+            this.label7.Text = "Correo Electronico";
+            // 
+            // tbEmail
+            // 
+            this.tbEmail.Location = new System.Drawing.Point(422, 213);
+            this.tbEmail.Name = "tbEmail";
+            this.tbEmail.Size = new System.Drawing.Size(174, 20);
+            this.tbEmail.TabIndex = 66;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(40, 267);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(34, 13);
+            this.label9.TabIndex = 70;
+            this.label9.Text = "Curso";
+            // 
+            // tbCurso
+            // 
+            this.tbCurso.Location = new System.Drawing.Point(43, 295);
+            this.tbCurso.Name = "tbCurso";
+            this.tbCurso.Size = new System.Drawing.Size(174, 20);
+            this.tbCurso.TabIndex = 69;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(419, 267);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(53, 13);
+            this.label11.TabIndex = 73;
+            this.label11.Text = "Titulación";
+            // 
+            // tbTitu
+            // 
+            this.tbTitu.Location = new System.Drawing.Point(422, 295);
+            this.tbTitu.Name = "tbTitu";
+            this.tbTitu.Size = new System.Drawing.Size(174, 20);
+            this.tbTitu.TabIndex = 72;
+            // 
+            // lbErrTitu
+            // 
+            this.lbErrTitu.AutoSize = true;
+            this.lbErrTitu.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbErrTitu.ForeColor = System.Drawing.Color.Maroon;
+            this.lbErrTitu.Location = new System.Drawing.Point(602, 299);
+            this.lbErrTitu.Name = "lbErrTitu";
+            this.lbErrTitu.Size = new System.Drawing.Size(145, 13);
+            this.lbErrTitu.TabIndex = 74;
+            this.lbErrTitu.Text = "El campo no puede estar vacio";
+            this.lbErrTitu.Visible = false;
+            // 
+            // lbErrCurso
+            // 
+            this.lbErrCurso.AutoSize = true;
+            this.lbErrCurso.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbErrCurso.ForeColor = System.Drawing.Color.Maroon;
+            this.lbErrCurso.Location = new System.Drawing.Point(223, 299);
+            this.lbErrCurso.Name = "lbErrCurso";
+            this.lbErrCurso.Size = new System.Drawing.Size(145, 13);
+            this.lbErrCurso.TabIndex = 75;
+            this.lbErrCurso.Text = "El campo no puede estar vacio";
+            this.lbErrCurso.Visible = false;
+            // 
+            // lbErrEmail
+            // 
+            this.lbErrEmail.AutoSize = true;
+            this.lbErrEmail.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbErrEmail.ForeColor = System.Drawing.Color.Maroon;
+            this.lbErrEmail.Location = new System.Drawing.Point(602, 217);
+            this.lbErrEmail.Name = "lbErrEmail";
+            this.lbErrEmail.Size = new System.Drawing.Size(145, 13);
+            this.lbErrEmail.TabIndex = 76;
+            this.lbErrEmail.Text = "El campo no puede estar vacio";
+            this.lbErrEmail.Visible = false;
+            // 
+            // lbErrDni
+            // 
+            this.lbErrDni.AutoSize = true;
+            this.lbErrDni.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbErrDni.ForeColor = System.Drawing.Color.Maroon;
+            this.lbErrDni.Location = new System.Drawing.Point(223, 217);
+            this.lbErrDni.Name = "lbErrDni";
+            this.lbErrDni.Size = new System.Drawing.Size(145, 13);
+            this.lbErrDni.TabIndex = 77;
+            this.lbErrDni.Text = "El campo no puede estar vacio";
+            this.lbErrDni.Visible = false;
             // 
             // AAddUser
             // 
@@ -205,8 +298,17 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Cornsilk;
             this.ClientSize = new System.Drawing.Size(795, 595);
+            this.Controls.Add(this.lbErrDni);
+            this.Controls.Add(this.lbErrEmail);
+            this.Controls.Add(this.lbErrCurso);
+            this.Controls.Add(this.lbErrTitu);
+            this.Controls.Add(this.label11);
+            this.Controls.Add(this.tbTitu);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.tbCurso);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.tbEmail);
             this.Controls.Add(this.lbErrEmailBad);
-            this.Controls.Add(this.lbErrEmailEmpty);
             this.Controls.Add(this.lbErrApell);
             this.Controls.Add(this.lbErrName);
             this.Controls.Add(this.btCancel);
@@ -215,7 +317,7 @@
             this.Controls.Add(this.rbCli);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.tbEmail);
+            this.Controls.Add(this.tbDni);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.tbApell);
             this.Controls.Add(this.label2);
@@ -237,7 +339,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox tbApell;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox tbEmail;
+        private System.Windows.Forms.TextBox tbDni;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.RadioButton rbCli;
         private System.Windows.Forms.RadioButton rbAdm;
@@ -245,7 +347,16 @@
         private System.Windows.Forms.Button btCreate;
         private System.Windows.Forms.Label lbErrName;
         private System.Windows.Forms.Label lbErrApell;
-        private System.Windows.Forms.Label lbErrEmailEmpty;
         private System.Windows.Forms.Label lbErrEmailBad;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox tbEmail;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox tbCurso;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.TextBox tbTitu;
+        private System.Windows.Forms.Label lbErrTitu;
+        private System.Windows.Forms.Label lbErrCurso;
+        private System.Windows.Forms.Label lbErrEmail;
+        private System.Windows.Forms.Label lbErrDni;
     }
 }

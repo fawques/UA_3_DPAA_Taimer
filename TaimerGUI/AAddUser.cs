@@ -53,32 +53,59 @@ namespace TaimerGUI {
             // Email
             Regex emailRegex = new Regex("[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}");
             if (tbEmail.Text == "") {
-                lbErrEmailEmpty.Visible = true;
+                lbErrEmail.Visible = true;
                 lbErrEmailBad.Visible = false;
                 valid = false;
-            } else if (!emailRegex.IsMatch(tbEmail.Text)) {
-                lbErrEmailEmpty.Visible = false;
+            } else if (!emailRegex.IsMatch(tbDni.Text)) {
+                lbErrEmail.Visible = false;
                 lbErrEmailBad.Visible = true;
                 valid = false;
             } else {
-                lbErrEmailEmpty.Visible = false;
+                lbErrEmail.Visible = false;
                 lbErrEmailBad.Visible = false;
             }
 
-            if (valid) {
-                if (parentForm != null) {
-
-                    tbName.Text = "";
-                    tbEmail.Text = "";
-                    tbApell.Text = "";                        
-
-                    Hide();
-                    parentForm.Show();
-
-                    AdminForm parent = (AdminForm)this.MdiParent;
-                    parent.positionChilds();
-                }
+            // DNI
+            if (tbDni.Text == "") {
+                lbErrDni.Visible = true;
+                valid = false;
+            } else {
+                lbErrDni.Visible = false;
             }
+
+            // Curso
+            if (tbCurso.Text == "") {
+                lbErrCurso.Visible = true;
+                valid = false;
+            } else {
+                lbErrCurso.Visible = false;
+            }
+
+            // Titulacion
+            if (tbTitu.Text == "") {
+                lbErrTitu.Visible = true;
+                valid = false;
+            } else {
+                lbErrTitu.Visible = false;
+            }
+
+
+            if (parentForm != null && valid) {
+
+                tbName.Text = "";
+                tbDni.Text = "";
+                tbApell.Text = "";
+                tbDni.Text = "";
+                tbCurso.Text = "";
+                tbTitu.Text = "";
+
+                Hide();
+                parentForm.Show();
+
+                AdminForm parent = (AdminForm)this.MdiParent;
+                parent.positionChilds();
+            }
+
         }
 
     }
