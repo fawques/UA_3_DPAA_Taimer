@@ -43,7 +43,7 @@ namespace TaimerGUI {
             bool valid = true;
 
             // Ubi
-            if (tbUbi.Text == "") {
+            if (lbUbi.Text == "") {
                 lbErrUbi.Visible = true;
                 valid = false;
             } else {
