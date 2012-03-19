@@ -10,20 +10,20 @@ using Taimer;
 
 namespace CAD
 {
-    public class CADUser
+    class CADAdmin
     {
         private static string conexionTBD;
         private static SqlConnection cnBD;
-        public CADUser()
+        public CADAdmin()
         {
             conexionTBD = Conection.Conect.ConectionString;
             // Adquiere la cadena de conexión desde un único sitio
 
         }
         //Método para crear un nuevo usu
-        public void CrearUserBasic(string dni, string nombre, string email, string password)
+        public void CrearAdminBasic(string dni, string nombre, string email, string password)
         {
-            string comando = "INSERT INTO [User](dni,nombre,email,password) VALUES('" + dni + "', '" + nombre + "', '" + email + "', '" + password + "')";
+            string comando = "INSERT INTO [Admin](dni,nombre,email,password) VALUES('" + dni + "', '" + nombre + "', '" + email + "', '" + password + "')";
             SqlConnection c=null;
             SqlCommand comandoTBD;
             
@@ -45,38 +45,13 @@ namespace CAD
             }
         }
 
-        public void CrearUserAll(string dni, string nombre, string email, string password, int curso, string tit, int codA, int codH)
+        public void BorrarAdmin(string id)
         {
-            string comando = "INSERT INTO [User] VALUES('" + dni + "', '" + nombre + "', '" + email + "', '" + password + "','"+tit+"','"+codA+"','"+codH+"')";
             SqlConnection c = null;
-            SqlCommand comandoTBD;
+            string comando = "DELETE FROM [Admin] WHERE dni= '" + id + "'";
 
             try
             {
-                c = new SqlConnection(conexionTBD);
-                comandoTBD = new SqlCommand(comando, c);
-                c.Open();
-                comandoTBD.CommandType = CommandType.Text;
-                comandoTBD.ExecuteNonQuery();
-            }
-            catch (SqlException ex)
-            {
-                throw ex;
-            }
-            finally
-            {
-                if (c != null) c.Close(); // Se asegura de cerrar la conexión.
-            }
-        }
-
-        public void BorrarUser(string id)
-        {
-            SqlConnection c = null;
-            string comando = "DELETE FROM [User] WHERE dni= '" + id + "'";
-
-            try
-            {
-
                 c = new SqlConnection(conexionTBD);
                 c.Open();
                 SqlCommand cmd = new SqlCommand(comando, c);
@@ -93,19 +68,19 @@ namespace CAD
         }
 
         //Obtenemos un dataset con los datos de los usuarios
-        public DataSet GetUsers()
+        public DataSet GetAdmins()
         {
 
             SqlConnection con = null;
-            DataSet listUsers = null;
-            string comando = "Select * from [User]";
+            DataSet listAdmins = null;
+            string comando = "Select * from [Admin]";
             try
             {
                 con = new SqlConnection(conexionTBD);
                 SqlDataAdapter sqlAdaptador = new SqlDataAdapter(comando, con);
-                listUsers = new DataSet();
-                sqlAdaptador.Fill(listUsers);
-                return listUsers;
+                listAdmins = new DataSet();
+                sqlAdaptador.Fill(listAdmins);
+                return listAdmins;
 
             }
             catch (Exception ex)
@@ -119,12 +94,12 @@ namespace CAD
             }
         }
          //Obtenemos los datos de un usuario según su dni
-        public DataSet GetDatosUser(string dni)
+        public DataSet GetDatosAdmin(string dni)
         {
 
             SqlConnection con = null;
             DataSet datos = null;
-            string comando = "Select * from [User] where dni="+dni;
+            string comando = "Select * from [Admin] where dni="+dni;
             try
             {
                 con = new SqlConnection(conexionTBD);
@@ -145,9 +120,9 @@ namespace CAD
             }
         }
         //Actualizar datos de un Usuario cuyo dni sea el que pasan como parámetro
-        public void ModificaUser(string dni, string nombre, string email, string password)
+        public void ModificaAdmin(string dni, string nombre, string email, string password)
         {
-            string comando = "UPDATE [User] SET dni = '" + dni + "', nombre = '" + nombre + "', email = '" + email + "', password = '" + password + "' WHERE dni = '" + dni + "'";
+            string comando = "UPDATE [Admin] SET dni = '" + dni + "', nombre = '" + nombre + "', email = '" + email + "', password = '" + password + "' WHERE dni = '" + dni + "'";
             SqlConnection c = null;
             SqlCommand comandoTBD;
 
