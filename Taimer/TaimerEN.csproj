@@ -45,6 +45,7 @@
     <Compile Include="Actividad.cs" />
     <Compile Include="Actividad_a.cs" />
     <Compile Include="Actividad_p.cs" />
+    <Compile Include="Algoritmo.cs" />
     <Compile Include="Comentario.cs" />
     <Compile Include="Hora.cs" />
     <Compile Include="Horario.cs" />

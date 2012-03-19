@@ -22,16 +22,18 @@ namespace Taimer {
         private string ubicacion;
         private Actividad actividad;        // Un turno pertenece a (1,1) actividades
 
+        public static int proximoId; // guarda el siguiente turno (mantener de momento, hasta que haya un autoincremento)
         #endregion
 
         #region PARTE PÚBLICA
 
 
+
         // Constructor SIN ACTIVIDAD NI CÓDIGO (borrar al terminar, hecho por compatibilidad)
-        public Turno(Hora horaI_, Hora horaF_, dias dia_, string ubic_)
-        {
-            if (horaI_ < horaF_)
-            {
+        public Turno(Hora horaI_, Hora horaF_, dias dia_, string ubic_) {
+            codigo = proximoId; //HAY QUE AUTOGENERALO!!!
+            proximoId++;
+            if (horaI_ < horaF_) {
                 horaInicio = horaI_;
                 horaFin = horaF_;
             }

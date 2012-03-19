@@ -7,8 +7,10 @@ using System.Linq;
 using System.Text;
 
 
-namespace Taimer {
-    public class Horario {
+namespace Taimer
+{
+    public class Horario
+    {
 
         #region PARTE PRIVADA
         private int id;                                     // Clave principal
@@ -17,10 +19,11 @@ namespace Taimer {
         private User usuario;                             // Un horario es creado por (1,1) usuarios
         #endregion
 
-        #region PARTE PÚBLICA 
+        #region PARTE PÚBLICA
 
         // Constructor
-        public Horario(int id_, string nom_, User usu_) {
+        public Horario(int id_, string nom_, User usu_)
+        {
             id = id_;
             nombre = nom_;
             usuario = usu_;
@@ -31,7 +34,7 @@ namespace Taimer {
             }
         }
 
-        public Horario( string nom_, User usu_)
+        public Horario(string nom_, User usu_)
         {
             id = 0;
             nombre = nom_;
@@ -44,7 +47,8 @@ namespace Taimer {
         }
 
         // Constructor de copia
-        public Horario(Horario h) {
+        public Horario(Horario h)
+        {
             id = h.id;
             nombre = h.nombre;
             usuario = h.usuario;
@@ -56,21 +60,24 @@ namespace Taimer {
         }
 
         // Ajustar/obtener nombre
-        public string Nombre {
+        public string Nombre
+        {
             get { return nombre; }
             set { nombre = value; }
         }
 
 
         // Ajustar/obtener id
-        public int ID {
+        public int ID
+        {
             get { return id; }
             set { id = value; }
         }
 
 
         // Ajustar/obtener usuario
-        public User Usuario {
+        public User Usuario
+        {
             get { return usuario; }
             set { usuario = value; }
         }
@@ -147,13 +154,15 @@ namespace Taimer {
         }
 
         // Cambiar/Obtener turnos
-        public List<Turno>[] ArrayTurnos {
+        public List<Turno>[] ArrayTurnos
+        {
             set { arrayTurnos = value; }
             get { return arrayTurnos; }
         }
 
         // Borrar turno (a partir de su código, si se encuentra)
-        public bool BorraTurno(int codigobuscado) {
+        public bool BorraTurno(int codigobuscado)
+        {
 
             for (int i = 0; i < 7; i++)
             {
@@ -164,6 +173,44 @@ namespace Taimer {
                 }
             }
             return false;
+        }
+
+        // Dice cuál es la primera hora de un día de un horario
+        public Hora minHora(int dia)
+        {
+            if(dia > 6 || dia < 0)
+                throw new IndexOutOfRangeException();
+
+            if(arrayTurnos[dia].Count == 0)
+                throw new ArgumentNullException("El día está vacío");
+
+            Hora minima = new Hora(23,59);
+
+            foreach (Turno item in arrayTurnos[dia])
+            {
+                if (item.HoraInicio < minima)
+                    minima = item.HoraInicio;
+            }
+            return minima;
+        }
+
+        // Dice cuál es la última hora de un día de un horario
+        public Hora maxHora(int dia)
+        {
+            if (dia > 6 || dia < 0)
+                throw new IndexOutOfRangeException();
+
+            if (arrayTurnos[dia].Count == 0)
+                throw new ArgumentNullException("El día está vacío");
+
+            Hora maxima = new Hora(0, 0);
+
+            foreach (Turno item in arrayTurnos[dia])
+            {
+                if (item.HoraFin > maxima)
+                    maxima = item.HoraFin;
+            }
+            return maxima;
         }
 
         #endregion
