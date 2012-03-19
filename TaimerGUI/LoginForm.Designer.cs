@@ -42,6 +42,9 @@
             this.lbLoginPassword = new System.Windows.Forms.Label();
             this.lbLoginUser = new System.Windows.Forms.Label();
             this.btLoginEntrar = new System.Windows.Forms.Button();
+            this.rbCliente = new System.Windows.Forms.RadioButton();
+            this.rbAdmin = new System.Windows.Forms.RadioButton();
+            this.label2 = new System.Windows.Forms.Label();
             this.pnLogo.SuspendLayout();
             this.pnSystemButtons.SuspendLayout();
             this.pnLoginContents.SuspendLayout();
@@ -134,6 +137,9 @@
             // pnLoginContents
             // 
             this.pnLoginContents.BackColor = System.Drawing.Color.Transparent;
+            this.pnLoginContents.Controls.Add(this.label2);
+            this.pnLoginContents.Controls.Add(this.rbAdmin);
+            this.pnLoginContents.Controls.Add(this.rbCliente);
             this.pnLoginContents.Controls.Add(this.button3);
             this.pnLoginContents.Controls.Add(this.button2);
             this.pnLoginContents.Controls.Add(this.button1);
@@ -164,9 +170,9 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(358, 50);
+            this.button2.Location = new System.Drawing.Point(13, 79);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(121, 23);
+            this.button2.Size = new System.Drawing.Size(109, 23);
             this.button2.TabIndex = 10;
             this.button2.Text = "Puente admin";
             this.button2.UseVisualStyleBackColor = true;
@@ -174,9 +180,9 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(358, 19);
+            this.button1.Location = new System.Drawing.Point(13, 50);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(121, 23);
+            this.button1.Size = new System.Drawing.Size(109, 23);
             this.button1.TabIndex = 9;
             this.button1.Text = "Puente cliente";
             this.button1.UseVisualStyleBackColor = true;
@@ -284,6 +290,43 @@
             this.btLoginEntrar.UseVisualStyleBackColor = true;
             this.btLoginEntrar.Click += new System.EventHandler(this.btLoginEntrar_Click);
             // 
+            // rbCliente
+            // 
+            this.rbCliente.AutoSize = true;
+            this.rbCliente.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbCliente.ForeColor = System.Drawing.Color.Maroon;
+            this.rbCliente.Location = new System.Drawing.Point(368, 32);
+            this.rbCliente.Name = "rbCliente";
+            this.rbCliente.Size = new System.Drawing.Size(59, 17);
+            this.rbCliente.TabIndex = 14;
+            this.rbCliente.TabStop = true;
+            this.rbCliente.Text = "Cliente";
+            this.rbCliente.UseVisualStyleBackColor = true;
+            // 
+            // rbAdmin
+            // 
+            this.rbAdmin.AutoSize = true;
+            this.rbAdmin.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbAdmin.ForeColor = System.Drawing.Color.Maroon;
+            this.rbAdmin.Location = new System.Drawing.Point(368, 50);
+            this.rbAdmin.Name = "rbAdmin";
+            this.rbAdmin.Size = new System.Drawing.Size(93, 17);
+            this.rbAdmin.TabIndex = 15;
+            this.rbAdmin.TabStop = true;
+            this.rbAdmin.Text = "Administrador";
+            this.rbAdmin.UseVisualStyleBackColor = true;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.Maroon;
+            this.label2.Location = new System.Drawing.Point(365, 16);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(83, 13);
+            this.label2.TabIndex = 16;
+            this.label2.Text = "Tipo de Usuario:";
+            // 
             // LoginForm
             // 
             this.AcceptButton = this.btLoginEntrar;
@@ -327,6 +370,9 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.RadioButton rbAdmin;
+        private System.Windows.Forms.RadioButton rbCliente;
     }
 }
 
