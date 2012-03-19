@@ -10,11 +10,10 @@ namespace Taimer {
 
         #region  PARTE PRIVADA
 
-        // (Nombre, descripción y código vienen de la clase Actividad)
+        // (Nombre, descripción, código y lista de turnos vienen de la clase Actividad)
 
         private string nombreCoordinador;     // Nombre del profesor coordinador de la asignatura
-        private List<Turno> turnos = new List<Turno>();
-        int curso;                              // Indica el curso al que pertenece la asignatura
+        int curso;                            // Indica el curso al que pertenece la asignatura
 
         #endregion
 
@@ -45,10 +44,9 @@ namespace Taimer {
 
         // Constructor avanzado (con lista de turnos y curso)
         public Actividad_a(string nom_, string desc_, int cod_, string nomCoord_, List<Turno> turnos_, int curso_)
-            : base(nom_, desc_, cod_) {
+            : base(nom_, desc_, cod_, turnos_) {
 
             nombreCoordinador = nomCoord_;
-            turnos = turnos_;
             curso = curso_;
         }
 
@@ -75,30 +73,6 @@ namespace Taimer {
             set { nombreCoordinador = value; }
         }
 
-
-        // Añadir turno a la lista
-        public void AddTurno(Turno tur) {
-            turnos.Add(tur);
-        }
-
-
-        //Cambiar/obtener turnos
-        public List<Turno> Turnos {
-            set { turnos = value; }
-            get { return turnos; }
-        }
-
-
-        // Borrar turno de la lista (a partir de su código)
-        // Devuelve TRUE si consigue encontrarla y borrarla, FALSE en caso contrario.
-        public bool BorraTurno(int codigobuscado) {
-            
-            foreach(Turno t in turnos){
-                if(t.Codigo == codigobuscado)
-                    return Turnos.Remove(t);
-            }
-            return false;
-        }
         #endregion
     }
 }
