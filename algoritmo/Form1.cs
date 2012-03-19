@@ -57,8 +57,8 @@ namespace algoritmo
             actA.AddTurno(t3);
 
             Actividad_a actA2 = new Actividad_a("A2", "descripcion2", 7, "Otro profesor");
-            //actA2.AddTurno(t7);
-           // actA2.AddTurno(t8);
+            actA2.AddTurno(t7);
+            //actA2.AddTurno(t8);
             actA2.AddTurno(t9);
 
             // las listas de actividades seleccionadas vendrán de la interfaz, según lo que seleccione el user
@@ -80,11 +80,27 @@ namespace algoritmo
             // se almacenará en Program --> se llamará a una función que compruebe que esas listas de params no estén repes. Si ya existe, devuelve el que ya existe, si no, devuelve uno nuevo --> tiene que avisar de alguna forma de que es uno antiguo, para que no se llame al BT
             Algoritmo alg = new Algoritmo(listaA, listaP);
             string texto = "";
+            string msg;
+            int punt;
+            Horario h;
 
             try
             {
+                
                 // se almacenará en user
-                Horario h = alg.generarHorarioBT(nombre_horario,true);
+                if (radioButton1.Checked)
+                {
+                    h = alg.generarHorarioBT(nombre_horario,true);
+                    msg = "Tiene una puntuación según los días de : ";
+                    punt = Algoritmo.puntuarDias(h);
+                }
+                else
+                {
+                    h = alg.generarHorarioBT(nombre_horario, false);
+                    msg = "Tiene una puntuación según los huecos de : ";
+                    punt = Algoritmo.puntuarHorasHueco(h);
+                }
+                
                 foreach (List<Turno> dia in h.ArrayTurnos)
                 {
                     foreach (Turno item in dia)
@@ -94,8 +110,8 @@ namespace algoritmo
                 }
 
                 MessageBox.Show("Los turnos son: " + texto);
-                int puntDias = Algoritmo.puntuarDias(h);
-                MessageBox.Show("Tiene una puntuación según los huecos de : " + puntDias);
+                
+                MessageBox.Show(msg + punt);
             }
             catch (NotSupportedException exc)
             {
@@ -113,11 +129,26 @@ namespace algoritmo
             // se almacenará en Program --> se llamará a una función que compruebe que esas listas de params no estén repes. Si ya existe, devuelve el que ya existe, si no, devuelve uno nuevo
             Algoritmo alg = new Algoritmo(listaA, listaP);
             string texto = "";
+            string msg;
+            int punt;
+            Horario h;
 
             try
             {
+                h = alg.generarHorarioVoraz(nombre_horario);
                 // se almacenará en user
-                Horario h = alg.generarHorarioVoraz(nombre_horario);
+                if (radioButton1.Checked)
+                {
+                    
+                    msg = "Tiene una puntuación según los días de : ";
+                    punt = Algoritmo.puntuarDias(h);
+                }
+                else
+                {
+                    msg = "Tiene una puntuación según los huecos de : ";
+                    punt = Algoritmo.puntuarHorasHueco(h);
+                }
+
                 foreach (List<Turno> dia in h.ArrayTurnos)
                 {
                     foreach (Turno item in dia)
@@ -127,8 +158,8 @@ namespace algoritmo
                 }
 
                 MessageBox.Show("Los turnos son: " + texto);
-                int puntDias = Algoritmo.puntuarDias(h);
-                MessageBox.Show("Tiene una puntuación según los huecos de : " + puntDias);
+
+                MessageBox.Show(msg + punt);
             }
             catch (NotSupportedException exc)
             {

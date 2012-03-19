@@ -46,8 +46,13 @@ namespace Taimer
                     Hora minHora = horario.minHora(i);
                     Hora maxHora = horario.maxHora(i);
 
+
                     // entre estas dos horas, hay que sumar a puntuacion las horas de hueco entre los turnos
-                    throw new NotImplementedException();
+                    //throw new NotImplementedException();
+                    for (int j = 0; j < horario.ArrayTurnos[i].Count-1; j++)
+                    {
+                        puntuacion += Hora.diff(horario.ArrayTurnos[i][j].HoraFin, horario.ArrayTurnos[i][j + 1].HoraInicio);
+                    }
                 }
                 catch (ArgumentNullException) // el día está vacío
                 { }
