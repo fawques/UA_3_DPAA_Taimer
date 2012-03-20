@@ -49,6 +49,7 @@ namespace Taimer {
             ubicacion = ubic_;
         }
 
+
         // Constructor
         public Turno(int cod_, Hora horaI_, Hora horaF_, dias dia_, string ubic_, Actividad act_) {
             codigo = cod_;    // Autogenerado (se debe incrementar el código de usuario después de esto)
@@ -183,6 +184,43 @@ namespace Taimer {
         public string Ubicacion {
             set { ubicacion = value; }
             get { return ubicacion; }
+        }
+
+
+        // Comprobar superposición
+        public bool Superpone(Turno t)
+        {
+            // Si se superponen...
+            if (Dia.Equals(t.Dia))
+            {
+                if ((HoraFin > t.HoraInicio && HoraFin <= t.HoraFin) ||
+                    (t.HoraFin > HoraInicio && t.HoraFin <= HoraFin) ||
+                    (HoraInicio >= t.HoraInicio && HoraInicio < t.HoraFin) ||
+                    (t.HoraInicio >= HoraInicio && t.HoraInicio < HoraFin))
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+
+        // Comprobar superposición y lanzar excepción si se superponen
+        public void SuperponeExcepcion(Turno t)
+        {
+            // Si se superponen...
+            if (Dia.Equals(t.Dia))
+            {
+                if ((HoraFin > t.HoraInicio && HoraFin <= t.HoraFin) ||
+                    (t.HoraFin > HoraInicio && t.HoraFin <= HoraFin) ||
+                    (HoraInicio >= t.HoraInicio && HoraInicio < t.HoraFin) ||
+                    (t.HoraInicio >= HoraInicio && t.HoraInicio < HoraFin))
+                {
+                    NotSupportedException ex = new NotSupportedException("Turnos solapados");
+                    throw ex;
+                }
+            }
         }
 
         #endregion

@@ -49,7 +49,6 @@ namespace Taimer {
         public void AddTurno(Turno turnonuevo)
         {
             bool insertado = false;
-            AsignarCodigo(turnonuevo);
 
             for (int i = 0; i < turnos.Count; i++)
             {
@@ -57,20 +56,11 @@ namespace Taimer {
                 {
                     foreach (Turno item in turnos)
                     {
-                        if (item.Dia.Equals(turnonuevo.Dia))
-                        {
-                            // si se superponen
-                            if ((item.HoraFin > turnonuevo.HoraInicio && item.HoraFin <= turnonuevo.HoraFin) ||
-                                (turnonuevo.HoraFin > item.HoraInicio && turnonuevo.HoraFin <= item.HoraFin) ||
-                                (item.HoraInicio >= turnonuevo.HoraInicio && item.HoraInicio < turnonuevo.HoraFin) ||
-                                (turnonuevo.HoraInicio >= item.HoraInicio && turnonuevo.HoraInicio < item.HoraFin))
-                            {
-                                NotSupportedException ex = new NotSupportedException("Turnos solapados");
-                                throw ex;
-                            }
-                        }
+                        // Comprobar si se superponen y lanzar excepción si así es
+                        item.SuperponeExcepcion(turnonuevo);
                     }
 
+                    AsignarCodigo(turnonuevo);
                     turnos.Insert(i, turnonuevo);
                     insertado = true;
                     break;
@@ -78,8 +68,18 @@ namespace Taimer {
             }
 
             if (!insertado)
+            {
+                // Comprobar si se superponen y lanzar excepción si así es
+                if(turnos.Count > 0)
+                    turnonuevo.SuperponeExcepcion(turnos[(turnos.Count - 1)]);
+
+                AsignarCodigo(turnonuevo);
+
                 turnos.Add(turnonuevo);
+            }
         }
+
+
 
 
          

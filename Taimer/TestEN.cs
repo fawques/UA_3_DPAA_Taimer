@@ -11,7 +11,8 @@ namespace Taimer
 {
     public partial class TestEN : Form
     {
-        public Actividad_a activ = new Actividad_a("Nombre", "Descripción", 1337, "A saber");
+        //public Actividad_a activ = new Actividad_a("Nombre", "Descripción", 1337, "A saber");
+        public Actividad_p activ = new Actividad_p("Nombre", "Descripción", 1337, new User("A","B","C","D",5,"F"));
 
         public TestEN()
         {
