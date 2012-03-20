@@ -27,11 +27,12 @@ namespace Taimer {
 
         #region PARTE PÚBLICA
 
-
-
+        
+        /*
         // Constructor FALSO (borrar al terminar)
         public Turno(Hora h1, Hora h2, char c, string s1, string s2)
         {}
+        */
 
         // Constructor SIN ACTIVIDAD NI CÓDIGO (borrar al terminar, hecho por compatibilidad)
         public Turno(Hora horaI_, Hora horaF_, dias dia_, string ubic_) {
@@ -47,7 +48,6 @@ namespace Taimer {
             diasemana = dia_;
             ubicacion = ubic_;
         }
-
 
         // Constructor
         public Turno(int cod_, Hora horaI_, Hora horaF_, dias dia_, string ubic_, Actividad act_) {

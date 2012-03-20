@@ -73,6 +73,27 @@ namespace Taimer {
             set { nombreCoordinador = value; }
         }
 
+
+        // Añadir turno a una actividad académica (no se comprueba solapamiento)
+        public void AddTurno(Turno turnonuevo)
+        {
+            bool insertado = false;
+            AsignarCodigo(turnonuevo);
+
+            for (int i = 0; i < turnos.Count; i++)
+            {
+                if (turnos[i].HoraInicio > turnonuevo.HoraInicio)
+                {
+                    turnos.Insert(i, turnonuevo);
+                    insertado = true;
+                    break;
+                }
+            }
+
+            if (!insertado)
+                turnos.Add(turnonuevo);
+        }
+
         #endregion
     }
 }

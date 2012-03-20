@@ -80,28 +80,6 @@ namespace Taimer {
         }
 
 
-        // Añadir turno a la lista de turnos
-        public void AddTurno(Turno turnonuevo)
-        {
-            bool insertado = false;
-            AsignarCodigo(turnonuevo);
-            turnonuevo.Actividad = this;
-
-            for (int i = 0; i < turnos.Count; i++)
-            {
-                if (turnos[i].HoraInicio > turnonuevo.HoraInicio)
-                {
-                    turnos.Insert(i, turnonuevo);
-                    insertado = true;
-                    break;
-                }
-            }
-
-            if(!insertado)
-                turnos.Add(turnonuevo);
-        }
-
-
         // Borrar turno
         public bool BorraTurno(Turno turno)
         {

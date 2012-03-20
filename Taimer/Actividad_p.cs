@@ -45,6 +45,44 @@ namespace Taimer {
         }
 
 
+        // Añadir turno a una actividad personal (SÍ se comprueba solapamiento)
+        public void AddTurno(Turno turnonuevo)
+        {
+            bool insertado = false;
+            AsignarCodigo(turnonuevo);
+
+            for (int i = 0; i < turnos.Count; i++)
+            {
+                if (turnos[i].HoraInicio > turnonuevo.HoraInicio)
+                {
+                    foreach (Turno item in turnos)
+                    {
+                        if (item.Dia.Equals(turnonuevo.Dia))
+                        {
+                            // si se superponen
+                            if ((item.HoraFin > turnonuevo.HoraInicio && item.HoraFin <= turnonuevo.HoraFin) ||
+                                (turnonuevo.HoraFin > item.HoraInicio && turnonuevo.HoraFin <= item.HoraFin) ||
+                                (item.HoraInicio >= turnonuevo.HoraInicio && item.HoraInicio < turnonuevo.HoraFin) ||
+                                (turnonuevo.HoraInicio >= item.HoraInicio && turnonuevo.HoraInicio < item.HoraFin))
+                            {
+                                NotSupportedException ex = new NotSupportedException("Turnos solapados");
+                                throw ex;
+                            }
+                        }
+                    }
+
+                    turnos.Insert(i, turnonuevo);
+                    insertado = true;
+                    break;
+                }
+            }
+
+            if (!insertado)
+                turnos.Add(turnonuevo);
+        }
+
+
+         
 
 
 
