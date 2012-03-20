@@ -47,6 +47,7 @@
   <ItemGroup>
     <Compile Include="CADAdmin.cs" />
     <Compile Include="CADComentario.cs" />
+    <Compile Include="CADHorario.cs" />
     <Compile Include="CADTitulacion.cs" />
     <Compile Include="CADUser.cs" />
     <Compile Include="Conection.cs" />

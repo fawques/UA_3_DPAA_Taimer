@@ -10,20 +10,19 @@ using Taimer;
 
 namespace CAD
 {
-    class CADComentario
+    class CADHorario
     {
         private static string conexionTBD;
         private static SqlConnection cnBD;
-        public CADComentario()
+        public CADHorario()
         {
-            conexionTBD = Conection.Conect.ConectionString;
             // Adquiere la cadena de conexión desde un único sitio
-
+            conexionTBD = Conection.Conect.ConectionString;
         }
         //Método para crear un nuevo usu
-        public void CrearCommentBasic(int id, string text, int codActividad, string codUser)
+        public void CrearHorarioBasic(int id, string tit, string user)
         {
-            string comando = "INSERT INTO [Comentario](id,texto,actCod,actUser,usuario) VALUES('" + id + "', '" + text + "', '" + codActividad + "', '" + codUser + "', '" + codUser+ "')";
+            string comando = "INSERT INTO [Horario](id,titulo,usuario) VALUES('" + id + "', '" + tit + "', '" + user + "')";
             SqlConnection c=null;
             SqlCommand comandoTBD;
             
@@ -45,10 +44,10 @@ namespace CAD
             }
         }
 
-        public void BorrarComment(int id)
+        public void BorrarHorario(int id)
         {
             SqlConnection c = null;
-            string comando = "DELETE FROM [Comentario] WHERE id= '" + id + "'";
+            string comando = "DELETE FROM [Horario] WHERE id= '" + id + "'";
 
             try
             {
@@ -68,12 +67,12 @@ namespace CAD
         }
 
         //Obtenemos un dataset con los datos de los usuarios
-        public DataSet GetComments()
+        public DataSet GetHorarios()
         {
 
             SqlConnection con = null;
             DataSet listComments = null;
-            string comando = "Select * from [Comentario]";
+            string comando = "Select * from [Horario]";
             try
             {
                 con = new SqlConnection(conexionTBD);
@@ -94,12 +93,12 @@ namespace CAD
             }
         }
          //Obtenemos los datos de un usuario según su dni
-        public DataSet GetDatosComment(int id)
+        public DataSet GetDatosHorario(int id)
         {
 
             SqlConnection con = null;
             DataSet datos = null;
-            string comando = "Select * from [Comentario] where id="+id+"'";
+            string comando = "Select * from [Horario] where id='"+id+"'";
             try
             {
                 con = new SqlConnection(conexionTBD);
@@ -120,9 +119,9 @@ namespace CAD
             }
         }
         //Actualizar datos de un Usuario cuyo dni sea el que pasan como parámetro
-        public void ModificaComment(int id, string text, int codActividad, string codUser)
+        public void ModificaComment(int id, string tit, string user)
         {
-            string comando = "UPDATE [Comentario] SET id = '" + id + "', texto = '" + text + "',  actCod = '" + codActividad + "', actUser = '" + codUser + "', usuario = '" + codUser+ "' WHERE id = '" + id + "'";
+            string comando = "UPDATE [Horario] SET id = '" + id + "', titulo = '" + tit + "',  usuario = '" + user + "' WHERE id = '" + id + "'";
             SqlConnection c = null;
             SqlCommand comandoTBD;
 

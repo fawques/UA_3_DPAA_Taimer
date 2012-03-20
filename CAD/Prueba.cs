@@ -15,6 +15,7 @@ namespace CAD
         private CADUser user = new CADUser();
         private CADAdmin admin = new CADAdmin();
         private CADComentario com = new CADComentario();
+        private CADHorario hor = new CADHorario();
 
         public Prueba()
         {            
@@ -38,8 +39,8 @@ namespace CAD
 
         private void bt1User_Click(object sender, EventArgs e)
         {
-            //user.CrearUserBasic(tb2User.Text, tb1User.Text, tb3User.Text, tb4User.Text);
-            admin.CrearAdminBasic(tb2User.Text, tb1User.Text, tb3User.Text, tb4User.Text);
+            user.CrearUserBasic(tb2User.Text, tb1User.Text, tb3User.Text, tb4User.Text);
+            //admin.CrearAdminBasic(tb2User.Text, tb1User.Text, tb3User.Text, tb4User.Text);
         }
 
         private void bt2User_Click(object sender, EventArgs e)
@@ -60,6 +61,7 @@ namespace CAD
         private void bt1Com_Click(object sender, EventArgs e)
         {
             com.CrearCommentBasic(Convert.ToInt32(tb1Com.Text), tb2Com.Text,Convert.ToInt32(tb3Com.Text), tb4Com.Text);
+            //hor.CrearHorarioBasic(Convert.ToInt32(tb1Com.Text), tb2Com.Text, tb3Com.Text);
         }
 
         private void bt2Com_Click(object sender, EventArgs e)
