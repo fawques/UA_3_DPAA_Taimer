@@ -12,6 +12,7 @@ namespace Taimer {
         protected string nombre;
         protected string descripcion;
         protected List<Turno> turnos = new List<Turno>();
+        protected int codigoturno;
 
         #endregion
 
@@ -22,6 +23,7 @@ namespace Taimer {
             nombre = nom_;
             descripcion = desc_;
             codigo = cod_;
+            codigoturno = 1;
         }
 
 
@@ -32,6 +34,7 @@ namespace Taimer {
             descripcion = desc_;
             codigo = cod_;
             turnos = turnos_;
+            codigoturno = 1;
         }
 
         // Constructor de copia
@@ -80,8 +83,21 @@ namespace Taimer {
         // Añadir turno a la lista de turnos
         public void AddTurno(Turno turnonuevo)
         {
-            turnos.Add(turnonuevo);                 // Añade el turno a la lista, ...
-            OrdenarTurnos(turnos);                  // ...y la ordena por hora de inicio.
+            bool insertado = false;
+            AsignarCodigo(turnonuevo);
+
+            for (int i = 0; i < turnos.Count; i++)
+            {
+                if (turnos[i].HoraInicio > turnonuevo.HoraInicio)
+                {
+                    turnos.Insert(i, turnonuevo);
+                    insertado = true;
+                    break;
+                }
+            }
+
+            if(!insertado)
+                turnos.Add(turnonuevo);
         }
 
 
@@ -104,11 +120,11 @@ namespace Taimer {
         }
 
 
-        // Ordenar lista de turnos
-        public void OrdenarTurnos(List<Turno> listaturnos)
+        // Codificar turno (asignarle el código correspondiente)
+        public void AsignarCodigo(Turno t)
         {
-            TurnoComparer tc = new TurnoComparer();     // La definición de esta clase está en Turno.cs
-            listaturnos.Sort(tc);
+            t.Codigo = codigoturno;
+            codigoturno++;
         }
 
         #endregion

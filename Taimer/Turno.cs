@@ -29,6 +29,10 @@ namespace Taimer {
 
 
 
+        // Constructor FALSO (borrar al terminar)
+        public Turno(Hora h1, Hora h2, char c, string s1, string s2)
+        {}
+
         // Constructor SIN ACTIVIDAD NI CÓDIGO (borrar al terminar, hecho por compatibilidad)
         public Turno(Hora horaI_, Hora horaF_, dias dia_, string ubic_) {
             codigo = proximoId; //HAY QUE AUTOGENERALO!!!
@@ -139,7 +143,14 @@ namespace Taimer {
         // Obtener/Cambiar dia de la semana
         public dias Dia{
             get { return diasemana; }
-            set { char d = value.ToString().ToUpper().ToCharArray()[0];
+            set { diasemana = value; }
+        }
+
+
+        // Cambiar día de la semana con string
+        public void CambiarDiaSemana(string s)
+        {
+            char d = s.ToString().ToUpper().ToCharArray()[0];
             switch (d) {
                     case 'L':
                         diasemana = dias.L;
@@ -166,7 +177,6 @@ namespace Taimer {
                         throw new Exception("Día de la semana inexistente.");
                 }
             }
-        }
 
 
         // Cambiar/Obtener ubicacion

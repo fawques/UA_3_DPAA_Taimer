@@ -28,7 +28,8 @@ namespace rubenDesign
 
             loginWindow = new Login();
 
-            Application.Run(loginWindow);
+            //Application.Run(loginWindow);
+            Application.Run(new TestEN());
         }
     }
 }
