@@ -95,7 +95,7 @@ namespace algoritmo
                 {
                     foreach (Turno item in dia)
                     {
-                         texto += item.Codigo + " ";
+                        texto += item.Actividad.Nombre + " - " + item.HoraInicio.Hor + ":" + item.HoraInicio.Min + "|";
                     }
                 }
 
@@ -143,7 +143,7 @@ namespace algoritmo
                 {
                     foreach (Turno item in dia)
                     {
-                        texto += item.Codigo + " ";
+                        texto += item.Actividad.Nombre + " - " + item.HoraInicio.Hor + ":" + item.HoraInicio.Min + "|";
                     }
                 }
 

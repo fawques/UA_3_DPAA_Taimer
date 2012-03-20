@@ -85,6 +85,7 @@ namespace Taimer {
         {
             bool insertado = false;
             AsignarCodigo(turnonuevo);
+            turnonuevo.Actividad = this;
 
             for (int i = 0; i < turnos.Count; i++)
             {
