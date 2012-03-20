@@ -55,7 +55,6 @@ namespace Taimer {
         public Actividad_a(Actividad_a act)
             : base(act) {
             nombreCoordinador = act.nombreCoordinador;
-            turnos = act.turnos;
             curso = act.curso;
         }
 
@@ -93,6 +92,14 @@ namespace Taimer {
             if (!insertado)
                 turnos.Add(turnonuevo);
         }
+
+
+        // Comprobar si una actividad es actividad académica
+        //public bool EsAcademica()
+        //{
+        //    return true;
+        //}
+
 
         #endregion
     }

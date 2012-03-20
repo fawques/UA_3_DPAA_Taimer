@@ -33,8 +33,7 @@ namespace Taimer {
         // Constructor de copia
         public Actividad_p(Actividad_p act)
             : base(act) {
-                usuario = act.usuario;
-            turnos = act.turnos;    
+                usuario = act.usuario; 
         }
 
         // Cambiar/obtener usuario

@@ -40,6 +40,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.copiar = new System.Windows.Forms.Button();
+            this.modificar = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // hini
@@ -106,12 +108,12 @@
             this.lista.FormattingEnabled = true;
             this.lista.Location = new System.Drawing.Point(12, 63);
             this.lista.Name = "lista";
-            this.lista.Size = new System.Drawing.Size(324, 134);
+            this.lista.Size = new System.Drawing.Size(369, 134);
             this.lista.TabIndex = 7;
             // 
             // borrar
             // 
-            this.borrar.Location = new System.Drawing.Point(273, 36);
+            this.borrar.Location = new System.Drawing.Point(318, 5);
             this.borrar.Name = "borrar";
             this.borrar.Size = new System.Drawing.Size(63, 19);
             this.borrar.TabIndex = 5;
@@ -121,7 +123,7 @@
             // 
             // codBorrar
             // 
-            this.codBorrar.Location = new System.Drawing.Point(304, 7);
+            this.codBorrar.Location = new System.Drawing.Point(280, 4);
             this.codBorrar.Name = "codBorrar";
             this.codBorrar.Size = new System.Drawing.Size(32, 20);
             this.codBorrar.TabIndex = 8;
@@ -130,7 +132,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(270, 9);
+            this.label1.Location = new System.Drawing.Point(246, 6);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(29, 13);
             this.label1.TabIndex = 9;
@@ -154,11 +156,31 @@
             this.label3.TabIndex = 11;
             this.label3.Text = "H. Fin:";
             // 
+            // copiar
+            // 
+            this.copiar.Location = new System.Drawing.Point(249, 30);
+            this.copiar.Name = "copiar";
+            this.copiar.Size = new System.Drawing.Size(63, 19);
+            this.copiar.TabIndex = 12;
+            this.copiar.Text = "Copiar";
+            this.copiar.UseVisualStyleBackColor = true;
+            // 
+            // modificar
+            // 
+            this.modificar.Location = new System.Drawing.Point(318, 30);
+            this.modificar.Name = "modificar";
+            this.modificar.Size = new System.Drawing.Size(63, 19);
+            this.modificar.TabIndex = 13;
+            this.modificar.Text = "Modificar";
+            this.modificar.UseVisualStyleBackColor = true;
+            // 
             // TestEN
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(350, 209);
+            this.ClientSize = new System.Drawing.Size(388, 209);
+            this.Controls.Add(this.modificar);
+            this.Controls.Add(this.copiar);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -193,5 +215,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button copiar;
+        private System.Windows.Forms.Button modificar;
     }
 }

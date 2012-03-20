@@ -26,12 +26,12 @@ namespace Taimer
             usuario = usu_;
         }
 
-        //Constructor de copia
+        // Constructor de copia
         public Comentario(Comentario c) {
             id = c.id;
             mensaje = c.mensaje;
-            actividadAcademica = c.actividadAcademica;
-            usuario = c.usuario;
+            actividadAcademica = new Actividad_a(c.actividadAcademica);
+            usuario = new User(c.usuario);
         }
 
 

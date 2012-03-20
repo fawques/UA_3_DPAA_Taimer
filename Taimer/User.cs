@@ -71,8 +71,9 @@ namespace Taimer {
             email = u.email;
             password = u.password;
             curso = u.curso;
-            actAcademicas = u.actAcademicas;
-            horarios = u.horarios;
+            actAcademicas = new List<Actividad_a>(u.actAcademicas);
+            actPersonales = new List<Actividad_p>(u.actPersonales);
+            horarios = new List<Horario>(u.horarios);
             titulacion = u.titulacion;
         }
 

@@ -42,7 +42,7 @@ namespace Taimer {
             nombre = act.nombre;
             descripcion = act.descripcion;
             codigo = act.codigo;
-            turnos = act.turnos;
+            turnos = new List<Turno>(act.turnos);
         }
 
 
