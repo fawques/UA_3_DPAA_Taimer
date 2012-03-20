@@ -158,18 +158,7 @@ namespace Taimer
         {
             foreach (Turno item in arrayTurnos[dia])
             {
-                if (item.Dia.Equals(turno.Dia))
-                {
-                    // si se superponen
-                    if ((item.HoraFin > turno.HoraInicio && item.HoraFin <= turno.HoraFin) ||
-                        (turno.HoraFin > item.HoraInicio && turno.HoraFin <= item.HoraFin) ||
-                        (item.HoraInicio >= turno.HoraInicio && item.HoraInicio < turno.HoraFin) ||
-                        (turno.HoraInicio >= item.HoraInicio && turno.HoraInicio < item.HoraFin))
-                    {
-                        NotSupportedException ex = new NotSupportedException("Turnos solapados");
-                        throw ex;
-                    }
-                }
+                item.SuperponeExcepcion(turno);
             }
         }
 

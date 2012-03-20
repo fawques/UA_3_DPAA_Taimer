@@ -225,19 +225,4 @@ namespace Taimer {
 
         #endregion
     }
-
-
-    // Comparador de turnos (para saber qué turno empieza antes)
-    public class TurnoComparer : IComparer<Turno>
-    {
-        public int Compare(Turno x, Turno y)
-        {
-            if (x.HoraInicio < y.HoraInicio)
-                return -1;                   // x es "menor", empieza antes.
-            else if (x.HoraInicio == y.HoraInicio)
-                return 0;                    // x e y son "iguales", empiezan a la misma hora.
-
-            return 1;   // x es "mayor", empieza después.
-        }
-    }
 }
