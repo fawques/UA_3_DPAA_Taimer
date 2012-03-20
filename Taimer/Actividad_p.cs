@@ -10,7 +10,6 @@ namespace Taimer {
         #region PARTE PRIVADA
         // (Nombre, descripción y código vienen de la clase Actividad)
 
-        private List<Turno> turnos = new List<Turno>();
         private User usuario;                               // Usuario de la actividad personal
 
         #endregion
@@ -26,10 +25,9 @@ namespace Taimer {
 
         // Constructor avanzado (con lista de turnos)
         public Actividad_p(string nom_, string desc_, int cod_, string responsable_, List<Turno> turnos_, User usu_)
-            : base(nom_, desc_, cod_) {
+            : base(nom_, desc_, cod_, turnos_) {
 
             usuario = usu_;
-            turnos = turnos_;
         }
 
         // Constructor de copia
@@ -47,35 +45,7 @@ namespace Taimer {
         }
 
 
-        //Cambiar/obtener turnos
-        public List<Turno> Turnos
-        {
-            set { turnos = value; }
-            get { return turnos; }
-        }
 
-
-        // Añadir turno
-        public void AddTurno(Turno turno) {
-            turnos.Add(turno);
-        }
-
-
-        // Borrar turno
-        public bool BorraTurno(Turno turno)
-        {
-                    return Turnos.Remove(turno);
-        }
-
-
-        // Borrar turno (a partir de su código, si se encuentra)
-        public bool BorraTurno(int codigobuscado) {
-            foreach (Turno t in turnos) {
-                if (t.Codigo == codigobuscado)
-                    return Turnos.Remove(t);
-            }
-            return false;
-        }
 
 
         #endregion

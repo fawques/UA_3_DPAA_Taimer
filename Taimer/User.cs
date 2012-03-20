@@ -19,7 +19,7 @@ namespace Taimer {
         int codHorarios;
         private List<Actividad_a> actAcademicas = new List<Actividad_a>();          // Un usuario tiene (0,N) actividades académicas
         private List<Actividad_p> actPersonales = new List<Actividad_p>();          // Un usuario tiene (0,N) actividades personales
-        private List<Horario> horarios = new List<Horario>();                               // Un usuario tiene (0,N) horarios
+        private List<Horario> horarios = new List<Horario>();                       // Un usuario tiene (0,N) horarios
 
         #endregion
 

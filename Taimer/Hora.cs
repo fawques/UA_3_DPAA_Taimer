@@ -77,8 +77,8 @@ namespace Taimer {
 
 
         // Saber cuántos minutos de diferencia hay de la hora 1 a la hora 2
-        public int MinutosDeDiferencia(Hora h1, Hora h2) {
-            int minutos1 = h1.Hor * 60 + h1.Min;
+        public int MinutosDeDiferencia(Hora h2) {
+            int minutos1 = Hor * 60 + Min;
             int minutos2 = h2.Hor * 60 + h2.Min;
             return (minutos2 - minutos1);
         }

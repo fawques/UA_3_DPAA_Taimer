@@ -2,14 +2,17 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using Taimer;
 
 namespace rubenDesign
 {
-
-
-
     static class Program
     {
+        public static List<Actividad_a> actividadesAcademicas = new List<Actividad_a>();
+        public static List<User> usuarios = new List<User>();
+
+
+
         public static Login loginWindow;
         public static Admin adminWindow;
         public static Client clientWindow;
@@ -25,7 +28,8 @@ namespace rubenDesign
 
             loginWindow = new Login();
 
-            Application.Run(loginWindow);
+            //Application.Run(loginWindow);
+            Application.Run(new TestEN());
         }
     }
 }

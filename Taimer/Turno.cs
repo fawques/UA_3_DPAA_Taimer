@@ -1,7 +1,6 @@
-﻿// Este archivo define las clases Hora y Turno.
-
-//TODO: funcion de nº de turnos almacenados
-//TODO: Constructor con código?
+﻿// La función con el número de turnos almacenados no es necesaria. Basta con usar listadeturnos.Count();
+// El constructor con código tampoco es necesario, ya que el código se genera automáticamente al ser añadido a una lista de actividades.
+// En caso de querer cambiar el código, hay una función para eso.
 
 using System;
 using System.Collections.Generic;
@@ -10,7 +9,6 @@ using System.Linq;
 using System.Text;
 
 namespace Taimer {
-    //Donde lo esta mejor dentro de la clase o fuera ¿?
     public enum dias { L, M, X, J, V, S, D };
 
     public class Turno {
@@ -22,37 +20,48 @@ namespace Taimer {
         private Hora horaFin;
         dias diasemana;
         private string ubicacion;
-        private Actividad actividad;        // Un turno tiene (1,1) actividades
-        public static int id;
+        private Actividad actividad;        // Un turno pertenece a (1,1) actividades
+
+        public static int proximoId; // guarda el siguiente turno (mantener de momento, hasta que haya un autoincremento)
         #endregion
 
         #region PARTE PÚBLICA
 
-        //public enum dias { L, M, X, J, V, S, D };
 
-        // Constructor SIN ACTIVIDAD (eliminar en breve, creado por compatibilidad)
+
+        // Constructor FALSO (borrar al terminar)
+        public Turno(Hora h1, Hora h2, char c, string s1, string s2)
+        {}
+
+        // Constructor SIN ACTIVIDAD NI CÓDIGO (borrar al terminar, hecho por compatibilidad)
         public Turno(Hora horaI_, Hora horaF_, dias dia_, string ubic_) {
-            codigo = id; //HAY QUE AUTOGENERALO!!!
-            if (horaI_ < horaF_) {
-                horaInicio = horaI_;
-                horaFin = horaF_;
-            }
-            else
-                throw new Exception("horaI > horaF");
-            diasemana = dia_;
-            ubicacion = ubic_;
-        }
-
-
-        // Constructor CON ACTIVIDAD
-        public Turno(Hora horaI_, Hora horaF_, dias dia_, string ubic_, Actividad act_) {
-            codigo = 0; //HAY QUE AUTOGENERALO!!!
+            codigo = proximoId; //HAY QUE AUTOGENERALO!!!
+            proximoId++;
             if (horaI_ < horaF_) {
                 horaInicio = horaI_;
                 horaFin = horaF_;
             }
             else
                 throw new Exception("horaI >  horaF");
+
+            diasemana = dia_;
+            ubicacion = ubic_;
+        }
+
+
+        // Constructor
+        public Turno(int cod_, Hora horaI_, Hora horaF_, dias dia_, string ubic_, Actividad act_) {
+            codigo = cod_;    // Autogenerado (se debe incrementar el código de usuario después de esto)
+
+
+            if (horaI_ < horaF_) {
+                horaInicio = horaI_;
+                horaFin = horaF_;
+            }
+            else
+                throw new Exception("horaI >  horaF");
+
+
             diasemana = dia_;
             ubicacion = ubic_;
             actividad = act_;
@@ -67,6 +76,28 @@ namespace Taimer {
             diasemana = t.diasemana;
             ubicacion = t.ubicacion;
             actividad = t.actividad;
+        }
+
+
+        // Comparar si dos turnos son iguales (exceptuando su código y asignatura).
+        // He preferido no usar el operador igualdad, dado que no son 100% iguales.
+        public bool TurnoSimilar(Turno t)
+        {
+            if (horaInicio == t.horaInicio)
+                if (horaFin == t.horaFin)
+                    if (diasemana == t.diasemana)
+                        if (ubicacion == t.ubicacion)
+                            return true;
+
+            return false;
+        }
+
+
+        // Cambiar/obtener actividad
+        public Actividad Actividad
+        {
+            set { actividad = value; }
+            get { return actividad; }
         }
 
 
@@ -112,15 +143,40 @@ namespace Taimer {
         // Obtener/Cambiar dia de la semana
         public dias Dia{
             get { return diasemana; }
-            set {
-                /*char d = value.ToString().ToUpper().ToCharArray()[0];
-                if (d == 'L' || d == 'M' || d == 'X' || d == 'J' || d == 'V' || d == 'S' || d == 'D')
-                    diasemana = d;*/
-                    diasemana = value;
-               /* else
-                    throw new ArgumentOutOfRangeException();*/
-            }
+            set { diasemana = value; }
         }
+
+
+        // Cambiar día de la semana con string
+        public void CambiarDiaSemana(string s)
+        {
+            char d = s.ToString().ToUpper().ToCharArray()[0];
+            switch (d) {
+                    case 'L':
+                        diasemana = dias.L;
+                        break;
+                    case 'M':
+                        diasemana = dias.M;
+                        break;
+                    case 'X':
+                        diasemana = dias.X;
+                        break;
+                    case 'J':
+                        diasemana = dias.J;
+                        break;
+                    case 'V':
+                        diasemana = dias.V;
+                        break;
+                    case 'S':
+                        diasemana = dias.S;
+                        break;
+                    case 'D':
+                        diasemana = dias.D;
+                        break;
+                    default:
+                        throw new Exception("Día de la semana inexistente.");
+                }
+            }
 
 
         // Cambiar/Obtener ubicacion
@@ -128,6 +184,22 @@ namespace Taimer {
             set { ubicacion = value; }
             get { return ubicacion; }
         }
+
         #endregion
+    }
+
+
+    // Comparador de turnos (para saber qué turno empieza antes)
+    public class TurnoComparer : IComparer<Turno>
+    {
+        public int Compare(Turno x, Turno y)
+        {
+            if (x.HoraInicio < y.HoraInicio)
+                return -1;                   // x es "menor", empieza antes.
+            else if (x.HoraInicio == y.HoraInicio)
+                return 0;                    // x e y son "iguales", empiezan a la misma hora.
+
+            return 1;   // x es "mayor", empieza después.
+        }
     }
 }
