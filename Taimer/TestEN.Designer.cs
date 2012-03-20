@@ -42,6 +42,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.copiar = new System.Windows.Forms.Button();
             this.modificar = new System.Windows.Forms.Button();
+            this.comboact = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // hini
@@ -106,7 +107,7 @@
             // lista
             // 
             this.lista.FormattingEnabled = true;
-            this.lista.Location = new System.Drawing.Point(12, 63);
+            this.lista.Location = new System.Drawing.Point(12, 62);
             this.lista.Name = "lista";
             this.lista.Size = new System.Drawing.Size(369, 134);
             this.lista.TabIndex = 7;
@@ -158,6 +159,7 @@
             // 
             // copiar
             // 
+            this.copiar.Enabled = false;
             this.copiar.Location = new System.Drawing.Point(249, 30);
             this.copiar.Name = "copiar";
             this.copiar.Size = new System.Drawing.Size(63, 19);
@@ -173,12 +175,28 @@
             this.modificar.TabIndex = 13;
             this.modificar.Text = "Modificar";
             this.modificar.UseVisualStyleBackColor = true;
+            this.modificar.Click += new System.EventHandler(this.modificar_Click);
+            // 
+            // comboact
+            // 
+            this.comboact.Enabled = false;
+            this.comboact.FormattingEnabled = true;
+            this.comboact.Items.AddRange(new object[] {
+            "A1",
+            "A2",
+            "A3"});
+            this.comboact.Location = new System.Drawing.Point(125, 35);
+            this.comboact.Name = "comboact";
+            this.comboact.Size = new System.Drawing.Size(41, 21);
+            this.comboact.TabIndex = 14;
+            this.comboact.Text = "A1";
             // 
             // TestEN
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(388, 209);
+            this.ClientSize = new System.Drawing.Size(394, 208);
+            this.Controls.Add(this.comboact);
             this.Controls.Add(this.modificar);
             this.Controls.Add(this.copiar);
             this.Controls.Add(this.label3);
@@ -196,6 +214,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "TestEN";
             this.Text = "Test de turnos";
+            this.Load += new System.EventHandler(this.TestEN_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -217,5 +236,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button copiar;
         private System.Windows.Forms.Button modificar;
+        private System.Windows.Forms.ComboBox comboact;
     }
 }

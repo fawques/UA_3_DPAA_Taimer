@@ -106,6 +106,33 @@ namespace Taimer {
             codigoturno++;
         }
 
+
+        // Averiguar si es una actividad académica
+        public bool EsAcademica()
+        {
+            Type tipo = GetType();
+            string s = tipo.ToString();
+
+            if (s == "Taimer.Actividad_a")
+                return true;
+            else
+                return false;
+        }
+
+
+        // Averiguar si es una actividad personal
+        public bool EsPersonal()
+        {
+            Type tipo = GetType();
+            string s = tipo.ToString();
+
+            if (s == "Taimer.Actividad_p")
+                return true;
+            else
+                return false;
+        }
+
+
         #endregion
     }
 }

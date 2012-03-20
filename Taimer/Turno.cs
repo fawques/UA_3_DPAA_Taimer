@@ -37,7 +37,7 @@ namespace Taimer {
                 horaFin = horaF_;
             }
             else
-                throw new Exception("horaI >  horaF");
+                throw new Exception("La hora de inicio es la misma o más tarde que la hora de finalización");
 
             diasemana = dia_;
             ubicacion = ubic_;
@@ -54,7 +54,7 @@ namespace Taimer {
                 horaFin = horaF_;
             }
             else
-                throw new Exception("horaI >  horaF");
+                throw new Exception("La hora de inicio es la misma o más tarde que la hora de finalización");
 
 
             diasemana = dia_;
@@ -70,7 +70,8 @@ namespace Taimer {
             horaFin = new Hora(t.horaFin);
             diasemana = t.diasemana;
             ubicacion = t.ubicacion;
-            actividad = t.actividad;                // ¡CAMBIAR!
+
+            actividad = t.actividad;                // ¿CAMBIAR? ##########################################
         }
 
 
@@ -181,7 +182,8 @@ namespace Taimer {
         }
 
 
-        // Comprobar superposición
+        // Comprobar superposición de turnos
+        // Devuelve TRUE si se superponen los turnos, FALSE si no se solapan.
         public bool Superpone(Turno t)
         {
             // Si se superponen...

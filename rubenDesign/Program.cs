@@ -8,8 +8,19 @@ namespace rubenDesign
 {
     static class Program
     {
+        // Lista que contiene todas las actividades académicas
         public static List<Actividad_a> actividadesAcademicas = new List<Actividad_a>();
+
+        // Lista que almacena los usuarios
+        // En modo administrador, tiene todos los usuarios.
+        // En modo usuario, sólo tiene su propio usuario.
         public static List<User> usuarios = new List<User>();
+
+        // Lista de algoritmos
+        public static List<Algoritmo> generados = new List<Algoritmo>();
+
+        // Estadística (hay que crearla)
+        // Estadistica estadistica;
 
 
 
