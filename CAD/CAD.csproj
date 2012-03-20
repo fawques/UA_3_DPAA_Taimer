@@ -45,10 +45,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CADActividad.cs" />
+    <Compile Include="CADActividad_a.cs" />
+    <Compile Include="CADActividad_p.cs" />
     <Compile Include="CADAdmin.cs" />
     <Compile Include="CADComentario.cs" />
     <Compile Include="CADHorario.cs" />
     <Compile Include="CADTitulacion.cs" />
+    <Compile Include="CADTurno.cs" />
     <Compile Include="CADUser.cs" />
     <Compile Include="Conection.cs" />
     <Compile Include="Prueba.cs">
