@@ -10,20 +10,20 @@ using Taimer;
 
 namespace CAD
 {
-    public class CADUser
+    class CADTitulacion
     {
         private static string conexionTBD;
         private static SqlConnection cnBD;
-        public CADUser()
+        public CADTitulacion()
         {
             conexionTBD = Conection.Conect.ConectionString;
             // Adquiere la cadena de conexión desde un único sitio
 
         }
         //Método para crear un nuevo usu
-        public void CrearUserBasic(string dni, string nombre, string email, string password)
+        public void CrearTitulacion(string cod, string nom)
         {
-            string comando = "INSERT INTO [User](dni,nombre,email,password) VALUES('" + dni + "', '" + nombre + "', '" + email + "', '" + password + "')";
+            string comando = "INSERT INTO [Titulacion](codigo,nombre) VALUES("+cod+","+nom+")";
             SqlConnection c=null;
             SqlCommand comandoTBD;
             
@@ -44,35 +44,10 @@ namespace CAD
                 if (c != null) c.Close(); // Se asegura de cerrar la conexión.
             }
         }
-
-        public void CrearUserAll(string dni, string nombre, string email, string password, int curso, string tit, int codA, int codH)
-        {
-            string comando = "INSERT INTO [User] VALUES('" + dni + "', '" + nombre + "', '" + email + "', '" + password + "','"+tit+"','"+codA+"','"+codH+"')";
+        public void BorrarTitulacion(string cod)
+        {   
             SqlConnection c = null;
-            SqlCommand comandoTBD;
-
-            try
-            {
-                c = new SqlConnection(conexionTBD);
-                comandoTBD = new SqlCommand(comando, c);
-                c.Open();
-                comandoTBD.CommandType = CommandType.Text;
-                comandoTBD.ExecuteNonQuery();
-            }
-            catch (SqlException ex)
-            {
-                throw ex;
-            }
-            finally
-            {
-                if (c != null) c.Close(); // Se asegura de cerrar la conexión.
-            }
-        }
-
-        public void BorrarUser(string id)
-        {
-            SqlConnection c = null;
-            string comando = "DELETE FROM [User] WHERE dni= '" + id + "'";
+            string comando = "DELETE FROM [Titulacion] WHERE codigo='"+cod+"'";
 
             try
             {
@@ -92,20 +67,20 @@ namespace CAD
             }
         }
 
-        //Obtenemos un dataset con los datos de los usuarios
-        public DataSet GetUsers()
+         //Obtenemos un dataset con los datos de los usuarios
+        public DataSet GetTitulaciones()
         {
 
             SqlConnection con = null;
-            DataSet listUsers = null;
-            string comando = "Select * from [User]";
+            DataSet listTitulacions = null;
+            string comando = "SELECT * FROM [Titulacion]";
             try
             {
                 con = new SqlConnection(conexionTBD);
                 SqlDataAdapter sqlAdaptador = new SqlDataAdapter(comando, con);
-                listUsers = new DataSet();
-                sqlAdaptador.Fill(listUsers);
-                return listUsers;
+                listTitulacions = new DataSet();
+                sqlAdaptador.Fill(listTitulacions);
+                return listTitulacions;
 
             }
             catch (Exception ex)
@@ -119,12 +94,12 @@ namespace CAD
             }
         }
          //Obtenemos los datos de un usuario según su dni
-        public DataSet GetDatosUser(string dni)
+        public DataSet GetDatos(string cod)
         {
 
             SqlConnection con = null;
             DataSet datos = null;
-            string comando = "Select * from [User] where dni="+dni;
+            string comando = "SELECT * FROM [Titulacion] where codigo='"+cod+"'";
             try
             {
                 con = new SqlConnection(conexionTBD);
@@ -132,7 +107,6 @@ namespace CAD
                 datos = new DataSet();
                 sqlAdaptador.Fill(datos);
                 return datos;
-
             }
             catch (Exception ex)
             {
@@ -145,12 +119,13 @@ namespace CAD
             }
         }
         //Actualizar datos de un Usuario cuyo dni sea el que pasan como parámetro
-        public void ModificaUser(string dni, string nombre, string email, string password)
+        public void ModificaTitulacion(string cod, string nom)
         {
-            string comando = "UPDATE [User] SET dni = '" + dni + "', nombre = '" + nombre + "', email = '" + email + "', password = '" + password + "' WHERE dni = '" + dni + "'";
+
+            string comando = "UPDATE [Titulacion] SET codigo = '" + cod + "', nombre = '" + nom + "' WHERE codigo = '"+cod+"'";
             SqlConnection c = null;
             SqlCommand comandoTBD;
-
+            
             try
             {
                 c = new SqlConnection(conexionTBD);
@@ -158,7 +133,6 @@ namespace CAD
                 c.Open();
                 comandoTBD.CommandType = CommandType.Text;
                 comandoTBD.ExecuteNonQuery();
-
             }
             catch (SqlException ex)
             {
