@@ -51,7 +51,7 @@ namespace Taimer
                     //throw new NotImplementedException();
                     for (int j = 0; j < horario.ArrayTurnos[i].Count-1; j++)
                     {
-                        puntuacion += Hora.diff(horario.ArrayTurnos[i][j].HoraFin, horario.ArrayTurnos[i][j + 1].HoraInicio);
+                        puntuacion += Hora.diff(horario.ArrayTurnos[i][j + 1].HoraInicio, horario.ArrayTurnos[i][j].HoraFin);
                     }
                 }
                 catch (ArgumentNullException) // el día está vacío

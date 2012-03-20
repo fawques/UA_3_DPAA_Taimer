@@ -31,7 +31,7 @@ namespace algoritmo
             Turno t6 = new Turno(new Hora(14, 30), new Hora(16, 30), dias.L, "L04");
             Turno t7 = new Turno(new Hora(10, 30), new Hora(14, 30), dias.M, "L04");
             Turno t8 = new Turno(new Hora(11, 30), new Hora(14, 30), dias.V, "L04");
-            Turno t9 = new Turno(new Hora(12, 30), new Hora(14, 30), dias.V, "L04");
+            Turno t9 = new Turno(new Hora(0, 30), new Hora(1, 30), dias.L, "L04");
 
             Actividad_p actP = new Actividad_p("P1", "descripcion", 6, usertest);
             actP.AddTurno(t1);

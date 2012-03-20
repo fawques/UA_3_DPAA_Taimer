@@ -105,33 +105,53 @@ namespace Taimer
             {
                 case dias.L:
                     CheckSolapamiento(turno, 0);
-                    arrayTurnos[0].Add(turno);
+                    insertarOrdenado(turno, 0);
                     break;
                 case dias.M:
                     CheckSolapamiento(turno, 1);
-                    arrayTurnos[1].Add(turno);
+                    insertarOrdenado(turno, 1);
                     break;
                 case dias.X:
                     CheckSolapamiento(turno, 2);
-                    arrayTurnos[2].Add(turno);
+                    insertarOrdenado(turno, 2);
                     break;
                 case dias.J:
                     CheckSolapamiento(turno, 3);
-                    arrayTurnos[3].Add(turno);
+                    insertarOrdenado(turno, 3);
                     break;
                 case dias.V:
                     CheckSolapamiento(turno, 4);
-                    arrayTurnos[4].Add(turno);
+                    insertarOrdenado(turno, 4);
                     break;
                 case dias.S:
                     CheckSolapamiento(turno, 5);
-                    arrayTurnos[5].Add(turno);
+                    insertarOrdenado(turno, 5);
                     break;
                 case dias.D:
                     CheckSolapamiento(turno, 6);
-                    arrayTurnos[6].Add(turno);
+                    insertarOrdenado(turno, 6);
                     break;
             }
+        }
+
+        private void insertarOrdenado(Turno item, int dia)
+        {
+            int i = 0;
+            bool insertado = false;
+
+            for (i = 0; i < arrayTurnos[dia].Count; i++)
+            {
+                if (arrayTurnos[dia][i].HoraInicio > item.HoraInicio)
+                {
+                    arrayTurnos[dia].Insert(i, item);
+                    insertado = true;
+                    break;
+                }
+            }
+
+            if (!insertado)
+                arrayTurnos[dia].Add(item);
+
         }
 
         public void CheckSolapamiento(Turno turno, int dia)
