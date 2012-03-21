@@ -10,62 +10,83 @@ namespace Taimer {
         #region PARTE PRIVADA
         // (Nombre, descripción y código vienen de la clase Actividad)
 
-        private string responsable;
-        private List<Turno> turnos = new List<Turno>();
+        private User usuario;                               // Usuario de la actividad personal
 
         #endregion
 
         #region PARTE PUBLICA
 
         // Constructor básico (sin lista de turnos)
-        public Actividad_p(string nom_, string desc_, int cod_, string responsable_)
+        public Actividad_p(string nom_, string desc_, int cod_, User usu_)
             : base(nom_, desc_, cod_) {
-            responsable = responsable_;
+                usuario = usu_;
         }
 
 
         // Constructor avanzado (con lista de turnos)
-        public Actividad_p(string nom_, string desc_, int cod_, string responsable_, List<Turno> turnos_)
-            : base(nom_, desc_, cod_) {
+        public Actividad_p(string nom_, string desc_, int cod_, string responsable_, List<Turno> turnos_, User usu_)
+            : base(nom_, desc_, cod_, turnos_) {
 
-            responsable = responsable_;
-            turnos = turnos_;
+            usuario = usu_;
         }
 
         // Constructor de copia
         public Actividad_p(Actividad_p act)
             : base(act) {
-            responsable = act.responsable;
-            turnos = act.turnos;    
+                usuario = act.usuario; 
         }
 
-        // Cambiar/obtener responsable
-        public string Responsable
+        // Cambiar/obtener usuario
+        public User Usuario
         {
-            get { return responsable; }
-            set { responsable = value; }
+            get { return usuario; }
+            set { usuario = value; }
         }
 
 
-        // Añadir turno
-        public void AddTurno(Turno turno) {
-            turnos.Add(turno);
-        }
+        // Añadir turno a una actividad personal (SÍ se comprueba solapamiento)
+        public void AddTurno(Turno turnonuevo)
+        {
+            bool insertado = false;
 
-        //Cambiar/obtener turnos
-        public List<Turno> Turnos {
-            set { turnos = value; }
-            get { return turnos; }
-        }
+            for (int i = 0; i < turnos.Count; i++)
+            {
+                if (turnos[i].HoraInicio > turnonuevo.HoraInicio)
+                {
+                    foreach (Turno item in turnos)
+                    {
+                        // Comprobar si se superponen y lanzar excepción si así es
+                        item.SuperponeExcepcion(turnonuevo);
+                    }
 
-        // Borrar turno (a partir de su código, si se encuentra)
-        public bool BorraTurno(int codigobuscado) {
-            foreach (Turno t in turnos) {
-                if (t.Codigo == codigobuscado)
-                    return Turnos.Remove(t);
+                    AsignarCodigo(turnonuevo);
+                    turnonuevo.Actividad = this;
+                    turnos.Insert(i, turnonuevo);
+                    insertado = true;
+                    break;
+                }
             }
-            return false;
+
+            if (!insertado)
+            {
+                // Comprobar si se superponen y lanzar excepción si así es
+                if(turnos.Count > 0)
+                    turnonuevo.SuperponeExcepcion(turnos[(turnos.Count - 1)]);
+
+                AsignarCodigo(turnonuevo);
+                turnonuevo.Actividad = this;
+
+                turnos.Add(turnonuevo);
+            }
         }
+
+
+
+
+         
+
+
+
         #endregion
     }
 }

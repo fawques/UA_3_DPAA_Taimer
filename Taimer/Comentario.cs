@@ -19,14 +19,14 @@ namespace Taimer
         #region  PARTE PÚBLICA
 
         // Constructor
-        public Comentario(int id_, string mens_, Actividad_a actcod_, User usu_) {
+        public Comentario(int id_, string mens_, Actividad_a acta_, User usu_) {
             id = id_;
             mensaje = mens_;
-            actividadAcademica = actcod_;
+            actividadAcademica = acta_;
             usuario = usu_;
         }
 
-        //Constructor de copia
+        // Constructor de copia
         public Comentario(Comentario c) {
             id = c.id;
             mensaje = c.mensaje;

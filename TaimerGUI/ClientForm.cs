@@ -264,8 +264,8 @@ namespace TaimerGUI {
         {
             InitializeComponent();
             //TODO: Hay que hacer esto como se tenga que hacer
-            Titulacion t = new Titulacion("II", "001");
-            User usuario = new User(usr, "11111111P", usr+"@gmail.com", "*****", t, 3);
+            //Titulacion t = new Titulacion("II", "001");
+            User usuario = new User("nom", "dni", "email", "pass", 1, "titulacion");
             userTlSMnItem.Text = usuario.Nombre;
 
             //Redondeado de bordes
@@ -392,7 +392,7 @@ namespace TaimerGUI {
         private void verHorario_Click(object sender, EventArgs e)
         {
             hideAllChilds();
-            formHorDetails.setHorario(new Taimer.Horario("Horario", (new Taimer.User("", "", "", "", new Taimer.Titulacion("", ""), 1))));
+            formHorDetails.setHorario(new Taimer.Horario("Horario", (new Taimer.User("nom", "dni", "email", "pass", 1, "titulacion"))));
             formHorDetails.Show();
             formHorDetails.Focus();
             positionAllChilds();
