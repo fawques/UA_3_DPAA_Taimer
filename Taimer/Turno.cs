@@ -143,7 +143,25 @@ namespace Taimer {
         public Hora HoraFin {
             set { 
                     if(value >= HoraInicio)
-                        horaFin = value;
+                    {
+                        if (actividad.EsAcademica())
+                            horaFin = value;
+                        else
+                        {
+                            Turno test = new Turno(this);
+                            test.horaFin = value;
+
+                            foreach (Turno existente in actividad.Turnos)
+                            {
+                                if (existente.Codigo != this.Codigo)
+                                {
+                                    test.Superpone(existente);
+                                }
+                            }
+
+                            horaFin = value;
+                        }
+                    }
                     else
                         throw new ArgumentOutOfRangeException();    // ¿Usar OutOfRangeException si hora fin < hora inicio?
                 }
