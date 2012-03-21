@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace WindowsFormsApplication1
+namespace BaseDeDatos
 {
     public partial class Form1 : Form
     {
@@ -16,5 +16,10 @@ namespace WindowsFormsApplication1
             InitializeComponent();
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            CAD.CADUser user = new CAD.CADUser();
+            user.CrearUserBasic("0000007", "Torito Bravo", "torito@bravo.es", "toritobravo");
+        }
     }
 }

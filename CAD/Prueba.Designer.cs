@@ -45,13 +45,13 @@
             this.tb2User = new System.Windows.Forms.TextBox();
             this.tb1User = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.tb2Com = new System.Windows.Forms.TextBox();
-            this.tb1Com = new System.Windows.Forms.TextBox();
-            this.tb3Com = new System.Windows.Forms.TextBox();
-            this.tb4Com = new System.Windows.Forms.TextBox();
-            this.bt1Com = new System.Windows.Forms.Button();
-            this.bt2Com = new System.Windows.Forms.Button();
             this.bt3Com = new System.Windows.Forms.Button();
+            this.bt2Com = new System.Windows.Forms.Button();
+            this.bt1Com = new System.Windows.Forms.Button();
+            this.tb4Com = new System.Windows.Forms.TextBox();
+            this.tb3Com = new System.Windows.Forms.TextBox();
+            this.tb1Com = new System.Windows.Forms.TextBox();
+            this.tb2Com = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -232,48 +232,15 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Comentario";
             // 
-            // tb2Com
+            // bt3Com
             // 
-            this.tb2Com.Location = new System.Drawing.Point(7, 54);
-            this.tb2Com.Multiline = true;
-            this.tb2Com.Name = "tb2Com";
-            this.tb2Com.Size = new System.Drawing.Size(100, 20);
-            this.tb2Com.TabIndex = 0;
-            this.tb2Com.Text = "Texto";
-            // 
-            // tb1Com
-            // 
-            this.tb1Com.Location = new System.Drawing.Point(7, 28);
-            this.tb1Com.Name = "tb1Com";
-            this.tb1Com.Size = new System.Drawing.Size(100, 20);
-            this.tb1Com.TabIndex = 1;
-            this.tb1Com.Text = "ID";
-            // 
-            // tb3Com
-            // 
-            this.tb3Com.Location = new System.Drawing.Point(7, 81);
-            this.tb3Com.Name = "tb3Com";
-            this.tb3Com.Size = new System.Drawing.Size(100, 20);
-            this.tb3Com.TabIndex = 2;
-            this.tb3Com.Text = "Actividad";
-            // 
-            // tb4Com
-            // 
-            this.tb4Com.Location = new System.Drawing.Point(7, 108);
-            this.tb4Com.Name = "tb4Com";
-            this.tb4Com.Size = new System.Drawing.Size(100, 20);
-            this.tb4Com.TabIndex = 3;
-            this.tb4Com.Text = "Usuario";
-            // 
-            // bt1Com
-            // 
-            this.bt1Com.Location = new System.Drawing.Point(125, 28);
-            this.bt1Com.Name = "bt1Com";
-            this.bt1Com.Size = new System.Drawing.Size(75, 23);
-            this.bt1Com.TabIndex = 4;
-            this.bt1Com.Text = "Crear";
-            this.bt1Com.UseVisualStyleBackColor = true;
-            this.bt1Com.Click += new System.EventHandler(this.bt1Com_Click);
+            this.bt3Com.Location = new System.Drawing.Point(125, 98);
+            this.bt3Com.Name = "bt3Com";
+            this.bt3Com.Size = new System.Drawing.Size(75, 23);
+            this.bt3Com.TabIndex = 6;
+            this.bt3Com.Text = "Cambiar";
+            this.bt3Com.UseVisualStyleBackColor = true;
+            this.bt3Com.Click += new System.EventHandler(this.bt3Com_Click);
             // 
             // bt2Com
             // 
@@ -285,17 +252,50 @@
             this.bt2Com.UseVisualStyleBackColor = true;
             this.bt2Com.Click += new System.EventHandler(this.bt2Com_Click);
             // 
-            // bt3Com
+            // bt1Com
             // 
-            this.bt3Com.Location = new System.Drawing.Point(125, 98);
-            this.bt3Com.Name = "bt3Com";
-            this.bt3Com.Size = new System.Drawing.Size(75, 23);
-            this.bt3Com.TabIndex = 6;
-            this.bt3Com.Text = "Cambiar";
-            this.bt3Com.UseVisualStyleBackColor = true;
-            this.bt3Com.Click += new System.EventHandler(this.bt3Com_Click);
+            this.bt1Com.Location = new System.Drawing.Point(125, 28);
+            this.bt1Com.Name = "bt1Com";
+            this.bt1Com.Size = new System.Drawing.Size(75, 23);
+            this.bt1Com.TabIndex = 4;
+            this.bt1Com.Text = "Crear";
+            this.bt1Com.UseVisualStyleBackColor = true;
+            this.bt1Com.Click += new System.EventHandler(this.bt1Com_Click);
             // 
-            // Form1
+            // tb4Com
+            // 
+            this.tb4Com.Location = new System.Drawing.Point(7, 108);
+            this.tb4Com.Name = "tb4Com";
+            this.tb4Com.Size = new System.Drawing.Size(100, 20);
+            this.tb4Com.TabIndex = 3;
+            this.tb4Com.Text = "Usuario";
+            // 
+            // tb3Com
+            // 
+            this.tb3Com.Location = new System.Drawing.Point(7, 81);
+            this.tb3Com.Name = "tb3Com";
+            this.tb3Com.Size = new System.Drawing.Size(100, 20);
+            this.tb3Com.TabIndex = 2;
+            this.tb3Com.Text = "Actividad";
+            // 
+            // tb1Com
+            // 
+            this.tb1Com.Location = new System.Drawing.Point(7, 28);
+            this.tb1Com.Name = "tb1Com";
+            this.tb1Com.Size = new System.Drawing.Size(100, 20);
+            this.tb1Com.TabIndex = 1;
+            this.tb1Com.Text = "ID";
+            // 
+            // tb2Com
+            // 
+            this.tb2Com.Location = new System.Drawing.Point(7, 54);
+            this.tb2Com.Multiline = true;
+            this.tb2Com.Name = "tb2Com";
+            this.tb2Com.Size = new System.Drawing.Size(100, 20);
+            this.tb2Com.TabIndex = 0;
+            this.tb2Com.Text = "Texto";
+            // 
+            // Prueba
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -303,7 +303,7 @@
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
-            this.Name = "Form1";
+            this.Name = "Prueba";
             this.Text = "Form1";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

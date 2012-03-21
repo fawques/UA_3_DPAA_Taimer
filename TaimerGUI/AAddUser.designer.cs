@@ -144,7 +144,6 @@
             this.button2.TabIndex = 60;
             this.button2.Text = "Crear";
             this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // AAddUser
             // 
