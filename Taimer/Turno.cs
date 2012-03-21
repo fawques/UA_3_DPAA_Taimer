@@ -117,20 +117,23 @@ namespace Taimer {
         public Hora HoraInicio {
             set
             {
-                /*
                 if (actividad.EsAcademica())
-                {
                     horaInicio = value;
-                }
                 else
                 {
-                    if (!this.NoSolapaNingunTurno())
-                        throw new Exception("SOLAPA TURNOS!!!!!!!!!!!");
-                    else
-                        horaInicio = value;
+                    Turno test = new Turno(this);
+                    test.horaInicio = value;
+
+                    foreach (Turno existente in actividad.Turnos)
+                    {
+                        if (existente.Codigo != this.Codigo)
+                        {
+                            test.Superpone(existente);
+                        }
+                    }
+
+                    horaInicio = value;
                 }
-                */
-                horaInicio = value;
             }
             get { return horaInicio; }
         }
@@ -229,27 +232,6 @@ namespace Taimer {
                     throw new NotSupportedException("Turnos solapados.");
                 }
             }
-        }
-
-
-        // Comprobar si al cambiar la hora un turno de actividad personal no solapa a otros
-        public bool NoSolapaNingunTurno()
-        {
-            /*
-            bool solapado = true;
-
-            foreach (Turno existente in actividad.Turnos)
-            {
-                if(existente != this)
-                    solapado = SuperponeBool(existente);
-
-                if (!solapado)
-                    break;
-            }
-
-            return solapado;
-             * */
-            return false;           // NO FUNCIONA, OBVIAMENTE
         }
 
         #endregion
