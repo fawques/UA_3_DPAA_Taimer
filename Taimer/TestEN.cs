@@ -31,8 +31,15 @@ namespace Taimer
                 Hora horaini = new Hora(int.Parse(hini.Text), int.Parse(mini.Text));
                 Hora horafin = new Hora(int.Parse(hfin.Text), int.Parse(mfin.Text));
 
-                Turno turno = new Turno(1, horaini, horafin, dias.L, "???", activ1);
-                turno.CambiarDiaSemana(diacombo.Text);
+                Turno turno = new Turno(horaini, horafin, dias.L, "???", activ1);
+
+                if (diacombo.Text == "M")
+                    turno.DiaString = "Martes";
+                else if (diacombo.Text == "X")
+                    turno.DiaString = "Miércoles";
+                else
+                    turno.DiaString = diacombo.Text;
+
                 activ1.AddTurno(turno);
                 actualizaLista();
             }
