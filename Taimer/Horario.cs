@@ -1,14 +1,14 @@
-﻿//TODO: ajustar gets y sets
-
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
 
-namespace Taimer {
-    public class Horario {
+namespace Taimer
+{
+    public class Horario
+    {
 
         #region PARTE PRIVADA
         private int id;                                     // Clave principal
@@ -17,10 +17,11 @@ namespace Taimer {
         private User usuario;                             // Un horario es creado por (1,1) usuarios
         #endregion
 
-        #region PARTE PÚBLICA 
+        #region PARTE PÚBLICA
 
         // Constructor
-        public Horario(int id_, string nom_, User usu_) {
+        public Horario(int id_, string nom_, User usu_)
+        {
             id = id_;
             nombre = nom_;
             usuario = usu_;
@@ -31,7 +32,7 @@ namespace Taimer {
             }
         }
 
-        public Horario( string nom_, User usu_)
+        public Horario(string nom_, User usu_)
         {
             id = 0;
             nombre = nom_;
@@ -44,30 +45,54 @@ namespace Taimer {
         }
 
         // Constructor de copia
-        public Horario(Horario h) {
+        public Horario(Horario h)
+        {
             id = h.id;
             nombre = h.nombre;
             usuario = h.usuario;
+
+            for (int i = 0; i < 7; i++)
+            {
+                arrayTurnos[i] = new List<Turno>(h.ArrayTurnos[i]);
+            }
         }
 
         // Ajustar/obtener nombre
-        public string Nombre {
+        public string Nombre
+        {
             get { return nombre; }
             set { nombre = value; }
         }
 
 
         // Ajustar/obtener id
-        public int ID {
+        public int ID
+        {
             get { return id; }
             set { id = value; }
         }
 
 
         // Ajustar/obtener usuario
-        public User Usuario {
+        public User Usuario
+        {
             get { return usuario; }
             set { usuario = value; }
+        }
+
+        public int Count
+        {
+            get
+            {
+                int cantidad = 0;
+
+                for (int i = 0; i < 7; i++)
+                {
+                    cantidad += arrayTurnos[i].Count;
+                }
+
+                return cantidad;
+            }
         }
 
 
@@ -76,64 +101,75 @@ namespace Taimer {
         {
             switch (turno.Dia)
             {
-                case 'L':
+                case dias.L:
                     CheckSolapamiento(turno, 0);
-                    arrayTurnos[0].Add(turno);
+                    insertarOrdenado(turno, 0);
                     break;
-                case 'M':
+                case dias.M:
                     CheckSolapamiento(turno, 1);
-                    arrayTurnos[1].Add(turno);
+                    insertarOrdenado(turno, 1);
                     break;
-                case 'X':
+                case dias.X:
                     CheckSolapamiento(turno, 2);
-                    arrayTurnos[2].Add(turno);
+                    insertarOrdenado(turno, 2);
                     break;
-                case 'J':
+                case dias.J:
                     CheckSolapamiento(turno, 3);
-                    arrayTurnos[3].Add(turno);
+                    insertarOrdenado(turno, 3);
                     break;
-                case 'V':
+                case dias.V:
                     CheckSolapamiento(turno, 4);
-                    arrayTurnos[4].Add(turno);
+                    insertarOrdenado(turno, 4);
                     break;
-                case 'S':
+                case dias.S:
                     CheckSolapamiento(turno, 5);
-                    arrayTurnos[5].Add(turno);
+                    insertarOrdenado(turno, 5);
                     break;
-                case 'D':
+                case dias.D:
                     CheckSolapamiento(turno, 6);
-                    arrayTurnos[6].Add(turno);
+                    insertarOrdenado(turno, 6);
                     break;
             }
+        }
+
+        private void insertarOrdenado(Turno item, int dia)
+        {
+            int i = 0;
+            bool insertado = false;
+
+            for (i = 0; i < arrayTurnos[dia].Count; i++)
+            {
+                if (arrayTurnos[dia][i].HoraInicio > item.HoraInicio)
+                {
+                    arrayTurnos[dia].Insert(i, item);
+                    insertado = true;
+                    break;
+                }
+            }
+
+            if (!insertado)
+                arrayTurnos[dia].Add(item);
+
         }
 
         public void CheckSolapamiento(Turno turno, int dia)
         {
             foreach (Turno item in arrayTurnos[dia])
             {
-                if (item.Dia.Equals(turno.Dia))
-                {
-                    // si se superponen
-                    if ((item.HoraFin > turno.HoraInicio && item.HoraFin <= turno.HoraFin) ||
-                        (turno.HoraFin > item.HoraInicio && turno.HoraFin <= item.HoraFin) ||
-                        (item.HoraInicio >= turno.HoraInicio && item.HoraInicio < turno.HoraFin) ||
-                        (turno.HoraInicio >= item.HoraInicio && turno.HoraInicio < item.HoraFin))
-                    {
-                        NotSupportedException ex = new NotSupportedException("Turnos solapados");
-                        throw ex;
-                    }
-                }
+                item.SuperponeExcepcion(turno);
             }
         }
 
         // Cambiar/Obtener turnos
-        public List<Turno>[] ArrayTurnos {
+        public List<Turno>[] ArrayTurnos
+        {
             set { arrayTurnos = value; }
             get { return arrayTurnos; }
         }
 
         // Borrar turno (a partir de su código, si se encuentra)
-        public bool BorraTurno(int codigobuscado) {
+        public bool BorraTurno(int codigobuscado)
+        {
 
             for (int i = 0; i < 7; i++)
             {
@@ -146,104 +182,44 @@ namespace Taimer {
             return false;
         }
 
-        
-        #region ALGORITMO
-
-        // Puntuar un horario según el número de días. Puntuará de 0 a 7, añadirá uno por cada día en el que haya turnos.
-        public static int puntuarDias(Horario horario)
+        // Dice cuál es la primera hora de un día de un horario
+        public Hora minHora(int dia)
         {
-            int puntuacion = 0;
-            for (int i = 0; i < 7; i++)
-            {
-                if (horario.ArrayTurnos[i].Count() > 0)
-                    puntuacion++;
-            }
+            if(dia > 6 || dia < 0)
+                throw new IndexOutOfRangeException("El día no existe (fuera de rango).");
 
-            return puntuacion;
+            if(arrayTurnos[dia].Count == 0)
+                throw new ArgumentNullException("El día está vacío.");
+
+            Hora minima = new Hora(23,59);
+
+            foreach (Turno item in arrayTurnos[dia])
+            {
+                if (item.HoraInicio < minima)
+                    minima = item.HoraInicio;
+            }
+            return minima;
         }
 
-        //Generación de un Horario de forma Voraz
-        public bool generarHorarioVoraz()
+        // Dice cuál es la última hora de un día de un horario
+        public Hora maxHora(int dia)
         {
+            if (dia > 6 || dia < 0)
+                throw new IndexOutOfRangeException("El día no existe (fuera de rango).");
 
-            Turno t1 = new Turno(new Hora(10, 30), new Hora(12, 30), 'L', "turno1", "L04");
-            Turno t2 = new Turno(new Hora(11, 30), new Hora(13, 30), 'L', "turno2", "L04");
-            Turno t3 = new Turno(new Hora(12, 30), new Hora(14, 30), 'L', "turno3", "L04");
+            if (arrayTurnos[dia].Count == 0)
+                throw new ArgumentNullException("El día está vacío");
 
-            Turno t4 = new Turno(new Hora(10, 30), new Hora(12, 30), 'X', "turno4", "L04");
-            Turno t5 = new Turno(new Hora(12, 30), new Hora(14, 30), 'X', "turno5", "L04");
-            Turno t6 = new Turno(new Hora(14, 30), new Hora(16, 30), 'X', "turno6", "L04");
+            Hora maxima = new Hora(0, 0);
 
-            Turno t7 = new Turno(new Hora(10, 30), new Hora(14, 30), 'M', "turno7", "L04");
-            Turno t8 = new Turno(new Hora(11, 30), new Hora(14, 30), 'M', "turno8", "L04");
-            Turno t9 = new Turno(new Hora(12, 30), new Hora(14, 30), 'M', "turno9", "L04");
-
-            Actividad_p actP = new Actividad_p("nombre", "descripcion", 6, "pepito");
-            actP.AddTurno(t1);
-
-            Actividad_p actP2 = new Actividad_p("nombre", "descripcion", 6, "pepito");
-            actP2.AddTurno(t4);
-            actP2.AddTurno(t5);
-            actP2.AddTurno(t6);
-
-            Actividad_a actA = new Actividad_a("nombre2", "descripcion2",7, 1,true);
-            actA.AddTurno(t3);
-            actA.AddTurno(t2);
-
-            Actividad_a actA2 = new Actividad_a("nombre2", "descripcion2", 7, 1,true);
-            actA2.AddTurno(t7);
-            actA2.AddTurno(t8);
-            actA2.AddTurno(t9);
-
-            ArrayList arrayP = new ArrayList();
-            ArrayList arrayA = new ArrayList();
-            arrayP.Add(actP);
-            arrayP.Add(actP2);
-            arrayA.Add(actA);
-            arrayA.Add(actA2);
-
-
-
-            foreach (Actividad_p personal in arrayP)
+            foreach (Turno item in arrayTurnos[dia])
             {
-                foreach (Turno item in personal.Turnos)
-                {
-                    try
-                    {
-                        AddTurno(item);
-                    }
-                    catch (NotSupportedException)
-                    {
-                        return false;
-                    }
-                }
-
+                if (item.HoraFin > maxima)
+                    maxima = item.HoraFin;
             }
-            bool asignado;
-            foreach (Actividad_a asig in arrayA)
-            {
-                asignado = false;
-                foreach (Turno item in asig.Turnos)
-                {
-                    if (asignado)
-                        break;
-                    try
-                    {
-                        AddTurno(item);
-                        asignado = true;
-                    }
-                    catch (NotSupportedException)
-                    {
-                        asignado = false;
-                    }
-                }
-                if (!asignado)
-                    return false;
-            }
-
-            return true;
+            return maxima;
         }
-        #endregion
+
         #endregion
     }
 }

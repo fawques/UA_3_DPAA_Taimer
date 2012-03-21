@@ -1,7 +1,4 @@
-﻿// Este archivo define las clases Hora y Turno.
-
-//TODO: funcion de nº de turnos almacenados
-//TODO: Constructor con código?
+﻿// ¡SI SE CAMBIA LA HORA DE INICIO O FIN EN UN TURNO PERSONAL, COMPROBAR SOLAPAMIENTO!
 
 using System;
 using System.Collections.Generic;
@@ -10,149 +7,8 @@ using System.Linq;
 using System.Text;
 
 namespace Taimer {
+    public enum dias { L, M, X, J, V, S, D };
 
-    #region CLASE HORA
-   
-    public class Hora {
-
-        #region PARTE PRIVADA
-
-        private int hora;
-        private int min;
-
-        #endregion
-
-        #region PARTE PÚBLICA
-
-        // Constructor
-        public Hora(int hora_, int min_) {
-            Hor = hora_;
-            Min = min_;
-        }
-
-        // Constructor de copia
-        public Hora(Hora h) {
-            hora = h.hora;
-            min = h.min;
-        }
-
-        //Obtener/modificar hora
-        public int Hor {
-            set {
-                if (value >= 0 && value <= 23)
-                    hora = value;
-                else
-                    throw new ArgumentOutOfRangeException(); 
-            }
-            get { return hora; }
-        }
-
-        //Obtener/modificar minutos
-        public int Min {
-            set {
-                if (value >= 0 && value <= 59)
-                    min = value;
-                else
-                    throw new ArgumentOutOfRangeException(); 
-            }
-            get { return min; }
-        }
-
-
-        // Ajustar hora y minutos
-        public void setTiempo(int hora_, int min_){
-            Hor = hora_;
-            Min = min_;
-        }
-
-        //Ajustar hora y minutos a partir de un string
-        public Hora(string hora_) {
-            string[] vect = hora_.Split(':');
-            if (vect.Length == 2) {
-               hora = Convert.ToInt32(vect[0]);
-               min = Convert.ToInt32(vect[1]);
-            }
-        }
-
-        // Operador ==
-        public static bool operator ==(Hora hor1, Hora hor2) {
-            return (hor1.hora == hor2.hora && hor1.min == hor2.min);
-        }
-
-        //Operador !=
-        public static bool operator !=(Hora hor1, Hora hor2) {
-            return !(hor1==hor2);
-        }
-
-        //Operador <
-        public static bool operator<(Hora hor1,Hora Hor2){
-            bool menor = false;
-            if (hor1.hora < Hor2.hora) {
-                menor = true;
-            } else if (hor1.hora == Hor2.hora && hor1.min < Hor2.min) {
-                menor = true;
-            }
-            return menor;
-        }
-
-        //Operador >
-        public static bool operator >(Hora hor1, Hora Hor2) {
-            bool mayor = false;
-            if (hor1.hora > Hor2.hora) {
-                mayor = true;
-            } else if (hor1.hora == Hor2.hora && hor1.min > Hor2.min) {
-                mayor = true;
-            }
-            return mayor;
-        }
-
-        //Operador <=
-        public static bool operator <=(Hora h1, Hora h2)
-        {
-            if (h1 < h2 || h1 == h2)
-                return true;
-            else
-                return false;
-        }
-
-        //Operador >=
-        public static bool operator >=(Hora h1, Hora h2)
-        {
-            if (h1 > h2 || h1 == h2)
-                return true;
-            else
-                return false;
-        }
-
-        //Operator -
-        public static Hora operator -(Hora h1, Hora h2)
-        {
-            Hora resultado = new Hora(0, 0);
-            if (h1 < h2)
-                throw new Exception("Orden de los operandos invertido");
-            else
-            {
-                throw new NotImplementedException();
-            }
-        }
-
-
-        public string toString() {
-            string hr = hora.ToString();
-            string mn = min.ToString();
-            if (hora < 10)
-                hr = "0" + hr;
-            if (min < 10)
-                mn = "0" + mn;
-            return hr + ":" + mn;
-        }
-
-        #endregion
-    }
-
-    #endregion
-
-    #region CLASE TURNO
     public class Turno {
 
         #region PARTE PRIVADA
@@ -160,50 +16,102 @@ namespace Taimer {
         private int codigo;
         private Hora horaInicio;
         private Hora horaFin;
-        private char diasemana;
-        private string nombre;
+        dias diasemana;
         private string ubicacion;
+        private Actividad actividad;        // Un turno pertenece a (1,1) actividades
 
+        public static int proximoId; // guarda el siguiente turno (mantener de momento, hasta que haya un autoincremento)
         #endregion
 
         #region PARTE PÚBLICA
 
-        // Constructor
-        public Turno(/*int codigo_,*/ Hora horaI_, Hora horaF_, char dia_, string nom_, string ubic_) {
-            //codigo = codigo_;
-            codigo = 0;
-            horaInicio = horaI_;
-            horaFin = horaF_;
+
+        // Constructor SIN ACTIVIDAD NI CÓDIGO
+        public Turno(Hora horaI_, Hora horaF_, dias dia_, string ubic_) {
+            codigo = proximoId; //HAY QUE AUTOGENERALO!!!
+            proximoId++;
+            if (horaI_ < horaF_) {
+                horaInicio = horaI_;
+                horaFin = horaF_;
+            }
+            else
+                throw new Exception("La hora de inicio es la misma o más tarde que la hora de finalización");
+
             diasemana = dia_;
-            nombre = nom_;
             ubicacion = ubic_;
         }
+
+
+        // Constructor
+        public Turno(int cod_, Hora horaI_, Hora horaF_, dias dia_, string ubic_, Actividad act_) {
+            codigo = cod_;    // Autogenerado (se debe incrementar el código de usuario después de esto)
+
+
+            if (horaI_ < horaF_) {
+                horaInicio = horaI_;
+                horaFin = horaF_;
+            }
+            else
+                throw new Exception("La hora de inicio es la misma o más tarde que la hora de finalización");
+
+
+            diasemana = dia_;
+            ubicacion = ubic_;
+            actividad = act_;
+        }
+
 
         // Constructor de copia
         public Turno(Turno t) {
             codigo = t.codigo;
-            horaInicio = t.horaInicio;
-            horaFin = t.horaFin;
+            horaInicio = new Hora(t.horaInicio);
+            horaFin = new Hora(t.horaFin);
             diasemana = t.diasemana;
-            nombre = t.nombre;
             ubicacion = t.ubicacion;
+            actividad = t.actividad;
         }
 
-        //Cambiar/obtener codigo
+
+        // Comparar si dos turnos son iguales (exceptuando su código y asignatura).
+        // He preferido no usar el operador igualdad, dado que no son 100% iguales.
+        public bool TurnoSimilar(Turno t)
+        {
+            if (horaInicio == t.horaInicio)
+                if (horaFin == t.horaFin)
+                    if (diasemana == t.diasemana)
+                        if (ubicacion == t.ubicacion)
+                            return true;
+
+            return false;
+        }
+
+
+        // Cambiar/obtener actividad
+        public Actividad Actividad
+        {
+            set { actividad = value; }
+            get { return actividad; }
+        }
+
+
+        // Cambiar/obtener codigo
         public int Codigo {
             set { codigo = value; }
             get { return codigo; }
         }
 
-        // Cambiar Hora Inicio
+
+        // Cambiar Hora Inicio con dos Integer
         public void HoraI(int hora, int min) {
             horaInicio = new Hora(hora, min);
         }
 
-        // Cambiar Hora Fin
+
+        // Cambiar Hora Fin con dos Integer
         public void HoraF(int hora, int min) {
             horaFin = new Hora(hora, min);
         }
+
 
         // Obtener/Cambiar Hora de inicio
         public Hora HoraInicio {
@@ -214,28 +122,55 @@ namespace Taimer {
 
         // Obtener/Cambiar Hora de Fin
         public Hora HoraFin {
-            set { horaFin = value; }
+            set { 
+                    if(value >= HoraInicio)
+                        horaFin = value;
+                    else
+                        throw new ArgumentOutOfRangeException();    // ¿Usar OutOfRangeException si hora fin < hora inicio?
+                }
+
             get { return horaFin; }
         }
 
 
-        //Obtener/Cambiar dia de la semana
-        public char Dia{
+        // Obtener/Cambiar dia de la semana
+        public dias Dia{
             get { return diasemana; }
-            set {
-                char d = value.ToString().ToUpper().ToCharArray()[0];
-                if (d == 'L' || d == 'M' || d == 'X' || d == 'J' || d == 'V' || d == 'S' || d == 'D')
-                    diasemana = d;
-                else
-                    throw new ArgumentOutOfRangeException();
-            }
+            set { diasemana = value; }
         }
 
-        //Cambiar/Obtener nombre
-        public string Nombre {
-            set { nombre = value; }
-            get { return nombre; }
-        }
+
+        // Cambiar día de la semana con string
+        public void CambiarDiaSemana(string s)
+        {
+            char d = s.ToString().ToUpper().ToCharArray()[0];
+            switch (d) {
+                    case 'L':
+                        diasemana = dias.L;
+                        break;
+                    case 'M':
+                        diasemana = dias.M;
+                        break;
+                    case 'X':
+                        diasemana = dias.X;
+                        break;
+                    case 'J':
+                        diasemana = dias.J;
+                        break;
+                    case 'V':
+                        diasemana = dias.V;
+                        break;
+                    case 'S':
+                        diasemana = dias.S;
+                        break;
+                    case 'D':
+                        diasemana = dias.D;
+                        break;
+                    default:
+                        throw new Exception("Día de la semana inexistente.");
+                }
+            }
+
 
         // Cambiar/Obtener ubicacion
         public string Ubicacion {
@@ -243,8 +178,44 @@ namespace Taimer {
             get { return ubicacion; }
         }
 
-        // **** EXTRAS (En construcción) ****
+
+        // Comprobar superposición de turnos
+        // Devuelve TRUE si se superponen los turnos, FALSE si no se solapan.
+        public bool Superpone(Turno t)
+        {
+            // Si se superponen...
+            if (Dia.Equals(t.Dia))
+            {
+                if ((HoraFin > t.HoraInicio && HoraFin <= t.HoraFin) ||
+                    (t.HoraFin > HoraInicio && t.HoraFin <= HoraFin) ||
+                    (HoraInicio >= t.HoraInicio && HoraInicio < t.HoraFin) ||
+                    (t.HoraInicio >= HoraInicio && t.HoraInicio < HoraFin))
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+
+        // Comprobar superposición y lanzar excepción si se superponen
+        public void SuperponeExcepcion(Turno t)
+        {
+            // Si se superponen...
+            if (Dia.Equals(t.Dia))
+            {
+                if ((HoraFin > t.HoraInicio && HoraFin <= t.HoraFin) ||
+                    (t.HoraFin > HoraInicio && t.HoraFin <= HoraFin) ||
+                    (HoraInicio >= t.HoraInicio && HoraInicio < t.HoraFin) ||
+                    (t.HoraInicio >= HoraInicio && t.HoraInicio < HoraFin))
+                {
+                    NotSupportedException ex = new NotSupportedException("Turnos solapados.");
+                    throw ex;
+                }
+            }
+        }
+
         #endregion
     }
-    #endregion
 }

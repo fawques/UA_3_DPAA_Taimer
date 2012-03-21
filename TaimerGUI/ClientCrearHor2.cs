@@ -78,7 +78,7 @@ namespace TaimerGUI {
         }
 
         private void loadHorario() {
-            List<Turno> turnos = new List<Turno>();
+            /*List<Turno> turnos = new List<Turno>();
 
             Hora horI = new Hora(10, 0);
             Hora horF = new Hora(11, 0);
@@ -126,7 +126,7 @@ namespace TaimerGUI {
                 b.FlatStyle = FlatStyle.Flat;
                 b.Cursor = Cursors.Hand;
                 pnlLunes.Controls.Add(b);
-            }
+            }*/
 
         }
 

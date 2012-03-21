@@ -47,13 +47,14 @@ namespace TaimerGUI
 
         private void bttnCrearActiv_Click(object sender, EventArgs e) {
             //TODO Crear la actividad
+
             if (validarTodo()) {
                 if (MessageBox.Show("¿Seguro que desea crearla?",
                 "¿Crear actividad?",
                 MessageBoxButtons.YesNo,
                 MessageBoxIcon.Question,
                 MessageBoxDefaultButton.Button2) == DialogResult.Yes) {
-                    actividad = new Taimer.Actividad_p(tBNombre.Text, rTBDescripcion.Text, -1, "");
+                    /*actividad = new Taimer.Actividad_p(tBNombre.Text, rTBDescripcion.Text, -1, null);
 
                     foreach (DataGridViewRow filas in gVHorasTemp.Rows) {
                         Hora horI = new Hora(filas.Cells["horaInicio"].Value.ToString());
@@ -62,7 +63,7 @@ namespace TaimerGUI
                         char d = comboBoxDia.Text[0];
                         Turno turn = new Turno(horI, horF, 'D', "IB", "poli1");
                         actividad.AddTurno(turn);
-                    }
+                    }*/
                     this.Hide();
                 }
             }

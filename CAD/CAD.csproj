@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{329AECE9-732D-4307-AF83-AFDAE3E04AA4}</ProjectGuid>
+    <ProjectGuid>{376151DD-06C8-4BE0-8C72-86513ACB0FE1}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Taimer</RootNamespace>
-    <AssemblyName>Taimer</AssemblyName>
+    <RootNamespace>CAD</RootNamespace>
+    <AssemblyName>CAD</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -30,9 +30,14 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -40,15 +45,34 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Actividad.cs" />
-    <Compile Include="Actividad_a.cs" />
-    <Compile Include="Actividad_p.cs" />
-    <Compile Include="Curso.cs" />
-    <Compile Include="Titulacion.cs" />
-    <Compile Include="Horario.cs" />
-    <Compile Include="User.cs" />
-    <Compile Include="Turno.cs" />
+    <Compile Include="CADActividad.cs" />
+    <Compile Include="CADActividad_a.cs" />
+    <Compile Include="CADActividad_p.cs" />
+    <Compile Include="CADAdmin.cs" />
+    <Compile Include="CADComentario.cs" />
+    <Compile Include="CADHorario.cs" />
+    <Compile Include="CADTitulacion.cs" />
+    <Compile Include="CADTurno.cs" />
+    <Compile Include="CADUser.cs" />
+    <Compile Include="Conection.cs" />
+    <Compile Include="Prueba.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Prueba.Designer.cs">
+      <DependentUpon>Prueba.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Taimer\TaimerEN.csproj">
+      <Project>{329AECE9-732D-4307-AF83-AFDAE3E04AA4}</Project>
+      <Name>TaimerEN</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Prueba.resx">
+      <DependentUpon>Prueba.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

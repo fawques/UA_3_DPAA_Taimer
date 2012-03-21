@@ -50,7 +50,7 @@ namespace TaimerGUI
         private void loadHorario() {
             List<Turno> turnos = new List<Turno>();
 
-            Hora horI = new Hora(10,0);
+            /*Hora horI = new Hora(10,0);
             Hora horF = new Hora(11,0);
             Turno turn = new Turno(horI, horF, 'L', "IB", "poli1");
             turnos.Add(turn);
@@ -97,7 +97,7 @@ namespace TaimerGUI
                 b.FlatStyle = FlatStyle.Flat;
                 b.Cursor = Cursors.Hand;
                 pnlLunes.Controls.Add(b);
-            }
+            }*/
             
         }
         private void asig_Click(object sender, EventArgs e) {
