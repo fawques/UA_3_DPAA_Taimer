@@ -103,13 +103,15 @@ namespace Taimer {
 
         // Cambiar Hora Inicio con dos Integer
         public void HoraI(int hora, int min) {
-            horaInicio = new Hora(hora, min);
+            Hora horaaux = new Hora(hora, min);
+            horaInicio = horaaux;
         }
 
 
         // Cambiar Hora Fin con dos Integer
         public void HoraF(int hora, int min) {
-            horaFin = new Hora(hora, min);
+            Hora horaaux = new Hora(hora, min);
+            horaFin = horaaux;
         }
 
 
