@@ -30,7 +30,7 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtBoxFiltro = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
@@ -42,18 +42,18 @@
             this.pnlPersonales = new System.Windows.Forms.Panel();
             this.shapeContainer3 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
             this.lineShape1 = new Microsoft.VisualBasic.PowerPacks.LineShape();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.grpBoxDatosAct = new System.Windows.Forms.GroupBox();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.lblDescripcion = new System.Windows.Forms.Label();
             this.lblNombre = new System.Windows.Forms.Label();
             this.txtBoxNombre = new System.Windows.Forms.TextBox();
             this.txtBoxDescripcion = new System.Windows.Forms.RichTextBox();
-            this.btnFiltrar = new System.Windows.Forms.Button();
+            this.codActividad = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
-            this.groupBox1.SuspendLayout();
+            this.grpBoxDatosAct.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -69,18 +69,19 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(38, 108);
+            this.label2.Location = new System.Drawing.Point(98, 125);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(32, 13);
             this.label2.TabIndex = 23;
             this.label2.Text = "Filtro:";
             // 
-            // textBox1
+            // txtBoxFiltro
             // 
-            this.textBox1.Location = new System.Drawing.Point(76, 105);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(167, 20);
-            this.textBox1.TabIndex = 22;
+            this.txtBoxFiltro.Location = new System.Drawing.Point(136, 122);
+            this.txtBoxFiltro.Name = "txtBoxFiltro";
+            this.txtBoxFiltro.Size = new System.Drawing.Size(167, 20);
+            this.txtBoxFiltro.TabIndex = 22;
+            this.txtBoxFiltro.TextChanged += new System.EventHandler(this.txtBoxFiltro_TextChanged);
             // 
             // panel1
             // 
@@ -189,20 +190,21 @@
             this.lineShape1.Y1 = 38;
             this.lineShape1.Y2 = 38;
             // 
-            // groupBox1
+            // grpBoxDatosAct
             // 
-            this.groupBox1.Controls.Add(this.btnCancelar);
-            this.groupBox1.Controls.Add(this.btnGuardar);
-            this.groupBox1.Controls.Add(this.lblDescripcion);
-            this.groupBox1.Controls.Add(this.lblNombre);
-            this.groupBox1.Controls.Add(this.txtBoxNombre);
-            this.groupBox1.Controls.Add(this.txtBoxDescripcion);
-            this.groupBox1.Location = new System.Drawing.Point(422, 140);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(336, 395);
-            this.groupBox1.TabIndex = 34;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Datos";
+            this.grpBoxDatosAct.Controls.Add(this.codActividad);
+            this.grpBoxDatosAct.Controls.Add(this.btnCancelar);
+            this.grpBoxDatosAct.Controls.Add(this.btnGuardar);
+            this.grpBoxDatosAct.Controls.Add(this.lblDescripcion);
+            this.grpBoxDatosAct.Controls.Add(this.lblNombre);
+            this.grpBoxDatosAct.Controls.Add(this.txtBoxNombre);
+            this.grpBoxDatosAct.Controls.Add(this.txtBoxDescripcion);
+            this.grpBoxDatosAct.Location = new System.Drawing.Point(422, 140);
+            this.grpBoxDatosAct.Name = "grpBoxDatosAct";
+            this.grpBoxDatosAct.Size = new System.Drawing.Size(336, 395);
+            this.grpBoxDatosAct.TabIndex = 34;
+            this.grpBoxDatosAct.TabStop = false;
+            this.grpBoxDatosAct.Text = "Datos";
             // 
             // btnCancelar
             // 
@@ -213,6 +215,7 @@
             this.btnCancelar.TabIndex = 40;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // btnGuardar
             // 
@@ -232,8 +235,6 @@
             this.lblDescripcion.Name = "lblDescripcion";
             this.lblDescripcion.Size = new System.Drawing.Size(270, 75);
             this.lblDescripcion.TabIndex = 35;
-            this.lblDescripcion.Text = "Patatin patatan pues esto pues lo otro y lo demas alla y una descripción de la as" +
-                "ignatura muy completa.";
             this.lblDescripcion.Click += new System.EventHandler(this.lblDescripcion_Click);
             // 
             // lblNombre
@@ -244,7 +245,6 @@
             this.lblNombre.Name = "lblNombre";
             this.lblNombre.Size = new System.Drawing.Size(197, 36);
             this.lblNombre.TabIndex = 34;
-            this.lblNombre.Text = "Diseño y programación de aplicaciones avanzadas";
             this.lblNombre.Click += new System.EventHandler(this.lblNombre_Click);
             // 
             // txtBoxNombre
@@ -255,6 +255,7 @@
             this.txtBoxNombre.TabIndex = 42;
             this.txtBoxNombre.Visible = false;
             this.txtBoxNombre.TextChanged += new System.EventHandler(this.txtBoxNombre_TextChanged);
+            this.txtBoxNombre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBoxNombre_KeyPress);
             this.txtBoxNombre.Leave += new System.EventHandler(this.txtBoxNombre_Leave);
             // 
             // txtBoxDescripcion
@@ -265,17 +266,17 @@
             this.txtBoxDescripcion.TabIndex = 43;
             this.txtBoxDescripcion.Text = "";
             this.txtBoxDescripcion.Visible = false;
+            this.txtBoxDescripcion.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBoxDescripcion_KeyPress);
             this.txtBoxDescripcion.Leave += new System.EventHandler(this.txtBoxDescripcion_Leave);
             // 
-            // btnFiltrar
+            // codActividad
             // 
-            this.btnFiltrar.Location = new System.Drawing.Point(263, 103);
-            this.btnFiltrar.Name = "btnFiltrar";
-            this.btnFiltrar.Size = new System.Drawing.Size(75, 23);
-            this.btnFiltrar.TabIndex = 35;
-            this.btnFiltrar.Text = "Buscar";
-            this.btnFiltrar.UseVisualStyleBackColor = true;
-            this.btnFiltrar.Click += new System.EventHandler(this.btnFiltrar_Click);
+            this.codActividad.AutoSize = true;
+            this.codActividad.Location = new System.Drawing.Point(63, 252);
+            this.codActividad.Name = "codActividad";
+            this.codActividad.Size = new System.Drawing.Size(0, 13);
+            this.codActividad.TabIndex = 44;
+            this.codActividad.Visible = false;
             // 
             // ClientVerActividades
             // 
@@ -283,11 +284,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Cornsilk;
             this.ClientSize = new System.Drawing.Size(795, 595);
-            this.Controls.Add(this.btnFiltrar);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.grpBoxDatosAct);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtBoxFiltro);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "ClientVerActividades";
@@ -301,8 +301,8 @@
             this.panel3.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.grpBoxDatosAct.ResumeLayout(false);
+            this.grpBoxDatosAct.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -312,13 +312,13 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtBoxFiltro;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel pnlOficiales;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel pnlPersonales;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox grpBoxDatosAct;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnGuardar;
         private System.Windows.Forms.Label lblDescripcion;
@@ -330,7 +330,7 @@
         private System.Windows.Forms.Panel panel3;
         private Microsoft.VisualBasic.PowerPacks.ShapeContainer shapeContainer1;
         private System.Windows.Forms.TextBox txtBoxNombre;
-        private System.Windows.Forms.Button btnFiltrar;
         private System.Windows.Forms.RichTextBox txtBoxDescripcion;
+        private System.Windows.Forms.Label codActividad;
     }
 }

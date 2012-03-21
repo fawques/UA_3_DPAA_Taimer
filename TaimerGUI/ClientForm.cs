@@ -120,7 +120,7 @@ namespace TaimerGUI {
             formCreateHor2 = new ClientCrearHor2();
             formMatric = new ClientMatriculacionActiv();
             formVerAct = new ClientVerActividades(usuario);
-            formCrearAct = new ClientCrearActiv();
+            formCrearAct = new ClientCrearActiv(usuario);
 
             
 
@@ -162,7 +162,7 @@ namespace TaimerGUI {
             this.WindowState = FormWindowState.Normal;
         }
 
-        private void loadLastHorarios()
+        public void loadLastHorarios()
         {
             if (usuario != null) {
                 int posY = 20;
@@ -181,7 +181,7 @@ namespace TaimerGUI {
             }
         }
 
-        private void loadLastActividades()
+        public void loadLastActividades()
         {
             if (usuario != null) {
                 //MessageBox.Show("No es null");
@@ -440,9 +440,9 @@ namespace TaimerGUI {
             if (sender is Label) {
                 Horario hor = (Horario)((Label)sender).Tag;
                 formHorDetails.setHorario(hor);
-                formHorDetails.Show();
-                formHorDetails.Focus();
             }
+            formHorDetails.Show();
+            formHorDetails.Focus();
         }
 
 
@@ -450,9 +450,9 @@ namespace TaimerGUI {
             if (sender is Label) {
                 Actividad_p act = (Actividad_p)((Label)sender).Tag;
                 formVerAct.loadGrupBoxData(act);
-                formVerAct.Show();
-                formVerAct.Focus();
             }
+            formVerAct.Show();
+            formVerAct.Focus();
         }
 
         public void crearActividad_Click(object sender, EventArgs e)

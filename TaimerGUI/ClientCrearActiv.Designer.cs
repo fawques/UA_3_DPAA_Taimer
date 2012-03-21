@@ -34,10 +34,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.rTBDescripcion = new System.Windows.Forms.RichTextBox();
             this.gVHorasTemp = new System.Windows.Forms.DataGridView();
-            this.dia = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.horaInicio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.horaFin = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.borrar = new System.Windows.Forms.DataGridViewButtonColumn();
             this.button1 = new System.Windows.Forms.Button();
             this.bttnCrearActiv = new System.Windows.Forms.Button();
             this.bCancelar = new System.Windows.Forms.Button();
@@ -56,6 +52,12 @@
             this.label3 = new System.Windows.Forms.Label();
             this.comboBoxDia = new System.Windows.Forms.ComboBox();
             this.lblErrorNombre = new System.Windows.Forms.Label();
+            this.txtBoxLugar = new System.Windows.Forms.TextBox();
+            this.dia = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.horaInicio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.horaFin = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lugar = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.borrar = new System.Windows.Forms.DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gVHorasTemp)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nmUpDwnMinHasta)).BeginInit();
@@ -115,45 +117,20 @@
             this.dia,
             this.horaInicio,
             this.horaFin,
+            this.lugar,
             this.borrar});
             this.gVHorasTemp.Location = new System.Drawing.Point(315, 332);
             this.gVHorasTemp.Name = "gVHorasTemp";
             this.gVHorasTemp.ReadOnly = true;
-            this.gVHorasTemp.Size = new System.Drawing.Size(443, 150);
+            this.gVHorasTemp.Size = new System.Drawing.Size(443, 183);
             this.gVHorasTemp.TabIndex = 35;
             this.gVHorasTemp.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gVHorasTemp_CellContentClick);
-            // 
-            // dia
-            // 
-            this.dia.HeaderText = "Dia";
-            this.dia.Name = "dia";
-            this.dia.ReadOnly = true;
-            // 
-            // horaInicio
-            // 
-            this.horaInicio.HeaderText = "Hora inicio";
-            this.horaInicio.Name = "horaInicio";
-            this.horaInicio.ReadOnly = true;
-            // 
-            // horaFin
-            // 
-            this.horaFin.HeaderText = "Hora fin";
-            this.horaFin.Name = "horaFin";
-            this.horaFin.ReadOnly = true;
-            // 
-            // borrar
-            // 
-            this.borrar.HeaderText = "Borrar";
-            this.borrar.Name = "borrar";
-            this.borrar.ReadOnly = true;
-            this.borrar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.borrar.Text = "Borrar";
             // 
             // button1
             // 
             this.button1.BackgroundImage = global::TaimerGUI.Properties.Resources.flechaRight;
             this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.button1.Location = new System.Drawing.Point(254, 389);
+            this.button1.Location = new System.Drawing.Point(255, 404);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(43, 46);
             this.button1.TabIndex = 37;
@@ -182,6 +159,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.txtBoxLugar);
             this.groupBox1.Controls.Add(this.lblErrorDate);
             this.groupBox1.Controls.Add(this.label11);
             this.groupBox1.Controls.Add(this.label10);
@@ -349,6 +327,45 @@
             this.lblErrorNombre.Text = "No puede estar vacio";
             this.lblErrorNombre.Visible = false;
             // 
+            // txtBoxLugar
+            // 
+            this.txtBoxLugar.Location = new System.Drawing.Point(80, 150);
+            this.txtBoxLugar.Name = "txtBoxLugar";
+            this.txtBoxLugar.Size = new System.Drawing.Size(100, 20);
+            this.txtBoxLugar.TabIndex = 61;
+            // 
+            // dia
+            // 
+            this.dia.HeaderText = "Dia";
+            this.dia.Name = "dia";
+            this.dia.ReadOnly = true;
+            // 
+            // horaInicio
+            // 
+            this.horaInicio.HeaderText = "Hora inicio";
+            this.horaInicio.Name = "horaInicio";
+            this.horaInicio.ReadOnly = true;
+            // 
+            // horaFin
+            // 
+            this.horaFin.HeaderText = "Hora fin";
+            this.horaFin.Name = "horaFin";
+            this.horaFin.ReadOnly = true;
+            // 
+            // lugar
+            // 
+            this.lugar.HeaderText = "Lugar";
+            this.lugar.Name = "lugar";
+            this.lugar.ReadOnly = true;
+            // 
+            // borrar
+            // 
+            this.borrar.HeaderText = "Borrar";
+            this.borrar.Name = "borrar";
+            this.borrar.ReadOnly = true;
+            this.borrar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.borrar.Text = "Borrar";
+            // 
             // ClientCrearActiv
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -407,11 +424,13 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label lblErrorDate;
+        private System.Windows.Forms.Label lblErrorNombre;
+        private System.Windows.Forms.TextBox txtBoxLugar;
         private System.Windows.Forms.DataGridViewTextBoxColumn dia;
         private System.Windows.Forms.DataGridViewTextBoxColumn horaInicio;
         private System.Windows.Forms.DataGridViewTextBoxColumn horaFin;
+        private System.Windows.Forms.DataGridViewTextBoxColumn lugar;
         private System.Windows.Forms.DataGridViewButtonColumn borrar;
-        private System.Windows.Forms.Label lblErrorDate;
-        private System.Windows.Forms.Label lblErrorNombre;
     }
 }
