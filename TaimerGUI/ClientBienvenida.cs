@@ -71,7 +71,7 @@ namespace TaimerGUI
         }
         private void verHorario_Click(object sender, EventArgs e) {
             padre.hideAllChilds();
-            padre.formHorDetails.setHorario(new Taimer.Horario("Horario", (new Taimer.User("", "", "", "", new Taimer.Titulacion("", ""), 1))));
+            padre.formHorDetails.setHorario(null);
             padre.formHorDetails.Show();
             padre.positionAllChilds();
         }

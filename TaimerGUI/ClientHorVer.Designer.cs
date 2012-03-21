@@ -272,12 +272,15 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Cornsilk;
             this.ClientSize = new System.Drawing.Size(784, 562);
+            this.ControlBox = false;
             this.Controls.Add(this.grpBoxDatosAsig);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pnlHorario);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "ClientHorVer";
-            this.Text = "ClientHorVer";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.ClientHorVer_Load);
             this.pnlHorario.ResumeLayout(false);
             this.pnlHorario.PerformLayout();

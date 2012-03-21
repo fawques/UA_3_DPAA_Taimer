@@ -74,6 +74,34 @@ namespace TaimerGUI.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap maximizeClick {
+            get {
+                object obj = ResourceManager.GetObject("maximizeClick", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap maximizeOff {
+            get {
+                object obj = ResourceManager.GetObject("maximizeOff", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap maximizeOff1 {
+            get {
+                object obj = ResourceManager.GetObject("maximizeOff1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap maximizeOn {
+            get {
+                object obj = ResourceManager.GetObject("maximizeOn", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap orange_user_md {
             get {
                 object obj = ResourceManager.GetObject("orange-user-md", resourceCulture);

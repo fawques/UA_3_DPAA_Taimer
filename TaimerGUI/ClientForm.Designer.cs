@@ -24,13 +24,13 @@
         /// </summary>
         private void InitializeComponent() {
             this.pnlMenu = new System.Windows.Forms.Panel();
+            this.button2 = new System.Windows.Forms.Button();
             this.pnlMenuActivi = new System.Windows.Forms.Panel();
             this.groupBoxUltActivi = new System.Windows.Forms.GroupBox();
             this.button4 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
             this.pnlMenuHorarios = new System.Windows.Forms.Panel();
             this.groupBoxUltimosHorarios = new System.Windows.Forms.GroupBox();
             this.button3 = new System.Windows.Forms.Button();
@@ -41,6 +41,7 @@
             this.cerrarSesionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnStUser = new System.Windows.Forms.MenuStrip();
+            this.pnlResize = new System.Windows.Forms.Panel();
             this.pnlTittle = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.mnStMain = new System.Windows.Forms.MenuStrip();
@@ -75,7 +76,7 @@
             this.btMaximize = new System.Windows.Forms.Button();
             this.btClose = new System.Windows.Forms.Button();
             this.btMinimize = new System.Windows.Forms.Button();
-            this.pnlResize = new System.Windows.Forms.Panel();
+            this.menuTruco = new System.Windows.Forms.MenuStrip();
             this.pnlMenu.SuspendLayout();
             this.pnlMenuActivi.SuspendLayout();
             this.pnlMenuHorarios.SuspendLayout();
@@ -91,14 +92,28 @@
             // pnlMenu
             // 
             this.pnlMenu.BackColor = System.Drawing.Color.Wheat;
-            this.pnlMenu.Controls.Add(this.pnlMenuActivi);
             this.pnlMenu.Controls.Add(this.button2);
+            this.pnlMenu.Controls.Add(this.pnlMenuActivi);
             this.pnlMenu.Controls.Add(this.pnlMenuHorarios);
             this.pnlMenu.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlMenu.Location = new System.Drawing.Point(0, 75);
             this.pnlMenu.Name = "pnlMenu";
-            this.pnlMenu.Size = new System.Drawing.Size(200, 600);
+            this.pnlMenu.Size = new System.Drawing.Size(200, 625);
             this.pnlMenu.TabIndex = 2;
+            // 
+            // button2
+            // 
+            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.button2.BackColor = System.Drawing.Color.BurlyWood;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.Location = new System.Drawing.Point(0, 564);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(200, 58);
+            this.button2.TabIndex = 1;
+            this.button2.Text = "Ir a la web";
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // pnlMenuActivi
             // 
@@ -163,20 +178,6 @@
             this.label3.Size = new System.Drawing.Size(78, 13);
             this.label3.TabIndex = 0;
             this.label3.Text = "ACTIVIDADES";
-            // 
-            // button2
-            // 
-            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.button2.BackColor = System.Drawing.Color.BurlyWood;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(0, 539);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(200, 58);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "Ir a la web";
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // pnlMenuHorarios
             // 
@@ -271,6 +272,21 @@
             this.mnStUser.TabIndex = 3;
             this.mnStUser.Text = "menuStrip1";
             // 
+            // pnlResize
+            // 
+            this.pnlResize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlResize.BackColor = System.Drawing.Color.Cornsilk;
+            this.pnlResize.BackgroundImage = global::TaimerGUI.Properties.Resources.resize2;
+            this.pnlResize.Cursor = System.Windows.Forms.Cursors.SizeNWSE;
+            this.pnlResize.Location = new System.Drawing.Point(1007, 678);
+            this.pnlResize.Name = "pnlResize";
+            this.pnlResize.Size = new System.Drawing.Size(20, 20);
+            this.pnlResize.TabIndex = 6;
+            this.pnlResize.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlResize_Paint);
+            this.pnlResize.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlResize_MouseDown);
+            this.pnlResize.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pnlResize_MouseMove);
+            this.pnlResize.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pnlResize_MouseUp);
+            // 
             // pnlTittle
             // 
             this.pnlTittle.BackColor = System.Drawing.Color.Transparent;
@@ -283,7 +299,7 @@
             this.pnlTittle.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlTittle.Location = new System.Drawing.Point(0, 0);
             this.pnlTittle.Name = "pnlTittle";
-            this.pnlTittle.Size = new System.Drawing.Size(1000, 75);
+            this.pnlTittle.Size = new System.Drawing.Size(1029, 75);
             this.pnlTittle.TabIndex = 4;
             this.pnlTittle.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlTittle_MouseDown);
             this.pnlTittle.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pnlTittle_MouseMove);
@@ -400,21 +416,21 @@
             // verToolStripMenuItem1
             // 
             this.verToolStripMenuItem1.Name = "verToolStripMenuItem1";
-            this.verToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.verToolStripMenuItem1.Size = new System.Drawing.Size(147, 22);
             this.verToolStripMenuItem1.Text = "Ver";
             this.verToolStripMenuItem1.Click += new System.EventHandler(this.verActividades_Click);
             // 
             // matriculacionToolStripMenuItem
             // 
             this.matriculacionToolStripMenuItem.Name = "matriculacionToolStripMenuItem";
-            this.matriculacionToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.matriculacionToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
             this.matriculacionToolStripMenuItem.Text = "Matriculacion";
             this.matriculacionToolStripMenuItem.Click += new System.EventHandler(this.matriculacion_Click);
             // 
             // crearToolStripMenuItem1
             // 
             this.crearToolStripMenuItem1.Name = "crearToolStripMenuItem1";
-            this.crearToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.crearToolStripMenuItem1.Size = new System.Drawing.Size(147, 22);
             this.crearToolStripMenuItem1.Text = "Crear";
             this.crearToolStripMenuItem1.Click += new System.EventHandler(this.crearActividad_Click);
             // 
@@ -475,7 +491,7 @@
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.mnUserOption);
-            this.panel1.Location = new System.Drawing.Point(887, 46);
+            this.panel1.Location = new System.Drawing.Point(916, 46);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(111, 175);
             this.panel1.TabIndex = 8;
@@ -543,7 +559,7 @@
             this.panel3.Controls.Add(this.btMaximize);
             this.panel3.Controls.Add(this.btClose);
             this.panel3.Controls.Add(this.btMinimize);
-            this.panel3.Location = new System.Drawing.Point(900, 4);
+            this.panel3.Location = new System.Drawing.Point(929, 4);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(95, 26);
             this.panel3.TabIndex = 7;
@@ -557,14 +573,18 @@
             this.btMaximize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btMaximize.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btMaximize.ForeColor = System.Drawing.Color.Maroon;
+            this.btMaximize.Image = global::TaimerGUI.Properties.Resources.maximizeOff1;
             this.btMaximize.Location = new System.Drawing.Point(41, -1);
             this.btMaximize.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btMaximize.Name = "btMaximize";
             this.btMaximize.Size = new System.Drawing.Size(31, 27);
             this.btMaximize.TabIndex = 11;
-            this.btMaximize.Text = "O";
             this.btMaximize.UseVisualStyleBackColor = false;
             this.btMaximize.Click += new System.EventHandler(this.btMaximize_Click);
+            this.btMaximize.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btMaximize_MouseDown);
+            this.btMaximize.MouseEnter += new System.EventHandler(this.btMaximize_MouseEnter);
+            this.btMaximize.MouseLeave += new System.EventHandler(this.btMaximize_MouseLeave);
+            this.btMaximize.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btMaximize_MouseUp);
             // 
             // btClose
             // 
@@ -613,31 +633,28 @@
             this.btMinimize.MouseLeave += new System.EventHandler(this.btMinimize_MouseLeave);
             this.btMinimize.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btMinimize_MouseUp);
             // 
-            // pnlResize
+            // menuTruco
             // 
-            this.pnlResize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.pnlResize.BackColor = System.Drawing.Color.Cornsilk;
-            this.pnlResize.BackgroundImage = global::TaimerGUI.Properties.Resources.resize2;
-            this.pnlResize.Cursor = System.Windows.Forms.Cursors.SizeNWSE;
-            this.pnlResize.Location = new System.Drawing.Point(978, 653);
-            this.pnlResize.Name = "pnlResize";
-            this.pnlResize.Size = new System.Drawing.Size(20, 20);
-            this.pnlResize.TabIndex = 6;
-            this.pnlResize.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlResize_MouseDown);
-            this.pnlResize.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pnlResize_MouseMove);
-            this.pnlResize.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pnlResize_MouseUp);
+            this.menuTruco.Dock = System.Windows.Forms.DockStyle.Left;
+            this.menuTruco.Location = new System.Drawing.Point(200, 75);
+            this.menuTruco.Name = "menuTruco";
+            this.menuTruco.Size = new System.Drawing.Size(98, 625);
+            this.menuTruco.TabIndex = 9;
+            this.menuTruco.Text = "menuStrip1";
+            this.menuTruco.Visible = false;
             // 
             // ClientForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.Cornsilk;
-            this.ClientSize = new System.Drawing.Size(1000, 675);
+            this.ClientSize = new System.Drawing.Size(1029, 700);
+            this.Controls.Add(this.menuTruco);
             this.Controls.Add(this.pnlMenu);
             this.Controls.Add(this.pnlResize);
             this.Controls.Add(this.pnlTittle);
-            this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.IsMdiContainer = true;
+            this.MainMenuStrip = this.menuTruco;
             this.Name = "ClientForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ClientForm";
@@ -661,6 +678,7 @@
             this.mnUserOption.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -719,6 +737,7 @@
         private System.Windows.Forms.ToolStripMenuItem salirToolStripMenuItem2;
         private System.Windows.Forms.GroupBox groupBoxUltimosHorarios;
         private System.Windows.Forms.GroupBox groupBoxUltActivi;
+        private System.Windows.Forms.MenuStrip menuTruco;
 
 
     }

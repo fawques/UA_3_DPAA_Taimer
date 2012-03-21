@@ -138,6 +138,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.Controls.Add(this.groubBoxDias);
             this.groupBox1.Controls.Add(this.trackBar2);
             this.groupBox1.Controls.Add(this.trackBar1);
@@ -231,6 +232,7 @@
             // 
             // btnCrear
             // 
+            this.btnCrear.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCrear.Location = new System.Drawing.Point(596, 488);
             this.btnCrear.Name = "btnCrear";
             this.btnCrear.Size = new System.Drawing.Size(158, 52);
@@ -241,6 +243,7 @@
             // 
             // button2
             // 
+            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.button2.Image = global::TaimerGUI.Properties.Resources.flechaLeft;
             this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button2.Location = new System.Drawing.Point(12, 488);
@@ -253,8 +256,11 @@
             // 
             // pnlHorario
             // 
-            this.pnlHorario.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.pnlHorario.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlHorario.AutoScroll = true;
+            this.pnlHorario.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.pnlHorario.BackColor = System.Drawing.Color.Maroon;
             this.pnlHorario.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pnlHorario.Controls.Add(this.label9);
@@ -273,9 +279,9 @@
             this.pnlHorario.Controls.Add(this.pnlMiercoles);
             this.pnlHorario.Controls.Add(this.pnlMartes);
             this.pnlHorario.Controls.Add(this.pnlLunes);
-            this.pnlHorario.Location = new System.Drawing.Point(15, 82);
+            this.pnlHorario.Location = new System.Drawing.Point(16, 82);
             this.pnlHorario.Name = "pnlHorario";
-            this.pnlHorario.Size = new System.Drawing.Size(539, 398);
+            this.pnlHorario.Size = new System.Drawing.Size(539, 401);
             this.pnlHorario.TabIndex = 33;
             // 
             // label9
@@ -439,6 +445,7 @@
             // 
             // btnGuardar
             // 
+            this.btnGuardar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnGuardar.Location = new System.Drawing.Point(596, 488);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(151, 52);
@@ -453,7 +460,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Cornsilk;
-            this.ClientSize = new System.Drawing.Size(784, 562);
+            this.ClientSize = new System.Drawing.Size(786, 565);
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.pnlHorario);
             this.Controls.Add(this.button2);
@@ -463,6 +470,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "ClientCrearHor2";
             this.Text = "ClientCrearHor2";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.ClientCrearHor2_Load);
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar2)).EndInit();

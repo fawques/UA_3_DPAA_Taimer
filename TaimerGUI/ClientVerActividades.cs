@@ -111,6 +111,13 @@ namespace TaimerGUI
             lblDescripcion.Visible = true;
         }
 
+        public void loadGrupBoxData(Taimer.Actividad act){
+            if (act != null) {
+                lblNombre.Text = act.Nombre;
+                lblDescripcion.Text = act.Descripcion;
+            }
+        }
+
         
     }
 }

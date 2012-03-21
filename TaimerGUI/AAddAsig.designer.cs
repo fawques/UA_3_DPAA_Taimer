@@ -23,54 +23,61 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.btCancel = new System.Windows.Forms.Button();
+            this.btCreate = new System.Windows.Forms.Button();
+            this.btAddTurn = new System.Windows.Forms.Button();
+            this.tbDesc = new System.Windows.Forms.RichTextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.tbName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.dgTurnos = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HoraInicio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HoraFin = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lbErrName = new System.Windows.Forms.Label();
+            this.lbErrDesc = new System.Windows.Forms.Label();
+            this.Ubicacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.dgTurnos)).BeginInit();
             this.SuspendLayout();
             // 
-            // button3
+            // btCancel
             // 
-            this.button3.Location = new System.Drawing.Point(668, 549);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(105, 35);
-            this.button3.TabIndex = 49;
-            this.button3.Text = "Cancelar";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.btCancel.Location = new System.Drawing.Point(668, 549);
+            this.btCancel.Name = "btCancel";
+            this.btCancel.Size = new System.Drawing.Size(105, 35);
+            this.btCancel.TabIndex = 49;
+            this.btCancel.Text = "Cancelar";
+            this.btCancel.UseVisualStyleBackColor = true;
+            this.btCancel.Click += new System.EventHandler(this.btCancel_Click);
             // 
-            // button2
+            // btCreate
             // 
-            this.button2.Location = new System.Drawing.Point(544, 549);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(105, 35);
-            this.button2.TabIndex = 48;
-            this.button2.Text = "Crear";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btCreate.Location = new System.Drawing.Point(544, 549);
+            this.btCreate.Name = "btCreate";
+            this.btCreate.Size = new System.Drawing.Size(105, 35);
+            this.btCreate.TabIndex = 48;
+            this.btCreate.Text = "Crear";
+            this.btCreate.UseVisualStyleBackColor = true;
+            this.btCreate.Click += new System.EventHandler(this.btCreate_Click);
             // 
-            // button1
+            // btAddTurn
             // 
-            this.button1.Location = new System.Drawing.Point(169, 319);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(125, 57);
-            this.button1.TabIndex = 47;
-            this.button1.Text = "Añadir Turnos";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btAddTurn.Location = new System.Drawing.Point(169, 319);
+            this.btAddTurn.Name = "btAddTurn";
+            this.btAddTurn.Size = new System.Drawing.Size(125, 57);
+            this.btAddTurn.TabIndex = 47;
+            this.btAddTurn.Text = "Añadir Turnos";
+            this.btAddTurn.UseVisualStyleBackColor = true;
+            this.btAddTurn.Click += new System.EventHandler(this.btAddTurn_Click);
             // 
-            // richTextBox1
+            // tbDesc
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(44, 195);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(468, 101);
-            this.richTextBox1.TabIndex = 44;
-            this.richTextBox1.Text = "";
+            this.tbDesc.Location = new System.Drawing.Point(44, 195);
+            this.tbDesc.Name = "tbDesc";
+            this.tbDesc.Size = new System.Drawing.Size(495, 101);
+            this.tbDesc.TabIndex = 44;
+            this.tbDesc.Text = "";
             // 
             // label5
             // 
@@ -90,12 +97,12 @@
             this.label2.TabIndex = 42;
             this.label2.Text = "Nombre";
             // 
-            // textBox1
+            // tbName
             // 
-            this.textBox1.Location = new System.Drawing.Point(44, 136);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 41;
+            this.tbName.Location = new System.Drawing.Point(44, 136);
+            this.tbName.Name = "tbName";
+            this.tbName.Size = new System.Drawing.Size(100, 20);
+            this.tbName.TabIndex = 41;
             // 
             // label1
             // 
@@ -107,13 +114,74 @@
             this.label1.TabIndex = 40;
             this.label1.Text = "Crear Asignatura";
             // 
-            // dataGridView1
+            // dgTurnos
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(312, 319);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(200, 150);
-            this.dataGridView1.TabIndex = 50;
+            this.dgTurnos.AllowUserToAddRows = false;
+            this.dgTurnos.AllowUserToDeleteRows = false;
+            this.dgTurnos.AllowUserToOrderColumns = true;
+            this.dgTurnos.BackgroundColor = System.Drawing.Color.Wheat;
+            this.dgTurnos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgTurnos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.HoraInicio,
+            this.HoraFin,
+            this.Ubicacion});
+            this.dgTurnos.Location = new System.Drawing.Point(300, 319);
+            this.dgTurnos.Name = "dgTurnos";
+            this.dgTurnos.ReadOnly = true;
+            this.dgTurnos.Size = new System.Drawing.Size(303, 176);
+            this.dgTurnos.TabIndex = 51;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.HeaderText = "Día";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // HoraInicio
+            // 
+            this.HoraInicio.HeaderText = "Inicio";
+            this.HoraInicio.Name = "HoraInicio";
+            this.HoraInicio.ReadOnly = true;
+            this.HoraInicio.Width = 80;
+            // 
+            // HoraFin
+            // 
+            this.HoraFin.HeaderText = "Fin";
+            this.HoraFin.Name = "HoraFin";
+            this.HoraFin.ReadOnly = true;
+            this.HoraFin.Width = 80;
+            // 
+            // lbErrName
+            // 
+            this.lbErrName.AutoSize = true;
+            this.lbErrName.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbErrName.ForeColor = System.Drawing.Color.Maroon;
+            this.lbErrName.Location = new System.Drawing.Point(150, 140);
+            this.lbErrName.Name = "lbErrName";
+            this.lbErrName.Size = new System.Drawing.Size(145, 13);
+            this.lbErrName.TabIndex = 64;
+            this.lbErrName.Text = "El campo no puede estar vacio";
+            this.lbErrName.Visible = false;
+            // 
+            // lbErrDesc
+            // 
+            this.lbErrDesc.AutoSize = true;
+            this.lbErrDesc.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbErrDesc.ForeColor = System.Drawing.Color.Maroon;
+            this.lbErrDesc.Location = new System.Drawing.Point(545, 199);
+            this.lbErrDesc.Name = "lbErrDesc";
+            this.lbErrDesc.Size = new System.Drawing.Size(145, 13);
+            this.lbErrDesc.TabIndex = 65;
+            this.lbErrDesc.Text = "El campo no puede estar vacio";
+            this.lbErrDesc.Visible = false;
+            // 
+            // Ubicacion
+            // 
+            this.Ubicacion.HeaderText = "Ubicacion";
+            this.Ubicacion.Name = "Ubicacion";
+            this.Ubicacion.ReadOnly = true;
+            this.Ubicacion.Visible = false;
             // 
             // AAddAsig
             // 
@@ -121,19 +189,21 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Cornsilk;
             this.ClientSize = new System.Drawing.Size(795, 595);
-            this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.richTextBox1);
+            this.Controls.Add(this.lbErrDesc);
+            this.Controls.Add(this.lbErrName);
+            this.Controls.Add(this.dgTurnos);
+            this.Controls.Add(this.btCancel);
+            this.Controls.Add(this.btCreate);
+            this.Controls.Add(this.btAddTurn);
+            this.Controls.Add(this.tbDesc);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.tbName);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "AAddAsig";
             this.Text = "AAddAsig";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgTurnos)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -141,15 +211,21 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.Button btCancel;
+        private System.Windows.Forms.Button btCreate;
+        private System.Windows.Forms.Button btAddTurn;
+        private System.Windows.Forms.RichTextBox tbDesc;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox tbName;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgTurnos;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HoraInicio;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HoraFin;
+        private System.Windows.Forms.Label lbErrName;
+        private System.Windows.Forms.Label lbErrDesc;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Ubicacion;
 
     }
 }

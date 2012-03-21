@@ -14,7 +14,7 @@ namespace TaimerGUI {
 
         bool closeSesion = false;
 
-        Taimer.User usuario;
+        public User usuario = null;
 
         public ClientBienvenida formWelcome;
         public ClientHorHome formHorHome;
@@ -25,11 +25,26 @@ namespace TaimerGUI {
         public ClientMatriculacionActiv formMatric;
         public ClientVerActividades formVerAct;
         public ClientCrearActiv formCrearAct;
+
+        /** CONSTRUCTOR **/
+        public ClientForm(User usr) {
+            InitializeComponent();
+            //TODO: Hay que hacer esto como se tenga que hacer
+            usuario = usr;
+            if (usuario != null) {
+                userTlSMnItem.Text = usuario.Nombre;
+            } else {
+                userTlSMnItem.Text = "ErrorUser";
+            }
+
+            //Redondeado de bordes
+            shape = RoundedRectangle.Create(0, 0, this.Width, this.Height, 10);
+            this.Region = new System.Drawing.Region(shape);
+        }
         
         private void ClientForm_Load(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
-            this.WindowState = FormWindowState.Normal;
 
             //////////////// MDI //////////////////////////
 
@@ -65,7 +80,7 @@ namespace TaimerGUI {
 
             //Para comunicarse entre ellos
             formCreateHor1.setContinueForm(formCreateHor2);
-            formCreateHor2.setBackForm(formCreateHor1);
+            formCreateHor2.setBackForm(formCreateHor1);            
 
             formWelcome.MdiParent = this;
             formHorHome.MdiParent = this;
@@ -77,7 +92,17 @@ namespace TaimerGUI {
             formCrearAct.MdiParent = this;
 
 
+
             formWelcome.Show();
+            formHorHome.Show();
+            formHorDetails.Show();
+            formCreateHor1.Show();
+            formCreateHor2.Show();
+            formMatric.Show();
+            formVerAct.Show();
+            formCrearAct.Show();
+            formWelcome.Show();
+            formWelcome.Focus();
             //////////////// --- //////////////////////////
 
             beingDragged = false;
@@ -87,10 +112,11 @@ namespace TaimerGUI {
             this.DoubleBuffered = true;
             this.SetStyle(ControlStyles.ResizeRedraw, true);
 
-            pnlMenuHorarios.Focus();
             loadLastHorarios();
-            pnlMenuActivi.Focus();
             loadLastActividades();
+
+
+            this.WindowState = FormWindowState.Normal;
         }
 
         private void loadLastHorarios()
@@ -120,7 +146,7 @@ namespace TaimerGUI {
                 auxlbl.Location = new Point(25, posY);
                 auxlbl.Cursor = Cursors.Hand;
                 auxlbl.MouseEnter += new EventHandler(label_MouseEnter);
-                auxlbl.Click += new EventHandler(verHorario_Click);
+                auxlbl.Click += new EventHandler(verActividad_Click);
                 auxlbl.MouseLeave += new EventHandler(label_MouseLeave);
                 posY += 25;
                 groupBoxUltActivi.Controls.Add(auxlbl);
@@ -130,27 +156,27 @@ namespace TaimerGUI {
         //////////////// MDI //////////////////////////
         public void hideAllChilds()
         {
-            //formWelcome.Hide();
+            /*formWelcome.Hide();
             formHorHome.Hide();
             formHorDetails.Hide();
             formCreateHor1.Hide();
             formCreateHor2.Hide();
             formMatric.Hide();
             formVerAct.Hide();
-            formCrearAct.Hide();
+            formCrearAct.Hide();*/
         }
 
         public void positionAllChilds()
         {
             //Esto se tiene que poder hacer mas facil
-            formWelcome.Location = new Point(0, 0);
+            /*formWelcome.Location = new Point(0, 0);
             formHorHome.Location = new Point(0, 0);
             formHorDetails.Location = new Point(0, 0);
             formCreateHor1.Location = new Point(0, 0);
             formCreateHor2.Location = new Point(0, 0);
             formMatric.Location = new Point(0, 0);
             formVerAct.Location = new Point(0, 0);
-            formCrearAct.Location = new Point(0, 0);
+            formCrearAct.Location = new Point(0, 0);*/
         }
         //////////////// --- //////////////////////////
 
@@ -221,34 +247,32 @@ namespace TaimerGUI {
         {
             if (this.beingResized)
             {
-
-                Size adj = new Size(e.Location.X - mouseOffset.X, e.Location.Y - mouseOffset.Y);
-                this.Size += adj;
-                mouseOffset = e.Location - adj;  // NOTA: Tienes que mover tambien la localizacion
+                Size adj = this.Size;
+                if (e.Location.Y - mouseOffset.Y < 0 && e.Location.X - mouseOffset.X < 0) {
+                    if (this.Size.Height > 300 && this.Size.Width > 300) {
+                        if (this.Size.Width <= 300) {
+                            adj = new Size(this.Size.Height, e.Location.Y - mouseOffset.Y);
+                        } else if (this.Size.Width <= 300) {
+                            adj = new Size(e.Location.X - mouseOffset.X, this.Size.Width);
+                        } else {
+                            adj = new Size(e.Location.X - mouseOffset.X, e.Location.Y - mouseOffset.Y);
+                        }
+                        this.Size += adj;
+                        mouseOffset = e.Location - adj;  // NOTA: Tienes que mover tambien la localizacion
+                    }
+                    
+                } else {
+                    adj = new Size(e.Location.X - mouseOffset.X, e.Location.Y - mouseOffset.Y);
+                    this.Size += adj;
+                    mouseOffset = e.Location - adj;  // NOTA: Tienes que mover tambien la localizacion
+                }
+                
+               
 
                 this.Refresh();
             }
         }
         /*     ---------------     */
-
-
-        /** CONSTRUCTOR **/
-        public ClientForm(string usr)
-        {
-            InitializeComponent();
-            //TODO: Hay que hacer esto como se tenga que hacer
-            //Titulacion t = new Titulacion("II", "001");
-            User usuario = new User("nom", "dni", "email", "pass", 1, "titulacion");
-            userTlSMnItem.Text = usuario.Nombre;
-
-            //Redondeado de bordes
-            shape = RoundedRectangle.Create(0, 0, this.Width, this.Height, 10);
-            this.Region = new System.Drawing.Region(shape);
-        }
-
-
-
-
        
 
         private void iconNotifClient_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -306,7 +330,8 @@ namespace TaimerGUI {
                 //Quitamos la mascara de redondeado
                 this.Region = new Region();
                 this.WindowState = FormWindowState.Maximized;
-                this.formHorDetails.WindowState = FormWindowState.Maximized;
+
+                
             }
             else
             {
@@ -333,13 +358,15 @@ namespace TaimerGUI {
         {
             hideAllChilds();
             formHorHome.Show();
+            formHorHome.Focus();
             positionAllChilds();
         }
 
         private void label1_Click(object sender, EventArgs e)
         {
             hideAllChilds();
-            formWelcome.Show();
+            formHorHome.Show();
+            formWelcome.Focus();
             positionAllChilds();
         }
 
@@ -347,6 +374,7 @@ namespace TaimerGUI {
         {
             hideAllChilds();
             formCreateHor1.Show();
+            formCreateHor1.Focus();
             positionAllChilds();
         }
 
@@ -354,14 +382,24 @@ namespace TaimerGUI {
         {
             hideAllChilds();
             formHorHome.Show();
+            formHorHome.Focus();
             positionAllChilds();
         }
 
         private void verHorario_Click(object sender, EventArgs e)
         {
             hideAllChilds();
-            formHorDetails.setHorario(new Taimer.Horario("Horario", (new Taimer.User("nom", "dni", "email", "pass", 1, "titulacion"))));
+            formHorDetails.setHorario(null);//TODO
             formHorDetails.Show();
+            formHorDetails.Focus();
+            positionAllChilds(); 
+        }
+
+        private void verActividad_Click(object sender, EventArgs e) {
+            hideAllChilds();
+            formVerAct.loadGrupBoxData(null);//TODO
+            formVerAct.Show();
+            formVerAct.Focus();
             positionAllChilds();
         }
 
@@ -369,6 +407,7 @@ namespace TaimerGUI {
         {
             hideAllChilds();
             formCrearAct.Show();
+            formCrearAct.Focus();
             positionAllChilds();
         }
 
@@ -376,6 +415,7 @@ namespace TaimerGUI {
         {
             hideAllChilds();
             formMatric.Show();
+            formMatric.Focus();
             positionAllChilds();
         }
 
@@ -383,6 +423,7 @@ namespace TaimerGUI {
         {
             hideAllChilds();
             formVerAct.Show();
+            formVerAct.Focus();
             positionAllChilds();
         }
 
@@ -465,6 +506,26 @@ namespace TaimerGUI {
         }
 
         private void btClose_ClientSizeChanged(object sender, EventArgs e) {
+
+        }
+
+        private void btMaximize_MouseEnter(object sender, EventArgs e) {
+            btMaximize.Image = TaimerGUI.Properties.Resources.maximizeOn;
+        }
+
+        private void btMaximize_MouseLeave(object sender, EventArgs e) {
+            btMaximize.Image = TaimerGUI.Properties.Resources.maximizeOff1;
+        }
+
+        private void btMaximize_MouseDown(object sender, MouseEventArgs e) {
+            btMaximize.Image = TaimerGUI.Properties.Resources.maximizeClick;
+        }
+
+        private void btMaximize_MouseUp(object sender, MouseEventArgs e) {
+            btMaximize.Image = TaimerGUI.Properties.Resources.maximizeOn;
+        }
+
+        private void pnlResize_Paint(object sender, PaintEventArgs e) {
 
         }
 

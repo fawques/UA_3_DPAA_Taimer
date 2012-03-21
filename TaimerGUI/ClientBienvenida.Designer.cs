@@ -53,6 +53,7 @@
             // 
             // button1
             // 
+            this.button1.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.Location = new System.Drawing.Point(48, 148);
             this.button1.Name = "button1";
@@ -64,6 +65,7 @@
             // 
             // button2
             // 
+            this.button2.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.Location = new System.Drawing.Point(48, 349);
             this.button2.Name = "button2";
@@ -90,6 +92,7 @@
             // 
             // label8
             // 
+            this.label8.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.Location = new System.Drawing.Point(427, 326);
@@ -100,6 +103,7 @@
             // 
             // pnlUltimasActividades
             // 
+            this.pnlUltimasActividades.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.pnlUltimasActividades.Location = new System.Drawing.Point(436, 360);
             this.pnlUltimasActividades.Name = "pnlUltimasActividades";
             this.pnlUltimasActividades.Size = new System.Drawing.Size(261, 170);
@@ -107,6 +111,7 @@
             // 
             // label7
             // 
+            this.label7.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.Location = new System.Drawing.Point(427, 91);
@@ -117,6 +122,7 @@
             // 
             // pnlUltimoHorarios
             // 
+            this.pnlUltimoHorarios.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.pnlUltimoHorarios.Location = new System.Drawing.Point(436, 125);
             this.pnlUltimoHorarios.Name = "pnlUltimoHorarios";
             this.pnlUltimoHorarios.Size = new System.Drawing.Size(261, 170);
@@ -135,6 +141,7 @@
             // 
             // lineShape1
             // 
+            this.lineShape1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.lineShape1.BorderWidth = 2;
             this.lineShape1.Name = "lineShape1";
             this.lineShape1.X1 = 369;
@@ -157,6 +164,7 @@
             this.ShowIcon = false;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Bienvenida_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
