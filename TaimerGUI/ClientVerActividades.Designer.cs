@@ -43,7 +43,6 @@
             this.shapeContainer3 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
             this.lineShape1 = new Microsoft.VisualBasic.PowerPacks.LineShape();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label5 = new System.Windows.Forms.Label();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.lblDescripcion = new System.Windows.Forms.Label();
@@ -192,7 +191,6 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.btnCancelar);
             this.groupBox1.Controls.Add(this.btnGuardar);
             this.groupBox1.Controls.Add(this.lblDescripcion);
@@ -205,15 +203,6 @@
             this.groupBox1.TabIndex = 34;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Datos";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(48, 202);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(135, 13);
-            this.label5.TabIndex = 44;
-            this.label5.Text = "No se si habran mas datos.";
             // 
             // btnCancelar
             // 
@@ -265,6 +254,7 @@
             this.txtBoxNombre.Size = new System.Drawing.Size(225, 20);
             this.txtBoxNombre.TabIndex = 42;
             this.txtBoxNombre.Visible = false;
+            this.txtBoxNombre.TextChanged += new System.EventHandler(this.txtBoxNombre_TextChanged);
             this.txtBoxNombre.Leave += new System.EventHandler(this.txtBoxNombre_Leave);
             // 
             // txtBoxDescripcion
@@ -303,6 +293,7 @@
             this.Name = "ClientVerActividades";
             this.Text = "ClientVerActividades";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Activated += new System.EventHandler(this.ClientVerActividades_Activated);
             this.Load += new System.EventHandler(this.ClientVerActividades_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -341,6 +332,5 @@
         private System.Windows.Forms.TextBox txtBoxNombre;
         private System.Windows.Forms.Button btnFiltrar;
         private System.Windows.Forms.RichTextBox txtBoxDescripcion;
-        private System.Windows.Forms.Label label5;
     }
 }

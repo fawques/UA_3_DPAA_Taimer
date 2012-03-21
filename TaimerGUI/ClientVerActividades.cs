@@ -6,44 +6,53 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using Taimer;
 
 namespace TaimerGUI
 {
     public partial class ClientVerActividades : Form
     {
+        private User usrAux;
         public ClientVerActividades()
         {
             InitializeComponent();
+            usrAux = ((ClientForm)this.MdiParent).usuario;
         }
 
 
         private void loadPersonales() {
-            int posY = 10;
-            for (int i = 0; i < 10; i++) {
-                Label auxlbl = new Label();
-                auxlbl.Text = "Personal " + i;
-                auxlbl.Location = new Point(25, posY);
-                auxlbl.Cursor = Cursors.Hand;
-                auxlbl.MouseEnter += new EventHandler(label_MouseEnter);
-                auxlbl.Click += new EventHandler(label_Click);
-                auxlbl.MouseLeave += new EventHandler(label_MouseLeave);
-                posY += 25;
-                pnlPersonales.Controls.Add(auxlbl);
+            if (usrAux != null) {
+                int posY = 10;
+                foreach(Actividad_p obj in usrAux.ActPersonales){
+                    Label auxlbl = new Label();
+                    auxlbl.Text = obj.Nombre;
+                    auxlbl.Tag = obj;
+                    auxlbl.Location = new Point(25, posY);
+                    auxlbl.Cursor = Cursors.Hand;
+                    auxlbl.MouseEnter += new EventHandler(label_MouseEnter);
+                    auxlbl.Click += new EventHandler(label_Click);
+                    auxlbl.MouseLeave += new EventHandler(label_MouseLeave);
+                    posY += 25;
+                    pnlPersonales.Controls.Add(auxlbl);
+                }
             }
         }
 
         private void loadOficiales() {
-            int posY = 10;
-            for (int i = 0; i < 10; i++) {
-                Label auxlbl = new Label();
-                auxlbl.Text = "Oficial " + i;
-                auxlbl.Location = new Point(25, posY);
-                auxlbl.Cursor = Cursors.Hand;
-                auxlbl.MouseEnter += new EventHandler(label_MouseEnter);
-                auxlbl.Click += new EventHandler(label_Click);
-                auxlbl.MouseLeave += new EventHandler(label_MouseLeave);
-                posY += 25;
-                pnlOficiales.Controls.Add(auxlbl);
+            if (usrAux != null) {
+                int posY = 10;
+                foreach(Actividad_a obj in usrAux.ActAcademicas){
+                    Label auxlbl = new Label();
+                    auxlbl.Text = obj.Nombre;
+                    auxlbl.Tag = obj;
+                    auxlbl.Location = new Point(25, posY);
+                    auxlbl.Cursor = Cursors.Hand;
+                    auxlbl.MouseEnter += new EventHandler(label_MouseEnter);
+                    auxlbl.Click += new EventHandler(label_Click);
+                    auxlbl.MouseLeave += new EventHandler(label_MouseLeave);
+                    posY += 25;
+                    pnlOficiales.Controls.Add(auxlbl);
+                }
             }
         }
 
@@ -113,9 +122,17 @@ namespace TaimerGUI
 
         public void loadGrupBoxData(Taimer.Actividad act){
             if (act != null) {
-                lblNombre.Text = act.Nombre;
-                lblDescripcion.Text = act.Descripcion;
+                txtBoxNombre.Text = lblNombre.Text = act.Nombre;
+                 txtBoxDescripcion.Text = lblDescripcion.Text = act.Descripcion;
             }
+        }
+
+        private void txtBoxNombre_TextChanged(object sender, EventArgs e) {
+        }
+
+        private void ClientVerActividades_Activated(object sender, EventArgs e) {
+            loadPersonales();
+            loadOficiales();
         }
 
         
