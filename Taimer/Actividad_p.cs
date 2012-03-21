@@ -60,6 +60,7 @@ namespace Taimer {
                     }
 
                     AsignarCodigo(turnonuevo);
+                    turnonuevo.Actividad = this;
                     turnos.Insert(i, turnonuevo);
                     insertado = true;
                     break;
@@ -73,6 +74,7 @@ namespace Taimer {
                     turnonuevo.SuperponeExcepcion(turnos[(turnos.Count - 1)]);
 
                 AsignarCodigo(turnonuevo);
+                turnonuevo.Actividad = this;
 
                 turnos.Add(turnonuevo);
             }

@@ -1,6 +1,4 @@
-﻿// La función con el número de turnos almacenados no es necesaria. Basta con usar listadeturnos.Count();
-// El constructor con código tampoco es necesario, ya que el código se genera automáticamente al ser añadido a una lista de actividades.
-// En caso de querer cambiar el código, hay una función para eso.
+﻿// ¡SI SE CAMBIA LA HORA DE INICIO O FIN EN UN TURNO PERSONAL, COMPROBAR SOLAPAMIENTO!
 
 using System;
 using System.Collections.Generic;
@@ -28,7 +26,7 @@ namespace Taimer {
         #region PARTE PÚBLICA
 
 
-        // Constructor SIN ACTIVIDAD NI CÓDIGO (borrar al terminar, hecho por compatibilidad) ######################################
+        // Constructor SIN ACTIVIDAD NI CÓDIGO
         public Turno(Hora horaI_, Hora horaF_, dias dia_, string ubic_) {
             codigo = proximoId; //HAY QUE AUTOGENERALO!!!
             proximoId++;
@@ -42,7 +40,6 @@ namespace Taimer {
             diasemana = dia_;
             ubicacion = ubic_;
         }
-        // ESTE CONSTRUCTOR SE DEBE BORRAR AL TERMINAR #############################################################################
 
 
         // Constructor

@@ -75,6 +75,8 @@ namespace Taimer {
         public void AddTurno(Turno turnonuevo)
         {
             bool insertado = false;
+
+            turnonuevo.Actividad = this;
             AsignarCodigo(turnonuevo);
 
             for (int i = 0; i < turnos.Count; i++)
