@@ -14,7 +14,7 @@ namespace TaimerGUI {
 
         bool closeSesion = false;
 
-        public User usuario = null;
+        private User usuario = null;
 
         public ClientBienvenida formWelcome;
         public ClientHorHome formHorHome;
@@ -41,6 +41,10 @@ namespace TaimerGUI {
             //Redondeado de bordes
             shape = RoundedRectangle.Create(0, 0, this.Width, this.Height, 10);
             this.Region = new System.Drawing.Region(shape);
+        }
+
+        public User getUsuario() {
+            return usuario;
         }
 
         //FUNCION SOLO PARA DEBUG, LUEGO BORRAR
@@ -108,14 +112,14 @@ namespace TaimerGUI {
                     // Catch and ignore the error if casting failed.
                 }
             }
-
+          
             formWelcome = new ClientBienvenida(this);
             formHorHome = new ClientHorHome();
             formHorDetails = new ClientHorVer();
             formCreateHor1 = new ClientCrearHor1();
             formCreateHor2 = new ClientCrearHor2();
             formMatric = new ClientMatriculacionActiv();
-            formVerAct = new ClientVerActividades();
+            formVerAct = new ClientVerActividades(usuario);
             formCrearAct = new ClientCrearActiv();
 
             

@@ -13,10 +13,10 @@ namespace TaimerGUI
     public partial class ClientVerActividades : Form
     {
         private User usrAux;
-        public ClientVerActividades()
+        public ClientVerActividades(User usr)
         {
             InitializeComponent();
-            usrAux = ((ClientForm)this.MdiParent).usuario;
+            usrAux = usr;
         }
 
 
