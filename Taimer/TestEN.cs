@@ -118,5 +118,31 @@ namespace Taimer
                 MessageBox.Show(ex.Message, "Excepción", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            int indice = int.Parse(codBorrar.Text);
+
+            try
+            {
+                Hora horanueva = new Hora(int.Parse(hini.Text), int.Parse(mini.Text));
+                activ1.Turnos[indice].HoraInicio = horanueva;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Excepción al cambiar hora", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ex = null;
+            }
+
+            actualizaLista();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (activ1.EsPersonal())
+                MessageBox.Show("Es personal funciona");
+            else
+                MessageBox.Show("ES PERSONAL NO TIRA NI PATRÁS");
+        }
     }
 }

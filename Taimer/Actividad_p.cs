@@ -56,7 +56,7 @@ namespace Taimer {
                     foreach (Turno item in turnos)
                     {
                         // Comprobar si se superponen y lanzar excepción si así es
-                        item.SuperponeExcepcion(turnonuevo);
+                        item.Superpone(turnonuevo);
                     }
 
                     AsignarCodigo(turnonuevo);
@@ -71,7 +71,7 @@ namespace Taimer {
             {
                 // Comprobar si se superponen y lanzar excepción si así es
                 if(turnos.Count > 0)
-                    turnonuevo.SuperponeExcepcion(turnos[(turnos.Count - 1)]);
+                    turnonuevo.Superpone(turnos[(turnos.Count - 1)]);
 
                 AsignarCodigo(turnonuevo);
                 turnonuevo.Actividad = this;

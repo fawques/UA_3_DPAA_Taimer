@@ -115,7 +115,23 @@ namespace Taimer {
 
         // Obtener/Cambiar Hora de inicio
         public Hora HoraInicio {
-            set { horaInicio = value; }
+            set
+            {
+                /*
+                if (actividad.EsAcademica())
+                {
+                    horaInicio = value;
+                }
+                else
+                {
+                    if (!this.NoSolapaNingunTurno())
+                        throw new Exception("SOLAPA TURNOS!!!!!!!!!!!");
+                    else
+                        horaInicio = value;
+                }
+                */
+                horaInicio = value;
+            }
             get { return horaInicio; }
         }
 
@@ -181,7 +197,7 @@ namespace Taimer {
 
         // Comprobar superposición de turnos
         // Devuelve TRUE si se superponen los turnos, FALSE si no se solapan.
-        public bool Superpone(Turno t)
+        public bool SuperponeBool(Turno t)
         {
             // Si se superponen...
             if (Dia.Equals(t.Dia))
@@ -200,7 +216,7 @@ namespace Taimer {
 
 
         // Comprobar superposición y lanzar excepción si se superponen
-        public void SuperponeExcepcion(Turno t)
+        public void Superpone(Turno t)
         {
             // Si se superponen...
             if (Dia.Equals(t.Dia))
@@ -210,10 +226,30 @@ namespace Taimer {
                     (HoraInicio >= t.HoraInicio && HoraInicio < t.HoraFin) ||
                     (t.HoraInicio >= HoraInicio && t.HoraInicio < HoraFin))
                 {
-                    NotSupportedException ex = new NotSupportedException("Turnos solapados.");
-                    throw ex;
+                    throw new NotSupportedException("Turnos solapados.");
                 }
             }
+        }
+
+
+        // Comprobar si al cambiar la hora un turno de actividad personal no solapa a otros
+        public bool NoSolapaNingunTurno()
+        {
+            /*
+            bool solapado = true;
+
+            foreach (Turno existente in actividad.Turnos)
+            {
+                if(existente != this)
+                    solapado = SuperponeBool(existente);
+
+                if (!solapado)
+                    break;
+            }
+
+            return solapado;
+             * */
+            return false;           // NO FUNCIONA, OBVIAMENTE
         }
 
         #endregion

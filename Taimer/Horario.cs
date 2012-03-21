@@ -156,7 +156,7 @@ namespace Taimer
         {
             foreach (Turno item in arrayTurnos[dia])
             {
-                item.SuperponeExcepcion(turno);
+                item.Superpone(turno);
             }
         }
 
