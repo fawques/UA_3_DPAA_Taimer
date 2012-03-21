@@ -157,7 +157,22 @@ namespace Taimer
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Excepción al cambiar hora de fin", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                ex = null;
+            }
+
+            actualizaLista();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            int indice = int.Parse(codBorrar.Text);
+
+            try
+            {
+                activ1.Turnos[indice].Codigo = int.Parse(nuevocod.Text);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Excepción al cambiar código", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
             actualizaLista();

@@ -48,6 +48,8 @@
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.chfin = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.nuevocod = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // hini
@@ -112,7 +114,7 @@
             // lista
             // 
             this.lista.FormattingEnabled = true;
-            this.lista.Location = new System.Drawing.Point(12, 126);
+            this.lista.Location = new System.Drawing.Point(11, 146);
             this.lista.Name = "lista";
             this.lista.Size = new System.Drawing.Size(369, 134);
             this.lista.TabIndex = 7;
@@ -246,11 +248,31 @@
             this.chfin.UseVisualStyleBackColor = true;
             this.chfin.Click += new System.EventHandler(this.chfin_Click);
             // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(249, 109);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(63, 21);
+            this.button3.TabIndex = 20;
+            this.button3.Text = "C. Cód:";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // nuevocod
+            // 
+            this.nuevocod.Location = new System.Drawing.Point(318, 110);
+            this.nuevocod.Name = "nuevocod";
+            this.nuevocod.Size = new System.Drawing.Size(32, 20);
+            this.nuevocod.TabIndex = 21;
+            this.nuevocod.Text = "1";
+            // 
             // TestEN
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(394, 272);
+            this.ClientSize = new System.Drawing.Size(394, 292);
+            this.Controls.Add(this.nuevocod);
+            this.Controls.Add(this.button3);
             this.Controls.Add(this.chfin);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
@@ -302,5 +324,7 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button chfin;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.TextBox nuevocod;
     }
 }

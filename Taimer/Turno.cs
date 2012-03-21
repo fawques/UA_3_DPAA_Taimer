@@ -94,9 +94,19 @@ namespace Taimer {
         }
 
 
-        // Cambiar/obtener codigo
+        // Cambiar/obtener código
+        // Lanza excepción si el código ya existe
         public int Codigo {
-            set { codigo = value; }
+            set {
+                    foreach (Turno existente in actividad.Turnos)
+                    {
+                        if (existente.Codigo == value)
+                            throw new ArgumentException("El código ya existe.");
+                    }
+
+                codigo = value;
+                }
+
             get { return codigo; }
         }
 
