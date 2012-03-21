@@ -192,6 +192,43 @@ namespace Taimer {
             return hr + ":" + mn;
         }
 
+        // Corrección de advertencias (GetHashCode() y Object.Equals(object))
+        public override bool Equals(System.Object obj)
+        {
+            // If parameter is null return false.
+            if (obj == null)
+            {
+                return false;
+            }
+
+            // If parameter cannot be cast to Point return false.
+            Hora p = obj as Hora;
+            if ((System.Object)p == null)
+            {
+                return false;
+            }
+
+            // Return true if the fields match:
+            return (Hor == p.Hor) && (Min == p.Min);
+        }
+
+        public bool Equals(Hora p)
+        {
+            // If parameter is null return false:
+            if ((object)p == null)
+            {
+                return false;
+            }
+
+            // Return true if the fields match:
+            return (Hor == p.Hor) && (Min == p.Min);
+        }
+
+        public override int GetHashCode()
+        {
+            return Hor * 60 + Min;
+        }
+
         #endregion
     }
 }
