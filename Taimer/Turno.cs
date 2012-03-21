@@ -70,8 +70,7 @@ namespace Taimer {
             horaFin = new Hora(t.horaFin);
             diasemana = t.diasemana;
             ubicacion = t.ubicacion;
-
-            actividad = t.actividad;                // ¿CAMBIAR? ##########################################
+            actividad = t.actividad;
         }
 
 
@@ -213,7 +212,7 @@ namespace Taimer {
                     (HoraInicio >= t.HoraInicio && HoraInicio < t.HoraFin) ||
                     (t.HoraInicio >= HoraInicio && t.HoraInicio < HoraFin))
                 {
-                    NotSupportedException ex = new NotSupportedException("Turnos solapados");
+                    NotSupportedException ex = new NotSupportedException("Turnos solapados.");
                     throw ex;
                 }
             }

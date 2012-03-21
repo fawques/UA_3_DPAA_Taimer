@@ -33,7 +33,7 @@ namespace Taimer {
             nombre = nom_;
             descripcion = desc_;
             codigo = cod_;
-            turnos = turnos_;
+            turnos = new List<Turno>(turnos_);
             codigoturno = 1;
         }
 
@@ -43,6 +43,7 @@ namespace Taimer {
             descripcion = act.descripcion;
             codigo = act.codigo;
             turnos = new List<Turno>(act.turnos);
+            codigoturno = act.codigoturno;
         }
 
 
@@ -80,15 +81,30 @@ namespace Taimer {
         }
 
 
-        // Borrar turno
-        public bool BorraTurno(Turno turno)
+        // Borrar turno (booleano)
+        // Devuelve TRUE si consigue borrar el turno, FALSE en caso contrario
+        public bool BorraTurnoBool(Turno turno)
         {
             return Turnos.Remove(turno);
         }
 
 
-        // Borrar turno (a partir de su código, si se encuentra)
-        public bool BorraTurno(int codigobuscado)
+        // Borrar turno (excepción)
+        // Lanza una excepción si no consigue borrar el turno
+        public void BorraTurno(Turno turno)
+        {
+            bool borrado = Turnos.Remove(turno);
+
+            if (!borrado)
+            {
+                Exception ex = new Exception("No se ha podido borrar el turno.");
+                throw ex;
+            }
+        }
+
+        // Borrar turno (a partir de su código, si se encuentra) (boolean)
+        // Devuelve TRUE si consigue borrar el turno, FALSE en caso contrario
+        public bool BorraTurnoBool(int codigobuscado)
         {
             foreach (Turno t in turnos)
             {
@@ -96,6 +112,29 @@ namespace Taimer {
                     return Turnos.Remove(t);
             }
             return false;
+        }
+
+
+        // Borrar turno (a partir de su código, si se encuentra) (excepción)
+        // Lanza una excepción si no consigue borrar el turno
+        public void BorraTurno(int codigobuscado)
+        {
+            bool borrado = false;
+
+            foreach (Turno t in turnos)
+            {
+                if (t.Codigo == codigobuscado)
+                {
+                    borrado = Turnos.Remove(t);
+                    break;
+                }
+            }
+
+            if (!borrado)
+            {
+                Exception ex = new Exception("No se ha podido borrar el turno.");
+                throw ex;
+            }
         }
 
 

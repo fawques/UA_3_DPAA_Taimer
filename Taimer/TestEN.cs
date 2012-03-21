@@ -56,7 +56,7 @@ namespace Taimer
 
         private void borrar_Click_1(object sender, EventArgs e)
         {
-            bool exito = activ1.BorraTurno(int.Parse(codBorrar.Text));
+            bool exito = activ1.BorraTurnoBool(int.Parse(codBorrar.Text));
 
             if (!exito)
                 MessageBox.Show("No se pudo borrar el turno.", "Borrar turno", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -77,7 +77,7 @@ namespace Taimer
 
         private void modificar_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Tipo: " + activ1.TipoActividad());
+            
         }
     }
 }

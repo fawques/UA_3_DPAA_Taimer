@@ -26,7 +26,6 @@ namespace Taimer {
         {
 
             nombreCoordinador = nomCoord_;
-            turnos = new List<Turno>();
             curso = 0;                      // Por defecto se asigna el número de curso a 0
         }
 
@@ -37,7 +36,6 @@ namespace Taimer {
         {
 
             nombreCoordinador = nomCoord_;
-            turnos = new List<Turno>();
             curso = curso_;
         }
 
@@ -92,13 +90,6 @@ namespace Taimer {
             if (!insertado)
                 turnos.Add(turnonuevo);
         }
-
-
-        // Comprobar si una actividad es actividad académica
-        //public bool EsAcademica()
-        //{
-        //    return true;
-        //}
 
 
         #endregion
