@@ -119,23 +119,28 @@ namespace Taimer {
         public Hora HoraInicio {
             set
             {
-                if (actividad.EsAcademica())
-                    horaInicio = value;
-                else
+                if (value <= HoraFin)
                 {
-                    Turno test = new Turno(this);
-                    test.horaInicio = value;
-
-                    foreach (Turno existente in actividad.Turnos)
+                    if (actividad.EsAcademica())
+                        horaInicio = value;
+                    else
                     {
-                        if (existente.Codigo != this.Codigo)
-                        {
-                            test.Superpone(existente);
-                        }
-                    }
+                        Turno test = new Turno(this);
+                        test.horaInicio = value;
 
-                    horaInicio = value;
+                        foreach (Turno existente in actividad.Turnos)
+                        {
+                            if (existente.Codigo != this.Codigo)
+                            {
+                                test.Superpone(existente);
+                            }
+                        }
+
+                        horaInicio = value;
+                    }
                 }
+                else
+                    throw new ArgumentOutOfRangeException("La hora de inicio no puede ser posterior a la de fin.");
             }
             get { return horaInicio; }
         }
@@ -165,7 +170,7 @@ namespace Taimer {
                         }
                     }
                     else
-                        throw new ArgumentOutOfRangeException();    // ¿Usar OutOfRangeException si hora fin < hora inicio?
+                        throw new ArgumentOutOfRangeException("La hora de fin no puede ser anterior a la de inicio.");
                 }
 
             get { return horaFin; }
