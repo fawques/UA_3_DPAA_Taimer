@@ -134,7 +134,7 @@ namespace Taimer
             }
         }
 
-        private void insertarOrdenado(Turno item, int dia)      // ¿Asignar código a los turnos? ###################
+        private void insertarOrdenado(Turno item, int dia)
         {
             int i = 0;
             bool insertado = false;
@@ -188,10 +188,10 @@ namespace Taimer
         public Hora minHora(int dia)
         {
             if(dia > 6 || dia < 0)
-                throw new IndexOutOfRangeException();
+                throw new IndexOutOfRangeException("El día no existe (fuera de rango).");
 
             if(arrayTurnos[dia].Count == 0)
-                throw new ArgumentNullException("El día está vacío");
+                throw new ArgumentNullException("El día está vacío.");
 
             Hora minima = new Hora(23,59);
 
@@ -207,7 +207,7 @@ namespace Taimer
         public Hora maxHora(int dia)
         {
             if (dia > 6 || dia < 0)
-                throw new IndexOutOfRangeException();
+                throw new IndexOutOfRangeException("El día no existe (fuera de rango).");
 
             if (arrayTurnos[dia].Count == 0)
                 throw new ArgumentNullException("El día está vacío");

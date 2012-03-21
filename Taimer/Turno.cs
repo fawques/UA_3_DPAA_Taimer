@@ -28,7 +28,7 @@ namespace Taimer {
         #region PARTE PÚBLICA
 
 
-        // Constructor SIN ACTIVIDAD NI CÓDIGO (borrar al terminar, hecho por compatibilidad)
+        // Constructor SIN ACTIVIDAD NI CÓDIGO (borrar al terminar, hecho por compatibilidad) ######################################
         public Turno(Hora horaI_, Hora horaF_, dias dia_, string ubic_) {
             codigo = proximoId; //HAY QUE AUTOGENERALO!!!
             proximoId++;
@@ -42,6 +42,7 @@ namespace Taimer {
             diasemana = dia_;
             ubicacion = ubic_;
         }
+        // ESTE CONSTRUCTOR SE DEBE BORRAR AL TERMINAR #############################################################################
 
 
         // Constructor

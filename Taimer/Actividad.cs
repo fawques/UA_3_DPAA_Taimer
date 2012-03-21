@@ -96,10 +96,7 @@ namespace Taimer {
             bool borrado = Turnos.Remove(turno);
 
             if (!borrado)
-            {
-                Exception ex = new Exception("No se ha podido borrar el turno.");
-                throw ex;
-            }
+                throw new MissingMemberException("No existe el turno que se desea borrar.");
         }
 
         // Borrar turno (a partir de su código, si se encuentra) (boolean)
@@ -131,10 +128,7 @@ namespace Taimer {
             }
 
             if (!borrado)
-            {
-                Exception ex = new Exception("No se ha podido borrar el turno.");
-                throw ex;
-            }
+                throw new MissingMemberException("No existe el turno que se desea borrar.");
         }
 
 

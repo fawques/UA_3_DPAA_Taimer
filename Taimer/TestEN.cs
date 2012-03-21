@@ -38,7 +38,7 @@ namespace Taimer
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message,"Excepción",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message,"Excepción al crear turno",MessageBoxButtons.OK,MessageBoxIcon.Error);
             }
         }
 
@@ -56,12 +56,16 @@ namespace Taimer
 
         private void borrar_Click_1(object sender, EventArgs e)
         {
-            bool exito = activ1.BorraTurnoBool(int.Parse(codBorrar.Text));
+            try
+            {
+                activ1.BorraTurno(int.Parse(codBorrar.Text));
 
-            if (!exito)
-                MessageBox.Show("No se pudo borrar el turno.", "Borrar turno", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-            actualizaLista();
+                actualizaLista();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Excepción al borrar", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void TestEN_Load(object sender, EventArgs e)
@@ -78,6 +82,41 @@ namespace Taimer
         private void modificar_Click(object sender, EventArgs e)
         {
             
+        }
+
+        private void horasiguales_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Hora hora1 = new Hora(int.Parse(hini.Text), int.Parse(mini.Text));
+                Hora hora2 = new Hora(int.Parse(hfin.Text), int.Parse(mfin.Text));
+
+                if (hora1 == hora2)
+                    MessageBox.Show("Las horas son iguales");
+                else
+                    MessageBox.Show("Las horas son distintas");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Excepción", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void minutosdiferencia_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Hora hora1 = new Hora(int.Parse(hini.Text), int.Parse(mini.Text));
+                Hora hora2 = new Hora(int.Parse(hfin.Text), int.Parse(mfin.Text));
+
+                int diferencia = hora1.MinutosDeDiferencia(hora2);
+
+                MessageBox.Show("Minutos de diferencia: " + diferencia.ToString());
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Excepción", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

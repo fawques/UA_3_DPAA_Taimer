@@ -41,7 +41,7 @@ namespace Taimer {
                 if (value >= 0 && value <= 23)
                     hora = value;
                 else
-                    throw new ArgumentOutOfRangeException();
+                    throw new ArgumentOutOfRangeException("Hora fuera de rango (debe ser entre 0 y 23).");
             }
             get { return hora; }
         }
@@ -53,7 +53,7 @@ namespace Taimer {
                 if (value >= 0 && value <= 59)
                     min = value;
                 else
-                    throw new ArgumentOutOfRangeException();
+                    throw new ArgumentOutOfRangeException("Minutos fuera de rango (deben ser entre 0 y 59).");
             }
             get { return min; }
         }
@@ -144,7 +144,7 @@ namespace Taimer {
         public static Hora operator -(Hora h1, Hora h2) {
             Hora resultado = new Hora(0, 0);
             if (h1 < h2)
-                throw new Exception("Orden de los operandos invertido");
+                throw new InvalidOperationException("Orden de los operandos de la hora invertido");
             else {
                 //throw new NotImplementedException();
                 resultado.Hor = h1.Hor - h2.Hor;
@@ -158,7 +158,7 @@ namespace Taimer {
         {
             int resultado = 0;
             if (h1 < h2)
-                throw new Exception("Orden de los operandos invertido");
+                throw new InvalidOperationException("Orden de los operandos de la hora invertido");
             else
             {
                 //throw new NotImplementedException();
@@ -168,7 +168,7 @@ namespace Taimer {
             return resultado;
         }
 
-        //Operator +
+        // Operator +
         public static Hora operator +(Hora h1, Hora h2) {
             Hora h = new Hora();
             h.Hor = h1.hora + h2.hora;
@@ -176,12 +176,12 @@ namespace Taimer {
             return h;
         }
 
-        //Convertir a minutos
+        // Convertir a minutos
         public int toMin() {
             return hora * 60 + min;
         }
 
-        //Convertir a string
+        // Convertir a string
         public string toString() {
             string hr = hora.ToString();
             string mn = min.ToString();
@@ -195,32 +195,32 @@ namespace Taimer {
         // Corrección de advertencias (GetHashCode() y Object.Equals(object))
         public override bool Equals(System.Object obj)
         {
-            // If parameter is null return false.
+            // Si el parámetro es nulo, devuelve false.
             if (obj == null)
             {
                 return false;
             }
 
-            // If parameter cannot be cast to Point return false.
+            // Si el parámetro no puede convertirse a Hora, devuelve falso.
             Hora p = obj as Hora;
             if ((System.Object)p == null)
             {
                 return false;
             }
 
-            // Return true if the fields match:
+            // Devuelve TRUE si los campos coinciden:
             return (Hor == p.Hor) && (Min == p.Min);
         }
 
         public bool Equals(Hora p)
         {
-            // If parameter is null return false:
+            // Si el parámetro es nulo, devuelve falso.
             if ((object)p == null)
             {
                 return false;
             }
 
-            // Return true if the fields match:
+            // Devuelve TRUE si los campos coinciden:
             return (Hor == p.Hor) && (Min == p.Min);
         }
 

@@ -43,6 +43,8 @@
             this.copiar = new System.Windows.Forms.Button();
             this.modificar = new System.Windows.Forms.Button();
             this.comboact = new System.Windows.Forms.ComboBox();
+            this.horasiguales = new System.Windows.Forms.Button();
+            this.minutosdiferencia = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // hini
@@ -81,7 +83,7 @@
             // 
             this.crear.Location = new System.Drawing.Point(172, 7);
             this.crear.Name = "crear";
-            this.crear.Size = new System.Drawing.Size(63, 44);
+            this.crear.Size = new System.Drawing.Size(63, 21);
             this.crear.TabIndex = 4;
             this.crear.Text = "Crear";
             this.crear.UseVisualStyleBackColor = true;
@@ -107,7 +109,7 @@
             // lista
             // 
             this.lista.FormattingEnabled = true;
-            this.lista.Location = new System.Drawing.Point(12, 62);
+            this.lista.Location = new System.Drawing.Point(12, 89);
             this.lista.Name = "lista";
             this.lista.Size = new System.Drawing.Size(369, 134);
             this.lista.TabIndex = 7;
@@ -191,11 +193,33 @@
             this.comboact.TabIndex = 14;
             this.comboact.Text = "A1";
             // 
+            // horasiguales
+            // 
+            this.horasiguales.Location = new System.Drawing.Point(172, 35);
+            this.horasiguales.Name = "horasiguales";
+            this.horasiguales.Size = new System.Drawing.Size(63, 21);
+            this.horasiguales.TabIndex = 15;
+            this.horasiguales.Text = "¿Iguales?";
+            this.horasiguales.UseVisualStyleBackColor = true;
+            this.horasiguales.Click += new System.EventHandler(this.horasiguales_Click);
+            // 
+            // minutosdiferencia
+            // 
+            this.minutosdiferencia.Location = new System.Drawing.Point(172, 62);
+            this.minutosdiferencia.Name = "minutosdiferencia";
+            this.minutosdiferencia.Size = new System.Drawing.Size(63, 21);
+            this.minutosdiferencia.TabIndex = 16;
+            this.minutosdiferencia.Text = "Mins. dif.";
+            this.minutosdiferencia.UseVisualStyleBackColor = true;
+            this.minutosdiferencia.Click += new System.EventHandler(this.minutosdiferencia_Click);
+            // 
             // TestEN
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(394, 208);
+            this.ClientSize = new System.Drawing.Size(394, 235);
+            this.Controls.Add(this.minutosdiferencia);
+            this.Controls.Add(this.horasiguales);
             this.Controls.Add(this.comboact);
             this.Controls.Add(this.modificar);
             this.Controls.Add(this.copiar);
@@ -237,5 +261,7 @@
         private System.Windows.Forms.Button copiar;
         private System.Windows.Forms.Button modificar;
         private System.Windows.Forms.ComboBox comboact;
+        private System.Windows.Forms.Button horasiguales;
+        private System.Windows.Forms.Button minutosdiferencia;
     }
 }
