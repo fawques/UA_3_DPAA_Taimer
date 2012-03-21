@@ -14,7 +14,7 @@ namespace TaimerGUI {
 
         bool closeSesion = false;
 
-        Taimer.User usuario;
+        public User usuario = null;
 
         public ClientBienvenida formWelcome;
         public ClientHorHome formHorHome;
@@ -25,6 +25,22 @@ namespace TaimerGUI {
         public ClientMatriculacionActiv formMatric;
         public ClientVerActividades formVerAct;
         public ClientCrearActiv formCrearAct;
+
+        /** CONSTRUCTOR **/
+        public ClientForm(User usr) {
+            InitializeComponent();
+            //TODO: Hay que hacer esto como se tenga que hacer
+            usuario = usr;
+            if (usuario != null) {
+                userTlSMnItem.Text = usuario.Nombre;
+            } else {
+                userTlSMnItem.Text = "ErrorUser";
+            }
+
+            //Redondeado de bordes
+            shape = RoundedRectangle.Create(0, 0, this.Width, this.Height, 10);
+            this.Region = new System.Drawing.Region(shape);
+        }
         
         private void ClientForm_Load(object sender, EventArgs e)
         {
@@ -130,7 +146,7 @@ namespace TaimerGUI {
                 auxlbl.Location = new Point(25, posY);
                 auxlbl.Cursor = Cursors.Hand;
                 auxlbl.MouseEnter += new EventHandler(label_MouseEnter);
-                auxlbl.Click += new EventHandler(verHorario_Click);
+                auxlbl.Click += new EventHandler(verActividad_Click);
                 auxlbl.MouseLeave += new EventHandler(label_MouseLeave);
                 posY += 25;
                 groupBoxUltActivi.Controls.Add(auxlbl);
@@ -257,25 +273,6 @@ namespace TaimerGUI {
             }
         }
         /*     ---------------     */
-
-
-        /** CONSTRUCTOR **/
-        public ClientForm(string usr)
-        {
-            InitializeComponent();
-            //TODO: Hay que hacer esto como se tenga que hacer
-            Titulacion t = new Titulacion("II", "001");
-            User usuario = new User(usr, "11111111P", usr+"@gmail.com", "*****", t, 3);
-            userTlSMnItem.Text = usuario.Nombre;
-
-            //Redondeado de bordes
-            shape = RoundedRectangle.Create(0, 0, this.Width, this.Height, 10);
-            this.Region = new System.Drawing.Region(shape);
-        }
-
-
-
-
        
 
         private void iconNotifClient_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -392,12 +389,18 @@ namespace TaimerGUI {
         private void verHorario_Click(object sender, EventArgs e)
         {
             hideAllChilds();
-            formHorDetails.setHorario(new Taimer.Horario("Horario", (new Taimer.User("", "", "", "", new Taimer.Titulacion("", ""), 1))));
+            formHorDetails.setHorario(null);//TODO
             formHorDetails.Show();
             formHorDetails.Focus();
+            positionAllChilds(); 
+        }
+
+        private void verActividad_Click(object sender, EventArgs e) {
+            hideAllChilds();
+            formVerAct.loadGrupBoxData(null);//TODO
+            formVerAct.Show();
+            formVerAct.Focus();
             positionAllChilds();
-            
-            
         }
 
         public void crearActividad_Click(object sender, EventArgs e)

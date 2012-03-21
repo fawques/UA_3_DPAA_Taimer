@@ -211,9 +211,9 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(48, 202);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(129, 13);
+            this.label5.Size = new System.Drawing.Size(135, 13);
             this.label5.TabIndex = 44;
-            this.label5.Text = "No se si abran mas datos.";
+            this.label5.Text = "No se si habran mas datos.";
             // 
             // btnCancelar
             // 

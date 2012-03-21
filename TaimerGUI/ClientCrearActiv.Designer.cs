@@ -55,6 +55,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.comboBoxDia = new System.Windows.Forms.ComboBox();
+            this.lblErrorNombre = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.gVHorasTemp)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nmUpDwnMinHasta)).BeginInit();
@@ -336,12 +337,25 @@
             this.comboBoxDia.Size = new System.Drawing.Size(121, 21);
             this.comboBoxDia.TabIndex = 0;
             // 
+            // lblErrorNombre
+            // 
+            this.lblErrorNombre.AutoSize = true;
+            this.lblErrorNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblErrorNombre.ForeColor = System.Drawing.Color.Red;
+            this.lblErrorNombre.Location = new System.Drawing.Point(221, 105);
+            this.lblErrorNombre.Name = "lblErrorNombre";
+            this.lblErrorNombre.Size = new System.Drawing.Size(92, 12);
+            this.lblErrorNombre.TabIndex = 58;
+            this.lblErrorNombre.Text = "No puede estar vacio";
+            this.lblErrorNombre.Visible = false;
+            // 
             // ClientCrearActiv
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Cornsilk;
             this.ClientSize = new System.Drawing.Size(795, 595);
+            this.Controls.Add(this.lblErrorNombre);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.bCancelar);
             this.Controls.Add(this.bttnCrearActiv);
@@ -398,5 +412,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn horaFin;
         private System.Windows.Forms.DataGridViewButtonColumn borrar;
         private System.Windows.Forms.Label lblErrorDate;
+        private System.Windows.Forms.Label lblErrorNombre;
     }
 }

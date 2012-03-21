@@ -47,24 +47,38 @@ namespace TaimerGUI
 
         private void bttnCrearActiv_Click(object sender, EventArgs e) {
             //TODO Crear la actividad
-            if (MessageBox.Show("¿Seguro que desea crearla?",
-            "¿Crear actividad?",
-            MessageBoxButtons.YesNo,
-            MessageBoxIcon.Question,
-            MessageBoxDefaultButton.Button2) == DialogResult.Yes) {
-                actividad = new Taimer.Actividad_p(tBNombre.Text, rTBDescripcion.Text, -1, "");
-                
-                foreach (DataGridViewRow filas in gVHorasTemp.Rows){
-                    Hora horI = new Hora(filas.Cells["horaInicio"].Value.ToString());
-                    Hora horF = new Hora(filas.Cells["horaFin"].Value.ToString());
-                    Profesor prof = new Profesor("001", "Iginio Mora", "11111111I", "tic");
-                    char d = comboBoxDia.Text[0];
-                    Turno turn = new Turno(horI, horF, 'D', "IB", "poli1");
-                    actividad.AddTurno(turn);
+            if (validarTodo()) {
+                if (MessageBox.Show("¿Seguro que desea crearla?",
+                "¿Crear actividad?",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question,
+                MessageBoxDefaultButton.Button2) == DialogResult.Yes) {
+                    actividad = new Taimer.Actividad_p(tBNombre.Text, rTBDescripcion.Text, -1, "");
+
+                    foreach (DataGridViewRow filas in gVHorasTemp.Rows) {
+                        Hora horI = new Hora(filas.Cells["horaInicio"].Value.ToString());
+                        Hora horF = new Hora(filas.Cells["horaFin"].Value.ToString());
+                        Profesor prof = new Profesor("001", "Iginio Mora", "11111111I", "tic");
+                        char d = comboBoxDia.Text[0];
+                        Turno turn = new Turno(horI, horF, 'D', "IB", "poli1");
+                        actividad.AddTurno(turn);
+                    }
+                    this.Hide();
                 }
-                this.Hide();
             }
             
+        }
+
+        private bool validarTodo() {
+            bool correcto = true;
+            if (tBNombre.Text == "") {
+                lblErrorNombre.Visible = true;
+                correcto = false;
+            } else {
+                lblErrorNombre.Visible = false;
+            }
+
+            return correcto;
         }
 
     }
