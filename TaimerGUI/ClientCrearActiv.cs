@@ -63,7 +63,11 @@ namespace TaimerGUI
                         Hora horF = new Hora(filas.Cells["horaFin"].Value.ToString());
                         string d = comboBoxDia.Text;
                         Turno turn = new Turno(horI, horF, convertToDais(d), filas.Cells["lugar"].Value.ToString());
-                        actividad.AddTurno(turn);
+                        try {
+                            actividad.AddTurno(turn);
+                        } catch (NotSupportedException exc) {
+                            MessageBox.Show(exc.Message);
+                        }
                     }
                     usrAux.AddActPersonal(actividad);
                     ((ClientForm)this.MdiParent).loadLastActividades();
