@@ -1,4 +1,6 @@
-﻿using System;
+﻿// ¿Puede haber dos o más DNI iguales?
+
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -146,16 +148,28 @@ namespace Taimer {
         }
 
 
+
+
+
         // Añadir actividad académica
         public void AddActAcademica(Actividad_a act) {
             actAcademicas.Add(act);
         }
 
-
         // Borrar actividad académica (si existe). Devuelve valor booleano.
-        public bool BorraActAcademica(Actividad_a act) {
+        public bool BorraActAcademicaBool(Actividad_a act) {
             return actAcademicas.Remove(act);
         }
+
+        // Borrar actividad académica (si existe). Lanza excepción.
+        public void BorraActAcademica(Actividad_a act)
+        {
+            if(!actAcademicas.Remove(act))
+                throw new MissingMemberException("No existe la actividad académica que se desea borrar.");
+        }
+
+
+
 
 
         // Añadir actividad personal
@@ -164,12 +178,21 @@ namespace Taimer {
             actPersonales.Add(act);
         }
 
-
         // Borrar actividad personal (si existe). Devuelve valor booleano.
-        public bool BorraActPersonal(Actividad_p act)
+        public bool BorraActPersonalBool(Actividad_p act)
         {
             return actPersonales.Remove(act);
         }
+
+        // Borrar actividad personal (si existe). Lanza excepción.
+        public void BorraActPersonal(Actividad_p act)
+        {
+            if(!actPersonales.Remove(act))
+                throw new MissingMemberException("No existe la actividad personal que se desea borrar.");
+        }
+
+
+
 
 
         // Cambiar/Obtener horarios
@@ -185,20 +208,39 @@ namespace Taimer {
         }
 
 
-        // Borrar horario
-        public bool BorraHorario(Horario hor)
+        // Borrar horario (booleano)
+        // TRUE si borra el horario, FALSE en caso contrario.
+        public bool BorraHorarioBool(Horario hor)
         {
             return horarios.Remove(hor);
         }
 
 
-        // Borrar horario (a partir de su identificador ID)
-        public bool BorrarHorario (int idbuscado) {
+        // Borrar horario (excepción)
+        public void BorraHorario(Horario hor)
+        {
+            if(!horarios.Remove(hor))
+                throw new MissingMemberException("No existe el horario que se desea borrar.");
+        }
+
+
+
+        // Borrar horario a partir de su identificador ID (booleano)
+        // TRUE si consigue borrarlo, FALSE en caso contrario
+        public bool BorraHorarioBool (int idbuscado) {
             foreach (Horario hor in horarios) {
                 if(hor.ID == idbuscado) 
                     return horarios.Remove(hor);
             }
             return false;
+        }
+
+
+        // Borrar horario a partir de su ID (excepción)
+        public void BorraHorario(int idbuscado)
+        {
+            if(!BorraHorarioBool(idbuscado))
+                throw new MissingMemberException("No existe el horario que se desea borrar.");
         }
 
         #endregion

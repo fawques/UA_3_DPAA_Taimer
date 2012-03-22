@@ -45,6 +45,11 @@
             this.comboact = new System.Windows.Forms.ComboBox();
             this.horasiguales = new System.Windows.Forms.Button();
             this.minutosdiferencia = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.chfin = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.nuevocod = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // hini
@@ -109,7 +114,7 @@
             // lista
             // 
             this.lista.FormattingEnabled = true;
-            this.lista.Location = new System.Drawing.Point(12, 89);
+            this.lista.Location = new System.Drawing.Point(11, 146);
             this.lista.Name = "lista";
             this.lista.Size = new System.Drawing.Size(369, 134);
             this.lista.TabIndex = 7;
@@ -213,11 +218,64 @@
             this.minutosdiferencia.UseVisualStyleBackColor = true;
             this.minutosdiferencia.Click += new System.EventHandler(this.minutosdiferencia_Click);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(249, 55);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(63, 21);
+            this.button1.TabIndex = 17;
+            this.button1.Text = "C.H. Ini";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(320, 55);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(60, 20);
+            this.button2.TabIndex = 18;
+            this.button2.Text = "EsPers";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // chfin
+            // 
+            this.chfin.Location = new System.Drawing.Point(249, 82);
+            this.chfin.Name = "chfin";
+            this.chfin.Size = new System.Drawing.Size(63, 21);
+            this.chfin.TabIndex = 19;
+            this.chfin.Text = "C. H. Fin";
+            this.chfin.UseVisualStyleBackColor = true;
+            this.chfin.Click += new System.EventHandler(this.chfin_Click);
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(249, 109);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(63, 21);
+            this.button3.TabIndex = 20;
+            this.button3.Text = "C. Cód:";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // nuevocod
+            // 
+            this.nuevocod.Location = new System.Drawing.Point(318, 110);
+            this.nuevocod.Name = "nuevocod";
+            this.nuevocod.Size = new System.Drawing.Size(32, 20);
+            this.nuevocod.TabIndex = 21;
+            this.nuevocod.Text = "1";
+            // 
             // TestEN
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(394, 235);
+            this.ClientSize = new System.Drawing.Size(394, 292);
+            this.Controls.Add(this.nuevocod);
+            this.Controls.Add(this.button3);
+            this.Controls.Add(this.chfin);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.minutosdiferencia);
             this.Controls.Add(this.horasiguales);
             this.Controls.Add(this.comboact);
@@ -263,5 +321,10 @@
         private System.Windows.Forms.ComboBox comboact;
         private System.Windows.Forms.Button horasiguales;
         private System.Windows.Forms.Button minutosdiferencia;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button chfin;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.TextBox nuevocod;
     }
 }

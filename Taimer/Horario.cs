@@ -156,7 +156,7 @@ namespace Taimer
         {
             foreach (Turno item in arrayTurnos[dia])
             {
-                item.SuperponeExcepcion(turno);
+                item.Superpone(turno);
             }
         }
 
@@ -183,7 +183,7 @@ namespace Taimer
         }
 
         // Dice cuál es la primera hora de un día de un horario
-        public Hora minHora(int dia)
+        public Hora minHoraDia(int dia)
         {
             if(dia > 6 || dia < 0)
                 throw new IndexOutOfRangeException("El día no existe (fuera de rango).");
@@ -202,7 +202,7 @@ namespace Taimer
         }
 
         // Dice cuál es la última hora de un día de un horario
-        public Hora maxHora(int dia)
+        public Hora maxHoraDia(int dia)
         {
             if (dia > 6 || dia < 0)
                 throw new IndexOutOfRangeException("El día no existe (fuera de rango).");
@@ -216,6 +216,30 @@ namespace Taimer
             {
                 if (item.HoraFin > maxima)
                     maxima = item.HoraFin;
+            }
+            return maxima;
+        }
+
+        // Dice cuál es la primera hora de un horario
+        public Hora minHora()
+        {
+            Hora minima = minHoraDia(0);
+            for (int i = 1; i < 7; i++)
+            {
+                if (minHoraDia(i) < minima)
+                    minima = minHoraDia(i);
+            }
+            return minima;
+        }
+
+        // Dice cuál es la primera hora de un horario
+        public Hora maxHora()
+        {
+            Hora maxima = maxHoraDia(0);
+            for (int i = 1; i < 7; i++)
+            {
+                if (maxHoraDia(i) > maxima)
+                    maxima = maxHoraDia(i);
             }
             return maxima;
         }
