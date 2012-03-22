@@ -57,8 +57,9 @@ namespace Taimer {
                         item.Superpone(turnonuevo);
                     }
 
-                    AsignarCodigo(turnonuevo);
                     turnonuevo.Actividad = this;
+                    AsignarCodigo(turnonuevo);
+                    
                     turnos.Insert(i, turnonuevo);
                     insertado = true;
                     break;
