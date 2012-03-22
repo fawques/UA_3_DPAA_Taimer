@@ -70,8 +70,9 @@ namespace Taimer {
                 if(turnos.Count > 0)
                     turnonuevo.Superpone(turnos[(turnos.Count - 1)]);
 
-                AsignarCodigo(turnonuevo);
                 turnonuevo.Actividad = this;
+                AsignarCodigo(turnonuevo);
+                
 
                 turnos.Add(turnonuevo);
             }
