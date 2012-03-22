@@ -39,12 +39,12 @@ namespace Taimer {
 
         // Cambiar día de la semana con string
         private void CambiarDiaSemana(string s) {
-            char d = s.ToString().ToUpper().ToCharArray()[0];
+            char d = s.ToUpper()[0];
             switch (d) {
                 case 'L': diasemana = dias.L; break;
                 case 'M':
-                    if (s.ToString().ToCharArray().Length >= 2) {
-                        if (s.ToString().ToUpper().ToCharArray()[1] == 'A')
+                    if (s.Length >= 2) { // de verdad esto comprueba que el día exista?
+                        if (s.ToUpper()[1] == 'A')
                             diasemana = dias.M;
                         else if(s.ToString().ToUpper().ToCharArray()[1] == 'I')
                             diasemana = dias.X;
@@ -86,8 +86,6 @@ namespace Taimer {
 
         // Constructor
         public Turno(/*int cod_,*/ Hora horaI_, Hora horaF_, dias dia_, string ubic_, Actividad act_) {
-            //codigo = cod_;    // Autogenerado (se debe incrementar el código de usuario después de esto)
-
 
             if (horaI_ < horaF_) {
                 horaInicio = horaI_;
@@ -100,6 +98,7 @@ namespace Taimer {
             diasemana = dia_;
             ubicacion = ubic_;
             actividad = act_;
+            actividad.AsignarCodigo(this);
         }
 
 
@@ -153,15 +152,13 @@ namespace Taimer {
 
         // Cambiar Hora Inicio con dos Integer
         public void HoraI(int hora, int min) {
-            Hora horaaux = new Hora(hora, min);
-            horaInicio = horaaux;
+            horaInicio = new Hora(hora, min);
         }
 
 
         // Cambiar Hora Fin con dos Integer
         public void HoraF(int hora, int min) {
-            Hora horaaux = new Hora(hora, min);
-            horaFin = horaaux;
+            horaFin = new Hora(hora, min);
         }
 
 
@@ -237,22 +234,6 @@ namespace Taimer {
             get { return ubicacion; }
         }
 
-
-        // Comprobar superposición de turnos
-        // Devuelve TRUE si se superponen los turnos, FALSE si no se solapan.
-        public bool SuperponeBool(Turno t) {
-            bool superpuesto = false;
-            try {
-                Superpone(t);
-            }
-            catch {
-                superpuesto = true;
-            }
-
-            return superpuesto;
-        }
-
-
         // Comprobar superposición y lanzar excepción si se superponen
         public void Superpone(Turno t)
         {
@@ -262,12 +243,29 @@ namespace Taimer {
                 if ((HoraFin > t.HoraInicio && HoraFin <= t.HoraFin) ||
                     (t.HoraFin > HoraInicio && t.HoraFin <= HoraFin) ||
                     (HoraInicio >= t.HoraInicio && HoraInicio < t.HoraFin) ||
-                    (t.HoraInicio >= HoraInicio && t.HoraInicio < HoraFin))
-                {
+                    (t.HoraInicio >= HoraInicio && t.HoraInicio < HoraFin)) {
                     throw new NotSupportedException("Turnos solapados.");
                 }
             }
         }
+
+        // Comprobar superposición de turnos
+        // Devuelve TRUE si se superponen los turnos, FALSE si no se solapan.
+        public bool SuperponeBool(Turno t)
+        {
+            bool superpuesto = false;
+            try
+            {
+                Superpone(t);
+            }
+            catch
+            {
+                superpuesto = true;
+            }
+
+            return superpuesto;
+        }
+
 
         #endregion
     }
