@@ -226,8 +226,14 @@ namespace Taimer
             Hora minima = minHoraDia(0);
             for (int i = 1; i < 7; i++)
             {
-                if (minHoraDia(i) < minima)
-                    minima = minHoraDia(i);
+                try
+                {
+                    if (minHoraDia(i) < minima)
+                        minima = minHoraDia(i);
+                }
+                catch (ArgumentNullException)
+                {}
+                
             }
             return minima;
         }
@@ -238,8 +244,14 @@ namespace Taimer
             Hora maxima = maxHoraDia(0);
             for (int i = 1; i < 7; i++)
             {
-                if (maxHoraDia(i) > maxima)
-                    maxima = maxHoraDia(i);
+                try
+                {
+                    if (maxHoraDia(i) > maxima)
+                        maxima = maxHoraDia(i);
+                }
+                catch (ArgumentNullException)
+                {}
+                
             }
             return maxima;
         }
