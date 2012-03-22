@@ -43,8 +43,8 @@ namespace Taimer
             {
                 try
                 {
-                    Hora minHora = horario.minHora(i);
-                    Hora maxHora = horario.maxHora(i);
+                    Hora minHora = horario.minHoraDia(i);
+                    Hora maxHora = horario.maxHoraDia(i);
 
 
                     // entre estas dos horas, hay que sumar a puntuacion las horas de hueco entre los turnos
