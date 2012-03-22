@@ -56,8 +56,8 @@ namespace TaimerGUI
 
         public void loadHorario() {
             if (horario != null) {
-                int minimo = 0;
-                int maximo = 23;
+                int minimo = horario.minHora().Hor;
+                int maximo = horario.maxHora().Hor;
                 int recorteArriba = (minimo) * 60;
                 initPanelHorario(minimo, maximo);
                 reducirPanelHorarios(minimo, maximo);
