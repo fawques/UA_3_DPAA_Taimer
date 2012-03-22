@@ -73,6 +73,7 @@ namespace TaimerGUI
 
                         b.Text = item.Actividad.Nombre + Environment.NewLine + item.Ubicacion;
                         b.Location = new Point(0, posi);
+                        b.Click += new EventHandler(asig_Click);
 
                         b.Tag = item;
                         b.Anchor = AnchorStyles.Left;
@@ -120,7 +121,13 @@ namespace TaimerGUI
         private void asig_Click(object sender, EventArgs e) {
             if (sender is Button) {
                 //En el tag del boton esta guardado el codigo de la asignatura
-                lblNombreAsig.Text = ((Button)sender).Tag.ToString();
+                Turno trn = (Turno)((Button)sender).Tag;
+                
+                if (trn != null) {
+                    
+                    lblNombreAsig.Text = trn.Actividad.Nombre;
+                    lblDescripAsig.Text = trn.Actividad.Descripcion;
+                }
             }
             
         }
@@ -142,7 +149,7 @@ namespace TaimerGUI
 
         }
 
-        protected override void WndProc(ref Message m)
+        /*protected override void WndProc(ref Message m)
             {
               const int WM_SYSCOMMAND = 0x0112;
               const int SC_MOVE = 0xF010;
@@ -156,7 +163,7 @@ namespace TaimerGUI
                   break;
                }
                base.WndProc(ref m);
-             }
+             }*/
             
 
     }
