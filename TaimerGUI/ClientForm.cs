@@ -66,7 +66,7 @@ namespace TaimerGUI {
             Actividad_p actP = new Actividad_p("P1", "Asignatura P1 que descripcion 1", 6, usertest);
             actP.AddTurno(t1);
 
-            Actividad_p actP2 = new Actividad_p("P2", "Otra cosa muy distinta a la uno", 6, usertest);
+            Actividad_p actP2 = new Actividad_p("P2", "Otra cosa muy distinta a la uno", 7, usertest);
             actP2.AddTurno(t4);
             actP2.AddTurno(t5);
             actP2.AddTurno(t6);
@@ -74,11 +74,11 @@ namespace TaimerGUI {
             usertest.AddActPersonal(actP);
             usertest.AddActPersonal(actP2);
 
-            Actividad_a actA = new Actividad_a("A1", "descripcion2", 7, "Un profesor");
+            Actividad_a actA = new Actividad_a("A1", "descripcion2", 8, "Un profesor");
             actA.AddTurno(t2);
             actA.AddTurno(t3);
 
-            Actividad_a actA2 = new Actividad_a("A2", "descripcion2", 7, "Otro profesor");
+            Actividad_a actA2 = new Actividad_a("A2", "descripcion2", 9, "Otro profesor");
             actA2.AddTurno(t7);
             //actA2.AddTurno(t8);
             actA2.AddTurno(t9);
@@ -116,9 +116,9 @@ namespace TaimerGUI {
             formWelcome = new ClientBienvenida(this);
             formHorHome = new ClientHorHome();
             formHorDetails = new ClientHorVer();
-            formCreateHor1 = new ClientCrearHor1();
-            formCreateHor2 = new ClientCrearHor2();
-            formMatric = new ClientMatriculacionActiv();
+            formCreateHor1 = new ClientCrearHor1(usuario);
+            formCreateHor2 = new ClientCrearHor2(usuario);
+            formMatric = new ClientMatriculacionActiv(usuario);
             formVerAct = new ClientVerActividades(usuario);
             formCrearAct = new ClientCrearActiv(usuario);
 
@@ -403,7 +403,7 @@ namespace TaimerGUI {
             System.Diagnostics.Process.Start("http://google.es/");
         }
 
-        private void verHorarios_Click(object sender, EventArgs e)
+        public void verHorarios_Click(object sender, EventArgs e)
         {
             hideAllChilds();
             formHorHome.Show();
@@ -422,6 +422,7 @@ namespace TaimerGUI {
         public void crearHorario_Click(object sender, EventArgs e)
         {
             hideAllChilds();
+            formCreateHor1.reiniciar();
             formCreateHor1.Show();
             formCreateHor1.Focus();
             positionAllChilds();

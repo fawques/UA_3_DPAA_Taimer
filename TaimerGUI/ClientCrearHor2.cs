@@ -11,9 +11,12 @@ using Taimer;
 namespace TaimerGUI {
     public partial class ClientCrearHor2 : Form {
         ClientCrearHor1 formBack = null;
+        User usrAux = null;
+        Horario hAux = null;
 
-        public ClientCrearHor2() {
+        public ClientCrearHor2(User usr) {
             InitializeComponent();
+            usrAux = usr;
         }
 
         public void setBackForm(ClientCrearHor1 form) {
@@ -59,6 +62,14 @@ namespace TaimerGUI {
                 horAux++;
                 pnlHoras.Controls.Add(lblHora);
             }
+            pnlHoras.Height = 1460;
+            pnlLunes.Height = 1460;
+            pnlMartes.Height = 1460;
+            pnlMiercoles.Height = 1460;
+            pnlJueves.Height = 1460;
+            pnlViernes.Height = 1460;
+            pnlSabado.Height = 1460;
+            pnlDomingo.Height = 1460;
         }
         //Para redimensionar los panales de los dias con minimos y maximos
         private void reducirPanelHorarios(int minHor, int maxHor) {
@@ -77,57 +88,62 @@ namespace TaimerGUI {
 
         }
 
-        private void loadHorario() {
-            /*List<Turno> turnos = new List<Turno>();
-
-            Hora horI = new Hora(10, 0);
-            Hora horF = new Hora(11, 0);
-            Turno turn = new Turno(horI, horF, 'L', "IB", "poli1");
-            turnos.Add(turn);
-
-            horI = new Hora(12, 0);
-            horF = new Hora(14, 0);
-            turn = new Turno(horI, horF, 'L', "DPAA", "A2 D23");
-            turnos.Add(turn);
-
-            horI = new Hora(14, 0);
-            horF = new Hora(15, 0);
-            turn = new Turno(horI, horF, 'L', "OTRA", "poli1");
-            turnos.Add(turn);
-
-            horI = new Hora(15, 30);
-            horF = new Hora(17, 0);
-            turn = new Turno(horI, horF, 'L', "OTRAMAS", "poli1");
-            turnos.Add(turn);
-
-            horI = new Hora(17, 0);
-            horF = new Hora(18, 0);
-            turn = new Turno(horI, horF, 'L', "EOI", "poli1");
-            turnos.Add(turn);
-
+        private void loadHorario(Horario hor) {
             //Pasar maximos y minimos de horas (solo horas, tampoco vamos a recortar al minuto)
             int minimo = 10;
-            int maximo = 18;
+            int maximo = 19;
             int recorteArriba = (minimo) * 60;
             initPanelHorario(minimo, maximo);
             reducirPanelHorarios(minimo, maximo);
 
-            foreach (Turno item in turnos) {
-                int posi = item.HoraInicio.Hor * 60 - recorteArriba;
-                int duracion = (item.HoraFin.Hor - item.HoraInicio.Hor) * 60;//TODO cambiar a la funcion que sabe restar horas
-                Button b = new Button();
-                b.Height = duracion;
-                b.Width = 90;
-                b.BackColor = Color.Khaki;
-                b.Text = item.Nombre + Environment.NewLine + item.Ubicacion;
-                b.Location = new Point(0, posi);
-                b.Tag = item.Codigo;
-                b.Anchor = AnchorStyles.Left;
-                b.FlatStyle = FlatStyle.Flat;
-                b.Cursor = Cursors.Hand;
-                pnlLunes.Controls.Add(b);
-            }*/
+            for (int i = 0; i < hor.ArrayTurnos.Length; i++) {
+                foreach (Turno item in hor.ArrayTurnos[i]) {
+                    int posi = item.HoraInicio.Hor * 60 - recorteArriba;
+                    int duracion = (item.HoraFin.Hor - item.HoraInicio.Hor) * 60;//TODO cambiar a la funcion que sabe restar horas
+                    Button b = new Button();
+                    b.Height = duracion;
+                    b.Width = 90;
+                    b.BackColor = Color.Khaki;
 
+                    b.Text = item.Actividad.Nombre + Environment.NewLine + item.Ubicacion;
+                    b.Location = new Point(0, posi);
+                    b.Tag = item;
+                    b.Anchor = AnchorStyles.Left;
+                    b.FlatStyle = FlatStyle.Flat;
+                    b.Cursor = Cursors.Hand;
+
+                    addActividad(b);
+                }
+            }
+
+        }
+        private void addActividad(Button b) {
+            if (b.Tag is Turno) {
+                Turno auxt = (Turno)b.Tag;
+                switch (auxt.Dia) {
+                    case dias.L:
+                        pnlLunes.Controls.Add(b);
+                        break;
+                    case dias.M:
+                        pnlMartes.Controls.Add(b);
+                        break;
+                    case dias.X:
+                        pnlMiercoles.Controls.Add(b);
+                        break;
+                    case dias.J:
+                        pnlJueves.Controls.Add(b);
+                        break;
+                    case dias.V:
+                        pnlViernes.Controls.Add(b);
+                        break;
+                    case dias.S:
+                        pnlSabado.Controls.Add(b);
+                        break;
+                    case dias.D:
+                        pnlDomingo.Controls.Add(b);
+                        break;
+                }
+            }
         }
 
         private void ClientCrearHor2_Load(object sender, EventArgs e) {
@@ -142,7 +158,10 @@ namespace TaimerGUI {
            MessageBoxDefaultButton.Button2) == DialogResult.Yes) {
                 //Algoritmos guay con una ventana de "Estmos en ello"
                (new ClientCreandoAlgoritmo()).ShowDialog();
-               loadHorario();
+               hAux = generarHorario();
+               if (hAux != null) {
+                   loadHorario(hAux);
+               }
                 
                btnCrear.Visible = false;
                btnGuardar.Visible = true;
@@ -150,9 +169,52 @@ namespace TaimerGUI {
            
         }
 
+        private Horario generarHorario() {
+
+            Algoritmo alg = new Algoritmo(formBack.getActividadesA(), formBack.getActividadesP());
+            Horario h = null;
+            try
+            {
+                h = alg.generarHorarioVoraz(formBack.getNameHorario());
+            }
+            catch (NotSupportedException exc)
+            {
+                MessageBox.Show(exc.Message);
+            }
+
+            return h;
+        
+        }
+
         private void btnGuardar_Click(object sender, EventArgs e) {
-            MessageBox.Show("Guardado con exito");
-            this.Hide();
+            if (hAux != null) {
+                try {
+                    usrAux.AddHorario(hAux);
+                } catch (NotSupportedException exc) {
+                    MessageBox.Show(exc.Message);
+                }
+                ((ClientForm)this.MdiParent).loadLastHorarios();
+                MessageBox.Show("Guardado con exito");
+            }
+            this.reiniciar();
+            formBack.reiniciar();
+            ((ClientForm)this.MdiParent).verHorarios_Click(null,null);
+        }
+
+        public void reiniciar() {
+            btnCrear.Visible = true;
+            btnGuardar.Visible = false;
+            initPanelHorario(0, 23);
+        }
+
+        public void clearAllHorarioAct() {
+            pnlLunes.Controls.Clear();
+            pnlMartes.Controls.Clear();
+            pnlMiercoles.Controls.Clear();
+            pnlJueves.Controls.Clear();
+            pnlViernes.Controls.Clear();
+            pnlSabado.Controls.Clear();
+            pnlDomingo.Controls.Clear();
         }
     }
 }

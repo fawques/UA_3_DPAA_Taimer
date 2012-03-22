@@ -43,13 +43,14 @@
             this.shapeContainer3 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
             this.lineShape1 = new Microsoft.VisualBasic.PowerPacks.LineShape();
             this.grpBoxDatosAct = new System.Windows.Forms.GroupBox();
+            this.codActividad = new System.Windows.Forms.Label();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.lblDescripcion = new System.Windows.Forms.Label();
             this.lblNombre = new System.Windows.Forms.Label();
             this.txtBoxNombre = new System.Windows.Forms.TextBox();
             this.txtBoxDescripcion = new System.Windows.Forms.RichTextBox();
-            this.codActividad = new System.Windows.Forms.Label();
+            this.btnGestTurn = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -192,6 +193,7 @@
             // 
             // grpBoxDatosAct
             // 
+            this.grpBoxDatosAct.Controls.Add(this.btnGestTurn);
             this.grpBoxDatosAct.Controls.Add(this.codActividad);
             this.grpBoxDatosAct.Controls.Add(this.btnCancelar);
             this.grpBoxDatosAct.Controls.Add(this.btnGuardar);
@@ -205,6 +207,15 @@
             this.grpBoxDatosAct.TabIndex = 34;
             this.grpBoxDatosAct.TabStop = false;
             this.grpBoxDatosAct.Text = "Datos";
+            // 
+            // codActividad
+            // 
+            this.codActividad.AutoSize = true;
+            this.codActividad.Location = new System.Drawing.Point(63, 252);
+            this.codActividad.Name = "codActividad";
+            this.codActividad.Size = new System.Drawing.Size(0, 13);
+            this.codActividad.TabIndex = 44;
+            this.codActividad.Visible = false;
             // 
             // btnCancelar
             // 
@@ -269,14 +280,16 @@
             this.txtBoxDescripcion.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBoxDescripcion_KeyPress);
             this.txtBoxDescripcion.Leave += new System.EventHandler(this.txtBoxDescripcion_Leave);
             // 
-            // codActividad
+            // btnGestTurn
             // 
-            this.codActividad.AutoSize = true;
-            this.codActividad.Location = new System.Drawing.Point(63, 252);
-            this.codActividad.Name = "codActividad";
-            this.codActividad.Size = new System.Drawing.Size(0, 13);
-            this.codActividad.TabIndex = 44;
-            this.codActividad.Visible = false;
+            this.btnGestTurn.Location = new System.Drawing.Point(197, 241);
+            this.btnGestTurn.Name = "btnGestTurn";
+            this.btnGestTurn.Size = new System.Drawing.Size(107, 34);
+            this.btnGestTurn.TabIndex = 45;
+            this.btnGestTurn.Text = "Gestionar turnos";
+            this.btnGestTurn.UseVisualStyleBackColor = true;
+            this.btnGestTurn.Visible = false;
+            this.btnGestTurn.Click += new System.EventHandler(this.btnGestTurn_Click);
             // 
             // ClientVerActividades
             // 
@@ -332,5 +345,6 @@
         private System.Windows.Forms.TextBox txtBoxNombre;
         private System.Windows.Forms.RichTextBox txtBoxDescripcion;
         private System.Windows.Forms.Label codActividad;
+        private System.Windows.Forms.Button btnGestTurn;
     }
 }

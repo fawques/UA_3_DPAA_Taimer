@@ -130,10 +130,12 @@ namespace TaimerGUI
         }
 
         private void lblNombre_Click(object sender, EventArgs e) {
-            txtBoxNombre.Text = lblNombre.Text;
-            lblNombre.Visible = false;
-            txtBoxNombre.Visible = true;
-            txtBoxNombre.Focus();
+            if (grpBoxDatosAct.Tag is Actividad_p) {
+                txtBoxNombre.Text = lblNombre.Text;
+                lblNombre.Visible = false;
+                txtBoxNombre.Visible = true;
+                txtBoxNombre.Focus();
+            }
         }
 
         private void txtBoxNombre_Leave(object sender, EventArgs e) {
@@ -150,12 +152,14 @@ namespace TaimerGUI
         }
 
         private void lblDescripcion_Click(object sender, EventArgs e) {
-            txtBoxDescripcion.Text = lblDescripcion.Text;
-            lblDescripcion.Visible = false;
-            txtBoxDescripcion.Visible = true;
-            txtBoxDescripcion.Focus();
-            txtBoxDescripcion.SelectionStart = 0;
-            txtBoxDescripcion.SelectionLength = txtBoxDescripcion.Text.Length;
+            if (grpBoxDatosAct.Tag is Actividad_p) {
+                txtBoxDescripcion.Text = lblDescripcion.Text;
+                lblDescripcion.Visible = false;
+                txtBoxDescripcion.Visible = true;
+                txtBoxDescripcion.Focus();
+                txtBoxDescripcion.SelectionStart = 0;
+                txtBoxDescripcion.SelectionLength = txtBoxDescripcion.Text.Length;
+            }
         }
 
         private void txtBoxDescripcion_Leave(object sender, EventArgs e) {
@@ -179,6 +183,11 @@ namespace TaimerGUI
                 grpBoxDatosAct.Tag = act;
                 btnCancelar.Enabled = false;
                 btnGuardar.Enabled = false;
+                if (act is Actividad_p) {
+                    btnGestTurn.Visible = true;
+                } else {
+                    btnGestTurn.Visible = false;
+                }
             }
         }
 
@@ -216,6 +225,10 @@ namespace TaimerGUI
             if (e.KeyChar == (char)Keys.Enter) {//si se presiona la tecla enter
                 txtBoxDescripcion_Leave(sender, e);
             }
+        }
+
+        private void btnGestTurn_Click(object sender, EventArgs e) {
+            MessageBox.Show("¿Que pongo aqui? ¿Otro MDI? ¿O una ventana fuera? ¿O muestro un algo?");
         }
 
         

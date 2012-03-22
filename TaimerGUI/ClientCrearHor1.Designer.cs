@@ -29,28 +29,27 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridMyAct = new System.Windows.Forms.DataGridView();
             this.lblNombre = new System.Windows.Forms.Label();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.dataGridActHor = new System.Windows.Forms.DataGridView();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnRight = new System.Windows.Forms.Button();
+            this.btnLeft = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtBoxFiltrMy = new System.Windows.Forms.TextBox();
             this.tBxNombre = new System.Windows.Forms.TextBox();
             this.lblErrorNombre = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            this.lblErrorActiv = new System.Windows.Forms.Label();
+            this.colCodigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colNombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colDescripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridMyAct)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridActHor)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -63,38 +62,21 @@
             this.label1.TabIndex = 12;
             this.label1.Text = "Crear horario";
             // 
-            // dataGridView1
+            // dataGridMyAct
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
-            this.Column2,
-            this.Column3});
-            this.dataGridView1.Location = new System.Drawing.Point(12, 183);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(347, 287);
-            this.dataGridView1.TabIndex = 13;
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Codigo";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "Nombre";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "Descipcion";
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
+            this.dataGridMyAct.AllowUserToAddRows = false;
+            this.dataGridMyAct.AllowUserToDeleteRows = false;
+            this.dataGridMyAct.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.dataGridMyAct.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridMyAct.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.colCodigo,
+            this.colNombre,
+            this.colDescripcion});
+            this.dataGridMyAct.Location = new System.Drawing.Point(12, 183);
+            this.dataGridMyAct.Name = "dataGridMyAct";
+            this.dataGridMyAct.ReadOnly = true;
+            this.dataGridMyAct.Size = new System.Drawing.Size(347, 287);
+            this.dataGridMyAct.TabIndex = 13;
             // 
             // lblNombre
             // 
@@ -107,20 +89,20 @@
             this.lblNombre.Visible = false;
             this.lblNombre.Click += new System.EventHandler(this.lblNombre_Click);
             // 
-            // dataGridView2
+            // dataGridActHor
             // 
-            this.dataGridView2.AllowUserToAddRows = false;
-            this.dataGridView2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridActHor.AllowUserToAddRows = false;
+            this.dataGridActHor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.dataGridActHor.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridActHor.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column4,
             this.Column5,
             this.Column6});
-            this.dataGridView2.Location = new System.Drawing.Point(429, 183);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.ReadOnly = true;
-            this.dataGridView2.Size = new System.Drawing.Size(343, 287);
-            this.dataGridView2.TabIndex = 15;
+            this.dataGridActHor.Location = new System.Drawing.Point(425, 183);
+            this.dataGridActHor.Name = "dataGridActHor";
+            this.dataGridActHor.ReadOnly = true;
+            this.dataGridActHor.Size = new System.Drawing.Size(347, 287);
+            this.dataGridActHor.TabIndex = 15;
             // 
             // Column4
             // 
@@ -140,28 +122,30 @@
             this.Column6.Name = "Column6";
             this.Column6.ReadOnly = true;
             // 
-            // button1
+            // btnRight
             // 
-            this.button1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.button1.BackgroundImage = global::TaimerGUI.Properties.Resources.flechaRight;
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.button1.Location = new System.Drawing.Point(376, 215);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(47, 42);
-            this.button1.TabIndex = 16;
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnRight.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btnRight.BackgroundImage = global::TaimerGUI.Properties.Resources.flechaRight;
+            this.btnRight.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnRight.Location = new System.Drawing.Point(369, 257);
+            this.btnRight.Name = "btnRight";
+            this.btnRight.Size = new System.Drawing.Size(47, 42);
+            this.btnRight.TabIndex = 16;
+            this.btnRight.UseVisualStyleBackColor = true;
+            this.btnRight.Click += new System.EventHandler(this.button1_Click);
             // 
-            // button2
+            // btnLeft
             // 
-            this.button2.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.button2.BackgroundImage = global::TaimerGUI.Properties.Resources.flechaLeft;
-            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.button2.Location = new System.Drawing.Point(376, 381);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(47, 43);
-            this.button2.TabIndex = 17;
-            this.button2.Text = "<=";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnLeft.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btnLeft.BackgroundImage = global::TaimerGUI.Properties.Resources.flechaLeft;
+            this.btnLeft.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnLeft.Location = new System.Drawing.Point(369, 356);
+            this.btnLeft.Name = "btnLeft";
+            this.btnLeft.Size = new System.Drawing.Size(47, 43);
+            this.btnLeft.TabIndex = 17;
+            this.btnLeft.Text = "<=";
+            this.btnLeft.UseVisualStyleBackColor = true;
+            this.btnLeft.Click += new System.EventHandler(this.btnLeft_Click);
             // 
             // label3
             // 
@@ -179,7 +163,7 @@
             this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(452, 135);
+            this.label4.Location = new System.Drawing.Point(446, 160);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(148, 13);
             this.label4.TabIndex = 19;
@@ -208,31 +192,14 @@
             this.label5.TabIndex = 22;
             this.label5.Text = "Filtro:";
             // 
-            // textBox1
+            // txtBoxFiltrMy
             // 
-            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.textBox1.Location = new System.Drawing.Point(87, 157);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(167, 20);
-            this.textBox1.TabIndex = 21;
-            // 
-            // label6
-            // 
-            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(452, 160);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(32, 13);
-            this.label6.TabIndex = 24;
-            this.label6.Text = "Filtro:";
-            // 
-            // textBox2
-            // 
-            this.textBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.textBox2.Location = new System.Drawing.Point(490, 157);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(167, 20);
-            this.textBox2.TabIndex = 23;
+            this.txtBoxFiltrMy.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.txtBoxFiltrMy.Location = new System.Drawing.Point(87, 157);
+            this.txtBoxFiltrMy.Name = "txtBoxFiltrMy";
+            this.txtBoxFiltrMy.Size = new System.Drawing.Size(167, 20);
+            this.txtBoxFiltrMy.TabIndex = 21;
+            this.txtBoxFiltrMy.TextChanged += new System.EventHandler(this.txtBoxFiltrMy_TextChanged);
             // 
             // tBxNombre
             // 
@@ -254,34 +221,70 @@
             this.lblErrorNombre.Text = "No puede estar vacio";
             this.lblErrorNombre.Visible = false;
             // 
+            // lblErrorActiv
+            // 
+            this.lblErrorActiv.AutoSize = true;
+            this.lblErrorActiv.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblErrorActiv.ForeColor = System.Drawing.Color.Red;
+            this.lblErrorActiv.Location = new System.Drawing.Point(680, 165);
+            this.lblErrorActiv.Name = "lblErrorActiv";
+            this.lblErrorActiv.Size = new System.Drawing.Size(92, 12);
+            this.lblErrorActiv.TabIndex = 27;
+            this.lblErrorActiv.Text = "No puede estar vacio";
+            this.lblErrorActiv.Visible = false;
+            // 
+            // colCodigo
+            // 
+            this.colCodigo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.colCodigo.HeaderText = "Codigo";
+            this.colCodigo.Name = "colCodigo";
+            this.colCodigo.ReadOnly = true;
+            this.colCodigo.Width = 65;
+            // 
+            // colNombre
+            // 
+            this.colNombre.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.colNombre.HeaderText = "Nombre";
+            this.colNombre.Name = "colNombre";
+            this.colNombre.ReadOnly = true;
+            this.colNombre.Width = 69;
+            // 
+            // colDescripcion
+            // 
+            this.colDescripcion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.colDescripcion.HeaderText = "Descipcion";
+            this.colDescripcion.Name = "colDescripcion";
+            this.colDescripcion.ReadOnly = true;
+            this.colDescripcion.Width = 85;
+            // 
             // ClientCrearHor1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Cornsilk;
             this.ClientSize = new System.Drawing.Size(784, 562);
+            this.Controls.Add(this.lblErrorActiv);
             this.Controls.Add(this.lblErrorNombre);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.textBox2);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtBoxFiltrMy);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.dataGridView2);
+            this.Controls.Add(this.btnLeft);
+            this.Controls.Add(this.btnRight);
+            this.Controls.Add(this.dataGridActHor);
             this.Controls.Add(this.lblNombre);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dataGridMyAct);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.tBxNombre);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "ClientCrearHor1";
             this.Text = "ClientCrearHor1";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Activated += new System.EventHandler(this.ClientCrearHor1_Activated);
             this.Load += new System.EventHandler(this.ClientCrearHor1_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridMyAct)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridActHor)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -290,25 +293,24 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dataGridMyAct;
         private System.Windows.Forms.Label lblNombre;
-        private System.Windows.Forms.DataGridView dataGridView2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.DataGridView dataGridActHor;
+        private System.Windows.Forms.Button btnRight;
+        private System.Windows.Forms.Button btnLeft;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.TextBox txtBoxFiltrMy;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
         private System.Windows.Forms.TextBox tBxNombre;
         private System.Windows.Forms.Label lblErrorNombre;
+        private System.Windows.Forms.Label lblErrorActiv;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colCodigo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colNombre;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colDescripcion;
     }
 }

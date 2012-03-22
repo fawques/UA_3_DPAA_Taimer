@@ -77,6 +77,7 @@
             this.btClose = new System.Windows.Forms.Button();
             this.btMinimize = new System.Windows.Forms.Button();
             this.menuTruco = new System.Windows.Forms.MenuStrip();
+            this.button5 = new System.Windows.Forms.Button();
             this.pnlMenu.SuspendLayout();
             this.pnlMenuActivi.SuspendLayout();
             this.pnlMenuHorarios.SuspendLayout();
@@ -183,6 +184,7 @@
             // 
             this.pnlMenuHorarios.AutoScroll = true;
             this.pnlMenuHorarios.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlMenuHorarios.Controls.Add(this.button5);
             this.pnlMenuHorarios.Controls.Add(this.groupBoxUltimosHorarios);
             this.pnlMenuHorarios.Controls.Add(this.button3);
             this.pnlMenuHorarios.Controls.Add(this.button1);
@@ -643,6 +645,16 @@
             this.menuTruco.Text = "menuStrip1";
             this.menuTruco.Visible = false;
             // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(94, 10);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(75, 23);
+            this.button5.TabIndex = 11;
+            this.button5.Text = "trampa";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.verHorario_Click);
+            // 
             // ClientForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -738,6 +750,7 @@
         private System.Windows.Forms.GroupBox groupBoxUltimosHorarios;
         private System.Windows.Forms.GroupBox groupBoxUltActivi;
         private System.Windows.Forms.MenuStrip menuTruco;
+        private System.Windows.Forms.Button button5;
 
 
     }

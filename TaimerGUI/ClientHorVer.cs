@@ -12,14 +12,14 @@ namespace TaimerGUI
 {
     public partial class ClientHorVer : Form
     {
-        Taimer.Horario horario;
+        Taimer.Horario horario = null;
         public ClientHorVer()
         {
             InitializeComponent();
             this.Dock = DockStyle.Fill;
         }
 
-        private void initPanelHorario(int minHor, int maxHor) {
+        public void initPanelHorario(int minHor, int maxHor) {
             
             Hora hora = new Hora(0, 0);
             int posY = 0;
@@ -34,72 +34,89 @@ namespace TaimerGUI
                 horAux++;
                 pnlHoras.Controls.Add(lblHora);
             }
+
+            pnlHoras.Height = 1460;
+            pnlLunes.Height = 1460;
+            pnlMartes.Height = 1460;
+            pnlMiercoles.Height = 1460;
+            pnlJueves.Height = 1460;
+            pnlViernes.Height = 1460;
+            pnlSabado.Height = 1460;
+            pnlDomingo.Height = 1460;
         }
 
         private void ClientHorVer_Load(object sender, EventArgs e) {
-            loadHorario();
+            
         }
 
         public void setHorario(Taimer.Horario hor) {
             horario = hor;
-
-            //TODO:Para pruebas
-           
+            loadHorario();
         }
 
-        private void loadHorario() {
-            List<Turno> turnos = new List<Turno>();
+        public void loadHorario() {
+            if (horario != null) {
+                int minimo = 0;
+                int maximo = 23;
+                int recorteArriba = (minimo) * 60;
+                initPanelHorario(minimo, maximo);
+                reducirPanelHorarios(minimo, maximo);
 
-            /*Hora horI = new Hora(10,0);
-            Hora horF = new Hora(11,0);
-            Turno turn = new Turno(horI, horF, 'L', "IB", "poli1");
-            turnos.Add(turn);
+                for (int i = 0; i < horario.ArrayTurnos.Length; i++) {
+                    foreach (Turno item in horario.ArrayTurnos[i]) {
+                        int posi = item.HoraInicio.Hor * 60 - recorteArriba;
+                        int duracion = (item.HoraFin.Hor - item.HoraInicio.Hor) * 60;//TODO cambiar a la funcion que sabe restar horas
+                        Button b = new Button();
+                        b.Height = duracion;
+                        b.Width = 90;
+                        b.BackColor = Color.Khaki;
 
-            horI = new Hora(12, 0);
-            horF = new Hora(14, 0);
-            turn = new Turno(horI, horF, 'L', "DPAA", "A2 D23");
-            turnos.Add(turn);
+                        b.Text = item.Actividad.Nombre + Environment.NewLine + item.Ubicacion;
+                        b.Location = new Point(0, posi);
 
-            horI = new Hora(14, 0);
-            horF = new Hora(15, 0);
-            turn = new Turno(horI, horF, 'L', "OTRA", "poli1");
-            turnos.Add(turn);
+                        b.Tag = item;
+                        b.Anchor = AnchorStyles.Left;
+                        b.FlatStyle = FlatStyle.Flat;
+                        b.Cursor = Cursors.Hand;
 
-            horI = new Hora(15, 30);
-            horF = new Hora(17, 0);
-            turn = new Turno(horI, horF, 'L', "OTRAMAS", "poli1");
-            turnos.Add(turn);
-
-            horI = new Hora(17, 0);
-            horF = new Hora(18, 0);
-            turn = new Turno(horI, horF, 'L', "EOI", "poli1");
-            turnos.Add(turn);
-
-            //Pasar maximos y minimos de horas (solo horas, tampoco vamos a recortar al minuto)
-            int minimo = 10;
-            int maximo = 18;
-            int recorteArriba = (minimo) * 60;
-            initPanelHorario(minimo, maximo);
-            reducirPanelHorarios(minimo, maximo);
-
-            foreach (Turno item in turnos) {
-                int posi = item.HoraInicio.Hor * 60 - recorteArriba;
-                int duracion = (item.HoraFin.Hor-item.HoraInicio.Hor)*60;//TODO cambiar a la funcion que sabe restar horas
-                Button b = new Button();
-                b.Height = duracion;
-                b.Width = 90;
-                b.BackColor = Color.Khaki;
-                b.Text = item.Nombre+Environment.NewLine+item.Ubicacion;
-                b.Location = new Point(0, posi);
-                b.Click += new EventHandler(asig_Click);
-                b.Tag = item.Codigo;
-                b.Anchor = AnchorStyles.Left;
-                b.FlatStyle = FlatStyle.Flat;
-                b.Cursor = Cursors.Hand;
-                pnlLunes.Controls.Add(b);
-            }*/
+                        addActividad(b);
+                    }
+                }
+            } else {
+                MessageBox.Show("No hay horario que cargar");
+            }
             
         }
+
+        private void addActividad(Button b) {
+            if (b.Tag is Turno) {
+                Turno auxt = (Turno)b.Tag;
+                switch (auxt.Dia) {
+                    case dias.L:
+                        pnlLunes.Controls.Add(b);
+                        break;
+                    case dias.M:
+                        pnlMartes.Controls.Add(b);
+                        break;
+                    case dias.X:
+                        pnlMiercoles.Controls.Add(b);
+                        break;
+                    case dias.J:
+                        pnlJueves.Controls.Add(b);
+                        break;
+                    case dias.V:
+                        pnlViernes.Controls.Add(b);
+                        break;
+                    case dias.S:
+                        pnlSabado.Controls.Add(b);
+                        break;
+                    case dias.D:
+                        pnlDomingo.Controls.Add(b);
+                        break;
+                }
+            }
+        }
+
         private void asig_Click(object sender, EventArgs e) {
             if (sender is Button) {
                 //En el tag del boton esta guardado el codigo de la asignatura
