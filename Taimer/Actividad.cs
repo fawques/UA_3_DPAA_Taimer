@@ -74,8 +74,7 @@ namespace Taimer {
 
 
         // Cambiar/obtener lista de turnos
-        public List<Turno> Turnos
-        {
+        public List<Turno> Turnos {
             set { turnos = value; }
             get { return turnos; }
         }
@@ -83,16 +82,14 @@ namespace Taimer {
 
         // Borrar turno (booleano)
         // Devuelve TRUE si consigue borrar el turno, FALSE en caso contrario
-        public bool BorraTurnoBool(Turno turno)
-        {
+        public bool BorraTurnoBool(Turno turno) {
             return Turnos.Remove(turno);
         }
 
 
         // Borrar turno (excepción)
         // Lanza una excepción si no consigue borrar el turno
-        public void BorraTurno(Turno turno)
-        {
+        public void BorraTurno(Turno turno) {
             bool borrado = Turnos.Remove(turno);
 
             if (!borrado)
@@ -101,10 +98,8 @@ namespace Taimer {
 
         // Borrar turno (a partir de su código, si se encuentra) (boolean)
         // Devuelve TRUE si consigue borrar el turno, FALSE en caso contrario
-        public bool BorraTurnoBool(int codigobuscado)
-        {
-            foreach (Turno t in turnos)
-            {
+        public bool BorraTurnoBool(int codigobuscado) {
+            foreach (Turno t in turnos) {
                 if (t.Codigo == codigobuscado)
                     return Turnos.Remove(t);
             }
@@ -114,14 +109,11 @@ namespace Taimer {
 
         // Borrar turno (a partir de su código, si se encuentra) (excepción)
         // Lanza una excepción si no consigue borrar el turno
-        public void BorraTurno(int codigobuscado)
-        {
+        public void BorraTurno(int codigobuscado) {
             bool borrado = false;
 
-            foreach (Turno t in turnos)
-            {
-                if (t.Codigo == codigobuscado)
-                {
+            foreach (Turno t in turnos) {
+                if (t.Codigo == codigobuscado) {
                     borrado = Turnos.Remove(t);
                     break;
                 }
@@ -133,8 +125,7 @@ namespace Taimer {
 
 
         // Codificar turno (asignarle el código correspondiente)
-        public void AsignarCodigo(Turno t)
-        {
+        public void AsignarCodigo(Turno t) {
             t.Codigo = codigoturno;
             codigoturno++;
         }

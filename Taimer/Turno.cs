@@ -16,11 +16,53 @@ namespace Taimer {
         private int codigo;
         private Hora horaInicio;
         private Hora horaFin;
-        dias diasemana;
+        private dias diasemana;
         private string ubicacion;
         private Actividad actividad;        // Un turno pertenece a (1,1) actividades
 
         public static int proximoId; // guarda el siguiente turno (mantener de momento, hasta que haya un autoincremento)
+
+        //Obtener dia de la semana
+        private string ObtDiaString() {
+            string dia = "";
+            switch (diasemana) {
+                case dias.L: dia = "Lunes"; break;
+                case dias.M: dia = "Martes"; break;
+                case dias.X: dia = "Miércoles"; break;
+                case dias.J: dia = "Jueves"; break;
+                case dias.V: dia = "Viernes"; break;
+                case dias.S: dia = "Sábado"; break;
+                case dias.D: dia = "Domingo"; break;
+            }
+            return dia;
+        }
+
+        // Cambiar día de la semana con string
+        private void CambiarDiaSemana(string s) {
+            char d = s.ToString().ToUpper().ToCharArray()[0];
+            switch (d) {
+                case 'L': diasemana = dias.L; break;
+                case 'M':
+                    if (s.ToString().ToCharArray().Length >= 2) {
+                        if (s.ToString().ToUpper().ToCharArray()[1] == 'A')
+                            diasemana = dias.M;
+                        else if(s.ToString().ToUpper().ToCharArray()[1] == 'I')
+                            diasemana = dias.X;
+                        else
+                            throw new Exception("Día de la semana inexistente.");
+                    }
+                    else
+                        throw new Exception("Día de la semana inexistente.");
+                break;
+                case 'J': diasemana = dias.J; break;
+                case 'V': diasemana = dias.V; break;
+                case 'S': diasemana = dias.S; break;
+                case 'D': diasemana = dias.D; break;
+                default:
+                    throw new Exception("Día de la semana inexistente.");
+            }
+        }
+
         #endregion
 
         #region PARTE PÚBLICA
@@ -43,8 +85,8 @@ namespace Taimer {
 
 
         // Constructor
-        public Turno(int cod_, Hora horaI_, Hora horaF_, dias dia_, string ubic_, Actividad act_) {
-            codigo = cod_;    // Autogenerado (se debe incrementar el código de usuario después de esto)
+        public Turno(/*int cod_,*/ Hora horaI_, Hora horaF_, dias dia_, string ubic_, Actividad act_) {
+            //codigo = cod_;    // Autogenerado (se debe incrementar el código de usuario después de esto)
 
 
             if (horaI_ < horaF_) {
@@ -74,12 +116,11 @@ namespace Taimer {
 
         // Comparar si dos turnos son iguales (exceptuando su código y asignatura).
         // He preferido no usar el operador igualdad, dado que no son 100% iguales.
-        public bool TurnoSimilar(Turno t)
-        {
+        public bool TurnoSimilar(Turno t) {
             if (horaInicio == t.horaInicio)
                 if (horaFin == t.horaFin)
                     if (diasemana == t.diasemana)
-                        if (ubicacion == t.ubicacion)
+                        if (ubicacion == t.ubicacion) ///es importante la ubicación para considerarlos similares???
                             return true;
 
             return false;
@@ -87,8 +128,7 @@ namespace Taimer {
 
 
         // Cambiar/obtener actividad
-        public Actividad Actividad
-        {
+        public Actividad Actividad {
             set { actividad = value; }
             get { return actividad; }
         }
@@ -96,10 +136,10 @@ namespace Taimer {
 
         // Cambiar/obtener código
         // Lanza excepción si el código ya existe
+        //NO RECOMENDADO USAR EL SET (codigo autogenerado)
         public int Codigo {
             set {
-                    foreach (Turno existente in actividad.Turnos)
-                    {
+                    foreach (Turno existente in actividad.Turnos) {
                         if (existente.Codigo == value)
                             throw new ArgumentException("El código ya existe.");
                     }
@@ -127,21 +167,16 @@ namespace Taimer {
 
         // Obtener/Cambiar Hora de inicio
         public Hora HoraInicio {
-            set
-            {
-                if (value <= HoraFin)
-                {
+            set {
+                if (value < HoraFin) {
                     if (actividad.EsAcademica())
                         horaInicio = value;
-                    else
-                    {
+                    else {
                         Turno test = new Turno(this);
                         test.horaInicio = value;
 
-                        foreach (Turno existente in actividad.Turnos)
-                        {
-                            if (existente.Codigo != this.Codigo)
-                            {
+                        foreach (Turno existente in actividad.Turnos) {
+                            if (existente.Codigo != this.Codigo) {
                                 test.Superpone(existente);
                             }
                         }
@@ -159,19 +194,15 @@ namespace Taimer {
         // Obtener/Cambiar Hora de Fin
         public Hora HoraFin {
             set { 
-                    if(value >= HoraInicio)
-                    {
+                    if(value > HoraInicio) {
                         if (actividad.EsAcademica())
                             horaFin = value;
-                        else
-                        {
+                        else {
                             Turno test = new Turno(this);
                             test.horaFin = value;
 
-                            foreach (Turno existente in actividad.Turnos)
-                            {
-                                if (existente.Codigo != this.Codigo)
-                                {
+                            foreach (Turno existente in actividad.Turnos) {
+                                if (existente.Codigo != this.Codigo) {
                                     test.Superpone(existente);
                                 }
                             }
@@ -193,37 +224,11 @@ namespace Taimer {
             set { diasemana = value; }
         }
 
-
-        // Cambiar día de la semana con string
-        public void CambiarDiaSemana(string s)
-        {
-            char d = s.ToString().ToUpper().ToCharArray()[0];
-            switch (d) {
-                    case 'L':
-                        diasemana = dias.L;
-                        break;
-                    case 'M':
-                        diasemana = dias.M;
-                        break;
-                    case 'X':
-                        diasemana = dias.X;
-                        break;
-                    case 'J':
-                        diasemana = dias.J;
-                        break;
-                    case 'V':
-                        diasemana = dias.V;
-                        break;
-                    case 'S':
-                        diasemana = dias.S;
-                        break;
-                    case 'D':
-                        diasemana = dias.D;
-                        break;
-                    default:
-                        throw new Exception("Día de la semana inexistente.");
-                }
-            }
+        //Obtener/Cambiar dia de la semna mediante un string
+        public string DiaString {
+            get { return ObtDiaString(); }
+            set { CambiarDiaSemana(value); }
+        }
 
 
         // Cambiar/Obtener ubicacion
@@ -235,21 +240,16 @@ namespace Taimer {
 
         // Comprobar superposición de turnos
         // Devuelve TRUE si se superponen los turnos, FALSE si no se solapan.
-        public bool SuperponeBool(Turno t)
-        {
-            // Si se superponen...
-            if (Dia.Equals(t.Dia))
-            {
-                if ((HoraFin > t.HoraInicio && HoraFin <= t.HoraFin) ||
-                    (t.HoraFin > HoraInicio && t.HoraFin <= HoraFin) ||
-                    (HoraInicio >= t.HoraInicio && HoraInicio < t.HoraFin) ||
-                    (t.HoraInicio >= HoraInicio && t.HoraInicio < HoraFin))
-                {
-                    return true;
-                }
+        public bool SuperponeBool(Turno t) {
+            bool superpuesto = false;
+            try {
+                Superpone(t);
+            }
+            catch {
+                superpuesto = true;
             }
 
-            return false;
+            return superpuesto;
         }
 
 
