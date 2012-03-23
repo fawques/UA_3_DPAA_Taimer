@@ -46,12 +46,13 @@ namespace Taimer {
         public User(string nom_, string dni_, string email_, string pass_, int curso_, string tit_, List<Actividad_a> acta_, List<Actividad_p> actp_, List<Horario> hor_){
             codActP = actp_.Count;
             codHorarios = hor_.Count;
-
+            /* -- Al meterle las listas, sobre todo si vienen de los CAD, ya tienen su código puesto
             for (int i = 0; i < actp_.Count; i++)
                 actp_[i].Codigo = i;
 
             for (int i = 0; i < hor_.Count; i++)
                 hor_[i].ID = i;
+            */
 
             codHorarios = 0;
             nombre = nom_;
