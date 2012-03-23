@@ -89,7 +89,7 @@ namespace TaimerGUI {
                 throw new MissingMemberException("El usuario no existe");
         }
 
-
+        
         //Añade un algoritmo
         public static void AddAlgoritmo(Algoritmo a) {
             algoritmos.Add(a);
