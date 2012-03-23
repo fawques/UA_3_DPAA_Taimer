@@ -41,12 +41,25 @@ namespace TaimerGUI {
         }
 
         //Borrar una asignatura
-        public static bool BorrarAsignatura(int codigo) {
+        public static bool BorrarAsignaturaBool(int codigo) {
             foreach(Actividad_a a in asignaturas){
                 if (a.Codigo == codigo)
                     return asignaturas.Remove(a);
             }
             return false;
+        }
+
+        //Borrar una asignatura
+        public static void BorrarAsignatura(int codigo)
+        {
+            bool borrado = false;
+            foreach (Actividad_a a in asignaturas)
+            {
+                if (a.Codigo == codigo)
+                    borrado = asignaturas.Remove(a);
+            }
+            if(!borrado)
+                throw new MissingMemberException("La actividad no existe");
         }
 
         //Añade un usuario
@@ -55,13 +68,27 @@ namespace TaimerGUI {
         }
 
         //Borrar un usuario
-        public static bool BorrarAsignatura(string dni) {
+        public static bool BorrarUsuarioBool(string dni) {
             foreach (User u in usuarios) {
                 if (u.DNI == dni)
                     return usuarios.Remove(u);
             }
             return false;
         }
+
+        //Borrar un usuario
+        public static void BorrarUsuario(string dni)
+        {
+            bool borrado = false;
+            foreach (User u in usuarios)
+            {
+                if (u.DNI == dni)
+                    borrado = usuarios.Remove(u);
+            }
+            if(!borrado)
+                throw new MissingMemberException("El usuario no existe");
+        }
+
 
         //Añade un algoritmo
         public static void AddAlgoritmo(Algoritmo a) {
