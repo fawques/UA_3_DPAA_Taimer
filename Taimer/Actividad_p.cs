@@ -45,7 +45,7 @@ namespace Taimer {
 
 
         // Añadir turno a una actividad personal (SÍ se comprueba solapamiento)
-        public void AddTurno(Turno turnonuevo)
+       /* public void AddTurno(Turno turnonuevo)
         {
             bool insertado = false;
             
@@ -76,14 +76,36 @@ namespace Taimer {
 
                 turnos.Add(turnonuevo);
             }
+        }*/
+
+        public void AddTurno(Turno turnonuevo) {
+            bool insertado = false;
+
+            turnonuevo.Actividad = this;
+            AsignarCodigo(turnonuevo);
+
+            for (int i = 0; i < turnos.Count; i++) {
+                turnonuevo.Superpone(turnos[i]); //compruebo si se solapan los turnos
+                if (turnos[i].HoraInicio > turnonuevo.HoraInicio) {
+                    turnos.Insert(i, turnonuevo);
+                    insertado = true;
+                    break;
+                }
+            }
+
+            if (!insertado)
+                turnos.Add(turnonuevo);
         }
 
-
-
-
-         
-
-
+        // Cambiar/obtener lista de turnos
+        new public List<Turno> Turnos {
+            set {
+                foreach (Turno t in value) {
+                    AddTurno(t); //Para que los meta con codigo correcto y ordenados
+                }
+            }
+            get { return turnos; }
+        }
 
         #endregion
     }

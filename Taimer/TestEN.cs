@@ -31,7 +31,7 @@ namespace Taimer
                 Hora horaini = new Hora(int.Parse(hini.Text), int.Parse(mini.Text));
                 Hora horafin = new Hora(int.Parse(hfin.Text), int.Parse(mfin.Text));
 
-                Turno turno = new Turno(horaini, horafin, dias.L, "???", activ1);
+                Turno turno = new Turno(1, horaini, horafin, dias.L, "???", activ1);
 
                 if (diacombo.Text == "M")
                     turno.DiaString = "Martes";

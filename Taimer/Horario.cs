@@ -15,11 +15,38 @@ namespace Taimer
         private string nombre;
         private List<Turno>[] arrayTurnos = new List<Turno>[7];     // Un horario tiene (0,N) turnos
         private User usuario;                             // Un horario es creado por (1,1) usuarios
+
+        //Inserta un turno Ordenado en un determinado dia
+        private void insertarOrdenado(Turno item, int dia) {
+            int i = 0;
+            bool insertado = false;
+
+            for (i = 0; i < arrayTurnos[dia].Count; i++) {
+                if (arrayTurnos[dia][i].HoraInicio > item.HoraInicio) {
+                    arrayTurnos[dia].Insert(i, item);
+                    insertado = true;
+                    break;
+                }
+            }
+
+            if (!insertado)
+                arrayTurnos[dia].Add(item);
+
+        }
+
+        //Comprueba si un turno se solapa dado un dia
+        private void CheckSolapamiento(Turno turno, int dia) {
+            foreach (Turno item in arrayTurnos[dia]) {
+                item.Superpone(turno);
+            }
+        }
+
         #endregion
 
         #region PARTE PÚBLICA
 
         // Constructor
+        //Uso practicamente exclusivo de los CADs
         public Horario(int id_, string nom_, User usu_)
         {
             id = id_;
@@ -32,62 +59,55 @@ namespace Taimer
             }
         }
 
-        public Horario(string nom_, User usu_)
-        {
+        //Constructor
+        public Horario(string nom_, User usu_) {
             id = 0;
             nombre = nom_;
             usuario = usu_;
 
-            for (int i = 0; i < 7; i++)
-            {
+            for (int i = 0; i < 7; i++) {
                 arrayTurnos[i] = new List<Turno>();
             }
         }
 
         // Constructor de copia
-        public Horario(Horario h)
-        {
+        public Horario(Horario h) {
             id = h.id;
             nombre = h.nombre;
             usuario = h.usuario;
 
-            for (int i = 0; i < 7; i++)
-            {
+            for (int i = 0; i < 7; i++) {
                 arrayTurnos[i] = new List<Turno>(h.ArrayTurnos[i]);
             }
         }
 
         // Ajustar/obtener nombre
-        public string Nombre
-        {
+        public string Nombre {
             get { return nombre; }
             set { nombre = value; }
         }
 
 
         // Ajustar/obtener id
-        public int ID
-        {
+        public int ID {
             get { return id; }
             set { id = value; }
         }
 
 
         // Ajustar/obtener usuario
-        public User Usuario
-        {
+        public User Usuario {
             get { return usuario; }
             set { usuario = value; }
         }
 
-        public int Count
-        {
-            get
-            {
+
+        // Devuelve en número de turno que tiene el horario
+        public int Count {
+            get {
                 int cantidad = 0;
 
-                for (int i = 0; i < 7; i++)
-                {
+                for (int i = 0; i < 7; i++) {
                     cantidad += arrayTurnos[i].Count;
                 }
 
@@ -131,34 +151,7 @@ namespace Taimer
                     break;
             }
         }
-
-        private void insertarOrdenado(Turno item, int dia)
-        {
-            int i = 0;
-            bool insertado = false;
-
-            for (i = 0; i < arrayTurnos[dia].Count; i++)
-            {
-                if (arrayTurnos[dia][i].HoraInicio > item.HoraInicio)
-                {
-                    arrayTurnos[dia].Insert(i, item);
-                    insertado = true;
-                    break;
-                }
-            }
-
-            if (!insertado)
-                arrayTurnos[dia].Add(item);
-
-        }
-
-        public void CheckSolapamiento(Turno turno, int dia)
-        {
-            foreach (Turno item in arrayTurnos[dia])
-            {
-                item.Superpone(turno);
-            }
-        }
+        
 
         // Cambiar/Obtener turnos
         public List<Turno>[] ArrayTurnos

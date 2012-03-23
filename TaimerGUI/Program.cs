@@ -11,6 +11,7 @@ namespace TaimerGUI {
         
         private static List<Actividad_a> asignaturas;
         private static List<User> usuarios;
+        private static List<Algoritmo> algoritmos;
 
         #endregion
 
@@ -27,6 +28,54 @@ namespace TaimerGUI {
             set { usuarios = value; }
             get { return usuarios; }
         }
+
+        //Añade/Modifica los algoritmos
+        public static List<Algoritmo> Algoritmos {
+            set { algoritmos = value; }
+            get { return algoritmos; }
+        }
+
+        //Añade una asignatura
+        public static void AddAsignatura(Actividad_a a) {
+            asignaturas.Add(a);
+        }
+
+        //Borrar una asignatura
+        public static bool BorrarAsignatura(int codigo) {
+            foreach(Actividad_a a in asignaturas){
+                if (a.Codigo == codigo)
+                    return asignaturas.Remove(a);
+            }
+            return false;
+        }
+
+        //Añade un usuario
+        public static void AddUsuario(User u) {
+            usuarios.Add(u);
+        }
+
+        //Borrar un usuario
+        public static bool BorrarAsignatura(string dni) {
+            foreach (User u in usuarios) {
+                if (u.DNI == dni)
+                    return usuarios.Remove(u);
+            }
+            return false;
+        }
+
+        //Añade un algoritmo
+        public static void AddAlgoritmo(Algoritmo a) {
+            algoritmos.Add(a);
+        }
+
+        //Borrar un algoritmo                                   NO HAY NADA QUE LOS IDENTIFIQUE
+        /*public static bool BorrarAsignatura(int codigo) { 
+            foreach (Algoritmo a in algoritmos) {
+                if (a.Codigo == codigo)
+                    return algoritmos.Remove(a);
+            }
+            return false;
+        }*/
 
         public static LoginForm loginForm;
 
