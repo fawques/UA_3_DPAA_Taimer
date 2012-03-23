@@ -20,7 +20,7 @@ namespace Taimer {
         private string ubicacion;
         private Actividad actividad;        // Un turno pertenece a (1,1) actividades
 
-        public static int proximoId; // guarda el siguiente turno (mantener de momento, hasta que haya un autoincremento)
+        //public static int proximoId; // guarda el siguiente turno (mantener de momento, hasta que haya un autoincremento)
 
         //Obtener dia de la semana
         private string ObtDiaString() {
@@ -70,8 +70,8 @@ namespace Taimer {
 
         // Constructor SIN ACTIVIDAD NI CÓDIGO
         public Turno(Hora horaI_, Hora horaF_, dias dia_, string ubic_) {
-            codigo = proximoId; //HAY QUE AUTOGENERALO!!!
-            proximoId++;
+            /*codigo = proximoId; //HAY QUE AUTOGENERALO!!!
+            proximoId++;*/
             if (horaI_ < horaF_) {
                 horaInicio = horaI_;
                 horaFin = horaF_;
@@ -85,7 +85,9 @@ namespace Taimer {
 
 
         // Constructor
-        public Turno(/*int cod_,*/ Hora horaI_, Hora horaF_, dias dia_, string ubic_, Actividad act_) {
+        //Uso practicamente exclusivo de los CADs
+        public Turno(int cod_, Hora horaI_, Hora horaF_, dias dia_, string ubic_, Actividad act_) {
+            codigo = cod_;
 
             if (horaI_ < horaF_) {
                 horaInicio = horaI_;

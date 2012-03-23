@@ -72,17 +72,14 @@ namespace Taimer {
 
 
         // Añadir turno a una actividad académica (no se comprueba solapamiento)
-        public void AddTurno(Turno turnonuevo)
-        {
+        public void AddTurno(Turno turnonuevo) {
             bool insertado = false;
 
             turnonuevo.Actividad = this;
             AsignarCodigo(turnonuevo);
 
-            for (int i = 0; i < turnos.Count; i++)
-            {
-                if (turnos[i].HoraInicio > turnonuevo.HoraInicio)
-                {
+            for (int i = 0; i < turnos.Count; i++) {
+                if (turnos[i].HoraInicio > turnonuevo.HoraInicio) {
                     turnos.Insert(i, turnonuevo);
                     insertado = true;
                     break;
@@ -92,7 +89,6 @@ namespace Taimer {
             if (!insertado)
                 turnos.Add(turnonuevo);
         }
-
 
         #endregion
     }

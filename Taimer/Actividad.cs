@@ -75,7 +75,12 @@ namespace Taimer {
 
         // Cambiar/obtener lista de turnos
         public List<Turno> Turnos {
-            set { turnos = value; }
+            set {
+                foreach (Turno t in value) {
+                    AsignarCodigo(t);
+                    turnos.Add(t);
+                }
+            }
             get { return turnos; }
         }
 

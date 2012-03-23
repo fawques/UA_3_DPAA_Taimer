@@ -42,6 +42,7 @@ namespace Taimer {
 
 
         // Constructor avanzado (con listas)
+        //Uso practicamente exclusivo de los CADs
         public User(string nom_, string dni_, string email_, string pass_, int curso_, string tit_, List<Actividad_a> acta_, List<Actividad_p> actp_, List<Horario> hor_){
             codActP = actp_.Count;
             codHorarios = hor_.Count;
@@ -193,32 +194,37 @@ namespace Taimer {
 
 
 
-
-
-        // Cambiar/Obtener horarios
-        public List<Horario> Horarios {
-            set { horarios = value; }
-            get { return horarios; }
+        public void AsignarCodigo(Horario h) {
+            h.ID = codHorarios;
+            codHorarios++;
         }
-
 
         // Añadir horario
         public void AddHorario(Horario horario) {
+            AsignarCodigo(horario);
             horarios.Add(horario);
+        }
+
+        // Cambiar/Obtener horarios
+        public List<Horario> Horarios {
+            set {
+                foreach (Horario h in horarios) {
+                    AddHorario(h);
+                }
+            }
+            get { return horarios; }
         }
 
 
         // Borrar horario (booleano)
         // TRUE si borra el horario, FALSE en caso contrario.
-        public bool BorraHorarioBool(Horario hor)
-        {
+        public bool BorraHorarioBool(Horario hor) {
             return horarios.Remove(hor);
         }
 
 
         // Borrar horario (excepción)
-        public void BorraHorario(Horario hor)
-        {
+        public void BorraHorario(Horario hor) {
             if(!horarios.Remove(hor))
                 throw new MissingMemberException("No existe el horario que se desea borrar.");
         }
