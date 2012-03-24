@@ -171,12 +171,11 @@ namespace Taimer {
         }
 
 
-
-
-
         // Añadir actividad personal
-        public void AddActPersonal(Actividad_p act)
-        {
+        public void AddActPersonal(Actividad_p act) {
+            string cod = codActP.ToString() + "P";
+            codActP++;
+            act.Codigo = cod;
             actPersonales.Add(act);
         }
 

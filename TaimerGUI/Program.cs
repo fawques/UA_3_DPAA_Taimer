@@ -12,36 +12,51 @@ namespace TaimerGUI {
         private static List<Actividad_a> asignaturas;
         private static List<User> usuarios;
         private static List<Algoritmo> algoritmos;
+        private static int codAsignaturas = 0;
+
+        private static void Init() { 
+            //Aqui hay que rellenar todos los atributos privados de esta clase desde el cad
+            //Esta función se llama en el main.
+        }
 
         #endregion
 
         #region PARTE PUBLICA
 
-        //Añade/Modifica la lista de asignaturas
+        //Obtiene/Modifica la lista de asignaturas
         public static List<Actividad_a> Asignaturas {
             set { asignaturas = value; }
             get { return asignaturas; }
         }
 
-        //Añade/Modifica los usuarios
+        //Obtiene/Modifica los usuarios
         public static List<User> Usuarios {
             set { usuarios = value; }
             get { return usuarios; }
         }
 
-        //Añade/Modifica los algoritmos
+        //Obtiene/Modifica los algoritmos
         public static List<Algoritmo> Algoritmos {
             set { algoritmos = value; }
             get { return algoritmos; }
         }
 
+        //Obtiene/Cambia el último codigo de la asignatura
+        public static int CodigoAsig {
+            set { codAsignaturas = value; }
+            get { return codAsignaturas; }
+        }
+
         //Añade una asignatura
         public static void AddAsignatura(Actividad_a a) {
+            string cod = codAsignaturas.ToString() + "A";
+            codAsignaturas++;
+            a.Codigo = cod;
             asignaturas.Add(a);
         }
 
         //Borrar una asignatura
-        public static bool BorrarAsignaturaBool(int codigo) {
+        public static bool BorrarAsignaturaBool(string codigo) {
             foreach(Actividad_a a in asignaturas){
                 if (a.Codigo == codigo)
                     return asignaturas.Remove(a);
@@ -50,7 +65,7 @@ namespace TaimerGUI {
         }
 
         //Borrar una asignatura
-        public static void BorrarAsignatura(int codigo)
+        public static void BorrarAsignatura(string codigo)
         {
             bool borrado = false;
             foreach (Actividad_a a in asignaturas)
@@ -59,7 +74,7 @@ namespace TaimerGUI {
                     borrado = asignaturas.Remove(a);
             }
             if(!borrado)
-                throw new MissingMemberException("La actividad no existe");
+                throw new MissingMemberException("La asignatura no existe");
         }
 
         //Añade un usuario
@@ -89,20 +104,32 @@ namespace TaimerGUI {
                 throw new MissingMemberException("El usuario no existe");
         }
 
-        
+
         //Añade un algoritmo
         public static void AddAlgoritmo(Algoritmo a) {
             algoritmos.Add(a);
         }
 
-        //Borrar un algoritmo                                   NO HAY NADA QUE LOS IDENTIFIQUE
-        /*public static bool BorrarAsignatura(int codigo) { 
-            foreach (Algoritmo a in algoritmos) {
-                if (a.Codigo == codigo)
-                    return algoritmos.Remove(a);
+
+        //Devuelve una actividad ya sea academica o personal a partir de código
+        //CAMBIAR CUANDO SE INTEGREN LOS CADs SERÁ MÁS RÁPIDO
+        public static Actividad getActividad(string codigo) {
+
+            foreach (Actividad_a aa in asignaturas) {
+                if (aa.Codigo == codigo)
+                    return aa;
             }
-            return false;
-        }*/
+
+            foreach (User u in Usuarios) {
+                List<Actividad_p> act = u.ActPersonales;
+                foreach (Actividad ap in act) {
+                    if (ap.Codigo == codigo)
+                        return ap;
+                }
+            }
+
+            throw new ArgumentException("No existe una activida con ese código");
+        }
 
         public static LoginForm loginForm;
 
@@ -111,7 +138,9 @@ namespace TaimerGUI {
         /// </summary>
         [STAThread]
         static void Main() {
-            
+
+            Init();
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 

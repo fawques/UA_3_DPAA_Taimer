@@ -8,18 +8,24 @@ namespace Taimer {
 
         #region PARTE PROTECTED
 
-        protected int codigo;                                     // Clave principal
+        protected string codigo;                                     // Clave principal
         protected string nombre;
         protected string descripcion;
         protected List<Turno> turnos = new List<Turno>();
         protected int codigoturno;
+
+        // Codificar turno (asignarle el código correspondiente)
+        protected void AsignarCodigo(Turno t) {
+            t.Codigo = codigoturno;
+            codigoturno++;
+        }
 
         #endregion
 
         #region PARTE PÚBLICA
 
         // Constructor
-        public Actividad(string nom_, string desc_, int cod_) {
+        public Actividad(string nom_, string desc_, string cod_) {
             nombre = nom_;
             descripcion = desc_;
             codigo = cod_;
@@ -28,7 +34,7 @@ namespace Taimer {
 
 
         // Constructor
-        public Actividad(string nom_, string desc_, int cod_, List<Turno> turnos_)
+        public Actividad(string nom_, string desc_, string cod_, List<Turno> turnos_)
         {
             nombre = nom_;
             descripcion = desc_;
@@ -62,7 +68,7 @@ namespace Taimer {
 
 
         // Cambiar/obtener código
-        public int Codigo {
+        public string Codigo {
             get { return codigo; }
             set { codigo = value; }
         }
@@ -126,13 +132,6 @@ namespace Taimer {
 
             if (!borrado)
                 throw new MissingMemberException("No existe el turno que se desea borrar.");
-        }
-
-
-        // Codificar turno (asignarle el código correspondiente)
-        public void AsignarCodigo(Turno t) {
-            t.Codigo = codigoturno;
-            codigoturno++;
         }
 
 

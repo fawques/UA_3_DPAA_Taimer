@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Collections;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace Taimer {
     public enum dias { L, M, X, J, V, S, D };
@@ -38,7 +39,7 @@ namespace Taimer {
         }
 
         // Cambiar día de la semana con string
-        private void CambiarDiaSemana(string s) {
+        /*private void CambiarDiaSemana(string s) {
             char d = s.ToUpper()[0];
             switch (d) {
                 case 'L': diasemana = dias.L; break;
@@ -61,6 +62,51 @@ namespace Taimer {
                 default:
                     throw new Exception("Día de la semana inexistente.");
             }
+        }*/
+
+        private void NormalizarCadena(ref string s) {
+            Regex a = new Regex("[á|à|ä|â]", RegexOptions.Compiled);
+            Regex e = new Regex("[é|è|ë|ê]", RegexOptions.Compiled);
+            Regex i = new Regex("[í|ì|ï|î]", RegexOptions.Compiled);
+            Regex o = new Regex("[ó|ò|ö|ô]", RegexOptions.Compiled);
+            Regex u = new Regex("[ú|ù|ü|û]", RegexOptions.Compiled);
+            s = a.Replace(s, "a");
+            s = e.Replace(s, "e");
+            s = i.Replace(s, "i");
+            s = o.Replace(s, "o");
+            s = u.Replace(s, "u");
+
+            s.ToUpper();
+        }
+
+        private void CambiarDiaSemana(string s) {
+            NormalizarCadena(ref s);
+            if (s.Length == 1) {  //Formato de un carácter
+                switch (s) {
+                    case "L": diasemana = dias.L; break;
+                    case "M": diasemana = dias.M; break;
+                    case "X": diasemana = dias.X; break;
+                    case "J": diasemana = dias.J; break;
+                    case "V": diasemana = dias.V; break;
+                    case "S": diasemana = dias.S; break;
+                    case "D": diasemana = dias.D; break;
+                    default:
+                        throw new Exception("Día de la semana inexistente.");
+                }
+            }
+            else { //Día completo
+                switch (s) {
+                    case "LUNES": diasemana = dias.L; break;
+                    case "MARTES": diasemana = dias.M; break;
+                    case "MIERCOLES": diasemana = dias.X; break;
+                    case "JUEVES": diasemana = dias.J; break;
+                    case "VIERNES": diasemana = dias.V; break;
+                    case "SABADO": diasemana = dias.S; break;
+                    case "DOMINGO": diasemana = dias.D; break;
+                    default:
+                        throw new Exception("Día de la semana inexistente.");
+                }
+            }
         }
 
         #endregion
@@ -72,6 +118,7 @@ namespace Taimer {
         public Turno(Hora horaI_, Hora horaF_, dias dia_, string ubic_) {
             /*codigo = proximoId; //HAY QUE AUTOGENERALO!!!
             proximoId++;*/
+            codigo = 0;
             if (horaI_ < horaF_) {
                 horaInicio = horaI_;
                 horaFin = horaF_;
@@ -81,12 +128,35 @@ namespace Taimer {
 
             diasemana = dia_;
             ubicacion = ubic_;
+            actividad = null;
         }
 
+        // Constructor
+        //Crea un turno y lo vincula a una Actividad
+        public Turno(Hora horaI_, Hora horaF_, dias dia_, string ubic_, Actividad act_) {
+
+            if (horaI_ < horaF_) {
+                horaInicio = horaI_;
+                horaFin = horaF_;
+            }
+            else
+                throw new Exception("La hora de inicio es la misma o más tarde que la hora de finalización");
+
+            diasemana = dia_;
+            ubicacion = ubic_;
+            actividad = act_;
+
+            if (actividad.EsAcademica())
+                ((Actividad_a)actividad).AddTurno(this);
+            else 
+                ((Actividad_p)actividad).AddTurno(this);
+        }
 
         // Constructor
-        //Uso practicamente exclusivo de los CADs
+        //Uso exclusivo de los CADs
+        //Se le ponen todos los datos
         public Turno(int cod_, Hora horaI_, Hora horaF_, dias dia_, string ubic_, Actividad act_) {
+            
             codigo = cod_;
 
             if (horaI_ < horaF_) {
@@ -96,11 +166,9 @@ namespace Taimer {
             else
                 throw new Exception("La hora de inicio es la misma o más tarde que la hora de finalización");
 
-
             diasemana = dia_;
             ubicacion = ubic_;
             actividad = act_;
-            actividad.AsignarCodigo(this);
         }
 
 
@@ -154,15 +222,24 @@ namespace Taimer {
 
         // Cambiar Hora Inicio con dos Integer
         public void HoraI(int hora, int min) {
-            horaInicio = new Hora(hora, min);
+            HoraInicio = new Hora(hora, min);
         }
 
 
         // Cambiar Hora Fin con dos Integer
         public void HoraF(int hora, int min) {
-            horaFin = new Hora(hora, min);
+            HoraFin = new Hora(hora, min);
         }
 
+        // Cambiar Hora Inicio con un string
+        public void HoraI(string horaI) {
+            HoraInicio = new Hora(horaI);
+        }
+
+        // Cambiar Hora Fin con un string
+        public void HoraF(string horaF) {
+            HoraFin = new Hora(horaF);
+        }
 
         // Obtener/Cambiar Hora de inicio
         public Hora HoraInicio {
@@ -174,9 +251,11 @@ namespace Taimer {
                         Turno test = new Turno(this);
                         test.horaInicio = value;
 
-                        foreach (Turno existente in actividad.Turnos) {
-                            if (existente.Codigo != this.Codigo) {
-                                test.Superpone(existente);
+                        if (actividad != null) {
+                            foreach (Turno existente in actividad.Turnos) {
+                                if (existente.Codigo != this.Codigo) {
+                                    test.Superpone(existente);
+                                }
                             }
                         }
 
@@ -200,9 +279,11 @@ namespace Taimer {
                             Turno test = new Turno(this);
                             test.horaFin = value;
 
-                            foreach (Turno existente in actividad.Turnos) {
-                                if (existente.Codigo != this.Codigo) {
-                                    test.Superpone(existente);
+                            if (actividad != null) {
+                                foreach (Turno existente in actividad.Turnos) {
+                                    if (existente.Codigo != this.Codigo) {
+                                        test.Superpone(existente);
+                                    }
                                 }
                             }
 
@@ -214,6 +295,49 @@ namespace Taimer {
                 }
 
             get { return horaFin; }
+        }
+
+        //Cambiar Hora de inicio y de Fin 
+        //Se le pasa dos objetos hora
+        public void CambiarHoras(Hora inicio, Hora fin) {
+            if (actividad.EsAcademica()) {
+                horaInicio = inicio;
+                horaFin = fin;
+            }
+            else {
+                Turno test = new Turno(this);
+                test.horaInicio = inicio;
+                test.horaFin = fin;
+
+                if (actividad != null) {
+                    foreach (Turno existente in actividad.Turnos) {
+                        if (existente.Codigo != this.Codigo) {
+                            test.Superpone(existente);
+                        }
+                    }
+                }
+
+                horaInicio = inicio;
+                horaFin = fin;
+            }
+        }
+
+        //Cambiar Hora de inicio y de Fin
+        //Se le pasa las horas como enteros
+        public void CambiarHoras(int horaI, int minI, int horaF, int minF) {
+            Hora inicio = new Hora(horaI, minI);
+            Hora fin = new Hora(horaF, minF);
+
+            CambiarHoras(inicio, fin);
+        }
+
+        //Cambiar Hora de inicio y de Fin
+        //Se le pasas las horas como strings
+        public void CambiarHoras(string inicio, string fin) {
+            Hora i = new Hora(inicio);
+            Hora f = new Hora(fin);
+
+            CambiarHoras(i, f);
         }
 
 

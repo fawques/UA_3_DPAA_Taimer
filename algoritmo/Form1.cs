@@ -33,20 +33,20 @@ namespace algoritmo
             Turno t8 = new Turno(new Hora(11, 30), new Hora(14, 30), dias.V, "L04");
             Turno t9 = new Turno(new Hora(0, 30), new Hora(1, 30), dias.L, "L04");
 
-            Actividad_p actP = new Actividad_p("P1", "descripcion", 6, usertest);
+            Actividad_p actP = new Actividad_p("P1", "descripcion", "6", usertest);
             actP.AddTurno(t1);
 
-            Actividad_p actP2 = new Actividad_p("P2", "descripcion", 6, usertest);
+            Actividad_p actP2 = new Actividad_p("P2", "descripcion", "6", usertest);
             actP2.AddTurno(t4);
             actP2.AddTurno(t5);
             actP2.AddTurno(t6);
 
-            Actividad_a actA = new Actividad_a("A1", "descripcion2", 7, "Un profesor");
+            Actividad_a actA = new Actividad_a("A1", "descripcion2", "7", "Un profesor");
             
             actA.AddTurno(t2);
             actA.AddTurno(t3);
 
-            Actividad_a actA2 = new Actividad_a("A2", "descripcion2", 7, "Otro profesor");
+            Actividad_a actA2 = new Actividad_a("A2", "descripcion2", "7", "Otro profesor");
             actA2.AddTurno(t7);
             //actA2.AddTurno(t8);
             actA2.AddTurno(t9);

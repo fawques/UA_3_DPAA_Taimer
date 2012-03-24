@@ -17,14 +17,14 @@ namespace Taimer {
         #region PARTE PUBLICA
 
         // Constructor básico (sin lista de turnos)
-        public Actividad_p(string nom_, string desc_, int cod_, User usu_)
+        public Actividad_p(string nom_, string desc_, string cod_, User usu_)
             : base(nom_, desc_, cod_) {
                 usuario = usu_;
         }
 
 
         // Constructor avanzado (con lista de turnos)
-        public Actividad_p(string nom_, string desc_, int cod_, string responsable_, List<Turno> turnos_, User usu_)
+        public Actividad_p(string nom_, string desc_, string cod_, string responsable_, List<Turno> turnos_, User usu_)
             : base(nom_, desc_, cod_, turnos_) {
 
             usuario = usu_;
