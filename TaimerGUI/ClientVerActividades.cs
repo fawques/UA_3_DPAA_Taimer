@@ -25,6 +25,8 @@ namespace TaimerGUI
                 int posY = 10;
                 foreach(Actividad_p obj in usrAux.ActPersonales){
                     Label auxlbl = new Label();
+                    auxlbl.AutoSize = false;
+                    auxlbl.Width = 275;
                     auxlbl.Text = obj.Nombre;
                     auxlbl.Tag = obj;
                     auxlbl.Location = new Point(25, posY);
@@ -43,6 +45,8 @@ namespace TaimerGUI
                 int posY = 10;
                 foreach(Actividad_a obj in usrAux.ActAcademicas){
                     Label auxlbl = new Label();
+                    auxlbl.AutoSize = false;
+                    auxlbl.Width = 275;
                     auxlbl.Text = obj.Nombre;
                     auxlbl.Tag = obj;
                     auxlbl.Location = new Point(25, posY);
@@ -62,6 +66,8 @@ namespace TaimerGUI
                 foreach (Actividad_p obj in usrAux.ActPersonales) {
                     if (obj.Nombre.ToLower().Contains(nom)) {
                         Label auxlbl = new Label();
+                        auxlbl.AutoSize = false;
+                        auxlbl.Width = 275;
                         auxlbl.Text = obj.Nombre;
                         auxlbl.Tag = obj;
                         auxlbl.Location = new Point(25, posY);
@@ -82,6 +88,8 @@ namespace TaimerGUI
                 foreach (Actividad_a obj in usrAux.ActAcademicas) {
                     if (obj.Nombre.ToLower().Contains(nom)) {
                         Label auxlbl = new Label();
+                        auxlbl.AutoSize = false;
+                        auxlbl.Width = 275;
                         auxlbl.Text = obj.Nombre;
                         auxlbl.Tag = obj;
                         auxlbl.Location = new Point(25, posY);

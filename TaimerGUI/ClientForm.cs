@@ -441,8 +441,10 @@ namespace TaimerGUI {
         public void verHorario_Click(object sender, EventArgs e)
         {
             if (sender is Label) {
-                Horario hor = (Horario)((Label)sender).Tag;
-                formHorDetails.setHorario(hor);
+                if (((Label)sender).Tag is Horario) {
+                    Horario hor = (Horario)((Label)sender).Tag;
+                    formHorDetails.setHorario(hor);
+                }
             }
             formHorDetails.Show();
             formHorDetails.Focus();
@@ -450,12 +452,15 @@ namespace TaimerGUI {
 
 
         public void verActividad_Click(object sender, EventArgs e) {
+            Actividad_p act = null;
             if (sender is Label) {
-                Actividad_p act = (Actividad_p)((Label)sender).Tag;
-                formVerAct.loadGrupBoxData(act);
+                if (((Label)sender).Tag is Actividad_p) {
+                    act = (Actividad_p)((Label)sender).Tag;
+                }
             }
             formVerAct.Show();
             formVerAct.Focus();
+            formVerAct.loadGrupBoxData(act);
         }
 
         public void crearActividad_Click(object sender, EventArgs e)
