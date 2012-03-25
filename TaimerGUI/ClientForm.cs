@@ -35,9 +35,6 @@ namespace TaimerGUI {
                 usuario = generateUserDebug();
             }
 
-            loadLastHorarios();
-            loadLastActividades();
-
             //Redondeado de bordes
             shape = RoundedRectangle.Create(0, 0, this.Width, this.Height, 10);
             this.Region = new System.Drawing.Region(shape);
@@ -113,7 +110,7 @@ namespace TaimerGUI {
                 }
             }
           
-            formWelcome = new ClientBienvenida(this);
+            formWelcome = new ClientBienvenida(this,usuario);
             formHorHome = new ClientHorHome();
             formHorDetails = new ClientHorVer();
             formCreateHor1 = new ClientCrearHor1(usuario);
@@ -151,6 +148,10 @@ namespace TaimerGUI {
             formWelcome.Focus();
             //////////////// --- //////////////////////////
 
+
+            loadLastHorarios();
+            loadLastActividades();
+
             beingDragged = false;
             beingResized = false;
 
@@ -179,6 +180,7 @@ namespace TaimerGUI {
                     posY += 25;
                     groupBoxUltimosHorarios.Controls.Add(auxlbl);
                 }
+                formWelcome.loadLastHorarios();
             }
         }
 
@@ -201,6 +203,7 @@ namespace TaimerGUI {
                     posY += 25;
                     groupBoxUltActivi.Controls.Add(auxlbl);
                 }
+                formWelcome.loadLastActividades();
             }
         }
 
@@ -533,11 +536,11 @@ namespace TaimerGUI {
             btClose.Image = TaimerGUI.Properties.Resources.tbCloseOn;
         }
 
-        private void label_MouseEnter(object sender, EventArgs e)
+        public void label_MouseEnter(object sender, EventArgs e)
         {
             ((Label)sender).BackColor = Color.White;
         }
-        private void label_MouseLeave(object sender, EventArgs e)
+        public void label_MouseLeave(object sender, EventArgs e)
         {
             ((Label)sender).BackColor = Color.Transparent;
         }
