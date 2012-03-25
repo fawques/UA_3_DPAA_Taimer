@@ -90,8 +90,8 @@ namespace TaimerGUI {
 
         private void loadHorario(Horario hor) {
             //Pasar maximos y minimos de horas (solo horas, tampoco vamos a recortar al minuto)
-            int minimo = 10;
-            int maximo = 19;
+            int minimo = hor.minHora().Hor;
+            int maximo = hor.maxHora().Hor;
             int recorteArriba = (minimo) * 60;
             initPanelHorario(minimo, maximo);
             reducirPanelHorarios(minimo, maximo);

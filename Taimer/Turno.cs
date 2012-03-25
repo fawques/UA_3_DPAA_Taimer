@@ -9,6 +9,44 @@ using System.Text;
 namespace Taimer {
     public enum dias { L, M, X, J, V, S, D };
 
+    //Clase que he creado para funciones de este estilo que vienen muy bien y no se muy bien donde ponerlas
+    public static class TaimerLibrary {
+        public static string convertToString(dias d) {
+            string dia = "";
+            switch (d) {
+                case dias.L: dia = "Lunes"; break;
+                case dias.M: dia = "Martes"; break;
+                case dias.X: dia = "Miércoles"; break;
+                case dias.J: dia = "Jueves"; break;
+                case dias.V: dia = "Viernes"; break;
+                case dias.S: dia = "Sábado"; break;
+                case dias.D: dia = "Domingo"; break;
+            }
+            return dia;
+        }
+        public static dias convertToDais(string d) {
+
+            switch (d) {
+                case "Lunes":
+                    return dias.L;
+                case "Martes":
+                    return dias.M;
+                case "Miercoles":
+                    return dias.X;
+                case "Jueves":
+                    return dias.J;
+                case "Viernes":
+                    return dias.V;
+                case "Sabado":
+                    return dias.S;
+                case "Domingo":
+                    return dias.D;
+                default:
+                    return dias.L;
+            }
+        }
+    }
+
     public class Turno {
 
         #region PARTE PRIVADA

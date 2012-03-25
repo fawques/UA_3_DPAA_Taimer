@@ -43,6 +43,7 @@
             this.shapeContainer3 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
             this.lineShape1 = new Microsoft.VisualBasic.PowerPacks.LineShape();
             this.grpBoxDatosAct = new System.Windows.Forms.GroupBox();
+            this.btnGestTurn = new System.Windows.Forms.Button();
             this.codActividad = new System.Windows.Forms.Label();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnGuardar = new System.Windows.Forms.Button();
@@ -50,11 +51,17 @@
             this.lblNombre = new System.Windows.Forms.Label();
             this.txtBoxNombre = new System.Windows.Forms.TextBox();
             this.txtBoxDescripcion = new System.Windows.Forms.RichTextBox();
-            this.btnGestTurn = new System.Windows.Forms.Button();
+            this.btnBorrar = new System.Windows.Forms.Button();
+            this.dgTurns = new System.Windows.Forms.DataGridView();
+            this.Dia = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Inicio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Fin = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ubicacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
             this.grpBoxDatosAct.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgTurns)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -70,7 +77,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(98, 125);
+            this.label2.Location = new System.Drawing.Point(47, 88);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(32, 13);
             this.label2.TabIndex = 23;
@@ -78,7 +85,7 @@
             // 
             // txtBoxFiltro
             // 
-            this.txtBoxFiltro.Location = new System.Drawing.Point(136, 122);
+            this.txtBoxFiltro.Location = new System.Drawing.Point(85, 85);
             this.txtBoxFiltro.Name = "txtBoxFiltro";
             this.txtBoxFiltro.Size = new System.Drawing.Size(167, 20);
             this.txtBoxFiltro.TabIndex = 22;
@@ -90,9 +97,9 @@
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel1.Controls.Add(this.panel3);
             this.panel1.Controls.Add(this.panel2);
-            this.panel1.Location = new System.Drawing.Point(41, 148);
+            this.panel1.Location = new System.Drawing.Point(41, 111);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(358, 398);
+            this.panel1.Size = new System.Drawing.Size(358, 435);
             this.panel1.TabIndex = 24;
             // 
             // panel3
@@ -193,6 +200,8 @@
             // 
             // grpBoxDatosAct
             // 
+            this.grpBoxDatosAct.Controls.Add(this.dgTurns);
+            this.grpBoxDatosAct.Controls.Add(this.btnBorrar);
             this.grpBoxDatosAct.Controls.Add(this.btnGestTurn);
             this.grpBoxDatosAct.Controls.Add(this.codActividad);
             this.grpBoxDatosAct.Controls.Add(this.btnCancelar);
@@ -201,12 +210,23 @@
             this.grpBoxDatosAct.Controls.Add(this.lblNombre);
             this.grpBoxDatosAct.Controls.Add(this.txtBoxNombre);
             this.grpBoxDatosAct.Controls.Add(this.txtBoxDescripcion);
-            this.grpBoxDatosAct.Location = new System.Drawing.Point(422, 140);
+            this.grpBoxDatosAct.Location = new System.Drawing.Point(422, 111);
             this.grpBoxDatosAct.Name = "grpBoxDatosAct";
-            this.grpBoxDatosAct.Size = new System.Drawing.Size(336, 395);
+            this.grpBoxDatosAct.Size = new System.Drawing.Size(336, 435);
             this.grpBoxDatosAct.TabIndex = 34;
             this.grpBoxDatosAct.TabStop = false;
             this.grpBoxDatosAct.Text = "Datos";
+            // 
+            // btnGestTurn
+            // 
+            this.btnGestTurn.Location = new System.Drawing.Point(209, 328);
+            this.btnGestTurn.Name = "btnGestTurn";
+            this.btnGestTurn.Size = new System.Drawing.Size(110, 22);
+            this.btnGestTurn.TabIndex = 45;
+            this.btnGestTurn.Text = "Gestionar turnos";
+            this.btnGestTurn.UseVisualStyleBackColor = true;
+            this.btnGestTurn.Visible = false;
+            this.btnGestTurn.Click += new System.EventHandler(this.btnGestTurn_Click);
             // 
             // codActividad
             // 
@@ -220,9 +240,9 @@
             // btnCancelar
             // 
             this.btnCancelar.Enabled = false;
-            this.btnCancelar.Location = new System.Drawing.Point(197, 341);
+            this.btnCancelar.Location = new System.Drawing.Point(127, 385);
             this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(107, 34);
+            this.btnCancelar.Size = new System.Drawing.Size(85, 34);
             this.btnCancelar.TabIndex = 40;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
@@ -231,9 +251,9 @@
             // btnGuardar
             // 
             this.btnGuardar.Enabled = false;
-            this.btnGuardar.Location = new System.Drawing.Point(37, 341);
+            this.btnGuardar.Location = new System.Drawing.Point(21, 385);
             this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(107, 34);
+            this.btnGuardar.Size = new System.Drawing.Size(85, 34);
             this.btnGuardar.TabIndex = 39;
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.UseVisualStyleBackColor = true;
@@ -244,7 +264,7 @@
             this.lblDescripcion.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.lblDescripcion.Location = new System.Drawing.Point(34, 103);
             this.lblDescripcion.Name = "lblDescripcion";
-            this.lblDescripcion.Size = new System.Drawing.Size(270, 75);
+            this.lblDescripcion.Size = new System.Drawing.Size(270, 37);
             this.lblDescripcion.TabIndex = 35;
             this.lblDescripcion.Click += new System.EventHandler(this.lblDescripcion_Click);
             // 
@@ -273,23 +293,70 @@
             // 
             this.txtBoxDescripcion.Location = new System.Drawing.Point(37, 103);
             this.txtBoxDescripcion.Name = "txtBoxDescripcion";
-            this.txtBoxDescripcion.Size = new System.Drawing.Size(282, 63);
+            this.txtBoxDescripcion.Size = new System.Drawing.Size(282, 37);
             this.txtBoxDescripcion.TabIndex = 43;
             this.txtBoxDescripcion.Text = "";
             this.txtBoxDescripcion.Visible = false;
             this.txtBoxDescripcion.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBoxDescripcion_KeyPress);
             this.txtBoxDescripcion.Leave += new System.EventHandler(this.txtBoxDescripcion_Leave);
             // 
-            // btnGestTurn
+            // btnBorrar
             // 
-            this.btnGestTurn.Location = new System.Drawing.Point(197, 241);
-            this.btnGestTurn.Name = "btnGestTurn";
-            this.btnGestTurn.Size = new System.Drawing.Size(107, 34);
-            this.btnGestTurn.TabIndex = 45;
-            this.btnGestTurn.Text = "Gestionar turnos";
-            this.btnGestTurn.UseVisualStyleBackColor = true;
-            this.btnGestTurn.Visible = false;
-            this.btnGestTurn.Click += new System.EventHandler(this.btnGestTurn_Click);
+            this.btnBorrar.Enabled = false;
+            this.btnBorrar.Location = new System.Drawing.Point(234, 385);
+            this.btnBorrar.Name = "btnBorrar";
+            this.btnBorrar.Size = new System.Drawing.Size(85, 34);
+            this.btnBorrar.TabIndex = 46;
+            this.btnBorrar.Text = "Borrar";
+            this.btnBorrar.UseVisualStyleBackColor = true;
+            this.btnBorrar.Click += new System.EventHandler(this.btnBorrar_Click);
+            // 
+            // dgTurns
+            // 
+            this.dgTurns.AllowUserToAddRows = false;
+            this.dgTurns.AllowUserToDeleteRows = false;
+            this.dgTurns.AllowUserToOrderColumns = true;
+            this.dgTurns.BackgroundColor = System.Drawing.Color.Wheat;
+            this.dgTurns.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgTurns.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Dia,
+            this.Inicio,
+            this.Fin,
+            this.Ubicacion});
+            this.dgTurns.Location = new System.Drawing.Point(21, 177);
+            this.dgTurns.Name = "dgTurns";
+            this.dgTurns.ReadOnly = true;
+            this.dgTurns.Size = new System.Drawing.Size(298, 145);
+            this.dgTurns.TabIndex = 47;
+            this.dgTurns.Visible = false;
+            // 
+            // Dia
+            // 
+            this.Dia.HeaderText = "Dia";
+            this.Dia.Name = "Dia";
+            this.Dia.ReadOnly = true;
+            this.Dia.Width = 60;
+            // 
+            // Inicio
+            // 
+            this.Inicio.HeaderText = "Inicio";
+            this.Inicio.Name = "Inicio";
+            this.Inicio.ReadOnly = true;
+            this.Inicio.Width = 70;
+            // 
+            // Fin
+            // 
+            this.Fin.HeaderText = "Fin";
+            this.Fin.Name = "Fin";
+            this.Fin.ReadOnly = true;
+            this.Fin.Width = 70;
+            // 
+            // Ubicacion
+            // 
+            this.Ubicacion.HeaderText = "Ubicacion";
+            this.Ubicacion.Name = "Ubicacion";
+            this.Ubicacion.ReadOnly = true;
+            this.Ubicacion.Visible = false;
             // 
             // ClientVerActividades
             // 
@@ -316,6 +383,7 @@
             this.panel2.PerformLayout();
             this.grpBoxDatosAct.ResumeLayout(false);
             this.grpBoxDatosAct.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgTurns)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -346,5 +414,11 @@
         private System.Windows.Forms.RichTextBox txtBoxDescripcion;
         private System.Windows.Forms.Label codActividad;
         private System.Windows.Forms.Button btnGestTurn;
+        private System.Windows.Forms.Button btnBorrar;
+        private System.Windows.Forms.DataGridView dgTurns;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Dia;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Inicio;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Fin;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Ubicacion;
     }
 }

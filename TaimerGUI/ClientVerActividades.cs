@@ -101,6 +101,20 @@ namespace TaimerGUI
             pnlPersonales.Controls.Clear();
         }
 
+        private void reiniciar() {
+            pnlOficiales.Controls.Clear();
+            pnlPersonales.Controls.Clear();
+            txtBoxDescripcion.Text = "";
+            lblDescripcion.Text = "";
+            txtBoxNombre.Text = "";
+            lblNombre.Text = "";
+            dgTurns.Visible = false;
+            btnGestTurn.Visible = false;
+            btnGuardar.Enabled = false;
+            btnCancelar.Enabled = false;
+            btnBorrar.Enabled = false;
+        }
+
         private void label_MouseEnter(object sender, EventArgs e) {
             ((Label)sender).BackColor = Color.White;
         }
@@ -120,12 +134,22 @@ namespace TaimerGUI
         }
 
         private void button1_Click(object sender, EventArgs e) {
-            if (grpBoxDatosAct.Tag != null) {
+            if (grpBoxDatosAct.Tag is Actividad) {
                 ((Actividad)grpBoxDatosAct.Tag).Nombre = txtBoxNombre.Text;
                 ((Actividad)grpBoxDatosAct.Tag).Descripcion = txtBoxDescripcion.Text;
                 btnCancelar.Enabled = false;
                 btnGuardar.Enabled = false;
                 panel1.Focus();
+            }
+        }
+
+        private void loadGridTurnos(Actividad act) {
+            
+            if (act != null) {
+                dgTurns.Rows.Clear();
+                foreach (Turno turn in act.Turnos) {
+                    dgTurns.Rows.Add(TaimerLibrary.convertToString(turn.Dia),turn.HoraInicio.toString(),turn.HoraFin.toString());
+                }
             }
         }
 
@@ -183,11 +207,15 @@ namespace TaimerGUI
                 grpBoxDatosAct.Tag = act;
                 btnCancelar.Enabled = false;
                 btnGuardar.Enabled = false;
+                dgTurns.Visible = true;
                 if (act is Actividad_p) {
                     btnGestTurn.Visible = true;
+                    btnBorrar.Enabled = true;
                 } else {
                     btnGestTurn.Visible = false;
+                    btnBorrar.Enabled = false;
                 }
+                loadGridTurnos(act);
             }
         }
 
@@ -195,9 +223,18 @@ namespace TaimerGUI
         }
 
         private void ClientVerActividades_Activated(object sender, EventArgs e) {
-            limpiar();
+            this.recarga();
+        }
+
+        private void recarga() {
+            reiniciar();
             loadPersonales();
             loadOficiales();
+
+            if (this.MdiParent is ClientForm) {
+                ClientForm pare = (ClientForm)this.MdiParent;
+                pare.loadLastActividades();
+            }
         }
 
 
@@ -229,6 +266,23 @@ namespace TaimerGUI
 
         private void btnGestTurn_Click(object sender, EventArgs e) {
             MessageBox.Show("¿Que pongo aqui? ¿Otro MDI? ¿O una ventana fuera? ¿O muestro un algo?");
+        }
+
+        private void btnBorrar_Click(object sender, EventArgs e) {
+            if (grpBoxDatosAct.Tag is Actividad_p) {
+                if (MessageBox.Show("¿Seguro que desa borrar esta actividad?",
+                      "¿Borrar actividad?",
+                      MessageBoxButtons.YesNo,
+                      MessageBoxIcon.Question,
+                      MessageBoxDefaultButton.Button2) == DialogResult.Yes) {
+                          if (usrAux.BorraActPersonalBool((Actividad_p)grpBoxDatosAct.Tag)) {
+                              recarga();
+                          } else {
+                              MessageBox.Show("La actividad a borrar no existe", "Error borrando",MessageBoxButtons.OK, MessageBoxIcon.Error);
+                          }
+                }
+            }
+
         }
 
         

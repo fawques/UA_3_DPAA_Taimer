@@ -165,6 +165,7 @@ namespace TaimerGUI {
         public void loadLastHorarios()
         {
             if (usuario != null) {
+                groupBoxUltimosHorarios.Controls.Clear();
                 int posY = 20;
                 foreach (Horario obj in usuario.Horarios) {
                     Label auxlbl = new Label();
@@ -185,6 +186,7 @@ namespace TaimerGUI {
         {
             if (usuario != null) {
                 //MessageBox.Show("No es null");
+                groupBoxUltActivi.Controls.Clear();
                 int posY = 20;
                 foreach (Actividad_p obj in usuario.ActPersonales){
                     //MessageBox.Show("iteracion");

@@ -62,7 +62,7 @@ namespace TaimerGUI
                         Hora horI = new Hora(filas.Cells["horaInicio"].Value.ToString());
                         Hora horF = new Hora(filas.Cells["horaFin"].Value.ToString());
                         string d = comboBoxDia.Text;
-                        Turno turn = new Turno(horI, horF, convertToDais(d), filas.Cells["lugar"].Value.ToString());
+                        Turno turn = new Turno(horI, horF, TaimerLibrary.convertToDais(d), filas.Cells["lugar"].Value.ToString());
                         try {
                             actividad.AddTurno(turn);
                         } catch (NotSupportedException exc) {
@@ -75,36 +75,6 @@ namespace TaimerGUI
                 }
             }
             
-        }
-
-        private dias convertToDais(string d) {
-
-            switch (d) {
-                case "Lunes":
-                    return dias.L;
-                    break;
-                case "Martes":
-                    return dias.M;
-                    break;
-                case "Miercoles":
-                    return dias.X;
-                    break;
-                case "Jueves":
-                    return dias.J;
-                    break;
-                case "Viernes":
-                    return dias.V;
-                    break;
-                case "Sabado":
-                    return dias.S;
-                    break;
-                case "Domingo":
-                    return dias.D;
-                    break;
-                default:
-                    return dias.L;
-                    break;
-            }
         }
 
         private bool validarTodo() {
