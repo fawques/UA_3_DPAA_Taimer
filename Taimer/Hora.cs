@@ -4,38 +4,69 @@ using System.Linq;
 using System.Text;
 
 namespace Taimer {
-
+    /// <summary>
+    /// Clase Hora: representa una hora mediante horas y minutos
+    /// </summary>
     public class Hora {
         #region PARTE PRIVADA
-
+        /// <summary>
+        /// Horas
+        /// </summary>
         private int hora;
+
+        /// <summary>
+        /// Minutos
+        /// </summary>
         private int min;
 
         #endregion
 
         #region PARTE PÚBLICA
 
-        //Constructor por defecto
+        /// <summary>
+        /// Constructor por defecto
+        /// </summary>
         public Hora() {
             hora = 0;
             min = 0;
         }
 
-        // Constructor
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="hora_">Horas</param>
+        /// <param name="min_">Minutos</param>
         public Hora(int hora_, int min_) {
             Hor = hora_;
             Min = min_;
         }
 
 
-        // Constructor de copia
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="hora_">Hora (las horas deben estar separadas de los minutos por ':')</param>
+        public Hora(string hora_) {
+            string[] vect = hora_.Split(':');
+            if (vect.Length == 2) {
+                Hor = Convert.ToInt32(vect[0]);
+                Min = Convert.ToInt32(vect[1]);
+            }
+        }
+
+        /// <summary>
+        /// Constructor de copia
+        /// </summary>
+        /// <param name="h"> Hora que se desea copiar</param>
         public Hora(Hora h) {
             hora = h.hora;
             min = h.min;
         }
 
 
-        //Obtener/modificar hora
+        /// <summary>
+        /// Asigna/Devuelve las horas
+        /// </summary>
         public int Hor {
             set {
                 if (value >= 0 && value <= 23)
@@ -47,7 +78,9 @@ namespace Taimer {
         }
 
 
-        //Obtener/modificar minutos
+        /// <summary>
+        /// Asigna/Devuelve los minutos
+        /// </summary>
         public int Min {
             set {
                 if (value >= 0 && value <= 59)
@@ -59,24 +92,22 @@ namespace Taimer {
         }
 
 
-        // Ajustar hora y minutos
+        /// <summary>
+        /// Añade las horas y los minutos a la clase
+        /// </summary>
+        /// <param name="hora_">Horas</param>
+        /// <param name="min_">Minutos</param>
         public void setTiempo(int hora_, int min_) {
             Hor = hora_;
             Min = min_;
         }
 
 
-        //Ajustar hora y minutos a partir de un string
-        public Hora(string hora_) {
-            string[] vect = hora_.Split(':');
-            if (vect.Length == 2) {
-                hora = Convert.ToInt32(vect[0]);
-                min = Convert.ToInt32(vect[1]);
-            }
-        }
-
-
-        // Saber cuántos minutos de diferencia hay de la hora 1 a la hora 2
+        /// <summary>
+        /// Devuelve los minutos de diferencia que hay con la hora que se pasa
+        /// </summary>
+        /// <param name="h2">Hora con la que se quiere obtener la diferencia</param>
+        /// <returns></returns>
         public int MinutosDeDiferencia(Hora h2) {
             int minutos1 = Hor * 60 + Min;
             int minutos2 = h2.Hor * 60 + h2.Min;
@@ -84,45 +115,70 @@ namespace Taimer {
         }
 
 
-        // Operador ==
+        /// <summary>
+        /// Operador == 
+        /// </summary>
+        /// <param name="hor1">Primera hora a comparar </param>
+        /// <param name="hor2">Segunda hora a comparar</param>
+        /// <returns>Devuelve TRUE si son iguales FALSE en caso contrario</returns>
         public static bool operator ==(Hora hor1, Hora hor2) {
             return (hor1.hora == hor2.hora && hor1.min == hor2.min);
         }
 
 
-        //Operador !=
+        /// <summary>
+        /// Operador != 
+        /// </summary>
+        /// <param name="hor1">Primera hora a comparar </param>
+        /// <param name="hor2">Segunda hora a comparar</param>
+        /// <returns>Devuelve TRUE si son distintas FALSE en caso contrario</returns>
         public static bool operator !=(Hora hor1, Hora hor2) {
             return !(hor1 == hor2);
         }
 
 
-        //Operador <
-        public static bool operator <(Hora hor1, Hora Hor2) {
+        /// <summary>
+        /// Operador < 
+        /// </summary>
+        /// <param name="hor1">Primera hora a comparar </param>
+        /// <param name="hor2">Segunda hora a comparar</param>
+        /// <returns>Develve TRUE si hor1 es menor que hor2 y FALSE en caso contrario</returns>
+        public static bool operator <(Hora hor1, Hora hor2) {
             bool menor = false;
-            if (hor1.hora < Hor2.hora) {
+            if (hor1.hora < hor2.hora) {
                 menor = true;
             }
-            else if (hor1.hora == Hor2.hora && hor1.min < Hor2.min) {
+            else if (hor1.hora == hor2.hora && hor1.min < hor2.min) {
                 menor = true;
             }
             return menor;
         }
 
 
-        //Operador >
-        public static bool operator >(Hora hor1, Hora Hor2) {
+        /// <summary>
+        /// Operador > 
+        /// </summary>
+        /// <param name="hor1">Primera hora a comparar </param>
+        /// <param name="hor2">Segunda hora a comparar</param>
+        /// <returns>Devuelve TRUE si hor1 es mayor que hor2 y FALSE en caso contrario</returns>
+        public static bool operator >(Hora hor1, Hora hor2) {
             bool mayor = false;
-            if (hor1.hora > Hor2.hora) {
+            if (hor1.hora > hor2.hora) {
                 mayor = true;
             }
-            else if (hor1.hora == Hor2.hora && hor1.min > Hor2.min) {
+            else if (hor1.hora == hor2.hora && hor1.min > hor2.min) {
                 mayor = true;
             }
             return mayor;
         }
 
 
-        //Operador <=
+        /// <summary>
+        /// Operador <= 
+        /// </summary>
+        /// <param name="h1">Primera hora a comparar </param>
+        /// <param name="h2">Segunda hora a comparar</param>
+        /// <returns>Devuelve TRUE si h1 es menor o igual que h2 y FALSE en caso contrario</returns>
         public static bool operator <=(Hora h1, Hora h2) {
             if (h1 < h2 || h1 == h2)
                 return true;
@@ -131,7 +187,12 @@ namespace Taimer {
         }
 
 
-        //Operador >=
+        /// <summary>
+        /// Operador >= 
+        /// </summary>
+        /// <param name="h1">Primera hora a comparar </param>
+        /// <param name="h2">Segunda hora a comparar</param>
+        /// <returns>Devuelve TRUE si h1 es mayor o igual que h2 y FALSE en caso contrario</returns>
         public static bool operator >=(Hora h1, Hora h2) {
             if (h1 > h2 || h1 == h2)
                 return true;
@@ -140,7 +201,12 @@ namespace Taimer {
         }
 
 
-        //Operator -
+        /// <summary>
+        /// Operador -
+        /// </summary>
+        /// <param name="h1">Minuendo</param>
+        /// <param name="h2">Sustraendo</param>
+        /// <returns>Hora resultado de la resta</returns>
         public static Hora operator -(Hora h1, Hora h2) {
             Hora resultado = new Hora(0, 0);
             if (h1 < h2)
@@ -153,7 +219,12 @@ namespace Taimer {
             return resultado;
         }
 
-        // Devuelve el tiempo en minutos entre h1 y h2, h1-h2
+        /// <summary>
+        /// Resta entre dos Horas, se expresa el resultado en minutos
+        /// </summary>
+        /// <param name="h1">Minuendo</param>
+        /// <param name="h2">Sustraendo</param>
+        /// <returns>Resultado expresado en minutos</returns>
         public static int diff(Hora h1, Hora h2)
         {
             int resultado = 0;
@@ -168,7 +239,12 @@ namespace Taimer {
             return resultado;
         }
 
-        // Operator +
+        /// <summary>
+        /// Operador +
+        /// </summary>
+        /// <param name="h1">Primer sumando</param>
+        /// <param name="h2">Segundo sumando</param>
+        /// <returns>Hora resultado de la suma</returns>
         public static Hora operator +(Hora h1, Hora h2) {
             Hora h = new Hora();
             h.Hor = h1.hora + h2.hora;
@@ -176,12 +252,18 @@ namespace Taimer {
             return h;
         }
 
-        // Convertir a minutos
+        /// <summary>
+        /// Convierte el objeto Hora a minutos
+        /// </summary>
+        /// <returns>Hora en minutos</returns>
         public int toMin() {
             return hora * 60 + min;
         }
 
-        // Convertir a string
+        /// <summary>
+        /// Convierte el objeto Hora en un string
+        /// </summary>
+        /// <returns>string con la Hora</returns>
         public string toString() {
             string hr = hora.ToString();
             string mn = min.ToString();
@@ -193,18 +275,15 @@ namespace Taimer {
         }
 
         // Corrección de advertencias (GetHashCode() y Object.Equals(object))
-        public override bool Equals(System.Object obj)
-        {
+        public override bool Equals(System.Object obj) {
             // Si el parámetro es nulo, devuelve false.
-            if (obj == null)
-            {
+            if (obj == null) {
                 return false;
             }
 
             // Si el parámetro no puede convertirse a Hora, devuelve falso.
             Hora p = obj as Hora;
-            if ((System.Object)p == null)
-            {
+            if ((System.Object)p == null) {
                 return false;
             }
 
@@ -212,11 +291,9 @@ namespace Taimer {
             return (Hor == p.Hor) && (Min == p.Min);
         }
 
-        public bool Equals(Hora p)
-        {
+        public bool Equals(Hora p) {
             // Si el parámetro es nulo, devuelve falso.
-            if ((object)p == null)
-            {
+            if ((object)p == null) {
                 return false;
             }
 
@@ -224,8 +301,7 @@ namespace Taimer {
             return (Hor == p.Hor) && (Min == p.Min);
         }
 
-        public override int GetHashCode()
-        {
+        public override int GetHashCode() {
             return Hor * 60 + Min;
         }
 

@@ -5,38 +5,63 @@ using System.Linq;
 using System.Text;
 
 namespace Taimer {
+    /// <summary>
+    /// Clase Actividad_p: esta clase hereda de Actividad y representa cualquier otro tipo de actividad idependiente del ambito academico.
+    /// Estas actividades son propias de cada usuario
+    /// </summary>
     public class Actividad_p : Actividad {
 
         #region PARTE PRIVADA
         // (Nombre, descripción y código vienen de la clase Actividad)
 
-        private User usuario;                               // Usuario de la actividad personal
+        /// <summary>
+        /// Usuario de la actividad personal
+        /// </summary>
+        private User usuario;
 
         #endregion
 
         #region PARTE PUBLICA
 
-        // Constructor básico (sin lista de turnos)
+        /// <summary>
+        /// Constructor básico (sin lista de turnos)
+        /// </summary>
+        /// <param name="nom_">Nombre de la Actividad_p</param>
+        /// <param name="desc_">Descripción de la Actividad_p</param>
+        /// <param name="cod_">Código de la Actividad_p</param>
+        /// <param name="usu_">Usuario de la Activiad_p</param>
         public Actividad_p(string nom_, string desc_, string cod_, User usu_)
             : base(nom_, desc_, cod_) {
                 usuario = usu_;
         }
 
 
-        // Constructor avanzado (con lista de turnos)
-        public Actividad_p(string nom_, string desc_, string cod_, string responsable_, List<Turno> turnos_, User usu_)
+        /// <summary>
+        ///  Constructor avanzado (con lista de turnos)
+        /// </summary>
+        /// <param name="nom_">Nombre de la Actividad_p</param>
+        /// <param name="desc_">Descripción de la Actividad_p</param>
+        /// <param name="cod_">Código de la Actividad_p</param>
+        /// <param name="turnos_">Listas de turnos en los que se realiza la Actividad_p </param>
+        /// <param name="usu_">Usuario al que pertenece esta Actividad_p</param>
+        public Actividad_p(string nom_, string desc_, string cod_, List<Turno> turnos_, User usu_)
             : base(nom_, desc_, cod_, turnos_) {
 
             usuario = usu_;
         }
 
-        // Constructor de copia
+        /// <summary>
+        /// Constructor de copia
+        /// </summary>
+        /// <param name="act">Actividad_p que se desea copiar</param>
         public Actividad_p(Actividad_p act)
             : base(act) {
                 usuario = act.usuario; 
         }
 
-        // Cambiar/obtener usuario
+        /// <summary>
+        /// Asigna/Devuelve el usuario de la Actividad_p
+        /// </summary>
         public User Usuario
         {
             get { return usuario; }
@@ -78,6 +103,11 @@ namespace Taimer {
             }
         }*/
 
+        /// <summary>
+        /// Añade un turno a la Actividad_p
+        ///  Los turnos están ordenados de forma creciente
+        /// </summary>
+        /// <param name="turnonuevo"> Turno que se desea añadir </param>
         public void AddTurno(Turno turnonuevo) {
             bool insertado = false;
 
@@ -97,7 +127,9 @@ namespace Taimer {
                 turnos.Add(turnonuevo);
         }
 
-        // Cambiar/obtener lista de turnos
+        /// <summary>
+        /// Asigna/Devuelve la lista de Turnos
+        /// </summary>
         new public List<Turno> Turnos {
             set {
                 foreach (Turno t in value) {

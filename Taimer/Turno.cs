@@ -8,22 +8,54 @@ using System.Text;
 using System.Text.RegularExpressions;
 
 namespace Taimer {
+    /// <summary>
+    /// Enum que representa los días de la semana
+    /// </summary>
     public enum dias { L, M, X, J, V, S, D };
 
+    /// <summary>
+    /// Clase Turno: representa las diversas horas, localizaciones, etc que tiene una Actividad
+    /// </summary>
     public class Turno {
 
         #region PARTE PRIVADA
-
+        
+        /// <summary>
+        /// Codigo que identifica el Turno
+        /// También es la clave primaria en la base de datos
+        /// </summary>
         private int codigo;
+
+        /// <summary>
+        /// Hora de inicio del Turno
+        /// </summary>
         private Hora horaInicio;
+
+        /// <summary>
+        /// Hora de finalización del Turno
+        /// </summary>
         private Hora horaFin;
+
+        /// <summary>
+        /// Dia de la semana en que se da el Turno
+        /// </summary>
         private dias diasemana;
+
+        /// <summary>
+        /// Ubicación en al que se reliza un Actividad en este Turno
+        /// </summary>
         private string ubicacion;
+
+        /// <summary>
+        /// Actividad a la que pertenece este turno
+        /// </summary>
         private Actividad actividad;        // Un turno pertenece a (1,1) actividades
 
-        //public static int proximoId; // guarda el siguiente turno (mantener de momento, hasta que haya un autoincremento)
 
-        //Obtener dia de la semana
+        /// <summary>
+        /// Obtener dia de la semana como string
+        /// </summary>
+        /// <returns>string con el dia de la semana</returns>
         private string ObtDiaString() {
             string dia = "";
             switch (diasemana) {
@@ -64,7 +96,12 @@ namespace Taimer {
             }
         }*/
 
+        /// <summary>
+        /// Nomaliza una cadena quitandole cualquier tipo de tilde y convirtiendola a mallusculas
+        /// </summary>
+        /// <param name="s">Cadena normalizada</param>
         private void NormalizarCadena(ref string s) {
+            s = s.ToLower();
             Regex a = new Regex("[á|à|ä|â]", RegexOptions.Compiled);
             Regex e = new Regex("[é|è|ë|ê]", RegexOptions.Compiled);
             Regex i = new Regex("[í|ì|ï|î]", RegexOptions.Compiled);
@@ -76,9 +113,13 @@ namespace Taimer {
             s = o.Replace(s, "o");
             s = u.Replace(s, "u");
 
-            s.ToUpper();
+            s = s.ToUpper();
         }
 
+        /// <summary>
+        /// Cambia el dia de la semana del turno a partir de un string
+        /// </summary>
+        /// <param name="s">Dia de la semana puede ser en formato de un carácter o el nombre completo</param>
         private void CambiarDiaSemana(string s) {
             NormalizarCadena(ref s);
             if (s.Length == 1) {  //Formato de un carácter
@@ -114,10 +155,15 @@ namespace Taimer {
         #region PARTE PÚBLICA
 
 
-        // Constructor SIN ACTIVIDAD NI CÓDIGO
+        /// <summary>
+        /// Constructor (sin Actividad y sin código)
+        /// Su uso es para añadirlo en una Actividad
+        /// </summary>
+        /// <param name="horaI_">Hora de inicio del turno</param>
+        /// <param name="horaF_"> Hora en que finaliza el turno</param>
+        /// <param name="dia_"> Día de la semana</param>
+        /// <param name="ubic_">Ubicación en la que se realiza el turno</param>
         public Turno(Hora horaI_, Hora horaF_, dias dia_, string ubic_) {
-            /*codigo = proximoId; //HAY QUE AUTOGENERALO!!!
-            proximoId++;*/
             codigo = 0;
             if (horaI_ < horaF_) {
                 horaInicio = horaI_;
@@ -131,8 +177,16 @@ namespace Taimer {
             actividad = null;
         }
 
-        // Constructor
-        //Crea un turno y lo vincula a una Actividad
+ 
+
+        /// <summary>
+        /// Constructor que vincula el turno a una actividad
+        /// </summary>
+        /// <param name="horaI_"> Hora de inicio del Turno</param>
+        /// <param name="horaF_"> Hora en que finaliza el Turno  </param>
+        /// <param name="dia_"> Dia de la semana </param>
+        /// <param name="ubic_"> Ubicación en la que se realiza el Turno </param>
+        /// <param name="act_"> Actividad  a la que pertence el Turno</param>
         public Turno(Hora horaI_, Hora horaF_, dias dia_, string ubic_, Actividad act_) {
 
             if (horaI_ < horaF_) {
@@ -152,9 +206,16 @@ namespace Taimer {
                 ((Actividad_p)actividad).AddTurno(this);
         }
 
-        // Constructor
-        //Uso exclusivo de los CADs
-        //Se le ponen todos los datos
+        /// <summary>
+        /// Constructor completo
+        /// Uso exclusivo de los CADs
+        /// </summary>
+        /// <param name="cod_">Código del Turno</param>
+        /// <param name="horaI_">Hora de inicio del Turno</param>
+        /// <param name="horaF_">Hora en que finaliza el Turno</param>
+        /// <param name="dia_">Dia de la semana</param>
+        /// <param name="ubic_">Ubicación en la que se realiza el Turno</param>
+        /// <param name="act_">Actividad a la que pertenece el Turno</param>
         public Turno(int cod_, Hora horaI_, Hora horaF_, dias dia_, string ubic_, Actividad act_) {
             
             codigo = cod_;
@@ -172,7 +233,10 @@ namespace Taimer {
         }
 
 
-        // Constructor de copia
+        /// <summary>
+        /// Constructor de copia
+        /// </summary>
+        /// <param name="t">Turno que se desea copiar</param>
         public Turno(Turno t) {
             codigo = t.codigo;
             horaInicio = new Hora(t.horaInicio);
@@ -183,8 +247,12 @@ namespace Taimer {
         }
 
 
-        // Comparar si dos turnos son iguales (exceptuando su código y asignatura).
-        // He preferido no usar el operador igualdad, dado que no son 100% iguales.
+        /// <summary>
+        /// Indica si el propio turno es similar con otro
+        /// Dos turnos son similares si: tiene la misma hora de inicio y de fin, el mismo día de la semana y la misma ubicación
+        /// </summary>
+        /// <param name="t">Turno con el que se quiere comparar</param>
+        /// <returns>Devuelve TRUE si son similares y FALSE en caso contrario</returns>
         public bool TurnoSimilar(Turno t) {
             if (horaInicio == t.horaInicio)
                 if (horaFin == t.horaFin)
@@ -196,16 +264,20 @@ namespace Taimer {
         }
 
 
-        // Cambiar/obtener actividad
+        /// <summary>
+        /// Asigna/Devuelve la actividad a la que pertene el Turno
+        /// </summary>
         public Actividad Actividad {
             set { actividad = value; }
             get { return actividad; }
         }
 
 
-        // Cambiar/obtener código
-        // Lanza excepción si el código ya existe
-        //NO RECOMENDADO USAR EL SET (codigo autogenerado)
+        /// <summary>
+        /// Asigna/Devuelve el codigo del Turno
+        /// NO RECOMENDADO USAR LA ASIGNACIÓN el código se autogenera
+        /// Lanza una excepción si al asignar el código ya existe
+        /// </summary>
         public int Codigo {
             set {
                     foreach (Turno existente in actividad.Turnos) {
@@ -220,45 +292,65 @@ namespace Taimer {
         }
 
 
-        // Cambiar Hora Inicio con dos Integer
+        /// <summary>
+        /// Cambia la hora de inicio a partir de dos integer
+        /// </summary>
+        /// <param name="hora">Horas</param>
+        /// <param name="min">Minutos</param>
         public void HoraI(int hora, int min) {
             HoraInicio = new Hora(hora, min);
         }
 
 
-        // Cambiar Hora Fin con dos Integer
+        /// <summary>
+        /// Cambia la hora de fin a partir de dos interger
+        /// </summary>
+        /// <param name="hora">Horas</param>
+        /// <param name="min">Minutos</param>
         public void HoraF(int hora, int min) {
             HoraFin = new Hora(hora, min);
         }
 
-        // Cambiar Hora Inicio con un string
+        /// <summary>
+        /// Cambiar Hora Inicio con un string
+        /// </summary>
+        /// <param name="horaI">Las horas tienen que estar separadas por ':' de los minutos</param>
         public void HoraI(string horaI) {
             HoraInicio = new Hora(horaI);
         }
 
-        // Cambiar Hora Fin con un string
+        /// <summary>
+        /// Cambiar Hora Fin con un string
+        /// </summary>
+        /// <param name="horaF">Las horas tienen que estar separadas por ':' de los minutos</param>
         public void HoraF(string horaF) {
             HoraFin = new Hora(horaF);
         }
 
-        // Obtener/Cambiar Hora de inicio
+        /// <summary>
+        /// Asigna/Devuelve la Hora de Inicio
+        /// </summary>
         public Hora HoraInicio {
             set {
                 if (value < HoraFin) {
-                    if (actividad.EsAcademica())
-                        horaInicio = value;
-                    else {
-                        Turno test = new Turno(this);
-                        test.horaInicio = value;
+                    if (actividad != null) {
+                        if (actividad.EsAcademica())
+                            horaInicio = value;
+                        else {
+                            Turno test = new Turno(this);
+                            test.horaInicio = value;
 
-                        if (actividad != null) {
+
                             foreach (Turno existente in actividad.Turnos) {
                                 if (existente.Codigo != this.Codigo) {
                                     test.Superpone(existente);
                                 }
                             }
-                        }
 
+                            horaInicio = value;
+                        }
+                    }
+                    else {
                         horaInicio = value;
                     }
                 }
@@ -269,24 +361,30 @@ namespace Taimer {
         }
 
 
-        // Obtener/Cambiar Hora de Fin
+        /// <summary>
+        /// Asigna/Devuelve la Hora de fin
+        /// </summary>
         public Hora HoraFin {
             set { 
                     if(value > HoraInicio) {
-                        if (actividad.EsAcademica())
-                            horaFin = value;
-                        else {
-                            Turno test = new Turno(this);
-                            test.horaFin = value;
+                        if (actividad != null) {
+                            if (actividad.EsAcademica())
+                                horaFin = value;
+                            else {
+                                Turno test = new Turno(this);
+                                test.horaFin = value;
 
-                            if (actividad != null) {
                                 foreach (Turno existente in actividad.Turnos) {
                                     if (existente.Codigo != this.Codigo) {
                                         test.Superpone(existente);
                                     }
                                 }
-                            }
 
+
+                                horaFin = value;
+                            }
+                        }
+                        else {
                             horaFin = value;
                         }
                     }
@@ -297,33 +395,48 @@ namespace Taimer {
             get { return horaFin; }
         }
 
-        //Cambiar Hora de inicio y de Fin 
-        //Se le pasa dos objetos hora
+        /// <summary>
+        /// Cambia las horas de inicio y de fin
+        /// </summary>
+        /// <param name="inicio">Hora de inicio</param>
+        /// <param name="fin">Hora de fin</param>
         public void CambiarHoras(Hora inicio, Hora fin) {
-            if (actividad.EsAcademica()) {
-                horaInicio = inicio;
-                horaFin = fin;
+            if (inicio > fin) {
+                throw new ArgumentException("La hora de inicio es mayor que la de fin");
             }
-            else {
-                Turno test = new Turno(this);
-                test.horaInicio = inicio;
-                test.horaFin = fin;
+            else if (actividad != null) {
+                if (actividad.EsAcademica()) {
+                    horaInicio = inicio;
+                    horaFin = fin;
+                }
+                else {
+                    Turno test = new Turno(this);
+                    test.horaInicio = inicio;
+                    test.horaFin = fin;
 
-                if (actividad != null) {
                     foreach (Turno existente in actividad.Turnos) {
                         if (existente.Codigo != this.Codigo) {
                             test.Superpone(existente);
                         }
                     }
-                }
 
+                    horaInicio = inicio;
+                    horaFin = fin;
+                }
+            }
+            else {
                 horaInicio = inicio;
                 horaFin = fin;
             }
         }
 
-        //Cambiar Hora de inicio y de Fin
-        //Se le pasa las horas como enteros
+        /// <summary>
+        /// Cambia las horas de inicio y de fin
+        /// </summary>
+        /// <param name="horaI">Horas de la Hora de inicio</param>
+        /// <param name="minI">Minutos de la Hora de inicio</param>
+        /// <param name="horaF">Horas de la Hora de fin</param>
+        /// <param name="minF">Minutos de la Hora de fin</param>
         public void CambiarHoras(int horaI, int minI, int horaF, int minF) {
             Hora inicio = new Hora(horaI, minI);
             Hora fin = new Hora(horaF, minF);
@@ -331,8 +444,12 @@ namespace Taimer {
             CambiarHoras(inicio, fin);
         }
 
-        //Cambiar Hora de inicio y de Fin
-        //Se le pasas las horas como strings
+        /// <summary>
+        /// Cambia las horas de inicio y de fin
+        /// Los string que se pasan tiene que separa las horas de los minutos por ':'
+        /// </summary>
+        /// <param name="inicio">Hora de inicio</param>
+        /// <param name="fin">Hora de fin</param>
         public void CambiarHoras(string inicio, string fin) {
             Hora i = new Hora(inicio);
             Hora f = new Hora(fin);
@@ -341,26 +458,37 @@ namespace Taimer {
         }
 
 
-        // Obtener/Cambiar dia de la semana
+        /// <summary>
+        /// Asigna/Devuelve el dia de la semana
+        /// </summary>
         public dias Dia{
             get { return diasemana; }
             set { diasemana = value; }
         }
 
-        //Obtener/Cambiar dia de la semna mediante un string
+        /// <summary>
+        /// Asinga/Devuelve el dia de la semana a partir de un string
+        /// Para la asignación: el día de la semana puede ser en formato de un carácter o el nombre completo
+        /// </summary>
         public string DiaString {
             get { return ObtDiaString(); }
             set { CambiarDiaSemana(value); }
         }
 
 
-        // Cambiar/Obtener ubicacion
+        /// <summary>
+        /// Asigna/Devuelve la ubicación en la que se da el Turno
+        /// </summary>
         public string Ubicacion {
             set { ubicacion = value; }
             get { return ubicacion; }
         }
 
-        // Comprobar superposición y lanzar excepción si se superponen
+        /// <summary>
+        /// Comprueva si el turno se superpone con otro
+        /// Si se da el caso lanza una excepción
+        /// </summary>
+        /// <param name="t">Turno con el que puede superponerse</param>
         public void Superpone(Turno t)
         {
             // Si se superponen...
@@ -375,17 +503,17 @@ namespace Taimer {
             }
         }
 
-        // Comprobar superposición de turnos
-        // Devuelve TRUE si se superponen los turnos, FALSE si no se solapan.
-        public bool SuperponeBool(Turno t)
-        {
+        /// <summary>
+        /// Comprueva si el turno se superpone con otro 
+        /// </summary>
+        /// <param name="t">Turno con el que puede superponerse</param>
+        /// <returns>Devuelve TRUE si se superpone y FALSE en caso contrario</returns>
+        public bool SuperponeBool(Turno t) {
             bool superpuesto = false;
-            try
-            {
+            try {
                 Superpone(t);
             }
-            catch
-            {
+            catch {
                 superpuesto = true;
             }
 
