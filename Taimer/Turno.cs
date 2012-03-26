@@ -124,26 +124,26 @@ namespace Taimer {
             NormalizarCadena(ref s);
             if (s.Length == 1) {  //Formato de un carácter
                 switch (s) {
-                    case "L": diasemana = dias.L; break;
-                    case "M": diasemana = dias.M; break;
-                    case "X": diasemana = dias.X; break;
-                    case "J": diasemana = dias.J; break;
-                    case "V": diasemana = dias.V; break;
-                    case "S": diasemana = dias.S; break;
-                    case "D": diasemana = dias.D; break;
+                    case "L": Dia = dias.L; break;
+                    case "M": Dia = dias.M; break;
+                    case "X": Dia = dias.X; break;
+                    case "J": Dia = dias.J; break;
+                    case "V": Dia = dias.V; break;
+                    case "S": Dia = dias.S; break;
+                    case "D": Dia = dias.D; break;
                     default:
                         throw new Exception("Día de la semana inexistente.");
                 }
             }
             else { //Día completo
                 switch (s) {
-                    case "LUNES": diasemana = dias.L; break;
-                    case "MARTES": diasemana = dias.M; break;
-                    case "MIERCOLES": diasemana = dias.X; break;
-                    case "JUEVES": diasemana = dias.J; break;
-                    case "VIERNES": diasemana = dias.V; break;
-                    case "SABADO": diasemana = dias.S; break;
-                    case "DOMINGO": diasemana = dias.D; break;
+                    case "LUNES": Dia = dias.L; break;
+                    case "MARTES": Dia = dias.M; break;
+                    case "MIERCOLES": Dia = dias.X; break;
+                    case "JUEVES": Dia = dias.J; break;
+                    case "VIERNES": Dia = dias.V; break;
+                    case "SABADO": Dia = dias.S; break;
+                    case "DOMINGO": Dia = dias.D; break;
                     default:
                         throw new Exception("Día de la semana inexistente.");
                 }
@@ -553,7 +553,27 @@ namespace Taimer {
         /// </summary>
         public dias Dia{
             get { return diasemana; }
-            set { diasemana = value; }
+            set {
+                    if (actividad.EsAcademica())
+                    {
+                        diasemana = value;
+                    }
+                    else
+                    {
+                        Turno test = new Turno(this);
+                        test.diasemana = value;
+
+                        foreach (Turno existente in actividad.Turnos)
+                        {
+                            if (existente.Codigo != this.Codigo)
+                            {
+                                test.Superpone(existente);
+                            }
+                        }
+
+                        diasemana = value;
+                }
+            }
         }
 
         /// <summary>
@@ -575,7 +595,7 @@ namespace Taimer {
         }
 
         /// <summary>
-        /// Comprueva si el turno se superpone con otro
+        /// Comprueba si el turno se superpone con otro
         /// Si se da el caso lanza una excepción
         /// </summary>
         /// <param name="t">Turno con el que puede superponerse</param>
@@ -594,7 +614,7 @@ namespace Taimer {
         }
 
         /// <summary>
-        /// Comprueva si el turno se superpone con otro 
+        /// Comprueba si el turno se superpone con otro 
         /// </summary>
         /// <param name="t">Turno con el que puede superponerse</param>
         /// <returns>Devuelve TRUE si se superpone y FALSE en caso contrario</returns>

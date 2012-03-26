@@ -50,6 +50,7 @@
             this.chfin = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.nuevocod = new System.Windows.Forms.TextBox();
+            this.cambiadiasemana = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // hini
@@ -266,11 +267,22 @@
             this.nuevocod.TabIndex = 21;
             this.nuevocod.Text = "1";
             // 
+            // cambiadiasemana
+            // 
+            this.cambiadiasemana.Location = new System.Drawing.Point(320, 83);
+            this.cambiadiasemana.Name = "cambiadiasemana";
+            this.cambiadiasemana.Size = new System.Drawing.Size(63, 21);
+            this.cambiadiasemana.TabIndex = 22;
+            this.cambiadiasemana.Text = "C. D.Sem.";
+            this.cambiadiasemana.UseVisualStyleBackColor = true;
+            this.cambiadiasemana.Click += new System.EventHandler(this.cambiadiasemana_Click);
+            // 
             // TestEN
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(394, 292);
+            this.Controls.Add(this.cambiadiasemana);
             this.Controls.Add(this.nuevocod);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.chfin);
@@ -326,5 +338,6 @@
         private System.Windows.Forms.Button chfin;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.TextBox nuevocod;
+        private System.Windows.Forms.Button cambiadiasemana;
     }
 }
