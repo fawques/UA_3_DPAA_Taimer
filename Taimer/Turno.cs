@@ -144,7 +144,7 @@ namespace Taimer {
         public Turno(Hora horaI_, Hora horaF_, dias dia_, string ubic_) {
             codigo = 0;
             CambiarHoras(horaI_, horaF_);
-            diasemana = dia_;
+            Dia = dia_;
             ubicacion = ubic_;
             actividad = null;
         }
@@ -180,8 +180,9 @@ namespace Taimer {
         /// <param name="ubic_"> Ubicación en la que se realiza el Turno </param>
         /// <param name="act_"> Actividad a la que pertence el Turno</param>
         public Turno(Hora horaI_, Hora horaF_, dias dia_, string ubic_, Actividad act_) {
+            codigo = 0;
             CambiarHoras(horaI_, horaF_);
-            diasemana = dia_;
+            Dia = dia_;
             ubicacion = ubic_;
             actividad = act_;
 
@@ -202,6 +203,7 @@ namespace Taimer {
         /// <param name="act_"> Actividad a la que pertence el Turno</param>
         public Turno(Hora horaI_, Hora horaF_, string dia_, string ubic_, Actividad act_)
         {
+            codigo = 0;
             CambiarHoras(horaI_, horaF_);
             CambiarDiaSemana(dia_);
             ubicacion = ubic_;
@@ -230,7 +232,7 @@ namespace Taimer {
         public Turno(int cod_, Hora horaI_, Hora horaF_, dias dia_, string ubic_, Actividad act_) {
             codigo = cod_;
             CambiarHoras(horaI_, horaF_);
-            diasemana = dia_;
+            Dia = dia_;
             ubicacion = ubic_;
             actividad = act_;
         }

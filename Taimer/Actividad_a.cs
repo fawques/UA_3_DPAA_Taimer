@@ -59,7 +59,7 @@ namespace Taimer {
             : base(nom_, desc_, cod_) {
 
             nombreCoordinador = nomCoord_;
-            curso = curso_;
+            Curso = curso_;
         }
 
 
@@ -76,7 +76,7 @@ namespace Taimer {
             : base(nom_, desc_, cod_, turnos_) {
 
             nombreCoordinador = nomCoord_;
-            curso = curso_;
+            Curso = curso_;
         }
 
 
@@ -96,7 +96,12 @@ namespace Taimer {
         /// </summary>
         public int Curso {
             get { return curso; }
-            set { curso = value; }
+            set { 
+                if(value >= 1)
+                    curso = value;
+                else
+                    throw new ArgumentOutOfRangeException("El número de curso debe ser mayor o igual que 1");
+            }
         }
 
 
