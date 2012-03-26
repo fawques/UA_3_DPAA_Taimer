@@ -19,7 +19,7 @@ namespace BaseDeDatos
         private void button1_Click(object sender, EventArgs e)
         {
             CAD.CADUser user = new CAD.CADUser();
-            user.CrearUserBasic("0000007", "Torito Bravo", "torito@bravo.es", "toritobravo");
+            user.CrearUserBasic("0000008", "Higinio Mora", "higinio@mora.es", "higiniomola");
         }
     }
 }
