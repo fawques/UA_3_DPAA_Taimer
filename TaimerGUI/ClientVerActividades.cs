@@ -156,7 +156,7 @@ namespace TaimerGUI
             if (act != null) {
                 dgTurns.Rows.Clear();
                 foreach (Turno turn in act.Turnos) {
-                    dgTurns.Rows.Add(TaimerLibrary.convertToString(turn.Dia),turn.HoraInicio.toString(),turn.HoraFin.toString());
+                    dgTurns.Rows.Add(turn.DiaString,turn.HoraInicio.toString(),turn.HoraFin.toString());
                 }
             }
         }

@@ -115,6 +115,8 @@ namespace TaimerGUI
             dataGridMyAct.Rows.Clear();
             foreach (Actividad obj in usrAux.ActPersonales) {
                 if (obj.Nombre.ToLower().Contains(nom) && !isInGrid(obj.Codigo.ToString(), dataGridActHor)) {
+                    DataGridViewRow row = new DataGridViewRow();
+                    row.Tag = obj;
                     dataGridMyAct.Rows.Add(obj.Codigo, obj.Nombre, obj.Descripcion);
                 }
             }
