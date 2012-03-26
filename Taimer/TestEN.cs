@@ -17,7 +17,7 @@ namespace Taimer
 
         //Actividad_a activ1 = new Actividad_a("Actividad Test", "Descripción", 1337, "A saber");
 
-        Actividad_p activ1 = new Actividad_p("Actividad Test", "Descripción", "1337", new User("Usuario", "12345678X", "usuario@user.com", "fechadenacimiento", 3, "Ingeniería de Magisterio Infantil"));
+        Actividad_p activ1 = new Actividad_p("Actividad Test", "Descripción", 1337, new User("Usuario", "12345678X", "usuario@user.com", "fechadenacimiento", 3, "Ingeniería de Magisterio Infantil"));
 
         public TestEN()
         {
@@ -77,13 +77,13 @@ namespace Taimer
 
         private void TestEN_Load(object sender, EventArgs e)
         {
-            Actividad_a activa1 = new Actividad_a("Actividad A 1", "Descripción", "1337", "A saber");
-            Actividad_a activa2 = new Actividad_a("Actividad A 2", "Descripción", "1337", "A saber");
-            Actividad_a activa3 = new Actividad_a("Actividad A 3", "Descripción", "1337", "A saber");
+            Actividad_a activa1 = new Actividad_a("Actividad A 1", "Descripción", 1337, "A saber");
+            Actividad_a activa2 = new Actividad_a("Actividad A 2", "Descripción", 1337, "A saber");
+            Actividad_a activa3 = new Actividad_a("Actividad A 3", "Descripción", 1337, "A saber");
 
-            Actividad_p activp1 = new Actividad_p("Actividad P 1", "Descripción", "1337", usuario);
-            Actividad_p activp2 = new Actividad_p("Actividad P 2", "Descripción", "1338", usuario);
-            Actividad_p activp3 = new Actividad_p("Actividad P 3", "Descripción", "1339", usuario);
+            Actividad_p activp1 = new Actividad_p("Actividad P 1", "Descripción", 1337, usuario);
+            Actividad_p activp2 = new Actividad_p("Actividad P 2", "Descripción", 1338, usuario);
+            Actividad_p activp3 = new Actividad_p("Actividad P 3", "Descripción", 1339, usuario);
         }
 
         private void modificar_Click(object sender, EventArgs e)

@@ -282,9 +282,8 @@ namespace Taimer {
         /// </summary>
         /// <param name="act">Actividad personal que se desa añadir</param>
         public void AddActPersonal(Actividad_p act) {
-            string cod = codActP.ToString() + "P";
             codActP++;
-            act.Codigo = cod;
+            act.Codigo = codActP;
             actPersonales.Add(act);
         }
 

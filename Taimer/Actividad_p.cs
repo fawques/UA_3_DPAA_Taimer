@@ -30,7 +30,7 @@ namespace Taimer {
         /// <param name="desc_">Descripción de la Actividad_p</param>
         /// <param name="cod_">Código de la Actividad_p</param>
         /// <param name="usu_">Usuario de la Activiad_p</param>
-        public Actividad_p(string nom_, string desc_, string cod_, User usu_)
+        public Actividad_p(string nom_, string desc_, int cod_, User usu_)
             : base(nom_, desc_, cod_) {
                 usuario = usu_;
         }
@@ -44,7 +44,7 @@ namespace Taimer {
         /// <param name="cod_">Código de la Actividad_p</param>
         /// <param name="turnos_">Listas de turnos en los que se realiza la Actividad_p </param>
         /// <param name="usu_">Usuario al que pertenece esta Actividad_p</param>
-        public Actividad_p(string nom_, string desc_, string cod_, List<Turno> turnos_, User usu_)
+        public Actividad_p(string nom_, string desc_, int cod_, List<Turno> turnos_, User usu_)
             : base(nom_, desc_, cod_, turnos_) {
 
             usuario = usu_;

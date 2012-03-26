@@ -47,7 +47,7 @@ namespace algoritmo
         }
 
         //Borrar una asignatura
-        public static bool BorrarAsignaturaBool(string codigo)
+        public static bool BorrarAsignaturaBool(int codigo)
         {
             foreach (Actividad_a a in asignaturas)
             {
@@ -58,7 +58,7 @@ namespace algoritmo
         }
 
         //Borrar una asignatura
-        public static void BorrarAsignatura(string codigo)
+        public static void BorrarAsignatura(int codigo)
         {
             bool borrado = false;
             foreach (Actividad_a a in asignaturas)

@@ -14,7 +14,7 @@ namespace Taimer {
         /// <summary>
         /// Código de la Actividad y clave primaria en la base de datos
         /// </summary>
-        protected string codigo;   
+        protected int codigo;   
                                   
         /// <summary>
         /// Nombre de la actividad
@@ -55,7 +55,7 @@ namespace Taimer {
         /// <param name="nom_"> Nombre de la Actividad</param>
         /// <param name="desc_"> Descripción de la Actividad</param>
         /// <param name="cod_"> Código de la Actividad </param>
-        public Actividad(string nom_, string desc_, string cod_) {
+        public Actividad(string nom_, string desc_, int cod_) {
             nombre = nom_;
             descripcion = desc_;
             codigo = cod_;
@@ -70,7 +70,7 @@ namespace Taimer {
         /// <param name="desc_"> Descripción de la Actividad </param>
         /// <param name="cod_"> Código de la Actividad </param>
         /// <param name="turnos_"> Lista de turnos a la que se puede asistir </param>
-        public Actividad(string nom_, string desc_, string cod_, List<Turno> turnos_)
+        public Actividad(string nom_, string desc_, int cod_, List<Turno> turnos_)
         {
             nombre = nom_;
             descripcion = desc_;
@@ -113,7 +113,7 @@ namespace Taimer {
         /// <summary>
         /// Asigna/Devuelve el código de la Actividad
         /// </summary>
-        public string Codigo {
+        public int Codigo {
             get { return codigo; }
             set { codigo = value; }
         }

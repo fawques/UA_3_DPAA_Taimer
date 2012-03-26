@@ -39,7 +39,7 @@ namespace Taimer {
         /// <param name="cod_"> Código de la Actividad_a </param>
         /// <param name="nomCoord_"> Nómbre del coordinador de la Actividad_a</param>
  
-        public Actividad_a(string nom_, string desc_, string cod_, string nomCoord_)
+        public Actividad_a(string nom_, string desc_, int cod_, string nomCoord_)
             : base(nom_, desc_, cod_) {
 
             nombreCoordinador = nomCoord_;
@@ -55,7 +55,7 @@ namespace Taimer {
         /// <param name="cod_"> Código de la Activiad_a </param>
         /// <param name="nomCoord_"> Nombre del coordinador de la Actividad_a </param>
         /// <param name="curso_"> Curso al que pertenece la Actividad_a </param>
-        public Actividad_a(string nom_, string desc_, string cod_, string nomCoord_, int curso_)
+        public Actividad_a(string nom_, string desc_, int cod_, string nomCoord_, int curso_)
             : base(nom_, desc_, cod_) {
 
             nombreCoordinador = nomCoord_;
@@ -72,7 +72,7 @@ namespace Taimer {
         /// <param name="nomCoord_"> Nombre del coordinador de la Actividad_a</param>
         /// <param name="turnos_"> Listas de turnos en los que se realiza la Actividad_a</param>
         /// <param name="curso_"> Curso ql que pertence la Actividad_a</param>
-        public Actividad_a(string nom_, string desc_, string cod_, string nomCoord_, List<Turno> turnos_, int curso_)
+        public Actividad_a(string nom_, string desc_, int cod_, string nomCoord_, List<Turno> turnos_, int curso_)
             : base(nom_, desc_, cod_, turnos_) {
 
             nombreCoordinador = nomCoord_;
