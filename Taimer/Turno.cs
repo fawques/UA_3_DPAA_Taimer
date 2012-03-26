@@ -66,6 +66,8 @@ namespace Taimer {
                 case dias.V: dia = "Viernes"; break;
                 case dias.S: dia = "Sábado"; break;
                 case dias.D: dia = "Domingo"; break;
+                case default:
+                    throw new MissingMemberException("El turno no tiene especificado un día de la semana.");
             }
             return dia;
         }
@@ -132,7 +134,7 @@ namespace Taimer {
                     case "S": Dia = dias.S; break;
                     case "D": Dia = dias.D; break;
                     default:
-                        throw new Exception("Día de la semana inexistente.");
+                        throw new MissingMemberException("Día de la semana inexistente.");
                 }
             }
             else { //Día completo
@@ -145,7 +147,7 @@ namespace Taimer {
                     case "SABADO": Dia = dias.S; break;
                     case "DOMINGO": Dia = dias.D; break;
                     default:
-                        throw new Exception("Día de la semana inexistente.");
+                        throw new MissingMemberException("Día de la semana inexistente.");
                 }
             }
         }
