@@ -307,6 +307,38 @@ namespace Taimer {
                 throw new MissingMemberException("No existe la actividad personal que se desea borrar.");
         }
 
+
+
+
+
+
+        /// <summary>
+        /// Devolver una actividad, ya sea académica o personal, a partir de su código
+        /// </summary>
+        public Actividad GetActividad(int cod)
+        {
+            if (cod >= 0)     // Si el código es un número positivo, es una actividad académica
+            {
+                foreach (Actividad act in actAcademicas)
+                {
+                    if (act.Codigo == cod)
+                        return act;
+                }
+            }
+            else
+            {
+                foreach (Actividad act in actPersonales)
+                {
+                    if (act.Codigo == cod)
+                        return act;
+                }
+            }
+
+            throw new MissingMemberException("No existe ninguna actividad con ese código.");
+        }
+
+
+
         /// <summary>
         /// Añade un Horario a la lista de horarios
         /// </summary>
