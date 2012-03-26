@@ -223,17 +223,26 @@ namespace Taimer
         // Dice cuál es la primera hora de un horario
         public Hora minHora()
         {
+            bool encontrado = false;
             Hora minima = new Hora(0, 0);
             for (int i = 1; i < 7; i++)
             {
                 try
                 {
-                    if (minHoraDia(i) < minima)
+                    if (minHoraDia(i) < minima || !encontrado)
+                    {
                         minima = minHoraDia(i);
+                        encontrado = true;
+                    }
                 }
                 catch (ArgumentNullException)
                 {}
                 
+            }
+
+            if (!encontrado)
+            {
+                throw new NullReferenceException("El horario está vacío");
             }
             return minima;
         }
@@ -241,18 +250,27 @@ namespace Taimer
         // Dice cuál es la primera hora de un horario
         public Hora maxHora()
         {
+            bool encontrado = false;
             Hora maxima = new Hora(23, 59);
             for (int i = 1; i < 7; i++)
             {
                 try
                 {
-                    if (maxHoraDia(i) > maxima)
+                    if (maxHoraDia(i) > maxima || !encontrado)
+                    {
                         maxima = maxHoraDia(i);
+                        encontrado = true;
+                    }
                 }
                 catch (ArgumentNullException)
                 {}
                 
             }
+            if (!encontrado)
+            {
+                throw new NullReferenceException("El horario está vacío");
+            }
+
             return maxima;
         }
 
