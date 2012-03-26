@@ -66,37 +66,13 @@ namespace Taimer {
                 case dias.V: dia = "Viernes"; break;
                 case dias.S: dia = "Sábado"; break;
                 case dias.D: dia = "Domingo"; break;
-                case default:
+                default:
                     throw new MissingMemberException("El turno no tiene especificado un día de la semana.");
             }
             return dia;
         }
 
-        // Cambiar día de la semana con string
-        /*private void CambiarDiaSemana(string s) {
-            char d = s.ToUpper()[0];
-            switch (d) {
-                case 'L': diasemana = dias.L; break;
-                case 'M':
-                    if (s.Length >= 2) { // de verdad esto comprueba que el día exista?
-                        if (s.ToUpper()[1] == 'A')
-                            diasemana = dias.M;
-                        else if(s.ToString().ToUpper().ToCharArray()[1] == 'I')
-                            diasemana = dias.X;
-                        else
-                            throw new Exception("Día de la semana inexistente.");
-                    }
-                    else
-                        throw new Exception("Día de la semana inexistente.");
-                break;
-                case 'J': diasemana = dias.J; break;
-                case 'V': diasemana = dias.V; break;
-                case 'S': diasemana = dias.S; break;
-                case 'D': diasemana = dias.D; break;
-                default:
-                    throw new Exception("Día de la semana inexistente.");
-            }
-        }*/
+
 
         /// <summary>
         /// Normaliza una cadena quitandole cualquier tipo de tilde y convirtiendola a mayúsculas
