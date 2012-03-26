@@ -30,6 +30,9 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridMyAct = new System.Windows.Forms.DataGridView();
+            this.colCodigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colNombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colDescripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblNombre = new System.Windows.Forms.Label();
             this.dataGridActHor = new System.Windows.Forms.DataGridView();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -45,9 +48,6 @@
             this.tBxNombre = new System.Windows.Forms.TextBox();
             this.lblErrorNombre = new System.Windows.Forms.Label();
             this.lblErrorActiv = new System.Windows.Forms.Label();
-            this.colCodigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colNombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colDescripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridMyAct)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridActHor)).BeginInit();
             this.SuspendLayout();
@@ -77,6 +77,31 @@
             this.dataGridMyAct.ReadOnly = true;
             this.dataGridMyAct.Size = new System.Drawing.Size(347, 287);
             this.dataGridMyAct.TabIndex = 13;
+            this.dataGridMyAct.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridMyAct_CellClick);
+            // 
+            // colCodigo
+            // 
+            this.colCodigo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.colCodigo.HeaderText = "Codigo";
+            this.colCodigo.Name = "colCodigo";
+            this.colCodigo.ReadOnly = true;
+            this.colCodigo.Width = 65;
+            // 
+            // colNombre
+            // 
+            this.colNombre.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.colNombre.HeaderText = "Nombre";
+            this.colNombre.Name = "colNombre";
+            this.colNombre.ReadOnly = true;
+            this.colNombre.Width = 69;
+            // 
+            // colDescripcion
+            // 
+            this.colDescripcion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.colDescripcion.HeaderText = "Descipcion";
+            this.colDescripcion.Name = "colDescripcion";
+            this.colDescripcion.ReadOnly = true;
+            this.colDescripcion.Width = 85;
             // 
             // lblNombre
             // 
@@ -232,30 +257,6 @@
             this.lblErrorActiv.TabIndex = 27;
             this.lblErrorActiv.Text = "No puede estar vacio";
             this.lblErrorActiv.Visible = false;
-            // 
-            // colCodigo
-            // 
-            this.colCodigo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.colCodigo.HeaderText = "Codigo";
-            this.colCodigo.Name = "colCodigo";
-            this.colCodigo.ReadOnly = true;
-            this.colCodigo.Width = 65;
-            // 
-            // colNombre
-            // 
-            this.colNombre.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.colNombre.HeaderText = "Nombre";
-            this.colNombre.Name = "colNombre";
-            this.colNombre.ReadOnly = true;
-            this.colNombre.Width = 69;
-            // 
-            // colDescripcion
-            // 
-            this.colDescripcion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.colDescripcion.HeaderText = "Descipcion";
-            this.colDescripcion.Name = "colDescripcion";
-            this.colDescripcion.ReadOnly = true;
-            this.colDescripcion.Width = 85;
             // 
             // ClientCrearHor1
             // 

@@ -223,7 +223,7 @@ namespace Taimer
         // Dice cuál es la primera hora de un horario
         public Hora minHora()
         {
-            Hora minima = minHoraDia(0);
+            Hora minima = new Hora(0, 0);
             for (int i = 1; i < 7; i++)
             {
                 try
@@ -241,7 +241,7 @@ namespace Taimer
         // Dice cuál es la primera hora de un horario
         public Hora maxHora()
         {
-            Hora maxima = maxHoraDia(0);
+            Hora maxima = new Hora(23, 59);
             for (int i = 1; i < 7; i++)
             {
                 try
