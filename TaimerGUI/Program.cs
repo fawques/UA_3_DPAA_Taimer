@@ -83,6 +83,13 @@ namespace TaimerGUI {
                 throw new MissingMemberException("La asignatura no existe");
         }
 
+        //Añade una Actividad_p a un usuario
+        public static void AddActPers(Actividad_p p, User u) {
+            codActividadPer--;
+            p.Codigo = codActividadPer;
+            u.AddActPersonal(p);
+        }
+
         //Añade un usuario
         public static void AddUsuario(User u) {
             usuarios.Add(u);
