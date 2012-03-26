@@ -165,13 +165,7 @@ namespace Taimer {
         /// <param name="ubic_">Ubicación en la que se realiza el turno</param>
         public Turno(Hora horaI_, Hora horaF_, dias dia_, string ubic_) {
             codigo = 0;
-            if (horaI_ < horaF_) {
-                horaInicio = horaI_;
-                horaFin = horaF_;
-            }
-            else
-                throw new Exception("La hora de inicio es la misma o más tarde que la hora de finalización");
-
+            CambiarHoras(horaI_, horaF_);
             diasemana = dia_;
             ubicacion = ubic_;
             actividad = null;
@@ -189,14 +183,7 @@ namespace Taimer {
         public Turno(Hora horaI_, Hora horaF_, string dia_, string ubic_)
         {
             codigo = 0;
-            if (horaI_ < horaF_)
-            {
-                horaInicio = horaI_;
-                horaFin = horaF_;
-            }
-            else
-                throw new Exception("La hora de inicio es la misma o más tarde que la hora de finalización");
-
+            CambiarHoras(horaI_, horaF_);
             CambiarDiaSemana(dia_);
             ubicacion = ubic_;
             actividad = null;
@@ -215,14 +202,7 @@ namespace Taimer {
         /// <param name="ubic_"> Ubicación en la que se realiza el Turno </param>
         /// <param name="act_"> Actividad a la que pertence el Turno</param>
         public Turno(Hora horaI_, Hora horaF_, dias dia_, string ubic_, Actividad act_) {
-
-            if (horaI_ < horaF_) {
-                horaInicio = horaI_;
-                horaFin = horaF_;
-            }
-            else
-                throw new Exception("La hora de inicio es la misma o más tarde que la hora de finalización");
-
+            CambiarHoras(horaI_, horaF_);
             diasemana = dia_;
             ubicacion = ubic_;
             actividad = act_;
@@ -244,15 +224,7 @@ namespace Taimer {
         /// <param name="act_"> Actividad a la que pertence el Turno</param>
         public Turno(Hora horaI_, Hora horaF_, string dia_, string ubic_, Actividad act_)
         {
-
-            if (horaI_ < horaF_)
-            {
-                horaInicio = horaI_;
-                horaFin = horaF_;
-            }
-            else
-                throw new Exception("La hora de inicio es la misma o más tarde que la hora de finalización");
-
+            CambiarHoras(horaI_, horaF_);
             CambiarDiaSemana(dia_);
             ubicacion = ubic_;
             actividad = act_;
@@ -278,16 +250,8 @@ namespace Taimer {
         /// <param name="ubic_">Ubicación en la que se realiza el Turno</param>
         /// <param name="act_">Actividad a la que pertenece el Turno</param>
         public Turno(int cod_, Hora horaI_, Hora horaF_, dias dia_, string ubic_, Actividad act_) {
-            
             codigo = cod_;
-
-            if (horaI_ < horaF_) {
-                horaInicio = horaI_;
-                horaFin = horaF_;
-            }
-            else
-                throw new Exception("La hora de inicio es la misma o más tarde que la hora de finalización");
-
+            CambiarHoras(horaI_, horaF_);
             diasemana = dia_;
             ubicacion = ubic_;
             actividad = act_;
@@ -306,17 +270,8 @@ namespace Taimer {
         /// <param name="act_">Actividad a la que pertenece el Turno</param>
         public Turno(int cod_, Hora horaI_, Hora horaF_, string dia_, string ubic_, Actividad act_)
         {
-
             codigo = cod_;
-
-            if (horaI_ < horaF_)
-            {
-                horaInicio = horaI_;
-                horaFin = horaF_;
-            }
-            else
-                throw new Exception("La hora de inicio es la misma o más tarde que la hora de finalización");
-
+            CambiarHoras(horaI_, horaF_);
             CambiarDiaSemana(dia_);
             ubicacion = ubic_;
             actividad = act_;

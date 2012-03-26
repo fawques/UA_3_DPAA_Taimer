@@ -188,14 +188,10 @@ namespace Taimer
         private void cambiadiasemana_Click(object sender, EventArgs e)
         {
             int indice = int.Parse(codBorrar.Text);
-            
-            //dias diatest = new dias();
-            //diatest = dias.L;
 
             try
             {
                 activ1.Turnos[indice].DiaString = diacombo.Text;
-                //activ1.Turnos[indice].Dia = diatest;
             }
             catch (Exception ex)
             {
