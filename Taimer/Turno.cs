@@ -97,7 +97,7 @@ namespace Taimer {
         }*/
 
         /// <summary>
-        /// Nomaliza una cadena quitandole cualquier tipo de tilde y convirtiendola a mallusculas
+        /// Normaliza una cadena quitandole cualquier tipo de tilde y convirtiendola a mayúsculas
         /// </summary>
         /// <param name="s">Cadena normalizada</param>
         private void NormalizarCadena(ref string s) {
@@ -177,7 +177,34 @@ namespace Taimer {
             actividad = null;
         }
 
+        /// <summary>
+        /// Constructor (sin Actividad y sin código)
+        /// Su uso es para añadirlo en una Actividad
+        /// (Modificado para admitir días de la semana por string)
+        /// </summary>
+        /// <param name="horaI_">Hora de inicio del turno</param>
+        /// <param name="horaF_">Hora en que finaliza el turno</param>
+        /// <param name="dia_">String que representa el día de la semana</param>
+        /// <param name="ubic_">Ubicación en la que se realiza el turno</param>
+        public Turno(Hora horaI_, Hora horaF_, string dia_, string ubic_)
+        {
+            codigo = 0;
+            if (horaI_ < horaF_)
+            {
+                horaInicio = horaI_;
+                horaFin = horaF_;
+            }
+            else
+                throw new Exception("La hora de inicio es la misma o más tarde que la hora de finalización");
+
+            CambiarDiaSemana(dia_);
+            ubicacion = ubic_;
+            actividad = null;
+        }
  
+
+
+
 
         /// <summary>
         /// Constructor que vincula el turno a una actividad
@@ -186,7 +213,7 @@ namespace Taimer {
         /// <param name="horaF_"> Hora en que finaliza el Turno  </param>
         /// <param name="dia_"> Dia de la semana </param>
         /// <param name="ubic_"> Ubicación en la que se realiza el Turno </param>
-        /// <param name="act_"> Actividad  a la que pertence el Turno</param>
+        /// <param name="act_"> Actividad a la que pertence el Turno</param>
         public Turno(Hora horaI_, Hora horaF_, dias dia_, string ubic_, Actividad act_) {
 
             if (horaI_ < horaF_) {
@@ -205,6 +232,40 @@ namespace Taimer {
             else 
                 ((Actividad_p)actividad).AddTurno(this);
         }
+
+        /// <summary>
+        /// Constructor que vincula el turno a una actividad
+        /// (Modificado para admitir días de la semana por string)
+        /// </summary>
+        /// <param name="horaI_"> Hora de inicio del Turno</param>
+        /// <param name="horaF_"> Hora en que finaliza el Turno  </param>
+        /// <param name="dia_">String que representa el día de la semana</param>
+        /// <param name="ubic_"> Ubicación en la que se realiza el Turno </param>
+        /// <param name="act_"> Actividad a la que pertence el Turno</param>
+        public Turno(Hora horaI_, Hora horaF_, string dia_, string ubic_, Actividad act_)
+        {
+
+            if (horaI_ < horaF_)
+            {
+                horaInicio = horaI_;
+                horaFin = horaF_;
+            }
+            else
+                throw new Exception("La hora de inicio es la misma o más tarde que la hora de finalización");
+
+            CambiarDiaSemana(dia_);
+            ubicacion = ubic_;
+            actividad = act_;
+
+            if (actividad.EsAcademica())
+                ((Actividad_a)actividad).AddTurno(this);
+            else
+                ((Actividad_p)actividad).AddTurno(this);
+        }
+
+
+
+
 
         /// <summary>
         /// Constructor completo
@@ -228,6 +289,35 @@ namespace Taimer {
                 throw new Exception("La hora de inicio es la misma o más tarde que la hora de finalización");
 
             diasemana = dia_;
+            ubicacion = ubic_;
+            actividad = act_;
+        }
+
+        /// <summary>
+        /// Constructor completo
+        /// Uso exclusivo de los CADs
+        /// (Modificado para admitir días de la semana por string)
+        /// </summary>
+        /// <param name="cod_">Código del Turno</param>
+        /// <param name="horaI_">Hora de inicio del Turno</param>
+        /// <param name="horaF_">Hora en que finaliza el Turno</param>
+        /// <param name="dia_">String que representa el día de la semana</param>
+        /// <param name="ubic_">Ubicación en la que se realiza el Turno</param>
+        /// <param name="act_">Actividad a la que pertenece el Turno</param>
+        public Turno(int cod_, Hora horaI_, Hora horaF_, string dia_, string ubic_, Actividad act_)
+        {
+
+            codigo = cod_;
+
+            if (horaI_ < horaF_)
+            {
+                horaInicio = horaI_;
+                horaFin = horaF_;
+            }
+            else
+                throw new Exception("La hora de inicio es la misma o más tarde que la hora de finalización");
+
+            CambiarDiaSemana(dia_);
             ubicacion = ubic_;
             actividad = act_;
         }
