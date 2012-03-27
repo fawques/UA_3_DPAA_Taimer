@@ -48,11 +48,6 @@ namespace Taimer {
         private string titulacion;
 
         /// <summary>
-        /// Último código de la actividad personal asignado
-        /// </summary>
-        private int codActP;
-
-        /// <summary>
         /// Último código de horario asignado
         /// </summary>
         private int codHorarios;
@@ -95,7 +90,6 @@ namespace Taimer {
         /// <param name="curso_">Curso del usuario</param>
         /// <param name="tit_">Titulación del usuario</param>
         public User(string nom_, string dni_, string email_, string pass_, int curso_, string tit_) {
-            codActP = 0;
             codHorarios = 0;
             nombre = nom_;
             dni = dni_;
@@ -120,7 +114,6 @@ namespace Taimer {
         /// <param name="actp_">Lista de actividades personales que realiza el usuario</param>
         /// <param name="hor_">Lista de horarios que tiene alamacenados el usuario</param>
         public User(string nom_, string dni_, string email_, string pass_, int curso_, string tit_, List<Actividad_a> acta_, List<Actividad_p> actp_, List<Horario> hor_){
-            codActP = actp_.Count;
             codHorarios = hor_.Count;
             /* -- Al meterle las listas, sobre todo si vienen de los CAD, ya tienen su código puesto
             for (int i = 0; i < actp_.Count; i++)
@@ -148,7 +141,6 @@ namespace Taimer {
         /// </summary>
         /// <param name="u">User que se quiere copiar</param>
         public User(User u) {
-            codActP = u.codActP;
             codHorarios = u.codHorarios;
             dni = u.dni;
             nombre = u.nombre;
@@ -215,14 +207,6 @@ namespace Taimer {
         }
 
         /// <summary>
-        /// Asigna/Delvuelve el último código de Actividad_p asignado
-        /// </summary>
-        public int CodActP {
-            set { codActP = value; }
-            get { return codActP; }
-        }
-
-        /// <summary>
         /// Asigna/Devuelve el último código de Horario asignado
         /// </summary>
         public int CodHorarios {
@@ -279,11 +263,10 @@ namespace Taimer {
 
         /// <summary>
         /// Añade una actividad personal
+        /// ¡¡¡NO USAR!!! AÑADIR DESDE PROGRAM
         /// </summary>
         /// <param name="act">Actividad personal que se desa añadir</param>
         public void AddActPersonal(Actividad_p act) {
-            codActP++;
-            act.Codigo = codActP;
             actPersonales.Add(act);
         }
 
