@@ -144,7 +144,7 @@ namespace Taimer {
         public Turno(Hora horaI_, Hora horaF_, dias dia_, string ubic_) {
             codigo = 0;
             CambiarHoras(horaI_, horaF_);
-            Dia = dia_;
+            diasemana = dia_;
             ubicacion = ubic_;
             actividad = null;
         }
@@ -182,7 +182,7 @@ namespace Taimer {
         public Turno(Hora horaI_, Hora horaF_, dias dia_, string ubic_, Actividad act_) {
             codigo = 0;
             CambiarHoras(horaI_, horaF_);
-            Dia = dia_;
+            diasemana = dia_;
             ubicacion = ubic_;
             actividad = act_;
 
@@ -232,7 +232,7 @@ namespace Taimer {
         public Turno(int cod_, Hora horaI_, Hora horaF_, dias dia_, string ubic_, Actividad act_) {
             codigo = cod_;
             CambiarHoras(horaI_, horaF_);
-            Dia = dia_;
+            diasemana = dia_;
             ubicacion = ubic_;
             actividad = act_;
         }
@@ -489,7 +489,11 @@ namespace Taimer {
         public dias Dia{
             get { return diasemana; }
             set {
-                    if (actividad.EsAcademica())
+                    if (actividad == null)
+                    {
+                        diasemana = value;
+                    }
+                    else if (actividad.EsAcademica())
                     {
                         diasemana = value;
                     }

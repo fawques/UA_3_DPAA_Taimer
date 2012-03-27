@@ -26,27 +26,20 @@ namespace Taimer
 
         private void crear_Click(object sender, EventArgs e)
         {
-            try
-            {
+            //try
+            //{
                 Hora horaini = new Hora(int.Parse(hini.Text), int.Parse(mini.Text));
                 Hora horafin = new Hora(int.Parse(hfin.Text), int.Parse(mfin.Text));
 
-                Turno turno = new Turno(1, horaini, horafin, dias.L, "???", activ1);
-
-                if (diacombo.Text == "M")
-                    turno.DiaString = "Martes";
-                else if (diacombo.Text == "X")
-                    turno.DiaString = "Miércoles";
-                else
-                    turno.DiaString = diacombo.Text;
+                Turno turno = new Turno(1, horaini, horafin, diacombo.Text, "???", activ1);
 
                 activ1.AddTurno(turno);
                 actualizaLista();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message,"Excepción al crear turno",MessageBoxButtons.OK,MessageBoxIcon.Error);
-            }
+            //}
+            //catch (Exception ex)
+            //{
+              //  MessageBox.Show(ex.Message,"Excepción al crear turno",MessageBoxButtons.OK,MessageBoxIcon.Error);
+            //}
         }
 
         private void actualizaLista()
