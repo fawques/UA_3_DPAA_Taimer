@@ -6,7 +6,7 @@ using System.Data.SqlClient;
 using System.IO;
 using System.Configuration;
 using System.Collections;
-using Taimer;
+
 
 namespace CAD
 {
@@ -143,6 +143,29 @@ namespace CAD
                 sqlAdaptador.Fill(listAct);
                 return listAct;
 
+            }
+            catch (Exception ex)
+            {
+                // Captura la condición general y la reenvía.
+                throw ex;
+            }
+            finally
+            {
+                if (con != null) con.Close(); // Se asegura de cerrar la conexión.
+            }
+        }
+        public DataSet LastCode()
+        {
+            SqlConnection con = null;
+            DataSet listAct = null;
+            string comando = "Select min(codigo) from [Actividad_p]";
+            try
+            {
+                con = new SqlConnection(conexionTBD);
+                SqlDataAdapter sqlAdaptador = new SqlDataAdapter(comando, con);
+                listAct = new DataSet();
+                sqlAdaptador.Fill(listAct);
+                return listAct;
             }
             catch (Exception ex)
             {

@@ -6,7 +6,7 @@ using System.Data.SqlClient;
 using System.IO;
 using System.Configuration;
 using System.Collections;
-using Taimer;
+
 
 namespace CAD
 {

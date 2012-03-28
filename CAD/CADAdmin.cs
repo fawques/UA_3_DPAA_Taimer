@@ -6,14 +6,14 @@ using System.Data.SqlClient;
 using System.IO;
 using System.Configuration;
 using System.Collections;
-using Taimer;
+
 
 namespace CAD
 {
     class CADAdmin
     {
         private static string conexionTBD;
-        private static SqlConnection cnBD;
+        
         public CADAdmin()
         {
             conexionTBD = Conection.Conect.ConectionString;

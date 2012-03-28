@@ -21,5 +21,11 @@ namespace BaseDeDatos
             CAD.CADUser user = new CAD.CADUser();
             user.CrearUserBasic("0000008", "Higinio Mora", "higinio@mora.es", "higiniomola");
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            CAD.Prueba formp = new CAD.Prueba();
+            formp.ShowDialog();
+        }
     }
 }

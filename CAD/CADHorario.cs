@@ -6,14 +6,14 @@ using System.Data.SqlClient;
 using System.IO;
 using System.Configuration;
 using System.Collections;
-using Taimer;
+
 
 namespace CAD
 {
     class CADHorario
     {
         private static string conexionTBD;
-        private static SqlConnection cnBD;
+        
         public CADHorario()
         {
             // Adquiere la cadena de conexión desde un único sitio

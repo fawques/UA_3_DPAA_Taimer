@@ -6,14 +6,14 @@ using System.Data.SqlClient;
 using System.IO;
 using System.Configuration;
 using System.Collections;
-using Taimer;
+
 
 namespace CAD
 {
     class CADTitulacion
     {
         private static string conexionTBD;
-        private static SqlConnection cnBD;
+        
         public CADTitulacion()
         {
             conexionTBD = Conection.Conect.ConectionString;
@@ -23,7 +23,7 @@ namespace CAD
         //Método para crear un nuevo usu
         public void CrearTitulacion(string cod, string nom)
         {
-            string comando = "INSERT INTO [Titulacion](codigo,nombre) VALUES("+cod+","+nom+")";
+            string comando = "INSERT INTO [Titulacion](codigo,nombre) VALUES('"+cod+"','"+nom+"')";
             SqlConnection c=null;
             SqlCommand comandoTBD;
             

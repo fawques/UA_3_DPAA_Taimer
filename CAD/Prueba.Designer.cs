@@ -52,6 +52,7 @@
             this.tb3Com = new System.Windows.Forms.TextBox();
             this.tb1Com = new System.Windows.Forms.TextBox();
             this.tb2Com = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -295,11 +296,20 @@
             this.tb2Com.TabIndex = 0;
             this.tb2Com.Text = "Texto";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(243, 160);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(0, 13);
+            this.label1.TabIndex = 4;
+            // 
             // Prueba
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(483, 385);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -312,6 +322,7 @@
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -341,5 +352,6 @@
         private System.Windows.Forms.TextBox tb3Com;
         private System.Windows.Forms.TextBox tb1Com;
         private System.Windows.Forms.TextBox tb2Com;
+        private System.Windows.Forms.Label label1;
     }
 }

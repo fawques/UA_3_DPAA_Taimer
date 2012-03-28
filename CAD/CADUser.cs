@@ -6,14 +6,14 @@ using System.Data.SqlClient;
 using System.IO;
 using System.Configuration;
 using System.Collections;
-using Taimer;
+using System.Windows.Forms;
 
 namespace CAD
 {
     public class CADUser
     {
         private static string conexionTBD;
-        private static SqlConnection cnBD;
+        
         public CADUser()
         {
             conexionTBD = Conection.Conect.ConectionString;
@@ -37,7 +37,7 @@ namespace CAD
             }
             catch (SqlException ex)
             {
-                throw ex;
+                MessageBox.Show(ex.Message, "Error en la acción", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
             }
             finally
             {
@@ -61,7 +61,7 @@ namespace CAD
             }
             catch (SqlException ex)
             {
-                throw ex;
+                MessageBox.Show(ex.Message, "Error en la acción", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
             }
             finally
             {
@@ -84,7 +84,7 @@ namespace CAD
             }
             catch (Exception ex)
             {
-                throw ex;
+                MessageBox.Show(ex.Message, "Error en la acción", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
             }
             finally
             {
@@ -110,8 +110,8 @@ namespace CAD
             }
             catch (Exception ex)
             {
-                // Captura la condición general y la reenvía.
-                throw ex;
+                MessageBox.Show(ex.Message, "Error en la acción", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+                return null;
             }
             finally
             {
@@ -124,7 +124,7 @@ namespace CAD
 
             SqlConnection con = null;
             DataSet datos = null;
-            string comando = "Select * from [User] where dni="+dni+"'";
+            string comando = "Select * from [User] where dni='"+dni+"'";
             try
             {
                 con = new SqlConnection(conexionTBD);
@@ -132,12 +132,11 @@ namespace CAD
                 datos = new DataSet();
                 sqlAdaptador.Fill(datos);
                 return datos;
-
             }
             catch (Exception ex)
             {
-                // Captura la condición general y la reenvía.
-                throw ex;
+                MessageBox.Show(ex.Message, "Error en la acción", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+                return null;
             }
             finally
             {
@@ -162,7 +161,7 @@ namespace CAD
             }
             catch (SqlException ex)
             {
-                throw ex;
+                MessageBox.Show(ex.Message, "Error en la acción", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
             }
             finally
             {
