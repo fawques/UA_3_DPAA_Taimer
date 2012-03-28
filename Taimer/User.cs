@@ -68,6 +68,11 @@ namespace Taimer {
         private List<Horario> horarios = new List<Horario>();                       // Un usuario tiene (0,N) horarios
 
         /// <summary>
+        /// Ultimo código de actividades personales creadas
+        /// </summary>
+        private int codActPers;
+
+        /// <summary>
         /// Asigna un código un horario
         /// </summary>
         /// <param name="h">Horario al que se le quiere dar un código</param>
@@ -332,7 +337,7 @@ namespace Taimer {
         }
 
         /// <summary>
-        /// Adigna/Devuelve la lista de horarios del usuario
+        /// Asigna/Devuelve la lista de horarios del usuario
         /// </summary>
         public List<Horario> Horarios {
             set {
@@ -343,6 +348,13 @@ namespace Taimer {
             get { return horarios; }
         }
 
+        /// <summary>
+        /// Asigna/Devuelve el último código de la acitivadad personal asignada
+        /// </summary>
+        public int CodActPers {
+            set { codActPers = value; }
+            get { return codActPers; }
+        }
 
         /// <summary>
         /// Borrar horario (booleano)

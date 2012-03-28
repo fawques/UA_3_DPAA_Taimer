@@ -13,7 +13,6 @@ namespace TaimerGUI {
         private static List<User> usuarios;
         private static List<Algoritmo> algoritmos;
         private static int codAsignaturas = 0;
-        private static int codActividadPer = 0;
 
         private static void Init() { 
             //Aqui hay que rellenar todos los atributos privados de esta clase desde el cad
@@ -48,12 +47,6 @@ namespace TaimerGUI {
             get { return codAsignaturas; }
         }
 
-        //Asigna/Devuelve el último código asignado a una actividad personal
-        public static int CodActividadPer {
-            set { CodActividadPer = value; }
-            get { return codActividadPer; }
-        }
-
         //Añade una asignatura
         public static void AddAsignatura(Actividad_a a) {
             codAsignaturas++;
@@ -81,13 +74,6 @@ namespace TaimerGUI {
             }
             if(!borrado)
                 throw new MissingMemberException("La asignatura no existe");
-        }
-
-        //Añade una Actividad_p a un usuario
-        public static void AddActPers(Actividad_p p, User u) {
-            codActividadPer--;
-            p.Codigo = codActividadPer;
-            u.AddActPersonal(p);
         }
 
         //Añade un usuario

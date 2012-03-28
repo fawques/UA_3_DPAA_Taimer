@@ -56,6 +56,8 @@ namespace Taimer {
         /// <param name="act">Actividad_p que se desea copiar</param>
         public Actividad_p(Actividad_p act)
             : base(act) {
+                usuario.CodActPers--;
+                act.Codigo = usuario.CodActPers;
                 usuario = act.usuario; 
         }
 
