@@ -25,6 +25,7 @@ namespace TaimerGUI {
         public ClientMatriculacionActiv formMatric;
         public ClientVerActividades formVerAct;
         public ClientCrearActiv formCrearAct;
+        public ClientGestTurno formGestTurnos;
 
         /** CONSTRUCTOR **/
         public ClientForm(User usr) {
@@ -116,14 +117,16 @@ namespace TaimerGUI {
             formCreateHor1 = new ClientCrearHor1(usuario);
             formCreateHor2 = new ClientCrearHor2(usuario);
             formMatric = new ClientMatriculacionActiv(usuario);
-            formVerAct = new ClientVerActividades(usuario);
+            formGestTurnos = new ClientGestTurno();
+            formVerAct = new ClientVerActividades(usuario, formGestTurnos);
             formCrearAct = new ClientCrearActiv(usuario);
 
             
 
             //Para comunicarse entre ellos
             formCreateHor1.setContinueForm(formCreateHor2);
-            formCreateHor2.setBackForm(formCreateHor1);            
+            formCreateHor2.setBackForm(formCreateHor1);
+            formGestTurnos.setFormBack(formVerAct);
 
             formWelcome.MdiParent = this;
             formHorHome.MdiParent = this;
@@ -133,6 +136,7 @@ namespace TaimerGUI {
             formMatric.MdiParent = this;
             formVerAct.MdiParent = this;
             formCrearAct.MdiParent = this;
+            formGestTurnos.MdiParent = this;
 
 
 
@@ -144,6 +148,7 @@ namespace TaimerGUI {
             formMatric.Show();
             formVerAct.Show();
             formCrearAct.Show();
+            formGestTurnos.Show();
             formWelcome.Show();
             formWelcome.Focus();
             //////////////// --- //////////////////////////

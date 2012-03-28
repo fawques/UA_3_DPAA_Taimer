@@ -29,8 +29,9 @@ namespace TaimerGUI {
                 formBack.Show();
                 ClientForm pare = (ClientForm)this.MdiParent;
                 pare.positionAllChilds();
+                btnGuardar.Visible = false;
+                btnCrear.Visible = true;
             }
-
         }
 
         private void chkBxAll_CheckedChanged(object sender, EventArgs e) {
@@ -215,6 +216,10 @@ namespace TaimerGUI {
             pnlViernes.Controls.Clear();
             pnlSabado.Controls.Clear();
             pnlDomingo.Controls.Clear();
+        }
+
+        private void ClientCrearHor2_Activated(object sender, EventArgs e) {
+            this.reiniciar();
         }
     }
 }

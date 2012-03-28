@@ -13,10 +13,13 @@ namespace TaimerGUI
     public partial class ClientVerActividades : Form
     {
         private User usrAux;
-        public ClientVerActividades(User usr)
+        private ClientGestTurno formGestTurnos;
+
+        public ClientVerActividades(User usr, ClientGestTurno f)
         {
             InitializeComponent();
             usrAux = usr;
+            formGestTurnos = f;
         }
 
 
@@ -273,7 +276,11 @@ namespace TaimerGUI
         }
 
         private void btnGestTurn_Click(object sender, EventArgs e) {
-            MessageBox.Show("¿Que pongo aqui? ¿Otro MDI? ¿O una ventana fuera? ¿O muestro un algo?");
+            if (grpBoxDatosAct.Tag is Actividad_p) {
+                this.formGestTurnos.loadActividad((Actividad_p)grpBoxDatosAct.Tag);
+                this.formGestTurnos.Show();
+                this.formGestTurnos.Focus();
+            }
         }
 
         private void btnBorrar_Click(object sender, EventArgs e) {

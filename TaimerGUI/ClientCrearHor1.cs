@@ -90,9 +90,11 @@ namespace TaimerGUI
         }
 
         private void button1_Click(object sender, EventArgs e) {
+
             if (dataGridMyAct.SelectedRows.Count > 0) {
-                foreach (DataGridViewRow selRow in dataGridMyAct.SelectedRows.OfType<DataGridViewRow>().ToArray()) {
+                foreach (DataGridViewRow selRow in dataGridMyAct.SelectedRows) {
                     dataGridMyAct.Rows.Remove(selRow);
+                    
                     dataGridActHor.Rows.Add(selRow);
                 }
 
@@ -104,10 +106,12 @@ namespace TaimerGUI
             dataGridMyAct.Rows.Clear();
             foreach (Actividad obj in usrAux.ActPersonales) {
                 dataGridMyAct.Rows.Add(obj.Codigo, obj.Nombre, obj.Descripcion);
+                dataGridMyAct.Rows[dataGridMyAct.Rows.Count - 1].Tag = obj;
             }
             dataGridActHor.Rows.Clear();
             foreach (Actividad obj in usrAux.ActAcademicas) {
                 dataGridMyAct.Rows.Add(obj.Codigo, obj.Nombre, obj.Descripcion);
+                dataGridMyAct.Rows[dataGridMyAct.Rows.Count - 1].Tag = obj;
             }
         }
         /*Cargar actividades con filtro de nombre*/
@@ -115,14 +119,14 @@ namespace TaimerGUI
             dataGridMyAct.Rows.Clear();
             foreach (Actividad obj in usrAux.ActPersonales) {
                 if (obj.Nombre.ToLower().Contains(nom) && !isInGrid(obj.Codigo.ToString(), dataGridActHor)) {
-                    DataGridViewRow row = new DataGridViewRow();
-                    row.Tag = obj;
                     dataGridMyAct.Rows.Add(obj.Codigo, obj.Nombre, obj.Descripcion);
+                    dataGridMyAct.Rows[dataGridMyAct.Rows.Count - 1].Tag = obj;
                 }
             }
             foreach (Actividad obj in usrAux.ActAcademicas) {
                 if (obj.Nombre.ToLower().Contains(nom) && !isInGrid(obj.Codigo.ToString(), dataGridActHor)) {
                     dataGridMyAct.Rows.Add(obj.Codigo, obj.Nombre, obj.Descripcion);
+                    dataGridMyAct.Rows[dataGridMyAct.Rows.Count - 1].Tag = obj;
                 }
             }
         }
@@ -133,7 +137,7 @@ namespace TaimerGUI
 
         private void btnLeft_Click(object sender, EventArgs e) {
             if (dataGridActHor.SelectedRows.Count > 0) {
-                foreach (DataGridViewRow selRow in dataGridActHor.SelectedRows.OfType<DataGridViewRow>().ToArray()) {
+                foreach (DataGridViewRow selRow in dataGridActHor.SelectedRows) {
                     dataGridActHor.Rows.Remove(selRow);
                     dataGridMyAct.Rows.Add(selRow);
                 }
@@ -156,19 +160,24 @@ namespace TaimerGUI
         }
 
         public List<Actividad_p> getActividadesP(){
+            List<Actividad_p> aux = new List<Actividad_p>();
             foreach (DataGridViewRow row in dataGridActHor.Rows) {
-                
-                //row.Cells[0].Value;
+
+                if (row.Tag is Actividad_p) {
+                    aux.Add((Actividad_p)row.Tag);
+                }
             }
-            return usrAux.ActPersonales;//provisional
+            return aux;
         }
 
         public List<Actividad_a> getActividadesA() {
+            List<Actividad_a> aux = new List<Actividad_a>();
             foreach (DataGridViewRow row in dataGridActHor.Rows) {
-
-                //row.Cells[0].Value;
+                if (row.Tag is Actividad_a) {
+                    aux.Add((Actividad_a)row.Tag);
+                }
             }
-            return usrAux.ActAcademicas;//provisional
+            return aux;
         }
 
 
@@ -178,6 +187,9 @@ namespace TaimerGUI
             } else {
                 return tBxNombre.Text;
             }
+        }
+
+        private void dataGridMyAct_CellClick(object sender, DataGridViewCellEventArgs e) {
         }
 
     }

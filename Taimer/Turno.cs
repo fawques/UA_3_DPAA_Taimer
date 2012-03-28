@@ -24,6 +24,19 @@ namespace Taimer {
             }
             return dia;
         }
+        public static int convertToInt(dias d) {
+            int dia = 0;
+            switch (d) {
+                case dias.L: dia = 0; break;
+                case dias.M: dia = 1; break;
+                case dias.X: dia = 2; break;
+                case dias.J: dia = 3; break;
+                case dias.V: dia = 4; break;
+                case dias.S: dia = 5; break;
+                case dias.D: dia = 6; break;
+            }
+            return dia;
+        }
         public static dias convertToDais(string d) {
 
             switch (d) {
