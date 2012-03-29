@@ -22,9 +22,9 @@ namespace CAD {
 
         }
         //Método para crear una Actividad con todos sus parametros
-        public void CrearActividadAll(string nombre,string desc,int codigo,string idUser){
+        public void CrearActividadAll(string nombre,string desc,int codigo){
 
-            string comando = "INSERT INTO [Actividad](codigo,nombre,descripcion,idUser) VALUES('" + codigo + "', '" + nombre + "', '" + desc + "', '" + idUser + "')";
+            string comando = "INSERT INTO [Actividad](codigo,nombre,descripcion) VALUES('" + codigo + "', '" + nombre + "', '" + desc + "')";
             SqlConnection c = null;
             SqlCommand comandoTBD;
             try
@@ -47,10 +47,10 @@ namespace CAD {
         
         }
         //Método para insertar sin campos obligatorios
-        public void CrearActividadBasic(string nombre, int codigo, string idUser)
+        public void CrearActividadBasic(string nombre, int codigo)
         {
 
-            string comando = "INSERT INTO [Actividad](codigo,nombre,idUser) VALUES('" + codigo + "', '" + nombre + "', '" + idUser + "')";
+            string comando = "INSERT INTO [Actividad](codigo,nombre) VALUES('" + codigo + "', '" + nombre + "')";
             SqlConnection c = null;
             SqlCommand comandoTBD;
             try
@@ -74,10 +74,10 @@ namespace CAD {
         }
 
         //Borrar una actividad
-        public void BorrarActividad(int codigo, string idUser) {
+        public void BorrarActividad(int codigo) {
 
             SqlConnection c = null;
-            string comand = "DELETE FROM [Actividad] WHERE codigo= '" + codigo + "' and idUser= '" + idUser + "'";
+            string comand = "DELETE FROM [Actividad] WHERE codigo= '" + codigo + "'";
             try
             {
 
@@ -97,9 +97,9 @@ namespace CAD {
 
         }
         //Modificar una actividad
-        public void ModificaActividad(string nombre,string desc,int cod,string user) 
+        public void ModificaActividad(string nombre,string desc,int cod) 
         {
-            string comando = "UPDATE [Actividad] SET nombre = '" + nombre + "', descripcion = '" + desc +"' WHERE codigo = '" + cod + "' and idUser = '"+user+"'";
+            string comando = "UPDATE [Actividad] SET nombre = '" + nombre + "', descripcion = '" + desc +"' WHERE codigo = '" + cod + "'";
             SqlConnection c = null;
             SqlCommand comandoTBD;
            
@@ -125,12 +125,12 @@ namespace CAD {
 
         }
         //Obtenemos los datos de un Actividad según su id
-        public DataSet GetDatosActividad(string user,int cod)
+        public DataSet GetDatosActividad(int cod)
         {
 
             SqlConnection con = null;
             DataSet datos = null;
-            string comando = "Select * from [Actividad] where idUser=" + user+ " and codigo="+cod;
+            string comando = "Select * from [Actividad] where  codigo='"+cod+"'";
             try
             {
                 con = new SqlConnection(conexionTBD);

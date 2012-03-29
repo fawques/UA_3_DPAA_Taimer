@@ -31,7 +31,7 @@ namespace CAD
                 c = new SqlConnection(conexionTBD);
                
                 CADActividad ca =new CADActividad();
-                ca.CrearActividadAll(nombre, desc, codigo, idUser);
+                ca.CrearActividadAll(nombre, desc, codigo);
                 comandoTBD = new SqlCommand(comando, c);
                 c.Open();
                 comandoTBD.CommandType = CommandType.Text;
@@ -59,7 +59,7 @@ namespace CAD
             {
                 c = new SqlConnection(conexionTBD);
                 CADActividad ca = new CADActividad();
-                ca.CrearActividadBasic(nombre, codigo, idUser);
+                ca.CrearActividadBasic(nombre, codigo);
                 comandoTBD = new SqlCommand(comando, c);
                 c.Open();
                 comandoTBD.CommandType = CommandType.Text;
@@ -78,10 +78,10 @@ namespace CAD
         }
 
         //Borrar una actividad
-        public void BorrarActividad_p(int codigo, string idUser) {
+        public void BorrarActividad_p(int codigo) {
 
             SqlConnection c = null;
-            string comand = "DELETE FROM [Actividad_p] WHERE codigo= '" + codigo + "' and autor= '" + idUser + "'";
+            string comand = "DELETE FROM [Actividad_p] WHERE codigo= '" + codigo + "'";
             try
             {
 
@@ -90,7 +90,7 @@ namespace CAD
                 SqlCommand cmd = new SqlCommand(comand, c);
                 cmd.ExecuteNonQuery();
                 CADActividad ca = new CADActividad();
-                ca.BorrarActividad(codigo, idUser);
+                ca.BorrarActividad(codigo);
             }
             catch (Exception ex)
             {
@@ -104,12 +104,12 @@ namespace CAD
         }
         
         //Obtenemos los datos de un Actividad según su id
-        public DataSet GetDatosActividad_p(string user,int cod)
+        public DataSet GetDatosActividad_p(int cod)
         {
 
             SqlConnection con = null;
             DataSet datos = null;
-            string comando = "Select * from [Actividad_p] where autor=" + user+ " and codigo="+cod;
+            string comando = "Select * from [Actividad_p] where codigo='"+cod+"'";
             try
             {
                 con = new SqlConnection(conexionTBD);

@@ -21,9 +21,9 @@ namespace CAD {
 
         }
         //Método para crear una Actividad con todos sus parametros
-        public void CrearActivida_aAll(string nombre,string desc,int codigo,string idUser,string profesor,string titulacion){
+        public void CrearActivida_aAll(string nombre,string desc,int codigo,string profesor,string titulacion){
 
-            string comando = "INSERT INTO [Actividad_a](profesor,codigo,alumno,titulacion) VALUES('" + profesor + "', '" + codigo + "', '" + idUser + "', '" + titulacion + "')";
+            string comando = "INSERT INTO [Actividad_a](profesor,codigo,titulacion) VALUES('" + profesor + "', '" + codigo +  "', '" + titulacion + "')";
             SqlConnection c = null;
             SqlCommand comandoTBD;
             try
@@ -31,7 +31,7 @@ namespace CAD {
                 c = new SqlConnection(conexionTBD);
                
                 CADActividad ca =new CADActividad();
-                ca.CrearActividadAll(nombre, desc, codigo, idUser);
+                ca.CrearActividadAll(nombre, desc, codigo);
                 comandoTBD = new SqlCommand(comando, c);
                 c.Open();
                 comandoTBD.CommandType = CommandType.Text;
@@ -49,17 +49,17 @@ namespace CAD {
         
         }
         //Método para insertar sin campos obligatorios
-        public void CrearActividadaBasic(string nombre, int codigo, string idUser,string titu)
+        public void CrearActividadaBasic(string nombre, int codigo,string titu)
         {
 
-            string comando = "INSERT INTO [Actividad_a](codigo,alumno,titulacion) VALUES('" + codigo + "', '" + idUser + "', '" + titu + "')";
+            string comando = "INSERT INTO [Actividad_a](codigo,titulacion) VALUES('" + codigo + "', '" + titu + "')";
             SqlConnection c = null;
             SqlCommand comandoTBD;
             try
             {
                 c = new SqlConnection(conexionTBD);
                 CADActividad ca = new CADActividad();
-                ca.CrearActividadBasic(nombre, codigo, idUser);
+                ca.CrearActividadBasic(nombre, codigo);
                 comandoTBD = new SqlCommand(comando, c);
                 c.Open();
                 comandoTBD.CommandType = CommandType.Text;
@@ -78,10 +78,10 @@ namespace CAD {
         }
 
         //Borrar una actividad
-        public void BorrarActividad_a(int codigo, string idUser) {
+        public void BorrarActividad_a(int codigo) {
 
             SqlConnection c = null;
-            string comand = "DELETE FROM [Actividad_a] WHERE codigo= '" + codigo + "' and alumno= '" + idUser + "'";
+            string comand = "DELETE FROM [Actividad_a] WHERE codigo= '" + codigo + "'";
             try
             {
 
@@ -90,7 +90,7 @@ namespace CAD {
                 SqlCommand cmd = new SqlCommand(comand, c);
                 cmd.ExecuteNonQuery();
                 CADActividad ca = new CADActividad();
-                ca.BorrarActividad(codigo, idUser);
+                ca.BorrarActividad(codigo);
             }
             catch (Exception ex)
             {
@@ -102,14 +102,14 @@ namespace CAD {
             }
 
         }
-        /*
+        
         //Modificar una actividad
-        public void ModificaActividad_a(string profesor,int cod,string user) 
+        public void ModificaActividad_a(string profesor, int cod)
         {
-            string comando = "UPDATE [Actividad_a] SET profesor = '" + nombre + "' WHERE codigo = '" + cod + "' and alumno = '"+user+"'";
+            string comando = "UPDATE [Actividad_a] SET profesor = '" + profesor + "' WHERE codigo = '" + cod + "'";
             SqlConnection c = null;
             SqlCommand comandoTBD;
-           
+
             try
             {
                 c = new SqlConnection(conexionTBD);
@@ -117,7 +117,7 @@ namespace CAD {
                 c.Open();
                 comandoTBD.CommandType = CommandType.Text;
                 comandoTBD.ExecuteNonQuery();
-                
+
 
             }
             catch (SqlException ex)
@@ -128,16 +128,16 @@ namespace CAD {
             {
                 if (c != null) c.Close(); // Se asegura de cerrar la conexión.
             }
-          
 
-        }*/
+
+        }
         //Obtenemos los datos de un Actividad según su id
         public DataSet GetDatosActividad_a(string user,int cod)
         {
 
             SqlConnection con = null;
             DataSet datos = null;
-            string comando = "Select * from [Actividad_a] where alumno=" + user+ " and codigo="+cod;
+            string comando = "Select * from [Actividad_a] where  codigo='"+cod+"'";
             try
             {
                 con = new SqlConnection(conexionTBD);
