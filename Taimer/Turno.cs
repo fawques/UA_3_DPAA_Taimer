@@ -13,6 +13,57 @@ namespace Taimer {
     /// </summary>
     public enum dias { L, M, X, J, V, S, D };
 
+    //Clase que he creado para funciones de este estilo que vienen muy bien y no se muy bien donde ponerlas
+    public static class TaimerLibrary {
+        public static string convertToString(dias d) {
+            string dia = "";
+            switch (d) {
+                case dias.L: dia = "Lunes"; break;
+                case dias.M: dia = "Martes"; break;
+                case dias.X: dia = "Miércoles"; break;
+                case dias.J: dia = "Jueves"; break;
+                case dias.V: dia = "Viernes"; break;
+                case dias.S: dia = "Sábado"; break;
+                case dias.D: dia = "Domingo"; break;
+            }
+            return dia;
+        }
+        public static int convertToInt(dias d) {
+            int dia = 0;
+            switch (d) {
+                case dias.L: dia = 0; break;
+                case dias.M: dia = 1; break;
+                case dias.X: dia = 2; break;
+                case dias.J: dia = 3; break;
+                case dias.V: dia = 4; break;
+                case dias.S: dia = 5; break;
+                case dias.D: dia = 6; break;
+            }
+            return dia;
+        }
+        public static dias convertToDais(string d) {
+
+            switch (d) {
+                case "Lunes":
+                    return dias.L;
+                case "Martes":
+                    return dias.M;
+                case "Miercoles":
+                    return dias.X;
+                case "Jueves":
+                    return dias.J;
+                case "Viernes":
+                    return dias.V;
+                case "Sabado":
+                    return dias.S;
+                case "Domingo":
+                    return dias.D;
+                default:
+                    return dias.L;
+            }
+        }
+    }
+
     /// <summary>
     /// Clase Turno: representa las diversas horas, localizaciones, etc que tiene una Actividad
     /// </summary>

@@ -6,14 +6,24 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using Taimer;
 
 namespace TaimerGUI
 {
     public partial class ClientMatriculacionActiv : Form
     {
-        public ClientMatriculacionActiv()
+        private User usrAux;
+        public ClientMatriculacionActiv(User usr)
         {
             InitializeComponent();
+            usrAux = usr;
+        }
+
+        private void loadMatriculadas() {
+
+        }
+
+        private void loadDisponibles() {
         }
     }
 }

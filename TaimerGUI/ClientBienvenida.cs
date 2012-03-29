@@ -6,16 +6,20 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using Taimer;
 
 namespace TaimerGUI
 {
     public partial class ClientBienvenida : Form
     {
         ClientForm padre = null;
-        public ClientBienvenida(ClientForm f)
+        User usrAux = null;
+        
+        public ClientBienvenida(ClientForm f, User usr)
         {
             InitializeComponent();
             padre = f;
+            usrAux = usr;
         }
 
         private void Bienvenida_Load(object sender, EventArgs e)
@@ -33,33 +37,42 @@ namespace TaimerGUI
             padre.crearActividad_Click(null, null);
         }
 
-        private void loadLastHorarios() {
-            int posY = 20;
-            for (int i = 0; i < 5; i++) {
-                Label auxlbl = new Label();
-                auxlbl.Text = "Horario " + i;
-                auxlbl.Location = new Point(25, posY);
-                auxlbl.Cursor = Cursors.Hand;
-                auxlbl.MouseEnter += new EventHandler(label_MouseEnter);
-                auxlbl.Click += new EventHandler(verHorario_Click);
-                auxlbl.MouseLeave += new EventHandler(label_MouseLeave);
-                posY += 25;
-                pnlUltimoHorarios.Controls.Add(auxlbl);
+        public void loadLastHorarios() {
+            if (usrAux != null) {
+                pnlUltimoHorarios.Controls.Clear();
+                int posY = 20;
+                foreach (Horario obj in usrAux.Horarios) {
+                    Label auxlbl = new Label();
+                    auxlbl.Text = obj.Nombre;
+                    auxlbl.Tag = obj;
+                    auxlbl.Location = new Point(25, posY);
+                    auxlbl.Cursor = Cursors.Hand;
+                    auxlbl.MouseEnter += new EventHandler(padre.label_MouseEnter);
+                    auxlbl.Click += new EventHandler(padre.verHorario_Click);
+                    auxlbl.MouseLeave += new EventHandler(padre.label_MouseLeave);
+                    posY += 25;
+                    pnlUltimoHorarios.Controls.Add(auxlbl);
+                }
             }
         }
 
-        private void loadLastActividades() {
-            int posY = 20;
-            for (int i = 0; i < 5; i++) {
-                Label auxlbl = new Label();
-                auxlbl.Text = "Actividad " + i;
-                auxlbl.Location = new Point(25, posY);
-                auxlbl.Cursor = Cursors.Hand;
-                auxlbl.MouseEnter += new EventHandler(label_MouseEnter);
-                auxlbl.Click += new EventHandler(verActividad_Click);
-                auxlbl.MouseLeave += new EventHandler(label_MouseLeave);
-                posY += 25;
-                pnlUltimasActividades.Controls.Add(auxlbl);
+        public void loadLastActividades() {
+            if (usrAux != null) {
+                pnlUltimasActividades.Controls.Clear();
+                int posY = 20;
+                foreach (Actividad_p obj in usrAux.ActPersonales) {
+                    //MessageBox.Show("iteracion");
+                    Label auxlbl = new Label();
+                    auxlbl.Text = obj.Nombre;
+                    auxlbl.Tag = obj;
+                    auxlbl.Location = new Point(25, posY);
+                    auxlbl.Cursor = Cursors.Hand;
+                    auxlbl.MouseEnter += new EventHandler(padre.label_MouseEnter);
+                    auxlbl.Click += new EventHandler(padre.verActividad_Click);
+                    auxlbl.MouseLeave += new EventHandler(padre.label_MouseLeave);
+                    posY += 25;
+                    pnlUltimasActividades.Controls.Add(auxlbl);
+                }
             }
         }
 

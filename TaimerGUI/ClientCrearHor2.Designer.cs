@@ -471,6 +471,7 @@
             this.Name = "ClientCrearHor2";
             this.Text = "ClientCrearHor2";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Activated += new System.EventHandler(this.ClientCrearHor2_Activated);
             this.Load += new System.EventHandler(this.ClientCrearHor2_Load);
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar2)).EndInit();

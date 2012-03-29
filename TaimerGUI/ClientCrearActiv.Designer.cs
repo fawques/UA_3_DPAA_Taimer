@@ -37,11 +37,14 @@
             this.dia = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.horaInicio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.horaFin = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lugar = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.borrar = new System.Windows.Forms.DataGridViewButtonColumn();
             this.button1 = new System.Windows.Forms.Button();
             this.bttnCrearActiv = new System.Windows.Forms.Button();
             this.bCancelar = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtBoxLugar = new System.Windows.Forms.TextBox();
             this.lblErrorDate = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
@@ -115,11 +118,12 @@
             this.dia,
             this.horaInicio,
             this.horaFin,
+            this.lugar,
             this.borrar});
             this.gVHorasTemp.Location = new System.Drawing.Point(315, 332);
             this.gVHorasTemp.Name = "gVHorasTemp";
             this.gVHorasTemp.ReadOnly = true;
-            this.gVHorasTemp.Size = new System.Drawing.Size(443, 150);
+            this.gVHorasTemp.Size = new System.Drawing.Size(443, 196);
             this.gVHorasTemp.TabIndex = 35;
             this.gVHorasTemp.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gVHorasTemp_CellContentClick);
             // 
@@ -141,6 +145,12 @@
             this.horaFin.Name = "horaFin";
             this.horaFin.ReadOnly = true;
             // 
+            // lugar
+            // 
+            this.lugar.HeaderText = "Lugar";
+            this.lugar.Name = "lugar";
+            this.lugar.ReadOnly = true;
+            // 
             // borrar
             // 
             this.borrar.HeaderText = "Borrar";
@@ -153,7 +163,7 @@
             // 
             this.button1.BackgroundImage = global::TaimerGUI.Properties.Resources.flechaRight;
             this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.button1.Location = new System.Drawing.Point(254, 389);
+            this.button1.Location = new System.Drawing.Point(255, 404);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(43, 46);
             this.button1.TabIndex = 37;
@@ -182,6 +192,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label7);
+            this.groupBox1.Controls.Add(this.txtBoxLugar);
             this.groupBox1.Controls.Add(this.lblErrorDate);
             this.groupBox1.Controls.Add(this.label11);
             this.groupBox1.Controls.Add(this.label10);
@@ -197,10 +209,26 @@
             this.groupBox1.Controls.Add(this.comboBoxDia);
             this.groupBox1.Location = new System.Drawing.Point(35, 332);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(203, 186);
+            this.groupBox1.Size = new System.Drawing.Size(203, 196);
             this.groupBox1.TabIndex = 57;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Hora y Dia";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(20, 164);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(34, 13);
+            this.label7.TabIndex = 62;
+            this.label7.Text = "Lugar";
+            // 
+            // txtBoxLugar
+            // 
+            this.txtBoxLugar.Location = new System.Drawing.Point(82, 164);
+            this.txtBoxLugar.Name = "txtBoxLugar";
+            this.txtBoxLugar.Size = new System.Drawing.Size(100, 20);
+            this.txtBoxLugar.TabIndex = 61;
             // 
             // lblErrorDate
             // 
@@ -407,11 +435,14 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label lblErrorDate;
+        private System.Windows.Forms.Label lblErrorNombre;
+        private System.Windows.Forms.TextBox txtBoxLugar;
         private System.Windows.Forms.DataGridViewTextBoxColumn dia;
         private System.Windows.Forms.DataGridViewTextBoxColumn horaInicio;
         private System.Windows.Forms.DataGridViewTextBoxColumn horaFin;
+        private System.Windows.Forms.DataGridViewTextBoxColumn lugar;
         private System.Windows.Forms.DataGridViewButtonColumn borrar;
-        private System.Windows.Forms.Label lblErrorDate;
-        private System.Windows.Forms.Label lblErrorNombre;
+        private System.Windows.Forms.Label label7;
     }
 }

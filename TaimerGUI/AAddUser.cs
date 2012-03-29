@@ -42,21 +42,13 @@ namespace TaimerGUI {
                 lbErrName.Visible = false;
             }
 
-            // Apellidos
-            if (tbApell.Text == "") {
-                lbErrApell.Visible = true;
-                valid = false;
-            } else {
-                lbErrApell.Visible = false;
-            }
-
             // Email
             Regex emailRegex = new Regex("[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}");
             if (tbEmail.Text == "") {
                 lbErrEmail.Visible = true;
                 lbErrEmailBad.Visible = false;
                 valid = false;
-            } else if (!emailRegex.IsMatch(tbDni.Text)) {
+            } else if (!emailRegex.IsMatch(tbEmail.Text)) {
                 lbErrEmail.Visible = false;
                 lbErrEmailBad.Visible = true;
                 valid = false;
@@ -66,19 +58,18 @@ namespace TaimerGUI {
             }
 
             // DNI
+            Regex dniRegex = new Regex("[0-9]{8}[A-Z]");
             if (tbDni.Text == "") {
                 lbErrDni.Visible = true;
+                lbErrDniBad.Visible = false;
                 valid = false;
-            } else {
+            } else if (!dniRegex.IsMatch(tbDni.Text)) {
                 lbErrDni.Visible = false;
-            }
-
-            // Curso
-            if (tbCurso.Text == "") {
-                lbErrCurso.Visible = true;
+                lbErrDniBad.Visible = true;
                 valid = false;
             } else {
-                lbErrCurso.Visible = false;
+                lbErrDniBad.Visible = false;
+                lbErrDni.Visible = false;
             }
 
             // Titulacion
@@ -89,15 +80,25 @@ namespace TaimerGUI {
                 lbErrTitu.Visible = false;
             }
 
+            // Contrasea
+            if (tbPass.Text == "") {
+                lbErrPass.Visible =true;
+                valid = false;
+            } else {
+               lbErrPass.Visible = false;
+            }
+
 
             if (parentForm != null && valid) {
 
+                parentForm.addUser(new Taimer.User(tbName.Text, tbDni.Text, tbEmail.Text, 
+                    tbPass.Text, (int) udCurso.Value, tbTitu.Text));
+
                 tbName.Text = "";
                 tbDni.Text = "";
-                tbApell.Text = "";
-                tbDni.Text = "";
-                tbCurso.Text = "";
+                tbEmail.Text = "";
                 tbTitu.Text = "";
+                udCurso.Value = 1;
 
                 Hide();
                 parentForm.Show();

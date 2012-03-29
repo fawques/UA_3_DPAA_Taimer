@@ -12,11 +12,12 @@ namespace TaimerGUI
 {
     public partial class ClientCrearActiv : Form
     {
-        Taimer.Actividad_p actividad;
-        public ClientCrearActiv()
+        private User usrAux;
+        public ClientCrearActiv(User usr)
         {
             InitializeComponent();
             comboBoxDia.SelectedIndex = 0;
+            usrAux = usr;
         }
 
         private void button3_Click(object sender, EventArgs e) {
@@ -32,8 +33,9 @@ namespace TaimerGUI
             Taimer.Hora horF = new Taimer.Hora((int)nmUpDwnHorHasta.Value, (int)nmUpDwnMinHasta.Value);
 
             if (horI < horF) {
-                gVHorasTemp.Rows.Add(comboBoxDia.Text, horI.toString(), horF.toString());
+                gVHorasTemp.Rows.Add(comboBoxDia.Text, horI.toString(), horF.toString(),txtBoxLugar.Text);
                 lblErrorDate.Text = "";
+                txtBoxLugar.Text = "";
             } else {
                 lblErrorDate.Text = "Las hora de inicio debe ser menor que la de fin.";
             }
@@ -54,17 +56,22 @@ namespace TaimerGUI
                 MessageBoxButtons.YesNo,
                 MessageBoxIcon.Question,
                 MessageBoxDefaultButton.Button2) == DialogResult.Yes) {
-                    /*actividad = new Taimer.Actividad_p(tBNombre.Text, rTBDescripcion.Text, -1, null);
+                    Actividad_p actividad = new Taimer.Actividad_p(tBNombre.Text, rTBDescripcion.Text, -1, null);
 
                     foreach (DataGridViewRow filas in gVHorasTemp.Rows) {
                         Hora horI = new Hora(filas.Cells["horaInicio"].Value.ToString());
                         Hora horF = new Hora(filas.Cells["horaFin"].Value.ToString());
-                        Profesor prof = new Profesor("001", "Iginio Mora", "11111111I", "tic");
-                        char d = comboBoxDia.Text[0];
-                        Turno turn = new Turno(horI, horF, 'D', "IB", "poli1");
-                        actividad.AddTurno(turn);
-                    }*/
-                    this.Hide();
+                        string d = comboBoxDia.Text;
+                        Turno turn = new Turno(horI, horF, TaimerLibrary.convertToDais(d), filas.Cells["lugar"].Value.ToString());
+                        try {
+                            actividad.AddTurno(turn);
+                        } catch (NotSupportedException exc) {
+                            MessageBox.Show(exc.Message);
+                        }
+                    }
+                    usrAux.AddActPersonal(actividad);
+                    ((ClientForm)this.MdiParent).loadLastActividades();
+                    ((ClientForm)this.MdiParent).verActividad_Click(null,null);
                 }
             }
             

@@ -151,6 +151,12 @@
     <Compile Include="ClientBienvenida.Designer.cs">
       <DependentUpon>ClientBienvenida.cs</DependentUpon>
     </Compile>
+    <Compile Include="ClientGestTurno.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ClientGestTurno.Designer.cs">
+      <DependentUpon>ClientGestTurno.cs</DependentUpon>
+    </Compile>
     <Compile Include="ClientHorHome.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -231,6 +237,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ClientBienvenida.resx">
       <DependentUpon>ClientBienvenida.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ClientGestTurno.resx">
+      <DependentUpon>ClientGestTurno.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ClientHorHome.resx">
       <DependentUpon>ClientHorHome.cs</DependentUpon>

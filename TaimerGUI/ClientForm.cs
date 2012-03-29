@@ -14,7 +14,7 @@ namespace TaimerGUI {
 
         bool closeSesion = false;
 
-        public User usuario = null;
+        private User usuario = null;
 
         public ClientBienvenida formWelcome;
         public ClientHorHome formHorHome;
@@ -25,21 +25,65 @@ namespace TaimerGUI {
         public ClientMatriculacionActiv formMatric;
         public ClientVerActividades formVerAct;
         public ClientCrearActiv formCrearAct;
+        public ClientGestTurno formGestTurnos;
 
         /** CONSTRUCTOR **/
         public ClientForm(User usr) {
             InitializeComponent();
             //TODO: Hay que hacer esto como se tenga que hacer
             usuario = usr;
-            if (usuario != null) {
-                userTlSMnItem.Text = usuario.Nombre;
-            } else {
-                userTlSMnItem.Text = "ErrorUser";
+            if (usuario == null) {
+                usuario = generateUserDebug();
             }
 
             //Redondeado de bordes
             shape = RoundedRectangle.Create(0, 0, this.Width, this.Height, 10);
             this.Region = new System.Drawing.Region(shape);
+        }
+
+        public User getUsuario() {
+            return usuario;
+        }
+
+        //FUNCION SOLO PARA DEBUG, LUEGO BORRAR
+        private User generateUserDebug() {
+            // el user será el 1er elemento de la lista de users de Program
+            User usertest = new User("Usuario Test", "12345678X", "bill_gates@hotmail.com", "password", 1, "Ingeniería de Magisterio");
+
+            // los turnos y actividades estarán almacenadas en Program
+            Turno t1 = new Turno(new Hora(10, 30), new Hora(12, 30), dias.M, "L04");
+            Turno t2 = new Turno(new Hora(11, 30), new Hora(13, 30), dias.L, "L04");
+            Turno t3 = new Turno(new Hora(12, 30), new Hora(14, 30), dias.M, "L04");
+            Turno t4 = new Turno(new Hora(10, 30), new Hora(12, 30), dias.X, "L04");
+            Turno t5 = new Turno(new Hora(12, 30), new Hora(14, 30), dias.X, "L04");
+            Turno t6 = new Turno(new Hora(14, 30), new Hora(16, 30), dias.L, "L04");
+            Turno t7 = new Turno(new Hora(10, 30), new Hora(14, 30), dias.M, "L04");
+            Turno t8 = new Turno(new Hora(11, 30), new Hora(14, 30), dias.V, "L04");
+            Turno t9 = new Turno(new Hora(0, 30), new Hora(1, 30), dias.L, "L04");
+
+            Actividad_p actP = new Actividad_p("P1", "Asignatura P1 que descripcion 1", 6, usertest);
+            actP.AddTurno(t1);
+
+            Actividad_p actP2 = new Actividad_p("P2", "Otra cosa muy distinta a la uno", 7, usertest);
+            actP2.AddTurno(t4);
+            actP2.AddTurno(t5);
+            actP2.AddTurno(t6);
+
+            usertest.AddActPersonal(actP);
+            usertest.AddActPersonal(actP2);
+
+            Actividad_a actA = new Actividad_a("A1", "descripcion2", 8, "Un profesor");
+            actA.AddTurno(t2);
+            actA.AddTurno(t3);
+
+            Actividad_a actA2 = new Actividad_a("A2", "descripcion2", 9, "Otro profesor");
+            actA2.AddTurno(t7);
+            //actA2.AddTurno(t8);
+            actA2.AddTurno(t9);
+            usertest.AddActAcademica(actA);
+            usertest.AddActAcademica(actA2);
+            
+            return usertest;
         }
         
         private void ClientForm_Load(object sender, EventArgs e)
@@ -66,21 +110,23 @@ namespace TaimerGUI {
                     // Catch and ignore the error if casting failed.
                 }
             }
-
-            formWelcome = new ClientBienvenida(this);
+          
+            formWelcome = new ClientBienvenida(this,usuario);
             formHorHome = new ClientHorHome();
             formHorDetails = new ClientHorVer();
-            formCreateHor1 = new ClientCrearHor1();
-            formCreateHor2 = new ClientCrearHor2();
-            formMatric = new ClientMatriculacionActiv();
-            formVerAct = new ClientVerActividades();
-            formCrearAct = new ClientCrearActiv();
+            formCreateHor1 = new ClientCrearHor1(usuario);
+            formCreateHor2 = new ClientCrearHor2(usuario);
+            formMatric = new ClientMatriculacionActiv(usuario);
+            formGestTurnos = new ClientGestTurno();
+            formVerAct = new ClientVerActividades(usuario, formGestTurnos);
+            formCrearAct = new ClientCrearActiv(usuario);
 
             
 
             //Para comunicarse entre ellos
             formCreateHor1.setContinueForm(formCreateHor2);
-            formCreateHor2.setBackForm(formCreateHor1);            
+            formCreateHor2.setBackForm(formCreateHor1);
+            formGestTurnos.setFormBack(formVerAct);
 
             formWelcome.MdiParent = this;
             formHorHome.MdiParent = this;
@@ -90,6 +136,7 @@ namespace TaimerGUI {
             formMatric.MdiParent = this;
             formVerAct.MdiParent = this;
             formCrearAct.MdiParent = this;
+            formGestTurnos.MdiParent = this;
 
 
 
@@ -101,9 +148,14 @@ namespace TaimerGUI {
             formMatric.Show();
             formVerAct.Show();
             formCrearAct.Show();
+            formGestTurnos.Show();
             formWelcome.Show();
             formWelcome.Focus();
             //////////////// --- //////////////////////////
+
+
+            loadLastHorarios();
+            loadLastActividades();
 
             beingDragged = false;
             beingResized = false;
@@ -112,44 +164,51 @@ namespace TaimerGUI {
             this.DoubleBuffered = true;
             this.SetStyle(ControlStyles.ResizeRedraw, true);
 
-            loadLastHorarios();
-            loadLastActividades();
-
 
             this.WindowState = FormWindowState.Normal;
         }
 
-        private void loadLastHorarios()
+        public void loadLastHorarios()
         {
-            int posY = 20;
-            for (int i = 0; i < 10; i++)
-            {
-                Label auxlbl = new Label();
-                auxlbl.Text = "Horario " + i;
-                auxlbl.Location = new Point(25, posY);
-                auxlbl.Cursor = Cursors.Hand;
-                auxlbl.MouseEnter += new EventHandler(label_MouseEnter);
-                auxlbl.Click += new EventHandler(verHorario_Click);
-                auxlbl.MouseLeave += new EventHandler(label_MouseLeave);
-                posY += 25;
-                groupBoxUltimosHorarios.Controls.Add(auxlbl);
+            if (usuario != null) {
+                groupBoxUltimosHorarios.Controls.Clear();
+                int posY = 20;
+                foreach (Horario obj in usuario.Horarios) {
+                    Label auxlbl = new Label();
+                    auxlbl.Text = obj.Nombre;
+                    auxlbl.Tag = obj;
+                    auxlbl.Location = new Point(25, posY);
+                    auxlbl.Cursor = Cursors.Hand;
+                    auxlbl.MouseEnter += new EventHandler(label_MouseEnter);
+                    auxlbl.Click += new EventHandler(verHorario_Click);
+                    auxlbl.MouseLeave += new EventHandler(label_MouseLeave);
+                    posY += 25;
+                    groupBoxUltimosHorarios.Controls.Add(auxlbl);
+                }
+                formWelcome.loadLastHorarios();
             }
         }
 
-        private void loadLastActividades()
+        public void loadLastActividades()
         {
-            int posY = 20;
-            for (int i = 0; i < 10; i++)
-            {
-                Label auxlbl = new Label();
-                auxlbl.Text = "Horario " + i;
-                auxlbl.Location = new Point(25, posY);
-                auxlbl.Cursor = Cursors.Hand;
-                auxlbl.MouseEnter += new EventHandler(label_MouseEnter);
-                auxlbl.Click += new EventHandler(verActividad_Click);
-                auxlbl.MouseLeave += new EventHandler(label_MouseLeave);
-                posY += 25;
-                groupBoxUltActivi.Controls.Add(auxlbl);
+            if (usuario != null) {
+                //MessageBox.Show("No es null");
+                groupBoxUltActivi.Controls.Clear();
+                int posY = 20;
+                foreach (Actividad_p obj in usuario.ActPersonales){
+                    //MessageBox.Show("iteracion");
+                    Label auxlbl = new Label();
+                    auxlbl.Text = obj.Nombre;
+                    auxlbl.Tag = obj;
+                    auxlbl.Location = new Point(25, posY);
+                    auxlbl.Cursor = Cursors.Hand;
+                    auxlbl.MouseEnter += new EventHandler(label_MouseEnter);
+                    auxlbl.Click += new EventHandler(verActividad_Click);
+                    auxlbl.MouseLeave += new EventHandler(label_MouseLeave);
+                    posY += 25;
+                    groupBoxUltActivi.Controls.Add(auxlbl);
+                }
+                formWelcome.loadLastActividades();
             }
         }
 
@@ -354,7 +413,7 @@ namespace TaimerGUI {
             System.Diagnostics.Process.Start("http://google.es/");
         }
 
-        private void verHorarios_Click(object sender, EventArgs e)
+        public void verHorarios_Click(object sender, EventArgs e)
         {
             hideAllChilds();
             formHorHome.Show();
@@ -373,6 +432,7 @@ namespace TaimerGUI {
         public void crearHorario_Click(object sender, EventArgs e)
         {
             hideAllChilds();
+            formCreateHor1.reiniciar();
             formCreateHor1.Show();
             formCreateHor1.Focus();
             positionAllChilds();
@@ -386,21 +446,29 @@ namespace TaimerGUI {
             positionAllChilds();
         }
 
-        private void verHorario_Click(object sender, EventArgs e)
+        public void verHorario_Click(object sender, EventArgs e)
         {
-            hideAllChilds();
-            formHorDetails.setHorario(null);//TODO
+            if (sender is Label) {
+                if (((Label)sender).Tag is Horario) {
+                    Horario hor = (Horario)((Label)sender).Tag;
+                    formHorDetails.setHorario(hor);
+                }
+            }
             formHorDetails.Show();
             formHorDetails.Focus();
-            positionAllChilds(); 
         }
 
-        private void verActividad_Click(object sender, EventArgs e) {
-            hideAllChilds();
-            formVerAct.loadGrupBoxData(null);//TODO
+
+        public void verActividad_Click(object sender, EventArgs e) {
+            Actividad_p act = null;
+            if (sender is Label) {
+                if (((Label)sender).Tag is Actividad_p) {
+                    act = (Actividad_p)((Label)sender).Tag;
+                }
+            }
             formVerAct.Show();
             formVerAct.Focus();
-            positionAllChilds();
+            formVerAct.loadGrupBoxData(act);
         }
 
         public void crearActividad_Click(object sender, EventArgs e)
@@ -473,11 +541,11 @@ namespace TaimerGUI {
             btClose.Image = TaimerGUI.Properties.Resources.tbCloseOn;
         }
 
-        private void label_MouseEnter(object sender, EventArgs e)
+        public void label_MouseEnter(object sender, EventArgs e)
         {
             ((Label)sender).BackColor = Color.White;
         }
-        private void label_MouseLeave(object sender, EventArgs e)
+        public void label_MouseLeave(object sender, EventArgs e)
         {
             ((Label)sender).BackColor = Color.Transparent;
         }

@@ -24,19 +24,16 @@
         /// </summary>
         private void InitializeComponent() {
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.tbUsers = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgUsers = new System.Windows.Forms.DataGridView();
             this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Dni = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lbUserName = new System.Windows.Forms.Label();
             this.btNewUser = new System.Windows.Forms.Button();
             this.lbName = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.lbEmail = new System.Windows.Forms.Label();
-            this.lbUser = new System.Windows.Forms.Label();
             this.lbDni = new System.Windows.Forms.Label();
-            this.btBuscarUSer = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.lbCurso = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -45,45 +42,61 @@
             this.tbName = new System.Windows.Forms.TextBox();
             this.tbEmail = new System.Windows.Forms.TextBox();
             this.tbDni = new System.Windows.Forms.TextBox();
-            this.tbCurso = new System.Windows.Forms.TextBox();
             this.tbTitu = new System.Windows.Forms.TextBox();
-            this.cbUser = new System.Windows.Forms.ComboBox();
             this.btCancel = new System.Windows.Forms.Button();
             this.btConfirm = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.tbUsers)).BeginInit();
+            this.label2 = new System.Windows.Forms.Label();
+            this.lbErrEmail = new System.Windows.Forms.Label();
+            this.lbErrEmailBad = new System.Windows.Forms.Label();
+            this.lbErrName = new System.Windows.Forms.Label();
+            this.lbErrDni = new System.Windows.Forms.Label();
+            this.lbErrTitulacion = new System.Windows.Forms.Label();
+            this.udCurso = new System.Windows.Forms.NumericUpDown();
+            this.lbErrDniBad = new System.Windows.Forms.Label();
+            this.lbErrPass = new System.Windows.Forms.Label();
+            this.lbPass = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.tbPass = new System.Windows.Forms.TextBox();
+            ((System.ComponentModel.ISupportInitialize)(this.dgUsers)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.udCurso)).BeginInit();
             this.SuspendLayout();
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(93, 104);
+            this.textBox1.Location = new System.Drawing.Point(128, 104);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(222, 20);
+            this.textBox1.Size = new System.Drawing.Size(268, 20);
             this.textBox1.TabIndex = 0;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
-            // tbUsers
+            // dgUsers
             // 
-            this.tbUsers.AllowUserToOrderColumns = true;
-            this.tbUsers.BackgroundColor = System.Drawing.Color.Wheat;
-            this.tbUsers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.tbUsers.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
-            this.Nombre});
-            this.tbUsers.Location = new System.Drawing.Point(93, 132);
-            this.tbUsers.Name = "tbUsers";
-            this.tbUsers.Size = new System.Drawing.Size(303, 334);
-            this.tbUsers.TabIndex = 1;
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "ID";
-            this.Column1.Name = "Column1";
-            this.Column1.Width = 30;
+            this.dgUsers.AllowUserToAddRows = false;
+            this.dgUsers.AllowUserToOrderColumns = true;
+            this.dgUsers.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgUsers.BackgroundColor = System.Drawing.Color.Wheat;
+            this.dgUsers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgUsers.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Nombre,
+            this.Dni});
+            this.dgUsers.Location = new System.Drawing.Point(93, 132);
+            this.dgUsers.Name = "dgUsers";
+            this.dgUsers.ReadOnly = true;
+            this.dgUsers.Size = new System.Drawing.Size(303, 334);
+            this.dgUsers.TabIndex = 1;
+            this.dgUsers.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgUsers_CellClick);
             // 
             // Nombre
             // 
             this.Nombre.HeaderText = "Nombre";
             this.Nombre.Name = "Nombre";
-            this.Nombre.Width = 230;
+            this.Nombre.ReadOnly = true;
+            // 
+            // Dni
+            // 
+            this.Dni.HeaderText = "Dni";
+            this.Dni.Name = "Dni";
+            this.Dni.ReadOnly = true;
             // 
             // lbUserName
             // 
@@ -120,27 +133,17 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(407, 197);
+            this.label1.Location = new System.Drawing.Point(407, 208);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(97, 13);
             this.label1.TabIndex = 5;
             this.label1.Text = "Correo Electronico:";
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(423, 235);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(81, 13);
-            this.label2.TabIndex = 6;
-            this.label2.Text = "Tipo de Usuario:";
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(477, 273);
+            this.label3.Location = new System.Drawing.Point(477, 321);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(27, 13);
             this.label3.TabIndex = 7;
@@ -149,41 +152,22 @@
             // lbEmail
             // 
             this.lbEmail.AutoSize = true;
-            this.lbEmail.Location = new System.Drawing.Point(544, 196);
+            this.lbEmail.Location = new System.Drawing.Point(544, 207);
             this.lbEmail.Name = "lbEmail";
             this.lbEmail.Size = new System.Drawing.Size(89, 13);
             this.lbEmail.TabIndex = 8;
             this.lbEmail.Text = "lalala@lalala.com";
             this.lbEmail.Click += new System.EventHandler(this.lbEmail_Click);
             // 
-            // lbUser
-            // 
-            this.lbUser.AutoSize = true;
-            this.lbUser.Location = new System.Drawing.Point(544, 234);
-            this.lbUser.Name = "lbUser";
-            this.lbUser.Size = new System.Drawing.Size(39, 13);
-            this.lbUser.TabIndex = 9;
-            this.lbUser.Text = "Cliente";
-            this.lbUser.Click += new System.EventHandler(this.lbUser_Click);
-            // 
             // lbDni
             // 
             this.lbDni.AutoSize = true;
-            this.lbDni.Location = new System.Drawing.Point(544, 273);
+            this.lbDni.Location = new System.Drawing.Point(544, 321);
             this.lbDni.Name = "lbDni";
             this.lbDni.Size = new System.Drawing.Size(62, 13);
             this.lbDni.TabIndex = 10;
             this.lbDni.Text = "11111111X";
             this.lbDni.Click += new System.EventHandler(this.lbDni_Click);
-            // 
-            // btBuscarUSer
-            // 
-            this.btBuscarUSer.Location = new System.Drawing.Point(321, 104);
-            this.btBuscarUSer.Name = "btBuscarUSer";
-            this.btBuscarUSer.Size = new System.Drawing.Size(75, 20);
-            this.btBuscarUSer.TabIndex = 11;
-            this.btBuscarUSer.Text = "Buscar";
-            this.btBuscarUSer.UseVisualStyleBackColor = true;
             // 
             // label7
             // 
@@ -198,7 +182,7 @@
             // lbCurso
             // 
             this.lbCurso.AutoSize = true;
-            this.lbCurso.Location = new System.Drawing.Point(544, 311);
+            this.lbCurso.Location = new System.Drawing.Point(544, 375);
             this.lbCurso.Name = "lbCurso";
             this.lbCurso.Size = new System.Drawing.Size(50, 13);
             this.lbCurso.TabIndex = 14;
@@ -209,7 +193,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(468, 311);
+            this.label9.Location = new System.Drawing.Point(468, 375);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(36, 13);
             this.label9.TabIndex = 13;
@@ -218,7 +202,7 @@
             // lbTitu
             // 
             this.lbTitu.AutoSize = true;
-            this.lbTitu.Location = new System.Drawing.Point(544, 346);
+            this.lbTitu.Location = new System.Drawing.Point(544, 427);
             this.lbTitu.Name = "lbTitu";
             this.lbTitu.Size = new System.Drawing.Size(59, 13);
             this.lbTitu.TabIndex = 16;
@@ -229,11 +213,11 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(451, 347);
+            this.label11.Location = new System.Drawing.Point(451, 428);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(53, 13);
+            this.label11.Size = new System.Drawing.Size(56, 13);
             this.label11.TabIndex = 15;
-            this.label11.Text = "Titulación";
+            this.label11.Text = "Titulación:";
             // 
             // tbName
             // 
@@ -246,7 +230,7 @@
             // 
             // tbEmail
             // 
-            this.tbEmail.Location = new System.Drawing.Point(547, 193);
+            this.tbEmail.Location = new System.Drawing.Point(547, 204);
             this.tbEmail.Name = "tbEmail";
             this.tbEmail.Size = new System.Drawing.Size(131, 20);
             this.tbEmail.TabIndex = 18;
@@ -255,61 +239,184 @@
             // 
             // tbDni
             // 
-            this.tbDni.Location = new System.Drawing.Point(547, 269);
+            this.tbDni.Location = new System.Drawing.Point(547, 317);
             this.tbDni.Name = "tbDni";
             this.tbDni.Size = new System.Drawing.Size(131, 20);
             this.tbDni.TabIndex = 20;
             this.tbDni.Visible = false;
             this.tbDni.Validated += new System.EventHandler(this.tbDni_Validated);
             // 
-            // tbCurso
-            // 
-            this.tbCurso.Location = new System.Drawing.Point(547, 307);
-            this.tbCurso.Name = "tbCurso";
-            this.tbCurso.Size = new System.Drawing.Size(131, 20);
-            this.tbCurso.TabIndex = 21;
-            this.tbCurso.Visible = false;
-            this.tbCurso.Validated += new System.EventHandler(this.tbCurso_Validated);
-            // 
             // tbTitu
             // 
-            this.tbTitu.Location = new System.Drawing.Point(547, 343);
+            this.tbTitu.Location = new System.Drawing.Point(547, 424);
             this.tbTitu.Name = "tbTitu";
             this.tbTitu.Size = new System.Drawing.Size(131, 20);
             this.tbTitu.TabIndex = 22;
             this.tbTitu.Visible = false;
             this.tbTitu.Validated += new System.EventHandler(this.tbTitu_Validated);
             // 
-            // cbUser
-            // 
-            this.cbUser.FormattingEnabled = true;
-            this.cbUser.Items.AddRange(new object[] {
-            "Cliente",
-            "Administrador"});
-            this.cbUser.Location = new System.Drawing.Point(547, 231);
-            this.cbUser.Name = "cbUser";
-            this.cbUser.Size = new System.Drawing.Size(131, 21);
-            this.cbUser.TabIndex = 23;
-            this.cbUser.Visible = false;
-            this.cbUser.Validated += new System.EventHandler(this.cbUser_Validated);
-            // 
             // btCancel
             // 
+            this.btCancel.Enabled = false;
             this.btCancel.Location = new System.Drawing.Point(671, 548);
             this.btCancel.Name = "btCancel";
             this.btCancel.Size = new System.Drawing.Size(105, 35);
             this.btCancel.TabIndex = 61;
             this.btCancel.Text = "Cancelar";
             this.btCancel.UseVisualStyleBackColor = true;
+            this.btCancel.Click += new System.EventHandler(this.btCancel_Click);
             // 
             // btConfirm
             // 
+            this.btConfirm.Enabled = false;
             this.btConfirm.Location = new System.Drawing.Point(547, 548);
             this.btConfirm.Name = "btConfirm";
             this.btConfirm.Size = new System.Drawing.Size(105, 35);
             this.btConfirm.TabIndex = 60;
             this.btConfirm.Text = "Confirmar";
             this.btConfirm.UseVisualStyleBackColor = true;
+            this.btConfirm.Click += new System.EventHandler(this.btConfirm_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(90, 107);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(32, 13);
+            this.label2.TabIndex = 62;
+            this.label2.Text = "Filtrar";
+            // 
+            // lbErrEmail
+            // 
+            this.lbErrEmail.AutoSize = true;
+            this.lbErrEmail.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbErrEmail.ForeColor = System.Drawing.Color.Maroon;
+            this.lbErrEmail.Location = new System.Drawing.Point(544, 227);
+            this.lbErrEmail.Name = "lbErrEmail";
+            this.lbErrEmail.Size = new System.Drawing.Size(145, 13);
+            this.lbErrEmail.TabIndex = 78;
+            this.lbErrEmail.Text = "El campo no puede estar vacio";
+            this.lbErrEmail.Visible = false;
+            // 
+            // lbErrEmailBad
+            // 
+            this.lbErrEmailBad.AutoSize = true;
+            this.lbErrEmailBad.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbErrEmailBad.ForeColor = System.Drawing.Color.Maroon;
+            this.lbErrEmailBad.Location = new System.Drawing.Point(544, 227);
+            this.lbErrEmailBad.Name = "lbErrEmailBad";
+            this.lbErrEmailBad.Size = new System.Drawing.Size(168, 13);
+            this.lbErrEmailBad.TabIndex = 77;
+            this.lbErrEmailBad.Text = "El email introducido no es correcto";
+            this.lbErrEmailBad.Visible = false;
+            // 
+            // lbErrName
+            // 
+            this.lbErrName.AutoSize = true;
+            this.lbErrName.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbErrName.ForeColor = System.Drawing.Color.Maroon;
+            this.lbErrName.Location = new System.Drawing.Point(544, 164);
+            this.lbErrName.Name = "lbErrName";
+            this.lbErrName.Size = new System.Drawing.Size(145, 13);
+            this.lbErrName.TabIndex = 79;
+            this.lbErrName.Text = "El campo no puede estar vacio";
+            this.lbErrName.Visible = false;
+            // 
+            // lbErrDni
+            // 
+            this.lbErrDni.AutoSize = true;
+            this.lbErrDni.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbErrDni.ForeColor = System.Drawing.Color.Maroon;
+            this.lbErrDni.Location = new System.Drawing.Point(544, 340);
+            this.lbErrDni.Name = "lbErrDni";
+            this.lbErrDni.Size = new System.Drawing.Size(145, 13);
+            this.lbErrDni.TabIndex = 80;
+            this.lbErrDni.Text = "El campo no puede estar vacio";
+            this.lbErrDni.Visible = false;
+            // 
+            // lbErrTitulacion
+            // 
+            this.lbErrTitulacion.AutoSize = true;
+            this.lbErrTitulacion.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbErrTitulacion.ForeColor = System.Drawing.Color.Maroon;
+            this.lbErrTitulacion.Location = new System.Drawing.Point(544, 447);
+            this.lbErrTitulacion.Name = "lbErrTitulacion";
+            this.lbErrTitulacion.Size = new System.Drawing.Size(145, 13);
+            this.lbErrTitulacion.TabIndex = 82;
+            this.lbErrTitulacion.Text = "El campo no puede estar vacio";
+            this.lbErrTitulacion.Visible = false;
+            // 
+            // udCurso
+            // 
+            this.udCurso.Location = new System.Drawing.Point(547, 373);
+            this.udCurso.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.udCurso.Name = "udCurso";
+            this.udCurso.Size = new System.Drawing.Size(120, 20);
+            this.udCurso.TabIndex = 83;
+            this.udCurso.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.udCurso.Visible = false;
+            this.udCurso.Validated += new System.EventHandler(this.tbCurso_Validated);
+            // 
+            // lbErrDniBad
+            // 
+            this.lbErrDniBad.AutoSize = true;
+            this.lbErrDniBad.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbErrDniBad.ForeColor = System.Drawing.Color.Maroon;
+            this.lbErrDniBad.Location = new System.Drawing.Point(544, 340);
+            this.lbErrDniBad.Name = "lbErrDniBad";
+            this.lbErrDniBad.Size = new System.Drawing.Size(159, 13);
+            this.lbErrDniBad.TabIndex = 84;
+            this.lbErrDniBad.Text = "El DNI introducido no es correcto";
+            this.lbErrDniBad.Visible = false;
+            // 
+            // lbErrPass
+            // 
+            this.lbErrPass.AutoSize = true;
+            this.lbErrPass.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbErrPass.ForeColor = System.Drawing.Color.Maroon;
+            this.lbErrPass.Location = new System.Drawing.Point(544, 283);
+            this.lbErrPass.Name = "lbErrPass";
+            this.lbErrPass.Size = new System.Drawing.Size(145, 13);
+            this.lbErrPass.TabIndex = 88;
+            this.lbErrPass.Text = "El campo no puede estar vacio";
+            this.lbErrPass.Visible = false;
+            // 
+            // lbPass
+            // 
+            this.lbPass.AutoSize = true;
+            this.lbPass.Location = new System.Drawing.Point(544, 263);
+            this.lbPass.Name = "lbPass";
+            this.lbPass.Size = new System.Drawing.Size(37, 13);
+            this.lbPass.TabIndex = 86;
+            this.lbPass.Text = "patata";
+            this.lbPass.Click += new System.EventHandler(this.lbPass_Click);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(445, 264);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(62, 13);
+            this.label6.TabIndex = 85;
+            this.label6.Text = "Contraseña:";
+            // 
+            // tbPass
+            // 
+            this.tbPass.Location = new System.Drawing.Point(547, 260);
+            this.tbPass.Name = "tbPass";
+            this.tbPass.Size = new System.Drawing.Size(131, 20);
+            this.tbPass.TabIndex = 87;
+            this.tbPass.Visible = false;
+            this.tbPass.Validated += new System.EventHandler(this.tbPass_Validated);
             // 
             // AGestUser
             // 
@@ -317,6 +424,17 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Cornsilk;
             this.ClientSize = new System.Drawing.Size(795, 595);
+            this.Controls.Add(this.lbErrPass);
+            this.Controls.Add(this.lbPass);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.tbPass);
+            this.Controls.Add(this.lbErrDniBad);
+            this.Controls.Add(this.lbErrTitulacion);
+            this.Controls.Add(this.lbErrDni);
+            this.Controls.Add(this.lbErrName);
+            this.Controls.Add(this.lbErrEmail);
+            this.Controls.Add(this.lbErrEmailBad);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.btCancel);
             this.Controls.Add(this.btConfirm);
             this.Controls.Add(this.lbTitu);
@@ -324,28 +442,26 @@
             this.Controls.Add(this.lbCurso);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.btBuscarUSer);
             this.Controls.Add(this.lbDni);
-            this.Controls.Add(this.lbUser);
             this.Controls.Add(this.lbEmail);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lbName);
             this.Controls.Add(this.btNewUser);
             this.Controls.Add(this.lbUserName);
-            this.Controls.Add(this.tbUsers);
+            this.Controls.Add(this.dgUsers);
             this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.cbUser);
             this.Controls.Add(this.tbTitu);
-            this.Controls.Add(this.tbCurso);
             this.Controls.Add(this.tbDni);
             this.Controls.Add(this.tbEmail);
             this.Controls.Add(this.tbName);
+            this.Controls.Add(this.udCurso);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "AGestUser";
             this.Text = "AGestUser";
-            ((System.ComponentModel.ISupportInitialize)(this.tbUsers)).EndInit();
+            this.Load += new System.EventHandler(this.AGestUser_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dgUsers)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.udCurso)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -354,20 +470,15 @@
         #endregion
 
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.DataGridView tbUsers;
+        private System.Windows.Forms.DataGridView dgUsers;
         private System.Windows.Forms.Label lbUserName;
         private System.Windows.Forms.Button btNewUser;
         private System.Windows.Forms.Label lbName;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label lbEmail;
-        private System.Windows.Forms.Label lbUser;
         private System.Windows.Forms.Label lbDni;
-        private System.Windows.Forms.Button btBuscarUSer;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
         private System.Windows.Forms.Label lbCurso;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label lbTitu;
@@ -375,10 +486,22 @@
         private System.Windows.Forms.TextBox tbName;
         private System.Windows.Forms.TextBox tbEmail;
         private System.Windows.Forms.TextBox tbDni;
-        private System.Windows.Forms.TextBox tbCurso;
         private System.Windows.Forms.TextBox tbTitu;
-        private System.Windows.Forms.ComboBox cbUser;
         private System.Windows.Forms.Button btCancel;
         private System.Windows.Forms.Button btConfirm;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Dni;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lbErrEmail;
+        private System.Windows.Forms.Label lbErrEmailBad;
+        private System.Windows.Forms.Label lbErrName;
+        private System.Windows.Forms.Label lbErrDni;
+        private System.Windows.Forms.Label lbErrTitulacion;
+        private System.Windows.Forms.NumericUpDown udCurso;
+        private System.Windows.Forms.Label lbErrDniBad;
+        private System.Windows.Forms.Label lbErrPass;
+        private System.Windows.Forms.Label lbPass;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox tbPass;
     }
 }

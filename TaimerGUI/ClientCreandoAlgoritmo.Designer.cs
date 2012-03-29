@@ -29,16 +29,18 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(57, 49);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(77, 51);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(349, 13);
+            this.label1.Size = new System.Drawing.Size(322, 20);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Estamos realizando unos calculos MU MU complicaos, asi que esperate.";
+            this.label1.Text = "Esta operación puede llevar varios minutos...";
             // 
             // ClientCreandoAlgoritmo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Cornsilk;
             this.ClientSize = new System.Drawing.Size(489, 123);
             this.Controls.Add(this.label1);
             this.Name = "ClientCreandoAlgoritmo";
