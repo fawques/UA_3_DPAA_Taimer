@@ -26,27 +26,20 @@ namespace Taimer
 
         private void crear_Click(object sender, EventArgs e)
         {
-            try
-            {
+            //try
+            //{
                 Hora horaini = new Hora(int.Parse(hini.Text), int.Parse(mini.Text));
                 Hora horafin = new Hora(int.Parse(hfin.Text), int.Parse(mfin.Text));
 
-                Turno turno = new Turno(horaini, horafin, dias.L, "???", activ1);
-
-                if (diacombo.Text == "M")
-                    turno.DiaString = "Martes";
-                else if (diacombo.Text == "X")
-                    turno.DiaString = "Miércoles";
-                else
-                    turno.DiaString = diacombo.Text;
+                Turno turno = new Turno(1, horaini, horafin, diacombo.Text, "???", activ1);
 
                 activ1.AddTurno(turno);
                 actualizaLista();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message,"Excepción al crear turno",MessageBoxButtons.OK,MessageBoxIcon.Error);
-            }
+            //}
+            //catch (Exception ex)
+            //{
+              //  MessageBox.Show(ex.Message,"Excepción al crear turno",MessageBoxButtons.OK,MessageBoxIcon.Error);
+            //}
         }
 
         private void actualizaLista()
@@ -180,6 +173,22 @@ namespace Taimer
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Excepción al cambiar código", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            actualizaLista();
+        }
+
+        private void cambiadiasemana_Click(object sender, EventArgs e)
+        {
+            int indice = int.Parse(codBorrar.Text);
+
+            try
+            {
+                activ1.Turnos[indice].DiaString = diacombo.Text;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Excepción al cambiar día de la semana", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
             actualizaLista();

@@ -5,21 +5,80 @@ using System.Linq;
 using System.Text;
 
 
-namespace Taimer
-{
-    public class Horario
-    {
+namespace Taimer {
+
+    /// <summary>
+    /// Clase Horario: representa la relación entre los días de la semana y los turnos de cada actividad
+    /// </summary>
+    public class Horario {
 
         #region PARTE PRIVADA
-        private int id;                                     // Clave principal
+        
+        /// <summary>
+        /// Identificador del Horario
+        /// También es la clave primaria en la base de datos
+        /// </summary>
+        private int id;
+
+        /// <summary>
+        /// Nombre que el usuario da al horario
+        /// </summary>
         private string nombre;
+
+        /// <summary>
+        /// Array de listas de Turno que contiene los turnos del Horario
+        /// </summary>
         private List<Turno>[] arrayTurnos = new List<Turno>[7];     // Un horario tiene (0,N) turnos
+
+        /// <summary>
+        /// Usuario al que pretence el Horario
+        /// </summary>
         private User usuario;                             // Un horario es creado por (1,1) usuarios
+
+        /// <summary>
+        /// Inserta un turno Ordenado en un determinado dia
+        /// </summary>
+        /// <param name="item">Turno que se quiere insertar </param>
+        /// <param name="dia"> Dia en el que se quiere insertar </param>
+        private void insertarOrdenado(Turno item, int dia) {
+            int i = 0;
+            bool insertado = false;
+
+            for (i = 0; i < arrayTurnos[dia].Count; i++) {
+                if (arrayTurnos[dia][i].HoraInicio > item.HoraInicio) {
+                    arrayTurnos[dia].Insert(i, item);
+                    insertado = true;
+                    break;
+                }
+            }
+
+            if (!insertado)
+                arrayTurnos[dia].Add(item);
+
+        }
+
+        /// <summary>
+        /// Comprueba si un turno se solapa dado un dia
+        /// </summary>
+        /// <param name="turno">Turno que se quiere comprobar</param>
+        /// <param name="dia">Dia en el que se quiere hacer la comprobación</param>
+        private void CheckSolapamiento(Turno turno, int dia) {
+            foreach (Turno item in arrayTurnos[dia]) {
+                item.Superpone(turno);
+            }
+        }
+
         #endregion
 
         #region PARTE PÚBLICA
 
-        // Constructor
+        /// <summary>
+        /// Constructor Completo
+        /// Uso exclusivo de los CADs
+        /// </summary>
+        /// <param name="id_">Identificador del Horario</param>
+        /// <param name="nom_">Nombre del Horario</param>
+        /// <param name="usu_">Usuario al que pretenece el Horario</param>
         public Horario(int id_, string nom_, User usu_)
         {
             id = id_;
@@ -32,62 +91,70 @@ namespace Taimer
             }
         }
 
-        public Horario(string nom_, User usu_)
-        {
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="nom_">Nombre del Horario</param>
+        /// <param name="usu_">Usuario al que pertenece el Horario</param>
+        public Horario(string nom_, User usu_) {
             id = 0;
             nombre = nom_;
             usuario = usu_;
 
-            for (int i = 0; i < 7; i++)
-            {
+            for (int i = 0; i < 7; i++) {
                 arrayTurnos[i] = new List<Turno>();
             }
         }
 
-        // Constructor de copia
-        public Horario(Horario h)
-        {
+        /// <summary>
+        /// Constructor de copia
+        /// </summary>
+        /// <param name="h">Horario que se quiere copiar</param>
+        public Horario(Horario h) {
             id = h.id;
             nombre = h.nombre;
             usuario = h.usuario;
 
-            for (int i = 0; i < 7; i++)
-            {
+            for (int i = 0; i < 7; i++) {
                 arrayTurnos[i] = new List<Turno>(h.ArrayTurnos[i]);
             }
         }
 
-        // Ajustar/obtener nombre
-        public string Nombre
-        {
+        /// <summary>
+        /// Asigna/Devuelve el nombre del Horario
+        /// </summary>
+        public string Nombre {
             get { return nombre; }
             set { nombre = value; }
         }
 
 
-        // Ajustar/obtener id
-        public int ID
-        {
+        /// <summary>
+        /// Asigna/Devuelve el identificador del Horario
+        /// </summary>
+        public int ID {
             get { return id; }
             set { id = value; }
         }
 
 
-        // Ajustar/obtener usuario
-        public User Usuario
-        {
+        /// <summary>
+        /// Asigna/Devuelve el usuario al que pertenece el Horario
+        /// </summary>
+        public User Usuario {
             get { return usuario; }
             set { usuario = value; }
         }
 
-        public int Count
-        {
-            get
-            {
+
+        /// <summary>
+        /// Devuelve en número de turno que tiene el horario
+        /// </summary>
+        public int Count {
+            get {
                 int cantidad = 0;
 
-                for (int i = 0; i < 7; i++)
-                {
+                for (int i = 0; i < 7; i++) {
                     cantidad += arrayTurnos[i].Count;
                 }
 
@@ -96,7 +163,10 @@ namespace Taimer
         }
 
 
-        //Añadir turnos
+        /// <summary>
+        /// Añade un Turno al Horario
+        /// </summary>
+        /// <param name="turno">Turno que se desea añadir</param>
         public void AddTurno(Turno turno)
         {
             switch (turno.Dia)
@@ -131,43 +201,22 @@ namespace Taimer
                     break;
             }
         }
+        
 
-        private void insertarOrdenado(Turno item, int dia)
-        {
-            int i = 0;
-            bool insertado = false;
-
-            for (i = 0; i < arrayTurnos[dia].Count; i++)
-            {
-                if (arrayTurnos[dia][i].HoraInicio > item.HoraInicio)
-                {
-                    arrayTurnos[dia].Insert(i, item);
-                    insertado = true;
-                    break;
-                }
-            }
-
-            if (!insertado)
-                arrayTurnos[dia].Add(item);
-
-        }
-
-        public void CheckSolapamiento(Turno turno, int dia)
-        {
-            foreach (Turno item in arrayTurnos[dia])
-            {
-                item.Superpone(turno);
-            }
-        }
-
-        // Cambiar/Obtener turnos
+        /// <summary>
+        /// Asigna/Devuelve el array de listas de Turno que contiene los turnos del Horario
+        /// </summary>
         public List<Turno>[] ArrayTurnos
         {
             set { arrayTurnos = value; }
             get { return arrayTurnos; }
         }
 
-        // Borrar turno (a partir de su código, si se encuentra)
+        /// <summary>
+        /// Borrar turno (a partir de su código, si se encuentra)
+        /// </summary>
+        /// <param name="codigobuscado">Código del turno que se desea borrar</param>
+        /// <returns>Devuelve TRUE si se ha borrado y FALSE en caso contrario</returns>
         public bool BorraTurno(int codigobuscado)
         {
 
@@ -182,7 +231,11 @@ namespace Taimer
             return false;
         }
 
-        // Dice cuál es la primera hora de un día de un horario
+        /// <summary>
+        /// Dice cuál es la primera hora de un día de un horario
+        /// </summary>
+        /// <param name="dia">Dia del que se quiere su primera hora</param>
+        /// <returns>Primera hora del dia</returns>
         public Hora minHoraDia(int dia)
         {
             if(dia > 6 || dia < 0)
@@ -201,7 +254,11 @@ namespace Taimer
             return minima;
         }
 
-        // Dice cuál es la última hora de un día de un horario
+        /// <summary>
+        /// Dice cuál es la última hora de un día de un horario
+        /// </summary>
+        /// <param name="dia">Dia del que se quiere su última hora</param>
+        /// <returns></returns>
         public Hora maxHoraDia(int dia)
         {
             if (dia > 6 || dia < 0)
@@ -220,7 +277,10 @@ namespace Taimer
             return maxima;
         }
 
-        // Dice cuál es la primera hora de un horario
+        /// <summary>
+        /// Dice cuál es la hora más temprana del Horario
+        /// </summary>
+        /// <returns>Devuelve la hora más temprana del Horario</returns>
         public Hora minHora()
         {
             bool encontrado = false;
@@ -238,6 +298,7 @@ namespace Taimer
                 catch (ArgumentNullException)
                 {}
                 
+
             }
 
             if (!encontrado)
@@ -247,7 +308,10 @@ namespace Taimer
             return minima;
         }
 
-        // Dice cuál es la primera hora de un horario
+        /// <summary>
+        /// Dice cuál es la hora más tradía del Horario
+        /// </summary>
+        /// <returns>Devuelve la hora más tradía del Horario</returns>
         public Hora maxHora()
         {
             bool encontrado = false;
