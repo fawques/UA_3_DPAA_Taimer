@@ -48,6 +48,7 @@
             this.pnlLunes = new System.Windows.Forms.Panel();
             this.grpBoxDatosAsig = new System.Windows.Forms.GroupBox();
             this.lblNombreAsig = new System.Windows.Forms.Label();
+            this.lblDescripAsig = new System.Windows.Forms.Label();
             this.pnlHorario.SuspendLayout();
             this.grpBoxDatosAsig.SuspendLayout();
             this.SuspendLayout();
@@ -251,6 +252,7 @@
             // grpBoxDatosAsig
             // 
             this.grpBoxDatosAsig.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.grpBoxDatosAsig.Controls.Add(this.lblDescripAsig);
             this.grpBoxDatosAsig.Controls.Add(this.lblNombreAsig);
             this.grpBoxDatosAsig.Location = new System.Drawing.Point(17, 465);
             this.grpBoxDatosAsig.Name = "grpBoxDatosAsig";
@@ -265,6 +267,13 @@
             this.lblNombreAsig.Name = "lblNombreAsig";
             this.lblNombreAsig.Size = new System.Drawing.Size(100, 23);
             this.lblNombreAsig.TabIndex = 0;
+            // 
+            // lblDescripAsig
+            // 
+            this.lblDescripAsig.Location = new System.Drawing.Point(150, 47);
+            this.lblDescripAsig.Name = "lblDescripAsig";
+            this.lblDescripAsig.Size = new System.Drawing.Size(100, 23);
+            this.lblDescripAsig.TabIndex = 1;
             // 
             // ClientHorVer
             // 
@@ -312,5 +321,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel pnlHoras;
         private System.Windows.Forms.Label lblNombreAsig;
+        private System.Windows.Forms.Label lblDescripAsig;
     }
 }

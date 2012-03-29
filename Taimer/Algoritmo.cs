@@ -11,15 +11,16 @@ namespace Taimer
         private List<Horario> posibles;
         private List<Actividad_a> seleccionadas_a;
         private List<Actividad_p> seleccionadas_p;
+        private User usuario;
         #endregion
 
         #region PARTE PÚBLICA
 
-        public Algoritmo(List<Actividad_a> sel_a, List<Actividad_p> sel_p)
+        public Algoritmo(List<Actividad_a> sel_a, List<Actividad_p> sel_p, User _us)
         {
             seleccionadas_a = sel_a;
             seleccionadas_p = sel_p;
-            // posibles = new List<Horario>();
+            usuario = _us;
         }
 
         // Puntuar un horario según el número de días. Puntuará de 0 a 7, añadirá uno por cada día en el que haya turnos.
@@ -43,12 +44,7 @@ namespace Taimer
             {
                 try
                 {
-                    Hora minHora = horario.minHora(i);
-                    Hora maxHora = horario.maxHora(i);
-
-
-                    // entre estas dos horas, hay que sumar a puntuacion las horas de hueco entre los turnos
-                    //throw new NotImplementedException();
+                    // hay que sumar a puntuacion las horas de hueco entre los turnos
                     for (int j = 0; j < horario.ArrayTurnos[i].Count-1; j++)
                     {
                         puntuacion += Hora.diff(horario.ArrayTurnos[i][j + 1].HoraInicio, horario.ArrayTurnos[i][j].HoraFin);
@@ -68,8 +64,8 @@ namespace Taimer
         {
 
             // el user será el 1er elemento de la lista de users de Program
-            User usertest = new User("Aitor Tilla", "12345678X", "bill_gates@hotmail.com", "password", 1, "Ingeniería de Magisterio");
-            Horario h = new Horario(nombre, /*Program.Usuarios[0]*/usertest);
+            //User usertest = new User("Aitor Tilla", "12345678X", "bill_gates@hotmail.com", "password", 1, "Ingeniería de Magisterio");
+            Horario h = new Horario(nombre, usuario);
             foreach (Actividad_p personal in seleccionadas_p)
             {
                 foreach (Turno item in personal.Turnos)
@@ -115,9 +111,8 @@ namespace Taimer
             Queue<Horario> nodos_vivos = new Queue<Horario>();
             Queue<Horario> nodos_vivos_aux = new Queue<Horario>();
             Queue<Horario> soluciones = new Queue<Horario>();
-            // el user será el 1er elemento de la lista de users de Program
-            User usertest = new User("Aitor Tilla", "12345678X", "bill_gates@hotmail.com", "password", 1, "Ingeniería de Magisterio");
-            Horario optimo = new Horario(nombre, /*Program.Usuarios[0]*/usertest);
+            
+            Horario optimo = new Horario(nombre, usuario);
 
             int cant_p = 0;
 
@@ -208,7 +203,8 @@ namespace Taimer
             }
             catch (NotSupportedException)
             {
-
+                posibles.Clear();
+                posibles = null;
                 throw;
             }
 

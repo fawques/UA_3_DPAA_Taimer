@@ -26,20 +26,20 @@ namespace Taimer
 
         private void crear_Click(object sender, EventArgs e)
         {
-            try
-            {
+            //try
+            //{
                 Hora horaini = new Hora(int.Parse(hini.Text), int.Parse(mini.Text));
                 Hora horafin = new Hora(int.Parse(hfin.Text), int.Parse(mfin.Text));
 
-                Turno turno = new Turno(1, horaini, horafin, dias.L, "Aulario 51", activ1);
-                turno.CambiarDiaSemana(diacombo.Text);
+                Turno turno = new Turno(1, horaini, horafin, diacombo.Text, "???", activ1);
+
                 activ1.AddTurno(turno);
                 actualizaLista();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message,"Excepción al crear turno",MessageBoxButtons.OK,MessageBoxIcon.Error);
-            }
+            //}
+            //catch (Exception ex)
+            //{
+              //  MessageBox.Show(ex.Message,"Excepción al crear turno",MessageBoxButtons.OK,MessageBoxIcon.Error);
+            //}
         }
 
         private void actualizaLista()
@@ -49,7 +49,7 @@ namespace Taimer
             string turnostring;
             foreach(Turno t in activ1.Turnos)
             {
-                turnostring = "Cód: " + t.Codigo.ToString() + " -- Día: " + t.Dia + " -- Inicio: " + t.HoraInicio.toString() + " -- Fin: " + t.HoraFin.toString();
+                turnostring = "Cód: " + t.Codigo.ToString() + " -- Día: " + t.Dia + " -- Inicio: " + t.HoraInicio.toString() + " -- Fin: " + t.HoraFin.toString() + " -- Ubic.: " + t.Ubicacion;
                 lista.Items.Add(turnostring);
             }
         }
@@ -117,6 +117,81 @@ namespace Taimer
             {
                 MessageBox.Show(ex.Message, "Excepción", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            int indice = int.Parse(codBorrar.Text);
+
+            try
+            {
+                Hora horanueva = new Hora(int.Parse(hini.Text), int.Parse(mini.Text));
+                activ1.Turnos[indice].HoraInicio = horanueva;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Excepción al cambiar hora de inicio", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ex = null;
+            }
+
+            actualizaLista();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (activ1.EsPersonal())
+                MessageBox.Show("Es personal funciona");
+            else
+                MessageBox.Show("ES PERSONAL NO TIRA NI PATRÁS");
+        }
+
+        private void chfin_Click(object sender, EventArgs e)
+        {
+            int indice = int.Parse(codBorrar.Text);
+
+            try
+            {
+                Hora horanueva = new Hora(int.Parse(hfin.Text), int.Parse(mfin.Text));
+                activ1.Turnos[indice].HoraFin = horanueva;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Excepción al cambiar hora de fin", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            actualizaLista();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            int indice = int.Parse(codBorrar.Text);
+
+            try
+            {
+                activ1.Turnos[indice].Codigo = int.Parse(nuevocod.Text);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Excepción al cambiar código", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            actualizaLista();
+        }
+
+        private void cambiadiasemana_Click(object sender, EventArgs e)
+        {
+            int indice = int.Parse(codBorrar.Text);
+
+            try
+            {
+                activ1.Turnos[indice].DiaString = diacombo.Text;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Excepción al cambiar día de la semana", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            actualizaLista();
         }
     }
 }

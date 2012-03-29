@@ -30,24 +30,24 @@
         {
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.dataGridMatric = new System.Windows.Forms.DataGridView();
             this.Código = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nom = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dataGridActuales = new System.Windows.Forms.DataGridView();
             this.Codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Descrip = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtBoxFiltroAct = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtBoxFiltroMat = new System.Windows.Forms.TextBox();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridMatric)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridActuales)).BeginInit();
             this.SuspendLayout();
             // 
             // label4
@@ -70,59 +70,69 @@
             this.label3.TabIndex = 26;
             this.label3.Text = "Actuales";
             // 
-            // dataGridView2
+            // dataGridMatric
             // 
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridMatric.AllowUserToAddRows = false;
+            this.dataGridMatric.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridMatric.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Código,
             this.Nom,
             this.Column1});
-            this.dataGridView2.Location = new System.Drawing.Point(442, 182);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.Size = new System.Drawing.Size(331, 373);
-            this.dataGridView2.TabIndex = 23;
+            this.dataGridMatric.Location = new System.Drawing.Point(442, 182);
+            this.dataGridMatric.Name = "dataGridMatric";
+            this.dataGridMatric.ReadOnly = true;
+            this.dataGridMatric.Size = new System.Drawing.Size(331, 373);
+            this.dataGridMatric.TabIndex = 23;
             // 
             // Código
             // 
             this.Código.HeaderText = "Código";
             this.Código.Name = "Código";
+            this.Código.ReadOnly = true;
             // 
             // Nom
             // 
             this.Nom.HeaderText = "Nombre";
             this.Nom.Name = "Nom";
+            this.Nom.ReadOnly = true;
             // 
             // Column1
             // 
             this.Column1.HeaderText = "Descipcion";
             this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
             // 
-            // dataGridView1
+            // dataGridActuales
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridActuales.AllowUserToAddRows = false;
+            this.dataGridActuales.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridActuales.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Codigo,
             this.Nombre,
             this.Descrip});
-            this.dataGridView1.Location = new System.Drawing.Point(12, 182);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(331, 373);
-            this.dataGridView1.TabIndex = 21;
+            this.dataGridActuales.Location = new System.Drawing.Point(12, 182);
+            this.dataGridActuales.Name = "dataGridActuales";
+            this.dataGridActuales.ReadOnly = true;
+            this.dataGridActuales.Size = new System.Drawing.Size(331, 373);
+            this.dataGridActuales.TabIndex = 21;
             // 
             // Codigo
             // 
             this.Codigo.HeaderText = "Código";
             this.Codigo.Name = "Codigo";
+            this.Codigo.ReadOnly = true;
             // 
             // Nombre
             // 
             this.Nombre.HeaderText = "Nombre";
             this.Nombre.Name = "Nombre";
+            this.Nombre.ReadOnly = true;
             // 
             // Descrip
             // 
             this.Descrip.HeaderText = "Descripcion";
             this.Descrip.Name = "Descrip";
+            this.Descrip.ReadOnly = true;
             // 
             // label1
             // 
@@ -152,12 +162,12 @@
             this.label5.TabIndex = 30;
             this.label5.Text = "Filtro:";
             // 
-            // textBox1
+            // txtBoxFiltroAct
             // 
-            this.textBox1.Location = new System.Drawing.Point(61, 156);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(167, 20);
-            this.textBox1.TabIndex = 29;
+            this.txtBoxFiltroAct.Location = new System.Drawing.Point(61, 156);
+            this.txtBoxFiltroAct.Name = "txtBoxFiltroAct";
+            this.txtBoxFiltroAct.Size = new System.Drawing.Size(167, 20);
+            this.txtBoxFiltroAct.TabIndex = 29;
             // 
             // label6
             // 
@@ -168,12 +178,12 @@
             this.label6.TabIndex = 32;
             this.label6.Text = "Filtro:";
             // 
-            // textBox2
+            // txtBoxFiltroMat
             // 
-            this.textBox2.Location = new System.Drawing.Point(486, 156);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(167, 20);
-            this.textBox2.TabIndex = 31;
+            this.txtBoxFiltroMat.Location = new System.Drawing.Point(486, 156);
+            this.txtBoxFiltroMat.Name = "txtBoxFiltroMat";
+            this.txtBoxFiltroMat.Size = new System.Drawing.Size(167, 20);
+            this.txtBoxFiltroMat.TabIndex = 31;
             // 
             // button2
             // 
@@ -202,23 +212,23 @@
             this.BackColor = System.Drawing.Color.Cornsilk;
             this.ClientSize = new System.Drawing.Size(795, 595);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.txtBoxFiltroMat);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtBoxFiltroAct);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.dataGridView2);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dataGridMatric);
+            this.Controls.Add(this.dataGridActuales);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "ClientMatriculacionActiv";
             this.Text = "ClientMatriculacionActiv";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridMatric)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridActuales)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -230,8 +240,8 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.DataGridView dataGridView2;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dataGridMatric;
+        private System.Windows.Forms.DataGridView dataGridActuales;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Código;
@@ -241,8 +251,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
         private System.Windows.Forms.DataGridViewTextBoxColumn Descrip;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtBoxFiltroAct;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtBoxFiltroMat;
     }
 }

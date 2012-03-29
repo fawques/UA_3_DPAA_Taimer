@@ -4,21 +4,57 @@ using System.Linq;
 using System.Text;
 
 namespace Taimer {
+    /// <summary>
+    /// Clase Actividad: clase abstracta de la que heredarán Actividad_a y Actividad_p
+    /// </summary>
     abstract public class Actividad {
 
         #region PARTE PROTECTED
 
-        protected int codigo;                                     // Clave principal
+        /// <summary>
+        /// Código de la Actividad y clave primaria en la base de datos
+        /// </summary>
+        protected int codigo;   
+                                  
+        /// <summary>
+        /// Nombre de la actividad
+        /// </summary>
         protected string nombre;
+
+        /// <summary>
+        /// Descripción de la Actividad
+        /// </summary>
         protected string descripcion;
+
+        /// <summary>
+        /// Lista de turnos que tiene la Actividad
+        /// </summary>
         protected List<Turno> turnos = new List<Turno>();
+
+        /// <summary>
+        /// Último código de turno asignado
+        /// </summary>
         protected int codigoturno;
+
+        /// <summary>
+        ///  Codifica el código del un turno
+        /// </summary>
+        /// <param name="t"> turno a codificar </param>
+        protected void AsignarCodigo(Turno t) {
+            t.Codigo = codigoturno;
+            codigoturno++;
+        }
 
         #endregion
 
         #region PARTE PÚBLICA
 
-        // Constructor
+        /// <summary>
+        /// Constructor Básio
+        /// </summary>
+        /// <param name="nom_"> Nombre de la Actividad</param>
+        /// <param name="desc_"> Descripción de la Actividad</param>
+        /// <param name="cod_"> Código de la Actividad </param>
         public Actividad(string nom_, string desc_, int cod_) {
             nombre = nom_;
             descripcion = desc_;
@@ -27,7 +63,13 @@ namespace Taimer {
         }
 
 
-        // Constructor
+        /// <summary>
+        /// Constructor Avanzado
+        /// </summary>
+        /// <param name="nom_"> Nombre de la Actividad </param>
+        /// <param name="desc_"> Descripción de la Actividad </param>
+        /// <param name="cod_"> Código de la Actividad </param>
+        /// <param name="turnos_"> Lista de turnos a la que se puede asistir </param>
         public Actividad(string nom_, string desc_, int cod_, List<Turno> turnos_)
         {
             nombre = nom_;
@@ -37,7 +79,10 @@ namespace Taimer {
             codigoturno = 1;
         }
 
-        // Constructor de copia
+        /// <summary>
+        /// Constructor de Copia
+        /// </summary>
+        /// <param name="act"> Actividad que se desea copiar </param>
         public Actividad(Actividad act) {
             nombre = act.nombre;
             descripcion = act.descripcion;
@@ -47,21 +92,27 @@ namespace Taimer {
         }
 
 
-        // Cambiar/obtener nombre
+        /// <summary>
+        /// Asigna/Devuelve el nombre de la Actividad
+        /// </summary>
         public string Nombre {
             get { return nombre; }
             set { nombre = value; }
         }
 
 
-        // Cambiar/obtener descripción
+        /// <summary>
+        /// Asigna/Devuelve la descripción de la Actividad
+        /// </summary>
         public string Descripcion {
             get { return descripcion; }
             set { descripcion = value; }
         }
 
 
-        // Cambiar/obtener código
+        /// <summary>
+        /// Asigna/Devuelve el código de la Actividad
+        /// </summary>
         public int Codigo {
             get { return codigo; }
             set { codigo = value; }
@@ -73,38 +124,49 @@ namespace Taimer {
         // *** FUNCIONES SOBRE LA LISTA DE TURNOS ***
 
 
-        // Cambiar/obtener lista de turnos
-        public List<Turno> Turnos
-        {
-            set { turnos = value; }
+        /// <summary>
+        /// Asigna/Devuelve la lista de turnos
+        /// </summary>
+        public List<Turno> Turnos {
+            set {
+                foreach (Turno t in value) {
+                    AsignarCodigo(t);
+                    turnos.Add(t);
+                }
+            }
             get { return turnos; }
         }
 
 
-        // Borrar turno (booleano)
-        // Devuelve TRUE si consigue borrar el turno, FALSE en caso contrario
-        public bool BorraTurnoBool(Turno turno)
-        {
+        /// <summary>
+        /// Borrar un turno
+        /// </summary>
+        /// <param name="turno"> Turno que se quiere borrar </param>
+        /// <returns> Devuelve TRUE si se ha borrado FALSE en caso contrario </returns>
+        public bool BorraTurnoBool(Turno turno) {
             return Turnos.Remove(turno);
         }
 
 
-        // Borrar turno (excepción)
-        // Lanza una excepción si no consigue borrar el turno
-        public void BorraTurno(Turno turno)
-        {
+        /// <summary>
+        /// Borrar un turno
+        /// Lanaza excepción si no se puede borrar el turno
+        /// </summary>
+        /// <param name="turno"> Turno que se quiere borrar </param>
+        public void BorraTurno(Turno turno) {
             bool borrado = Turnos.Remove(turno);
 
             if (!borrado)
                 throw new MissingMemberException("No existe el turno que se desea borrar.");
         }
 
-        // Borrar turno (a partir de su código, si se encuentra) (boolean)
-        // Devuelve TRUE si consigue borrar el turno, FALSE en caso contrario
-        public bool BorraTurnoBool(int codigobuscado)
-        {
-            foreach (Turno t in turnos)
-            {
+        /// <summary>
+        /// Borrar un turno a partir de su código
+        /// </summary>
+        /// <param name="codigobuscado"> Código del turno que se desea borrar </param>
+        /// <returns>Devuelve TRUE si se ha borrado y FALSE en caso contrario </returns>
+        public bool BorraTurnoBool(int codigobuscado) {
+            foreach (Turno t in turnos) {
                 if (t.Codigo == codigobuscado)
                     return Turnos.Remove(t);
             }
@@ -112,16 +174,16 @@ namespace Taimer {
         }
 
 
-        // Borrar turno (a partir de su código, si se encuentra) (excepción)
-        // Lanza una excepción si no consigue borrar el turno
-        public void BorraTurno(int codigobuscado)
-        {
+        /// <summary>
+        /// Borrar un turno a partir de su código
+        /// Lanza excepción si no se puede borrar el turno
+        /// </summary>
+        /// <param name="codigobuscado">Código del turno que se desea borrar </param>
+        public void BorraTurno(int codigobuscado) {
             bool borrado = false;
 
-            foreach (Turno t in turnos)
-            {
-                if (t.Codigo == codigobuscado)
-                {
+            foreach (Turno t in turnos) {
+                if (t.Codigo == codigobuscado) {
                     borrado = Turnos.Remove(t);
                     break;
                 }
@@ -132,15 +194,10 @@ namespace Taimer {
         }
 
 
-        // Codificar turno (asignarle el código correspondiente)
-        public void AsignarCodigo(Turno t)
-        {
-            t.Codigo = codigoturno;
-            codigoturno++;
-        }
-
-
-        // Averiguar si es una actividad académica
+        /// <summary>
+        /// Indica si la actividad es académica
+        /// </summary>
+        /// <returns>Devuelve TRUE si es académica y FALSE en caso contrario</returns>
         public bool EsAcademica()
         {
             Type tipo = GetType();
@@ -153,7 +210,10 @@ namespace Taimer {
         }
 
 
-        // Averiguar si es una actividad personal
+        /// <summary>
+        /// Indica si la actividad es personal
+        /// </summary>
+        /// <returns>Devuelve TRUE si es personal y FALSE en caso contrario </returns>
         public bool EsPersonal()
         {
             Type tipo = GetType();

@@ -68,7 +68,7 @@ namespace algoritmo
             string nombre_horario = "Hola";
 
             // se almacenará en Program --> se llamará a una función que compruebe que esas listas de params no estén repes. Si ya existe, devuelve el que ya existe, si no, devuelve uno nuevo --> tiene que avisar de alguna forma de que es uno antiguo, para que no se llame al BT
-            Algoritmo alg = new Algoritmo(listaA, listaP);
+            Algoritmo alg = new Algoritmo(listaA, listaP, Program.Usuarios[0]);
             string texto = "";
             string msg;
             int punt;
@@ -117,7 +117,7 @@ namespace algoritmo
             string nombre_horario = "Hola";
 
             // se almacenará en Program --> se llamará a una función que compruebe que esas listas de params no estén repes. Si ya existe, devuelve el que ya existe, si no, devuelve uno nuevo
-            Algoritmo alg = new Algoritmo(listaA, listaP);
+            Algoritmo alg = new Algoritmo(listaA, listaP,Program.Usuarios[0]);
             string texto = "";
             string msg;
             int punt;
