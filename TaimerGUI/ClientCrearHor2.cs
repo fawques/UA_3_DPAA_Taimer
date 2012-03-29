@@ -172,7 +172,7 @@ namespace TaimerGUI {
 
         private Horario generarHorario() {
 
-            Algoritmo alg = new Algoritmo(formBack.getActividadesA(), formBack.getActividadesP());
+            Algoritmo alg = new Algoritmo(formBack.getActividadesA(), formBack.getActividadesP(),Program.Usuarios[0]);
             Horario h = null;
             try
             {
