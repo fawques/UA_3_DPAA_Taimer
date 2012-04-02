@@ -102,7 +102,7 @@ namespace CAD
             }
 
         }
-        
+                
         //Obtenemos los datos de un Actividad según su id
         public DataSet GetDatosActividad_p(int cod)
         {
@@ -159,6 +159,31 @@ namespace CAD
             SqlConnection con = null;
             DataSet listAct = null;
             string comando = "Select min(codigo) from [Actividad_p]";
+            try
+            {
+                con = new SqlConnection(conexionTBD);
+                SqlDataAdapter sqlAdaptador = new SqlDataAdapter(comando, con);
+                listAct = new DataSet();
+                sqlAdaptador.Fill(listAct);
+                return listAct;
+            }
+            catch (Exception ex)
+            {
+                // Captura la condición general y la reenvía.
+                throw ex;
+            }
+            finally
+            {
+                if (con != null) con.Close(); // Se asegura de cerrar la conexión.
+            }
+        }
+
+
+        public DataSet GetActividadesP_FromUser(string dni)
+        {
+            SqlConnection con = null;
+            DataSet listAct = null;
+            string comando = "Select * from [Actividad_p] where autor='" + dni +"'";
             try
             {
                 con = new SqlConnection(conexionTBD);

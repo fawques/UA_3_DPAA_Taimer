@@ -72,7 +72,8 @@ namespace CAD
         public void BorrarUser(string id)
         {
             SqlConnection c = null;
-            string comando = "DELETE FROM [User] WHERE dni= '" + id + "'";
+           // string comando = "DELETE FROM [User] WHERE dni= '" + id + "'";
+            string comando = "DELETE FROM [Actividad_p] WHERE autor= '" + id + "'";
 
             try
             {

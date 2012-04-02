@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using System.Data;
 
 namespace TaimerGUI {
     static class Program {
@@ -128,6 +129,31 @@ namespace TaimerGUI {
             }
 
             throw new ArgumentException("No existe una activida con ese código");
+        }
+
+        public static void setUsers()
+        {
+            CAD.CADUser user = new CAD.CADUser();
+            CAD.CADActividad_p pers=new CAD.CADActividad_p();
+
+            DataSet users = user.GetUsers();
+            string dni, nom, email, pass, tit="";
+            int curso = 0;
+            List<Actividad_a> acta;
+            List<Actividad_p> actp;
+            List<Horario> hor;
+            DataRowCollection rows=users.Tables[0].Rows;
+            for (int i = 0; i < rows.Count; i++)
+            {
+                dni = rows[i].ItemArray[0].ToString();
+                nom = rows[i].ItemArray[1].ToString();
+                email = rows[i].ItemArray[2].ToString();
+                pass = rows[i].ItemArray[3].ToString();
+                curso =  (int)rows[i].ItemArray[4];
+                tit = rows[i].ItemArray[5].ToString();
+                //actp = pers.GetActividadesP_FromUser(dni);
+
+            }
         }
 
         public static LoginForm loginForm;
