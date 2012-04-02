@@ -284,7 +284,7 @@ namespace Taimer {
         public Hora minHora()
         {
             bool encontrado = false;
-            Hora minima = new Hora(0, 0);
+            Hora minima = new Hora(23, 59);
             for (int i = 1; i < 7; i++)
             {
                 try
@@ -315,8 +315,8 @@ namespace Taimer {
         public Hora maxHora()
         {
             bool encontrado = false;
-            Hora maxima = new Hora(23, 59);
-            for (int i = 1; i < 7; i++)
+            Hora maxima = new Hora(0, 0);
+            for (int i = 0; i < 6; i++)
             {
                 try
                 {
