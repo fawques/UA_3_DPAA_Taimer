@@ -13,7 +13,6 @@ namespace TaimerGUI {
 
         AAddUser childForm = null;
         int selectedRow = 0;
-        List<Taimer.User> usuarios;
 
         public AGestUser() {
             InitializeComponent();
@@ -23,15 +22,14 @@ namespace TaimerGUI {
 
             clearLabels();
 
-            usuarios = new List<Taimer.User>();
 
             Taimer.User user1 = new Taimer.User("Pepe Gotera", "11111111X", "asd@asd.com", "patata", 1, "Informatica");
             Taimer.User user2 = new Taimer.User("Jaimito", "22222222D", "qwe@rty.com", "patata", 2, "Informatica");
 
-            usuarios.Add(user1);
-            usuarios.Add(user2);
+            Program.AddUsuario(user1);
+            Program.AddUsuario(user2);
 
-            foreach (Taimer.User user in usuarios) {
+            foreach (Taimer.User user in Program.Usuarios) {
                 dgUsers.Rows.Add(user.Nombre, user.DNI);
                 dgUsers.Rows[dgUsers.RowCount-1].Tag = user;
             }
@@ -288,12 +286,13 @@ namespace TaimerGUI {
             }
         }
 
-        public void addUser(Taimer.User user) {
-
-            usuarios.Add(user);
-
-            dgUsers.Rows.Add(user.Nombre, user.DNI);
-            dgUsers.Rows[dgUsers.RowCount - 1].Tag = user;
+        public void updateTable() {
+            dgUsers.Rows.Clear();
+            foreach (Taimer.User user in Program.Usuarios)
+            {
+                dgUsers.Rows.Add(user.Nombre, user.DNI);
+                dgUsers.Rows[dgUsers.RowCount - 1].Tag = user;
+            }
         }
     }
 }
