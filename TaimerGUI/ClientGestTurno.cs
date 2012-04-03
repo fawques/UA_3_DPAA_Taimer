@@ -35,10 +35,12 @@ namespace TaimerGUI {
         }
 
         private void button1_Click(object sender, EventArgs e) {
+
             Taimer.Hora horI = new Taimer.Hora((int)nmUpDwnHorDesde.Value, (int)nmUpDwnMinDesde.Value);
             Taimer.Hora horF = new Taimer.Hora((int)nmUpDwnHorHasta.Value, (int)nmUpDwnMinHasta.Value);
+                
 
-            if (horI < horF) {
+            if (horI < horF && txtBoxLugar.Text != "") {
                 gVHorasTemp.Rows.Add(comboBoxDia.Text, horI.toString(), horF.toString(), txtBoxLugar.Text);
                 
                 Turno turnAux = new Turno(horI, horF, TaimerLibrary.convertToDais(comboBoxDia.Text), txtBoxLugar.Text);
@@ -48,12 +50,18 @@ namespace TaimerGUI {
                     MessageBox.Show(exc.Message);
                 }
 
-                lblErrorDate.Text = "";
+                lblErrorDate.Visible = false;
                 txtBoxLugar.Text = "";
+                lbErrUbi.Visible = false;
                 loadActividad(actividad);
-            } else {
-                lblErrorDate.Text = "Las hora de inicio debe ser menor que la de fin.";
+            } else if (txtBoxLugar.Text == ""){
+                lblErrorDate.Visible = false;
+                lbErrUbi.Visible = true;
+            }else{
+                lbErrUbi.Visible = false;
+                lblErrorDate.Visible = true;
             }
+
         }
 
         public void reiniciar() {
@@ -111,6 +119,11 @@ namespace TaimerGUI {
             ((Turno)grpBoxTurno.Tag).Ubicacion = txtBoxLugarMod.Text;
             
             loadActividad(actividad);
+        }
+
+        private void lbErrUbi_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

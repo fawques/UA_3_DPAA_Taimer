@@ -25,6 +25,8 @@
         private void InitializeComponent() {
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lbErrUbi = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.txtBoxLugar = new System.Windows.Forms.TextBox();
             this.lblErrorDate = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
@@ -46,8 +48,11 @@
             this.horaFin = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lugar = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.borrar = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.label7 = new System.Windows.Forms.Label();
             this.grpBoxTurno = new System.Windows.Forms.GroupBox();
+            this.btnCancelar = new System.Windows.Forms.Button();
+            this.btnGuardar = new System.Windows.Forms.Button();
+            this.label17 = new System.Windows.Forms.Label();
+            this.txtBoxLugarMod = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.nUDMinFinMod = new System.Windows.Forms.NumericUpDown();
@@ -60,10 +65,6 @@
             this.label15 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.cmbBoxDiaMod = new System.Windows.Forms.ComboBox();
-            this.label17 = new System.Windows.Forms.Label();
-            this.txtBoxLugarMod = new System.Windows.Forms.TextBox();
-            this.btnGuardar = new System.Windows.Forms.Button();
-            this.btnCancelar = new System.Windows.Forms.Button();
             this.btnTerminar = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nmUpDwnMinHasta)).BeginInit();
@@ -90,6 +91,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.lbErrUbi);
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.txtBoxLugar);
             this.groupBox1.Controls.Add(this.lblErrorDate);
@@ -107,10 +109,32 @@
             this.groupBox1.Controls.Add(this.comboBoxDia);
             this.groupBox1.Location = new System.Drawing.Point(12, 91);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(203, 203);
+            this.groupBox1.Size = new System.Drawing.Size(203, 223);
             this.groupBox1.TabIndex = 69;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Hora y Dia";
+            // 
+            // lbErrUbi
+            // 
+            this.lbErrUbi.AutoSize = true;
+            this.lbErrUbi.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbErrUbi.ForeColor = System.Drawing.Color.Red;
+            this.lbErrUbi.Location = new System.Drawing.Point(23, 202);
+            this.lbErrUbi.Name = "lbErrUbi";
+            this.lbErrUbi.Size = new System.Drawing.Size(156, 13);
+            this.lbErrUbi.TabIndex = 65;
+            this.lbErrUbi.Text = "El campo no puede estar vacío";
+            this.lbErrUbi.Visible = false;
+            this.lbErrUbi.Click += new System.EventHandler(this.lbErrUbi_Click);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(25, 175);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(34, 13);
+            this.label7.TabIndex = 63;
+            this.label7.Text = "Lugar";
             // 
             // txtBoxLugar
             // 
@@ -126,6 +150,7 @@
             this.lblErrorDate.Name = "lblErrorDate";
             this.lblErrorDate.Size = new System.Drawing.Size(166, 32);
             this.lblErrorDate.TabIndex = 60;
+            this.lblErrorDate.Text = "La hora de inicio debe ser menor que la de fin.";
             this.lblErrorDate.Visible = false;
             // 
             // label11
@@ -315,15 +340,6 @@
             this.borrar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.borrar.Text = "Borrar";
             // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(25, 175);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(34, 13);
-            this.label7.TabIndex = 63;
-            this.label7.Text = "Lugar";
-            // 
             // grpBoxTurno
             // 
             this.grpBoxTurno.Controls.Add(this.btnCancelar);
@@ -349,6 +365,42 @@
             this.grpBoxTurno.TabStop = false;
             this.grpBoxTurno.Text = "Turno";
             this.grpBoxTurno.Visible = false;
+            // 
+            // btnCancelar
+            // 
+            this.btnCancelar.Location = new System.Drawing.Point(548, 85);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(92, 30);
+            this.btnCancelar.TabIndex = 67;
+            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
+            // 
+            // btnGuardar
+            // 
+            this.btnGuardar.Location = new System.Drawing.Point(548, 39);
+            this.btnGuardar.Name = "btnGuardar";
+            this.btnGuardar.Size = new System.Drawing.Size(92, 29);
+            this.btnGuardar.TabIndex = 66;
+            this.btnGuardar.Text = "Confirmar";
+            this.btnGuardar.UseVisualStyleBackColor = true;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(259, 51);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(34, 13);
+            this.label17.TabIndex = 65;
+            this.label17.Text = "Lugar";
+            // 
+            // txtBoxLugarMod
+            // 
+            this.txtBoxLugarMod.Location = new System.Drawing.Point(323, 48);
+            this.txtBoxLugarMod.Name = "txtBoxLugarMod";
+            this.txtBoxLugarMod.Size = new System.Drawing.Size(100, 20);
+            this.txtBoxLugarMod.TabIndex = 64;
             // 
             // label2
             // 
@@ -477,42 +529,6 @@
             this.cmbBoxDiaMod.Size = new System.Drawing.Size(121, 21);
             this.cmbBoxDiaMod.TabIndex = 13;
             // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(259, 51);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(34, 13);
-            this.label17.TabIndex = 65;
-            this.label17.Text = "Lugar";
-            // 
-            // txtBoxLugarMod
-            // 
-            this.txtBoxLugarMod.Location = new System.Drawing.Point(323, 48);
-            this.txtBoxLugarMod.Name = "txtBoxLugarMod";
-            this.txtBoxLugarMod.Size = new System.Drawing.Size(100, 20);
-            this.txtBoxLugarMod.TabIndex = 64;
-            // 
-            // btnGuardar
-            // 
-            this.btnGuardar.Location = new System.Drawing.Point(548, 39);
-            this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(92, 29);
-            this.btnGuardar.TabIndex = 66;
-            this.btnGuardar.Text = "Confirmar";
-            this.btnGuardar.UseVisualStyleBackColor = true;
-            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
-            // 
-            // btnCancelar
-            // 
-            this.btnCancelar.Location = new System.Drawing.Point(548, 85);
-            this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(92, 30);
-            this.btnCancelar.TabIndex = 67;
-            this.btnCancelar.Text = "Cancelar";
-            this.btnCancelar.UseVisualStyleBackColor = true;
-            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
-            // 
             // btnTerminar
             // 
             this.btnTerminar.Location = new System.Drawing.Point(666, 574);
@@ -600,5 +616,6 @@
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnGuardar;
         private System.Windows.Forms.Button btnTerminar;
+        private System.Windows.Forms.Label lbErrUbi;
     }
 }
