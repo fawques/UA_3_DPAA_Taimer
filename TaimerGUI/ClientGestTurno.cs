@@ -104,11 +104,12 @@ namespace TaimerGUI {
             try {
                 ((Turno)grpBoxTurno.Tag).HoraInicio = horI;
                 ((Turno)grpBoxTurno.Tag).HoraFin = horF;
+                ((Turno)grpBoxTurno.Tag).Dia = TaimerLibrary.convertToDais(cmbBoxDiaMod.Text);
             } catch (NotSupportedException exc) {
                 MessageBox.Show(exc.Message);
             }
             ((Turno)grpBoxTurno.Tag).Ubicacion = txtBoxLugarMod.Text;
-            ((Turno)grpBoxTurno.Tag).Dia = TaimerLibrary.convertToDais(cmbBoxDiaMod.Text);
+            
             loadActividad(actividad);
         }
     }
