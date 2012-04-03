@@ -179,11 +179,11 @@ namespace CAD
         }
 
 
-        public DataSet GetActividadesP_FromUser(string dni)
+        public DataSet GetActividadesPByUser(string dni)
         {
             SqlConnection con = null;
             DataSet listAct = null;
-            string comando = "Select * from [Actividad_p] where autor='" + dni +"'";
+            string comando = "Select codigo from [Actividad_p] where autor='" + dni +"'";
             try
             {
                 con = new SqlConnection(conexionTBD);

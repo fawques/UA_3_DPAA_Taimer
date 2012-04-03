@@ -57,7 +57,7 @@ namespace CAD
         private void bt4User_Click(object sender, EventArgs e)
         {
             /*Obtiene el nombre del usuario mediante el DNI introducido*/
-            DataSet data = user.GetDatosUser(tb2User.Text);
+            /*DataSet data = user.GetDatosUser(tb2User.Text);
             if (data == null)
                 label1.Text = "No existe";
                 
@@ -65,12 +65,20 @@ namespace CAD
             {
                 string name = data.Tables[0].Rows[0].ItemArray[1].ToString();
                 label1.Text = "Nombre: "+name;
-            }
+            }*/
 
             /*Ejemplo para mostrar el último código generado
             DataSet code = actp.LastCode();
             string last = code.Tables[0].Rows[0].ItemArray[0].ToString();
             label1.Text = "Último código: " + last;*/
+
+            /*Obtiene los códigos de las asignaturas personales de un usuario*/
+            DataSet data = actp.GetActividadesPByUser(tb2User.Text);
+            DataRowCollection rows = data.Tables[0].Rows;
+            for (int i = 0; i < rows.Count; i++)
+            {
+                label1.Text += rows[i].ItemArray[0] + " ";
+            }
         }
 
         private void bt1Com_Click(object sender, EventArgs e)

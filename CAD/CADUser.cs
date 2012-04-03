@@ -72,16 +72,21 @@ namespace CAD
         public void BorrarUser(string id)
         {
             SqlConnection c = null;
-           // string comando = "DELETE FROM [User] WHERE dni= '" + id + "'";
-            string comando = "DELETE FROM [Actividad_p] WHERE autor= '" + id + "'";
-
+            string comando = "DELETE FROM [User] WHERE dni= '" + id + "'";
+            CADActividad_p actp = new CADActividad_p();
+            CADActividad act = new CADActividad();
+            List<int> codes = DataSetToList(actp.GetActividadesPByUser(id));
+                
             try
             {
-
                 c = new SqlConnection(conexionTBD);
                 c.Open();
                 SqlCommand cmd = new SqlCommand(comando, c);
                 cmd.ExecuteNonQuery();
+                foreach(int i in codes)
+                {
+                    act.BorrarActividad(i);
+                }
             }
             catch (Exception ex)
             {
@@ -168,6 +173,17 @@ namespace CAD
             {
                 if (c != null) c.Close(); // Se asegura de cerrar la conexión.
             }
+        }
+
+        public List<int> DataSetToList(DataSet data)
+        {
+            DataRowCollection rows=data.Tables[0].Rows;
+            List<int> list = new List<int>();
+            for (int i = 0; i < rows.Count; i++)
+            {
+                list.Add((int)rows[i].ItemArray[0]);
+            }
+            return list;
         }
     }
 }
