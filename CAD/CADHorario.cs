@@ -10,7 +10,7 @@ using System.Collections;
 
 namespace CAD
 {
-    class CADHorario
+    public class CADHorario
     {
         private static string conexionTBD;
         

@@ -45,9 +45,9 @@ namespace CAD
             }
         }
 
-        public void CrearUserAll(string dni, string nombre, string email, string password, int curso, string tit, int codA, int codH)
+        public void CrearUserAll(string dni, string nombre, string email, string password, int curso, string tit,int codH)
         {
-            string comando = "INSERT INTO [User] VALUES('" + dni + "', '" + nombre + "', '" + email + "', '" + password + "','"+tit+"','"+codA+"','"+codH+"')";
+            string comando = "INSERT INTO [User] VALUES('" + dni + "', '" + nombre + "', '" + email + "', '" + password + "','"+ curso+"','"+tit+"','"+codH+"')";
             SqlConnection c = null;
             SqlCommand comandoTBD;
 
@@ -150,9 +150,9 @@ namespace CAD
             }
         }
         //Actualizar datos de un Usuario cuyo dni sea el que pasan como parámetro
-        public void ModificaUser(string dni, string nombre, string email, string password)
+        public void ModificaUser(string dni, string nombre, string email, string password,string tit)
         {
-            string comando = "UPDATE [User] SET dni = '" + dni + "', nombre = '" + nombre + "', email = '" + email + "', password = '" + password + "' WHERE dni = '" + dni + "'";
+            string comando = "UPDATE [User] SET nombre = '" + nombre + "', email = '" + email + "', password = '" + password + "', titulacion = '" +tit+ "' WHERE dni = '" + dni + "'";
             SqlConnection c = null;
             SqlCommand comandoTBD;
 

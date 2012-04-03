@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Taimer;
-
+using CAD;
 namespace Taimer {
 
     /// <summary>
@@ -139,8 +139,30 @@ namespace Taimer {
             actPersonales = actp_;
             horarios = hor_;
         }
-
-
+        /// <sumary>
+        /// Inserción de Usuarios en la base de datos
+        /// <param name="dni">DNI del usuario</param>
+        /// /// <param name="nombre">Nombre del usuario</param>
+        /// <param name="email">e-Mail del usuario</param>
+        /// <param name="password">Contraseña del usuario</param>
+        /// <param name="curso">Curso del usuario</param>
+        /// <param name="tit">Titulación del usuario</param>
+        /// <param name="codA">Código de la ultima actividad creada</param>
+        /// <param name="codH">Código del último horario creado</param>
+        /// </sumary>
+        public void insertUserAll()
+        {
+            CADUser user = new CADUser();
+            try
+            {
+                user.CrearUserAll(dni, nombre, email, password, curso, titulacion, 0);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+     
         /// <summary>
         /// Consturctor de copia
         /// </summary>
@@ -254,7 +276,38 @@ namespace Taimer {
         public bool BorraActAcademicaBool(Actividad_a act) {
             return actAcademicas.Remove(act);
         }
-
+        /// <summary>
+        /// Modifica un usuario en la BD
+        /// </summary>
+        public void modificarUser()
+        {
+            CADUser user = new CADUser();
+            try
+            {
+                user.ModificaUser(dni, nombre, email, password, titulacion);
+            }
+            catch (Exception ex)
+            {
+                
+                throw ex;
+            }
+        }
+        ///<summary>
+        ///Borra un usuario pasandole una id
+        ///<param name="dni">Dni de usuario a borrar</param>
+        //
+        public void BorrarUser()
+        {
+            CADUser user = new CADUser();
+            try
+            {
+                user.BorrarUser(dni);
+            }
+            catch (Exception ex)
+            { 
+            }
+        }
+        /// </summary>
         /// <summary>
         ///  Borra una actividad académica (si existe). Lanza excepción.
         /// </summary>
@@ -294,11 +347,6 @@ namespace Taimer {
             if(!actPersonales.Remove(act))
                 throw new MissingMemberException("No existe la actividad personal que se desea borrar.");
         }
-
-
-
-
-
 
         /// <summary>
         /// Devolver una actividad, ya sea académica o personal, a partir de su código

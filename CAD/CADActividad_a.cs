@@ -182,6 +182,29 @@ namespace CAD {
                 if (con != null) con.Close(); // Se asegura de cerrar la conexión.
             }
         }
+        public DataSet LastCode()
+        {
+            SqlConnection con = null;
+            DataSet listAct = null;
+            string comando = "Select max(codigo) from [Actividad_a]";
+            try
+            {
+                con = new SqlConnection(conexionTBD);
+                SqlDataAdapter sqlAdaptador = new SqlDataAdapter(comando, con);
+                listAct = new DataSet();
+                sqlAdaptador.Fill(listAct);
+                return listAct;
+            }
+            catch (Exception ex)
+            {
+                // Captura la condición general y la reenvía.
+                throw ex;
+            }
+            finally
+            {
+                if (con != null) con.Close(); // Se asegura de cerrar la conexión.
+            }
+        }
 
     }
 }

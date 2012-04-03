@@ -40,7 +40,7 @@ namespace CAD
 
         private void bt1User_Click(object sender, EventArgs e)
         {
-            user.CrearUserBasic(tb2User.Text, tb1User.Text, tb3User.Text, tb4User.Text);
+            user.CrearUserAll(tb2User.Text, tb1User.Text, tb3User.Text, tb4User.Text,3,"II02",-2,2);
             //admin.CrearAdminBasic(tb2User.Text, tb1User.Text, tb3User.Text, tb4User.Text);
         }
 
