@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblNombreHora = new System.Windows.Forms.Label();
             this.pnlHorario = new System.Windows.Forms.Panel();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
@@ -47,21 +47,25 @@
             this.pnlMartes = new System.Windows.Forms.Panel();
             this.pnlLunes = new System.Windows.Forms.Panel();
             this.grpBoxDatosAsig = new System.Windows.Forms.GroupBox();
-            this.lblNombreAsig = new System.Windows.Forms.Label();
             this.lblDescripAsig = new System.Windows.Forms.Label();
+            this.lblNombreAsig = new System.Windows.Forms.Label();
+            this.lblHorIni = new System.Windows.Forms.Label();
+            this.lblHorFin = new System.Windows.Forms.Label();
+            this.txtBoxNombreHor = new System.Windows.Forms.TextBox();
             this.pnlHorario.SuspendLayout();
             this.grpBoxDatosAsig.SuspendLayout();
             this.SuspendLayout();
             // 
-            // label1
+            // lblNombreHora
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(11, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(134, 31);
-            this.label1.TabIndex = 20;
-            this.label1.Text = "Horario 1";
+            this.lblNombreHora.AutoSize = true;
+            this.lblNombreHora.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNombreHora.Location = new System.Drawing.Point(11, 9);
+            this.lblNombreHora.Name = "lblNombreHora";
+            this.lblNombreHora.Size = new System.Drawing.Size(134, 31);
+            this.lblNombreHora.TabIndex = 20;
+            this.lblNombreHora.Text = "Horario 1";
+            this.lblNombreHora.Click += new System.EventHandler(this.label1_Click);
             // 
             // pnlHorario
             // 
@@ -252,6 +256,8 @@
             // grpBoxDatosAsig
             // 
             this.grpBoxDatosAsig.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.grpBoxDatosAsig.Controls.Add(this.lblHorFin);
+            this.grpBoxDatosAsig.Controls.Add(this.lblHorIni);
             this.grpBoxDatosAsig.Controls.Add(this.lblDescripAsig);
             this.grpBoxDatosAsig.Controls.Add(this.lblNombreAsig);
             this.grpBoxDatosAsig.Location = new System.Drawing.Point(17, 465);
@@ -261,19 +267,43 @@
             this.grpBoxDatosAsig.TabStop = false;
             this.grpBoxDatosAsig.Text = "Datos";
             // 
-            // lblNombreAsig
-            // 
-            this.lblNombreAsig.Location = new System.Drawing.Point(21, 38);
-            this.lblNombreAsig.Name = "lblNombreAsig";
-            this.lblNombreAsig.Size = new System.Drawing.Size(100, 23);
-            this.lblNombreAsig.TabIndex = 0;
-            // 
             // lblDescripAsig
             // 
             this.lblDescripAsig.Location = new System.Drawing.Point(150, 47);
             this.lblDescripAsig.Name = "lblDescripAsig";
             this.lblDescripAsig.Size = new System.Drawing.Size(100, 23);
             this.lblDescripAsig.TabIndex = 1;
+            // 
+            // lblNombreAsig
+            // 
+            this.lblNombreAsig.Location = new System.Drawing.Point(28, 47);
+            this.lblNombreAsig.Name = "lblNombreAsig";
+            this.lblNombreAsig.Size = new System.Drawing.Size(100, 23);
+            this.lblNombreAsig.TabIndex = 0;
+            // 
+            // lblHorIni
+            // 
+            this.lblHorIni.Location = new System.Drawing.Point(399, 22);
+            this.lblHorIni.Name = "lblHorIni";
+            this.lblHorIni.Size = new System.Drawing.Size(100, 23);
+            this.lblHorIni.TabIndex = 2;
+            // 
+            // lblHorFin
+            // 
+            this.lblHorFin.Location = new System.Drawing.Point(399, 58);
+            this.lblHorFin.Name = "lblHorFin";
+            this.lblHorFin.Size = new System.Drawing.Size(100, 23);
+            this.lblHorFin.TabIndex = 3;
+            // 
+            // txtBoxNombreHor
+            // 
+            this.txtBoxNombreHor.Location = new System.Drawing.Point(12, 21);
+            this.txtBoxNombreHor.Name = "txtBoxNombreHor";
+            this.txtBoxNombreHor.Size = new System.Drawing.Size(133, 20);
+            this.txtBoxNombreHor.TabIndex = 28;
+            this.txtBoxNombreHor.Visible = false;
+            this.txtBoxNombreHor.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBoxNombreHor_KeyPress);
+            this.txtBoxNombreHor.Leave += new System.EventHandler(this.txtBoxNombreHor_Leave);
             // 
             // ClientHorVer
             // 
@@ -282,8 +312,9 @@
             this.BackColor = System.Drawing.Color.Cornsilk;
             this.ClientSize = new System.Drawing.Size(784, 562);
             this.ControlBox = false;
+            this.Controls.Add(this.txtBoxNombreHor);
             this.Controls.Add(this.grpBoxDatosAsig);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblNombreHora);
             this.Controls.Add(this.pnlHorario);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
@@ -301,7 +332,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblNombreHora;
         private System.Windows.Forms.Panel pnlHorario;
         private System.Windows.Forms.Panel pnlLunes;
         private System.Windows.Forms.GroupBox grpBoxDatosAsig;
@@ -322,5 +353,8 @@
         private System.Windows.Forms.Panel pnlHoras;
         private System.Windows.Forms.Label lblNombreAsig;
         private System.Windows.Forms.Label lblDescripAsig;
+        private System.Windows.Forms.Label lblHorFin;
+        private System.Windows.Forms.Label lblHorIni;
+        private System.Windows.Forms.TextBox txtBoxNombreHor;
     }
 }

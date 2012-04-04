@@ -164,6 +164,8 @@ namespace TaimerGUI {
                    loadHorario(hAux);
                    btnCrear.Visible = false;
                    btnGuardar.Visible = true;
+                   button2.Enabled = false;
+                   pnlHorario.Enabled = true;
                }
             }
            
@@ -204,6 +206,9 @@ namespace TaimerGUI {
         public void reiniciar() {
             btnCrear.Visible = true;
             btnGuardar.Visible = false;
+            button2.Enabled = true;
+            pnlHorario.Enabled = false;
+            clearAllHorarioAct();
             initPanelHorario(0, 23);
         }
 

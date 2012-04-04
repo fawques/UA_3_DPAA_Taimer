@@ -8,19 +8,16 @@ using System.Text;
 using System.Windows.Forms;
 using Taimer;
 
-namespace TaimerGUI
-{
-    public partial class ClientHorVer : Form
-    {
+namespace TaimerGUI {
+    public partial class ClientHorVer : Form {
         Taimer.Horario horario = null;
-        public ClientHorVer()
-        {
+        public ClientHorVer() {
             InitializeComponent();
             this.Dock = DockStyle.Fill;
         }
 
         public void initPanelHorario(int minHor, int maxHor) {
-            
+
             Hora hora = new Hora(0, 0);
             int posY = 0;
             int horAux = minHor;
@@ -46,16 +43,20 @@ namespace TaimerGUI
         }
 
         private void ClientHorVer_Load(object sender, EventArgs e) {
-            
+
         }
 
         public void setHorario(Taimer.Horario hor) {
             horario = hor;
-            label1.Text = hor.Nombre;
+            lblNombreHora.Text = hor.Nombre;
             loadHorario();
         }
 
         public void loadHorario() {
+            lblNombreAsig.Text = "";
+            lblDescripAsig.Text = "";
+            lblHorIni.Text = "";
+            lblHorFin.Text = "";
             if (horario != null) {
                 int minimo = horario.minHora().Hor;
                 int maximo = horario.maxHora().Hor;
@@ -87,7 +88,7 @@ namespace TaimerGUI
             } else {
                 MessageBox.Show("No hay horario que cargar");
             }
-            
+
         }
 
         private void addActividad(Button b) {
@@ -123,21 +124,23 @@ namespace TaimerGUI
             if (sender is Button) {
                 //En el tag del boton esta guardado el codigo de la asignatura
                 Turno trn = (Turno)((Button)sender).Tag;
-                
+
                 if (trn != null) {
-                    
+
                     lblNombreAsig.Text = trn.Actividad.Nombre;
                     lblDescripAsig.Text = trn.Actividad.Descripcion;
+                    lblHorIni.Text = trn.HoraInicio.toString();
+                    lblHorFin.Text = trn.HoraFin.toString();
                 }
             }
-            
+
         }
 
         //Para redimensionar los panales de los dias con minimos y maximos
         private void reducirPanelHorarios(int minHor, int maxHor) {
             int recorteArriba = (minHor) * 60;
-            
-            int recorteAbajo = (24-maxHor) * 60;
+
+            int recorteAbajo = (24 - maxHor) * 60;
 
             pnlHoras.Height -= (recorteArriba + recorteAbajo);
             pnlLunes.Height -= (recorteArriba + recorteAbajo);
@@ -148,6 +151,41 @@ namespace TaimerGUI
             pnlSabado.Height -= (recorteArriba + recorteAbajo);
             pnlDomingo.Height -= (recorteArriba + recorteAbajo);
 
+        }
+
+        private void label1_Click(object sender, EventArgs e) {
+            txtBoxNombreHor.Text = lblNombreHora.Text;
+            txtBoxNombreHor.Visible = true;
+            lblNombreHora.Visible = false;
+            txtBoxNombreHor.Focus();
+        }
+
+        private void txtBoxNombreHor_Leave(object sender, EventArgs e) {
+
+            if (lblNombreHora.Text != txtBoxNombreHor.Text && !lblNombreHora.Visible) {
+                if (MessageBox.Show("¿Seguro que desa cambiar el nombre?",
+                   "¿Cambiar nombre?",
+                   MessageBoxButtons.YesNo,
+                   MessageBoxIcon.Question,
+                   MessageBoxDefaultButton.Button2) == DialogResult.Yes) {
+                    lblNombreHora.Text = txtBoxNombreHor.Text;
+                    horario.Nombre = txtBoxNombreHor.Text;
+                    ((ClientForm)this.MdiParent).loadLastHorarios();
+                }
+
+
+            }
+            
+            lblNombreHora.Visible = true;
+            txtBoxNombreHor.Visible = false;
+        }
+
+
+
+        private void txtBoxNombreHor_KeyPress(object sender, KeyPressEventArgs e) {
+            if (e.KeyChar == (char)Keys.Enter) {//si se presiona la tecla enter
+                txtBoxNombreHor_Leave(sender, e);
+            }
         }
 
         /*protected override void WndProc(ref Message m)
@@ -165,7 +203,7 @@ namespace TaimerGUI
                }
                base.WndProc(ref m);
              }*/
-            
+
 
     }
 }

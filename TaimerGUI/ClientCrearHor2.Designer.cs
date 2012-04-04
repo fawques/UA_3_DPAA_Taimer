@@ -126,14 +126,14 @@
             // 
             this.trackBar1.Location = new System.Drawing.Point(31, 211);
             this.trackBar1.Name = "trackBar1";
-            this.trackBar1.Size = new System.Drawing.Size(139, 45);
+            this.trackBar1.Size = new System.Drawing.Size(139, 42);
             this.trackBar1.TabIndex = 28;
             // 
             // trackBar2
             // 
             this.trackBar2.Location = new System.Drawing.Point(31, 293);
             this.trackBar2.Name = "trackBar2";
-            this.trackBar2.Size = new System.Drawing.Size(139, 45);
+            this.trackBar2.Size = new System.Drawing.Size(139, 42);
             this.trackBar2.TabIndex = 29;
             // 
             // groupBox1
@@ -279,6 +279,7 @@
             this.pnlHorario.Controls.Add(this.pnlMiercoles);
             this.pnlHorario.Controls.Add(this.pnlMartes);
             this.pnlHorario.Controls.Add(this.pnlLunes);
+            this.pnlHorario.Enabled = false;
             this.pnlHorario.Location = new System.Drawing.Point(16, 82);
             this.pnlHorario.Name = "pnlHorario";
             this.pnlHorario.Size = new System.Drawing.Size(539, 401);
