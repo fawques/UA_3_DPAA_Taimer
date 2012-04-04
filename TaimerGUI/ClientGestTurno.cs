@@ -16,7 +16,7 @@ namespace TaimerGUI {
 
         public ClientGestTurno() {
             InitializeComponent();
-
+            comboBoxDia.SelectedIndex = 0;
         }
         public void setFormBack(ClientVerActividades f) {
             formBack = f;
@@ -90,16 +90,18 @@ namespace TaimerGUI {
         }
 
         private void gVHorasTemp_CellClick(object sender, DataGridViewCellEventArgs e) {
-            if (e.ColumnIndex == gVHorasTemp.Columns["Borrar"].Index) {
-                try {
-                    actividad.BorraTurno((Turno)gVHorasTemp.Rows[e.RowIndex].Tag);
-                } catch (NotSupportedException exc) {
-                    MessageBox.Show(exc.Message);
+            if (e.RowIndex >= 0) {
+                if (e.ColumnIndex == gVHorasTemp.Columns["Borrar"].Index) {
+                    try {
+                        actividad.BorraTurno((Turno)gVHorasTemp.Rows[e.RowIndex].Tag);
+                    } catch (NotSupportedException exc) {
+                        MessageBox.Show(exc.Message);
+                    }
+                    gVHorasTemp.Rows.RemoveAt(e.RowIndex);
+                } else if (gVHorasTemp.Rows[e.RowIndex].Tag is Turno) {
+                    loadTurno((Turno)gVHorasTemp.Rows[e.RowIndex].Tag);
                 }
-                gVHorasTemp.Rows.RemoveAt(e.RowIndex);
-            } else if (gVHorasTemp.Rows[e.RowIndex].Tag is Turno) {
-                loadTurno((Turno)gVHorasTemp.Rows[e.RowIndex].Tag);
-            }  
+            }
         }
 
         private void btnCancelar_Click(object sender, EventArgs e) {
