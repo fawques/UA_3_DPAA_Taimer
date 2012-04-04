@@ -30,11 +30,9 @@ namespace TaimerGUI {
         /** CONSTRUCTOR **/
         public ClientForm(User usr) {
             InitializeComponent();
-            //TODO: Hay que hacer esto como se tenga que hacer
-            usuario = usr;
-            if (usuario == null) {
-                usuario = generateUserDebug();
-            }
+            // Aquí debería llamar a la función que cargue desde la BD
+            usuario = Program.Usuarios[0];
+            asignarActividadesUser();
 
             //Redondeado de bordes
             shape = RoundedRectangle.Create(0, 0, this.Width, this.Height, 10);
@@ -46,44 +44,11 @@ namespace TaimerGUI {
         }
 
         //FUNCION SOLO PARA DEBUG, LUEGO BORRAR
-        private User generateUserDebug() {
-            // el user será el 1er elemento de la lista de users de Program
-            User usertest = new User("Usuario Test", "12345678X", "bill_gates@hotmail.com", "password", 1, "Ingeniería de Magisterio");
-
-            // los turnos y actividades estarán almacenadas en Program
-            Turno t1 = new Turno(new Hora(10, 30), new Hora(12, 30), dias.M, "L04");
-            Turno t2 = new Turno(new Hora(11, 30), new Hora(13, 30), dias.L, "L04");
-            Turno t3 = new Turno(new Hora(12, 30), new Hora(14, 30), dias.M, "L04");
-            Turno t4 = new Turno(new Hora(10, 30), new Hora(12, 30), dias.X, "L04");
-            Turno t5 = new Turno(new Hora(12, 30), new Hora(14, 30), dias.X, "L04");
-            Turno t6 = new Turno(new Hora(14, 30), new Hora(16, 30), dias.L, "L04");
-            Turno t7 = new Turno(new Hora(10, 30), new Hora(14, 30), dias.M, "L04");
-            Turno t8 = new Turno(new Hora(11, 30), new Hora(14, 30), dias.V, "L04");
-            Turno t9 = new Turno(new Hora(0, 30), new Hora(1, 30), dias.L, "L04");
-
-            Actividad_p actP = new Actividad_p("P1", "Asignatura P1 que descripcion 1", 6, usertest);
-            actP.AddTurno(t1);
-
-            Actividad_p actP2 = new Actividad_p("P2", "Otra cosa muy distinta a la uno", 7, usertest);
-            actP2.AddTurno(t4);
-            actP2.AddTurno(t5);
-            actP2.AddTurno(t6);
-
-            usertest.AddActPersonal(actP);
-            usertest.AddActPersonal(actP2);
-
-            Actividad_a actA = new Actividad_a("A1", "descripcion2", 8, "Un profesor");
-            actA.AddTurno(t2);
-            actA.AddTurno(t3);
-
-            Actividad_a actA2 = new Actividad_a("A2", "descripcion2", 9, "Otro profesor");
-            actA2.AddTurno(t7);
-            //actA2.AddTurno(t8);
-            actA2.AddTurno(t9);
-            usertest.AddActAcademica(actA);
-            usertest.AddActAcademica(actA2);
-            
-            return usertest;
+        private void asignarActividadesUser() {
+            foreach (Taimer.Actividad_a item in Program.Asignaturas)
+            {
+                usuario.AddActAcademica(item);
+            }
         }
         
         private void ClientForm_Load(object sender, EventArgs e)

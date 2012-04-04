@@ -103,12 +103,6 @@
     <Compile Include="AGestAsig.designer.cs">
       <DependentUpon>AGestAsig.cs</DependentUpon>
     </Compile>
-    <Compile Include="AModiTurn.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="AModiTurn.designer.cs">
-      <DependentUpon>AModiTurn.cs</DependentUpon>
-    </Compile>
     <Compile Include="AGestUser.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -213,9 +207,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AGestAsig.resx">
       <DependentUpon>AGestAsig.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="AModiTurn.resx">
-      <DependentUpon>AModiTurn.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AGestUser.resx">
       <DependentUpon>AGestUser.cs</DependentUpon>

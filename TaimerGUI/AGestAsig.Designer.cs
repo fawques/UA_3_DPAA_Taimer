@@ -23,7 +23,6 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            this.btBuscarUSer = new System.Windows.Forms.Button();
             this.lbCoord = new System.Windows.Forms.Label();
             this.lbDesc = new System.Windows.Forms.Label();
             this.lbHoraInfo = new System.Windows.Forms.Label();
@@ -32,33 +31,27 @@
             this.lbNameInfo = new System.Windows.Forms.Label();
             this.btNewUser = new System.Windows.Forms.Button();
             this.lbName = new System.Windows.Forms.Label();
-            this.tbUsers = new System.Windows.Forms.DataGridView();
+            this.dgAsig = new System.Windows.Forms.DataGridView();
             this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Profesor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.dgTurns = new System.Windows.Forms.DataGridView();
+            this.Dia = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Inicio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Fin = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ubicacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label6 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btGestTurno = new System.Windows.Forms.Button();
             this.btCancel = new System.Windows.Forms.Button();
             this.btCreate = new System.Windows.Forms.Button();
             this.tbName = new System.Windows.Forms.TextBox();
             this.tbDesc = new System.Windows.Forms.TextBox();
             this.tbCoord = new System.Windows.Forms.TextBox();
-            this.Dia = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Inicio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Fin = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Ubicacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.tbUsers)).BeginInit();
+            this.label1 = new System.Windows.Forms.Label();
+            this.Eliminar = new System.Windows.Forms.DataGridViewButtonColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.dgAsig)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgTurns)).BeginInit();
             this.SuspendLayout();
-            // 
-            // btBuscarUSer
-            // 
-            this.btBuscarUSer.Location = new System.Drawing.Point(319, 103);
-            this.btBuscarUSer.Name = "btBuscarUSer";
-            this.btBuscarUSer.Size = new System.Drawing.Size(75, 20);
-            this.btBuscarUSer.TabIndex = 23;
-            this.btBuscarUSer.Text = "Buscar";
-            this.btBuscarUSer.UseVisualStyleBackColor = true;
             // 
             // lbCoord
             // 
@@ -141,33 +134,42 @@
             this.lbName.Text = "DPAA Teoria";
             this.lbName.Click += new System.EventHandler(this.lbUserName_Click);
             // 
-            // tbUsers
+            // dgAsig
             // 
-            this.tbUsers.AllowUserToAddRows = false;
-            this.tbUsers.AllowUserToDeleteRows = false;
-            this.tbUsers.AllowUserToOrderColumns = true;
-            this.tbUsers.BackgroundColor = System.Drawing.Color.Wheat;
-            this.tbUsers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.tbUsers.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Nombre});
-            this.tbUsers.Location = new System.Drawing.Point(94, 129);
-            this.tbUsers.Name = "tbUsers";
-            this.tbUsers.ReadOnly = true;
-            this.tbUsers.Size = new System.Drawing.Size(300, 349);
-            this.tbUsers.TabIndex = 13;
+            this.dgAsig.AllowUserToAddRows = false;
+            this.dgAsig.AllowUserToDeleteRows = false;
+            this.dgAsig.AllowUserToOrderColumns = true;
+            this.dgAsig.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgAsig.BackgroundColor = System.Drawing.Color.Wheat;
+            this.dgAsig.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgAsig.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Nombre,
+            this.Profesor,
+            this.Eliminar});
+            this.dgAsig.Location = new System.Drawing.Point(94, 129);
+            this.dgAsig.Name = "dgAsig";
+            this.dgAsig.ReadOnly = true;
+            this.dgAsig.Size = new System.Drawing.Size(300, 349);
+            this.dgAsig.TabIndex = 13;
+            this.dgAsig.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgAsig_CellClick);
             // 
             // Nombre
             // 
             this.Nombre.HeaderText = "Nombre";
             this.Nombre.Name = "Nombre";
             this.Nombre.ReadOnly = true;
-            this.Nombre.Width = 255;
+            // 
+            // Profesor
+            // 
+            this.Profesor.HeaderText = "Profesor";
+            this.Profesor.Name = "Profesor";
+            this.Profesor.ReadOnly = true;
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(94, 103);
+            this.textBox1.Location = new System.Drawing.Point(135, 103);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(219, 20);
+            this.textBox1.Size = new System.Drawing.Size(259, 20);
             this.textBox1.TabIndex = 12;
             // 
             // dgTurns
@@ -175,6 +177,7 @@
             this.dgTurns.AllowUserToAddRows = false;
             this.dgTurns.AllowUserToDeleteRows = false;
             this.dgTurns.AllowUserToOrderColumns = true;
+            this.dgTurns.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgTurns.BackgroundColor = System.Drawing.Color.Wheat;
             this.dgTurns.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgTurns.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -182,11 +185,37 @@
             this.Inicio,
             this.Fin,
             this.Ubicacion});
+            this.dgTurns.Enabled = false;
             this.dgTurns.Location = new System.Drawing.Point(519, 273);
             this.dgTurns.Name = "dgTurns";
             this.dgTurns.ReadOnly = true;
             this.dgTurns.Size = new System.Drawing.Size(246, 140);
             this.dgTurns.TabIndex = 24;
+            // 
+            // Dia
+            // 
+            this.Dia.HeaderText = "Dia";
+            this.Dia.Name = "Dia";
+            this.Dia.ReadOnly = true;
+            // 
+            // Inicio
+            // 
+            this.Inicio.HeaderText = "Inicio";
+            this.Inicio.Name = "Inicio";
+            this.Inicio.ReadOnly = true;
+            // 
+            // Fin
+            // 
+            this.Fin.HeaderText = "Fin";
+            this.Fin.Name = "Fin";
+            this.Fin.ReadOnly = true;
+            // 
+            // Ubicacion
+            // 
+            this.Ubicacion.HeaderText = "Ubicacion";
+            this.Ubicacion.Name = "Ubicacion";
+            this.Ubicacion.ReadOnly = true;
+            this.Ubicacion.Visible = false;
             // 
             // label6
             // 
@@ -198,36 +227,38 @@
             this.label6.TabIndex = 25;
             this.label6.Text = "Gestionar Asignaturas";
             // 
-            // button1
+            // btGestTurno
             // 
-            this.button1.Location = new System.Drawing.Point(658, 419);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(107, 24);
-            this.button1.TabIndex = 26;
-            this.button1.Text = "Gestionar Turnos";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btGestTurno.Enabled = false;
+            this.btGestTurno.Location = new System.Drawing.Point(658, 419);
+            this.btGestTurno.Name = "btGestTurno";
+            this.btGestTurno.Size = new System.Drawing.Size(107, 24);
+            this.btGestTurno.TabIndex = 26;
+            this.btGestTurno.Text = "Gestionar Turnos";
+            this.btGestTurno.UseVisualStyleBackColor = true;
+            this.btGestTurno.Click += new System.EventHandler(this.btGestTurno_Click);
             // 
             // btCancel
             // 
             this.btCancel.Enabled = false;
-            this.btCancel.Location = new System.Drawing.Point(678, 548);
+            this.btCancel.Location = new System.Drawing.Point(640, 520);
             this.btCancel.Name = "btCancel";
-            this.btCancel.Size = new System.Drawing.Size(105, 35);
+            this.btCancel.Size = new System.Drawing.Size(125, 35);
             this.btCancel.TabIndex = 63;
-            this.btCancel.Text = "Cancelar";
+            this.btCancel.Text = "Descartar Cambios";
             this.btCancel.UseVisualStyleBackColor = true;
             this.btCancel.Click += new System.EventHandler(this.btCancel_Click);
             // 
             // btCreate
             // 
             this.btCreate.Enabled = false;
-            this.btCreate.Location = new System.Drawing.Point(554, 548);
+            this.btCreate.Location = new System.Drawing.Point(640, 479);
             this.btCreate.Name = "btCreate";
-            this.btCreate.Size = new System.Drawing.Size(105, 35);
+            this.btCreate.Size = new System.Drawing.Size(125, 35);
             this.btCreate.TabIndex = 62;
-            this.btCreate.Text = "Confirmar";
+            this.btCreate.Text = "Confirmar Cambios";
             this.btCreate.UseVisualStyleBackColor = true;
+            this.btCreate.Click += new System.EventHandler(this.btCreate_Click);
             // 
             // tbName
             // 
@@ -256,33 +287,20 @@
             this.tbCoord.Visible = false;
             this.tbCoord.Validated += new System.EventHandler(this.tbCoord_Validated);
             // 
-            // Dia
+            // label1
             // 
-            this.Dia.HeaderText = "Dia";
-            this.Dia.Name = "Dia";
-            this.Dia.ReadOnly = true;
-            this.Dia.Width = 60;
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(94, 106);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.TabIndex = 67;
+            this.label1.Text = "Filtrar:";
             // 
-            // Inicio
+            // Eliminar
             // 
-            this.Inicio.HeaderText = "Inicio";
-            this.Inicio.Name = "Inicio";
-            this.Inicio.ReadOnly = true;
-            this.Inicio.Width = 70;
-            // 
-            // Fin
-            // 
-            this.Fin.HeaderText = "Fin";
-            this.Fin.Name = "Fin";
-            this.Fin.ReadOnly = true;
-            this.Fin.Width = 70;
-            // 
-            // Ubicacion
-            // 
-            this.Ubicacion.HeaderText = "Ubicacion";
-            this.Ubicacion.Name = "Ubicacion";
-            this.Ubicacion.ReadOnly = true;
-            this.Ubicacion.Visible = false;
+            this.Eliminar.HeaderText = "Eliminar";
+            this.Eliminar.Name = "Eliminar";
+            this.Eliminar.ReadOnly = true;
             // 
             // AGestAsig
             // 
@@ -290,12 +308,12 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Cornsilk;
             this.ClientSize = new System.Drawing.Size(795, 595);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.btCancel);
             this.Controls.Add(this.btCreate);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btGestTurno);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.dgTurns);
-            this.Controls.Add(this.btBuscarUSer);
             this.Controls.Add(this.lbCoord);
             this.Controls.Add(this.lbDesc);
             this.Controls.Add(this.lbHoraInfo);
@@ -304,7 +322,7 @@
             this.Controls.Add(this.lbNameInfo);
             this.Controls.Add(this.btNewUser);
             this.Controls.Add(this.lbName);
-            this.Controls.Add(this.tbUsers);
+            this.Controls.Add(this.dgAsig);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.tbCoord);
             this.Controls.Add(this.tbDesc);
@@ -312,7 +330,8 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "AGestAsig";
             this.Text = "AGestAsig";
-            ((System.ComponentModel.ISupportInitialize)(this.tbUsers)).EndInit();
+            this.Load += new System.EventHandler(this.AGestAsig_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dgAsig)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgTurns)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -321,7 +340,6 @@
 
         #endregion
 
-        private System.Windows.Forms.Button btBuscarUSer;
         private System.Windows.Forms.Label lbCoord;
         private System.Windows.Forms.Label lbDesc;
         private System.Windows.Forms.Label lbHoraInfo;
@@ -330,12 +348,12 @@
         private System.Windows.Forms.Label lbNameInfo;
         private System.Windows.Forms.Button btNewUser;
         private System.Windows.Forms.Label lbName;
-        private System.Windows.Forms.DataGridView tbUsers;
+        private System.Windows.Forms.DataGridView dgAsig;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.DataGridView dgTurns;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btGestTurno;
         private System.Windows.Forms.Button btCancel;
         private System.Windows.Forms.Button btCreate;
         private System.Windows.Forms.TextBox tbName;
@@ -345,5 +363,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Inicio;
         private System.Windows.Forms.DataGridViewTextBoxColumn Fin;
         private System.Windows.Forms.DataGridViewTextBoxColumn Ubicacion;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Profesor;
+        private System.Windows.Forms.DataGridViewButtonColumn Eliminar;
     }
 }

@@ -285,7 +285,7 @@ namespace Taimer {
         {
             bool encontrado = false;
             Hora minima = new Hora(23, 59);
-            for (int i = 1; i < 7; i++)
+            for (int i = 0; i < 7; i++)
             {
                 try
                 {
@@ -316,7 +316,7 @@ namespace Taimer {
         {
             bool encontrado = false;
             Hora maxima = new Hora(0, 0);
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < 7; i++)
             {
                 try
                 {
