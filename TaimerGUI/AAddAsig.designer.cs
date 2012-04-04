@@ -35,9 +35,9 @@
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.HoraInicio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.HoraFin = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ubicacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lbErrName = new System.Windows.Forms.Label();
             this.lbErrDesc = new System.Windows.Forms.Label();
-            this.Ubicacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgTurnos)).BeginInit();
             this.SuspendLayout();
             // 
@@ -67,7 +67,7 @@
             this.btAddTurn.Name = "btAddTurn";
             this.btAddTurn.Size = new System.Drawing.Size(125, 57);
             this.btAddTurn.TabIndex = 47;
-            this.btAddTurn.Text = "Añadir Turnos";
+            this.btAddTurn.Text = "Gestionar Turnos";
             this.btAddTurn.UseVisualStyleBackColor = true;
             this.btAddTurn.Click += new System.EventHandler(this.btAddTurn_Click);
             // 
@@ -152,6 +152,13 @@
             this.HoraFin.ReadOnly = true;
             this.HoraFin.Width = 80;
             // 
+            // Ubicacion
+            // 
+            this.Ubicacion.HeaderText = "Ubicacion";
+            this.Ubicacion.Name = "Ubicacion";
+            this.Ubicacion.ReadOnly = true;
+            this.Ubicacion.Visible = false;
+            // 
             // lbErrName
             // 
             this.lbErrName.AutoSize = true;
@@ -175,13 +182,6 @@
             this.lbErrDesc.TabIndex = 65;
             this.lbErrDesc.Text = "El campo no puede estar vacio";
             this.lbErrDesc.Visible = false;
-            // 
-            // Ubicacion
-            // 
-            this.Ubicacion.HeaderText = "Ubicacion";
-            this.Ubicacion.Name = "Ubicacion";
-            this.Ubicacion.ReadOnly = true;
-            this.Ubicacion.Visible = false;
             // 
             // AAddAsig
             // 

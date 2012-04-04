@@ -41,6 +41,12 @@
             this.tbUbi = new System.Windows.Forms.TextBox();
             this.lbErrUbi = new System.Windows.Forms.Label();
             this.dgTurnos = new System.Windows.Forms.DataGridView();
+            this.Lugar = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Dia = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HoraInicio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HoraFin = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Borrar = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.Ubicacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.grpBoxTurno = new System.Windows.Forms.GroupBox();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnGuardar = new System.Windows.Forms.Button();
@@ -58,12 +64,6 @@
             this.label15 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.cmbBoxDiaMod = new System.Windows.Forms.ComboBox();
-            this.Lugar = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Dia = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.HoraInicio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.HoraFin = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Borrar = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.Ubicacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.udMinFin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.udHoraFin)).BeginInit();
@@ -289,6 +289,43 @@
             this.dgTurnos.TabIndex = 65;
             this.dgTurnos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgTurnos_CellClick);
             // 
+            // Lugar
+            // 
+            this.Lugar.HeaderText = "Lugar";
+            this.Lugar.Name = "Lugar";
+            this.Lugar.ReadOnly = true;
+            // 
+            // Dia
+            // 
+            this.Dia.HeaderText = "Día";
+            this.Dia.Name = "Dia";
+            this.Dia.ReadOnly = true;
+            // 
+            // HoraInicio
+            // 
+            this.HoraInicio.HeaderText = "Inicio";
+            this.HoraInicio.Name = "HoraInicio";
+            this.HoraInicio.ReadOnly = true;
+            // 
+            // HoraFin
+            // 
+            this.HoraFin.HeaderText = "Fin";
+            this.HoraFin.Name = "HoraFin";
+            this.HoraFin.ReadOnly = true;
+            // 
+            // Borrar
+            // 
+            this.Borrar.HeaderText = "Borrar";
+            this.Borrar.Name = "Borrar";
+            this.Borrar.ReadOnly = true;
+            // 
+            // Ubicacion
+            // 
+            this.Ubicacion.HeaderText = "Ubicacion";
+            this.Ubicacion.Name = "Ubicacion";
+            this.Ubicacion.ReadOnly = true;
+            this.Ubicacion.Visible = false;
+            // 
             // grpBoxTurno
             // 
             this.grpBoxTurno.Controls.Add(this.btnCancelar);
@@ -323,6 +360,7 @@
             this.btnCancelar.TabIndex = 67;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // btnGuardar
             // 
@@ -332,6 +370,7 @@
             this.btnGuardar.TabIndex = 66;
             this.btnGuardar.Text = "Confirmar";
             this.btnGuardar.UseVisualStyleBackColor = true;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // label17
             // 
@@ -475,43 +514,6 @@
             this.cmbBoxDiaMod.Name = "cmbBoxDiaMod";
             this.cmbBoxDiaMod.Size = new System.Drawing.Size(121, 21);
             this.cmbBoxDiaMod.TabIndex = 13;
-            // 
-            // Lugar
-            // 
-            this.Lugar.HeaderText = "Lugar";
-            this.Lugar.Name = "Lugar";
-            this.Lugar.ReadOnly = true;
-            // 
-            // Dia
-            // 
-            this.Dia.HeaderText = "Día";
-            this.Dia.Name = "Dia";
-            this.Dia.ReadOnly = true;
-            // 
-            // HoraInicio
-            // 
-            this.HoraInicio.HeaderText = "Inicio";
-            this.HoraInicio.Name = "HoraInicio";
-            this.HoraInicio.ReadOnly = true;
-            // 
-            // HoraFin
-            // 
-            this.HoraFin.HeaderText = "Fin";
-            this.HoraFin.Name = "HoraFin";
-            this.HoraFin.ReadOnly = true;
-            // 
-            // Borrar
-            // 
-            this.Borrar.HeaderText = "Borrar";
-            this.Borrar.Name = "Borrar";
-            this.Borrar.ReadOnly = true;
-            // 
-            // Ubicacion
-            // 
-            this.Ubicacion.HeaderText = "Ubicacion";
-            this.Ubicacion.Name = "Ubicacion";
-            this.Ubicacion.ReadOnly = true;
-            this.Ubicacion.Visible = false;
             // 
             // AGestTurn
             // 

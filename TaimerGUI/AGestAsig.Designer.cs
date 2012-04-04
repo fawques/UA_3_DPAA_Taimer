@@ -48,6 +48,7 @@
             this.tbDesc = new System.Windows.Forms.TextBox();
             this.tbCoord = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.Eliminar = new System.Windows.Forms.DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgAsig)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgTurns)).BeginInit();
             this.SuspendLayout();
@@ -143,7 +144,8 @@
             this.dgAsig.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgAsig.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Nombre,
-            this.Profesor});
+            this.Profesor,
+            this.Eliminar});
             this.dgAsig.Location = new System.Drawing.Point(94, 129);
             this.dgAsig.Name = "dgAsig";
             this.dgAsig.ReadOnly = true;
@@ -234,28 +236,29 @@
             this.btGestTurno.TabIndex = 26;
             this.btGestTurno.Text = "Gestionar Turnos";
             this.btGestTurno.UseVisualStyleBackColor = true;
-            this.btGestTurno.Click += new System.EventHandler(this.button1_Click);
+            this.btGestTurno.Click += new System.EventHandler(this.btGestTurno_Click);
             // 
             // btCancel
             // 
             this.btCancel.Enabled = false;
-            this.btCancel.Location = new System.Drawing.Point(678, 548);
+            this.btCancel.Location = new System.Drawing.Point(640, 520);
             this.btCancel.Name = "btCancel";
-            this.btCancel.Size = new System.Drawing.Size(105, 35);
+            this.btCancel.Size = new System.Drawing.Size(125, 35);
             this.btCancel.TabIndex = 63;
-            this.btCancel.Text = "Cancelar";
+            this.btCancel.Text = "Descartar Cambios";
             this.btCancel.UseVisualStyleBackColor = true;
             this.btCancel.Click += new System.EventHandler(this.btCancel_Click);
             // 
             // btCreate
             // 
             this.btCreate.Enabled = false;
-            this.btCreate.Location = new System.Drawing.Point(554, 548);
+            this.btCreate.Location = new System.Drawing.Point(640, 479);
             this.btCreate.Name = "btCreate";
-            this.btCreate.Size = new System.Drawing.Size(105, 35);
+            this.btCreate.Size = new System.Drawing.Size(125, 35);
             this.btCreate.TabIndex = 62;
-            this.btCreate.Text = "Confirmar";
+            this.btCreate.Text = "Confirmar Cambios";
             this.btCreate.UseVisualStyleBackColor = true;
+            this.btCreate.Click += new System.EventHandler(this.btCreate_Click);
             // 
             // tbName
             // 
@@ -292,6 +295,12 @@
             this.label1.Size = new System.Drawing.Size(35, 13);
             this.label1.TabIndex = 67;
             this.label1.Text = "Filtrar:";
+            // 
+            // Eliminar
+            // 
+            this.Eliminar.HeaderText = "Eliminar";
+            this.Eliminar.Name = "Eliminar";
+            this.Eliminar.ReadOnly = true;
             // 
             // AGestAsig
             // 
@@ -356,5 +365,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Ubicacion;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Profesor;
+        private System.Windows.Forms.DataGridViewButtonColumn Eliminar;
     }
 }

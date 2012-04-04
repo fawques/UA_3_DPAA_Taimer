@@ -49,6 +49,8 @@ namespace TaimerGUI {
 
             if (parentGest != null) {
 
+                parentGest.showInfo(currentAct);
+
                 Hide();
                 parentGest.Show();
 
@@ -128,7 +130,12 @@ namespace TaimerGUI {
         private void dgTurnos_CellClick(object sender, DataGridViewCellEventArgs e) {
             if(e.RowIndex >= 0 && e.RowIndex < dgTurnos.Rows.Count){
                 if (e.ColumnIndex == dgTurnos.Columns["Borrar"].Index) {
-                    currentAct.BorraTurno((Taimer.Turno)dgTurnos.Rows[e.RowIndex].Tag);
+                    try {
+                        currentAct.BorraTurno((Taimer.Turno)dgTurnos.Rows[e.RowIndex].Tag);
+                    } catch (NotSupportedException exc) {
+                        MessageBox.Show(exc.Message);
+                    }
+                    dgTurnos.Rows.RemoveAt(e.RowIndex);
                 } else {
 
                     Taimer.Turno turn = (Taimer.Turno) dgTurnos.Rows[e.RowIndex].Tag;
@@ -145,6 +152,28 @@ namespace TaimerGUI {
                     }
                 }
             }
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e) {
+            grpBoxTurno.Visible = false;
+        }
+
+        private void btnGuardar_Click(object sender, EventArgs e) {
+            Taimer.Hora horI = new Taimer.Hora((int)nUDHorIniMod.Value, (int)nUDMinIniMod.Value);
+            Taimer.Hora horF = new Taimer.Hora((int)nUDHorFinMod.Value, (int)nUDMinFinMod.Value);
+
+            Taimer.Turno turno = (Taimer.Turno)grpBoxTurno.Tag;
+            try {
+                turno.HoraInicio = horI;
+                turno.HoraFin = horF;
+                turno.Dia = Taimer.TaimerLibrary.convertToDais(cmbBoxDiaMod.Text);
+
+            } catch (NotSupportedException exc) {
+                MessageBox.Show(exc.Message);
+            }
+            turno.Ubicacion = txtBoxLugarMod.Text;
+
+            loadAsig(currentAct);
         }
     }
 }

@@ -12,7 +12,8 @@ namespace TaimerGUI {
 
         AAddAsig childNew = null;
         AGestTurn childTur = null;
-        int selectedRow = 0;
+        Taimer.Actividad_a currentAsig = null;
+        Taimer.Actividad_a currentAsigCopy = null;
         public List<Taimer.Actividad_a> asignaturas = new List<Taimer.Actividad_a>();
 
         public AGestAsig() {
@@ -34,11 +35,11 @@ namespace TaimerGUI {
             }
         }
 
-        private void button1_Click(object sender, EventArgs e) {
+        private void btGestTurno_Click(object sender, EventArgs e) {
             if (childTur != null) {
                 Hide();
 
-                childTur.loadAsig(null);
+                childTur.loadAsig(currentAsigCopy);
 
                 childTur.setParent(this);
                 childTur.Show();
@@ -53,6 +54,7 @@ namespace TaimerGUI {
             lbName.Visible = false;
             tbName.Visible = true;
             tbName.Focus();
+            currentAsigCopy.Nombre = lbName.Text;
         }
 
         private void tbName_Validated(object sender, EventArgs e) {
@@ -93,23 +95,9 @@ namespace TaimerGUI {
             btCreate.Enabled = true;
         }
 
-        private void btCancel_Click(object sender, EventArgs e) {
-
-        }
-
-        public void addTurn(string dia, string hIni, string hFin, string ubi) {
-
-            dgTurns.Rows.Add(dia, hIni, hFin, ubi);
-        }
-
-        public void clearTurns() {
-
-            dgTurns.Rows.Clear();
-        }
-
         public void updateTableAsig() {
             dgAsig.Rows.Clear();
-            foreach (Taimer.Actividad_a acti in Program.Asignaturas) {
+            foreach (Taimer.Actividad_a acti in asignaturas) {
                 dgAsig.Rows.Add(acti.Nombre, acti.NombreCoordinador);
                 dgAsig.Rows[dgAsig.RowCount - 1].Tag = acti;
             }
@@ -135,39 +123,37 @@ namespace TaimerGUI {
             acti2.AddTurno(turn21);
             acti2.AddTurno(turn22);
 
-            //Program.AddAsignatura(new Taimer.Actividad_a("DPAA", "Clases de DPAA de Teoria", Program.CodAsignaturas, "Irene", 1));
-            //Program.AddAsignatura(acti2);
-
-            //updateTableAsig();
-
             asignaturas.Add(acti1);
             asignaturas.Add(acti2);
 
-            dgAsig.Rows.Add(acti1.Nombre, acti1.NombreCoordinador);
-            dgAsig.Rows[dgAsig.RowCount - 1].Tag = acti1;
-
-            dgAsig.Rows.Add(acti2.Nombre, acti2.NombreCoordinador);
-            dgAsig.Rows[dgAsig.RowCount - 1].Tag = acti2;
+            updateTableAsig();
         }
 
         private void dgAsig_CellClick(object sender, DataGridViewCellEventArgs e) {
 
             if (e.RowIndex >= 0 && e.RowIndex < dgAsig.Rows.Count) {
+                if (dgAsig.Columns["Eliminar"].Index == e.ColumnIndex) {
+                    // Borrarla tambien de la lista
+                    dgAsig.Rows.RemoveAt(e.RowIndex);
+                } else {
+                    currentAsig = (Taimer.Actividad_a)dgAsig.Rows[e.RowIndex].Tag;
+                    currentAsigCopy = new Taimer.Actividad_a(currentAsig);
 
-                selectedRow = e.RowIndex;
+                    showInfo(currentAsig);
 
-                Taimer.Actividad_a asig = (Taimer.Actividad_a)dgAsig.Rows[selectedRow].Tag;
-
-                showInfo(asig);
-
-                btCancel.Enabled = true;
+                    btCancel.Enabled = true;
+                    btCreate.Enabled = true;
+                }
             }
         }
 
-        public void clearLabels() {
+        public void clearInfo() {
             lbName.Text = "";
             lbDesc.Text = "";
             lbCoord.Text = "";
+            dgTurns.Rows.Clear();
+            btCreate.Enabled = false;
+            btCancel.Enabled = false;
         }
 
         public void showInfo(Taimer.Actividad_a asig) {
@@ -183,5 +169,17 @@ namespace TaimerGUI {
 
             btGestTurno.Enabled = true;
         }
+
+        private void btCreate_Click(object sender, EventArgs e) {
+            // Modificamos la asignatura en la lista
+            currentAsig = currentAsigCopy;
+            clearInfo();
+            updateTableAsig();
+        }
+
+        private void btCancel_Click(object sender, EventArgs e) {
+            clearInfo(); 
+        }
+
     }
 }
