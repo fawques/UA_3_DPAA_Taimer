@@ -14,7 +14,6 @@ namespace TaimerGUI {
         ABienvenida bienvenidaForm;
         AGestUser gestionUserForm;
         AGestAsig gestionAsigForm;
-        AModiTurn modiTurnForm;
         AAddAsig addAsigForm;
         AAddUser addUserForm;
         AGestTurn gestTurnForm;
@@ -28,7 +27,6 @@ namespace TaimerGUI {
             bienvenidaForm = new ABienvenida();
             gestionUserForm = new AGestUser();
             gestionAsigForm = new AGestAsig();
-            modiTurnForm = new AModiTurn();
             addAsigForm = new AAddAsig();
             addUserForm = new AAddUser();
             gestTurnForm = new AGestTurn();
@@ -40,14 +38,11 @@ namespace TaimerGUI {
             gestionAsigForm.setChild(addAsigForm, gestTurnForm);
             addAsigForm.setParent(gestionAsigForm);
             addAsigForm.setChild(gestTurnForm);
-            modiTurnForm.setParent(gestTurnForm);
             addAsigForm.setChild(gestTurnForm);
-            gestTurnForm.setChild(modiTurnForm);
 
             bienvenidaForm.MdiParent = this;
             gestionUserForm.MdiParent = this;
             gestionAsigForm.MdiParent = this;
-            modiTurnForm.MdiParent = this;
             addAsigForm.MdiParent = this;
             addUserForm.MdiParent = this;
             gestTurnForm.MdiParent = this;
@@ -166,7 +161,6 @@ namespace TaimerGUI {
             estadForm.Hide();
             addAsigForm.Hide();
             addUserForm.Hide();
-            modiTurnForm.Hide();
         }
 
         public void positionChilds() {
@@ -177,7 +171,6 @@ namespace TaimerGUI {
             estadForm.Location = new Point(0, 0);
             addAsigForm.Location = new Point(0, 0);
             addUserForm.Location = new Point(0, 0);
-            modiTurnForm.Location = new Point(0, 0);
         }
 
         private void label1_Click(object sender, EventArgs e) {

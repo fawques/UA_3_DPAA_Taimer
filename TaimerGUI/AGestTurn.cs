@@ -12,8 +12,8 @@ namespace TaimerGUI {
 
         AAddAsig parentAdd = null;
         AGestAsig parentGest = null;
-        AModiTurn childMod = null;
-        int selectedRow = 0;
+        Taimer.Actividad_a currentAct = null;
+        Taimer.Actividad_a currentActCopy = null;
 
         public AGestTurn() {
             InitializeComponent();
@@ -29,23 +29,25 @@ namespace TaimerGUI {
             parentAdd = null;
         }
 
-        public void setChild(AModiTurn form) {
-            childMod = form;
+        public void loadAsig(Taimer.Actividad_a asig) {
+            currentAct = asig;
+            currentActCopy = new Taimer.Actividad_a(currentAct);
+
+            dgTurnos.Rows.Clear();
+            grpBoxTurno.Visible = false;
+
+            if (currentAct is Taimer.Actividad_a) {
+                dgTurnos.Rows.Clear();
+                foreach (Taimer.Turno turn in currentAct.Turnos) {
+                    dgTurnos.Rows.Add(turn.DiaString, turn.HoraInicio.toString(), turn.HoraFin.toString(), turn.Ubicacion);
+                    dgTurnos.Rows[dgTurnos.Rows.Count - 1].Tag = turn;
+                }
+            }
         }
 
         private void btCreate_Click(object sender, EventArgs e) {
 
             if (parentGest != null) {
-
-                parentGest.clearTurns();
-
-                // Cojo la tabla y se la paso al padre
-                foreach (DataGridViewRow row in dgTurnos.Rows) {
-                    parentGest.addTurn(row.Cells["Dia"].Value.ToString(),
-                        row.Cells["HoraInicio"].Value.ToString(),
-                        row.Cells["HoraFin"].Value.ToString(),
-                        row.Cells["Ubicacion"].Value.ToString());
-                }
 
                 Hide();
                 parentGest.Show();
@@ -53,16 +55,6 @@ namespace TaimerGUI {
                 AdminForm parent = (AdminForm)this.MdiParent;
                 parent.positionChilds();
             } else if (parentAdd != null) {
-
-                parentAdd.clearTurns();
-
-                // Cojo la tabla y se la paso al padre
-                foreach (DataGridViewRow row in dgTurnos.Rows) {
-                    parentAdd.addTurn(row.Cells["Dia"].Value.ToString(),
-                        row.Cells["HoraInicio"].Value.ToString(),
-                        row.Cells["HoraFin"].Value.ToString(),
-                        row.Cells["Ubicacion"].Value.ToString());
-                }
 
                 Hide();
                 parentAdd.Show();
@@ -110,33 +102,11 @@ namespace TaimerGUI {
             }
         }
 
-        private void dgTurnos_CellContentClick(object sender, DataGridViewCellEventArgs e) {
-            if (e.ColumnIndex == dgTurnos.Columns["Borrar"].Index) {
-                dgTurnos.Rows.RemoveAt(e.RowIndex);
-            } else if (e.ColumnIndex == dgTurnos.Columns["Modificar"].Index) {
-
-                if (childMod != null) {
-                    selectedRow = e.RowIndex;
-                    DataGridViewRow row = dgTurnos.Rows[selectedRow];
-                    childMod.setInfo(row.Cells["Dia"].Value.ToString(),
-                            row.Cells["HoraInicio"].Value.ToString(),
-                            row.Cells["HoraFin"].Value.ToString(),
-                            row.Cells["Ubicacion"].Value.ToString());
-
-                    Hide();
-                    childMod.Show();
-
-                    AdminForm parent = (AdminForm)this.MdiParent;
-                    parent.positionChilds();
-                }
-            }
-        }
-
         private void btCancel_Click(object sender, EventArgs e) {
             if (parentGest != null) {
 
-                // Vacio la tabla
-                dgTurnos.Rows.Clear();
+                // Reestablezco la asignatura
+                currentAct = currentActCopy;
 
                 Hide();
                 parentGest.Show();
@@ -155,16 +125,26 @@ namespace TaimerGUI {
             }
         }
 
-        public void modRow(string dia, string ini, string fin, string ubi) {
-            dgTurnos.Rows[selectedRow].SetValues(dia, ini, fin, "", "", ubi);
-        }
+        private void dgTurnos_CellClick(object sender, DataGridViewCellEventArgs e) {
+            if(e.RowIndex >= 0 && e.RowIndex < dgTurnos.Rows.Count){
+                if (e.ColumnIndex == dgTurnos.Columns["Borrar"].Index) {
+                    currentAct.BorraTurno((Taimer.Turno)dgTurnos.Rows[e.RowIndex].Tag);
+                } else {
 
-        public void addRow(string dia, string ini, string fin, string ubi) {
-            dgTurnos.Rows.Add(dia, ini, fin, "", "", ubi);
-        }
+                    Taimer.Turno turn = (Taimer.Turno) dgTurnos.Rows[e.RowIndex].Tag;
 
-        public void clearRows() {
-            dgTurnos.Rows.Clear();
+                    if (turn is Taimer.Turno) {
+                        grpBoxTurno.Tag = turn;
+                        txtBoxLugarMod.Text = turn.Ubicacion;
+                        cmbBoxDiaMod.SelectedIndex = Taimer.TaimerLibrary.convertToInt(turn.Dia);
+                        nUDHorIniMod.Value = turn.HoraInicio.Hor;
+                        nUDMinIniMod.Value = turn.HoraInicio.Min;
+                        nUDHorFinMod.Value = turn.HoraFin.Hor;
+                        nUDMinFinMod.Value = turn.HoraFin.Min;
+                        grpBoxTurno.Visible = true;
+                    }
+                }
+            }
         }
     }
 }
