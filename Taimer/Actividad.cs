@@ -87,8 +87,14 @@ namespace Taimer {
             nombre = act.nombre;
             descripcion = act.descripcion;
             codigo = act.codigo;
-            turnos = new List<Turno>(act.turnos);
             codigoturno = act.codigoturno;
+
+            turnos = new List<Turno>();
+            foreach (Turno item in act.turnos)
+            {
+                turnos.Add(new Turno(item));
+            }
+
         }
 
 

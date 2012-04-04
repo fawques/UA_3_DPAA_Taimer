@@ -51,6 +51,7 @@ namespace TaimerGUI
 
         public void setHorario(Taimer.Horario hor) {
             horario = hor;
+            label1.Text = hor.Nombre;
             loadHorario();
         }
 
