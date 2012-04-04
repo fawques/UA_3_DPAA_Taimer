@@ -11,19 +11,30 @@ using Taimer;
 namespace TaimerGUI {
     public partial class ClientGestTurno : Form {
 
-        private ClientVerActividades formBack;
+        
         private Actividad_p actividad = null;
+        private Actividad_p actividadDefinitiva = null;
+
+        private ClientVerActividades formBackVer = null;
+        private ClientCrearActiv formBackCrear = null;
+
+        public void setFormPadre(ClientVerActividades f) {
+            formBackVer = f;
+            formBackCrear = null;
+        }
+        public void setFormPadre(ClientCrearActiv f) {
+            formBackVer = null;
+            formBackCrear = f;
+        }
 
         public ClientGestTurno() {
             InitializeComponent();
             comboBoxDia.SelectedIndex = 0;
         }
-        public void setFormBack(ClientVerActividades f) {
-            formBack = f;
-        }
 
         public void loadActividad(Actividad_p act) {
-            actividad = act;
+            actividadDefinitiva = act;
+            actividad = new Actividad_p(actividadDefinitiva);
             this.reiniciar();
             if (actividad is Actividad_p) {
                 gVHorasTemp.Rows.Clear();
@@ -66,14 +77,20 @@ namespace TaimerGUI {
 
         public void reiniciar() {
             gVHorasTemp.Rows.Clear();
+            txtBoxLugar.Text = "";
             grpBoxTurno.Visible = false;
         }
 
         private void btnTerminar_Click(object sender, EventArgs e) {
             this.reiniciar();
-            this.formBack.Show();
-            this.formBack.Focus();
-            this.formBack.loadGrupBoxData(actividad);
+            if (formBackVer != null) {
+                this.formBackVer.Show();
+                this.formBackVer.Focus();
+            } else if (formBackCrear != null) {
+                this.formBackCrear.Show();
+                this.formBackCrear.Focus();
+                this.formBackCrear.loadBoxTurnos();
+            }
         }
 
         public void loadTurno(Turno turn) {
@@ -126,6 +143,20 @@ namespace TaimerGUI {
         private void lbErrUbi_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnConfCambios_Click(object sender, EventArgs e) {
+            this.reiniciar();
+            //actividadDefinitiva.copiar(actividad);
+            if (formBackVer != null) {
+                this.formBackVer.Show();
+                this.formBackVer.Focus();
+                this.formBackVer.loadGrupBoxData(actividad);
+            } else if (formBackCrear != null) {
+                this.formBackCrear.Show();
+                this.formBackCrear.Focus();
+                this.formBackCrear.loadBoxTurnos();
+            }
         }
     }
 }

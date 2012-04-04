@@ -277,6 +277,7 @@ namespace TaimerGUI
 
         private void btnGestTurn_Click(object sender, EventArgs e) {
             if (grpBoxDatosAct.Tag is Actividad_p) {
+                this.formGestTurnos.setFormPadre(this);
                 this.formGestTurnos.loadActividad((Actividad_p)grpBoxDatosAct.Tag);
                 this.formGestTurnos.Show();
                 this.formGestTurnos.Focus();

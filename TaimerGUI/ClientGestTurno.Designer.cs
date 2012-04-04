@@ -66,6 +66,7 @@
             this.label16 = new System.Windows.Forms.Label();
             this.cmbBoxDiaMod = new System.Windows.Forms.ComboBox();
             this.btnTerminar = new System.Windows.Forms.Button();
+            this.btnConfCambios = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nmUpDwnMinHasta)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nmUpDwnMinDesde)).BeginInit();
@@ -531,13 +532,23 @@
             // 
             // btnTerminar
             // 
-            this.btnTerminar.Location = new System.Drawing.Point(666, 574);
+            this.btnTerminar.Location = new System.Drawing.Point(680, 570);
             this.btnTerminar.Name = "btnTerminar";
             this.btnTerminar.Size = new System.Drawing.Size(92, 30);
             this.btnTerminar.TabIndex = 71;
-            this.btnTerminar.Text = "Terminado";
+            this.btnTerminar.Text = "Cancelar";
             this.btnTerminar.UseVisualStyleBackColor = true;
             this.btnTerminar.Click += new System.EventHandler(this.btnTerminar_Click);
+            // 
+            // btnConfCambios
+            // 
+            this.btnConfCambios.Location = new System.Drawing.Point(564, 570);
+            this.btnConfCambios.Name = "btnConfCambios";
+            this.btnConfCambios.Size = new System.Drawing.Size(92, 30);
+            this.btnConfCambios.TabIndex = 72;
+            this.btnConfCambios.Text = "Confirmar";
+            this.btnConfCambios.UseVisualStyleBackColor = true;
+            this.btnConfCambios.Click += new System.EventHandler(this.btnConfCambios_Click);
             // 
             // ClientGestTurno
             // 
@@ -545,6 +556,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Cornsilk;
             this.ClientSize = new System.Drawing.Size(792, 616);
+            this.Controls.Add(this.btnConfCambios);
             this.Controls.Add(this.btnTerminar);
             this.Controls.Add(this.grpBoxTurno);
             this.Controls.Add(this.groupBox1);
@@ -617,5 +629,6 @@
         private System.Windows.Forms.Button btnGuardar;
         private System.Windows.Forms.Button btnTerminar;
         private System.Windows.Forms.Label lbErrUbi;
+        private System.Windows.Forms.Button btnConfCambios;
     }
 }

@@ -13,32 +13,22 @@ namespace TaimerGUI
     public partial class ClientCrearActiv : Form
     {
         private User usrAux;
-        public ClientCrearActiv(User usr)
+        private Actividad_p actAux = null;
+        private ClientGestTurno formGestTurnos;
+        public ClientCrearActiv(User usr, ClientGestTurno f)
         {
             InitializeComponent();
-            comboBoxDia.SelectedIndex = 0;
             usrAux = usr;
+            formGestTurnos = f;
         }
 
         private void button3_Click(object sender, EventArgs e) {
             this.Hide();
+            ((ClientForm)this.MdiParent).verActividades_Click(null,null);
         }
 
         private void ClientCrearActiv_Load(object sender, EventArgs e) {
 
-        }
-
-        private void button1_Click(object sender, EventArgs e) {
-            Taimer.Hora horI = new Taimer.Hora((int)nmUpDwnHorDesde.Value, (int)nmUpDwnMinDesde.Value);
-            Taimer.Hora horF = new Taimer.Hora((int)nmUpDwnHorHasta.Value, (int)nmUpDwnMinHasta.Value);
-
-            if (horI < horF) {
-                gVHorasTemp.Rows.Add(comboBoxDia.Text, horI.toString(), horF.toString(),txtBoxLugar.Text);
-                lblErrorDate.Text = "";
-                txtBoxLugar.Text = "";
-            } else {
-                lblErrorDate.Text = "Las hora de inicio debe ser menor que la de fin.";
-            }
         }
 
         private void gVHorasTemp_CellContentClick(object sender, DataGridViewCellEventArgs e) {
@@ -48,28 +38,27 @@ namespace TaimerGUI
         }
 
         private void bttnCrearActiv_Click(object sender, EventArgs e) {
-            //TODO Crear la actividad
+            
 
             if (validarTodo()) {
+                if (actAux == null || actAux.Turnos.Count <= 0) {
+                    
+                }
                 if (MessageBox.Show("¿Seguro que desea crearla?",
                 "¿Crear actividad?",
                 MessageBoxButtons.YesNo,
                 MessageBoxIcon.Question,
                 MessageBoxDefaultButton.Button2) == DialogResult.Yes) {
-                    Actividad_p actividad = new Taimer.Actividad_p(tBNombre.Text, rTBDescripcion.Text, -1, null);
-
-                    foreach (DataGridViewRow filas in gVHorasTemp.Rows) {
-                        Hora horI = new Hora(filas.Cells["horaInicio"].Value.ToString());
-                        Hora horF = new Hora(filas.Cells["horaFin"].Value.ToString());
-                        string d = comboBoxDia.Text;
-                        Turno turn = new Turno(horI, horF, TaimerLibrary.convertToDais(d), filas.Cells["lugar"].Value.ToString());
-                        try {
-                            actividad.AddTurno(turn);
-                        } catch (NotSupportedException exc) {
-                            MessageBox.Show(exc.Message);
-                        }
+                    if (actAux == null) {
+                        actAux = new Actividad_p(tBNombre.Text, rTBDescripcion.Text, 0, usrAux);
                     }
-                    usrAux.AddActPersonal(actividad);
+                    actAux.Nombre = tBNombre.Text;
+                    actAux.Descripcion = rTBDescripcion.Text;
+                    try {
+                        usrAux.AddActPersonal(actAux);
+                    } catch (Exception ex) {
+                        MessageBox.Show(ex.Message);
+                    }
                     ((ClientForm)this.MdiParent).loadLastActividades();
                     ((ClientForm)this.MdiParent).verActividad_Click(null,null);
                 }
@@ -87,6 +76,26 @@ namespace TaimerGUI
             }
 
             return correcto;
+        }
+
+        public void loadBoxTurnos(){
+            gVHorasTemp.Rows.Clear();
+            if (actAux != null) {
+                foreach (Turno t in actAux.Turnos) {
+                    gVHorasTemp.Rows.Add(t.DiaString, t.HoraInicio.toString(), t.HoraFin.toString(), t.Ubicacion);
+                }
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e) {
+            if (actAux == null) {
+                actAux = new Actividad_p(tBNombre.Text, rTBDescripcion.Text, 0, usrAux);
+            }
+            this.formGestTurnos.reiniciar();
+            this.formGestTurnos.setFormPadre(this);
+            this.formGestTurnos.loadActividad(actAux);
+            this.formGestTurnos.Show();
+            this.formGestTurnos.Focus();
         }
 
     }
