@@ -162,10 +162,9 @@ namespace TaimerGUI {
                hAux = generarHorario();
                if (hAux != null) {
                    loadHorario(hAux);
+                   btnCrear.Visible = false;
+                   btnGuardar.Visible = true;
                }
-                
-               btnCrear.Visible = false;
-               btnGuardar.Visible = true;
             }
            
         }
@@ -190,7 +189,7 @@ namespace TaimerGUI {
         private void btnGuardar_Click(object sender, EventArgs e) {
             if (hAux != null) {
                 try {
-                    usrAux.AddHorario(hAux);
+                    Program.Usuarios[0].AddHorario(hAux);
                 } catch (NotSupportedException exc) {
                     MessageBox.Show(exc.Message);
                 }

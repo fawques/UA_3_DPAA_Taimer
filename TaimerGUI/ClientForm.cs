@@ -30,11 +30,8 @@ namespace TaimerGUI {
         /** CONSTRUCTOR **/
         public ClientForm(User usr) {
             InitializeComponent();
-            //TODO: Hay que hacer esto como se tenga que hacer
-            usuario = usr;
-            if (usuario == null) {
-                usuario = generateUserDebug();
-            }
+            // Aquí debería llamar a la función que cargue desde la BD
+            usuario = Program.Usuarios[0];
 
             //Redondeado de bordes
             shape = RoundedRectangle.Create(0, 0, this.Width, this.Height, 10);
