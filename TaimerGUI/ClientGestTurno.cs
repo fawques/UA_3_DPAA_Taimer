@@ -128,16 +128,21 @@ namespace TaimerGUI {
         private void btnGuardar_Click(object sender, EventArgs e) {
             Hora horI = new Taimer.Hora((int)nUDHorIniMod.Value, (int)nUDMinIniMod.Value);
             Hora horF = new Taimer.Hora((int)nUDHorFinMod.Value, (int)nUDMinFinMod.Value);
-            try {
-                ((Turno)grpBoxTurno.Tag).HoraInicio = horI;
-                ((Turno)grpBoxTurno.Tag).HoraFin = horF;
-                ((Turno)grpBoxTurno.Tag).Dia = TaimerLibrary.convertToDais(cmbBoxDiaMod.Text);
-            } catch (NotSupportedException exc) {
-                MessageBox.Show(exc.Message);
+            if (horI < horF) {
+                try {
+                    ((Turno)grpBoxTurno.Tag).HoraInicio = horI;
+                    ((Turno)grpBoxTurno.Tag).HoraFin = horF;
+                    ((Turno)grpBoxTurno.Tag).Dia = TaimerLibrary.convertToDais(cmbBoxDiaMod.Text);
+                } catch (NotSupportedException exc) {
+                    MessageBox.Show(exc.Message);
+                }
+                ((Turno)grpBoxTurno.Tag).Ubicacion = txtBoxLugarMod.Text;
+
+                loadActividad(actividad);
+                lblMenorTurno.Visible = false;
+            } else {
+                lblMenorTurno.Visible = true;
             }
-            ((Turno)grpBoxTurno.Tag).Ubicacion = txtBoxLugarMod.Text;
-            
-            loadActividad(actividad);
         }
 
         private void lbErrUbi_Click(object sender, EventArgs e)
@@ -151,7 +156,7 @@ namespace TaimerGUI {
             if (formBackVer != null) {
                 this.formBackVer.Show();
                 this.formBackVer.Focus();
-                this.formBackVer.loadGrupBoxData(actividad);
+                this.formBackVer.loadGrupBoxData(actividadDefinitiva);
             } else if (formBackCrear != null) {
                 this.formBackCrear.Show();
                 this.formBackCrear.Focus();

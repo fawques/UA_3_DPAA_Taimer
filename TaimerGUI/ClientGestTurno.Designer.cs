@@ -67,6 +67,7 @@
             this.cmbBoxDiaMod = new System.Windows.Forms.ComboBox();
             this.btnTerminar = new System.Windows.Forms.Button();
             this.btnConfCambios = new System.Windows.Forms.Button();
+            this.lblMenorTurno = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nmUpDwnMinHasta)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nmUpDwnMinDesde)).BeginInit();
@@ -343,6 +344,7 @@
             // 
             // grpBoxTurno
             // 
+            this.grpBoxTurno.Controls.Add(this.lblMenorTurno);
             this.grpBoxTurno.Controls.Add(this.btnCancelar);
             this.grpBoxTurno.Controls.Add(this.btnGuardar);
             this.grpBoxTurno.Controls.Add(this.label17);
@@ -550,6 +552,16 @@
             this.btnConfCambios.UseVisualStyleBackColor = true;
             this.btnConfCambios.Click += new System.EventHandler(this.btnConfCambios_Click);
             // 
+            // lblMenorTurno
+            // 
+            this.lblMenorTurno.ForeColor = System.Drawing.Color.Red;
+            this.lblMenorTurno.Location = new System.Drawing.Point(26, 106);
+            this.lblMenorTurno.Name = "lblMenorTurno";
+            this.lblMenorTurno.Size = new System.Drawing.Size(166, 32);
+            this.lblMenorTurno.TabIndex = 68;
+            this.lblMenorTurno.Text = "La hora de inicio debe ser menor que la de fin.";
+            this.lblMenorTurno.Visible = false;
+            // 
             // ClientGestTurno
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -630,5 +642,6 @@
         private System.Windows.Forms.Button btnTerminar;
         private System.Windows.Forms.Label lbErrUbi;
         private System.Windows.Forms.Button btnConfCambios;
+        private System.Windows.Forms.Label lblMenorTurno;
     }
 }

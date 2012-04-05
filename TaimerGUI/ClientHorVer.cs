@@ -60,13 +60,16 @@ namespace TaimerGUI {
             if (horario != null) {
                 int minimo = horario.minHora().Hor;
                 int maximo = horario.maxHora().Hor;
+                if (horario.maxHora().Min > 0) {
+                    maximo++;
+                }
                 int recorteArriba = (minimo) * 60;
                 initPanelHorario(minimo, maximo);
                 reducirPanelHorarios(minimo, maximo);
 
                 for (int i = 0; i < horario.ArrayTurnos.Length; i++) {
                     foreach (Turno item in horario.ArrayTurnos[i]) {
-                        int posi = item.HoraInicio.Hor * 60 - recorteArriba;
+                        int posi = (item.HoraInicio.Hor * 60 + item.HoraFin.Min) - recorteArriba;
                         int duracion = (item.HoraFin.Hor - item.HoraInicio.Hor) * 60;//TODO cambiar a la funcion que sabe restar horas
                         Button b = new Button();
                         b.Height = duracion;

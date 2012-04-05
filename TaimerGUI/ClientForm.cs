@@ -77,8 +77,8 @@ namespace TaimerGUI {
             }
           
             formWelcome = new ClientBienvenida(this,usuario);
-            formHorHome = new ClientHorHome();
             formHorDetails = new ClientHorVer();
+            formHorHome = new ClientHorHome(usuario, formHorDetails);
             formCreateHor1 = new ClientCrearHor1(usuario);
             formCreateHor2 = new ClientCrearHor2(usuario);
             formMatric = new ClientMatriculacionActiv(usuario);
