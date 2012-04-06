@@ -58,8 +58,7 @@ namespace CAD
             string comando = "DELETE FROM [Horario] WHERE id= '" + id + "' and usuario='"+usuario+"'";
             try
             {
-                //Primero borramos los turnos que están relacionados con este horario
-                BorrarTurnosHo(id, usuario);
+                
                 c = new SqlConnection(conexionTBD);
                 c.Open();
                 SqlCommand cmd = new SqlCommand(comando, c);
@@ -281,8 +280,8 @@ namespace CAD
             finally
             {
                 if (c != null) c.Close(); // Se asegura de cerrar la conexión.
-            }
-        }
+           }  
+       }
         /// <summary>
         ///Devuelve los codigos de Turno de un Horario
         /// </summary>

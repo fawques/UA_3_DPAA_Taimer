@@ -63,7 +63,7 @@ namespace CAD
             string comand = "DELETE FROM [Turno] WHERE codigo= '" + codigo + "' and pertenece_aAct= '"+ cod_a + "'";
             try
             {
-
+                
                 c = new SqlConnection(conexionTBD);
                 c.Open();
                 SqlCommand cmd = new SqlCommand(comand, c);
