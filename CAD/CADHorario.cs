@@ -52,13 +52,14 @@ namespace CAD
         /// Borramos un horario
         /// </summary>
         /// <param name="id"></param>
-        public void BorrarHorario(int id)
+        public void BorrarHorario(int id,string usuario)
         {
             SqlConnection c = null;
-            string comando = "DELETE FROM [Horario] WHERE id= '" + id + "'";
-
+            string comando = "DELETE FROM [Horario] WHERE id= '" + id + "' and usuario='"+usuario+"'";
             try
             {
+                //Primero borramos los turnos que están relacionados con este horario
+                BorrarTurnosHo(id, usuario);
                 c = new SqlConnection(conexionTBD);
                 c.Open();
                 SqlCommand cmd = new SqlCommand(comando, c);
@@ -108,12 +109,12 @@ namespace CAD
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public DataSet GetDatosHorario(int id)
+        public DataSet GetDatosHorario(int id,string usuario)
         {
 
             SqlConnection con = null;
             DataSet datos = null;
-            string comando = "Select * from [Horario] where id='"+id+"'";
+            string comando = "Select * from [Horario] where id='"+id+"' and usuario='"+usuario+"'";
             try
             {
                 con = new SqlConnection(conexionTBD);
@@ -134,14 +135,45 @@ namespace CAD
             }
         }
         /// <summary>
-        /// MOdificamos un horario
+        /// Devuelve los horarios de un usuario concreto
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="idUser"></param>
+        /// <returns></returns>
+        public DataSet GetDatosHorarioUser(string  idUser)
+        {
+
+            SqlConnection con = null;
+            DataSet datos = null;
+            string comando = "Select * from [Horario] where usuario='"+idUser+"'";
+            try
+            {
+                con = new SqlConnection(conexionTBD);
+                SqlDataAdapter sqlAdaptador = new SqlDataAdapter(comando, con);
+                datos = new DataSet();
+                sqlAdaptador.Fill(datos);
+                return datos;
+
+            }
+            catch (Exception ex)
+            {
+                // Captura la condición general y la reenvía.
+                throw ex;
+            }
+            finally
+            {
+                if (con != null) con.Close(); // Se asegura de cerrar la conexión.
+            }
+        }
+        /// <summary>
+        /// Modificamos un horario
         /// </summary>
         /// <param name="id"></param>
         /// <param name="tit"></param>
         /// <param name="user"></param>
-        public void ModificaComment(int id, string tit, string user)
+        public void ModificaHorario(int id, string tit, string user)
         {
-            string comando = "UPDATE [Horario] SET id = '" + id + "', titulo = '" + tit + "',  usuario = '" + user + "' WHERE id = '" + id + "'";
+            string comando = "UPDATE [Horario] SET id = '" + id + "', titulo = '" + tit + "',  usuario = '" + user + "' WHERE id = '" + id + "' and usuario='"+user+"'";
             SqlConnection c = null;
             SqlCommand comandoTBD;
 
@@ -161,6 +193,122 @@ namespace CAD
             finally
             {
                 if (c != null) c.Close(); // Se asegura de cerrar la conexión.
+            }
+        }
+        /// <summary>
+        /// Añadimos los turnos a la tabla Horario_Turno
+        /// </summary>
+        /// <param name="idho"></param>
+        /// <param name="iduser"></param>
+        /// <param name="cod_turno"></param>
+        /// <param name="cod_ac"></param>
+        public void AddTurnoHo(int idho, string iduser, int cod_turno, int cod_ac)
+        {
+            string comando = "INSERT INTO [Horario_Turno](horarioId,horarioUser,turnoCod,turnoAct) VALUES('" + idho + "', '" + iduser + "', '" + cod_turno + "', '" + cod_ac+"')";
+            SqlConnection c = null;
+            SqlCommand comandoTBD;
+
+            try
+            {
+                c = new SqlConnection(conexionTBD);
+                comandoTBD = new SqlCommand(comando, c);
+                c.Open();
+                comandoTBD.CommandType = CommandType.Text;
+                comandoTBD.ExecuteNonQuery();
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                if (c != null) c.Close(); // Se asegura de cerrar la conexión.
+            }
+        }
+        /// <summary>
+        /// Borramos un turno de la tabla Horario_turno
+        /// </summary>
+        /// <param name="idho"></param>
+        /// <param name="iduser"></param>
+        /// <param name="cod_turno"></param>
+        /// <param name="cod_ac"></param>
+        public void BorrarTurnoEspecifico(int idho, string iduser, int cod_turno, int cod_ac)
+        {
+            string comando = "DELETE FROM [Horario_Turno] WHERE horarioId='" + idho + "' and horarioUser='" + iduser + "' and turnoCod='" + cod_turno + "' and turnoAct='" + cod_ac + "'";
+            SqlConnection c = null;
+            SqlCommand comandoTBD;
+
+            try
+            {
+                c = new SqlConnection(conexionTBD);
+                comandoTBD = new SqlCommand(comando, c);
+                c.Open();
+                comandoTBD.CommandType = CommandType.Text;
+                comandoTBD.ExecuteNonQuery();
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                if (c != null) c.Close(); // Se asegura de cerrar la conexión.
+            }
+        }
+        /// <summary>
+        /// Borramos los turnos de un horario especifico
+        /// </summary>
+        /// <param name="horarioId"></param>
+        /// <param name="user"></param>
+        public void BorrarTurnosHo(int horarioId, string user)
+        {
+            string comando = "DELETE FROM [Horario_Turno] WHERE horarioId='" + horarioId + "' and horarioUser='" + user + "'";
+            SqlConnection c = null;
+            SqlCommand comandoTBD;
+
+            try
+            {
+                c = new SqlConnection(conexionTBD);
+                comandoTBD = new SqlCommand(comando, c);
+                c.Open();
+                comandoTBD.CommandType = CommandType.Text;
+                comandoTBD.ExecuteNonQuery();
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                if (c != null) c.Close(); // Se asegura de cerrar la conexión.
+            }
+        }
+        /// <summary>
+        ///Devuelve los codigos de Turno de un Horario
+        /// </summary>
+        /// <returns></returns>
+        public DataSet GetTurnos(int id,string idUser)
+        {
+            SqlConnection con = null;
+            DataSet datos = null;
+            string comando = "Select turnoCod,turnoAct from [Horario_Turno] where horarioId='" + id + "' and horarioUser='"+idUser+"'";
+            try
+            {
+                con = new SqlConnection(conexionTBD);
+                SqlDataAdapter sqlAdaptador = new SqlDataAdapter(comando, con);
+                datos = new DataSet();
+                sqlAdaptador.Fill(datos);
+                return datos;
+
+            }
+            catch (Exception ex)
+            {
+                // Captura la condición general y la reenvía.
+                throw ex;
+            }
+            finally
+            {
+                if (con != null) con.Close(); // Se asegura de cerrar la conexión.
             }
         }
     }

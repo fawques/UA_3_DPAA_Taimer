@@ -304,7 +304,8 @@ namespace Taimer {
                 user.BorrarUser(dni);
             }
             catch (Exception ex)
-            { 
+            {
+                throw ex;
             }
         }
         /// </summary>

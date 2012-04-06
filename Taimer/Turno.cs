@@ -217,11 +217,6 @@ namespace Taimer {
             ubicacion = ubic_;
             actividad = null;
         }
- 
-
-
-
-
         /// <summary>
         /// Constructor que vincula el turno a una actividad
         /// </summary>
@@ -265,10 +260,6 @@ namespace Taimer {
             else
                 ((Actividad_p)actividad).AddTurno(this);
         }
-
-
-
-
 
         /// <summary>
         /// Constructor completo
