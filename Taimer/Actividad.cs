@@ -84,6 +84,16 @@ namespace Taimer {
         /// </summary>
         /// <param name="act"> Actividad que se desea copiar </param>
         public Actividad(Actividad act) {
+            CopiarDesde(act);
+        }
+
+        /// <summary>
+        /// Copia una actividad en otra, sin necesidad de crearla
+        /// </summary>
+        /// <param name="act">Actividad que se desea copiar</param>
+        /// <returns></returns>
+        public virtual void CopiarDesde(Actividad act)
+        {
             nombre = act.nombre;
             descripcion = act.descripcion;
             codigo = act.codigo;
@@ -94,7 +104,6 @@ namespace Taimer {
             {
                 turnos.Add(new Turno(item));
             }
-
         }
 
 

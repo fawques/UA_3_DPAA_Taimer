@@ -56,10 +56,23 @@ namespace Taimer {
         /// <param name="act">Actividad_p que se desea copiar</param>
         public Actividad_p(Actividad_p act)
             : base(act) {
+                // el constructor de copia de la clase base ya llama a CopiarDesde
                 usuario = act.usuario;     
-                usuario.CodActPers--;
                 act.Codigo = usuario.CodActPers;
                 
+        }
+
+        /// <summary>
+        /// Copia una actividad_p en otra, sin necesidad de crearla. Llama a CopiarDesde de la clase Actividad, y añade lo específico para Actividad_p
+        /// </summary>
+        /// <param name="act">Actividad_a que se desea copiar</param>
+        /// <returns></returns>
+        public override void CopiarDesde(Actividad act)
+        {
+            base.CopiarDesde(act);
+            Actividad_p aux = (Actividad_p) act;
+            usuario = aux.usuario;
+            aux.Codigo = usuario.CodActPers;
         }
 
         /// <summary>

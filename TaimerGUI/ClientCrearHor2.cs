@@ -180,7 +180,7 @@ namespace TaimerGUI {
             Horario h = null;
             try
             {
-                h = alg.generarHorarioVoraz(formBack.getNameHorario());
+                h = alg.generarHorarioBT(formBack.getNameHorario(),radioButton2.Checked);
             }
             catch (NotSupportedException exc)
             {

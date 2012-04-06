@@ -126,14 +126,14 @@
             // 
             this.trackBar1.Location = new System.Drawing.Point(31, 211);
             this.trackBar1.Name = "trackBar1";
-            this.trackBar1.Size = new System.Drawing.Size(139, 42);
+            this.trackBar1.Size = new System.Drawing.Size(139, 45);
             this.trackBar1.TabIndex = 28;
             // 
             // trackBar2
             // 
             this.trackBar2.Location = new System.Drawing.Point(31, 293);
             this.trackBar2.Name = "trackBar2";
-            this.trackBar2.Size = new System.Drawing.Size(139, 42);
+            this.trackBar2.Size = new System.Drawing.Size(139, 45);
             this.trackBar2.TabIndex = 29;
             // 
             // groupBox1
@@ -144,7 +144,6 @@
             this.groupBox1.Controls.Add(this.trackBar1);
             this.groupBox1.Controls.Add(this.radioButton1);
             this.groupBox1.Controls.Add(this.radioButton2);
-            this.groupBox1.Enabled = false;
             this.groupBox1.Location = new System.Drawing.Point(572, 66);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(200, 400);

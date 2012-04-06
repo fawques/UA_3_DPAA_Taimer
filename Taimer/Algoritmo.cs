@@ -173,9 +173,10 @@ namespace Taimer
 
                 }
                 posibles = new List<Horario>(soluciones.ToList());
+                optimo = null;
 
 
-                int puntuacion = 99;
+                int puntuacion = int.MaxValue;
                 if (minDias)
                 {
                     foreach (Horario sol in soluciones)
