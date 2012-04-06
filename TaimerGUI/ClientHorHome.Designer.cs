@@ -30,20 +30,18 @@
         {
             this.label2 = new System.Windows.Forms.Label();
             this.txtBoxFilter = new System.Windows.Forms.TextBox();
-            this.dataGridHorarios = new System.Windows.Forms.DataGridView();
-            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ver = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.borrar = new System.Windows.Forms.DataGridViewButtonColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridHorarios)).BeginInit();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.pnlHorarios = new System.Windows.Forms.Panel();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(30, 146);
+            this.label2.Location = new System.Drawing.Point(255, 146);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(32, 13);
             this.label2.TabIndex = 14;
@@ -51,52 +49,11 @@
             // 
             // txtBoxFilter
             // 
-            this.txtBoxFilter.Location = new System.Drawing.Point(68, 143);
+            this.txtBoxFilter.Location = new System.Drawing.Point(293, 143);
             this.txtBoxFilter.Name = "txtBoxFilter";
             this.txtBoxFilter.Size = new System.Drawing.Size(167, 20);
             this.txtBoxFilter.TabIndex = 13;
             this.txtBoxFilter.TextChanged += new System.EventHandler(this.txtBoxFilter_TextChanged);
-            // 
-            // dataGridHorarios
-            // 
-            this.dataGridHorarios.AllowUserToAddRows = false;
-            this.dataGridHorarios.AllowUserToDeleteRows = false;
-            this.dataGridHorarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridHorarios.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.id,
-            this.nombre,
-            this.ver,
-            this.borrar});
-            this.dataGridHorarios.Location = new System.Drawing.Point(12, 169);
-            this.dataGridHorarios.Name = "dataGridHorarios";
-            this.dataGridHorarios.ReadOnly = true;
-            this.dataGridHorarios.Size = new System.Drawing.Size(373, 353);
-            this.dataGridHorarios.TabIndex = 12;
-            this.dataGridHorarios.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridHorarios_CellContentClick);
-            // 
-            // id
-            // 
-            this.id.HeaderText = "Id";
-            this.id.Name = "id";
-            this.id.ReadOnly = true;
-            // 
-            // nombre
-            // 
-            this.nombre.HeaderText = "Nombre";
-            this.nombre.Name = "nombre";
-            this.nombre.ReadOnly = true;
-            // 
-            // ver
-            // 
-            this.ver.HeaderText = "Ver";
-            this.ver.Name = "ver";
-            this.ver.ReadOnly = true;
-            // 
-            // borrar
-            // 
-            this.borrar.HeaderText = "Borrar";
-            this.borrar.Name = "borrar";
-            this.borrar.ReadOnly = true;
             // 
             // label1
             // 
@@ -117,23 +74,53 @@
             this.label3.TabIndex = 36;
             this.label3.Text = "Consulta y modifica tus horarios ya creados.";
             // 
+            // panel1
+            // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.panel1.AutoScroll = true;
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.Controls.Add(this.pnlHorarios);
+            this.panel1.Controls.Add(this.panel3);
+            this.panel1.Location = new System.Drawing.Point(190, 169);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(358, 345);
+            this.panel1.TabIndex = 37;
+            // 
+            // panel3
+            // 
+            this.panel3.AutoSize = true;
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel3.Location = new System.Drawing.Point(0, 0);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(354, 0);
+            this.panel3.TabIndex = 3;
+            // 
+            // pnlHorarios
+            // 
+            this.pnlHorarios.AutoSize = true;
+            this.pnlHorarios.Location = new System.Drawing.Point(8, 3);
+            this.pnlHorarios.Name = "pnlHorarios";
+            this.pnlHorarios.Size = new System.Drawing.Size(343, 39);
+            this.pnlHorarios.TabIndex = 0;
+            // 
             // ClientHorHome
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Cornsilk;
             this.ClientSize = new System.Drawing.Size(784, 562);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtBoxFilter);
-            this.Controls.Add(this.dataGridHorarios);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "ClientHorHome";
             this.Text = "ClientHorHome";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Activated += new System.EventHandler(this.ClientHorHome_Activated);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridHorarios)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -143,12 +130,10 @@
 
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtBoxFilter;
-        private System.Windows.Forms.DataGridView dataGridHorarios;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nombre;
-        private System.Windows.Forms.DataGridViewButtonColumn ver;
-        private System.Windows.Forms.DataGridViewButtonColumn borrar;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel pnlHorarios;
+        private System.Windows.Forms.Panel panel3;
     }
 }

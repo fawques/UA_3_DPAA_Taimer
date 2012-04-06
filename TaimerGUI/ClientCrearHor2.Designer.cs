@@ -35,7 +35,8 @@
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.trackBar1 = new System.Windows.Forms.TrackBar();
             this.trackBar2 = new System.Windows.Forms.TrackBar();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.grpBoxRestric = new System.Windows.Forms.GroupBox();
+            this.label11 = new System.Windows.Forms.Label();
             this.groubBoxDias = new System.Windows.Forms.GroupBox();
             this.chkBxAll = new System.Windows.Forms.CheckBox();
             this.chkBoxDomingo = new System.Windows.Forms.CheckBox();
@@ -44,7 +45,7 @@
             this.chkBoxViernes = new System.Windows.Forms.CheckBox();
             this.chkBoxJueves = new System.Windows.Forms.CheckBox();
             this.btnCrear = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnAtras = new System.Windows.Forms.Button();
             this.pnlHorario = new System.Windows.Forms.Panel();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
@@ -64,9 +65,10 @@
             this.pnlLunes = new System.Windows.Forms.Panel();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
+            this.btnDescartar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar2)).BeginInit();
-            this.groupBox1.SuspendLayout();
+            this.grpBoxRestric.SuspendLayout();
             this.groubBoxDias.SuspendLayout();
             this.pnlHorario.SuspendLayout();
             this.SuspendLayout();
@@ -104,7 +106,7 @@
             // radioButton1
             // 
             this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(31, 142);
+            this.radioButton1.Location = new System.Drawing.Point(465, 115);
             this.radioButton1.Name = "radioButton1";
             this.radioButton1.Size = new System.Drawing.Size(95, 17);
             this.radioButton1.TabIndex = 25;
@@ -115,7 +117,7 @@
             // radioButton2
             // 
             this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(31, 166);
+            this.radioButton2.Location = new System.Drawing.Point(465, 139);
             this.radioButton2.Name = "radioButton2";
             this.radioButton2.Size = new System.Drawing.Size(79, 17);
             this.radioButton2.TabIndex = 26;
@@ -125,32 +127,43 @@
             // 
             // trackBar1
             // 
-            this.trackBar1.Location = new System.Drawing.Point(31, 211);
+            this.trackBar1.Location = new System.Drawing.Point(81, 271);
             this.trackBar1.Name = "trackBar1";
             this.trackBar1.Size = new System.Drawing.Size(139, 45);
             this.trackBar1.TabIndex = 28;
             // 
             // trackBar2
             // 
-            this.trackBar2.Location = new System.Drawing.Point(31, 293);
+            this.trackBar2.Location = new System.Drawing.Point(445, 271);
             this.trackBar2.Name = "trackBar2";
             this.trackBar2.Size = new System.Drawing.Size(139, 45);
             this.trackBar2.TabIndex = 29;
             // 
-            // groupBox1
+            // grpBoxRestric
             // 
-            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox1.Controls.Add(this.groubBoxDias);
-            this.groupBox1.Controls.Add(this.trackBar2);
-            this.groupBox1.Controls.Add(this.trackBar1);
-            this.groupBox1.Controls.Add(this.radioButton1);
-            this.groupBox1.Controls.Add(this.radioButton2);
-            this.groupBox1.Location = new System.Drawing.Point(572, 66);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(200, 400);
-            this.groupBox1.TabIndex = 30;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Restricciones";
+            this.grpBoxRestric.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.grpBoxRestric.Controls.Add(this.label11);
+            this.grpBoxRestric.Controls.Add(this.groubBoxDias);
+            this.grpBoxRestric.Controls.Add(this.trackBar2);
+            this.grpBoxRestric.Controls.Add(this.trackBar1);
+            this.grpBoxRestric.Controls.Add(this.radioButton1);
+            this.grpBoxRestric.Controls.Add(this.radioButton2);
+            this.grpBoxRestric.Location = new System.Drawing.Point(35, 112);
+            this.grpBoxRestric.Name = "grpBoxRestric";
+            this.grpBoxRestric.Size = new System.Drawing.Size(688, 351);
+            this.grpBoxRestric.TabIndex = 30;
+            this.grpBoxRestric.TabStop = false;
+            this.grpBoxRestric.Text = "Restricciones";
+            this.grpBoxRestric.Visible = false;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(261, 221);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(130, 13);
+            this.label11.TabIndex = 36;
+            this.label11.Text = "Si, esto debe ser diferente";
             // 
             // groubBoxDias
             // 
@@ -162,7 +175,7 @@
             this.groubBoxDias.Controls.Add(this.chkBoxMiercoles);
             this.groubBoxDias.Controls.Add(this.chkBoxViernes);
             this.groubBoxDias.Controls.Add(this.chkBoxJueves);
-            this.groubBoxDias.Location = new System.Drawing.Point(12, 19);
+            this.groubBoxDias.Location = new System.Drawing.Point(153, 75);
             this.groubBoxDias.Name = "groubBoxDias";
             this.groubBoxDias.Size = new System.Drawing.Size(175, 117);
             this.groubBoxDias.TabIndex = 35;
@@ -183,7 +196,7 @@
             // chkBoxDomingo
             // 
             this.chkBoxDomingo.AutoSize = true;
-            this.chkBoxDomingo.Location = new System.Drawing.Point(105, 86);
+            this.chkBoxDomingo.Location = new System.Drawing.Point(105, 87);
             this.chkBoxDomingo.Name = "chkBoxDomingo";
             this.chkBoxDomingo.Size = new System.Drawing.Size(68, 17);
             this.chkBoxDomingo.TabIndex = 34;
@@ -233,7 +246,7 @@
             // btnCrear
             // 
             this.btnCrear.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCrear.Location = new System.Drawing.Point(596, 488);
+            this.btnCrear.Location = new System.Drawing.Point(630, 581);
             this.btnCrear.Name = "btnCrear";
             this.btnCrear.Size = new System.Drawing.Size(158, 52);
             this.btnCrear.TabIndex = 31;
@@ -241,24 +254,22 @@
             this.btnCrear.UseVisualStyleBackColor = true;
             this.btnCrear.Click += new System.EventHandler(this.button1_Click);
             // 
-            // button2
+            // btnAtras
             // 
-            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.button2.Image = global::TaimerGUI.Properties.Resources.flechaLeft;
-            this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button2.Location = new System.Drawing.Point(12, 488);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(158, 52);
-            this.button2.TabIndex = 32;
-            this.button2.Text = "Volver";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.btnAtras.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnAtras.Image = global::TaimerGUI.Properties.Resources.flechaLeft;
+            this.btnAtras.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAtras.Location = new System.Drawing.Point(12, 581);
+            this.btnAtras.Name = "btnAtras";
+            this.btnAtras.Size = new System.Drawing.Size(158, 52);
+            this.btnAtras.TabIndex = 32;
+            this.btnAtras.Text = "Volver";
+            this.btnAtras.UseVisualStyleBackColor = true;
+            this.btnAtras.Click += new System.EventHandler(this.button2_Click);
             // 
             // pnlHorario
             // 
-            this.pnlHorario.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlHorario.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.pnlHorario.AutoScroll = true;
             this.pnlHorario.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.pnlHorario.BackColor = System.Drawing.Color.Maroon;
@@ -279,11 +290,11 @@
             this.pnlHorario.Controls.Add(this.pnlMiercoles);
             this.pnlHorario.Controls.Add(this.pnlMartes);
             this.pnlHorario.Controls.Add(this.pnlLunes);
-            this.pnlHorario.Enabled = false;
-            this.pnlHorario.Location = new System.Drawing.Point(16, 82);
+            this.pnlHorario.Location = new System.Drawing.Point(12, 85);
             this.pnlHorario.Name = "pnlHorario";
-            this.pnlHorario.Size = new System.Drawing.Size(539, 401);
+            this.pnlHorario.Size = new System.Drawing.Size(771, 460);
             this.pnlHorario.TabIndex = 33;
+            this.pnlHorario.Visible = false;
             // 
             // label9
             // 
@@ -447,7 +458,7 @@
             // btnGuardar
             // 
             this.btnGuardar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnGuardar.Location = new System.Drawing.Point(596, 488);
+            this.btnGuardar.Location = new System.Drawing.Point(630, 581);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(151, 52);
             this.btnGuardar.TabIndex = 34;
@@ -465,18 +476,31 @@
             this.label10.TabIndex = 35;
             this.label10.Text = "Selecciona tus preferencias sobre el horario y crealo.";
             // 
+            // btnDescartar
+            // 
+            this.btnDescartar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnDescartar.Location = new System.Drawing.Point(28, 581);
+            this.btnDescartar.Name = "btnDescartar";
+            this.btnDescartar.Size = new System.Drawing.Size(156, 52);
+            this.btnDescartar.TabIndex = 36;
+            this.btnDescartar.Text = "Descartar";
+            this.btnDescartar.UseVisualStyleBackColor = true;
+            this.btnDescartar.Visible = false;
+            this.btnDescartar.Click += new System.EventHandler(this.btnDescartar_Click);
+            // 
             // ClientCrearHor2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Cornsilk;
-            this.ClientSize = new System.Drawing.Size(786, 565);
+            this.ClientSize = new System.Drawing.Size(795, 666);
+            this.Controls.Add(this.btnDescartar);
+            this.Controls.Add(this.grpBoxRestric);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.pnlHorario);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.btnAtras);
             this.Controls.Add(this.btnCrear);
-            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "ClientCrearHor2";
@@ -486,8 +510,8 @@
             this.Load += new System.EventHandler(this.ClientCrearHor2_Load);
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar2)).EndInit();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.grpBoxRestric.ResumeLayout(false);
+            this.grpBoxRestric.PerformLayout();
             this.groubBoxDias.ResumeLayout(false);
             this.groubBoxDias.PerformLayout();
             this.pnlHorario.ResumeLayout(false);
@@ -506,9 +530,9 @@
         private System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.TrackBar trackBar1;
         private System.Windows.Forms.TrackBar trackBar2;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox grpBoxRestric;
         private System.Windows.Forms.Button btnCrear;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnAtras;
         private System.Windows.Forms.CheckBox chkBoxDomingo;
         private System.Windows.Forms.CheckBox chkBoxSabado;
         private System.Windows.Forms.CheckBox chkBoxViernes;
@@ -535,5 +559,7 @@
         private System.Windows.Forms.Panel pnlLunes;
         private System.Windows.Forms.Button btnGuardar;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Button btnDescartar;
     }
 }

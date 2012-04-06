@@ -198,21 +198,22 @@ namespace TaimerGUI {
             }
         }
 
-        /*protected override void WndProc(ref Message m)
-            {
-              const int WM_SYSCOMMAND = 0x0112;
-              const int SC_MOVE = 0xF010;
-              //ShowScrollBar(this.Handle, (int)ScrollBarDirection.SB_BOTH, false);
-              switch (m.Msg)
-              {
-                case WM_SYSCOMMAND:
-                  int command = m.WParam.ToInt32() & 0xfff0;
-                  if (command == SC_MOVE)
-                    return;
-                  break;
-               }
-               base.WndProc(ref m);
-             }*/
+        private void btnBorrar_Click(object sender, EventArgs e) {
+            if (MessageBox.Show("¿Seguro que desa borrar el horario actual?",
+                   "¿Borrar horario?",
+                   MessageBoxButtons.YesNo,
+                   MessageBoxIcon.Question,
+                   MessageBoxDefaultButton.Button2) == DialogResult.Yes) {
+                       if (((ClientForm)this.MdiParent).getUsuario().BorraHorarioBool(horario)) {
+                           MessageBox.Show("Borrado correctamente");
+                           ((ClientForm)this.MdiParent).loadLastHorarios();
+                           ((ClientForm)this.MdiParent).verHorarios_Click(null, null);
+                       } else {
+                           MessageBox.Show("Error borrando", "No se ha podido borrar el horario.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                       }
+            }
+           
+        }
 
 
     }

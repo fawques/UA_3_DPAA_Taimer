@@ -26,45 +26,61 @@ namespace TaimerGUI
         }
         public void loadHorarios() {
             if (usrAux != null) {
-                dataGridHorarios.Rows.Clear();
+                pnlHorarios.Controls.Clear();
+                int posY = 10;
                 foreach (Horario hor in usrAux.Horarios) {
-                    dataGridHorarios.Rows.Add(hor.ID,hor.Nombre);
-                    dataGridHorarios.Rows[dataGridHorarios.Rows.Count - 1].Tag = hor;
+                    Label auxlbl = new Label();
+                    auxlbl.AutoSize = false;
+                    auxlbl.Width = 275;
+                    auxlbl.Text = hor.Nombre;
+                    auxlbl.Tag = hor;
+                    auxlbl.Location = new Point(25, posY);
+                    auxlbl.Cursor = Cursors.Hand;
+                    auxlbl.MouseEnter += new EventHandler(label_MouseEnter);
+                    auxlbl.Click += new EventHandler(label_Click);
+                    auxlbl.MouseLeave += new EventHandler(label_MouseLeave);
+                    posY += 25;
+                    pnlHorarios.Controls.Add(auxlbl);
                 }
             }
         }
         public void loadHorarios(string patron) {
             if (usrAux != null) {
-                dataGridHorarios.Rows.Clear();
+                pnlHorarios.Controls.Clear();
+                int posY = 10;
                 foreach (Horario hor in usrAux.Horarios) {
                     if (hor.Nombre.Contains(patron) || hor.ID.ToString().Contains(patron)){
-                        dataGridHorarios.Rows.Add(hor.ID, hor.Nombre);
-                        dataGridHorarios.Rows[dataGridHorarios.Rows.Count - 1].Tag = hor;
+                        Label auxlbl = new Label();
+                        auxlbl.AutoSize = false;
+                        auxlbl.Width = 275;
+                        auxlbl.Text = hor.Nombre;
+                        auxlbl.Tag = hor;
+                        auxlbl.Location = new Point(25, posY);
+                        auxlbl.Cursor = Cursors.Hand;
+                        auxlbl.MouseEnter += new EventHandler(label_MouseEnter);
+                        auxlbl.Click += new EventHandler(label_Click);
+                        auxlbl.MouseLeave += new EventHandler(label_MouseLeave);
+                        posY += 25;
+                        pnlHorarios.Controls.Add(auxlbl);
                     }
                 }
             }
         }
 
-        private void dataGridHorarios_CellContentClick(object sender, DataGridViewCellEventArgs e) {
-            if (e.RowIndex >= 0) {
-                if (e.ColumnIndex == dataGridHorarios.Columns["Borrar"].Index) {
-                    try {
-                        usrAux.BorraHorario((Horario)dataGridHorarios.Rows[e.RowIndex].Tag);
-                    } catch (NotSupportedException exc) {
-                        MessageBox.Show(exc.Message);
-                    }
-                    dataGridHorarios.Rows.RemoveAt(e.RowIndex);
-                    ((ClientForm)this.MdiParent).loadLastHorarios();
-                } else if (e.ColumnIndex == dataGridHorarios.Columns["Ver"].Index) {
-                    if (dataGridHorarios.Rows[e.RowIndex].Tag is Horario) {
-                        verHorForm.setHorario((Horario)dataGridHorarios.Rows[e.RowIndex].Tag);
-                        verHorForm.Show();
-                        verHorForm.Focus();
-                    } else {
-                        MessageBox.Show("Horario no valido", "El horario seleccionado no es valido", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }
+        private void label_MouseEnter(object sender, EventArgs e) {
+            ((Label)sender).BackColor = Color.White;
+        }
+        private void label_MouseLeave(object sender, EventArgs e) {
+            ((Label)sender).BackColor = Color.Transparent;
+        }
+        private void label_Click(object sender, EventArgs e) {
+            if (sender is Label) {
+                Horario act = (Horario)((Label)sender).Tag;
+                verHorForm.setHorario(act);
+                verHorForm.Show();
+                verHorForm.Focus();
             }
+
         }
 
         private void txtBoxFilter_TextChanged(object sender, EventArgs e) {

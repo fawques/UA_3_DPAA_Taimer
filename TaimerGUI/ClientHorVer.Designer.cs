@@ -47,11 +47,12 @@
             this.pnlMartes = new System.Windows.Forms.Panel();
             this.pnlLunes = new System.Windows.Forms.Panel();
             this.grpBoxDatosAsig = new System.Windows.Forms.GroupBox();
+            this.lblHorFin = new System.Windows.Forms.Label();
+            this.lblHorIni = new System.Windows.Forms.Label();
             this.lblDescripAsig = new System.Windows.Forms.Label();
             this.lblNombreAsig = new System.Windows.Forms.Label();
-            this.lblHorIni = new System.Windows.Forms.Label();
-            this.lblHorFin = new System.Windows.Forms.Label();
             this.txtBoxNombreHor = new System.Windows.Forms.TextBox();
+            this.btnBorrar = new System.Windows.Forms.Button();
             this.pnlHorario.SuspendLayout();
             this.grpBoxDatosAsig.SuspendLayout();
             this.SuspendLayout();
@@ -267,6 +268,20 @@
             this.grpBoxDatosAsig.TabStop = false;
             this.grpBoxDatosAsig.Text = "Datos";
             // 
+            // lblHorFin
+            // 
+            this.lblHorFin.Location = new System.Drawing.Point(399, 58);
+            this.lblHorFin.Name = "lblHorFin";
+            this.lblHorFin.Size = new System.Drawing.Size(100, 23);
+            this.lblHorFin.TabIndex = 3;
+            // 
+            // lblHorIni
+            // 
+            this.lblHorIni.Location = new System.Drawing.Point(399, 22);
+            this.lblHorIni.Name = "lblHorIni";
+            this.lblHorIni.Size = new System.Drawing.Size(100, 23);
+            this.lblHorIni.TabIndex = 2;
+            // 
             // lblDescripAsig
             // 
             this.lblDescripAsig.Location = new System.Drawing.Point(150, 47);
@@ -281,20 +296,6 @@
             this.lblNombreAsig.Size = new System.Drawing.Size(100, 23);
             this.lblNombreAsig.TabIndex = 0;
             // 
-            // lblHorIni
-            // 
-            this.lblHorIni.Location = new System.Drawing.Point(399, 22);
-            this.lblHorIni.Name = "lblHorIni";
-            this.lblHorIni.Size = new System.Drawing.Size(100, 23);
-            this.lblHorIni.TabIndex = 2;
-            // 
-            // lblHorFin
-            // 
-            this.lblHorFin.Location = new System.Drawing.Point(399, 58);
-            this.lblHorFin.Name = "lblHorFin";
-            this.lblHorFin.Size = new System.Drawing.Size(100, 23);
-            this.lblHorFin.TabIndex = 3;
-            // 
             // txtBoxNombreHor
             // 
             this.txtBoxNombreHor.Location = new System.Drawing.Point(12, 21);
@@ -305,6 +306,17 @@
             this.txtBoxNombreHor.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBoxNombreHor_KeyPress);
             this.txtBoxNombreHor.Leave += new System.EventHandler(this.txtBoxNombreHor_Leave);
             // 
+            // btnBorrar
+            // 
+            this.btnBorrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnBorrar.Location = new System.Drawing.Point(680, 9);
+            this.btnBorrar.Name = "btnBorrar";
+            this.btnBorrar.Size = new System.Drawing.Size(92, 32);
+            this.btnBorrar.TabIndex = 29;
+            this.btnBorrar.Text = "Borrar horario";
+            this.btnBorrar.UseVisualStyleBackColor = true;
+            this.btnBorrar.Click += new System.EventHandler(this.btnBorrar_Click);
+            // 
             // ClientHorVer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -312,6 +324,7 @@
             this.BackColor = System.Drawing.Color.Cornsilk;
             this.ClientSize = new System.Drawing.Size(784, 562);
             this.ControlBox = false;
+            this.Controls.Add(this.btnBorrar);
             this.Controls.Add(this.txtBoxNombreHor);
             this.Controls.Add(this.grpBoxDatosAsig);
             this.Controls.Add(this.lblNombreHora);
@@ -356,5 +369,6 @@
         private System.Windows.Forms.Label lblHorFin;
         private System.Windows.Forms.Label lblHorIni;
         private System.Windows.Forms.TextBox txtBoxNombreHor;
+        private System.Windows.Forms.Button btnBorrar;
     }
 }

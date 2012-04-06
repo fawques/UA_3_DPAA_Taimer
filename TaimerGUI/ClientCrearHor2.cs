@@ -167,8 +167,10 @@ namespace TaimerGUI {
                    loadHorario(hAux);
                    btnCrear.Visible = false;
                    btnGuardar.Visible = true;
-                   button2.Enabled = false;
-                   pnlHorario.Enabled = true;
+                   btnAtras.Visible = false;
+                   btnDescartar.Visible = true;
+                   pnlHorario.Visible = true;
+                   grpBoxRestric.Visible = false;
                }
             }
            
@@ -209,8 +211,10 @@ namespace TaimerGUI {
         public void reiniciar() {
             btnCrear.Visible = true;
             btnGuardar.Visible = false;
-            button2.Enabled = true;
-            pnlHorario.Enabled = false;
+            btnAtras.Visible = true;
+            btnDescartar.Visible = false;
+            pnlHorario.Visible = false;
+            grpBoxRestric.Visible = true;
             clearAllHorarioAct();
             initPanelHorario(0, 23);
         }
@@ -227,6 +231,10 @@ namespace TaimerGUI {
 
         private void ClientCrearHor2_Activated(object sender, EventArgs e) {
             this.reiniciar();
+        }
+
+        private void btnDescartar_Click(object sender, EventArgs e) {
+            ((ClientForm)this.MdiParent).verHorarios_Click(null,null);
         }
     }
 }
