@@ -25,6 +25,7 @@ namespace TaimerGUI
 
         private void loadPersonales() {
             if (usrAux != null) {
+                pnlPersonales.Controls.Clear();
                 int posY = 10;
                 foreach(Actividad_p obj in usrAux.ActPersonales){
                     Label auxlbl = new Label();
@@ -45,6 +46,7 @@ namespace TaimerGUI
 
         private void loadOficiales() {
             if (usrAux != null) {
+                pnlOficiales.Controls.Clear();
                 int posY = 10;
                 foreach(Actividad_a obj in usrAux.ActAcademicas){
                     Label auxlbl = new Label();
@@ -65,6 +67,7 @@ namespace TaimerGUI
 
         private void loadPersonales(string nom) {
             if (usrAux != null) {
+                pnlPersonales.Controls.Clear();
                 int posY = 10;
                 foreach (Actividad_p obj in usrAux.ActPersonales) {
                     if (obj.Nombre.ToLower().Contains(nom)) {
@@ -87,6 +90,7 @@ namespace TaimerGUI
 
         private void loadOficiales(string nom) {
             if (usrAux != null) {
+                pnlOficiales.Controls.Clear();
                 int posY = 10;
                 foreach (Actividad_a obj in usrAux.ActAcademicas) {
                     if (obj.Nombre.ToLower().Contains(nom)) {
@@ -151,6 +155,9 @@ namespace TaimerGUI
                 btnCancelar.Enabled = false;
                 btnGuardar.Enabled = false;
                 panel1.Focus();
+                loadPersonales();
+                ClientForm pare = (ClientForm)this.MdiParent;
+                pare.loadLastActividades();
             }
         }
 
@@ -278,7 +285,7 @@ namespace TaimerGUI
         private void btnGestTurn_Click(object sender, EventArgs e) {
             if (grpBoxDatosAct.Tag is Actividad_p) {
                 this.formGestTurnos.setFormPadre(this);
-                this.formGestTurnos.loadActividad((Actividad_p)grpBoxDatosAct.Tag);
+                this.formGestTurnos.setActividad((Actividad_p)grpBoxDatosAct.Tag);
                 this.formGestTurnos.Show();
                 this.formGestTurnos.Focus();
             }

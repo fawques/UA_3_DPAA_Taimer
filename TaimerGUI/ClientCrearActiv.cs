@@ -93,7 +93,7 @@ namespace TaimerGUI
             }
             this.formGestTurnos.reiniciar();
             this.formGestTurnos.setFormPadre(this);
-            this.formGestTurnos.loadActividad(actAux);
+            this.formGestTurnos.setActividad(actAux);
             this.formGestTurnos.Show();
             this.formGestTurnos.Focus();
         }

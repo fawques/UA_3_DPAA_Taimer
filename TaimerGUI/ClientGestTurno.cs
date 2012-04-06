@@ -32,9 +32,13 @@ namespace TaimerGUI {
             comboBoxDia.SelectedIndex = 0;
         }
 
-        public void loadActividad(Actividad_p act) {
+        public void setActividad(Actividad_p act) {
             actividadDefinitiva = act;
-            actividad = new Actividad_p(actividadDefinitiva);
+            actividad = new Actividad_p(act);
+            loadActividad(actividad);
+        }
+
+        public void loadActividad(Actividad_p act) {
             this.reiniciar();
             if (actividad is Actividad_p) {
                 gVHorasTemp.Rows.Clear();
@@ -79,6 +83,10 @@ namespace TaimerGUI {
             gVHorasTemp.Rows.Clear();
             txtBoxLugar.Text = "";
             grpBoxTurno.Visible = false;
+            nmUpDwnHorDesde.Value = 0;
+            nmUpDwnHorHasta.Value = 0;
+            nmUpDwnMinDesde.Value = 0;
+            nmUpDwnMinHasta.Value = 0;
         }
 
         private void btnTerminar_Click(object sender, EventArgs e) {
@@ -152,7 +160,7 @@ namespace TaimerGUI {
 
         private void btnConfCambios_Click(object sender, EventArgs e) {
             this.reiniciar();
-            //actividadDefinitiva.copiar(actividad);
+            actividadDefinitiva.CopiarDesde(actividad);
             if (formBackVer != null) {
                 this.formBackVer.Show();
                 this.formBackVer.Focus();
