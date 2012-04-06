@@ -20,7 +20,13 @@ namespace CAD
             // Adquiere la cadena de conexión desde un único sitio
 
         }
-        //Método para crear una Actividad con todos sus parametros
+        /// <summary>
+        /// Insertar una actividad personal en la BD
+        /// </summary>
+        /// <param name="nombre"></param>
+        /// <param name="desc"></param>
+        /// <param name="codigo"></param>
+        /// <param name="idUser"></param>
         public void CrearActivida_pAll(string nombre,string desc,int codigo,string idUser){
 
             string comando = "INSERT INTO [Actividad_p](autor,codigo) VALUES('" + idUser + "', '" + codigo + "')";
@@ -48,7 +54,12 @@ namespace CAD
             }
         
         }
-        //Método para insertar sin campos obligatorios
+        /// <summary>
+        /// Inserta una actividad en la BD pero solo los atributos obligatorios
+        /// </summary>
+        /// <param name="nombre"></param>
+        /// <param name="codigo"></param>
+        /// <param name="idUser"></param>
         public void CrearActividadpBasic(string nombre, int codigo, string idUser)
         {
 
@@ -77,7 +88,10 @@ namespace CAD
 
         }
 
-        //Borrar una actividad
+        /// <summary>
+        /// Borra una actividad personal
+        /// </summary>
+        /// <param name="codigo"></param>
         public void BorrarActividad_p(int codigo) {
 
             SqlConnection c = null;
@@ -103,7 +117,11 @@ namespace CAD
 
         }
                 
-        //Obtenemos los datos de un Actividad según su id
+        /// <summary>
+        /// Coge los datos de una actividad concreta
+        /// </summary>
+        /// <param name="cod"></param>
+        /// <returns></returns>
         public DataSet GetDatosActividad_p(int cod)
         {
 
@@ -129,7 +147,10 @@ namespace CAD
                 if (con != null) con.Close(); // Se asegura de cerrar la conexión.
             }
         }
-        //Devuelve la lista de Actividades
+        /// <summary>
+        /// Devuelve toda la lista de actividades personales
+        /// </summary>
+        /// <returns></returns>
         public DataSet GetActividades_p()
         {
             SqlConnection con = null;
@@ -154,6 +175,11 @@ namespace CAD
                 if (con != null) con.Close(); // Se asegura de cerrar la conexión.
             }
         }
+       
+        /// <summary>
+        /// Devuelve el código de la última actividad generada
+        /// </summary>
+        /// <returns></returns>
         public DataSet LastCode()
         {
             SqlConnection con = null;
@@ -177,7 +203,11 @@ namespace CAD
                 if (con != null) con.Close(); // Se asegura de cerrar la conexión.
             }
         }
-
+        /// <summary>
+        ///  Devuelve las actividades personales de un usuario concreto
+        /// </summary>
+        /// <param name="dni"></param>
+        /// <returns></returns>
 
         public DataSet GetActividadesPByUser(string dni)
         {

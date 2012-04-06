@@ -20,7 +20,13 @@ namespace CAD
             // Adquiere la cadena de conexión desde un único sitio
 
         }
-        //Método para crear un nuevo usu
+        /// <summary>
+        /// Método para crear un nuevo usuario
+        /// </summary>
+        /// <param name="dni"></param>
+        /// <param name="nombre"></param>
+        /// <param name="email"></param>
+        /// <param name="password"></param>
         public void CrearUserBasic(string dni, string nombre, string email, string password)
         {
             string comando = "INSERT INTO [User](dni,nombre,email,password) VALUES('" + dni + "', '" + nombre + "', '" + email + "', '" + password + "')";
@@ -44,7 +50,16 @@ namespace CAD
                 if (c != null) c.Close(); // Se asegura de cerrar la conexión.
             }
         }
-
+        /// <summary>
+        /// Método para crear un nuevo usuario
+        /// </summary>
+        /// <param name="dni"></param>
+        /// <param name="nombre"></param>
+        /// <param name="email"></param>
+        /// <param name="password"></param>
+        /// <param name="curso"></param>
+        /// <param name="tit"></param>
+        /// <param name="codH"></param>
         public void CrearUserAll(string dni, string nombre, string email, string password, int curso, string tit,int codH)
         {
             string comando = "INSERT INTO [User] VALUES('" + dni + "', '" + nombre + "', '" + email + "', '" + password + "','"+ curso+"','"+tit+"','"+codH+"')";
@@ -68,7 +83,10 @@ namespace CAD
                 if (c != null) c.Close(); // Se asegura de cerrar la conexión.
             }
         }
-
+        /// <summary>
+        /// Borra un usuario
+        /// </summary>
+        /// <param name="id"></param>
         public void BorrarUser(string id)
         {
             SqlConnection c = null;
@@ -98,7 +116,10 @@ namespace CAD
             }
         }
 
-        //Obtenemos un dataset con los datos de los usuarios
+        /// <summary>
+        /// Obtenemos un dataset con los datos de los usuarios
+        /// </summary>
+        /// <returns></returns>
         public DataSet GetUsers()
         {
 
@@ -124,7 +145,11 @@ namespace CAD
                 if (con != null) con.Close(); // Se asegura de cerrar la conexión.
             }
         }
-         //Obtenemos los datos de un usuario según su dni
+         /// <summary>
+        /// Obtenemos los datos de un usuario según su dni
+         /// </summary>
+         /// <param name="dni"></param>
+         /// <returns></returns>
         public DataSet GetDatosUser(string dni)
         {
 
@@ -149,7 +174,14 @@ namespace CAD
                 if (con != null) con.Close(); // Se asegura de cerrar la conexión.
             }
         }
-        //Actualizar datos de un Usuario cuyo dni sea el que pasan como parámetro
+        /// <summary>
+        /// Actualizar datos de un Usuario cuyo dni sea el que pasan como parámetro
+        /// </summary>
+        /// <param name="dni"></param>
+        /// <param name="nombre"></param>
+        /// <param name="email"></param>
+        /// <param name="password"></param>
+        /// <param name="tit"></param>
         public void ModificaUser(string dni, string nombre, string email, string password,string tit)
         {
             string comando = "UPDATE [User] SET nombre = '" + nombre + "', email = '" + email + "', password = '" + password + "', titulacion = '" +tit+ "' WHERE dni = '" + dni + "'";

@@ -19,7 +19,12 @@ namespace CAD
             // Adquiere la cadena de conexión desde un único sitio
             conexionTBD = Conection.Conect.ConectionString;
         }
-        //Método para crear un nuevo usu
+        /// <summary>
+        /// Creamos un nuevo horario en BD
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="tit"></param>
+        /// <param name="user"></param>
         public void CrearHorarioBasic(int id, string tit, string user)
         {
             string comando = "INSERT INTO [Horario](id,titulo,usuario) VALUES('" + id + "', '" + tit + "', '" + user + "')";
@@ -43,7 +48,10 @@ namespace CAD
                 if (c != null) c.Close(); // Se asegura de cerrar la conexión.
             }
         }
-
+        /// <summary>
+        /// Borramos un horario
+        /// </summary>
+        /// <param name="id"></param>
         public void BorrarHorario(int id)
         {
             SqlConnection c = null;
@@ -66,7 +74,10 @@ namespace CAD
             }
         }
 
-        //Obtenemos un dataset con los datos de los usuarios
+        /// <summary>
+        /// Devolvemos la lista de horarios
+        /// </summary>
+        /// <returns></returns>
         public DataSet GetHorarios()
         {
 
@@ -92,7 +103,11 @@ namespace CAD
                 if (con != null) con.Close(); // Se asegura de cerrar la conexión.
             }
         }
-         //Obtenemos los datos de un usuario según su dni
+        /// <summary>
+        /// Devolvemos los datos de un horario
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public DataSet GetDatosHorario(int id)
         {
 
@@ -118,7 +133,12 @@ namespace CAD
                 if (con != null) con.Close(); // Se asegura de cerrar la conexión.
             }
         }
-        //Actualizar datos de un Usuario cuyo dni sea el que pasan como parámetro
+        /// <summary>
+        /// MOdificamos un horario
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="tit"></param>
+        /// <param name="user"></param>
         public void ModificaComment(int id, string tit, string user)
         {
             string comando = "UPDATE [Horario] SET id = '" + id + "', titulo = '" + tit + "',  usuario = '" + user + "' WHERE id = '" + id + "'";

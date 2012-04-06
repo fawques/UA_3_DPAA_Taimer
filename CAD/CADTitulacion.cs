@@ -20,7 +20,11 @@ namespace CAD
             // Adquiere la cadena de conexión desde un único sitio
 
         }
-        //Método para crear un nuevo usu
+        /// <summary>
+        /// Insertamos una titulación
+        /// </summary>
+        /// <param name="cod"></param>
+        /// <param name="nom"></param>
         public void CrearTitulacion(string cod, string nom)
         {
             string comando = "INSERT INTO [Titulacion](codigo,nombre) VALUES('"+cod+"','"+nom+"')";
@@ -44,6 +48,10 @@ namespace CAD
                 if (c != null) c.Close(); // Se asegura de cerrar la conexión.
             }
         }
+        /// <summary>
+        /// Borramos una titulación
+        /// </summary>
+        /// <param name="cod"></param>
         public void BorrarTitulacion(string cod)
         {   
             SqlConnection c = null;
@@ -67,7 +75,10 @@ namespace CAD
             }
         }
 
-         //Obtenemos un dataset con los datos de los usuarios
+        /// <summary>
+        /// Devolvemos la lista de titulaciones de la BD
+        /// </summary>
+        /// <returns></returns>
         public DataSet GetTitulaciones()
         {
 
@@ -93,7 +104,11 @@ namespace CAD
                 if (con != null) con.Close(); // Se asegura de cerrar la conexión.
             }
         }
-         //Obtenemos los datos de un usuario según su dni
+         /// <summary>
+        /// Obtenemos los datos de una titulación 
+         /// </summary>
+         /// <param name="cod"></param>
+         /// <returns></returns>
         public DataSet GetDatos(string cod)
         {
 
@@ -118,7 +133,12 @@ namespace CAD
                 if (con != null) con.Close(); // Se asegura de cerrar la conexión.
             }
         }
-        //Actualizar datos de un Usuario cuyo dni sea el que pasan como parámetro
+        /// <summary>
+        /// Actualizar datos de una titulación
+        /// </summary>
+        /// <param name="cod"></param>
+        /// <param name="nom"></param>
+
         public void ModificaTitulacion(string cod, string nom)
         {
 

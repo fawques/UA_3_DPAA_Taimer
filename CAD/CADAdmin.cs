@@ -20,7 +20,13 @@ namespace CAD
             // Adquiere la cadena de conexión desde un único sitio
 
         }
-        //Método para crear un nuevo usu
+        /// <summary>
+        /// Creamos un nuevo admin
+        /// </summary>
+        /// <param name="dni"></param>
+        /// <param name="nombre"></param>
+        /// <param name="email"></param>
+        /// <param name="password"></param>
         public void CrearAdminBasic(string dni, string nombre, string email, string password)
         {
             string comando = "INSERT INTO [Admin](dni,nombre,email,password) VALUES('" + dni + "', '" + nombre + "', '" + email + "', '" + password + "')";
@@ -44,7 +50,10 @@ namespace CAD
                 if (c != null) c.Close(); // Se asegura de cerrar la conexión.
             }
         }
-
+        /// <summary>
+        /// Borramos un admin
+        /// </summary>
+        /// <param name="id"></param>
         public void BorrarAdmin(string id)
         {
             SqlConnection c = null;
@@ -67,7 +76,10 @@ namespace CAD
             }
         }
 
-        //Obtenemos un dataset con los datos de los usuarios
+        /// <summary>
+        /// Obtenemos a todos los admin de la base de datos
+        /// </summary>
+        /// <returns></returns>
         public DataSet GetAdmins()
         {
 
@@ -93,13 +105,17 @@ namespace CAD
                 if (con != null) con.Close(); // Se asegura de cerrar la conexión.
             }
         }
-         //Obtenemos los datos de un usuario según su dni
+        /// <summary>
+        /// Obtenemos los datos de un admin concreto
+        /// </summary>
+        /// <param name="dni"></param>
+        /// <returns></returns>
         public DataSet GetDatosAdmin(string dni)
         {
 
             SqlConnection con = null;
             DataSet datos = null;
-            string comando = "Select * from [Admin] where dni="+dni;
+            string comando = "Select * from [Admin] where dni='"+dni+"'";
             try
             {
                 con = new SqlConnection(conexionTBD);
@@ -119,7 +135,13 @@ namespace CAD
                 if (con != null) con.Close(); // Se asegura de cerrar la conexión.
             }
         }
-        //Actualizar datos de un Usuario cuyo dni sea el que pasan como parámetro
+        /// <summary>
+        /// Modifica un admin
+        /// </summary>
+        /// <param name="dni"></param>
+        /// <param name="nombre"></param>
+        /// <param name="email"></param>
+        /// <param name="password"></param>
         public void ModificaAdmin(string dni, string nombre, string email, string password)
         {
             string comando = "UPDATE [Admin] SET dni = '" + dni + "', nombre = '" + nombre + "', email = '" + email + "', password = '" + password + "' WHERE dni = '" + dni + "'";

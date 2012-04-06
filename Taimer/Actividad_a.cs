@@ -90,7 +90,6 @@ namespace Taimer {
             curso = act.curso;
         }
 
-
         /// <summary>
         /// Asigna/Devuelve el curso de la Actividad_a
         /// </summary>
