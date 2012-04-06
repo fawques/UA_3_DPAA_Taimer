@@ -57,6 +57,13 @@ namespace TaimerGUI {
             lblDescripAsig.Text = "";
             lblHorIni.Text = "";
             lblHorFin.Text = "";
+            pnlLunes.Controls.Clear();
+            pnlMartes.Controls.Clear();
+            pnlMiercoles.Controls.Clear();
+            pnlJueves.Controls.Clear();
+            pnlViernes.Controls.Clear();
+            pnlSabado.Controls.Clear();
+            pnlDomingo.Controls.Clear();
             if (horario != null) {
                 int minimo = horario.minHora().Hor;
                 int maximo = horario.maxHora().Hor;
@@ -70,7 +77,7 @@ namespace TaimerGUI {
                 for (int i = 0; i < horario.ArrayTurnos.Length; i++) {
                     foreach (Turno item in horario.ArrayTurnos[i]) {
                         int posi = (item.HoraInicio.Hor * 60 + item.HoraFin.Min) - recorteArriba;
-                        int duracion = (item.HoraFin.Hor - item.HoraInicio.Hor) * 60;//TODO cambiar a la funcion que sabe restar horas
+                        int duracion = item.HoraInicio.MinutosDeDiferencia(item.HoraFin);
                         Button b = new Button();
                         b.Height = duracion;
                         b.Width = 90;
