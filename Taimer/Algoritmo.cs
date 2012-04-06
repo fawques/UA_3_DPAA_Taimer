@@ -173,13 +173,14 @@ namespace Taimer
 
                 }
                 posibles = new List<Horario>(soluciones.ToList());
-                optimo = null;
+                if (seleccionadas_a.Count != 0)
+                    optimo = null;
 
 
                 int puntuacion = int.MaxValue;
                 if (minDias)
                 {
-                    foreach (Horario sol in soluciones)
+                    foreach (Horario sol in posibles)
                     {
                         if (puntuarDias(sol) < puntuacion)
                         {
@@ -191,7 +192,7 @@ namespace Taimer
                 }
                 else // suponemos que o es minDias o es minHuecos
                 {
-                    foreach (Horario sol in soluciones)
+                    foreach (Horario sol in posibles)
                     {
                         if (puntuarHorasHueco(sol) < puntuacion)
                         {
