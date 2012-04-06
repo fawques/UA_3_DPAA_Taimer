@@ -63,6 +63,7 @@
             this.pnlMartes = new System.Windows.Forms.Panel();
             this.pnlLunes = new System.Windows.Forms.Panel();
             this.btnGuardar = new System.Windows.Forms.Button();
+            this.label10 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar2)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -455,12 +456,22 @@
             this.btnGuardar.Visible = false;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(68, 50);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(256, 13);
+            this.label10.TabIndex = 35;
+            this.label10.Text = "Selecciona tus preferencias sobre el horario y crealo.";
+            // 
             // ClientCrearHor2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Cornsilk;
             this.ClientSize = new System.Drawing.Size(786, 565);
+            this.Controls.Add(this.label10);
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.pnlHorario);
             this.Controls.Add(this.button2);
@@ -523,5 +534,6 @@
         private System.Windows.Forms.Panel pnlMartes;
         private System.Windows.Forms.Panel pnlLunes;
         private System.Windows.Forms.Button btnGuardar;
+        private System.Windows.Forms.Label label10;
     }
 }

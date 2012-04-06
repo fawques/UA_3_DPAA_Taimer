@@ -34,14 +34,15 @@
             this.label5 = new System.Windows.Forms.Label();
             this.rTBDescripcion = new System.Windows.Forms.RichTextBox();
             this.gVHorasTemp = new System.Windows.Forms.DataGridView();
-            this.bttnCrearActiv = new System.Windows.Forms.Button();
-            this.bCancelar = new System.Windows.Forms.Button();
-            this.lblErrorNombre = new System.Windows.Forms.Label();
-            this.btnAddTurno = new System.Windows.Forms.Button();
             this.dia = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.horaInicio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.horaFin = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lugar = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bttnCrearActiv = new System.Windows.Forms.Button();
+            this.bCancelar = new System.Windows.Forms.Button();
+            this.lblErrorNombre = new System.Windows.Forms.Label();
+            this.btnAddTurno = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.gVHorasTemp)).BeginInit();
             this.SuspendLayout();
             // 
@@ -57,7 +58,7 @@
             // 
             // tBNombre
             // 
-            this.tBNombre.Location = new System.Drawing.Point(35, 101);
+            this.tBNombre.Location = new System.Drawing.Point(32, 132);
             this.tBNombre.Name = "tBNombre";
             this.tBNombre.Size = new System.Drawing.Size(180, 20);
             this.tBNombre.TabIndex = 23;
@@ -65,7 +66,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(32, 85);
+            this.label2.Location = new System.Drawing.Point(29, 116);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(44, 13);
             this.label2.TabIndex = 27;
@@ -104,6 +105,30 @@
             this.gVHorasTemp.TabIndex = 35;
             this.gVHorasTemp.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gVHorasTemp_CellContentClick);
             // 
+            // dia
+            // 
+            this.dia.HeaderText = "Dia";
+            this.dia.Name = "dia";
+            this.dia.ReadOnly = true;
+            // 
+            // horaInicio
+            // 
+            this.horaInicio.HeaderText = "Hora inicio";
+            this.horaInicio.Name = "horaInicio";
+            this.horaInicio.ReadOnly = true;
+            // 
+            // horaFin
+            // 
+            this.horaFin.HeaderText = "Hora fin";
+            this.horaFin.Name = "horaFin";
+            this.horaFin.ReadOnly = true;
+            // 
+            // lugar
+            // 
+            this.lugar.HeaderText = "Lugar";
+            this.lugar.Name = "lugar";
+            this.lugar.ReadOnly = true;
+            // 
             // bttnCrearActiv
             // 
             this.bttnCrearActiv.Location = new System.Drawing.Point(535, 548);
@@ -129,7 +154,7 @@
             this.lblErrorNombre.AutoSize = true;
             this.lblErrorNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblErrorNombre.ForeColor = System.Drawing.Color.Red;
-            this.lblErrorNombre.Location = new System.Drawing.Point(221, 105);
+            this.lblErrorNombre.Location = new System.Drawing.Point(218, 136);
             this.lblErrorNombre.Name = "lblErrorNombre";
             this.lblErrorNombre.Size = new System.Drawing.Size(92, 12);
             this.lblErrorNombre.TabIndex = 58;
@@ -146,29 +171,15 @@
             this.btnAddTurno.UseVisualStyleBackColor = true;
             this.btnAddTurno.Click += new System.EventHandler(this.button2_Click);
             // 
-            // dia
+            // label3
             // 
-            this.dia.HeaderText = "Dia";
-            this.dia.Name = "dia";
-            this.dia.ReadOnly = true;
-            // 
-            // horaInicio
-            // 
-            this.horaInicio.HeaderText = "Hora inicio";
-            this.horaInicio.Name = "horaInicio";
-            this.horaInicio.ReadOnly = true;
-            // 
-            // horaFin
-            // 
-            this.horaFin.HeaderText = "Hora fin";
-            this.horaFin.Name = "horaFin";
-            this.horaFin.ReadOnly = true;
-            // 
-            // lugar
-            // 
-            this.lugar.HeaderText = "Lugar";
-            this.lugar.Name = "lugar";
-            this.lugar.ReadOnly = true;
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(32, 67);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(387, 13);
+            this.label3.TabIndex = 60;
+            this.label3.Text = "Crea tu actividad personal para luego gestionar horarios con actividades propias." +
+                "";
             // 
             // ClientCrearActiv
             // 
@@ -176,6 +187,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Cornsilk;
             this.ClientSize = new System.Drawing.Size(795, 595);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.btnAddTurno);
             this.Controls.Add(this.lblErrorNombre);
             this.Controls.Add(this.bCancelar);
@@ -213,5 +225,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn horaInicio;
         private System.Windows.Forms.DataGridViewTextBoxColumn horaFin;
         private System.Windows.Forms.DataGridViewTextBoxColumn lugar;
+        private System.Windows.Forms.Label label3;
     }
 }

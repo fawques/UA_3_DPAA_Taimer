@@ -43,6 +43,12 @@
             this.shapeContainer3 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
             this.lineShape1 = new Microsoft.VisualBasic.PowerPacks.LineShape();
             this.grpBoxDatosAct = new System.Windows.Forms.GroupBox();
+            this.dgTurns = new System.Windows.Forms.DataGridView();
+            this.Dia = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Inicio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Fin = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ubicacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnBorrar = new System.Windows.Forms.Button();
             this.btnGestTurn = new System.Windows.Forms.Button();
             this.codActividad = new System.Windows.Forms.Label();
             this.btnCancelar = new System.Windows.Forms.Button();
@@ -51,12 +57,7 @@
             this.lblNombre = new System.Windows.Forms.Label();
             this.txtBoxNombre = new System.Windows.Forms.TextBox();
             this.txtBoxDescripcion = new System.Windows.Forms.RichTextBox();
-            this.btnBorrar = new System.Windows.Forms.Button();
-            this.dgTurns = new System.Windows.Forms.DataGridView();
-            this.Dia = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Inicio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Fin = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Ubicacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label5 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -217,6 +218,64 @@
             this.grpBoxDatosAct.TabStop = false;
             this.grpBoxDatosAct.Text = "Datos";
             // 
+            // dgTurns
+            // 
+            this.dgTurns.AllowUserToAddRows = false;
+            this.dgTurns.AllowUserToDeleteRows = false;
+            this.dgTurns.AllowUserToOrderColumns = true;
+            this.dgTurns.BackgroundColor = System.Drawing.Color.Wheat;
+            this.dgTurns.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgTurns.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Dia,
+            this.Inicio,
+            this.Fin,
+            this.Ubicacion});
+            this.dgTurns.Location = new System.Drawing.Point(21, 177);
+            this.dgTurns.Name = "dgTurns";
+            this.dgTurns.ReadOnly = true;
+            this.dgTurns.Size = new System.Drawing.Size(298, 145);
+            this.dgTurns.TabIndex = 47;
+            this.dgTurns.Visible = false;
+            // 
+            // Dia
+            // 
+            this.Dia.HeaderText = "Dia";
+            this.Dia.Name = "Dia";
+            this.Dia.ReadOnly = true;
+            this.Dia.Width = 60;
+            // 
+            // Inicio
+            // 
+            this.Inicio.HeaderText = "Inicio";
+            this.Inicio.Name = "Inicio";
+            this.Inicio.ReadOnly = true;
+            this.Inicio.Width = 70;
+            // 
+            // Fin
+            // 
+            this.Fin.HeaderText = "Fin";
+            this.Fin.Name = "Fin";
+            this.Fin.ReadOnly = true;
+            this.Fin.Width = 70;
+            // 
+            // Ubicacion
+            // 
+            this.Ubicacion.HeaderText = "Ubicacion";
+            this.Ubicacion.Name = "Ubicacion";
+            this.Ubicacion.ReadOnly = true;
+            this.Ubicacion.Visible = false;
+            // 
+            // btnBorrar
+            // 
+            this.btnBorrar.Enabled = false;
+            this.btnBorrar.Location = new System.Drawing.Point(234, 385);
+            this.btnBorrar.Name = "btnBorrar";
+            this.btnBorrar.Size = new System.Drawing.Size(85, 34);
+            this.btnBorrar.TabIndex = 46;
+            this.btnBorrar.Text = "Borrar";
+            this.btnBorrar.UseVisualStyleBackColor = true;
+            this.btnBorrar.Click += new System.EventHandler(this.btnBorrar_Click);
+            // 
             // btnGestTurn
             // 
             this.btnGestTurn.Location = new System.Drawing.Point(209, 328);
@@ -300,63 +359,14 @@
             this.txtBoxDescripcion.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBoxDescripcion_KeyPress);
             this.txtBoxDescripcion.Leave += new System.EventHandler(this.txtBoxDescripcion_Leave);
             // 
-            // btnBorrar
+            // label5
             // 
-            this.btnBorrar.Enabled = false;
-            this.btnBorrar.Location = new System.Drawing.Point(234, 385);
-            this.btnBorrar.Name = "btnBorrar";
-            this.btnBorrar.Size = new System.Drawing.Size(85, 34);
-            this.btnBorrar.TabIndex = 46;
-            this.btnBorrar.Text = "Borrar";
-            this.btnBorrar.UseVisualStyleBackColor = true;
-            this.btnBorrar.Click += new System.EventHandler(this.btnBorrar_Click);
-            // 
-            // dgTurns
-            // 
-            this.dgTurns.AllowUserToAddRows = false;
-            this.dgTurns.AllowUserToDeleteRows = false;
-            this.dgTurns.AllowUserToOrderColumns = true;
-            this.dgTurns.BackgroundColor = System.Drawing.Color.Wheat;
-            this.dgTurns.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgTurns.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Dia,
-            this.Inicio,
-            this.Fin,
-            this.Ubicacion});
-            this.dgTurns.Location = new System.Drawing.Point(21, 177);
-            this.dgTurns.Name = "dgTurns";
-            this.dgTurns.ReadOnly = true;
-            this.dgTurns.Size = new System.Drawing.Size(298, 145);
-            this.dgTurns.TabIndex = 47;
-            this.dgTurns.Visible = false;
-            // 
-            // Dia
-            // 
-            this.Dia.HeaderText = "Dia";
-            this.Dia.Name = "Dia";
-            this.Dia.ReadOnly = true;
-            this.Dia.Width = 60;
-            // 
-            // Inicio
-            // 
-            this.Inicio.HeaderText = "Inicio";
-            this.Inicio.Name = "Inicio";
-            this.Inicio.ReadOnly = true;
-            this.Inicio.Width = 70;
-            // 
-            // Fin
-            // 
-            this.Fin.HeaderText = "Fin";
-            this.Fin.Name = "Fin";
-            this.Fin.ReadOnly = true;
-            this.Fin.Width = 70;
-            // 
-            // Ubicacion
-            // 
-            this.Ubicacion.HeaderText = "Ubicacion";
-            this.Ubicacion.Name = "Ubicacion";
-            this.Ubicacion.ReadOnly = true;
-            this.Ubicacion.Visible = false;
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(65, 50);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(175, 13);
+            this.label5.TabIndex = 35;
+            this.label5.Text = "Consulta y modifica tus actividades.";
             // 
             // ClientVerActividades
             // 
@@ -364,6 +374,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Cornsilk;
             this.ClientSize = new System.Drawing.Size(795, 595);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.grpBoxDatosAct);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label2);
@@ -420,5 +431,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Inicio;
         private System.Windows.Forms.DataGridViewTextBoxColumn Fin;
         private System.Windows.Forms.DataGridViewTextBoxColumn Ubicacion;
+        private System.Windows.Forms.Label label5;
     }
 }

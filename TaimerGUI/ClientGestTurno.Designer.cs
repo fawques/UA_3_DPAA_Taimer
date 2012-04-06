@@ -49,6 +49,7 @@
             this.lugar = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.borrar = new System.Windows.Forms.DataGridViewButtonColumn();
             this.grpBoxTurno = new System.Windows.Forms.GroupBox();
+            this.lblMenorTurno = new System.Windows.Forms.Label();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.label17 = new System.Windows.Forms.Label();
@@ -67,7 +68,7 @@
             this.cmbBoxDiaMod = new System.Windows.Forms.ComboBox();
             this.btnTerminar = new System.Windows.Forms.Button();
             this.btnConfCambios = new System.Windows.Forms.Button();
-            this.lblMenorTurno = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nmUpDwnMinHasta)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nmUpDwnMinDesde)).BeginInit();
@@ -109,9 +110,9 @@
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.comboBoxDia);
-            this.groupBox1.Location = new System.Drawing.Point(12, 91);
+            this.groupBox1.Location = new System.Drawing.Point(12, 123);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(203, 223);
+            this.groupBox1.Size = new System.Drawing.Size(203, 235);
             this.groupBox1.TabIndex = 69;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Hora y Dia";
@@ -286,9 +287,9 @@
             // 
             this.button1.BackgroundImage = global::TaimerGUI.Properties.Resources.flechaRight;
             this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.button1.Location = new System.Drawing.Point(232, 163);
+            this.button1.Location = new System.Drawing.Point(232, 195);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(43, 46);
+            this.button1.Size = new System.Drawing.Size(43, 58);
             this.button1.TabIndex = 68;
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -303,10 +304,10 @@
             this.horaFin,
             this.lugar,
             this.borrar});
-            this.gVHorasTemp.Location = new System.Drawing.Point(281, 91);
+            this.gVHorasTemp.Location = new System.Drawing.Point(281, 123);
             this.gVHorasTemp.Name = "gVHorasTemp";
             this.gVHorasTemp.ReadOnly = true;
-            this.gVHorasTemp.Size = new System.Drawing.Size(491, 203);
+            this.gVHorasTemp.Size = new System.Drawing.Size(491, 235);
             this.gVHorasTemp.TabIndex = 67;
             this.gVHorasTemp.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gVHorasTemp_CellClick);
             // 
@@ -369,6 +370,16 @@
             this.grpBoxTurno.Text = "Turno";
             this.grpBoxTurno.Visible = false;
             // 
+            // lblMenorTurno
+            // 
+            this.lblMenorTurno.ForeColor = System.Drawing.Color.Red;
+            this.lblMenorTurno.Location = new System.Drawing.Point(26, 106);
+            this.lblMenorTurno.Name = "lblMenorTurno";
+            this.lblMenorTurno.Size = new System.Drawing.Size(166, 32);
+            this.lblMenorTurno.TabIndex = 68;
+            this.lblMenorTurno.Text = "La hora de inicio debe ser menor que la de fin.";
+            this.lblMenorTurno.Visible = false;
+            // 
             // btnCancelar
             // 
             this.btnCancelar.Location = new System.Drawing.Point(548, 85);
@@ -392,11 +403,11 @@
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(259, 51);
+            this.label17.Location = new System.Drawing.Point(240, 51);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(34, 13);
+            this.label17.Size = new System.Drawing.Size(55, 13);
             this.label17.TabIndex = 65;
-            this.label17.Text = "Lugar";
+            this.label17.Text = "Ubicación";
             // 
             // txtBoxLugarMod
             // 
@@ -552,15 +563,14 @@
             this.btnConfCambios.UseVisualStyleBackColor = true;
             this.btnConfCambios.Click += new System.EventHandler(this.btnConfCambios_Click);
             // 
-            // lblMenorTurno
+            // label18
             // 
-            this.lblMenorTurno.ForeColor = System.Drawing.Color.Red;
-            this.lblMenorTurno.Location = new System.Drawing.Point(26, 106);
-            this.lblMenorTurno.Name = "lblMenorTurno";
-            this.lblMenorTurno.Size = new System.Drawing.Size(166, 32);
-            this.lblMenorTurno.TabIndex = 68;
-            this.lblMenorTurno.Text = "La hora de inicio debe ser menor que la de fin.";
-            this.lblMenorTurno.Visible = false;
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(71, 71);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(258, 13);
+            this.label18.TabIndex = 73;
+            this.label18.Text = "Añade, borra y modifica los turnos de tus actividades.";
             // 
             // ClientGestTurno
             // 
@@ -568,6 +578,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Cornsilk;
             this.ClientSize = new System.Drawing.Size(792, 616);
+            this.Controls.Add(this.label18);
             this.Controls.Add(this.btnConfCambios);
             this.Controls.Add(this.btnTerminar);
             this.Controls.Add(this.grpBoxTurno);
@@ -643,5 +654,6 @@
         private System.Windows.Forms.Label lbErrUbi;
         private System.Windows.Forms.Button btnConfCambios;
         private System.Windows.Forms.Label lblMenorTurno;
+        private System.Windows.Forms.Label label18;
     }
 }

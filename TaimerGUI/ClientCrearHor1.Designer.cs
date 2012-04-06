@@ -48,6 +48,8 @@
             this.tBxNombre = new System.Windows.Forms.TextBox();
             this.lblErrorNombre = new System.Windows.Forms.Label();
             this.lblErrorActiv = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridMyAct)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridActHor)).BeginInit();
             this.SuspendLayout();
@@ -107,7 +109,7 @@
             // 
             this.lblNombre.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.lblNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNombre.Location = new System.Drawing.Point(49, 82);
+            this.lblNombre.Location = new System.Drawing.Point(75, 105);
             this.lblNombre.Name = "lblNombre";
             this.lblNombre.Size = new System.Drawing.Size(176, 16);
             this.lblNombre.TabIndex = 14;
@@ -228,7 +230,7 @@
             // 
             // tBxNombre
             // 
-            this.tBxNombre.Location = new System.Drawing.Point(52, 77);
+            this.tBxNombre.Location = new System.Drawing.Point(78, 100);
             this.tBxNombre.Name = "tBxNombre";
             this.tBxNombre.Size = new System.Drawing.Size(173, 20);
             this.tBxNombre.TabIndex = 25;
@@ -239,7 +241,7 @@
             this.lblErrorNombre.AutoSize = true;
             this.lblErrorNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblErrorNombre.ForeColor = System.Drawing.Color.Red;
-            this.lblErrorNombre.Location = new System.Drawing.Point(232, 83);
+            this.lblErrorNombre.Location = new System.Drawing.Point(258, 106);
             this.lblErrorNombre.Name = "lblErrorNombre";
             this.lblErrorNombre.Size = new System.Drawing.Size(92, 12);
             this.lblErrorNombre.TabIndex = 26;
@@ -258,12 +260,33 @@
             this.lblErrorActiv.Text = "No puede estar vacio";
             this.lblErrorActiv.Visible = false;
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(15, 105);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(44, 13);
+            this.label2.TabIndex = 28;
+            this.label2.Text = "Nombre";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(49, 64);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(448, 13);
+            this.label6.TabIndex = 29;
+            this.label6.Text = "Selecciona las asignaturas que deseas que aparezcan en tu horario y ponle nombre " +
+                "al mismo.";
+            // 
             // ClientCrearHor1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Cornsilk;
             this.ClientSize = new System.Drawing.Size(784, 562);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.lblErrorActiv);
             this.Controls.Add(this.lblErrorNombre);
             this.Controls.Add(this.label5);
@@ -313,5 +336,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colCodigo;
         private System.Windows.Forms.DataGridViewTextBoxColumn colNombre;
         private System.Windows.Forms.DataGridViewTextBoxColumn colDescripcion;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label6;
     }
 }

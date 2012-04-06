@@ -35,8 +35,8 @@ namespace TaimerGUI {
             asignarActividadesUser();
 
             //Redondeado de bordes
-            shape = RoundedRectangle.Create(0, 0, this.Width, this.Height, 10);
-            this.Region = new System.Drawing.Region(shape);
+            //shape = RoundedRectangle.Create(0, 0, this.Width, this.Height, 10);
+            //this.Region = new System.Drawing.Region(shape);
         }
 
         public User getUsuario() {
@@ -245,7 +245,7 @@ namespace TaimerGUI {
             if (this.WindowState != FormWindowState.Maximized)
             {
                 //Quitamos la mascara de redondeado
-                this.Region = new Region();
+                //this.Region = new Region();
 
                 this.beingResized = true;
                 this.mouseOffset = e.Location;
@@ -259,9 +259,9 @@ namespace TaimerGUI {
             {
                 this.beingResized = false;
                 // Recalculamos la mascara de recorte
-                shape = RoundedRectangle.Create(0, 0, this.Width, this.Height, 10);
+                //shape = RoundedRectangle.Create(0, 0, this.Width, this.Height, 10);
                 //Aplicamos la mascara
-                this.Region = new System.Drawing.Region(shape);
+                //this.Region = new System.Drawing.Region(shape);
             }
             
         }
@@ -351,7 +351,7 @@ namespace TaimerGUI {
             if (this.WindowState != FormWindowState.Maximized)
             {
                 //Quitamos la mascara de redondeado
-                this.Region = new Region();
+                //this.Region = new Region();
                 this.WindowState = FormWindowState.Maximized;
 
                 
@@ -359,7 +359,7 @@ namespace TaimerGUI {
             else
             {
                 //Restauramos la mascara de redondeado
-                this.Region = new System.Drawing.Region(shape);
+                //this.Region = new System.Drawing.Region(shape);
                 this.WindowState = FormWindowState.Normal;
             }
             // desactivamos el maximizado para que deje de mostrar el borde

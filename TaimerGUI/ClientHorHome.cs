@@ -21,10 +21,6 @@ namespace TaimerGUI
             verHorForm = f;
         }
 
-        private void button1_Click(object sender, EventArgs e) {
-            
-        }
-
         private void ClientHorHome_Activated(object sender, EventArgs e) {
             this.loadHorarios();
         }
