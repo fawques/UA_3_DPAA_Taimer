@@ -159,20 +159,71 @@ namespace TaimerGUI {
         //CAMBIAR CUANDO SE INTEGREN LOS CADs SERÁ MÁS RÁPIDO
         public static Actividad getActividad(int codigo) {
 
-            foreach (Actividad_a aa in asignaturas) {
-                if (aa.Codigo == codigo)
-                    return aa;
+            if (codigo > 0)
+            {
+                foreach (Actividad_a aa in asignaturas)
+                {
+                    if (aa.Codigo == codigo)
+                        return aa;
+                }
             }
-
-            foreach (User u in Usuarios) {
-                List<Actividad_p> act = u.ActPersonales;
-                foreach (Actividad ap in act) {
-                    if (ap.Codigo == codigo)
-                        return ap;
+            else
+            {
+                foreach (User u in Usuarios)
+                {
+                    List<Actividad_p> act = u.ActPersonales;
+                    foreach (Actividad ap in act)
+                    {
+                        if (ap.Codigo == codigo)
+                            return ap;
+                    }
                 }
             }
 
-            throw new ArgumentException("No existe una activida con ese código");
+            throw new ArgumentException("No existe una actividad con ese código");
+        }
+
+        /// <summary>
+        /// Modifica los datos de una actividad, asignándole los que tiene la actividad que se le pasa.
+        /// </summary>
+        /// <param name="act"></param>
+        public static void ModificarActividad(Actividad act)
+        {
+            bool borrado = false;
+            if (act.Codigo > 0) // Es académica
+            {
+                foreach (Actividad_a item in asignaturas)
+                {
+                    if (item.Codigo == act.Codigo)
+                    {
+                        item.CopiarDesde(act);
+                        borrado = true;
+                        break;
+                    }
+                }
+                if (!borrado)
+                    throw new ArgumentException("La Actividad especificada no existe");
+            }
+            else // Es personal
+            {
+                foreach (User item in usuarios)
+                {
+                    foreach (Actividad_p pers in item.ActPersonales)
+                    {
+                        if (pers.Codigo == act.Codigo)
+                        {
+                            pers.CopiarDesde(act);
+                            borrado = true;
+                            break;
+                        }
+                    }
+                    if (borrado)
+                        break;
+                    
+                }
+                if (!borrado)
+                    throw new ArgumentException("La Actividad especificada no existe");
+            }
         }
 
         public static LoginForm loginForm;
