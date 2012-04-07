@@ -11,7 +11,7 @@ using Taimer;
 namespace TaimerGUI {
     public partial class ClientGestTurno : Form {
 
-        
+
         private Actividad_p actividad = null;
         private Actividad_p actividadDefinitiva = null;
 
@@ -53,11 +53,11 @@ namespace TaimerGUI {
 
             Taimer.Hora horI = new Taimer.Hora((int)nmUpDwnHorDesde.Value, (int)nmUpDwnMinDesde.Value);
             Taimer.Hora horF = new Taimer.Hora((int)nmUpDwnHorHasta.Value, (int)nmUpDwnMinHasta.Value);
-                
+
 
             if (horI < horF && txtBoxLugar.Text != "") {
                 gVHorasTemp.Rows.Add(comboBoxDia.Text, horI.toString(), horF.toString(), txtBoxLugar.Text);
-                
+
                 Turno turnAux = new Turno(horI, horF, TaimerLibrary.convertToDais(comboBoxDia.Text), txtBoxLugar.Text);
                 try {
                     actividad.AddTurno(turnAux);
@@ -69,10 +69,10 @@ namespace TaimerGUI {
                 txtBoxLugar.Text = "";
                 lbErrUbi.Visible = false;
                 loadActividad(actividad);
-            } else if (txtBoxLugar.Text == ""){
+            } else if (txtBoxLugar.Text == "") {
                 lblErrorDate.Visible = false;
                 lbErrUbi.Visible = true;
-            }else{
+            } else {
                 lbErrUbi.Visible = false;
                 lblErrorDate.Visible = true;
             }
@@ -90,14 +90,21 @@ namespace TaimerGUI {
         }
 
         private void btnTerminar_Click(object sender, EventArgs e) {
-            this.reiniciar();
-            if (formBackVer != null) {
-                this.formBackVer.Show();
-                this.formBackVer.Focus();
-            } else if (formBackCrear != null) {
-                this.formBackCrear.Show();
-                this.formBackCrear.Focus();
-                this.formBackCrear.loadBoxTurnos();
+            if (MessageBox.Show("¿Seguro que desea cancelar los cambios?",
+                      "¿Cancelar cambios?",
+                      MessageBoxButtons.YesNo,
+                      MessageBoxIcon.Question,
+                      MessageBoxDefaultButton.Button2) == DialogResult.Yes) {
+
+                this.reiniciar();
+                if (formBackVer != null) {
+                    this.formBackVer.Show();
+                    this.formBackVer.Focus();
+                } else if (formBackCrear != null) {
+                    this.formBackCrear.Show();
+                    this.formBackCrear.Focus();
+                    this.formBackCrear.loadBoxTurnos();
+                }
             }
         }
 
@@ -153,22 +160,27 @@ namespace TaimerGUI {
             }
         }
 
-        private void lbErrUbi_Click(object sender, EventArgs e)
-        {
+        private void lbErrUbi_Click(object sender, EventArgs e) {
 
         }
 
         private void btnConfCambios_Click(object sender, EventArgs e) {
-            this.reiniciar();
-            actividadDefinitiva.CopiarDesde(actividad);
-            if (formBackVer != null) {
-                this.formBackVer.Show();
-                this.formBackVer.Focus();
-                this.formBackVer.loadGrupBoxData(actividadDefinitiva);
-            } else if (formBackCrear != null) {
-                this.formBackCrear.Show();
-                this.formBackCrear.Focus();
-                this.formBackCrear.loadBoxTurnos();
+            if (MessageBox.Show("¿Seguro que desea guardar los cambios?",
+                      "¿Guardar cambios?",
+                      MessageBoxButtons.YesNo,
+                      MessageBoxIcon.Question,
+                      MessageBoxDefaultButton.Button2) == DialogResult.Yes) {
+                this.reiniciar();
+                actividadDefinitiva.CopiarDesde(actividad);
+                if (formBackVer != null) {
+                    this.formBackVer.Show();
+                    this.formBackVer.Focus();
+                    this.formBackVer.loadGrupBoxData(actividadDefinitiva);
+                } else if (formBackCrear != null) {
+                    this.formBackCrear.Show();
+                    this.formBackCrear.Focus();
+                    this.formBackCrear.loadBoxTurnos();
+                }
             }
         }
     }

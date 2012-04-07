@@ -38,8 +38,7 @@ namespace TaimerGUI {
             switchCheckAllDays();
         }
         void switchCheckAllDays() {
-            foreach (Control c in groubBoxDias.Controls)
-            {
+            foreach (Control c in groubBoxDias.Controls) {
                 if (c is CheckBox && ((CheckBox)c).Name != "chkBxAll") {
                     ((CheckBox)c).Checked = !((CheckBox)c).Checked;
                 }
@@ -151,7 +150,7 @@ namespace TaimerGUI {
         }
 
         private void ClientCrearHor2_Load(object sender, EventArgs e) {
-            
+
         }
 
         private void button1_Click(object sender, EventArgs e) {
@@ -161,51 +160,57 @@ namespace TaimerGUI {
            MessageBoxIcon.Question,
            MessageBoxDefaultButton.Button2) == DialogResult.Yes) {
                 //Algoritmos guay con una ventana de "Estmos en ello"
-               (new ClientCreandoAlgoritmo()).ShowDialog();
-               hAux = generarHorario();
-               if (hAux != null) {
-                   loadHorario(hAux);
-                   btnCrear.Visible = false;
-                   btnGuardar.Visible = true;
-                   btnAtras.Visible = false;
-                   btnDescartar.Visible = true;
-                   pnlHorario.Visible = true;
-                   grpBoxRestric.Visible = false;
-               }
+                (new ClientCreandoAlgoritmo()).ShowDialog();
+                hAux = generarHorario();
+                if (hAux != null) {
+                    loadHorario(hAux);
+                    btnCrear.Visible = false;
+                    btnGuardar.Visible = true;
+                    btnAtras.Visible = false;
+                    btnDescartar.Visible = true;
+                    pnlHorario.Visible = true;
+                    grpBoxRestric.Visible = false;
+                }
             }
-           
+
         }
 
         private Horario generarHorario() {
 
-            Algoritmo alg = new Algoritmo(formBack.getActividadesA(), formBack.getActividadesP(),Program.Usuarios[0]);
+            Algoritmo alg = new Algoritmo(formBack.getActividadesA(), formBack.getActividadesP(), Program.Usuarios[0]);
             Horario h = null;
-            try
-            {
-                h = alg.generarHorarioBT(formBack.getNameHorario(),radioButton2.Checked);
-            }
-            catch (NotSupportedException exc)
-            {
+            try {
+                h = alg.generarHorarioBT(formBack.getNameHorario(), radioButton2.Checked);
+            } catch (NotSupportedException exc) {
                 MessageBox.Show(exc.Message);
             }
 
             return h;
-        
+
         }
 
         private void btnGuardar_Click(object sender, EventArgs e) {
+
             if (hAux != null) {
-                try {
-                    Program.Usuarios[0].AddHorario(hAux);
-                } catch (NotSupportedException exc) {
-                    MessageBox.Show(exc.Message);
+                if (MessageBox.Show("¿Seguro que desea guardar el horario " + hAux.Nombre +"?",
+                 "¿Guardar horario?",
+                 MessageBoxButtons.YesNo,
+                 MessageBoxIcon.Question,
+                 MessageBoxDefaultButton.Button2) == DialogResult.Yes) {
+                    try {
+                        Program.Usuarios[0].AddHorario(hAux);
+                    } catch (NotSupportedException exc) {
+                        MessageBox.Show(exc.Message);
+                    }
+                    ((ClientForm)this.MdiParent).loadLastHorarios();
+                    MessageBox.Show("Guardado con exito");
+                    this.reiniciar();
+                    formBack.reiniciar();
+                    ((ClientForm)this.MdiParent).verHorarios_Click(null, null);
                 }
-                ((ClientForm)this.MdiParent).loadLastHorarios();
-                MessageBox.Show("Guardado con exito");
+                
             }
-            this.reiniciar();
-            formBack.reiniciar();
-            ((ClientForm)this.MdiParent).verHorarios_Click(null,null);
+
         }
 
         public void reiniciar() {
@@ -234,7 +239,15 @@ namespace TaimerGUI {
         }
 
         private void btnDescartar_Click(object sender, EventArgs e) {
-            ((ClientForm)this.MdiParent).verHorarios_Click(null,null);
+            if (hAux != null) {
+                if (MessageBox.Show("¿Seguro que desea descartar el horario " + hAux.Nombre + "?",
+                     "¿Descartar horario?",
+                     MessageBoxButtons.YesNo,
+                     MessageBoxIcon.Question,
+                     MessageBoxDefaultButton.Button2) == DialogResult.Yes) {
+                    ((ClientForm)this.MdiParent).verHorarios_Click(null, null);
+                }
+            }
         }
     }
 }
