@@ -13,12 +13,7 @@ namespace TaimerGUI {
         private static List<Actividad_a> asignaturas;
         private static List<User> usuarios;
         private static List<Algoritmo> algoritmos;
-        private static int codAsignaturas = 0;
-
-        private static void Init() { 
-            //Aqui hay que rellenar todos los atributos privados de esta clase desde el cad
-            //Esta función se llama en el main.
-        }
+        private static int codAsignaturas = Actividad_a.UltimoCodigo;
 
         #endregion
 
@@ -50,8 +45,8 @@ namespace TaimerGUI {
 
         //Añade una asignatura
         public static void AddAsignatura(Actividad_a a) {
-            codAsignaturas++;
-            a.Codigo = codAsignaturas;
+            /*codAsignaturas++;
+            a.Codigo = codAsignaturas;*/
             asignaturas.Add(a);
         }
 
@@ -163,8 +158,6 @@ namespace TaimerGUI {
         /// </summary>
         [STAThread]
         static void Main() {
-
-            Init();
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

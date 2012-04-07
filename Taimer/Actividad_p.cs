@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CAD;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -139,6 +140,35 @@ namespace Taimer {
                 }
             }
             get { return turnos; }
+        }
+
+        /// <summary>
+        /// Añade la Actividad Personal a la base de datos
+        /// </summary>
+        public void Agregar() {
+            CADActividad_p act = new CADActividad_p();
+
+            act.CrearActivida_pAll(nombre, descripcion, codigo, usuario.DNI);
+        }
+
+        /// <summary>
+        /// Borra la actividad personal de la base de datos
+        /// </summary>
+        public void Borrar() {
+            CADActividad_p act = new CADActividad_p();
+
+            act.BorrarActividad_p(codigo);
+        }
+
+
+        /// <summary>
+        /// Devuelve el ultimo codigo de activdades personales añadido a la base de datos
+        /// </summary>
+        public static int UltimoCodigo {
+            get {
+                CADActividad_p act = new CADActividad_p();
+                return int.Parse(act.LastCode().Tables[0].Rows[0].ItemArray[0].ToString());
+            }
         }
 
         #endregion

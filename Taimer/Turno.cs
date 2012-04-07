@@ -1,5 +1,5 @@
 ﻿// ¡SI SE CAMBIA LA HORA DE INICIO O FIN EN UN TURNO PERSONAL, COMPROBAR SOLAPAMIENTO!
-
+using CAD;
 using System;
 using System.Collections.Generic;
 using System.Collections;
@@ -611,6 +611,31 @@ namespace Taimer {
             return superpuesto;
         }
 
+        /// <summary>
+        /// Guarda el turno en la base de datos
+        /// </summary>
+        public void Agregar() {
+            CADTurno t = new CADTurno();
+            t.CrearTurno(codigo, horaInicio.toString(), horaFin.toString(), diasemana.ToString()[0], ubicacion, actividad.Codigo);
+        }
+
+        /// <summary>
+        /// Borra el turno de la base de datos
+        /// </summary>
+        public void Borrar() {
+            CADTurno t = new CADTurno();
+            t.BorrarTurno(codigo, actividad.Codigo);
+        }
+
+        /// <summary>
+        /// Guarda los cambios del turno en la base de datos
+        /// </summary>
+        public void Modificar() {
+            CADTurno t = new CADTurno();
+            if (ubicacion == "")
+                ubicacion = null;
+            t.ModificarTurno(diasemana.ToString()[0], horaInicio.toString(), horaFin.toString(), ubicacion, codigo, actividad.Codigo);
+        }
 
         #endregion
     }
