@@ -70,9 +70,9 @@ namespace Taimer
 
         private void TestEN_Load(object sender, EventArgs e)
         {
-            Actividad_a activa1 = new Actividad_a("Actividad A 1", "Descripción", 1337, "A saber");
-            Actividad_a activa2 = new Actividad_a("Actividad A 2", "Descripción", 1337, "A saber");
-            Actividad_a activa3 = new Actividad_a("Actividad A 3", "Descripción", 1337, "A saber");
+            Actividad_a activa1 = new Actividad_a("Actividad A 1", "Descripción", 1337, "A saber", "II");
+            Actividad_a activa2 = new Actividad_a("Actividad A 2", "Descripción", 1337, "A saber", "II");
+            Actividad_a activa3 = new Actividad_a("Actividad A 3", "Descripción", 1337, "A saber", "II");
 
             Actividad_p activp1 = new Actividad_p("Actividad P 1", "Descripción", 1337, usuario);
             Actividad_p activp2 = new Actividad_p("Actividad P 2", "Descripción", 1338, usuario);
