@@ -33,8 +33,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
             this.pnlHorarios = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -78,6 +78,7 @@
             // 
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.panel1.AutoScroll = true;
+            this.panel1.BackColor = System.Drawing.Color.Wheat;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel1.Controls.Add(this.pnlHorarios);
             this.panel1.Controls.Add(this.panel3);
@@ -85,6 +86,14 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(358, 345);
             this.panel1.TabIndex = 37;
+            // 
+            // pnlHorarios
+            // 
+            this.pnlHorarios.AutoSize = true;
+            this.pnlHorarios.Location = new System.Drawing.Point(8, 3);
+            this.pnlHorarios.Name = "pnlHorarios";
+            this.pnlHorarios.Size = new System.Drawing.Size(343, 39);
+            this.pnlHorarios.TabIndex = 0;
             // 
             // panel3
             // 
@@ -94,14 +103,6 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(354, 0);
             this.panel3.TabIndex = 3;
-            // 
-            // pnlHorarios
-            // 
-            this.pnlHorarios.AutoSize = true;
-            this.pnlHorarios.Location = new System.Drawing.Point(8, 3);
-            this.pnlHorarios.Name = "pnlHorarios";
-            this.pnlHorarios.Size = new System.Drawing.Size(343, 39);
-            this.pnlHorarios.TabIndex = 0;
             // 
             // ClientHorHome
             // 

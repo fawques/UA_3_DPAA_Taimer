@@ -166,7 +166,7 @@
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(118, 23);
             this.button7.TabIndex = 1;
-            this.button7.Text = "Matriculacion";
+            this.button7.Text = "Matriculación";
             this.button7.UseVisualStyleBackColor = true;
             this.button7.Click += new System.EventHandler(this.matriculacion_Click);
             // 

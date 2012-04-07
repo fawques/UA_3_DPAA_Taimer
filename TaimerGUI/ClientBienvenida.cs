@@ -43,6 +43,8 @@ namespace TaimerGUI
                 int posY = 20;
                 foreach (Horario obj in usrAux.Horarios) {
                     Label auxlbl = new Label();
+                    auxlbl.AutoSize = false;
+                    auxlbl.Width = 200;
                     auxlbl.Text = obj.Nombre;
                     auxlbl.Tag = obj;
                     auxlbl.Location = new Point(25, posY);
@@ -63,6 +65,8 @@ namespace TaimerGUI
                 foreach (Actividad_p obj in usrAux.ActPersonales) {
                     //MessageBox.Show("iteracion");
                     Label auxlbl = new Label();
+                    auxlbl.AutoSize = false;
+                    auxlbl.Width = 200;
                     auxlbl.Text = obj.Nombre;
                     auxlbl.Tag = obj;
                     auxlbl.Location = new Point(25, posY);

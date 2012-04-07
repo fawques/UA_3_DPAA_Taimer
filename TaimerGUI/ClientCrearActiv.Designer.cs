@@ -92,6 +92,7 @@
             // gVHorasTemp
             // 
             this.gVHorasTemp.AllowUserToAddRows = false;
+            this.gVHorasTemp.BackgroundColor = System.Drawing.Color.Wheat;
             this.gVHorasTemp.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gVHorasTemp.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dia,
