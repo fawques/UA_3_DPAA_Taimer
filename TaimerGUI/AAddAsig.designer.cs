@@ -32,12 +32,15 @@
             this.tbName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.dgTurnos = new System.Windows.Forms.DataGridView();
+            this.lbErrName = new System.Windows.Forms.Label();
+            this.lbErrDesc = new System.Windows.Forms.Label();
+            this.lbErrCoord = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.tbCoord = new System.Windows.Forms.TextBox();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.HoraInicio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.HoraFin = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ubicacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lbErrName = new System.Windows.Forms.Label();
-            this.lbErrDesc = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgTurnos)).BeginInit();
             this.SuspendLayout();
             // 
@@ -63,7 +66,7 @@
             // 
             // btAddTurn
             // 
-            this.btAddTurn.Location = new System.Drawing.Point(169, 319);
+            this.btAddTurn.Location = new System.Drawing.Point(169, 371);
             this.btAddTurn.Name = "btAddTurn";
             this.btAddTurn.Size = new System.Drawing.Size(125, 57);
             this.btAddTurn.TabIndex = 47;
@@ -73,16 +76,16 @@
             // 
             // tbDesc
             // 
-            this.tbDesc.Location = new System.Drawing.Point(44, 195);
+            this.tbDesc.Location = new System.Drawing.Point(44, 184);
             this.tbDesc.Name = "tbDesc";
-            this.tbDesc.Size = new System.Drawing.Size(495, 101);
+            this.tbDesc.Size = new System.Drawing.Size(420, 78);
             this.tbDesc.TabIndex = 44;
             this.tbDesc.Text = "";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(41, 179);
+            this.label5.Location = new System.Drawing.Point(41, 168);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(63, 13);
             this.label5.TabIndex = 43;
@@ -91,7 +94,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(41, 108);
+            this.label2.Location = new System.Drawing.Point(41, 120);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(44, 13);
             this.label2.TabIndex = 42;
@@ -119,6 +122,7 @@
             this.dgTurnos.AllowUserToAddRows = false;
             this.dgTurnos.AllowUserToDeleteRows = false;
             this.dgTurnos.AllowUserToOrderColumns = true;
+            this.dgTurnos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgTurnos.BackgroundColor = System.Drawing.Color.Wheat;
             this.dgTurnos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgTurnos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -129,35 +133,8 @@
             this.dgTurnos.Location = new System.Drawing.Point(300, 319);
             this.dgTurnos.Name = "dgTurnos";
             this.dgTurnos.ReadOnly = true;
-            this.dgTurnos.Size = new System.Drawing.Size(303, 176);
+            this.dgTurnos.Size = new System.Drawing.Size(423, 176);
             this.dgTurnos.TabIndex = 51;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.HeaderText = "Día";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // HoraInicio
-            // 
-            this.HoraInicio.HeaderText = "Inicio";
-            this.HoraInicio.Name = "HoraInicio";
-            this.HoraInicio.ReadOnly = true;
-            this.HoraInicio.Width = 80;
-            // 
-            // HoraFin
-            // 
-            this.HoraFin.HeaderText = "Fin";
-            this.HoraFin.Name = "HoraFin";
-            this.HoraFin.ReadOnly = true;
-            this.HoraFin.Width = 80;
-            // 
-            // Ubicacion
-            // 
-            this.Ubicacion.HeaderText = "Ubicacion";
-            this.Ubicacion.Name = "Ubicacion";
-            this.Ubicacion.ReadOnly = true;
-            this.Ubicacion.Visible = false;
             // 
             // lbErrName
             // 
@@ -176,12 +153,64 @@
             this.lbErrDesc.AutoSize = true;
             this.lbErrDesc.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbErrDesc.ForeColor = System.Drawing.Color.Maroon;
-            this.lbErrDesc.Location = new System.Drawing.Point(545, 199);
+            this.lbErrDesc.Location = new System.Drawing.Point(470, 188);
             this.lbErrDesc.Name = "lbErrDesc";
             this.lbErrDesc.Size = new System.Drawing.Size(145, 13);
             this.lbErrDesc.TabIndex = 65;
             this.lbErrDesc.Text = "El campo no puede estar vacio";
             this.lbErrDesc.Visible = false;
+            // 
+            // lbErrCoord
+            // 
+            this.lbErrCoord.AutoSize = true;
+            this.lbErrCoord.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbErrCoord.ForeColor = System.Drawing.Color.Maroon;
+            this.lbErrCoord.Location = new System.Drawing.Point(470, 291);
+            this.lbErrCoord.Name = "lbErrCoord";
+            this.lbErrCoord.Size = new System.Drawing.Size(145, 13);
+            this.lbErrCoord.TabIndex = 68;
+            this.lbErrCoord.Text = "El campo no puede estar vacio";
+            this.lbErrCoord.Visible = false;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(41, 271);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(64, 13);
+            this.label4.TabIndex = 67;
+            this.label4.Text = "Coordinador";
+            // 
+            // tbCoord
+            // 
+            this.tbCoord.Location = new System.Drawing.Point(44, 287);
+            this.tbCoord.Name = "tbCoord";
+            this.tbCoord.Size = new System.Drawing.Size(420, 20);
+            this.tbCoord.TabIndex = 66;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.HeaderText = "Día";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // HoraInicio
+            // 
+            this.HoraInicio.HeaderText = "Inicio";
+            this.HoraInicio.Name = "HoraInicio";
+            this.HoraInicio.ReadOnly = true;
+            // 
+            // HoraFin
+            // 
+            this.HoraFin.HeaderText = "Fin";
+            this.HoraFin.Name = "HoraFin";
+            this.HoraFin.ReadOnly = true;
+            // 
+            // Ubicacion
+            // 
+            this.Ubicacion.HeaderText = "Ubicacion";
+            this.Ubicacion.Name = "Ubicacion";
+            this.Ubicacion.ReadOnly = true;
             // 
             // AAddAsig
             // 
@@ -189,6 +218,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Cornsilk;
             this.ClientSize = new System.Drawing.Size(795, 595);
+            this.Controls.Add(this.lbErrCoord);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.tbCoord);
             this.Controls.Add(this.lbErrDesc);
             this.Controls.Add(this.lbErrName);
             this.Controls.Add(this.dgTurnos);
@@ -203,6 +235,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "AAddAsig";
             this.Text = "AAddAsig";
+            this.Enter += new System.EventHandler(this.AAddAsig_Enter);
             ((System.ComponentModel.ISupportInitialize)(this.dgTurnos)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -220,11 +253,14 @@
         private System.Windows.Forms.TextBox tbName;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dgTurnos;
+        private System.Windows.Forms.Label lbErrName;
+        private System.Windows.Forms.Label lbErrDesc;
+        private System.Windows.Forms.Label lbErrCoord;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox tbCoord;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn HoraInicio;
         private System.Windows.Forms.DataGridViewTextBoxColumn HoraFin;
-        private System.Windows.Forms.Label lbErrName;
-        private System.Windows.Forms.Label lbErrDesc;
         private System.Windows.Forms.DataGridViewTextBoxColumn Ubicacion;
 
     }

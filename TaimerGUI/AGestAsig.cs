@@ -188,5 +188,25 @@ namespace TaimerGUI {
             clearInfo(); 
         }
 
+        private void textBox1_TextChanged(object sender, EventArgs e) {
+            foreach (DataGridViewRow row in dgAsig.Rows) {
+                Taimer.Actividad_a acti = (Taimer.Actividad_a)row.Tag;
+                String texto = textBox1.Text;
+                if (acti.Nombre.Contains(texto) || 
+                    acti.Descripcion.Contains(texto) ||
+                    acti.NombreCoordinador.Contains(texto))
+                {
+                    row.Visible = true;
+                } else {
+                    row.Visible = false;
+                }
+            }
+        }
+
+        public void addAsig(Taimer.Actividad_a asig) {
+            asignaturas.Add(asig);
+
+            updateTableAsig();
+        }
     }
 }

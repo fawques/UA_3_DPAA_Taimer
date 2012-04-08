@@ -13,6 +13,8 @@ namespace TaimerGUI {
         AGestAsig parentForm = null;
         AGestTurn childForm = null;
 
+        Taimer.Actividad_a asig = null;
+
         public AAddAsig() {
             InitializeComponent();
         }
@@ -29,6 +31,9 @@ namespace TaimerGUI {
             if (parentForm != null) {
                 Hide();
                 parentForm.Show();
+
+                asig = null;
+                clearLabels();
 
                 AdminForm parent = (AdminForm)this.MdiParent;
                 parent.positionChilds();
@@ -53,9 +58,27 @@ namespace TaimerGUI {
                 lbErrDesc.Visible = false;
             }
 
+            if (tbCoord.Text == "") {
+                lbErrCoord.Visible = true;
+                valid = false;
+            } else {
+                lbErrCoord.Visible = false;
+            }
+
             if (valid && parentForm != null) {
 
                 // Creo una asignatura 
+                asig.Nombre = tbName.Text;
+                asig.Descripcion = tbDesc.Text;
+                asig.NombreCoordinador = tbCoord.Text;
+                clearLabels();
+
+                // La añado a la lista
+                parentForm.addAsig(asig);
+
+                asig = null;
+
+
 
                 Hide();
                 parentForm.Show();
@@ -65,21 +88,11 @@ namespace TaimerGUI {
             }
         }
 
-        public void addTurn(string dia, string hIni, string hFin, string ubi) {
-
-            dgTurnos.Rows.Add(dia, hIni, hFin, ubi);
-        }
-
-        public void clearTurns() {
-
-            dgTurnos.Rows.Clear();
-        }
-
         private void btAddTurn_Click(object sender, EventArgs e) {
             if (childForm != null) {
                 Hide();
 
-                childForm.loadAsig(null);
+                childForm.loadAsig(asig);
 
                 childForm.setParent(this);
                 childForm.Show();
@@ -87,6 +100,24 @@ namespace TaimerGUI {
                 AdminForm parent = (AdminForm)this.MdiParent;
                 parent.positionChilds();
             }
+        }
+
+        private void clearLabels() {
+            tbName.Clear();
+            tbDesc.Clear();
+            tbCoord.Clear();
+        }
+
+        private void AAddAsig_Enter(object sender, EventArgs e) {
+            if (asig == null) {
+                asig = new Taimer.Actividad_a("", "", 0, "");
+                clearLabels();
+            }
+            dgTurnos.Rows.Clear();
+            foreach (Taimer.Turno turno in asig.Turnos) {
+                dgTurnos.Rows.Add(turno.DiaString, turno.HoraInicio.toString(), turno.HoraFin.toString(), turno.Ubicacion);
+            }
+
         }
     }
 }
