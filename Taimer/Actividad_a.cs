@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CAD;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,7 +26,12 @@ namespace Taimer {
         /// <summary>
         /// Indica el curso al que pertenece la asignatura
         /// </summary>
-        private int curso;                           
+        private int curso;
+
+        /// <summary>
+        /// Titulacion en la que se encuentra esta actividad
+        /// </summary>
+        private string titulacion;        
 
         #endregion
 
@@ -39,8 +45,8 @@ namespace Taimer {
         /// <param name="desc_"> Descripción de la Actividad_a</param>
         /// <param name="cod_"> Código de la Actividad_a </param>
         /// <param name="nomCoord_"> Nómbre del coordinador de la Actividad_a</param>
- 
-        public Actividad_a(string nom_, string desc_, int cod_, string nomCoord_)
+        /// <param name="titulacion">Tilación de la Actividad_a</param>
+        public Actividad_a(string nom_, string desc_, int cod_, string nomCoord_, string titulacion)
             : base(nom_, desc_, cod_) {
 
             nombreCoordinador = nomCoord_;
@@ -56,7 +62,8 @@ namespace Taimer {
         /// <param name="cod_"> Código de la Activiad_a </param>
         /// <param name="nomCoord_"> Nombre del coordinador de la Actividad_a </param>
         /// <param name="curso_"> Curso al que pertenece la Actividad_a </param>
-        public Actividad_a(string nom_, string desc_, int cod_, string nomCoord_, int curso_)
+        /// <param name="titulacion">Tilación de la Actividad_a</param>
+        public Actividad_a(string nom_, string desc_, int cod_, string nomCoord_, int curso_, string titulacion)
             : base(nom_, desc_, cod_) {
 
             nombreCoordinador = nomCoord_;
@@ -73,7 +80,8 @@ namespace Taimer {
         /// <param name="nomCoord_"> Nombre del coordinador de la Actividad_a</param>
         /// <param name="turnos_"> Listas de turnos en los que se realiza la Actividad_a</param>
         /// <param name="curso_"> Curso ql que pertence la Actividad_a</param>
-        public Actividad_a(string nom_, string desc_, int cod_, string nomCoord_, List<Turno> turnos_, int curso_)
+        /// <param name="titulacion">Tilación de la Actividad_a</param>
+        public Actividad_a(string nom_, string desc_, int cod_, string nomCoord_, List<Turno> turnos_, int curso_, string titulacion)
             : base(nom_, desc_, cod_, turnos_) {
 
             nombreCoordinador = nomCoord_;
@@ -140,6 +148,61 @@ namespace Taimer {
 
             if (!insertado)
                 turnos.Add(turnonuevo);
+        }
+
+        /// <summary>
+        /// Asigna/Devuelve la titulación de la Actividad_a
+        /// </summary>
+        public string Titulacion {
+            set { titulacion = value; }
+            get { return titulacion; }
+        }
+
+        /// <summary>
+        /// Añade la actividad academica a la base de datos
+        /// </summary>
+        public void Agregar() {
+            CADActividad_a act = new CADActividad_a();
+
+            if (titulacion == "")
+                titulacion = null;
+
+            if (descripcion == "")
+                descripcion = null;
+
+            if (nombreCoordinador == "")
+                nombreCoordinador = null;
+
+            act.CrearActivida_aAll(nombre, descripcion, codigo, nombreCoordinador, titulacion);
+
+        }
+
+        /// <summary>
+        /// Borra la actividad academica de la base de datos
+        /// </summary>
+        public void Borrar() {
+            CADActividad_a act = new CADActividad_a();
+
+            act.BorrarActividad_a(codigo);
+        }
+
+        /// <summary>
+        /// Guarda los cambios que ha recibido la actividad en la base de datos
+        /// </summary>
+        public void Modificar() {
+            CADActividad_a act = new CADActividad_a();
+
+            act.ModificaActividad_a(nombreCoordinador, codigo);
+        }
+
+        /// <summary>
+        /// Devuelve el ultimo codigo de Actividades Academicas introducido en la base de datos
+        /// </summary>
+        public static int UltimoCodigo {
+            get {
+                CADActividad_a act = new CADActividad_a();
+                return int.Parse(act.LastCode().Tables[0].Rows[0].ItemArray[0].ToString());
+            }
         }
 
         /// <summary>

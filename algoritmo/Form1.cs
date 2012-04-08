@@ -41,12 +41,12 @@ namespace algoritmo
             actP2.AddTurno(t5);
             actP2.AddTurno(t6);
 
-            Actividad_a actA = new Actividad_a("A1", "descripcion2", 7, "Un profesor");
+            Actividad_a actA = new Actividad_a("A1", "descripcion2", 7, "Un profesor", "II");
             
             actA.AddTurno(t2);
             actA.AddTurno(t3);
 
-            Actividad_a actA2 = new Actividad_a("A2", "descripcion2", 7, "Otro profesor");
+            Actividad_a actA2 = new Actividad_a("A2", "descripcion2", 7, "Otro profesor", "II");
             actA2.AddTurno(t7);
             //actA2.AddTurno(t8);
             actA2.AddTurno(t9);

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CAD;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -336,6 +337,62 @@ namespace Taimer {
             }
 
             return maxima;
+        }
+
+        /// <summary>
+        /// Añade el horario a la base de datos
+        /// </summary>
+        public void Agregar() {
+            CADHorario h = new CADHorario();
+            h.CrearHorarioBasic(id, nombre, usuario.DNI);
+
+            foreach (List<Turno> lt in arrayTurnos) {
+                foreach (Turno t in lt) {
+                    h.AddTurnoHo(id, usuario.DNI, t.Codigo, t.Actividad.Codigo);
+                }
+            }
+
+        }
+
+        /// <summary>
+        /// Borra el horario de la base de datos
+        /// </summary>
+        public void Borrar() {
+            CADHorario h = new CADHorario();
+
+            h.BorrarTurnosHo(id, usuario.DNI);
+            h.BorrarHorario(id, usuario.DNI);
+            
+        }
+
+        /// <summary>
+        /// Borra un turno del horario (tiene que estar previamente en la base de datos)
+        /// </summary>
+        /// <param name="codigo">Código del turno que se desea borrar</param>
+        public void BorrarTurno(int codigo) {
+            CADHorario h = new CADHorario();
+
+            foreach (List<Turno> lt in arrayTurnos) {
+                foreach (Turno t in lt) {
+                    if (t.Codigo == codigo) {
+                        lt.Remove(t);
+                        h.BorrarTurnoEspecifico(id, usuario.DNI, t.Codigo, t.Actividad.Codigo);
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// Guarda los cambios que ha recibido el horario en la base de datos
+        /// Si el nombre es ahora vacio la BD lanzará excepción
+        /// </summary>
+        public void Modificar() {
+            CADHorario h = new CADHorario();
+            
+            if(nombre == "")
+                nombre = null;
+
+            h.ModificaHorario(id, nombre, usuario.DNI);
         }
 
         #endregion
