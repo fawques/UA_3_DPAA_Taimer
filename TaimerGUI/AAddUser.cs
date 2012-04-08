@@ -91,8 +91,7 @@ namespace TaimerGUI {
 
             if (parentForm != null && valid) {
 
-                parentForm.addUser(new Taimer.User(tbName.Text, tbDni.Text, tbEmail.Text, 
-                    tbPass.Text, (int) udCurso.Value, tbTitu.Text));
+                parentForm.addUser(new Taimer.User(tbName.Text, tbDni.Text, tbEmail.Text,tbPass.Text, (int) udCurso.Value, tbTitu.Text,0));
 
                 tbName.Text = "";
                 tbDni.Text = "";

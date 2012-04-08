@@ -18,6 +18,10 @@ namespace TaimerGUI {
         private static void Init() { 
             //Aqui hay que rellenar todos los atributos privados de esta clase desde el cad
             //Esta función se llama en el main.
+            usuarios = new List<User>();
+            asignaturas = new List<Actividad_a>();
+            SetUsers();
+            SetAsignaturas();
         }
 
         #endregion
@@ -131,29 +135,32 @@ namespace TaimerGUI {
             throw new ArgumentException("No existe una activida con ese código");
         }
 
-        public static void setUsers()
+        /// <summary>
+        /// Completa la lista de usuarios con los actuales en la BD
+        /// </summary>
+        public static void SetUsers()
         {
-            CAD.CADUser user = new CAD.CADUser();
-            CAD.CADActividad_p pers=new CAD.CADActividad_p();
+            CAD.CADUser userCAD = new CAD.CADUser();
+            User user = new User();
+            
+            DataSet users = userCAD.GetUsers();
+            usuarios = user.UsersToList(users);
 
-            DataSet users = user.GetUsers();
-            string dni, nom, email, pass, tit="";
-            int curso = 0;
-            List<Actividad_a> acta;
-            List<Actividad_p> actp;
-            List<Horario> hor;
-            DataRowCollection rows=users.Tables[0].Rows;
-            for (int i = 0; i < rows.Count; i++)
-            {
-                dni = rows[i].ItemArray[0].ToString();
-                nom = rows[i].ItemArray[1].ToString();
-                email = rows[i].ItemArray[2].ToString();
-                pass = rows[i].ItemArray[3].ToString();
-                curso =  (int)rows[i].ItemArray[4];
-                tit = rows[i].ItemArray[5].ToString();
-                //actp = pers.GetActividadesP_FromUser(dni);
+        }
 
-            }
+        /// <summary>
+        /// Completa la lista de asignaturas con las actuales en la BD
+        /// </summary>
+        public static void SetAsignaturas()
+        {
+            CAD.CADActividad_a actCAD = new CAD.CADActividad_a();
+            Actividad_a act = new Actividad_a();
+           
+            DataSet acts = actCAD.GetActividades_a();
+            asignaturas = act.Actividades_aToList(acts);
+          
+            foreach (Actividad_a ac in asignaturas)
+                MessageBox.Show(ac.Descripcion);
         }
 
         public static LoginForm loginForm;

@@ -6,8 +6,7 @@ using System.Data.SqlClient;
 using System.IO;
 using System.Configuration;
 using System.Collections;
-
-
+using System.Windows.Forms;
 
 namespace CAD {
     public class CADActividad
@@ -38,7 +37,7 @@ namespace CAD {
             }
             catch (SqlException ex)
             {
-                throw ex;
+                MessageBox.Show(ex.Message, "Error en la acción", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
             }
             finally
             {
@@ -64,7 +63,7 @@ namespace CAD {
             }
             catch (SqlException ex)
             {
-                throw ex;
+                MessageBox.Show(ex.Message, "Error en la acción", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
             }
             finally
             {
@@ -88,7 +87,7 @@ namespace CAD {
             }
             catch (Exception ex)
             {
-                throw ex;
+                MessageBox.Show(ex.Message, "Error en la acción", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
             }
             finally
             {
@@ -115,7 +114,7 @@ namespace CAD {
             }
             catch (SqlException ex)
             {
-                throw ex;
+                MessageBox.Show(ex.Message, "Error en la acción", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
             }
             finally
             {
@@ -142,8 +141,8 @@ namespace CAD {
             }
             catch (Exception ex)
             {
-                // Captura la condición general y la reenvía.
-                throw ex;
+                MessageBox.Show(ex.Message, "Error en la acción", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+                return null;
             }
             finally
             {
@@ -167,8 +166,8 @@ namespace CAD {
             }
             catch (Exception ex)
             {
-                // Captura la condición general y la reenvía.
-                throw ex;
+                MessageBox.Show(ex.Message, "Error en la acción", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+                return null;
             }
             finally
             {

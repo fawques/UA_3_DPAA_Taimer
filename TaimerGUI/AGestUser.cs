@@ -25,8 +25,8 @@ namespace TaimerGUI {
 
             usuarios = new List<Taimer.User>();
 
-            Taimer.User user1 = new Taimer.User("Pepe Gotera", "11111111X", "asd@asd.com", "patata", 1, "Informatica");
-            Taimer.User user2 = new Taimer.User("Jaimito", "22222222D", "qwe@rty.com", "patata", 2, "Informatica");
+            Taimer.User user1 = new Taimer.User("Pepe Gotera", "11111111X", "asd@asd.com", "patata", 1, "Informatica",0);
+            Taimer.User user2 = new Taimer.User("Jaimito", "22222222D", "qwe@rty.com", "patata", 2, "Informatica",0);
 
             usuarios.Add(user1);
             usuarios.Add(user2);

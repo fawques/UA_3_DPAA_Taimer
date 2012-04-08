@@ -6,6 +6,7 @@ using System.Data.SqlClient;
 using System.IO;
 using System.Configuration;
 using System.Collections;
+using System.Windows.Forms;
 
 
 namespace CAD {
@@ -47,7 +48,7 @@ namespace CAD {
             }
             catch (SqlException ex)
             {
-                throw ex;
+                MessageBox.Show(ex.Message, "Error en la acción", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
             }
             finally
             {
@@ -75,7 +76,7 @@ namespace CAD {
             }
             catch (SqlException ex)
             {
-                throw ex;
+                MessageBox.Show(ex.Message, "Error en la acción", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
             }
             finally
             {
@@ -104,7 +105,7 @@ namespace CAD {
             }
             catch (Exception ex)
             {
-                throw ex;
+                MessageBox.Show(ex.Message, "Error en la acción", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
             }
             finally
             {
@@ -136,7 +137,7 @@ namespace CAD {
             }
             catch (SqlException ex)
             {
-                throw ex;
+                MessageBox.Show(ex.Message, "Error en la acción", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
             }
             finally
             {
@@ -167,8 +168,8 @@ namespace CAD {
             }
             catch (Exception ex)
             {
-                // Captura la condición general y la reenvía.
-                throw ex;
+                MessageBox.Show(ex.Message, "Error en la acción", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+                return null;
             }
             finally
             {
@@ -196,8 +197,8 @@ namespace CAD {
             }
             catch (Exception ex)
             {
-                // Captura la condición general y la reenvía.
-                throw ex;
+                MessageBox.Show(ex.Message, "Error en la acción", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+                return null;
             }
             finally
             {
@@ -211,7 +212,6 @@ namespace CAD {
         /// <returns></returns>
         public DataSet GetDatosActividad_a(int cod)
         {
-
             SqlConnection con = null;
             DataSet datos = null;
             string comando = "Select * from [Actividad_a] where  codigo='"+cod+"'";
@@ -226,8 +226,8 @@ namespace CAD {
             }
             catch (Exception ex)
             {
-                // Captura la condición general y la reenvía.
-                throw ex;
+                MessageBox.Show(ex.Message, "Error en la acción", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+                return null;
             }
             finally
             {
@@ -254,14 +254,15 @@ namespace CAD {
             }
             catch (Exception ex)
             {
-                // Captura la condición general y la reenvía.
-                throw ex;
+                MessageBox.Show(ex.Message, "Error en la acción", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+                return null;
             }
             finally
             {
                 if (con != null) con.Close(); // Se asegura de cerrar la conexión.
             }
         }
+
         /// <summary>
         /// Devuelve el único código generado
         /// </summary>
@@ -281,8 +282,8 @@ namespace CAD {
             }
             catch (Exception ex)
             {
-                // Captura la condición general y la reenvía.
-                throw ex;
+                MessageBox.Show(ex.Message, "Error en la acción", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+                return null;
             }
             finally
             {

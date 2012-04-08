@@ -3,7 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
+using System.Data;
+using System.Windows.Forms;
 
 namespace Taimer {
 
@@ -90,6 +91,11 @@ namespace Taimer {
             curso = act.curso;
         }
 
+        public Actividad_a()
+        {
+            // TODO: Complete member initialization
+        }
+
         /// <summary>
         /// Asigna/Devuelve el curso de la Actividad_a
         /// </summary>
@@ -98,7 +104,7 @@ namespace Taimer {
             set { 
                 if(value >= 1)
                     curso = value;
-                else
+                else                    
                     throw new ArgumentOutOfRangeException("El número de curso debe ser mayor o igual que 1");
             }
         }
@@ -136,6 +142,98 @@ namespace Taimer {
                 turnos.Add(turnonuevo);
         }
 
+        /// <summary>
+        /// Convierte un DataSet con filas de actividades académicas a una lista de objetos Actividad_a
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
+        public List<Actividad_a> Actividades_aToList(DataSet data)
+        {
+            if (data != null)
+            {
+                CAD.CADActividad act = new CAD.CADActividad();
+                List<Actividad_a> list = new List<Actividad_a>();
+                DataSet aux = new DataSet();
+
+                int cod, curso = 0;
+                string prof="", tit = "", nom, desc = "";
+
+                DataRowCollection rows = data.Tables[0].Rows;
+
+                for (int i = 0; i < rows.Count; i++)
+                {
+                    cod = (int)rows[i].ItemArray[0];
+                    
+                    if(rows[i].ItemArray[1].ToString() != "")
+                        prof = rows[i].ItemArray[1].ToString();
+
+                    tit = rows[i].ItemArray[2].ToString();
+
+                    if (rows[i].ItemArray[3].ToString() != "")
+                        curso = (int)rows[i].ItemArray[3];                  
+
+                    aux = act.GetDatosActividad(cod);
+
+                    if (aux != null)
+                    {
+                        nom = aux.Tables[0].Rows[0].ItemArray[0].ToString();
+                        desc = aux.Tables[0].Rows[0].ItemArray[1].ToString();
+
+                        list.Add(new Actividad_a(nom, desc, cod, prof, curso));
+                    }
+                    else
+                        return null;
+                }
+                return list;
+            }
+            return null;
+        }
+
+        /// <summary>
+        /// Convierte un DataSet que será una actividad académica en un objeto Actividad_a
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
+        public Actividad_a Actividad_aToObject(DataSet data)
+        {
+            if (data != null)
+            {
+                CAD.CADActividad act = new CAD.CADActividad();
+                CAD.CADUser user = new CAD.CADUser();
+                User autor = new User();
+                Actividad_a acta = new Actividad_a();
+                DataSet aux = new DataSet();
+                int cod, curso = 0;
+                string prof = "", tit = "", nom, desc = "";
+                DataRowCollection rows = data.Tables[0].Rows;
+
+                if (rows.Count != 0)
+                {
+                    cod = (int)rows[0].ItemArray[0];
+                    if (rows[0].ItemArray[1].ToString() != "")
+                        prof = rows[0].ItemArray[1].ToString();
+
+                    tit = rows[0].ItemArray[2].ToString();
+
+                    if (rows[0].ItemArray[3].ToString() != "")
+                        curso = (int)rows[0].ItemArray[3];
+
+                    aux = act.GetDatosActividad(cod);
+
+                    if (aux != null)
+                    {
+                        nom = aux.Tables[0].Rows[0].ItemArray[0].ToString();
+                        desc = aux.Tables[0].Rows[0].ItemArray[1].ToString();
+
+                        acta=new Actividad_a(nom, desc, cod, prof, curso);
+                    }
+                    else
+                        return null;
+                }
+                return acta;
+            }
+            return null;
+        }
         #endregion
     }
 }

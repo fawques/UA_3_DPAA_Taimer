@@ -13,11 +13,11 @@ namespace Taimer
 {
     public partial class TestEN : Form
     {
-        User usuario = new User("Usuario", "12345678X", "usuario@user.com", "fechadenacimiento", 3, "Ingeniería de Magisterio Infantil");
+        User usuario = new User("Usuario", "12345678X", "usuario@user.com", "fechadenacimiento", 3, "Ingeniería de Magisterio Infantil",0);
 
         //Actividad_a activ1 = new Actividad_a("Actividad Test", "Descripción", 1337, "A saber");
 
-        Actividad_p activ1 = new Actividad_p("Actividad Test", "Descripción", 1337, new User("Usuario", "12345678X", "usuario@user.com", "fechadenacimiento", 3, "Ingeniería de Magisterio Infantil"));
+        Actividad_p activ1 = new Actividad_p("Actividad Test", "Descripción", 1337, new User("Usuario", "12345678X", "usuario@user.com", "fechadenacimiento", 3, "Ingeniería de Magisterio Infantil",0));
 
         public TestEN()
         {

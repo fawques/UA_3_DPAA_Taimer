@@ -20,7 +20,7 @@ namespace algoritmo
         {
             InitializeComponent();
             // el user será el 1er elemento de la lista de users de Program
-            User usertest = new User("Aitor Tilla", "12345678X", "bill_gates@hotmail.com", "password", 1, "Ingeniería de Magisterio");
+            User usertest = new User("Aitor Tilla", "12345678X", "bill_gates@hotmail.com", "password", 1, "Ingeniería de Magisterio",0);
 
             // los turnos y actividades estarán almacenadas en Program
             Turno t1 = new Turno(new Hora(10, 30), new Hora(12, 30), dias.M, "L04");

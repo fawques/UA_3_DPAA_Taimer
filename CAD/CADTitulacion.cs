@@ -163,5 +163,20 @@ namespace CAD
                 if (c != null) c.Close(); // Se asegura de cerrar la conexión.
             }
         }
+
+        /// <summary>
+        /// Devuelve true si una titulación existe
+        /// </summary>
+        /// <param name="cod"></param>
+        /// <returns></returns>
+        public bool Exists(string cod)
+        {
+            DataSet data = GetDatos(cod);
+
+            if (data.Tables[0].Rows.Count == 0)
+                return false;
+            else
+                return true;
+        }
     }
 }

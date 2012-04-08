@@ -146,10 +146,10 @@ namespace CAD
         
         }
         /// <summary>
-        /// Devuelve la lista de Turnos según su actividad
+        /// Devuelve la lista de turnos de una actividad
         /// </summary>
         /// <returns></returns>
-        public DataSet GetTurnos(int act)
+        public DataSet GetTurnosByAct(int act)
         {
             SqlConnection con = null;
             DataSet listAct = null;
@@ -173,6 +173,5 @@ namespace CAD
                 if (con != null) con.Close(); // Se asegura de cerrar la conexión.
             }
         }
-        
     }
 }

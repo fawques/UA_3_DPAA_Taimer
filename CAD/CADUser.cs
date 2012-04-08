@@ -10,6 +10,7 @@ using System.Windows.Forms;
 
 namespace CAD
 {
+    
     public class CADUser
     {
         private static string conexionTBD;
@@ -60,9 +61,12 @@ namespace CAD
         /// <param name="curso"></param>
         /// <param name="tit"></param>
         /// <param name="codH"></param>
-        public void CrearUserAll(string dni, string nombre, string email, string password, int curso, string tit,int codH)
+        public void CrearUserAll(string dni, string nombre, string email, string password, int curso, string codTit,int codH)
         {
-            string comando = "INSERT INTO [User] VALUES('" + dni + "', '" + nombre + "', '" + email + "', '" + password + "','"+ curso+"','"+tit+"','"+codH+"')";
+            CADTitulacion tit = new CADTitulacion();
+            /*if(!tit.Exists(codTit))
+                "No existe la titulacion*/      
+            string comando = "INSERT INTO [User] VALUES('" + dni + "', '" + nombre + "', '" + email + "', '" + password + "','"+ curso+"','"+ codTit +"','"+codH+"')";
             SqlConnection c = null;
             SqlCommand comandoTBD;
 
@@ -83,6 +87,7 @@ namespace CAD
                 if (c != null) c.Close(); // Se asegura de cerrar la conexión.
             }
         }
+
         /// <summary>
         /// Borra un usuario
         /// </summary>
@@ -91,9 +96,11 @@ namespace CAD
         {
             SqlConnection c = null;
             string comando = "DELETE FROM [User] WHERE dni= '" + id + "'";
+            
             CADActividad_p actp = new CADActividad_p();
             CADActividad act = new CADActividad();
-            List<int> codes = DataSetToList(actp.GetActividadesPByUser(id));
+
+            List<int> codes = actp.CodesToList(actp.GetCodesByUser(id));
                 
             try
             {
@@ -122,7 +129,6 @@ namespace CAD
         /// <returns></returns>
         public DataSet GetUsers()
         {
-
             SqlConnection con = null;
             DataSet listUsers = null;
             string comando = "Select * from [User]";
@@ -152,10 +158,39 @@ namespace CAD
          /// <returns></returns>
         public DataSet GetDatosUser(string dni)
         {
-
             SqlConnection con = null;
             DataSet datos = null;
             string comando = "Select * from [User] where dni='"+dni+"'";
+            try
+            {
+                con = new SqlConnection(conexionTBD);
+                SqlDataAdapter sqlAdaptador = new SqlDataAdapter(comando, con);
+                datos = new DataSet();
+                sqlAdaptador.Fill(datos);
+                return datos;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error en la acción", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+                return null;
+            }
+            finally
+            {
+                if (con != null) con.Close(); // Se asegura de cerrar la conexión.
+            }
+        }
+
+        /// <summary>
+        /// Obtiene los datos de un usuario a partir de un email y un password (datos de login)
+        /// </summary>
+        /// <param name="email"></param>
+        /// <param name="pass"></param>
+        /// <returns></returns>
+        public DataSet GetDatosUser(string email, string pass)
+        {
+            SqlConnection con = null;
+            DataSet datos = null;
+            string comando = "Select * from [User] where email='" + email + "' and password='" + pass + "'";
             try
             {
                 con = new SqlConnection(conexionTBD);
@@ -182,9 +217,9 @@ namespace CAD
         /// <param name="email"></param>
         /// <param name="password"></param>
         /// <param name="tit"></param>
-        public void ModificaUser(string dni, string nombre, string email, string password,string tit)
+        public void ModificaUser(string dni, string nombre, string email, string password, string tit)
         {
-            string comando = "UPDATE [User] SET nombre = '" + nombre + "', email = '" + email + "', password = '" + password + "', titulacion = '" +tit+ "' WHERE dni = '" + dni + "'";
+            string comando = "UPDATE [User] SET nombre = '" + nombre + "', email = '" + email + "', password = '" + password + "', titulacion = '" + tit + "' WHERE dni = '" + dni + "'";
             SqlConnection c = null;
             SqlCommand comandoTBD;
 
@@ -205,17 +240,6 @@ namespace CAD
             {
                 if (c != null) c.Close(); // Se asegura de cerrar la conexión.
             }
-        }
-
-        public List<int> DataSetToList(DataSet data)
-        {
-            DataRowCollection rows=data.Tables[0].Rows;
-            List<int> list = new List<int>();
-            for (int i = 0; i < rows.Count; i++)
-            {
-                list.Add((int)rows[i].ItemArray[0]);
-            }
-            return list;
         }
     }
 }

@@ -70,12 +70,15 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Admin.resx">
       <DependentUpon>Admin.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Client.resx">
       <DependentUpon>Client.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

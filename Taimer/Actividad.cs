@@ -91,6 +91,10 @@ namespace Taimer {
             codigoturno = act.codigoturno;
         }
 
+        public Actividad()
+        {
+            // TODO: Complete member initialization
+        }
 
         /// <summary>
         /// Asigna/Devuelve el nombre de la Actividad

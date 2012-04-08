@@ -1,12 +1,13 @@
-﻿// ¿Puede haber dos o más DNI iguales?
-
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Taimer;
 using CAD;
+using System.Data;
+using System.Windows.Forms;
+
 namespace Taimer {
 
     /// <summary>
@@ -94,7 +95,7 @@ namespace Taimer {
         /// <param name="pass_">Constraseña del usuario</param>
         /// <param name="curso_">Curso del usuario</param>
         /// <param name="tit_">Titulación del usuario</param>
-        public User(string nom_, string dni_, string email_, string pass_, int curso_, string tit_) {
+        public User(string nom_, string dni_, string email_, string pass_, int curso_, string tit_,int codH_) {
             codHorarios = 0;
             nombre = nom_;
             dni = dni_;
@@ -102,6 +103,7 @@ namespace Taimer {
             email = email_;
             curso = curso_;
             titulacion = tit_;
+            codHorarios = codH_;
         }
 
 
@@ -178,6 +180,11 @@ namespace Taimer {
             actPersonales = new List<Actividad_p>(u.actPersonales);
             horarios = new List<Horario>(u.horarios);
             titulacion = u.titulacion;
+        }
+
+        public User()
+        {
+            // TODO: Complete member initialization
         }
 
 
@@ -450,6 +457,101 @@ namespace Taimer {
                 throw new MissingMemberException("No existe el horario que se desea borrar.");
         }
 
+        /// <summary>
+        /// Convierte un DataSet (que tendrá filas de usuarios) en una lista de usuarios
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
+        public List<User> UsersToList(DataSet data)
+        {
+            if (data != null)
+            {
+                List<User> list = new List<User>();
+                string dni, nom, email, pass, tit = "";
+                int curso = 0, codH = 0;
+                DataRowCollection rows = data.Tables[0].Rows;
+
+                for (int i = 0; i < rows.Count; i++)
+                {
+                    dni = rows[i].ItemArray[0].ToString();
+                    nom = rows[i].ItemArray[1].ToString();
+                    email = rows[i].ItemArray[2].ToString();
+                    pass = rows[i].ItemArray[3].ToString();
+
+                    if (rows[i].ItemArray[4].ToString() != "")
+                        curso = (int)rows[i].ItemArray[4];
+
+                    if (rows[i].ItemArray[5].ToString() != "")
+                        tit = rows[i].ItemArray[5].ToString();
+
+                    if (rows[i].ItemArray[6].ToString() != "")
+                        tit = rows[i].ItemArray[6].ToString();
+
+                   /* if (rows[i].ItemArray[7].ToString() != "")
+                        codH = (int)rows[i].ItemArray[7];*/
+
+                    list.Add(new User(nom, dni, email, pass, curso, tit,codH));
+                }
+                return list;
+            }
+            return null;
+        }
+
+        /// <summary>
+        /// Convierte un DataSet(será un usuario) en un objeto User
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
+        public User UserToObject(DataSet data)
+        {         
+            if (data != null)
+            {
+                string dni, nom, email, pass, tit = "";
+                int curso = 0, codH = 0;
+                DataRowCollection rows = data.Tables[0].Rows;
+
+                if (rows.Count != 0)
+                {
+                    dni = rows[0].ItemArray[0].ToString();
+                    nom = rows[0].ItemArray[1].ToString();
+                    email = rows[0].ItemArray[2].ToString();
+                    pass = rows[0].ItemArray[3].ToString();
+
+                    if (rows[0].ItemArray[4].ToString() != "")
+                        curso = (int)rows[0].ItemArray[4];
+
+                    if (rows[0].ItemArray[5].ToString() != "")
+                        tit = rows[0].ItemArray[5].ToString();
+
+                    if (rows[0].ItemArray[6].ToString() != "")
+                        codH = (int)rows[0].ItemArray[6];
+
+                    User user = new User(nom, dni, email, pass, curso, tit,codH);
+                    return user;
+                }                
+            }
+            return null;
+        }
+
+        /// <summary>
+        /// Comprueba que el login de un determinado usuario es correcto
+        /// </summary>
+        /// <param name="email"></param>
+        /// <param name="pass"></param>
+        /// <returns></returns>
+        public bool CheckLogin(string email, string pass)
+        {
+            CADUser userCAD = new CADUser();
+            User user = UserToObject(userCAD.GetDatosUser(email, pass));
+            if (user == null)
+            {
+                MessageBox.Show("Login incorrecto");
+                return false;
+            }
+
+            MessageBox.Show("Login correcto");
+            return true;
+        }
         #endregion
     }
 }
