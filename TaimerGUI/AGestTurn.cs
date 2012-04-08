@@ -45,27 +45,6 @@ namespace TaimerGUI {
             }
         }
 
-        private void btCreate_Click(object sender, EventArgs e) {
-
-            if (parentGest != null) {
-
-                parentGest.showInfo(currentAct);
-
-                Hide();
-                parentGest.Show();
-
-                AdminForm parent = (AdminForm)this.MdiParent;
-                parent.positionChilds();
-            } else if (parentAdd != null) {
-
-                Hide();
-                parentAdd.Show();
-
-                AdminForm parent = (AdminForm)this.MdiParent;
-                parent.positionChilds();
-            }
-        }
-
         private bool parentNotNull() {
             return parentAdd != null && parentGest != null;
         }
@@ -92,8 +71,12 @@ namespace TaimerGUI {
 
             if (valid) {
 
+                Taimer.Turno turn = new Taimer.Turno(horI, horF, cbDia.Text, tbUbi.Text);
                 // Lo añado a la tabla
-                dgTurnos.Rows.Add(cbDia.Text, horI.toString(), horF.toString(), "", "", tbUbi.Text);
+                dgTurnos.Rows.Add(turn.Dia, turn.HoraInicio.toString(), turn.HoraFin.toString(), turn.Ubicacion, "");
+                dgTurnos.Rows[dgTurnos.RowCount - 1].Tag = turn;
+                
+                currentAct.AddTurno(turn);
 
                 tbUbi.Text = "";
                 cbDia.SelectedIndex = 0;
@@ -102,30 +85,7 @@ namespace TaimerGUI {
                 udMinFin.Value = 0;
                 udMinIni.Value = 0;
             }
-        }
-
-        private void btCancel_Click(object sender, EventArgs e) {
-            if (parentGest != null) {
-
-                // Reestablezco la asignatura
-                currentAct = currentActCopy;
-
-                Hide();
-                parentGest.Show();
-
-                AdminForm parent = (AdminForm)this.MdiParent;
-                parent.positionChilds();
-            } else if (parentAdd != null) {
-                // Vacio la tabla
-                dgTurnos.Rows.Clear();
-
-                Hide();
-                parentAdd.Show();
-
-                AdminForm parent = (AdminForm)this.MdiParent;
-                parent.positionChilds();
-            }
-        }
+        }        
 
         private void dgTurnos_CellClick(object sender, DataGridViewCellEventArgs e) {
             if(e.RowIndex >= 0 && e.RowIndex < dgTurnos.Rows.Count){
@@ -134,6 +94,8 @@ namespace TaimerGUI {
                         currentAct.BorraTurno((Taimer.Turno)dgTurnos.Rows[e.RowIndex].Tag);
                     } catch (NotSupportedException exc) {
                         MessageBox.Show(exc.Message);
+                    } catch (MissingMemberException) {
+                    
                     }
                     dgTurnos.Rows.RemoveAt(e.RowIndex);
                 } else {
@@ -174,6 +136,50 @@ namespace TaimerGUI {
             turno.Ubicacion = txtBoxLugarMod.Text;
 
             loadAsig(currentAct);
+        }
+
+        private void btCreate_Click(object sender, EventArgs e) {
+
+            if (parentGest != null) {
+
+                parentGest.showInfo(currentAct);
+
+                Hide();
+                parentGest.Show();
+
+                AdminForm parent = (AdminForm)this.MdiParent;
+                parent.positionChilds();
+            } else if (parentAdd != null) {
+
+                Hide();
+                parentAdd.Show();
+
+                AdminForm parent = (AdminForm)this.MdiParent;
+                parent.positionChilds();
+            }
+        }
+
+        private void btCancel_Click(object sender, EventArgs e) {
+            if (parentGest != null) {
+
+                // Reestablezco la asignatura
+                currentAct.CopiarDesde(currentActCopy);
+
+                Hide();
+                parentGest.Show();
+
+                AdminForm parent = (AdminForm)this.MdiParent;
+                parent.positionChilds();
+            } else if (parentAdd != null) {
+                // Vacio la tabla
+                dgTurnos.Rows.Clear();
+
+                Hide();
+                parentAdd.Show();
+
+                AdminForm parent = (AdminForm)this.MdiParent;
+                parent.positionChilds();
+            }
         }
     }
 }

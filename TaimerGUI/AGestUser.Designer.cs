@@ -25,8 +25,6 @@
         private void InitializeComponent() {
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.dgUsers = new System.Windows.Forms.DataGridView();
-            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Dni = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lbUserName = new System.Windows.Forms.Label();
             this.btNewUser = new System.Windows.Forms.Button();
             this.lbName = new System.Windows.Forms.Label();
@@ -41,7 +39,6 @@
             this.label11 = new System.Windows.Forms.Label();
             this.tbName = new System.Windows.Forms.TextBox();
             this.tbEmail = new System.Windows.Forms.TextBox();
-            this.tbDni = new System.Windows.Forms.TextBox();
             this.tbTitu = new System.Windows.Forms.TextBox();
             this.btCancel = new System.Windows.Forms.Button();
             this.btConfirm = new System.Windows.Forms.Button();
@@ -49,14 +46,15 @@
             this.lbErrEmail = new System.Windows.Forms.Label();
             this.lbErrEmailBad = new System.Windows.Forms.Label();
             this.lbErrName = new System.Windows.Forms.Label();
-            this.lbErrDni = new System.Windows.Forms.Label();
             this.lbErrTitulacion = new System.Windows.Forms.Label();
             this.udCurso = new System.Windows.Forms.NumericUpDown();
-            this.lbErrDniBad = new System.Windows.Forms.Label();
             this.lbErrPass = new System.Windows.Forms.Label();
             this.lbPass = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.tbPass = new System.Windows.Forms.TextBox();
+            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Dni = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Eliminar = new System.Windows.Forms.DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgUsers)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.udCurso)).BeginInit();
             this.SuspendLayout();
@@ -78,25 +76,14 @@
             this.dgUsers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgUsers.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Nombre,
-            this.Dni});
+            this.Dni,
+            this.Eliminar});
             this.dgUsers.Location = new System.Drawing.Point(93, 132);
             this.dgUsers.Name = "dgUsers";
             this.dgUsers.ReadOnly = true;
             this.dgUsers.Size = new System.Drawing.Size(303, 334);
             this.dgUsers.TabIndex = 1;
             this.dgUsers.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgUsers_CellClick);
-            // 
-            // Nombre
-            // 
-            this.Nombre.HeaderText = "Nombre";
-            this.Nombre.Name = "Nombre";
-            this.Nombre.ReadOnly = true;
-            // 
-            // Dni
-            // 
-            this.Dni.HeaderText = "Dni";
-            this.Dni.Name = "Dni";
-            this.Dni.ReadOnly = true;
             // 
             // lbUserName
             // 
@@ -167,7 +154,6 @@
             this.lbDni.Size = new System.Drawing.Size(62, 13);
             this.lbDni.TabIndex = 10;
             this.lbDni.Text = "11111111X";
-            this.lbDni.Click += new System.EventHandler(this.lbDni_Click);
             // 
             // label7
             // 
@@ -236,15 +222,6 @@
             this.tbEmail.TabIndex = 18;
             this.tbEmail.Visible = false;
             this.tbEmail.Validated += new System.EventHandler(this.tbEmail_Validated);
-            // 
-            // tbDni
-            // 
-            this.tbDni.Location = new System.Drawing.Point(547, 317);
-            this.tbDni.Name = "tbDni";
-            this.tbDni.Size = new System.Drawing.Size(131, 20);
-            this.tbDni.TabIndex = 20;
-            this.tbDni.Visible = false;
-            this.tbDni.Validated += new System.EventHandler(this.tbDni_Validated);
             // 
             // tbTitu
             // 
@@ -322,18 +299,6 @@
             this.lbErrName.Text = "El campo no puede estar vacio";
             this.lbErrName.Visible = false;
             // 
-            // lbErrDni
-            // 
-            this.lbErrDni.AutoSize = true;
-            this.lbErrDni.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbErrDni.ForeColor = System.Drawing.Color.Maroon;
-            this.lbErrDni.Location = new System.Drawing.Point(544, 340);
-            this.lbErrDni.Name = "lbErrDni";
-            this.lbErrDni.Size = new System.Drawing.Size(145, 13);
-            this.lbErrDni.TabIndex = 80;
-            this.lbErrDni.Text = "El campo no puede estar vacio";
-            this.lbErrDni.Visible = false;
-            // 
             // lbErrTitulacion
             // 
             this.lbErrTitulacion.AutoSize = true;
@@ -364,18 +329,6 @@
             0});
             this.udCurso.Visible = false;
             this.udCurso.Validated += new System.EventHandler(this.tbCurso_Validated);
-            // 
-            // lbErrDniBad
-            // 
-            this.lbErrDniBad.AutoSize = true;
-            this.lbErrDniBad.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbErrDniBad.ForeColor = System.Drawing.Color.Maroon;
-            this.lbErrDniBad.Location = new System.Drawing.Point(544, 340);
-            this.lbErrDniBad.Name = "lbErrDniBad";
-            this.lbErrDniBad.Size = new System.Drawing.Size(159, 13);
-            this.lbErrDniBad.TabIndex = 84;
-            this.lbErrDniBad.Text = "El DNI introducido no es correcto";
-            this.lbErrDniBad.Visible = false;
             // 
             // lbErrPass
             // 
@@ -418,6 +371,24 @@
             this.tbPass.Visible = false;
             this.tbPass.Validated += new System.EventHandler(this.tbPass_Validated);
             // 
+            // Nombre
+            // 
+            this.Nombre.HeaderText = "Nombre";
+            this.Nombre.Name = "Nombre";
+            this.Nombre.ReadOnly = true;
+            // 
+            // Dni
+            // 
+            this.Dni.HeaderText = "Dni";
+            this.Dni.Name = "Dni";
+            this.Dni.ReadOnly = true;
+            // 
+            // Eliminar
+            // 
+            this.Eliminar.HeaderText = "Eliminar";
+            this.Eliminar.Name = "Eliminar";
+            this.Eliminar.ReadOnly = true;
+            // 
             // AGestUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -428,9 +399,7 @@
             this.Controls.Add(this.lbPass);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.tbPass);
-            this.Controls.Add(this.lbErrDniBad);
             this.Controls.Add(this.lbErrTitulacion);
-            this.Controls.Add(this.lbErrDni);
             this.Controls.Add(this.lbErrName);
             this.Controls.Add(this.lbErrEmail);
             this.Controls.Add(this.lbErrEmailBad);
@@ -452,7 +421,6 @@
             this.Controls.Add(this.dgUsers);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.tbTitu);
-            this.Controls.Add(this.tbDni);
             this.Controls.Add(this.tbEmail);
             this.Controls.Add(this.tbName);
             this.Controls.Add(this.udCurso);
@@ -485,23 +453,21 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox tbName;
         private System.Windows.Forms.TextBox tbEmail;
-        private System.Windows.Forms.TextBox tbDni;
         private System.Windows.Forms.TextBox tbTitu;
         private System.Windows.Forms.Button btCancel;
         private System.Windows.Forms.Button btConfirm;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Dni;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lbErrEmail;
         private System.Windows.Forms.Label lbErrEmailBad;
         private System.Windows.Forms.Label lbErrName;
-        private System.Windows.Forms.Label lbErrDni;
         private System.Windows.Forms.Label lbErrTitulacion;
         private System.Windows.Forms.NumericUpDown udCurso;
-        private System.Windows.Forms.Label lbErrDniBad;
         private System.Windows.Forms.Label lbErrPass;
         private System.Windows.Forms.Label lbPass;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox tbPass;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Dni;
+        private System.Windows.Forms.DataGridViewButtonColumn Eliminar;
     }
 }

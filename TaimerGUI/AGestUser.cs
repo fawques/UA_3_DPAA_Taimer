@@ -83,23 +83,6 @@ namespace TaimerGUI {
             btConfirm.Enabled = true;
         }
 
-        // Dni
-
-        private void lbDni_Click(object sender, EventArgs e) {
-            tbDni.Text = lbDni.Text;
-            lbDni.Visible = false;
-            tbDni.Visible = true;
-            tbDni.Focus();
-        }
-
-        private void tbDni_Validated(object sender, EventArgs e) {
-            lbDni.Text = tbDni.Text;
-            tbDni.Visible = false;
-            lbDni.Visible = true;
-            btCancel.Enabled = true;
-            btConfirm.Enabled = true;
-        }
-
         // Curso
 
         private void lbCurso_Click(object sender, EventArgs e) {
@@ -151,16 +134,22 @@ namespace TaimerGUI {
         }
 
         private void dgUsers_CellClick(object sender, DataGridViewCellEventArgs e) {
-
             if (e.RowIndex >= 0 && e.RowIndex < dgUsers.Rows.Count) {
+                if (dgUsers.Columns["Eliminar"].Index == e.ColumnIndex) {
 
-                selectedRow = e.RowIndex;
+                    Program.BorrarUsuario(((Taimer.User)dgUsers.Rows[e.RowIndex].Tag).DNI);
+                    dgUsers.Rows.RemoveAt(e.RowIndex);
 
-                Taimer.User user = (Taimer.User) dgUsers.Rows[selectedRow].Tag;
+                } else {
 
-                fillLabels(user);
+                    selectedRow = e.RowIndex;
 
-                btCancel.Enabled = true;
+                    Taimer.User user = (Taimer.User)dgUsers.Rows[selectedRow].Tag;
+
+                    fillLabels(user);
+
+                    btCancel.Enabled = true;
+                }
             }
         }
 
@@ -235,21 +224,6 @@ namespace TaimerGUI {
             } else {
                 lbErrEmail.Visible = false;
                 lbErrEmailBad.Visible = false;
-            }
-
-            // DNI
-            Regex dniRegex = new Regex("[0-9]{8}[A-Z]");
-            if (lbDni.Text == "") {
-                lbErrDni.Visible = true;
-                lbErrDniBad.Visible = true;
-                valid = false;
-            } else if (!dniRegex.IsMatch(lbDni.Text)) {
-                lbErrDni.Visible = false;
-                lbErrDniBad.Visible = true;
-                valid = false;
-            } else {
-                lbErrDni.Visible = false;
-                lbErrDniBad.Visible = false;
             }
 
             // Titulacion

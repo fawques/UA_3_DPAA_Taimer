@@ -54,7 +54,6 @@ namespace TaimerGUI {
             lbName.Visible = false;
             tbName.Visible = true;
             tbName.Focus();
-            currentAsigCopy.Nombre = lbName.Text;
         }
 
         private void tbName_Validated(object sender, EventArgs e) {
@@ -127,6 +126,8 @@ namespace TaimerGUI {
             asignaturas.Add(acti2);
 
             updateTableAsig();
+
+            clearInfo();
         }
 
         private void dgAsig_CellClick(object sender, DataGridViewCellEventArgs e) {
@@ -154,6 +155,7 @@ namespace TaimerGUI {
             dgTurns.Rows.Clear();
             btCreate.Enabled = false;
             btCancel.Enabled = false;
+            //gbInfo.Visible = false;
         }
 
         public void showInfo(Taimer.Actividad_a asig) {
@@ -168,11 +170,16 @@ namespace TaimerGUI {
             }
 
             btGestTurno.Enabled = true;
+            //gbInfo.Visible = true;
         }
 
         private void btCreate_Click(object sender, EventArgs e) {
             // Modificamos la asignatura en la lista
-            currentAsig = currentAsigCopy;
+            currentAsig.CopiarDesde(currentAsigCopy);
+            currentAsig.Nombre = lbName.Text;
+            currentAsig.Descripcion = lbDesc.Text;
+            currentAsig.NombreCoordinador = lbCoord.Text;
+
             clearInfo();
             updateTableAsig();
         }
