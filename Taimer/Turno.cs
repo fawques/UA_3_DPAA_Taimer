@@ -643,13 +643,39 @@ namespace Taimer {
                 ubicacion = null;
             t.ModificarTurno(diasemana.ToString()[0], horaInicio.toString(), horaFin.toString(), ubicacion, codigo, actividad.Codigo);
         }
+
+        /// <summary>
+        /// Convierte un objeto DataSet que contiene un conjunto de turnos en una lista de objetos Turno
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
+        public List<Turno> TurnosToList(DataSet data)
+        {
+            if (data != null)
+            {
+                CAD.CADActividad_a actACAD = new CAD.CADActividad_a();
+                CAD.CADActividad_p actPCAD = new CAD.CADActividad_p();
+                CAD.CADTurno turn = new CAD.CADTurno();
+                DataSet aux = new DataSet();
+                List<Turno> list = new List<Turno>();
+
+                int cod, pertenece;
+                string dia;
+                string ubic;
+                Hora inicio;
+                Hora fin;
+
+                DataRowCollection rows = data.Tables[0].Rows;
+
+                for (int i = 0; i < rows.Count; i++)
+                {
                     cod = (int)rows[i].ItemArray[0];
                     inicio = new Hora(rows[i].ItemArray[1].ToString());
                     fin = new Hora(rows[i].ItemArray[2].ToString());
                     dia = rows[i].ItemArray[3].ToString();
                     ubic = rows[i].ItemArray[4].ToString();
                     pertenece = (int)rows[i].ItemArray[5];
-                    
+
                     if (pertenece > 0)
                     {
                         aux = actACAD.GetDatosActividad_a(pertenece);
@@ -667,6 +693,7 @@ namespace Taimer {
             }
             return null;
         }
+
 
         #endregion
     }

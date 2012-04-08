@@ -15,10 +15,16 @@ namespace TaimerGUI {
         private static List<Algoritmo> algoritmos;
         private static int codAsignaturas = Actividad_a.UltimoCodigo;
 
+        private static void Init()
+        {
+            //Aqui hay que rellenar todos los atributos privados de esta clase desde el cad
+            //Esta función se llama en el main.
             usuarios = new List<User>();
             asignaturas = new List<Actividad_a>();
             SetUsers();
             SetAsignaturas();
+        }
+
         #endregion
 
         #region PARTE PUBLICA

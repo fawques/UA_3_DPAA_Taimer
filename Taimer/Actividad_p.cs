@@ -177,8 +177,37 @@ namespace Taimer {
             }
         }
 
-                        
-                        list.Add(new Actividad_p(nom, desc, cod,autor.UserToObject(user.GetDatosUser(dniUser))));
+        /// <summary>
+        /// Convierte un DataSet con filas de actividades personales a una lista de objetos Actividad_p
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
+        public List<Actividad_p> Actividades_pToList(DataSet data)
+        {
+            if (data != null)
+            {
+                CAD.CADActividad act = new CAD.CADActividad();
+                CAD.CADUser user = new CAD.CADUser();
+                User autor = new User();
+                List<Actividad_p> list = new List<Actividad_p>();
+                DataSet aux = new DataSet();
+                int cod;
+                string dniUser = "", nom, desc = "";
+                DataRowCollection rows = data.Tables[0].Rows;
+
+                for (int i = 0; i < rows.Count; i++)
+                {
+                    cod = (int)rows[i].ItemArray[0];
+                    dniUser = rows[i].ItemArray[1].ToString();
+
+                    aux = act.GetDatosActividad(cod);
+
+                    if (aux != null)
+                    {
+                        nom = aux.Tables[0].Rows[0].ItemArray[0].ToString();
+                        desc = aux.Tables[0].Rows[0].ItemArray[1].ToString();
+
+                        list.Add(new Actividad_p(nom, desc, cod, autor.UserToObject(user.GetDatosUser(dniUser))));
                     }
                     else
                         return null;
@@ -206,7 +235,7 @@ namespace Taimer {
                 string dniUser = "", nom, desc = "";
                 DataRowCollection rows = data.Tables[0].Rows;
 
-                if(rows.Count!=0)
+                if (rows.Count != 0)
                 {
                     cod = (int)rows[0].ItemArray[0];
                     dniUser = rows[0].ItemArray[1].ToString();
@@ -218,7 +247,7 @@ namespace Taimer {
                         nom = aux.Tables[0].Rows[0].ItemArray[0].ToString();
                         desc = aux.Tables[0].Rows[0].ItemArray[1].ToString();
 
-                        actp=new Actividad_p(nom, desc, cod, autor.UserToObject(user.GetDatosUser(dniUser)));
+                        actp = new Actividad_p(nom, desc, cod, autor.UserToObject(user.GetDatosUser(dniUser)));
                     }
                     else
                         return null;

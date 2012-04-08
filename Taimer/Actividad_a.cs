@@ -219,21 +219,21 @@ namespace Taimer {
                 DataSet aux = new DataSet();
 
                 int cod, curso = 0;
-                string prof="", tit = "", nom, desc = "";
+                string prof = "", tit = "", nom, desc = "";
 
                 DataRowCollection rows = data.Tables[0].Rows;
 
                 for (int i = 0; i < rows.Count; i++)
                 {
                     cod = (int)rows[i].ItemArray[0];
-                    
-                    if(rows[i].ItemArray[1].ToString() != "")
+
+                    if (rows[i].ItemArray[1].ToString() != "")
                         prof = rows[i].ItemArray[1].ToString();
 
                     tit = rows[i].ItemArray[2].ToString();
 
                     if (rows[i].ItemArray[3].ToString() != "")
-                        curso = (int)rows[i].ItemArray[3];                  
+                        curso = (int)rows[i].ItemArray[3];
 
                     aux = act.GetDatosActividad(cod);
 
@@ -242,7 +242,7 @@ namespace Taimer {
                         nom = aux.Tables[0].Rows[0].ItemArray[0].ToString();
                         desc = aux.Tables[0].Rows[0].ItemArray[1].ToString();
 
-                        list.Add(new Actividad_a(nom, desc, cod, prof, curso));
+                        list.Add(new Actividad_a(nom, desc, cod, prof, curso,tit));
                     }
                     else
                         return null;
@@ -288,7 +288,7 @@ namespace Taimer {
                         nom = aux.Tables[0].Rows[0].ItemArray[0].ToString();
                         desc = aux.Tables[0].Rows[0].ItemArray[1].ToString();
 
-                        acta=new Actividad_a(nom, desc, cod, prof, curso);
+                        acta = new Actividad_a(nom, desc, cod, prof,curso,tit);
                     }
                     else
                         return null;
