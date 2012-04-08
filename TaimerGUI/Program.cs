@@ -139,10 +139,13 @@ namespace TaimerGUI {
         public static void BorrarUsuario(string dni)
         {
             bool borrado = false;
-            foreach (User u in usuarios)
+            foreach (User u in Usuarios)
             {
                 if (u.DNI == dni)
+                {
                     borrado = usuarios.Remove(u);
+                    break;
+                }
             }
             if(!borrado)
                 throw new MissingMemberException("El usuario no existe");
