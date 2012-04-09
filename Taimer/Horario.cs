@@ -443,8 +443,7 @@ namespace Taimer
                     titulo = rows[0].ItemArray[1].ToString();
                     usuario = rows[0].ItemArray[2].ToString();
                     aux = user.GetDatosUser(usuario);
-                    User user2 = new User();
-                    Horario hor = new Horario(id, titulo, user2.UserToObject(aux));
+                    Horario hor = new Horario(id, titulo, User.UserToObject(aux));
                     return hor;
                 }
             }
@@ -473,8 +472,7 @@ namespace Taimer
                     titulo = rows[i].ItemArray[1].ToString();
                     usuario = rows[i].ItemArray[2].ToString();
                     aux = user.GetDatosUser(usuario);
-                    User user2 = new User();
-                    list.Add(new Horario(id, titulo, user2.UserToObject(aux)));
+                    list.Add(new Horario(id, titulo, User.UserToObject(aux)));
                 }
                 return list;
             }
