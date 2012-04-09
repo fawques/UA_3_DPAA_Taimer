@@ -4,7 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
+using System.Data;
 
 namespace Taimer {
 
@@ -298,8 +298,6 @@ namespace Taimer {
                 }
                 catch (ArgumentNullException)
                 {}
-                
-
             }
 
             if (!encontrado)
@@ -394,7 +392,64 @@ namespace Taimer {
 
             h.ModificaHorario(id, nombre, usuario.DNI);
         }
+        /// <summary>
+        /// Convierte un DataSet(será un Horario) en un objeto Horario
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
+        public static Horario HorarioToObject(DataSet data)
+        {
+            if (data != null)
+            {
+                string titulo, usuario = "";
+                int id = 0;
+                DataSet aux = new DataSet();
+                CADUser user=new CADUser();
+                DataRowCollection rows = data.Tables[0].Rows;
 
+                if (rows.Count != 0)
+                {
+                    id= (int)rows[0].ItemArray[0];
+                    titulo = rows[0].ItemArray[1].ToString();
+                    usuario = rows[0].ItemArray[2].ToString();
+                    aux=user.GetDatosUser(usuario);
+                    User user2=new User();
+                    Horario hor = new Horario(id, titulo, user2.UserToObject(aux));
+                    return hor;
+                }
+            }
+            return null;
+        }
+        /// <summary>
+        /// Convertimos un Dataset que contiene lista de Horarios en Una lista de Horarios
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
+        public static List<Horario> HorariosToList(DataSet data)
+        {
+            if (data != null)
+            {
+                List<Horario> list = new List<Horario>();
+                DataSet aux = new DataSet();
+                CADUser user=new CADUser();
+                string titulo,usuario= "";
+                int id = 0;
+                DataRowCollection rows = data.Tables[0].Rows;
+
+                for (int i = 0; i < rows.Count; i++)
+                {
+
+                   id = (int)rows[i].ItemArray[0];
+                   titulo= rows[i].ItemArray[1].ToString();
+                   usuario= rows[i].ItemArray[2].ToString();
+                   aux=user.GetDatosUser(usuario);
+                   User user2=new User();
+                   list.Add(new Horario(id,titulo,user2.UserToObject(aux)));
+                }
+                return list;
+            }
+            return null;
+        }
         #endregion
     }
 }

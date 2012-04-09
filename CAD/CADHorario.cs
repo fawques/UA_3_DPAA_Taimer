@@ -200,7 +200,7 @@ namespace CAD
         /// <param name="idho"></param>
         /// <param name="iduser"></param>
         /// <param name="cod_turno"></param>
-        /// <param name="cod_ac"></param>
+        /// < param name="cod_ac"></param>
         public void AddTurnoHo(int idho, string iduser, int cod_turno, int cod_ac)
         {
             string comando = "INSERT INTO [Horario_Turno](horarioId,horarioUser,turnoCod,turnoAct) VALUES('" + idho + "', '" + iduser + "', '" + cod_turno + "', '" + cod_ac+"')";

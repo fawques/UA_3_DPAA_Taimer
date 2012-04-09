@@ -72,7 +72,6 @@ namespace Taimer {
         /// Ultimo código de actividades personales creadas
         /// </summary>
         private int codActPers;
-
         /// <summary>
         /// Asigna un código un horario
         /// </summary>
@@ -522,6 +521,15 @@ namespace Taimer {
 
             MessageBox.Show("Login correcto");
             return true;
+        }
+        /// <summary>
+        /// Relleno del campo Horarios desde la BD
+        /// </summary>
+        public void RellenoHorarios()
+        {
+            CAD.CADHorario hor = new CADHorario();
+            DataSet horarios = hor.GetDatosHorarioUser(dni);
+            Horarios = Horario.HorariosToList(horarios);
         }
         #endregion
     }

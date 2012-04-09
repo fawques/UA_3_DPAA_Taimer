@@ -143,7 +143,7 @@ namespace TaimerGUI {
         {
             CAD.CADUser userCAD = new CAD.CADUser();         
             DataSet users = userCAD.GetUsers();
-            usuarios = User.UsersToList(users);
+            user.RellenoHorarios();
 
         }
 
