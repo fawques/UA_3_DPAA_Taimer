@@ -182,13 +182,12 @@ namespace Taimer {
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
-        public List<Actividad_p> Actividades_pToList(DataSet data)
+        public static List<Actividad_p> Actividades_pToList(DataSet data)
         {
             if (data != null)
             {
                 CAD.CADActividad act = new CAD.CADActividad();
                 CAD.CADUser user = new CAD.CADUser();
-                User autor = new User();
                 List<Actividad_p> list = new List<Actividad_p>();
                 DataSet aux = new DataSet();
                 int cod;
@@ -207,7 +206,7 @@ namespace Taimer {
                         nom = aux.Tables[0].Rows[0].ItemArray[0].ToString();
                         desc = aux.Tables[0].Rows[0].ItemArray[1].ToString();
 
-                        list.Add(new Actividad_p(nom, desc, cod, autor.UserToObject(user.GetDatosUser(dniUser))));
+                        list.Add(new Actividad_p(nom, desc, cod, User.UserToObject(user.GetDatosUser(dniUser))));
                     }
                     else
                         return null;
@@ -222,13 +221,12 @@ namespace Taimer {
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
-        public Actividad_p Actividad_pToObject(DataSet data)
+        public static Actividad_p Actividad_pToObject(DataSet data)
         {
             if (data != null)
             {
                 CAD.CADActividad act = new CAD.CADActividad();
                 CAD.CADUser user = new CAD.CADUser();
-                User autor = new User();
                 Actividad_p actp = new Actividad_p();
                 DataSet aux = new DataSet();
                 int cod;
@@ -247,7 +245,7 @@ namespace Taimer {
                         nom = aux.Tables[0].Rows[0].ItemArray[0].ToString();
                         desc = aux.Tables[0].Rows[0].ItemArray[1].ToString();
 
-                        actp = new Actividad_p(nom, desc, cod, autor.UserToObject(user.GetDatosUser(dniUser)));
+                        actp = new Actividad_p(nom, desc, cod, User.UserToObject(user.GetDatosUser(dniUser)));
                     }
                     else
                         return null;

@@ -210,7 +210,7 @@ namespace Taimer {
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
-        public List<Actividad_a> Actividades_aToList(DataSet data)
+        public static List<Actividad_a> Actividades_aToList(DataSet data)
         {
             if (data != null)
             {
@@ -257,7 +257,7 @@ namespace Taimer {
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
-        public Actividad_a Actividad_aToObject(DataSet data)
+        public static Actividad_a Actividad_aToObject(DataSet data)
         {
             if (data != null)
             {
