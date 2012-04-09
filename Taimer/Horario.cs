@@ -6,15 +6,17 @@ using System.Linq;
 using System.Text;
 using System.Data;
 
-namespace Taimer {
+namespace Taimer
+{
 
     /// <summary>
     /// Clase Horario: representa la relación entre los días de la semana y los turnos de cada actividad
     /// </summary>
-    public class Horario {
+    public class Horario
+    {
 
         #region PARTE PRIVADA
-        
+
         /// <summary>
         /// Identificador del Horario
         /// También es la clave primaria en la base de datos
@@ -41,12 +43,15 @@ namespace Taimer {
         /// </summary>
         /// <param name="item">Turno que se quiere insertar </param>
         /// <param name="dia"> Dia en el que se quiere insertar </param>
-        private void insertarOrdenado(Turno item, int dia) {
+        private void insertarOrdenado(Turno item, int dia)
+        {
             int i = 0;
             bool insertado = false;
 
-            for (i = 0; i < arrayTurnos[dia].Count; i++) {
-                if (arrayTurnos[dia][i].HoraInicio > item.HoraInicio) {
+            for (i = 0; i < arrayTurnos[dia].Count; i++)
+            {
+                if (arrayTurnos[dia][i].HoraInicio > item.HoraInicio)
+                {
                     arrayTurnos[dia].Insert(i, item);
                     insertado = true;
                     break;
@@ -63,8 +68,10 @@ namespace Taimer {
         /// </summary>
         /// <param name="turno">Turno que se quiere comprobar</param>
         /// <param name="dia">Dia en el que se quiere hacer la comprobación</param>
-        private void CheckSolapamiento(Turno turno, int dia) {
-            foreach (Turno item in arrayTurnos[dia]) {
+        private void CheckSolapamiento(Turno turno, int dia)
+        {
+            foreach (Turno item in arrayTurnos[dia])
+            {
                 item.Superpone(turno);
             }
         }
@@ -97,12 +104,14 @@ namespace Taimer {
         /// </summary>
         /// <param name="nom_">Nombre del Horario</param>
         /// <param name="usu_">Usuario al que pertenece el Horario</param>
-        public Horario(string nom_, User usu_) {
+        public Horario(string nom_, User usu_)
+        {
             id = 0;
             nombre = nom_;
             usuario = usu_;
 
-            for (int i = 0; i < 7; i++) {
+            for (int i = 0; i < 7; i++)
+            {
                 arrayTurnos[i] = new List<Turno>();
             }
         }
@@ -111,20 +120,26 @@ namespace Taimer {
         /// Constructor de copia
         /// </summary>
         /// <param name="h">Horario que se quiere copiar</param>
-        public Horario(Horario h) {
+        public Horario(Horario h)
+        {
             id = h.id;
             nombre = h.nombre;
             usuario = h.usuario;
 
-            for (int i = 0; i < 7; i++) {
-                arrayTurnos[i] = new List<Turno>(h.ArrayTurnos[i]);
+            for (int i = 0; i < 7; i++)
+            {
+                foreach (Turno item in h.ArrayTurnos[i])
+                {
+                    ArrayTurnos[i].Add(new Turno(item));
+                }
             }
         }
 
         /// <summary>
         /// Asigna/Devuelve el nombre del Horario
         /// </summary>
-        public string Nombre {
+        public string Nombre
+        {
             get { return nombre; }
             set { nombre = value; }
         }
@@ -133,7 +148,8 @@ namespace Taimer {
         /// <summary>
         /// Asigna/Devuelve el identificador del Horario
         /// </summary>
-        public int ID {
+        public int ID
+        {
             get { return id; }
             set { id = value; }
         }
@@ -142,7 +158,8 @@ namespace Taimer {
         /// <summary>
         /// Asigna/Devuelve el usuario al que pertenece el Horario
         /// </summary>
-        public User Usuario {
+        public User Usuario
+        {
             get { return usuario; }
             set { usuario = value; }
         }
@@ -151,11 +168,14 @@ namespace Taimer {
         /// <summary>
         /// Devuelve en número de turno que tiene el horario
         /// </summary>
-        public int Count {
-            get {
+        public int Count
+        {
+            get
+            {
                 int cantidad = 0;
 
-                for (int i = 0; i < 7; i++) {
+                for (int i = 0; i < 7; i++)
+                {
                     cantidad += arrayTurnos[i].Count;
                 }
 
@@ -202,7 +222,7 @@ namespace Taimer {
                     break;
             }
         }
-        
+
 
         /// <summary>
         /// Asigna/Devuelve el array de listas de Turno que contiene los turnos del Horario
@@ -239,13 +259,13 @@ namespace Taimer {
         /// <returns>Primera hora del dia</returns>
         public Hora minHoraDia(int dia)
         {
-            if(dia > 6 || dia < 0)
+            if (dia > 6 || dia < 0)
                 throw new IndexOutOfRangeException("El día no existe (fuera de rango).");
 
-            if(arrayTurnos[dia].Count == 0)
+            if (arrayTurnos[dia].Count == 0)
                 throw new ArgumentNullException("El día está vacío.");
 
-            Hora minima = new Hora(23,59);
+            Hora minima = new Hora(23, 59);
 
             foreach (Turno item in arrayTurnos[dia])
             {
@@ -297,7 +317,7 @@ namespace Taimer {
                     }
                 }
                 catch (ArgumentNullException)
-                {}
+                { }
             }
 
             if (!encontrado)
@@ -326,8 +346,8 @@ namespace Taimer {
                     }
                 }
                 catch (ArgumentNullException)
-                {}
-                
+                { }
+
             }
             if (!encontrado)
             {
@@ -340,12 +360,15 @@ namespace Taimer {
         /// <summary>
         /// Añade el horario a la base de datos
         /// </summary>
-        public void Agregar() {
+        public void Agregar()
+        {
             CADHorario h = new CADHorario();
             h.CrearHorarioBasic(id, nombre, usuario.DNI);
 
-            foreach (List<Turno> lt in arrayTurnos) {
-                foreach (Turno t in lt) {
+            foreach (List<Turno> lt in arrayTurnos)
+            {
+                foreach (Turno t in lt)
+                {
                     h.AddTurnoHo(id, usuario.DNI, t.Codigo, t.Actividad.Codigo);
                 }
             }
@@ -355,24 +378,29 @@ namespace Taimer {
         /// <summary>
         /// Borra el horario de la base de datos
         /// </summary>
-        public void Borrar() {
+        public void Borrar()
+        {
             CADHorario h = new CADHorario();
 
             h.BorrarTurnosHo(id, usuario.DNI);
             h.BorrarHorario(id, usuario.DNI);
-            
+
         }
 
         /// <summary>
         /// Borra un turno del horario (tiene que estar previamente en la base de datos)
         /// </summary>
         /// <param name="codigo">Código del turno que se desea borrar</param>
-        public void BorrarTurno(int codigo) {
+        public void BorrarTurno(int codigo)
+        {
             CADHorario h = new CADHorario();
 
-            foreach (List<Turno> lt in arrayTurnos) {
-                foreach (Turno t in lt) {
-                    if (t.Codigo == codigo) {
+            foreach (List<Turno> lt in arrayTurnos)
+            {
+                foreach (Turno t in lt)
+                {
+                    if (t.Codigo == codigo)
+                    {
                         lt.Remove(t);
                         h.BorrarTurnoEspecifico(id, usuario.DNI, t.Codigo, t.Actividad.Codigo);
                     }
@@ -384,10 +412,11 @@ namespace Taimer {
         /// Guarda los cambios que ha recibido el horario en la base de datos
         /// Si el nombre es ahora vacio la BD lanzará excepción
         /// </summary>
-        public void Modificar() {
+        public void Modificar()
+        {
             CADHorario h = new CADHorario();
-            
-            if(nombre == "")
+
+            if (nombre == "")
                 nombre = null;
 
             h.ModificaHorario(id, nombre, usuario.DNI);
@@ -404,16 +433,16 @@ namespace Taimer {
                 string titulo, usuario = "";
                 int id = 0;
                 DataSet aux = new DataSet();
-                CADUser user=new CADUser();
+                CADUser user = new CADUser();
                 DataRowCollection rows = data.Tables[0].Rows;
 
                 if (rows.Count != 0)
                 {
-                    id= (int)rows[0].ItemArray[0];
+                    id = (int)rows[0].ItemArray[0];
                     titulo = rows[0].ItemArray[1].ToString();
                     usuario = rows[0].ItemArray[2].ToString();
-                    aux=user.GetDatosUser(usuario);
-                    User user2=new User();
+                    aux = user.GetDatosUser(usuario);
+                    User user2 = new User();
                     Horario hor = new Horario(id, titulo, user2.UserToObject(aux));
                     return hor;
                 }
@@ -431,20 +460,20 @@ namespace Taimer {
             {
                 List<Horario> list = new List<Horario>();
                 DataSet aux = new DataSet();
-                CADUser user=new CADUser();
-                string titulo,usuario= "";
+                CADUser user = new CADUser();
+                string titulo, usuario = "";
                 int id = 0;
                 DataRowCollection rows = data.Tables[0].Rows;
 
                 for (int i = 0; i < rows.Count; i++)
                 {
 
-                   id = (int)rows[i].ItemArray[0];
-                   titulo= rows[i].ItemArray[1].ToString();
-                   usuario= rows[i].ItemArray[2].ToString();
-                   aux=user.GetDatosUser(usuario);
-                   User user2=new User();
-                   list.Add(new Horario(id,titulo,user2.UserToObject(aux)));
+                    id = (int)rows[i].ItemArray[0];
+                    titulo = rows[i].ItemArray[1].ToString();
+                    usuario = rows[i].ItemArray[2].ToString();
+                    aux = user.GetDatosUser(usuario);
+                    User user2 = new User();
+                    list.Add(new Horario(id, titulo, user2.UserToObject(aux)));
                 }
                 return list;
             }
