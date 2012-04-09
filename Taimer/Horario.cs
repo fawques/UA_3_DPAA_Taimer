@@ -128,6 +128,7 @@ namespace Taimer
 
             for (int i = 0; i < 7; i++)
             {
+                arrayTurnos[i] = new List<Turno>();
                 foreach (Turno item in h.ArrayTurnos[i])
                 {
                     ArrayTurnos[i].Add(new Turno(item));
