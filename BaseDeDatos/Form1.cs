@@ -17,9 +17,8 @@ namespace BaseDeDatos
         }
 
         private void button1_Click(object sender, EventArgs e)
-        {
-            Taimer.User user = new Taimer.User();
-            user.CheckLogin(textBox1.Text, textBox2.Text);
+        {            
+            Taimer.User.CheckLogin(textBox1.Text, textBox2.Text);
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -30,11 +29,10 @@ namespace BaseDeDatos
 
         private void button3_Click(object sender, EventArgs e)
         {
-            CAD.CADTurno turnoCAD = new CAD.CADTurno();
-            Taimer.Turno aux=new Taimer.Turno();
+            CAD.CADTurno turnoCAD = new CAD.CADTurno();             
             List<Taimer.Turno> turnos;
 
-            turnos = aux.TurnosToList(turnoCAD.GetTurnosByAct(Convert.ToInt16(textBox3.Text)));
+            turnos = Taimer.Turno.TurnosToList(turnoCAD.GetTurnosByAct(Convert.ToInt16(textBox3.Text)));
 
             foreach (Taimer.Turno turn in turnos)
                 MessageBox.Show(""+turn.Codigo);

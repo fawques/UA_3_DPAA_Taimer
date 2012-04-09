@@ -141,11 +141,9 @@ namespace TaimerGUI {
         /// </summary>
         public static void SetUsers()
         {
-            CAD.CADUser userCAD = new CAD.CADUser();
-            User user = new User();
-            
+            CAD.CADUser userCAD = new CAD.CADUser();         
             DataSet users = userCAD.GetUsers();
-            usuarios = user.UsersToList(users);
+            usuarios = User.UsersToList(users);
 
         }
 
@@ -155,10 +153,9 @@ namespace TaimerGUI {
         public static void SetAsignaturas()
         {
             CAD.CADActividad_a actCAD = new CAD.CADActividad_a();
-            Actividad_a act = new Actividad_a();
-           
             DataSet acts = actCAD.GetActividades_a();
-            asignaturas = act.Actividades_aToList(acts);
+
+            asignaturas = Actividad_a.Actividades_aToList(acts);
           
             foreach (Actividad_a ac in asignaturas)
                 MessageBox.Show(ac.Descripcion);

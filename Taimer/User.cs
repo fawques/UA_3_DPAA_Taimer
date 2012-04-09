@@ -433,7 +433,7 @@ namespace Taimer {
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
-        public List<User> UsersToList(DataSet data)
+        public static List<User> UsersToList(DataSet data)
         {
             if (data != null)
             {
@@ -473,7 +473,7 @@ namespace Taimer {
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
-        public User UserToObject(DataSet data)
+        public static User UserToObject(DataSet data)
         {         
             if (data != null)
             {
@@ -510,7 +510,7 @@ namespace Taimer {
         /// <param name="email"></param>
         /// <param name="pass"></param>
         /// <returns></returns>
-        public bool CheckLogin(string email, string pass)
+        public static bool CheckLogin(string email, string pass)
         {
             CADUser userCAD = new CADUser();
             User user = UserToObject(userCAD.GetDatosUser(email, pass));

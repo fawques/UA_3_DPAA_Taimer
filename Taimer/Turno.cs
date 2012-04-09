@@ -649,7 +649,7 @@ namespace Taimer {
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
-        public List<Turno> TurnosToList(DataSet data)
+        public static List<Turno> TurnosToList(DataSet data)
         {
             if (data != null)
             {
@@ -678,15 +678,13 @@ namespace Taimer {
 
                     if (pertenece > 0)
                     {
-                        aux = actACAD.GetDatosActividad_a(pertenece);
-                        Actividad_a act = new Actividad_a();
-                        list.Add(new Turno(cod, inicio, fin, dia, ubic, act.Actividad_aToObject(aux)));
+                        aux = actACAD.GetDatosActividad_a(pertenece);                        
+                        list.Add(new Turno(cod, inicio, fin, dia, ubic, Actividad_a.Actividad_aToObject(aux)));
                     }
                     else
                     {
-                        aux = actPCAD.GetDatosActividad_p(pertenece);
-                        Actividad_p actp = new Actividad_p();
-                        list.Add(new Turno(cod, inicio, fin, dia, ubic, actp.Actividad_pToObject(aux)));
+                        aux = actPCAD.GetDatosActividad_p(pertenece);                       
+                        list.Add(new Turno(cod, inicio, fin, dia, ubic, Actividad_p.Actividad_pToObject(aux)));
                     }
                 }
                 return list;
