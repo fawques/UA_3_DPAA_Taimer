@@ -50,6 +50,7 @@
             this.lbNameInfo = new System.Windows.Forms.Label();
             this.lbName = new System.Windows.Forms.Label();
             this.tbName = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgAsig)).BeginInit();
             this.gbInfo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgTurns)).BeginInit();
@@ -329,12 +330,23 @@
             this.tbName.Visible = false;
             this.tbName.Validated += new System.EventHandler(this.tbName_Validated);
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(326, 29);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(389, 13);
+            this.label2.TabIndex = 69;
+            this.label2.Text = "Modificar los datos de asignaturas existentes, así como crear asignaturas nuevas";
+            // 
             // AGestAsig
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Cornsilk;
             this.ClientSize = new System.Drawing.Size(795, 595);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.btNewUser);
@@ -384,5 +396,6 @@
         private System.Windows.Forms.Label lbNameInfo;
         private System.Windows.Forms.Label lbName;
         private System.Windows.Forms.TextBox tbName;
+        private System.Windows.Forms.Label label2;
     }
 }

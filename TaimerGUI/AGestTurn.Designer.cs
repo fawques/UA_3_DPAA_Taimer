@@ -63,6 +63,7 @@
             this.label15 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.cmbBoxDiaMod = new System.Windows.Forms.ComboBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.udMinFin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.udHoraFin)).BeginInit();
@@ -340,7 +341,7 @@
             this.grpBoxTurno.Size = new System.Drawing.Size(760, 148);
             this.grpBoxTurno.TabIndex = 5;
             this.grpBoxTurno.TabStop = false;
-            this.grpBoxTurno.Text = "Turno";
+            this.grpBoxTurno.Text = "Modificar Turno";
             this.grpBoxTurno.Visible = false;
             // 
             // btnCancelar
@@ -506,12 +507,23 @@
             this.cmbBoxDiaMod.Size = new System.Drawing.Size(121, 21);
             this.cmbBoxDiaMod.TabIndex = 6;
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Calibri", 8.25F);
+            this.label8.Location = new System.Drawing.Point(267, 26);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(321, 13);
+            this.label8.TabIndex = 65;
+            this.label8.Text = "Modificar turnos existentes, así como la creación de turnos nuevos";
+            // 
             // AGestTurn
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Cornsilk;
             this.ClientSize = new System.Drawing.Size(795, 595);
+            this.Controls.Add(this.label8);
             this.Controls.Add(this.grpBoxTurno);
             this.Controls.Add(this.dgTurnos);
             this.Controls.Add(this.lbErrUbi);
@@ -585,5 +597,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn HoraFin;
         private System.Windows.Forms.DataGridViewTextBoxColumn Ubicacion;
         private System.Windows.Forms.DataGridViewButtonColumn Borrar;
+        private System.Windows.Forms.Label label8;
     }
 }

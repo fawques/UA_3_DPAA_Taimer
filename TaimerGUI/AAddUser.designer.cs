@@ -45,6 +45,7 @@
             this.lbErrPass = new System.Windows.Forms.Label();
             this.lbPass = new System.Windows.Forms.Label();
             this.tbPass = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.udCurso)).BeginInit();
             this.SuspendLayout();
             // 
@@ -269,12 +270,24 @@
             this.tbPass.Size = new System.Drawing.Size(174, 20);
             this.tbPass.TabIndex = 4;
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.Black;
+            this.label3.Location = new System.Drawing.Point(223, 26);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(146, 13);
+            this.label3.TabIndex = 83;
+            this.label3.Text = "Creación de un usuario nuevo";
+            // 
             // AAddUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Cornsilk;
             this.ClientSize = new System.Drawing.Size(795, 595);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.lbErrPass);
             this.Controls.Add(this.lbPass);
             this.Controls.Add(this.tbPass);
@@ -330,5 +343,6 @@
         private System.Windows.Forms.Label lbErrPass;
         private System.Windows.Forms.Label lbPass;
         private System.Windows.Forms.TextBox tbPass;
+        private System.Windows.Forms.Label label3;
     }
 }

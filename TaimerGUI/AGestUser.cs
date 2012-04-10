@@ -137,8 +137,15 @@ namespace TaimerGUI {
             if (e.RowIndex >= 0 && e.RowIndex < dgUsers.Rows.Count) {
                 if (dgUsers.Columns["Eliminar"].Index == e.ColumnIndex) {
 
-                    Program.BorrarUsuario(((Taimer.User)dgUsers.Rows[e.RowIndex].Tag).DNI);
-                    dgUsers.Rows.RemoveAt(e.RowIndex);
+                    if (MessageBox.Show(
+                    "¿Esta seguro de que desea borrar al usuario?",
+                    "Borrar usuario",
+                    MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes) {
+
+                        Program.BorrarUsuario(((Taimer.User)dgUsers.Rows[e.RowIndex].Tag).DNI);
+                        dgUsers.Rows.RemoveAt(e.RowIndex);
+
+                    }
 
                 } else {
 
@@ -155,11 +162,17 @@ namespace TaimerGUI {
 
         private void btCancel_Click(object sender, EventArgs e) {
 
-            Taimer.User user = (Taimer.User)dgUsers.Rows[selectedRow].Tag;
+            if (MessageBox.Show(
+                    "¿Esta seguro de que desea descartar los cambios?",
+                    "Descartar cambios",
+                    MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes) {
 
-            fillLabels(user);
+                Taimer.User user = (Taimer.User)dgUsers.Rows[selectedRow].Tag;
 
-            btCancel.Enabled = false;
+                fillLabels(user);
+
+                btCancel.Enabled = false;
+            }
         }
 
         private void clearLabels() {

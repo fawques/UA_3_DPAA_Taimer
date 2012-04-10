@@ -55,6 +55,7 @@
             this.lbPass = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.tbPass = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgUsers)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.udCurso)).BeginInit();
             this.SuspendLayout();
@@ -253,22 +254,22 @@
             // btCancel
             // 
             this.btCancel.Enabled = false;
-            this.btCancel.Location = new System.Drawing.Point(671, 548);
+            this.btCancel.Location = new System.Drawing.Point(646, 548);
             this.btCancel.Name = "btCancel";
-            this.btCancel.Size = new System.Drawing.Size(105, 35);
+            this.btCancel.Size = new System.Drawing.Size(137, 35);
             this.btCancel.TabIndex = 10;
-            this.btCancel.Text = "Cancelar";
+            this.btCancel.Text = "Descartar Cambios";
             this.btCancel.UseVisualStyleBackColor = true;
             this.btCancel.Click += new System.EventHandler(this.btCancel_Click);
             // 
             // btConfirm
             // 
             this.btConfirm.Enabled = false;
-            this.btConfirm.Location = new System.Drawing.Point(547, 548);
+            this.btConfirm.Location = new System.Drawing.Point(496, 548);
             this.btConfirm.Name = "btConfirm";
-            this.btConfirm.Size = new System.Drawing.Size(105, 35);
+            this.btConfirm.Size = new System.Drawing.Size(137, 35);
             this.btConfirm.TabIndex = 9;
-            this.btConfirm.Text = "Confirmar";
+            this.btConfirm.Text = "Confirmar Cambios";
             this.btConfirm.UseVisualStyleBackColor = true;
             this.btConfirm.Click += new System.EventHandler(this.btConfirm_Click);
             // 
@@ -389,12 +390,23 @@
             this.tbPass.Visible = false;
             this.tbPass.Validated += new System.EventHandler(this.tbPass_Validated);
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(287, 29);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(332, 13);
+            this.label4.TabIndex = 89;
+            this.label4.Text = "Modificar datos de usuarios, así como la creación de usuarios nuevos";
+            // 
             // AGestUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Cornsilk;
             this.ClientSize = new System.Drawing.Size(795, 595);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.lbErrPass);
             this.Controls.Add(this.lbPass);
             this.Controls.Add(this.label6);
@@ -470,5 +482,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
         private System.Windows.Forms.DataGridViewTextBoxColumn Dni;
         private System.Windows.Forms.DataGridViewButtonColumn Eliminar;
+        private System.Windows.Forms.Label label4;
     }
 }

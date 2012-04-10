@@ -41,6 +41,7 @@
             this.lbErrCoord = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.tbCoord = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgTurnos)).BeginInit();
             this.SuspendLayout();
             // 
@@ -212,12 +213,23 @@
             this.tbCoord.Size = new System.Drawing.Size(420, 20);
             this.tbCoord.TabIndex = 3;
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(262, 26);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(225, 13);
+            this.label3.TabIndex = 69;
+            this.label3.Text = "Creación de una nueva asignatura y sus turnos";
+            // 
             // AAddAsig
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Cornsilk;
             this.ClientSize = new System.Drawing.Size(795, 595);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.lbErrCoord);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.tbCoord);
@@ -262,6 +274,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn HoraInicio;
         private System.Windows.Forms.DataGridViewTextBoxColumn HoraFin;
         private System.Windows.Forms.DataGridViewTextBoxColumn Ubicacion;
+        private System.Windows.Forms.Label label3;
 
     }
 }

@@ -117,7 +117,13 @@ namespace TaimerGUI {
         }
 
         private void btnCancelar_Click(object sender, EventArgs e) {
-            grpBoxTurno.Visible = false;
+
+            if (MessageBox.Show(
+                    "¿Esta seguro de que desea descartar los cambios?",
+                    "Descartar cambios",
+                    MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes) {
+                grpBoxTurno.Visible = false;
+            }
         }
 
         private void btnGuardar_Click(object sender, EventArgs e) {
@@ -160,25 +166,31 @@ namespace TaimerGUI {
         }
 
         private void btCancel_Click(object sender, EventArgs e) {
-            if (parentGest != null) {
+            if (MessageBox.Show(
+                    "¿Esta seguro de que desea descartar los cambios?",
+                    "Descartar cambios",
+                    MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes) {
 
-                // Reestablezco la asignatura
-                currentAct.CopiarDesde(currentActCopy);
+                if (parentGest != null) {
 
-                Hide();
-                parentGest.Show();
+                    // Reestablezco la asignatura
+                    currentAct.CopiarDesde(currentActCopy);
 
-                AdminForm parent = (AdminForm)this.MdiParent;
-                parent.positionChilds();
-            } else if (parentAdd != null) {
-                // Vacio la tabla
-                dgTurnos.Rows.Clear();
+                    Hide();
+                    parentGest.Show();
 
-                Hide();
-                parentAdd.Show();
+                    AdminForm parent = (AdminForm)this.MdiParent;
+                    parent.positionChilds();
+                } else if (parentAdd != null) {
+                    // Vacio la tabla
+                    dgTurnos.Rows.Clear();
 
-                AdminForm parent = (AdminForm)this.MdiParent;
-                parent.positionChilds();
+                    Hide();
+                    parentAdd.Show();
+
+                    AdminForm parent = (AdminForm)this.MdiParent;
+                    parent.positionChilds();
+                }
             }
         }
     }
