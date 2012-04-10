@@ -70,7 +70,7 @@ namespace TaimerGUI
                 pnlPersonales.Controls.Clear();
                 int posY = 10;
                 foreach (Actividad_p obj in usrAux.ActPersonales) {
-                    if (obj.Nombre.ToLower().Contains(nom)) {
+                    if (obj.Nombre.ToLower().Contains(nom) || obj.Descripcion.ToLower().Contains(nom)) {
                         Label auxlbl = new Label();
                         auxlbl.AutoSize = false;
                         auxlbl.Width = 275;
@@ -93,7 +93,8 @@ namespace TaimerGUI
                 pnlOficiales.Controls.Clear();
                 int posY = 10;
                 foreach (Actividad_a obj in usrAux.ActAcademicas) {
-                    if (obj.Nombre.ToLower().Contains(nom)) {
+                    if (obj.Nombre.ToLower().Contains(nom) || obj.Descripcion.ToLower().Contains(nom) || obj.NombreCoordinador.ToLower().Contains(nom))
+                    {
                         Label auxlbl = new Label();
                         auxlbl.AutoSize = false;
                         auxlbl.Width = 275;
