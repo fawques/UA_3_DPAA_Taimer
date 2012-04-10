@@ -173,6 +173,7 @@
             this.txtBoxFiltroAct.Name = "txtBoxFiltroAct";
             this.txtBoxFiltroAct.Size = new System.Drawing.Size(167, 20);
             this.txtBoxFiltroAct.TabIndex = 29;
+            this.txtBoxFiltroAct.TextChanged += new System.EventHandler(this.txtBoxFiltroAct_TextChanged);
             // 
             // label6
             // 
@@ -189,6 +190,7 @@
             this.txtBoxFiltroMat.Name = "txtBoxFiltroMat";
             this.txtBoxFiltroMat.Size = new System.Drawing.Size(167, 20);
             this.txtBoxFiltroMat.TabIndex = 31;
+            this.txtBoxFiltroMat.TextChanged += new System.EventHandler(this.txtBoxFiltroMat_TextChanged);
             // 
             // button2
             // 

@@ -66,6 +66,7 @@ namespace TaimerGUI
         }
 
         private void loadPersonales(string nom) {
+            nom = nom.ToLower();
             if (usrAux != null) {
                 pnlPersonales.Controls.Clear();
                 int posY = 10;
@@ -89,6 +90,7 @@ namespace TaimerGUI
         }
 
         private void loadOficiales(string nom) {
+            nom = nom.ToLower();
             if (usrAux != null) {
                 pnlOficiales.Controls.Clear();
                 int posY = 10;
