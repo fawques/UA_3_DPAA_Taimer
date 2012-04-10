@@ -58,8 +58,8 @@ namespace TaimerGUI {
             asignaturas.Add(actA);
             asignaturas.Add(actA2);
 
-            Usuarios[0].ActPersonales.Add(actP);
-            Usuarios[0].ActPersonales.Add(actP2);
+            Usuarios[0].AddActPersonal(actP);
+            Usuarios[0].AddActPersonal(actP2);
 
 
         }
@@ -193,7 +193,7 @@ namespace TaimerGUI {
         public static void ModificarActividad(Actividad act)
         {
             bool borrado = false;
-            if (act.Codigo > 0) // Es académica
+            if (act is Actividad_a)
             {
                 foreach (Actividad_a item in asignaturas)
                 {
@@ -207,7 +207,7 @@ namespace TaimerGUI {
                 if (!borrado)
                     throw new ArgumentException("La Actividad especificada no existe");
             }
-            else // Es personal
+            else
             {
                 foreach (User item in usuarios)
                 {

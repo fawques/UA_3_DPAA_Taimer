@@ -58,7 +58,7 @@ namespace Taimer {
             : base(act) {
                 // el constructor de copia de la clase base ya llama a CopiarDesde
                 usuario = act.usuario;     
-                act.Codigo = usuario.CodActPers;
+//                act.Codigo = usuario.CodActPers;
                 
         }
 
@@ -72,7 +72,7 @@ namespace Taimer {
             base.CopiarDesde(act);
             Actividad_p aux = (Actividad_p) act;
             usuario = aux.usuario;
-            aux.Codigo = usuario.CodActPers;
+            //aux.Codigo = usuario.CodActPers;
         }
 
         /// <summary>

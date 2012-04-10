@@ -437,6 +437,7 @@ namespace TaimerGUI {
 
         public void crearActividad_Click(object sender, EventArgs e)
         {
+            formCrearAct.reiniciar();
             hideAllChilds();
             formCrearAct.Show();
             formCrearAct.Focus();

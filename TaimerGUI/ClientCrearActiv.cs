@@ -22,80 +22,114 @@ namespace TaimerGUI
             formGestTurnos = f;
         }
 
-        private void button3_Click(object sender, EventArgs e) {
+        private void button3_Click(object sender, EventArgs e)
+        {
             this.Hide();
-            ((ClientForm)this.MdiParent).verActividades_Click(null,null);
+            ((ClientForm)this.MdiParent).verActividades_Click(null, null);
         }
 
-        private void ClientCrearActiv_Load(object sender, EventArgs e) {
 
-        }
-
-        private void gVHorasTemp_CellContentClick(object sender, DataGridViewCellEventArgs e) {
-            if (e.ColumnIndex == gVHorasTemp.Columns["Borrar"].Index) {
+        private void gVHorasTemp_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == gVHorasTemp.Columns["Borrar"].Index)
+            {
                 gVHorasTemp.Rows.RemoveAt(e.RowIndex);
             }
         }
 
-        private void bttnCrearActiv_Click(object sender, EventArgs e) {
-            
+        private void bttnCrearActiv_Click(object sender, EventArgs e)
+        {
 
-            if (validarTodo()) {
-                if (actAux == null || actAux.Turnos.Count <= 0) {
-                    
+
+            if (validarTodo())
+            {
+                if (actAux == null || actAux.Turnos.Count <= 0)
+                {
+
                 }
                 if (MessageBox.Show("¿Seguro que desea crearla?",
                 "¿Crear actividad?",
                 MessageBoxButtons.YesNo,
                 MessageBoxIcon.Question,
-                MessageBoxDefaultButton.Button2) == DialogResult.Yes) {
-                    if (actAux == null) {
-                        actAux = new Actividad_p(tBNombre.Text, rTBDescripcion.Text, 0, usrAux);
+                MessageBoxDefaultButton.Button2) == DialogResult.Yes)
+                {
+                    if (actAux == null)
+                    {
+                        actAux = new Actividad_p(tBNombre.Text, rTBDescripcion.Text, usrAux.CodActPers, usrAux);
                     }
                     actAux.Nombre = tBNombre.Text;
                     actAux.Descripcion = rTBDescripcion.Text;
-                    try {
+                    try
+                    {
                         usrAux.AddActPersonal(actAux);
-                    } catch (Exception ex) {
+                    }
+                    catch (Exception ex)
+                    {
                         MessageBox.Show(ex.Message);
                     }
                     ((ClientForm)this.MdiParent).loadLastActividades();
-                    ((ClientForm)this.MdiParent).verActividad_Click(null,null);
+                    ((ClientForm)this.MdiParent).verActividad_Click(null, null);
                 }
             }
-            
+
         }
 
-        private bool validarTodo() {
+        private bool validarTodo()
+        {
             bool correcto = true;
-            if (tBNombre.Text == "") {
+            if (tBNombre.Text == "")
+            {
                 lblErrorNombre.Visible = true;
                 correcto = false;
-            } else {
+            }
+            else
+            {
                 lblErrorNombre.Visible = false;
             }
 
             return correcto;
         }
 
-        public void loadBoxTurnos(){
+        public void loadBoxTurnos()
+        {
             gVHorasTemp.Rows.Clear();
-            if (actAux != null) {
-                foreach (Turno t in actAux.Turnos) {
+            if (actAux != null)
+            {
+                foreach (Turno t in actAux.Turnos)
+                {
                     gVHorasTemp.Rows.Add(t.DiaString, t.HoraInicio.toString(), t.HoraFin.toString(), t.Ubicacion);
                 }
             }
         }
 
-        private void button2_Click(object sender, EventArgs e) {
-            if (actAux == null) {
-                actAux = new Actividad_p(tBNombre.Text, rTBDescripcion.Text, 0, usrAux);
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (actAux == null)
+            {
+                actAux = new Actividad_p(tBNombre.Text, rTBDescripcion.Text, usrAux.CodActPers, usrAux);
             }
             this.formGestTurnos.reiniciar();
             this.formGestTurnos.setFormPadre(this);
             this.formGestTurnos.setActividad(actAux);
             this.formGestTurnos.Show();
             this.formGestTurnos.Focus();
+        }
+
+        private void ClientCrearActiv_Activated(object sender, EventArgs e)
+        {
+        }
+
+        public void reiniciar()
+        {
+            actAux = null;
+            tBNombre.Text = "";
+            rTBDescripcion.Text = "";
+            gVHorasTemp.Rows.Clear();
+        }
+
+        private void ClientCrearActiv_Load(object sender, EventArgs e)
+        {
+
         }
 
     }
