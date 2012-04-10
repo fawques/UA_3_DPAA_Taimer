@@ -43,6 +43,11 @@
             this.btSidePanelEstad = new System.Windows.Forms.Button();
             this.btSidePanelAsig = new System.Windows.Forms.Button();
             this.btSidePanelUser = new System.Windows.Forms.Button();
+            this.verUsuariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.nuevoUsuarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.verAsignaturasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.nuevaAsignaturaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.verEstadisticasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pnTop.SuspendLayout();
             this.panel3.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -115,18 +120,26 @@
             // 
             // usuariosToolStripMenuItem
             // 
+            this.usuariosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.verUsuariosToolStripMenuItem,
+            this.nuevoUsuarioToolStripMenuItem});
             this.usuariosToolStripMenuItem.Name = "usuariosToolStripMenuItem";
             this.usuariosToolStripMenuItem.Size = new System.Drawing.Size(64, 20);
             this.usuariosToolStripMenuItem.Text = "Usuarios";
             // 
             // asignaturasToolStripMenuItem
             // 
+            this.asignaturasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.verAsignaturasToolStripMenuItem,
+            this.nuevaAsignaturaToolStripMenuItem});
             this.asignaturasToolStripMenuItem.Name = "asignaturasToolStripMenuItem";
             this.asignaturasToolStripMenuItem.Size = new System.Drawing.Size(81, 20);
             this.asignaturasToolStripMenuItem.Text = "Asignaturas";
             // 
             // estadisticasToolStripMenuItem
             // 
+            this.estadisticasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.verEstadisticasToolStripMenuItem});
             this.estadisticasToolStripMenuItem.Name = "estadisticasToolStripMenuItem";
             this.estadisticasToolStripMenuItem.Size = new System.Drawing.Size(79, 20);
             this.estadisticasToolStripMenuItem.Text = "Estadisticas";
@@ -257,6 +270,41 @@
             this.btSidePanelUser.UseVisualStyleBackColor = true;
             this.btSidePanelUser.Click += new System.EventHandler(this.btSidePanelUser_Click);
             // 
+            // verUsuariosToolStripMenuItem
+            // 
+            this.verUsuariosToolStripMenuItem.Name = "verUsuariosToolStripMenuItem";
+            this.verUsuariosToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.verUsuariosToolStripMenuItem.Text = "Ver Usuarios";
+            this.verUsuariosToolStripMenuItem.Click += new System.EventHandler(this.verUsuariosToolStripMenuItem_Click);
+            // 
+            // nuevoUsuarioToolStripMenuItem
+            // 
+            this.nuevoUsuarioToolStripMenuItem.Name = "nuevoUsuarioToolStripMenuItem";
+            this.nuevoUsuarioToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.nuevoUsuarioToolStripMenuItem.Text = "Nuevo Usuario";
+            this.nuevoUsuarioToolStripMenuItem.Click += new System.EventHandler(this.nuevoUsuarioToolStripMenuItem_Click);
+            // 
+            // verAsignaturasToolStripMenuItem
+            // 
+            this.verAsignaturasToolStripMenuItem.Name = "verAsignaturasToolStripMenuItem";
+            this.verAsignaturasToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
+            this.verAsignaturasToolStripMenuItem.Text = "Ver Asignaturas";
+            this.verAsignaturasToolStripMenuItem.Click += new System.EventHandler(this.verAsignaturasToolStripMenuItem_Click);
+            // 
+            // nuevaAsignaturaToolStripMenuItem
+            // 
+            this.nuevaAsignaturaToolStripMenuItem.Name = "nuevaAsignaturaToolStripMenuItem";
+            this.nuevaAsignaturaToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
+            this.nuevaAsignaturaToolStripMenuItem.Text = "Nueva Asignatura";
+            this.nuevaAsignaturaToolStripMenuItem.Click += new System.EventHandler(this.nuevaAsignaturaToolStripMenuItem_Click);
+            // 
+            // verEstadisticasToolStripMenuItem
+            // 
+            this.verEstadisticasToolStripMenuItem.Name = "verEstadisticasToolStripMenuItem";
+            this.verEstadisticasToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
+            this.verEstadisticasToolStripMenuItem.Text = "Ver Estadisticas";
+            this.verEstadisticasToolStripMenuItem.Click += new System.EventHandler(this.verEstadisticasToolStripMenuItem_Click);
+            // 
             // AdminForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -306,5 +354,10 @@
         private System.Windows.Forms.ToolStripMenuItem acercaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cerrarSesionToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem salirToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem verUsuariosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem nuevoUsuarioToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem verAsignaturasToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem nuevaAsignaturaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem verEstadisticasToolStripMenuItem;
     }
 }

@@ -22,12 +22,17 @@ namespace TaimerGUI {
         }
 
         private void btCancel_Click(object sender, EventArgs e) {
-            if (parentForm != null) {
-                Hide();
-                parentForm.Show();
+            if (MessageBox.Show(
+                    "¿Esta seguro de que desea descartar el usuario?",
+                    "Descartar usuario",
+                    MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes) {
+                if (parentForm != null) {
+                    Hide();
+                    parentForm.Show();
 
-                AdminForm parent = (AdminForm)this.MdiParent;
-                parent.positionChilds();
+                    AdminForm parent = (AdminForm)this.MdiParent;
+                    parent.positionChilds();
+                }
             }
         }
 
@@ -98,6 +103,7 @@ namespace TaimerGUI {
                 tbName.Text = "";
                 tbDni.Text = "";
                 tbEmail.Text = "";
+                tbPass.Text = "";
                 tbTitu.Text = "";
                 udCurso.Value = 1;
 

@@ -106,9 +106,9 @@ namespace TaimerGUI {
             Taimer.Actividad_a acti1 = new Taimer.Actividad_a("DPAA", "Clases de DPAA de Teoria", Program.CodAsignaturas, "Irene");
             Taimer.Actividad_a acti2 = new Taimer.Actividad_a("SO1", "Sistemas Operativos de 2º", Program.CodAsignaturas, "Mora");
 
-            Taimer.Hora hor1 = new Taimer.Hora(13,30);
-            Taimer.Hora hor2 = new Taimer.Hora(15,0);
-            Taimer.Hora hor3 = new Taimer.Hora(17,0);
+            Taimer.Hora hor1 = new Taimer.Hora(13, 30);
+            Taimer.Hora hor2 = new Taimer.Hora(15, 0);
+            Taimer.Hora hor3 = new Taimer.Hora(17, 0);
 
             Taimer.Turno turn11 = new Taimer.Turno(hor1, hor2, "Lunes", "LAB01");
             Taimer.Turno turn12 = new Taimer.Turno(hor1, hor2, "Martes", "LAB01");
@@ -135,7 +135,23 @@ namespace TaimerGUI {
             if (e.RowIndex >= 0 && e.RowIndex < dgAsig.Rows.Count) {
                 if (dgAsig.Columns["Eliminar"].Index == e.ColumnIndex) {
                     // Borrarla tambien de la lista
-                    dgAsig.Rows.RemoveAt(e.RowIndex);
+
+                    if (MessageBox.Show(
+                            "¿Esta seguro de que desea borrar la asignatura?",
+                            "Borrar asignatura",
+                            MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes) {
+
+                        Taimer.Actividad_a asigBorr = (Taimer.Actividad_a)dgAsig.Rows[e.RowIndex].Tag;
+
+                        if (currentAsig == asigBorr) {
+                            clearInfo();
+                        }
+
+                        asignaturas.Remove(asigBorr);
+                        dgAsig.Rows.RemoveAt(e.RowIndex);
+
+                    }
+
                 } else {
                     currentAsig = (Taimer.Actividad_a)dgAsig.Rows[e.RowIndex].Tag;
                     currentAsigCopy = new Taimer.Actividad_a(currentAsig);
@@ -155,7 +171,7 @@ namespace TaimerGUI {
             dgTurns.Rows.Clear();
             btCreate.Enabled = false;
             btCancel.Enabled = false;
-            //gbInfo.Visible = false;
+            btGestTurno.Enabled = false;
         }
 
         public void showInfo(Taimer.Actividad_a asig) {
@@ -185,17 +201,25 @@ namespace TaimerGUI {
         }
 
         private void btCancel_Click(object sender, EventArgs e) {
-            clearInfo(); 
+
+            if (MessageBox.Show(
+                    "¿Esta seguro de que desea descartar los cambios?", 
+                    "Descartar cambios", 
+                    MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes) 
+            {
+                clearInfo();
+                currentAsig = null;
+                currentAsigCopy = null;
+            }
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e) {
             foreach (DataGridViewRow row in dgAsig.Rows) {
                 Taimer.Actividad_a acti = (Taimer.Actividad_a)row.Tag;
                 String texto = textBox1.Text;
-                if (acti.Nombre.Contains(texto) || 
+                if (acti.Nombre.Contains(texto) ||
                     acti.Descripcion.Contains(texto) ||
-                    acti.NombreCoordinador.Contains(texto))
-                {
+                    acti.NombreCoordinador.Contains(texto)) {
                     row.Visible = true;
                 } else {
                     row.Visible = false;
@@ -207,6 +231,11 @@ namespace TaimerGUI {
             asignaturas.Add(asig);
 
             updateTableAsig();
+        }
+
+        private void AGestAsig_Enter(object sender, EventArgs e) {
+            clearInfo();
+            dgAsig.ClearSelection();
         }
     }
 }

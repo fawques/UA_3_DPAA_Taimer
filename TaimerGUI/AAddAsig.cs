@@ -28,15 +28,21 @@ namespace TaimerGUI {
         }
 
         private void btCancel_Click(object sender, EventArgs e) {
-            if (parentForm != null) {
-                Hide();
-                parentForm.Show();
 
-                asig = null;
-                clearLabels();
+            if (MessageBox.Show(
+                    "¿Esta seguro de que desea descartar la asignatura?",
+                    "Descartar asignatura",
+                    MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes) {
+                if (parentForm != null) {
+                    Hide();
+                    parentForm.Show();
 
-                AdminForm parent = (AdminForm)this.MdiParent;
-                parent.positionChilds();
+                    asig = null;
+                    clearLabels();
+
+                    AdminForm parent = (AdminForm)this.MdiParent;
+                    parent.positionChilds();
+                }
             }
         }
 
@@ -77,8 +83,6 @@ namespace TaimerGUI {
                 parentForm.addAsig(asig);
 
                 asig = null;
-
-
 
                 Hide();
                 parentForm.Show();

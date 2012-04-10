@@ -41,6 +41,11 @@
             this.tbUbi = new System.Windows.Forms.TextBox();
             this.lbErrUbi = new System.Windows.Forms.Label();
             this.dgTurnos = new System.Windows.Forms.DataGridView();
+            this.Dia = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HoraInicio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HoraFin = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ubicacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Borrar = new System.Windows.Forms.DataGridViewButtonColumn();
             this.grpBoxTurno = new System.Windows.Forms.GroupBox();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnGuardar = new System.Windows.Forms.Button();
@@ -58,11 +63,7 @@
             this.label15 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.cmbBoxDiaMod = new System.Windows.Forms.ComboBox();
-            this.Dia = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.HoraInicio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.HoraFin = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Ubicacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Borrar = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.label8 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.udMinFin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.udHoraFin)).BeginInit();
@@ -81,7 +82,7 @@
             this.btCancel.Location = new System.Drawing.Point(668, 549);
             this.btCancel.Name = "btCancel";
             this.btCancel.Size = new System.Drawing.Size(105, 35);
-            this.btCancel.TabIndex = 59;
+            this.btCancel.TabIndex = 7;
             this.btCancel.Text = "Cancelar";
             this.btCancel.UseVisualStyleBackColor = true;
             this.btCancel.Click += new System.EventHandler(this.btCancel_Click);
@@ -100,7 +101,7 @@
             this.btCreate.Location = new System.Drawing.Point(544, 549);
             this.btCreate.Name = "btCreate";
             this.btCreate.Size = new System.Drawing.Size(105, 35);
-            this.btCreate.TabIndex = 58;
+            this.btCreate.TabIndex = 6;
             this.btCreate.Text = "Confirmar";
             this.btCreate.UseVisualStyleBackColor = true;
             this.btCreate.Click += new System.EventHandler(this.btCreate_Click);
@@ -119,7 +120,7 @@
             this.groupBox1.Location = new System.Drawing.Point(27, 118);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(189, 181);
-            this.groupBox1.TabIndex = 56;
+            this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Hora y Dia";
             // 
@@ -144,7 +145,7 @@
             0});
             this.udMinFin.Name = "udMinFin";
             this.udMinFin.Size = new System.Drawing.Size(39, 20);
-            this.udMinFin.TabIndex = 13;
+            this.udMinFin.TabIndex = 5;
             // 
             // udHoraFin
             // 
@@ -156,7 +157,7 @@
             0});
             this.udHoraFin.Name = "udHoraFin";
             this.udHoraFin.Size = new System.Drawing.Size(42, 20);
-            this.udHoraFin.TabIndex = 12;
+            this.udHoraFin.TabIndex = 4;
             // 
             // udMinIni
             // 
@@ -168,7 +169,7 @@
             0});
             this.udMinIni.Name = "udMinIni";
             this.udMinIni.Size = new System.Drawing.Size(39, 20);
-            this.udMinIni.TabIndex = 11;
+            this.udMinIni.TabIndex = 3;
             // 
             // udHoraIni
             // 
@@ -180,7 +181,7 @@
             0});
             this.udHoraIni.Name = "udHoraIni";
             this.udHoraIni.Size = new System.Drawing.Size(42, 20);
-            this.udHoraIni.TabIndex = 10;
+            this.udHoraIni.TabIndex = 2;
             // 
             // label6
             // 
@@ -214,17 +215,17 @@
             this.cbDia.DisplayMember = "Lunes";
             this.cbDia.FormattingEnabled = true;
             this.cbDia.Items.AddRange(new object[] {
+            "Domingo",
+            "Jueves",
             "Lunes",
             "Martes",
             "Miercoles",
-            "Jueves",
-            "Viernes",
             "Sabado",
-            "Domingo"});
+            "Viernes"});
             this.cbDia.Location = new System.Drawing.Point(62, 32);
             this.cbDia.Name = "cbDia";
             this.cbDia.Size = new System.Drawing.Size(121, 21);
-            this.cbDia.TabIndex = 0;
+            this.cbDia.TabIndex = 1;
             this.cbDia.Text = "Lunes";
             // 
             // btAdd
@@ -232,7 +233,7 @@
             this.btAdd.Location = new System.Drawing.Point(222, 175);
             this.btAdd.Name = "btAdd";
             this.btAdd.Size = new System.Drawing.Size(43, 46);
-            this.btAdd.TabIndex = 57;
+            this.btAdd.TabIndex = 3;
             this.btAdd.Text = "Add =>";
             this.btAdd.UseVisualStyleBackColor = true;
             this.btAdd.Click += new System.EventHandler(this.btAdd_Click);
@@ -252,7 +253,7 @@
             this.tbUbi.Location = new System.Drawing.Point(27, 92);
             this.tbUbi.Name = "tbUbi";
             this.tbUbi.Size = new System.Drawing.Size(189, 20);
-            this.tbUbi.TabIndex = 60;
+            this.tbUbi.TabIndex = 1;
             // 
             // lbErrUbi
             // 
@@ -284,8 +285,38 @@
             this.dgTurnos.Name = "dgTurnos";
             this.dgTurnos.ReadOnly = true;
             this.dgTurnos.Size = new System.Drawing.Size(497, 178);
-            this.dgTurnos.TabIndex = 65;
+            this.dgTurnos.TabIndex = 4;
             this.dgTurnos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgTurnos_CellClick);
+            // 
+            // Dia
+            // 
+            this.Dia.HeaderText = "Día";
+            this.Dia.Name = "Dia";
+            this.Dia.ReadOnly = true;
+            // 
+            // HoraInicio
+            // 
+            this.HoraInicio.HeaderText = "Inicio";
+            this.HoraInicio.Name = "HoraInicio";
+            this.HoraInicio.ReadOnly = true;
+            // 
+            // HoraFin
+            // 
+            this.HoraFin.HeaderText = "Fin";
+            this.HoraFin.Name = "HoraFin";
+            this.HoraFin.ReadOnly = true;
+            // 
+            // Ubicacion
+            // 
+            this.Ubicacion.HeaderText = "Ubicacion";
+            this.Ubicacion.Name = "Ubicacion";
+            this.Ubicacion.ReadOnly = true;
+            // 
+            // Borrar
+            // 
+            this.Borrar.HeaderText = "Borrar";
+            this.Borrar.Name = "Borrar";
+            this.Borrar.ReadOnly = true;
             // 
             // grpBoxTurno
             // 
@@ -308,9 +339,9 @@
             this.grpBoxTurno.Location = new System.Drawing.Point(23, 347);
             this.grpBoxTurno.Name = "grpBoxTurno";
             this.grpBoxTurno.Size = new System.Drawing.Size(760, 148);
-            this.grpBoxTurno.TabIndex = 71;
+            this.grpBoxTurno.TabIndex = 5;
             this.grpBoxTurno.TabStop = false;
-            this.grpBoxTurno.Text = "Turno";
+            this.grpBoxTurno.Text = "Modificar Turno";
             this.grpBoxTurno.Visible = false;
             // 
             // btnCancelar
@@ -318,7 +349,7 @@
             this.btnCancelar.Location = new System.Drawing.Point(548, 85);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(92, 30);
-            this.btnCancelar.TabIndex = 67;
+            this.btnCancelar.TabIndex = 8;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
@@ -328,7 +359,7 @@
             this.btnGuardar.Location = new System.Drawing.Point(548, 39);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(92, 29);
-            this.btnGuardar.TabIndex = 66;
+            this.btnGuardar.TabIndex = 7;
             this.btnGuardar.Text = "Confirmar";
             this.btnGuardar.UseVisualStyleBackColor = true;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
@@ -347,7 +378,7 @@
             this.txtBoxLugarMod.Location = new System.Drawing.Point(323, 48);
             this.txtBoxLugarMod.Name = "txtBoxLugarMod";
             this.txtBoxLugarMod.Size = new System.Drawing.Size(100, 20);
-            this.txtBoxLugarMod.TabIndex = 64;
+            this.txtBoxLugarMod.TabIndex = 5;
             // 
             // label2
             // 
@@ -377,7 +408,7 @@
             0});
             this.nUDMinFinMod.Name = "nUDMinFinMod";
             this.nUDMinFinMod.Size = new System.Drawing.Size(39, 20);
-            this.nUDMinFinMod.TabIndex = 22;
+            this.nUDMinFinMod.TabIndex = 4;
             // 
             // nUDMinIniMod
             // 
@@ -389,7 +420,7 @@
             0});
             this.nUDMinIniMod.Name = "nUDMinIniMod";
             this.nUDMinIniMod.Size = new System.Drawing.Size(39, 20);
-            this.nUDMinIniMod.TabIndex = 21;
+            this.nUDMinIniMod.TabIndex = 2;
             // 
             // label12
             // 
@@ -419,7 +450,7 @@
             0});
             this.nUDHorFinMod.Name = "nUDHorFinMod";
             this.nUDHorFinMod.Size = new System.Drawing.Size(40, 20);
-            this.nUDHorFinMod.TabIndex = 18;
+            this.nUDHorFinMod.TabIndex = 3;
             // 
             // nUDHorIniMod
             // 
@@ -431,7 +462,7 @@
             0});
             this.nUDHorIniMod.Name = "nUDHorIniMod";
             this.nUDHorIniMod.Size = new System.Drawing.Size(42, 20);
-            this.nUDHorIniMod.TabIndex = 17;
+            this.nUDHorIniMod.TabIndex = 1;
             // 
             // label14
             // 
@@ -474,37 +505,17 @@
             this.cmbBoxDiaMod.Location = new System.Drawing.Point(302, 89);
             this.cmbBoxDiaMod.Name = "cmbBoxDiaMod";
             this.cmbBoxDiaMod.Size = new System.Drawing.Size(121, 21);
-            this.cmbBoxDiaMod.TabIndex = 13;
+            this.cmbBoxDiaMod.TabIndex = 6;
             // 
-            // Dia
+            // label8
             // 
-            this.Dia.HeaderText = "Día";
-            this.Dia.Name = "Dia";
-            this.Dia.ReadOnly = true;
-            // 
-            // HoraInicio
-            // 
-            this.HoraInicio.HeaderText = "Inicio";
-            this.HoraInicio.Name = "HoraInicio";
-            this.HoraInicio.ReadOnly = true;
-            // 
-            // HoraFin
-            // 
-            this.HoraFin.HeaderText = "Fin";
-            this.HoraFin.Name = "HoraFin";
-            this.HoraFin.ReadOnly = true;
-            // 
-            // Ubicacion
-            // 
-            this.Ubicacion.HeaderText = "Ubicacion";
-            this.Ubicacion.Name = "Ubicacion";
-            this.Ubicacion.ReadOnly = true;
-            // 
-            // Borrar
-            // 
-            this.Borrar.HeaderText = "Borrar";
-            this.Borrar.Name = "Borrar";
-            this.Borrar.ReadOnly = true;
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Calibri", 8.25F);
+            this.label8.Location = new System.Drawing.Point(267, 26);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(321, 13);
+            this.label8.TabIndex = 65;
+            this.label8.Text = "Modificar turnos existentes, así como la creación de turnos nuevos";
             // 
             // AGestTurn
             // 
@@ -512,6 +523,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Cornsilk;
             this.ClientSize = new System.Drawing.Size(795, 595);
+            this.Controls.Add(this.label8);
             this.Controls.Add(this.grpBoxTurno);
             this.Controls.Add(this.dgTurnos);
             this.Controls.Add(this.lbErrUbi);
@@ -585,5 +597,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn HoraFin;
         private System.Windows.Forms.DataGridViewTextBoxColumn Ubicacion;
         private System.Windows.Forms.DataGridViewButtonColumn Borrar;
+        private System.Windows.Forms.Label label8;
     }
 }
