@@ -50,7 +50,7 @@ namespace TaimerGUI
                 MessageBoxIcon.Question,
                 MessageBoxDefaultButton.Button2) == DialogResult.Yes) {
                     if (actAux == null) {
-                        actAux = new Actividad_p(tBNombre.Text, rTBDescripcion.Text, 0, usrAux);
+                        actAux = new Actividad_p(tBNombre.Text, rTBDescripcion.Text, usrAux.CodActPers, usrAux);
                     }
                     actAux.Nombre = tBNombre.Text;
                     actAux.Descripcion = rTBDescripcion.Text;
@@ -89,7 +89,7 @@ namespace TaimerGUI
 
         private void button2_Click(object sender, EventArgs e) {
             if (actAux == null) {
-                actAux = new Actividad_p(tBNombre.Text, rTBDescripcion.Text, 0, usrAux);
+                actAux = new Actividad_p(tBNombre.Text, rTBDescripcion.Text, usrAux.CodActPers, usrAux);
             }
             this.formGestTurnos.reiniciar();
             this.formGestTurnos.setFormPadre(this);

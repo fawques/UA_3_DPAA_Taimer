@@ -102,6 +102,7 @@ namespace Taimer {
             email = email_;
             curso = curso_;
             titulacion = tit_;
+            codActPers = -1;
         }
 
 
@@ -138,6 +139,7 @@ namespace Taimer {
             actAcademicas = acta_;
             actPersonales = actp_;
             horarios = hor_;
+            codActPers = (-1 * actPersonales.Count) + 1;
         }
 
 
@@ -273,6 +275,7 @@ namespace Taimer {
         /// <param name="act">Actividad personal que se desa añadir</param>
         public void AddActPersonal(Actividad_p act) {
             actPersonales.Add(act);
+            codActPers--;
         }
 
         /// <summary>
