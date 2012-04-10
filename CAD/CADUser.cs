@@ -42,9 +42,9 @@ namespace CAD
                 comandoTBD.CommandType = CommandType.Text;
                 comandoTBD.ExecuteNonQuery();
             }
-            catch (SqlException ex)
+            catch (SqlException)
             {
-                MessageBox.Show(ex.Message, "Error en la acción", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+                throw;
             }
             finally
             {
@@ -78,9 +78,9 @@ namespace CAD
                 comandoTBD.CommandType = CommandType.Text;
                 comandoTBD.ExecuteNonQuery();
             }
-            catch (SqlException ex)
+            catch (SqlException)
             {
-                MessageBox.Show(ex.Message, "Error en la acción", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+                throw;
             }
             finally
             {
@@ -113,9 +113,9 @@ namespace CAD
                     act.BorrarActividad(i);
                 }
             }
-            catch (Exception ex)
+            catch (SqlException)
             {
-                MessageBox.Show(ex.Message, "Error en la acción", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+                throw;
             }
             finally
             {
@@ -141,10 +141,10 @@ namespace CAD
                 return listUsers;
 
             }
-            catch (Exception ex)
+            catch (SqlException)
             {
-                MessageBox.Show(ex.Message, "Error en la acción", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
-                return null;
+                //return null;
+                throw;
             }
             finally
             {
@@ -169,10 +169,10 @@ namespace CAD
                 sqlAdaptador.Fill(datos);
                 return datos;
             }
-            catch (Exception ex)
+            catch (SqlException)
             {
-                MessageBox.Show(ex.Message, "Error en la acción", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
-                return null;
+                //return null;
+                throw;
             }
             finally
             {
@@ -199,10 +199,11 @@ namespace CAD
                 sqlAdaptador.Fill(datos);
                 return datos;
             }
-            catch (Exception ex)
+            catch (SqlException)
             {
-                MessageBox.Show(ex.Message, "Error en la acción", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
-                return null;
+                //return null;
+                throw;
+                
             }
             finally
             {
@@ -232,14 +233,101 @@ namespace CAD
                 comandoTBD.ExecuteNonQuery();
 
             }
-            catch (SqlException ex)
+            catch (SqlException)
             {
-                MessageBox.Show(ex.Message, "Error en la acción", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+                throw;
             }
             finally
             {
                 if (c != null) c.Close(); // Se asegura de cerrar la conexión.
             }
         }
+        /// <summary>
+        /// Aqui matriculamos a un user en una actividad_a 
+        /// </summary>
+        /// <param name="dni">Dni del usuario que queremos matricular en una actividad</param>
+        /// <param name="codigo">Código de la asignatura que queremos matricular</param>
+        public void Matricularse(string dni, int codigo)
+        {
+            string comando = "INSERT INTO [User_Actividad_a](usuario,codigo_act) VALUES('" + dni + "', '" +codigo+ "')";
+            SqlConnection c = null;
+            SqlCommand comandoTBD;
+            try
+            {
+                c = new SqlConnection(conexionTBD);
+                comandoTBD = new SqlCommand(comando, c);
+                c.Open();
+                comandoTBD.CommandType = CommandType.Text;
+                comandoTBD.ExecuteNonQuery();
+
+            }
+            catch (SqlException)
+            {
+                throw;
+            }
+            finally
+            {
+                if (c != null) c.Close(); // Se asegura de cerrar la conexión.
+            }
+        
+        }
+        /// <summary>
+        /// En este método desmatriculamos a un User de una Actividad_a
+        /// </summary>
+        /// <param name="dni">Dni del usuario</param>
+        /// <param name="cod">Codigo de la actividad</param>
+        public void Desmatricularse(string dni, int cod)
+        {
+            SqlConnection c = null;
+            string comand = "DELETE FROM [User_Actividad_a] WHERE usuario= '" + dni + "' and codigo_act= '" + cod + "'";
+            try
+            {
+
+                c = new SqlConnection(conexionTBD);
+                c.Open();
+                SqlCommand cmd = new SqlCommand(comand, c);
+                cmd.ExecuteNonQuery();
+            }
+            catch (SqlException)
+            {
+                throw;
+            }
+            finally
+            {
+                if (c != null) c.Close(); // Se asegura de cerrar la conexión.
+            }
+        
+        }
+        /// <summary>
+        /// Devuelve los codigos de las actividades que esta matriculado un usuario
+        /// </summary>
+        /// <param name="dni">Dni del usuario</param>
+        /// <returns></returns>
+        public DataSet GetActividades(string dni)
+        {
+
+            SqlConnection con = null;
+            DataSet datos = null;
+            string comando = "Select codigo_act from [User_Actividad_a] where usuario='" + dni + "'";
+            try
+            {
+                con = new SqlConnection(conexionTBD);
+                SqlDataAdapter sqlAdaptador = new SqlDataAdapter(comando, con);
+                datos = new DataSet();
+                sqlAdaptador.Fill(datos);
+                return datos;
+
+            }
+            catch (SqlException)
+            {
+                // Captura la condición general y la reenvía.
+                throw;
+            }
+            finally
+            {
+                if (con != null) con.Close(); // Se asegura de cerrar la conexión.
+            }
+        }
+
     }
 }

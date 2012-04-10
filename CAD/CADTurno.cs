@@ -43,9 +43,9 @@ namespace CAD
                 comandoTBD.ExecuteNonQuery();
 
             }
-            catch (SqlException ex)
+            catch (SqlException)
             {
-                throw ex;
+                throw;
             }
             finally
             {
@@ -69,9 +69,9 @@ namespace CAD
                 SqlCommand cmd = new SqlCommand(comand, c);
                 cmd.ExecuteNonQuery();
             }
-            catch (Exception ex)
+            catch (SqlException)
             {
-                throw ex;
+                throw;
             }
             finally
             {
@@ -100,10 +100,10 @@ namespace CAD
                 return datos;
 
             }
-            catch (Exception ex)
+            catch (SqlException)
             {
                 // Captura la condición general y la reenvía.
-                throw ex;
+                throw;
             }
             finally
             {
@@ -134,9 +134,9 @@ namespace CAD
 
 
             }
-            catch (SqlException ex)
+            catch (SqlException)
             {
-                throw ex;
+                throw;
             }
             finally
             {
@@ -163,10 +163,10 @@ namespace CAD
                 return listAct;
 
             }
-            catch (Exception ex)
+            catch (SqlException)
             {
                 // Captura la condición general y la reenvía.
-                throw ex;
+                throw;
             }
             finally
             {

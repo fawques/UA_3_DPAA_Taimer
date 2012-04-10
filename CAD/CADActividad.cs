@@ -35,9 +35,9 @@ namespace CAD {
                 comandoTBD.ExecuteNonQuery();
                 
             }
-            catch (SqlException ex)
+            catch (SqlException)
             {
-                MessageBox.Show(ex.Message, "Error en la acción", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+                throw;
             }
             finally
             {
@@ -61,9 +61,9 @@ namespace CAD {
                 comandoTBD.ExecuteNonQuery();
 
             }
-            catch (SqlException ex)
+            catch (SqlException)
             {
-                MessageBox.Show(ex.Message, "Error en la acción", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+                throw;
             }
             finally
             {
@@ -85,9 +85,9 @@ namespace CAD {
                 SqlCommand cmd = new SqlCommand(comand, c);
                 cmd.ExecuteNonQuery();
             }
-            catch (Exception ex)
+            catch (SqlException)
             {
-                MessageBox.Show(ex.Message, "Error en la acción", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+                throw;
             }
             finally
             {
@@ -112,9 +112,9 @@ namespace CAD {
                 
 
             }
-            catch (SqlException ex)
+            catch (SqlException)
             {
-                MessageBox.Show(ex.Message, "Error en la acción", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+               throw;
             }
             finally
             {
@@ -139,10 +139,10 @@ namespace CAD {
                 return datos;
 
             }
-            catch (Exception ex)
+            catch (SqlException)
             {
-                MessageBox.Show(ex.Message, "Error en la acción", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
-                return null;
+                throw;
+                //return null;
             }
             finally
             {
@@ -164,10 +164,10 @@ namespace CAD {
                 return listAct;
 
             }
-            catch (Exception ex)
+            catch (SqlException)
             {
-                MessageBox.Show(ex.Message, "Error en la acción", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
-                return null;
+                throw;
+                //return null;
             }
             finally
             {
