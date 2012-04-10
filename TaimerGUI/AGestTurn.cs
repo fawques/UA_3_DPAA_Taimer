@@ -62,7 +62,7 @@ namespace TaimerGUI {
             Taimer.Hora horI = new Taimer.Hora((int)udHoraIni.Value, (int)udMinIni.Value);
             Taimer.Hora horF = new Taimer.Hora((int)udHoraFin.Value, (int)udMinFin.Value);
 
-            if (horI > horF) {
+            if (horI >= horF) {
                 lbErrHora.Visible = true;
                 valid = false;
             } else {
@@ -73,7 +73,7 @@ namespace TaimerGUI {
 
                 Taimer.Turno turn = new Taimer.Turno(horI, horF, cbDia.Text, tbUbi.Text);
                 // Lo añado a la tabla
-                dgTurnos.Rows.Add(turn.Dia, turn.HoraInicio.toString(), turn.HoraFin.toString(), turn.Ubicacion, "");
+                dgTurnos.Rows.Add(turn.DiaString, turn.HoraInicio.toString(), turn.HoraFin.toString(), turn.Ubicacion, "");
                 dgTurnos.Rows[dgTurnos.RowCount - 1].Tag = turn;
                 
                 currentAct.AddTurno(turn);

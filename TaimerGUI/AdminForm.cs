@@ -200,5 +200,35 @@ namespace TaimerGUI {
             }
         }
 
+        private void verUsuariosToolStripMenuItem_Click(object sender, EventArgs e) {
+            hideChilds();
+            gestionUserForm.Show();
+            positionChilds();
+        }
+
+        private void nuevoUsuarioToolStripMenuItem_Click(object sender, EventArgs e) {
+            hideChilds();
+            addUserForm.Show();
+            positionChilds();
+        }
+
+        private void verAsignaturasToolStripMenuItem_Click(object sender, EventArgs e) {
+            hideChilds();
+            gestionAsigForm.Show();
+            positionChilds();
+        }
+
+        private void nuevaAsignaturaToolStripMenuItem_Click(object sender, EventArgs e) {
+            hideChilds();
+            addAsigForm.Show();
+            positionChilds();
+        }
+
+        private void verEstadisticasToolStripMenuItem_Click(object sender, EventArgs e) {
+            hideChilds();
+            estadForm.Show();
+            positionChilds();
+        }
+
     }
 }

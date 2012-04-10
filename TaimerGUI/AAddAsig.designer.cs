@@ -32,15 +32,15 @@
             this.tbName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.dgTurnos = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HoraInicio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HoraFin = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ubicacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lbErrName = new System.Windows.Forms.Label();
             this.lbErrDesc = new System.Windows.Forms.Label();
             this.lbErrCoord = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.tbCoord = new System.Windows.Forms.TextBox();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.HoraInicio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.HoraFin = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Ubicacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgTurnos)).BeginInit();
             this.SuspendLayout();
             // 
@@ -59,7 +59,7 @@
             this.btCreate.Location = new System.Drawing.Point(544, 549);
             this.btCreate.Name = "btCreate";
             this.btCreate.Size = new System.Drawing.Size(105, 35);
-            this.btCreate.TabIndex = 48;
+            this.btCreate.TabIndex = 6;
             this.btCreate.Text = "Crear";
             this.btCreate.UseVisualStyleBackColor = true;
             this.btCreate.Click += new System.EventHandler(this.btCreate_Click);
@@ -69,7 +69,7 @@
             this.btAddTurn.Location = new System.Drawing.Point(169, 371);
             this.btAddTurn.Name = "btAddTurn";
             this.btAddTurn.Size = new System.Drawing.Size(125, 57);
-            this.btAddTurn.TabIndex = 47;
+            this.btAddTurn.TabIndex = 4;
             this.btAddTurn.Text = "Gestionar Turnos";
             this.btAddTurn.UseVisualStyleBackColor = true;
             this.btAddTurn.Click += new System.EventHandler(this.btAddTurn_Click);
@@ -79,7 +79,7 @@
             this.tbDesc.Location = new System.Drawing.Point(44, 184);
             this.tbDesc.Name = "tbDesc";
             this.tbDesc.Size = new System.Drawing.Size(420, 78);
-            this.tbDesc.TabIndex = 44;
+            this.tbDesc.TabIndex = 2;
             this.tbDesc.Text = "";
             // 
             // label5
@@ -105,7 +105,7 @@
             this.tbName.Location = new System.Drawing.Point(44, 136);
             this.tbName.Name = "tbName";
             this.tbName.Size = new System.Drawing.Size(100, 20);
-            this.tbName.TabIndex = 41;
+            this.tbName.TabIndex = 1;
             // 
             // label1
             // 
@@ -134,7 +134,31 @@
             this.dgTurnos.Name = "dgTurnos";
             this.dgTurnos.ReadOnly = true;
             this.dgTurnos.Size = new System.Drawing.Size(423, 176);
-            this.dgTurnos.TabIndex = 51;
+            this.dgTurnos.TabIndex = 5;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.HeaderText = "Día";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // HoraInicio
+            // 
+            this.HoraInicio.HeaderText = "Inicio";
+            this.HoraInicio.Name = "HoraInicio";
+            this.HoraInicio.ReadOnly = true;
+            // 
+            // HoraFin
+            // 
+            this.HoraFin.HeaderText = "Fin";
+            this.HoraFin.Name = "HoraFin";
+            this.HoraFin.ReadOnly = true;
+            // 
+            // Ubicacion
+            // 
+            this.Ubicacion.HeaderText = "Ubicacion";
+            this.Ubicacion.Name = "Ubicacion";
+            this.Ubicacion.ReadOnly = true;
             // 
             // lbErrName
             // 
@@ -186,31 +210,7 @@
             this.tbCoord.Location = new System.Drawing.Point(44, 287);
             this.tbCoord.Name = "tbCoord";
             this.tbCoord.Size = new System.Drawing.Size(420, 20);
-            this.tbCoord.TabIndex = 66;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.HeaderText = "Día";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // HoraInicio
-            // 
-            this.HoraInicio.HeaderText = "Inicio";
-            this.HoraInicio.Name = "HoraInicio";
-            this.HoraInicio.ReadOnly = true;
-            // 
-            // HoraFin
-            // 
-            this.HoraFin.HeaderText = "Fin";
-            this.HoraFin.Name = "HoraFin";
-            this.HoraFin.ReadOnly = true;
-            // 
-            // Ubicacion
-            // 
-            this.Ubicacion.HeaderText = "Ubicacion";
-            this.Ubicacion.Name = "Ubicacion";
-            this.Ubicacion.ReadOnly = true;
+            this.tbCoord.TabIndex = 3;
             // 
             // AAddAsig
             // 

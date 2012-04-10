@@ -268,5 +268,10 @@ namespace TaimerGUI {
                 dgUsers.Rows[dgUsers.RowCount - 1].Tag = user;
             }
         }
+
+        private void AGestUser_Enter(object sender, EventArgs e) {
+            clearLabels();
+            dgUsers.ClearSelection();
+        }
     }
 }

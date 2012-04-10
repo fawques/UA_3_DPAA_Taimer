@@ -135,7 +135,18 @@ namespace TaimerGUI {
             if (e.RowIndex >= 0 && e.RowIndex < dgAsig.Rows.Count) {
                 if (dgAsig.Columns["Eliminar"].Index == e.ColumnIndex) {
                     // Borrarla tambien de la lista
+
+                    Taimer.Actividad_a asigBorr = (Taimer.Actividad_a)dgAsig.Rows[e.RowIndex].Tag;
+
+                    if (currentAsig == asigBorr) {
+                        clearInfo();
+                    }
+
+                    asignaturas.Remove(asigBorr);
                     dgAsig.Rows.RemoveAt(e.RowIndex);
+
+                    
+                    
                 } else {
                     currentAsig = (Taimer.Actividad_a)dgAsig.Rows[e.RowIndex].Tag;
                     currentAsigCopy = new Taimer.Actividad_a(currentAsig);
@@ -155,7 +166,7 @@ namespace TaimerGUI {
             dgTurns.Rows.Clear();
             btCreate.Enabled = false;
             btCancel.Enabled = false;
-            //gbInfo.Visible = false;
+            btGestTurno.Enabled = false;
         }
 
         public void showInfo(Taimer.Actividad_a asig) {
@@ -207,6 +218,11 @@ namespace TaimerGUI {
             asignaturas.Add(asig);
 
             updateTableAsig();
+        }
+
+        private void AGestAsig_Enter(object sender, EventArgs e) {
+            clearInfo();
+            dgAsig.ClearSelection();
         }
     }
 }

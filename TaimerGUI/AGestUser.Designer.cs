@@ -25,6 +25,9 @@
         private void InitializeComponent() {
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.dgUsers = new System.Windows.Forms.DataGridView();
+            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Dni = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Eliminar = new System.Windows.Forms.DataGridViewButtonColumn();
             this.lbUserName = new System.Windows.Forms.Label();
             this.btNewUser = new System.Windows.Forms.Button();
             this.lbName = new System.Windows.Forms.Label();
@@ -52,9 +55,6 @@
             this.lbPass = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.tbPass = new System.Windows.Forms.TextBox();
-            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Dni = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Eliminar = new System.Windows.Forms.DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgUsers)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.udCurso)).BeginInit();
             this.SuspendLayout();
@@ -64,7 +64,7 @@
             this.textBox1.Location = new System.Drawing.Point(128, 104);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(268, 20);
-            this.textBox1.TabIndex = 0;
+            this.textBox1.TabIndex = 1;
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // dgUsers
@@ -82,8 +82,26 @@
             this.dgUsers.Name = "dgUsers";
             this.dgUsers.ReadOnly = true;
             this.dgUsers.Size = new System.Drawing.Size(303, 334);
-            this.dgUsers.TabIndex = 1;
+            this.dgUsers.TabIndex = 2;
             this.dgUsers.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgUsers_CellClick);
+            // 
+            // Nombre
+            // 
+            this.Nombre.HeaderText = "Nombre";
+            this.Nombre.Name = "Nombre";
+            this.Nombre.ReadOnly = true;
+            // 
+            // Dni
+            // 
+            this.Dni.HeaderText = "Dni";
+            this.Dni.Name = "Dni";
+            this.Dni.ReadOnly = true;
+            // 
+            // Eliminar
+            // 
+            this.Eliminar.HeaderText = "Eliminar";
+            this.Eliminar.Name = "Eliminar";
+            this.Eliminar.ReadOnly = true;
             // 
             // lbUserName
             // 
@@ -92,7 +110,7 @@
             this.lbUserName.Location = new System.Drawing.Point(542, 132);
             this.lbUserName.Name = "lbUserName";
             this.lbUserName.Size = new System.Drawing.Size(136, 29);
-            this.lbUserName.TabIndex = 2;
+            this.lbUserName.TabIndex = 4;
             this.lbUserName.Text = "Pepe Gotera";
             this.lbUserName.Click += new System.EventHandler(this.lbUserName_Click);
             // 
@@ -142,7 +160,7 @@
             this.lbEmail.Location = new System.Drawing.Point(544, 207);
             this.lbEmail.Name = "lbEmail";
             this.lbEmail.Size = new System.Drawing.Size(89, 13);
-            this.lbEmail.TabIndex = 8;
+            this.lbEmail.TabIndex = 5;
             this.lbEmail.Text = "lalala@lalala.com";
             this.lbEmail.Click += new System.EventHandler(this.lbEmail_Click);
             // 
@@ -171,7 +189,7 @@
             this.lbCurso.Location = new System.Drawing.Point(544, 375);
             this.lbCurso.Name = "lbCurso";
             this.lbCurso.Size = new System.Drawing.Size(50, 13);
-            this.lbCurso.TabIndex = 14;
+            this.lbCurso.TabIndex = 7;
             this.lbCurso.Text = "Segundo";
             this.lbCurso.Click += new System.EventHandler(this.lbCurso_Click);
             // 
@@ -191,7 +209,7 @@
             this.lbTitu.Location = new System.Drawing.Point(544, 427);
             this.lbTitu.Name = "lbTitu";
             this.lbTitu.Size = new System.Drawing.Size(59, 13);
-            this.lbTitu.TabIndex = 16;
+            this.lbTitu.TabIndex = 8;
             this.lbTitu.Text = "Informatica";
             this.lbTitu.Click += new System.EventHandler(this.lbTitu_Click);
             // 
@@ -210,7 +228,7 @@
             this.tbName.Location = new System.Drawing.Point(547, 141);
             this.tbName.Name = "tbName";
             this.tbName.Size = new System.Drawing.Size(188, 20);
-            this.tbName.TabIndex = 17;
+            this.tbName.TabIndex = 4;
             this.tbName.Visible = false;
             this.tbName.Validated += new System.EventHandler(this.tbName_Validated);
             // 
@@ -219,7 +237,7 @@
             this.tbEmail.Location = new System.Drawing.Point(547, 204);
             this.tbEmail.Name = "tbEmail";
             this.tbEmail.Size = new System.Drawing.Size(131, 20);
-            this.tbEmail.TabIndex = 18;
+            this.tbEmail.TabIndex = 5;
             this.tbEmail.Visible = false;
             this.tbEmail.Validated += new System.EventHandler(this.tbEmail_Validated);
             // 
@@ -228,7 +246,7 @@
             this.tbTitu.Location = new System.Drawing.Point(547, 424);
             this.tbTitu.Name = "tbTitu";
             this.tbTitu.Size = new System.Drawing.Size(131, 20);
-            this.tbTitu.TabIndex = 22;
+            this.tbTitu.TabIndex = 8;
             this.tbTitu.Visible = false;
             this.tbTitu.Validated += new System.EventHandler(this.tbTitu_Validated);
             // 
@@ -238,7 +256,7 @@
             this.btCancel.Location = new System.Drawing.Point(671, 548);
             this.btCancel.Name = "btCancel";
             this.btCancel.Size = new System.Drawing.Size(105, 35);
-            this.btCancel.TabIndex = 61;
+            this.btCancel.TabIndex = 10;
             this.btCancel.Text = "Cancelar";
             this.btCancel.UseVisualStyleBackColor = true;
             this.btCancel.Click += new System.EventHandler(this.btCancel_Click);
@@ -249,7 +267,7 @@
             this.btConfirm.Location = new System.Drawing.Point(547, 548);
             this.btConfirm.Name = "btConfirm";
             this.btConfirm.Size = new System.Drawing.Size(105, 35);
-            this.btConfirm.TabIndex = 60;
+            this.btConfirm.TabIndex = 9;
             this.btConfirm.Text = "Confirmar";
             this.btConfirm.UseVisualStyleBackColor = true;
             this.btConfirm.Click += new System.EventHandler(this.btConfirm_Click);
@@ -321,7 +339,7 @@
             0});
             this.udCurso.Name = "udCurso";
             this.udCurso.Size = new System.Drawing.Size(120, 20);
-            this.udCurso.TabIndex = 83;
+            this.udCurso.TabIndex = 7;
             this.udCurso.Value = new decimal(new int[] {
             1,
             0,
@@ -348,7 +366,7 @@
             this.lbPass.Location = new System.Drawing.Point(544, 263);
             this.lbPass.Name = "lbPass";
             this.lbPass.Size = new System.Drawing.Size(37, 13);
-            this.lbPass.TabIndex = 86;
+            this.lbPass.TabIndex = 6;
             this.lbPass.Text = "patata";
             this.lbPass.Click += new System.EventHandler(this.lbPass_Click);
             // 
@@ -367,27 +385,9 @@
             this.tbPass.Location = new System.Drawing.Point(547, 260);
             this.tbPass.Name = "tbPass";
             this.tbPass.Size = new System.Drawing.Size(131, 20);
-            this.tbPass.TabIndex = 87;
+            this.tbPass.TabIndex = 6;
             this.tbPass.Visible = false;
             this.tbPass.Validated += new System.EventHandler(this.tbPass_Validated);
-            // 
-            // Nombre
-            // 
-            this.Nombre.HeaderText = "Nombre";
-            this.Nombre.Name = "Nombre";
-            this.Nombre.ReadOnly = true;
-            // 
-            // Dni
-            // 
-            this.Dni.HeaderText = "Dni";
-            this.Dni.Name = "Dni";
-            this.Dni.ReadOnly = true;
-            // 
-            // Eliminar
-            // 
-            this.Eliminar.HeaderText = "Eliminar";
-            this.Eliminar.Name = "Eliminar";
-            this.Eliminar.ReadOnly = true;
             // 
             // AGestUser
             // 
@@ -428,6 +428,7 @@
             this.Name = "AGestUser";
             this.Text = "AGestUser";
             this.Load += new System.EventHandler(this.AGestUser_Load);
+            this.Enter += new System.EventHandler(this.AGestUser_Enter);
             ((System.ComponentModel.ISupportInitialize)(this.dgUsers)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.udCurso)).EndInit();
             this.ResumeLayout(false);

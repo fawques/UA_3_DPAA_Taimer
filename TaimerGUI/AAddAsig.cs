@@ -78,8 +78,6 @@ namespace TaimerGUI {
 
                 asig = null;
 
-
-
                 Hide();
                 parentForm.Show();
 

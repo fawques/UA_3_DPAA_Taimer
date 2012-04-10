@@ -62,7 +62,7 @@
             this.tbName.Location = new System.Drawing.Point(44, 136);
             this.tbName.Name = "tbName";
             this.tbName.Size = new System.Drawing.Size(324, 20);
-            this.tbName.TabIndex = 51;
+            this.tbName.TabIndex = 1;
             // 
             // label1
             // 
@@ -88,14 +88,14 @@
             this.tbDni.Location = new System.Drawing.Point(44, 213);
             this.tbDni.Name = "tbDni";
             this.tbDni.Size = new System.Drawing.Size(174, 20);
-            this.tbDni.TabIndex = 55;
+            this.tbDni.TabIndex = 2;
             // 
             // btCancel
             // 
             this.btCancel.Location = new System.Drawing.Point(678, 548);
             this.btCancel.Name = "btCancel";
             this.btCancel.Size = new System.Drawing.Size(105, 35);
-            this.btCancel.TabIndex = 61;
+            this.btCancel.TabIndex = 8;
             this.btCancel.Text = "Cancelar";
             this.btCancel.UseVisualStyleBackColor = true;
             this.btCancel.Click += new System.EventHandler(this.btCancel_Click);
@@ -105,7 +105,7 @@
             this.btCreate.Location = new System.Drawing.Point(554, 548);
             this.btCreate.Name = "btCreate";
             this.btCreate.Size = new System.Drawing.Size(105, 35);
-            this.btCreate.TabIndex = 60;
+            this.btCreate.TabIndex = 7;
             this.btCreate.Text = "Crear";
             this.btCreate.UseVisualStyleBackColor = true;
             this.btCreate.Click += new System.EventHandler(this.btCreate_Click);
@@ -148,7 +148,7 @@
             this.tbEmail.Location = new System.Drawing.Point(44, 295);
             this.tbEmail.Name = "tbEmail";
             this.tbEmail.Size = new System.Drawing.Size(174, 20);
-            this.tbEmail.TabIndex = 66;
+            this.tbEmail.TabIndex = 3;
             // 
             // label9
             // 
@@ -173,7 +173,7 @@
             this.tbTitu.Location = new System.Drawing.Point(170, 446);
             this.tbTitu.Name = "tbTitu";
             this.tbTitu.Size = new System.Drawing.Size(174, 20);
-            this.tbTitu.TabIndex = 72;
+            this.tbTitu.TabIndex = 6;
             // 
             // lbErrTitu
             // 
@@ -221,7 +221,7 @@
             0});
             this.udCurso.Name = "udCurso";
             this.udCurso.Size = new System.Drawing.Size(120, 20);
-            this.udCurso.TabIndex = 78;
+            this.udCurso.TabIndex = 5;
             this.udCurso.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.udCurso.Value = new decimal(new int[] {
             1,
@@ -267,7 +267,7 @@
             this.tbPass.Location = new System.Drawing.Point(44, 369);
             this.tbPass.Name = "tbPass";
             this.tbPass.Size = new System.Drawing.Size(174, 20);
-            this.tbPass.TabIndex = 80;
+            this.tbPass.TabIndex = 4;
             // 
             // AAddUser
             // 

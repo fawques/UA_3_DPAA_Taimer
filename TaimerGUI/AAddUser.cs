@@ -98,6 +98,7 @@ namespace TaimerGUI {
                 tbName.Text = "";
                 tbDni.Text = "";
                 tbEmail.Text = "";
+                tbPass.Text = "";
                 tbTitu.Text = "";
                 udCurso.Value = 1;
 

@@ -32,9 +32,6 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.gbInfo = new System.Windows.Forms.GroupBox();
-            this.lbNameInfo = new System.Windows.Forms.Label();
-            this.lbName = new System.Windows.Forms.Label();
-            this.tbName = new System.Windows.Forms.TextBox();
             this.btCancel = new System.Windows.Forms.Button();
             this.btCreate = new System.Windows.Forms.Button();
             this.btGestTurno = new System.Windows.Forms.Button();
@@ -50,6 +47,9 @@
             this.lbDescInfo = new System.Windows.Forms.Label();
             this.tbCoord = new System.Windows.Forms.TextBox();
             this.tbDesc = new System.Windows.Forms.TextBox();
+            this.lbNameInfo = new System.Windows.Forms.Label();
+            this.lbName = new System.Windows.Forms.Label();
+            this.tbName = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgAsig)).BeginInit();
             this.gbInfo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgTurns)).BeginInit();
@@ -60,7 +60,7 @@
             this.btNewUser.Location = new System.Drawing.Point(287, 484);
             this.btNewUser.Name = "btNewUser";
             this.btNewUser.Size = new System.Drawing.Size(107, 24);
-            this.btNewUser.TabIndex = 15;
+            this.btNewUser.TabIndex = 3;
             this.btNewUser.Text = "Nueva Asignatura";
             this.btNewUser.UseVisualStyleBackColor = true;
             this.btNewUser.Click += new System.EventHandler(this.btNewUser_Click_1);
@@ -81,7 +81,7 @@
             this.dgAsig.Name = "dgAsig";
             this.dgAsig.ReadOnly = true;
             this.dgAsig.Size = new System.Drawing.Size(300, 349);
-            this.dgAsig.TabIndex = 13;
+            this.dgAsig.TabIndex = 2;
             this.dgAsig.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgAsig_CellClick);
             // 
             // Nombre
@@ -107,7 +107,7 @@
             this.textBox1.Location = new System.Drawing.Point(135, 103);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(259, 20);
-            this.textBox1.TabIndex = 12;
+            this.textBox1.TabIndex = 1;
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // label6
@@ -151,36 +151,6 @@
             this.gbInfo.TabIndex = 68;
             this.gbInfo.TabStop = false;
             this.gbInfo.Text = "Información";
-            // 
-            // lbNameInfo
-            // 
-            this.lbNameInfo.AutoSize = true;
-            this.lbNameInfo.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbNameInfo.Location = new System.Drawing.Point(32, 42);
-            this.lbNameInfo.Name = "lbNameInfo";
-            this.lbNameInfo.Size = new System.Drawing.Size(48, 13);
-            this.lbNameInfo.TabIndex = 66;
-            this.lbNameInfo.Text = "Nombre:";
-            // 
-            // lbName
-            // 
-            this.lbName.AutoSize = true;
-            this.lbName.Font = new System.Drawing.Font("Calibri", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbName.Location = new System.Drawing.Point(92, 29);
-            this.lbName.Name = "lbName";
-            this.lbName.Size = new System.Drawing.Size(136, 29);
-            this.lbName.TabIndex = 65;
-            this.lbName.Text = "DPAA Teoria";
-            this.lbName.Click += new System.EventHandler(this.lbUserName_Click);
-            // 
-            // tbName
-            // 
-            this.tbName.Location = new System.Drawing.Point(97, 38);
-            this.tbName.Name = "tbName";
-            this.tbName.Size = new System.Drawing.Size(140, 20);
-            this.tbName.TabIndex = 67;
-            this.tbName.Visible = false;
-            this.tbName.Validated += new System.EventHandler(this.tbName_Validated);
             // 
             // btCancel
             // 
@@ -267,7 +237,7 @@
             this.lbCoord.Location = new System.Drawing.Point(94, 116);
             this.lbCoord.Name = "lbCoord";
             this.lbCoord.Size = new System.Drawing.Size(31, 13);
-            this.lbCoord.TabIndex = 72;
+            this.lbCoord.TabIndex = 6;
             this.lbCoord.Text = "Irene";
             this.lbCoord.Click += new System.EventHandler(this.lbCoord_Click);
             // 
@@ -277,7 +247,7 @@
             this.lbDesc.Location = new System.Drawing.Point(94, 78);
             this.lbDesc.Name = "lbDesc";
             this.lbDesc.Size = new System.Drawing.Size(208, 13);
-            this.lbDesc.TabIndex = 71;
+            this.lbDesc.TabIndex = 5;
             this.lbDesc.Text = "Diseño y Analisis de Algoritmos Avanzados";
             this.lbDesc.Click += new System.EventHandler(this.lbDesc_Click);
             // 
@@ -316,7 +286,7 @@
             this.tbCoord.Location = new System.Drawing.Point(97, 112);
             this.tbCoord.Name = "tbCoord";
             this.tbCoord.Size = new System.Drawing.Size(246, 20);
-            this.tbCoord.TabIndex = 78;
+            this.tbCoord.TabIndex = 6;
             this.tbCoord.Visible = false;
             this.tbCoord.Validated += new System.EventHandler(this.tbCoord_Validated);
             // 
@@ -325,9 +295,39 @@
             this.tbDesc.Location = new System.Drawing.Point(97, 74);
             this.tbDesc.Name = "tbDesc";
             this.tbDesc.Size = new System.Drawing.Size(246, 20);
-            this.tbDesc.TabIndex = 77;
+            this.tbDesc.TabIndex = 5;
             this.tbDesc.Visible = false;
             this.tbDesc.Validated += new System.EventHandler(this.tbDesc_Validated);
+            // 
+            // lbNameInfo
+            // 
+            this.lbNameInfo.AutoSize = true;
+            this.lbNameInfo.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbNameInfo.Location = new System.Drawing.Point(32, 42);
+            this.lbNameInfo.Name = "lbNameInfo";
+            this.lbNameInfo.Size = new System.Drawing.Size(48, 13);
+            this.lbNameInfo.TabIndex = 66;
+            this.lbNameInfo.Text = "Nombre:";
+            // 
+            // lbName
+            // 
+            this.lbName.AutoSize = true;
+            this.lbName.Font = new System.Drawing.Font("Calibri", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbName.Location = new System.Drawing.Point(92, 29);
+            this.lbName.Name = "lbName";
+            this.lbName.Size = new System.Drawing.Size(136, 29);
+            this.lbName.TabIndex = 4;
+            this.lbName.Text = "DPAA Teoria";
+            this.lbName.Click += new System.EventHandler(this.lbUserName_Click);
+            // 
+            // tbName
+            // 
+            this.tbName.Location = new System.Drawing.Point(97, 38);
+            this.tbName.Name = "tbName";
+            this.tbName.Size = new System.Drawing.Size(140, 20);
+            this.tbName.TabIndex = 4;
+            this.tbName.Visible = false;
+            this.tbName.Validated += new System.EventHandler(this.tbName_Validated);
             // 
             // AGestAsig
             // 
@@ -345,6 +345,7 @@
             this.Name = "AGestAsig";
             this.Text = "AGestAsig";
             this.Load += new System.EventHandler(this.AGestAsig_Load);
+            this.Enter += new System.EventHandler(this.AGestAsig_Enter);
             ((System.ComponentModel.ISupportInitialize)(this.dgAsig)).EndInit();
             this.gbInfo.ResumeLayout(false);
             this.gbInfo.PerformLayout();
