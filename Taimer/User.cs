@@ -154,9 +154,23 @@ namespace Taimer {
             email = u.email;
             password = u.password;
             curso = u.curso;
-            actAcademicas = new List<Actividad_a>(u.actAcademicas);
-            actPersonales = new List<Actividad_p>(u.actPersonales);
-            horarios = new List<Horario>(u.horarios);
+            actAcademicas = new List<Actividad_a>(u.ActAcademicas.Count);
+            foreach (Actividad_a act_a in u.ActAcademicas)
+            {
+                ActAcademicas.Add(act_a);
+            }
+            
+            actPersonales = new List<Actividad_p>(u.actPersonales.Count);
+            foreach (Actividad_p act_p in u.ActPersonales)
+            {
+                ActPersonales.Add(act_p);
+            }
+            horarios = new List<Horario>(u.Horarios.Count);
+            foreach (Horario h in u.Horarios)
+            {
+                Horarios.Add(h);
+            }
+            codActPers = u.codActPers;
             titulacion = u.titulacion;
         }
 
