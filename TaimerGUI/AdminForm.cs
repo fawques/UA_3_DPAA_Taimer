@@ -103,37 +103,7 @@ namespace TaimerGUI {
             //////////////// --- //////////////////////////
         }
 
-        /*
-         *      Control de los botones de cerrar, maximizar y minimizar
-         */
-
-        private void btMinimize_MouseClick(object sender, MouseEventArgs e) {
-            this.WindowState = FormWindowState.Minimized;
-        }
-
-        private void btMaximize_Click(object sender, EventArgs e) {
-            //Desactivamos el borderless para hacer el maxmizado normal, si no se pone a pantalla completa
-            this.FormBorderStyle = FormBorderStyle.FixedSingle;
-
-            if (this.WindowState != FormWindowState.Maximized) {
-                this.WindowState = FormWindowState.Maximized;
-            } else {
-                this.WindowState = FormWindowState.Normal;
-
-            }
-            // desactivamos el maximizado para que deje de mostrar el borde
-            this.FormBorderStyle = FormBorderStyle.None;
-        }
-
-        private void btClose_Click(object sender, EventArgs e) {
-            if (MessageBox.Show("¿Seguro que desea salir?",
-                "¿Salir?",
-                MessageBoxButtons.OKCancel,
-                MessageBoxIcon.Question,
-                MessageBoxDefaultButton.Button2) == DialogResult.OK) {
-                Application.Exit();
-            }
-        }
+      
 
         private void btSidePanelUser_Click(object sender, EventArgs e) {
             hideChilds();
@@ -230,5 +200,85 @@ namespace TaimerGUI {
             positionChilds();
         }
 
+        /*
+       *      Control de los botones de cerrar, maximizar y minimizar
+       */
+
+        private void btMinimize_Click(object sender, EventArgs e) {
+            this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void btMaximize_Click(object sender, EventArgs e) {
+            //Desactivamos el borderless para hacer el maxmizado normal, si no se pone a pantalla completa
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+
+            if (this.WindowState != FormWindowState.Maximized) {
+                this.WindowState = FormWindowState.Maximized;
+            } else {
+                this.WindowState = FormWindowState.Normal;
+
+            }
+            // desactivamos el maximizado para que deje de mostrar el borde
+            this.FormBorderStyle = FormBorderStyle.None;
+        }
+
+        private void btClose_Click(object sender, EventArgs e) {
+            if (MessageBox.Show("¿Seguro que desea salir?",
+                "¿Salir?",
+                MessageBoxButtons.OKCancel,
+                MessageBoxIcon.Question,
+                MessageBoxDefaultButton.Button2) == DialogResult.OK) {
+                Application.Exit();
+            }
+        }
+
+        /**   Cambio de imagen botones **/
+        private void btMinimize_MouseEnter(object sender, EventArgs e) {
+            btMinimize.Image = TaimerGUI.Properties.Resources.tbMinimizeOn;
+        }
+
+        private void btMinimize_MouseLeave(object sender, EventArgs e) {
+            btMinimize.Image = TaimerGUI.Properties.Resources.tbMinimizeOff;
+        }
+
+        private void btMinimize_MouseDown(object sender, MouseEventArgs e) {
+            btMinimize.Image = TaimerGUI.Properties.Resources.tbMinimizeClick;
+        }
+
+        private void btMinimize_MouseUp(object sender, MouseEventArgs e) {
+            btMinimize.Image = TaimerGUI.Properties.Resources.tbMinimizeOn;
+        }
+
+        private void btClose_MouseEnter(object sender, EventArgs e) {
+            btClose.Image = TaimerGUI.Properties.Resources.tbCloseOn;
+        }
+
+        private void btClose_MouseLeave(object sender, EventArgs e) {
+            btClose.Image = TaimerGUI.Properties.Resources.tbCloseOff;
+        }
+
+        private void btClose_MouseDown(object sender, MouseEventArgs e) {
+            btClose.Image = TaimerGUI.Properties.Resources.tbCloseClick;
+        }
+
+        private void btClose_MouseUp(object sender, MouseEventArgs e) {
+            btClose.Image = TaimerGUI.Properties.Resources.tbCloseOn;
+        }
+
+        private void btMaximize_MouseEnter(object sender, EventArgs e) {
+            btMaximize.Image = TaimerGUI.Properties.Resources.maximizeOn;
+        }
+
+        private void btMaximize_MouseLeave(object sender, EventArgs e) {
+            btMaximize.Image = TaimerGUI.Properties.Resources.maximizeOff1;
+        }
+
+        private void btMaximize_MouseDown(object sender, MouseEventArgs e) {
+            btMaximize.Image = TaimerGUI.Properties.Resources.maximizeClick;
+        }
+
+        private void btMaximize_MouseUp(object sender, MouseEventArgs e) {
+            btMaximize.Image = TaimerGUI.Properties.Resources.maximizeOn;
+        }
     }
 }
