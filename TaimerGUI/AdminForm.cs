@@ -204,7 +204,7 @@ namespace TaimerGUI {
        *      Control de los botones de cerrar, maximizar y minimizar
        */
 
-        private void btMinimize_Click(object sender, EventArgs e) {
+        private void btMinimize_MouseClick(object sender, EventArgs e) {
             this.WindowState = FormWindowState.Minimized;
         }
 
