@@ -10,7 +10,7 @@ using System.Collections;
 
 namespace CAD
 {
-    class CADTitulacion
+    public class CADTitulacion
     {
         private static string conexionTBD;
         
