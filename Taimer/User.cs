@@ -395,18 +395,11 @@ namespace Taimer {
         /// <sumary>
         /// Añade el User a la base de datos
         /// </sumary>
-        public void Agregar() {
+        public void Agregar()
+        {
             CADUser user = new CADUser();
-            CADTitulacion tit = new CADTitulacion();
-            try {
-                tit.CrearTitulacion(titulacion, null);
-            }
-            catch (Exception ex) {
-                //Ya existe en la BD esa titulacion
-            }
-            finally {
-                user.CrearUserAll(dni, nombre, email, password, curso, titulacion, codHorarios);
-            }
+            user.CrearUserAll(dni, nombre, email, password, curso, titulacion, codHorarios);
+
         }
 
         /// <summary>
