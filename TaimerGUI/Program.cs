@@ -92,7 +92,10 @@ namespace TaimerGUI {
             get { return codAsignaturas; }
         }
 
-        //Añade una asignatura
+        /// <summary>
+        /// Añade una asignatura. Incrementa el código y lo asigna al código de la asignatura que se añade.
+        /// </summary>
+        /// <param name="a">Asignatura a añadir</param>
         public static void AddAsignatura(Actividad_a a) {
             codAsignaturas++;
             a.Codigo = codAsignaturas;
@@ -108,7 +111,10 @@ namespace TaimerGUI {
             return false;
         }
 
-        //Borrar una asignatura
+        /// <summary>
+        /// Borra una asignatura. Lanza MissingMemberException si la asignatura no existe.
+        /// </summary>
+        /// <param name="codigo">Código de la asignatura a borrar</param>
         public static void BorrarAsignatura(int codigo)
         {
             bool borrado = false;
@@ -121,7 +127,10 @@ namespace TaimerGUI {
                 throw new MissingMemberException("La asignatura no existe");
         }
 
-        //Añade un usuario
+        /// <summary>
+        /// Añade un usuario a la lista en Program
+        /// </summary>
+        /// <param name="u"></param>
         public static void AddUsuario(User u) {
             usuarios.Add(u);
         }
@@ -135,7 +144,11 @@ namespace TaimerGUI {
             return false;
         }
 
-        //Borrar un usuario
+        /// <summary>
+        /// Borra un usuario. Lanza MissingMemberException si el usuario no existe
+        /// </summary>
+        /// <param name="dni">Dni del usuario a borrar</param>
+
         public static void BorrarUsuario(string dni)
         {
             bool borrado = false;
@@ -151,6 +164,12 @@ namespace TaimerGUI {
                 throw new MissingMemberException("El usuario no existe");
         }
 
+        /// <summary>
+        /// Comprueba si existe un algoritmo con las actividades que se le pasan. Si existe, lo devuelve, si no, devuelve null.
+        /// </summary>
+        /// <param name="academicas">Actividades académicas a comprobar</param>
+        /// <param name="personales">Actividades personales a comprobar</param>
+        /// <returns></returns>
         public static Algoritmo ComprobarAlgoritmo(List<Actividad_a> academicas, List<Actividad_p> personales)
         {
             bool iguales = true;
@@ -184,7 +203,11 @@ namespace TaimerGUI {
         }
 
 
-        //Añade un algoritmo
+        /// <summary>
+        /// Añade un algoritmo a la lista
+        /// </summary>
+        /// <param name="a"></param>
+
         public static void AddAlgoritmo(Algoritmo a) {
             algoritmos.Add(a);
         }
