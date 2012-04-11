@@ -165,13 +165,14 @@ namespace Taimer {
         public void Agregar() {
             CADActividad_p act = new CADActividad_p();
 
-            foreach (Turno t in turnos) //se añaden los turnos a la BD
-                t.Agregar();
-
             if (codigo == 0) //codigo por defecto
                 codigo = UltimoCodigo - 1;
            // MessageBox.Show("nombre = " + nombre + ", descripcion = " + descripcion + ", codigo= " + codigo + ", dni = " + usuario.DNI);
             act.CrearActivida_pAll(nombre, descripcion, codigo, usuario.DNI);
+            foreach (Turno t in turnos) { //se añaden los turnos a la BD
+                t.Actividad = this;
+                t.Agregar();
+            }
         }
 
         /// <summary>

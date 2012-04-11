@@ -405,7 +405,16 @@ namespace Taimer {
         public void Agregar()
         {
             CADUser user = new CADUser();
-            user.CrearUserAll(dni, nombre, email, password, curso, titulacion, codHorarios);
+            CADTitulacion tit = new CADTitulacion();
+            try {
+                tit.CrearTitulacion(titulacion);
+            }
+            catch {
+
+            }
+            finally {
+                user.CrearUserAll(dni, nombre, email, password, curso, titulacion, codHorarios);
+            }
 
         }
 

@@ -116,8 +116,6 @@ namespace TaimerGUI {
         /// </summary>
         /// <param name="a">Asignatura que se quiere añadir</param>
         public static void AddAsignatura(Actividad_a a) {
-            /*codAsignaturas++;
-            a.Codigo = codAsignaturas;*/
             asignaturas.Add(a);
         }
 
@@ -320,7 +318,7 @@ namespace TaimerGUI {
         [STAThread]
         static void Main() {
 
-            Application.EnableVisualStyles();
+           Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Init();
             loginForm = new LoginForm();

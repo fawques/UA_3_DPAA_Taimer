@@ -45,15 +45,16 @@ namespace rubenDesign
 
             ///Pruebas///
 
-            /*List<Turno> lt = new List<Turno>();
+            List<Turno> lt = new List<Turno>();
             lt.Add(new Turno(new Hora(0,0), new Hora(1,0), dias.J,"ua"));
-            User usr = new User("pepe2", "0000006", "pepe2@gmail.com", "pepemola", 3, "II", 0);
+            User usr = new User("pepe3", "0000007", "pepe3@gmail.com", "pepemola", 3, "II", 0);
             try {
                 usr.Agregar();
 
             }
             catch (Exception ex) {
                 //Ya existe el usuario
+                MessageBox.Show(ex.Message);
             }
             finally {
                 try {
@@ -64,7 +65,7 @@ namespace rubenDesign
                 catch (Exception ex) {
                     MessageBox.Show(ex.Message);
                 }
-            }*/
+            }
             
             
 

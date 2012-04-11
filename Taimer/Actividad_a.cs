@@ -185,7 +185,21 @@ namespace Taimer {
             if (codigo == 0) //Codigo por defecto
                 codigo = UltimoCodigo + 1;
 
-            act.CrearActivida_aAll(nombre, descripcion, codigo, nombreCoordinador, titulacion);
+            CADTitulacion tit = new CADTitulacion();
+            try {
+                tit.CrearTitulacion(titulacion);
+            }
+            catch {
+
+            }
+            finally {
+                act.CrearActivida_aAll(nombre, descripcion, codigo, nombreCoordinador, titulacion);
+                foreach (Turno t in turnos) {
+                    t.Actividad = this;
+                    AsignarCodigo(t);
+                    t.Agregar();
+                }
+            }
 
         }
 
