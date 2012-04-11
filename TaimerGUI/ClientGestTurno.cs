@@ -17,6 +17,7 @@ namespace TaimerGUI {
 
         private ClientVerActividades formBackVer = null;
         private ClientCrearActiv formBackCrear = null;
+        private bool modificado = false;
 
         public void setFormPadre(ClientVerActividades f) {
             formBackVer = f;
@@ -65,6 +66,8 @@ namespace TaimerGUI {
                     MessageBox.Show(exc.Message);
                 }
 
+                modificado = true;
+
                 lblErrorDate.Visible = false;
                 txtBoxLugar.Text = "";
                 lbErrUbi.Visible = false;
@@ -87,20 +90,43 @@ namespace TaimerGUI {
             nmUpDwnHorHasta.Value = 0;
             nmUpDwnMinDesde.Value = 0;
             nmUpDwnMinHasta.Value = 0;
+            comboBoxDia.SelectedIndex = 0;
         }
 
         private void btnTerminar_Click(object sender, EventArgs e) {
-            if (MessageBox.Show("¿Seguro que desea cancelar los cambios?",
-                      "¿Cancelar cambios?",
-                      MessageBoxButtons.YesNo,
-                      MessageBoxIcon.Question,
-                      MessageBoxDefaultButton.Button2) == DialogResult.Yes) {
-
+            if (modificado)
+            {
+                if (MessageBox.Show("¿Seguro que desea cancelar los cambios?",
+                          "¿Cancelar cambios?",
+                          MessageBoxButtons.YesNo,
+                          MessageBoxIcon.Question,
+                          MessageBoxDefaultButton.Button2) == DialogResult.Yes)
+                {
+                    modificado = false;
+                    this.reiniciar();
+                    if (formBackVer != null)
+                    {
+                        this.formBackVer.Show();
+                        this.formBackVer.Focus();
+                    }
+                    else if (formBackCrear != null)
+                    {
+                        this.formBackCrear.Show();
+                        this.formBackCrear.Focus();
+                        this.formBackCrear.loadBoxTurnos();
+                    }
+                }
+            }
+            else
+            {
                 this.reiniciar();
-                if (formBackVer != null) {
+                if (formBackVer != null)
+                {
                     this.formBackVer.Show();
                     this.formBackVer.Focus();
-                } else if (formBackCrear != null) {
+                }
+                else if (formBackCrear != null)
+                {
                     this.formBackCrear.Show();
                     this.formBackCrear.Focus();
                     this.formBackCrear.loadBoxTurnos();
@@ -126,6 +152,7 @@ namespace TaimerGUI {
                 if (e.ColumnIndex == gVHorasTemp.Columns["Borrar"].Index) {
                     try {
                         actividad.BorraTurno((Turno)gVHorasTemp.Rows[e.RowIndex].Tag);
+                        modificado = true;
                     } catch (NotSupportedException exc) {
                         MessageBox.Show(exc.Message);
                     }
@@ -153,6 +180,8 @@ namespace TaimerGUI {
                 }
                 ((Turno)grpBoxTurno.Tag).Ubicacion = txtBoxLugarMod.Text;
 
+                modificado = true;
+
                 loadActividad(actividad);
                 lblMenorTurno.Visible = false;
             } else {
@@ -165,18 +194,43 @@ namespace TaimerGUI {
         }
 
         private void btnConfCambios_Click(object sender, EventArgs e) {
-            if (MessageBox.Show("¿Seguro que desea guardar los cambios?",
-                      "¿Guardar cambios?",
-                      MessageBoxButtons.YesNo,
-                      MessageBoxIcon.Question,
-                      MessageBoxDefaultButton.Button2) == DialogResult.Yes) {
+            if (modificado)
+            {
+                if (MessageBox.Show("¿Seguro que desea guardar los cambios?",
+                          "¿Guardar cambios?",
+                          MessageBoxButtons.YesNo,
+                          MessageBoxIcon.Question,
+                          MessageBoxDefaultButton.Button2) == DialogResult.Yes)
+                {
+                    modificado = false;
+                    this.reiniciar();
+                    actividadDefinitiva.CopiarDesde(actividad);
+                    if (formBackVer != null)
+                    {
+                        this.formBackVer.Show();
+                        this.formBackVer.Focus();
+                        this.formBackVer.loadGrupBoxData(actividadDefinitiva);
+                    }
+                    else if (formBackCrear != null)
+                    {
+                        this.formBackCrear.Show();
+                        this.formBackCrear.Focus();
+                        this.formBackCrear.loadBoxTurnos();
+                    }
+                }
+            }
+            else
+            {
                 this.reiniciar();
                 actividadDefinitiva.CopiarDesde(actividad);
-                if (formBackVer != null) {
+                if (formBackVer != null)
+                {
                     this.formBackVer.Show();
                     this.formBackVer.Focus();
                     this.formBackVer.loadGrupBoxData(actividadDefinitiva);
-                } else if (formBackCrear != null) {
+                }
+                else if (formBackCrear != null)
+                {
                     this.formBackCrear.Show();
                     this.formBackCrear.Focus();
                     this.formBackCrear.loadBoxTurnos();

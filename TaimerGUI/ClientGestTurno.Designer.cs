@@ -43,11 +43,6 @@
             this.comboBoxDia = new System.Windows.Forms.ComboBox();
             this.button1 = new System.Windows.Forms.Button();
             this.gVHorasTemp = new System.Windows.Forms.DataGridView();
-            this.dia = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.horaInicio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.horaFin = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lugar = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.borrar = new System.Windows.Forms.DataGridViewButtonColumn();
             this.grpBoxTurno = new System.Windows.Forms.GroupBox();
             this.lblMenorTurno = new System.Windows.Forms.Label();
             this.btnCancelar = new System.Windows.Forms.Button();
@@ -69,6 +64,11 @@
             this.btnTerminar = new System.Windows.Forms.Button();
             this.btnConfCambios = new System.Windows.Forms.Button();
             this.label18 = new System.Windows.Forms.Label();
+            this.dia = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.horaInicio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.horaFin = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lugar = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.borrar = new System.Windows.Forms.DataGridViewButtonColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nmUpDwnMinHasta)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nmUpDwnMinDesde)).BeginInit();
@@ -312,38 +312,6 @@
             this.gVHorasTemp.TabIndex = 67;
             this.gVHorasTemp.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gVHorasTemp_CellClick);
             // 
-            // dia
-            // 
-            this.dia.HeaderText = "Dia";
-            this.dia.Name = "dia";
-            this.dia.ReadOnly = true;
-            // 
-            // horaInicio
-            // 
-            this.horaInicio.HeaderText = "Hora inicio";
-            this.horaInicio.Name = "horaInicio";
-            this.horaInicio.ReadOnly = true;
-            // 
-            // horaFin
-            // 
-            this.horaFin.HeaderText = "Hora fin";
-            this.horaFin.Name = "horaFin";
-            this.horaFin.ReadOnly = true;
-            // 
-            // lugar
-            // 
-            this.lugar.HeaderText = "Lugar";
-            this.lugar.Name = "lugar";
-            this.lugar.ReadOnly = true;
-            // 
-            // borrar
-            // 
-            this.borrar.HeaderText = "Borrar";
-            this.borrar.Name = "borrar";
-            this.borrar.ReadOnly = true;
-            this.borrar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.borrar.Text = "Borrar";
-            // 
             // grpBoxTurno
             // 
             this.grpBoxTurno.Controls.Add(this.lblMenorTurno);
@@ -573,6 +541,42 @@
             this.label18.TabIndex = 73;
             this.label18.Text = "Añade, borra y modifica los turnos de tus actividades.";
             // 
+            // dia
+            // 
+            this.dia.HeaderText = "Dia";
+            this.dia.MaxInputLength = 15;
+            this.dia.Name = "dia";
+            this.dia.ReadOnly = true;
+            this.dia.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.dia.Width = 95;
+            // 
+            // horaInicio
+            // 
+            this.horaInicio.HeaderText = "Hora inicio";
+            this.horaInicio.Name = "horaInicio";
+            this.horaInicio.ReadOnly = true;
+            // 
+            // horaFin
+            // 
+            this.horaFin.HeaderText = "Hora fin";
+            this.horaFin.Name = "horaFin";
+            this.horaFin.ReadOnly = true;
+            // 
+            // lugar
+            // 
+            this.lugar.HeaderText = "Lugar";
+            this.lugar.Name = "lugar";
+            this.lugar.ReadOnly = true;
+            // 
+            // borrar
+            // 
+            this.borrar.HeaderText = "Borrar";
+            this.borrar.Name = "borrar";
+            this.borrar.ReadOnly = true;
+            this.borrar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.borrar.Text = "Borrar";
+            this.borrar.Width = 53;
+            // 
             // ClientGestTurno
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -628,11 +632,6 @@
         private System.Windows.Forms.ComboBox comboBoxDia;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.DataGridView gVHorasTemp;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dia;
-        private System.Windows.Forms.DataGridViewTextBoxColumn horaInicio;
-        private System.Windows.Forms.DataGridViewTextBoxColumn horaFin;
-        private System.Windows.Forms.DataGridViewTextBoxColumn lugar;
-        private System.Windows.Forms.DataGridViewButtonColumn borrar;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.GroupBox grpBoxTurno;
         private System.Windows.Forms.Label label17;
@@ -656,5 +655,10 @@
         private System.Windows.Forms.Button btnConfCambios;
         private System.Windows.Forms.Label lblMenorTurno;
         private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dia;
+        private System.Windows.Forms.DataGridViewTextBoxColumn horaInicio;
+        private System.Windows.Forms.DataGridViewTextBoxColumn horaFin;
+        private System.Windows.Forms.DataGridViewTextBoxColumn lugar;
+        private System.Windows.Forms.DataGridViewButtonColumn borrar;
     }
 }
