@@ -213,6 +213,7 @@ namespace TaimerGUI
                 {
                     alg = new Algoritmo(formBack.getActividadesA(), formBack.getActividadesP(), Program.Usuarios[0]);
                     h = alg.generarHorarioBT(formBack.getNameHorario(), radioButton2.Checked);
+                    Program.AddAlgoritmo(alg);
                 }
                 catch (NotSupportedException exc)
                 {

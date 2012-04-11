@@ -153,9 +153,31 @@ namespace TaimerGUI {
 
         public static Algoritmo ComprobarAlgoritmo(List<Actividad_a> academicas, List<Actividad_p> personales)
         {
+            bool iguales = true;
             foreach (Algoritmo item in algoritmos)
 	        {
-		         if(item.Seleccionadas_a.Equals(academicas) && item.Seleccionadas_p.Equals(personales))
+                if (item.Seleccionadas_p.Count == personales.Count && item.Seleccionadas_a.Count == academicas.Count)
+                {
+                    for (int i = 0; i < personales.Count && iguales; i++)
+                    {
+                        if (!item.Seleccionadas_p[i].Equals(personales[i]))
+                        {
+                            iguales = false;
+                        }
+                    }
+
+                    for (int i = 0; i < academicas.Count && iguales; i++)
+                    {
+                        if (!item.Seleccionadas_a[i].Equals(academicas[i]))
+                        {
+                            iguales = false;
+                        }
+                    }
+
+                }
+
+
+		         if(iguales)
                      return item;
 	        }
             return null;
