@@ -250,6 +250,34 @@ namespace CAD
             }
             return list;
         }
-    }
 
+        /// <summary>
+        /// Obtiene las actividades personales creadas por un usuario
+        /// </summary>
+        /// <param name="dni"></param>
+        /// <returns></returns>
+        public DataSet GetActividades_pByUser(string dni)
+        {
+            SqlConnection con = null;
+            DataSet listAct = null;
+            string comando = "Select * from [Actividad_p] where autor='" + dni + "'";
+            try
+            {
+                con = new SqlConnection(conexionTBD);
+                SqlDataAdapter sqlAdaptador = new SqlDataAdapter(comando, con);
+                listAct = new DataSet();
+                sqlAdaptador.Fill(listAct);
+                return listAct;
+            }
+            catch (SqlException)
+            {
+                throw;
+                //return null;
+            }
+            finally
+            {
+                if (con != null) con.Close(); // Se asegura de cerrar la conexión.
+            }
+        }
+    }
 }

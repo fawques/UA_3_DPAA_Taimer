@@ -650,8 +650,8 @@ namespace Taimer {
         /// <param name="data"></param>
         /// <returns></returns>
         public static List<Turno> TurnosToList(DataSet data)
-        {
-            if (data != null)
+        {   
+            /*if (data != null)
             {
                 CAD.CADActividad_a actACAD = new CAD.CADActividad_a();
                 CAD.CADActividad_p actPCAD = new CAD.CADActividad_p();
@@ -669,11 +669,11 @@ namespace Taimer {
 
                 for (int i = 0; i < rows.Count; i++)
                 {
-                    cod = (int)rows[i].ItemArray[0];
+                    cod = (int)rows[i].ItemArray[0];                    
                     inicio = new Hora(rows[i].ItemArray[1].ToString());
                     fin = new Hora(rows[i].ItemArray[2].ToString());
                     dia = rows[i].ItemArray[3].ToString();
-                    ubic = rows[i].ItemArray[4].ToString();
+                    ubic = rows[i].ItemArray[4].ToString();                    
                     pertenece = (int)rows[i].ItemArray[5];
 
                     if (pertenece > 0)
@@ -688,7 +688,7 @@ namespace Taimer {
                     }
                 }
                 return list;
-            }
+            }*/
             return null;
         }
 

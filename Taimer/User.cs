@@ -337,8 +337,6 @@ namespace Taimer {
             throw new MissingMemberException("No existe ninguna actividad con ese código.");
         }
 
-
-
         /// <summary>
         /// Añade un Horario a la lista de horarios
         /// </summary>
@@ -445,7 +443,7 @@ namespace Taimer {
                 string dni, nom, email, pass, tit = "";
                 int curso = 0, codH = 0;
                 DataRowCollection rows = data.Tables[0].Rows;
-
+                
                 for (int i = 0; i < rows.Count; i++)
                 {
                     dni = rows[i].ItemArray[0].ToString();
@@ -460,12 +458,11 @@ namespace Taimer {
                         tit = rows[i].ItemArray[5].ToString();
 
                     if (rows[i].ItemArray[6].ToString() != "")
-                        tit = rows[i].ItemArray[6].ToString();
-
-                   /* if (rows[i].ItemArray[7].ToString() != "")
-                        codH = (int)rows[i].ItemArray[7];*/
-
-                    list.Add(new User(nom, dni, email, pass, curso, tit,codH));
+                        codH = (int)rows[i].ItemArray[6];
+                    
+                    User user = new User(nom, dni, email, pass, curso, tit, codH);
+                    user.SetDatos();
+                    list.Add(user);
                 }
                 return list;
             }
@@ -502,6 +499,7 @@ namespace Taimer {
                         codH = (int)rows[0].ItemArray[6];
 
                     User user = new User(nom, dni, email, pass, curso, tit,codH);
+                    user.SetDatos();
                     return user;
                 }                
             }
@@ -514,27 +512,89 @@ namespace Taimer {
         /// <param name="email"></param>
         /// <param name="pass"></param>
         /// <returns></returns>
-        public static bool CheckLogin(string email, string pass)
+        public static User CheckLoginUser(string email, string pass)
         {
             CADUser userCAD = new CADUser();
-            User user = UserToObject(userCAD.GetDatosUser(email, pass));
-            if (user == null)
+            try
             {
-                MessageBox.Show("Login incorrecto");
-                return false;
+                User user = UserToObject(userCAD.GetDatosUser(email, pass));                
+                return user;               
             }
-
-            MessageBox.Show("Login correcto");
-            return true;
+            catch (Exception)
+            {
+                throw;                
+            }            
         }
+
+        /// <summary>
+        /// Comprueba que el login de un determinado admin es correcto
+        /// </summary>
+        /// <param name="email"></param>
+        /// <param name="pass"></param>
+        /// <returns></returns>
+        public static List<User> CheckLoginAdmin(string email, string pass)
+        {
+            CADAdmin adminCAD = new CADAdmin();
+            try
+            {
+                return GetAllUsers();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
         /// <summary>
         /// Relleno del campo Horarios desde la BD
         /// </summary>
-        public void RellenoHorarios()
+        private void SetHorarios()
         {
             CAD.CADHorario hor = new CADHorario();
             DataSet horarios = hor.GetDatosHorarioUser(dni);
             Horarios = Horario.HorariosToList(horarios);
+        }
+
+        /// <summary>
+        /// Completa la lista de actividades académicas matriculadas de un usuario
+        /// </summary>
+        private void SetActAcademicas()
+        {
+            CADUser user = new CADUser();
+            DataSet data=user.GetMatriculadas(this.dni);                
+            actAcademicas = Actividad_a.CodesToList(data);
+        }
+
+        /// <summary>
+        /// Completa la lista de actividades personales creadas por un usuario
+        /// </summary>
+        private void SetActPersonales()
+        {
+            CADActividad_p act = new CADActividad_p();
+            actPersonales = Actividad_p.Actividades_pToList(act.GetActividades_pByUser(this.dni));
+        }
+
+        /// <summary>
+        /// Completa las listas de actividades académicas, de actividades personales y de horarios de un usuario
+        /// </summary>
+        public void SetDatos()
+        {
+            SetActAcademicas();
+            //SetActPersonales();
+            //SetHorarios();
+        }
+
+        /// <summary>
+        /// Obtiene la lista de todos los usuarios actuales
+        /// </summary>
+        /// <returns></returns>
+        public static List<User> GetAllUsers()
+        {
+            CADUser userCAD = new CADUser();
+            DataSet users = userCAD.GetUsers();
+            List<User> list = UsersToList(users);
+
+            return list;
         }
         #endregion
     }

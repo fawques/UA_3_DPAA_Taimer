@@ -133,7 +133,7 @@ namespace CAD {
             try
             {
                 con = new SqlConnection(conexionTBD);
-                SqlDataAdapter sqlAdaptador = new SqlDataAdapter(comando, con);
+                SqlDataAdapter sqlAdaptador = new SqlDataAdapter(comando, con);                
                 datos = new DataSet();
                 sqlAdaptador.Fill(datos);
                 return datos;

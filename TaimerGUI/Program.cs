@@ -10,15 +10,20 @@ namespace TaimerGUI {
 
         #region PARTE PRIVADA
         
-        private static List<Actividad_a> asignaturas = new List<Actividad_a>();
-        private static List<User> usuarios = new List<User>();
-        private static List<Algoritmo> algoritmos = new List<Algoritmo>();
+        private static List<Actividad_a> asignaturas;
+        private static List<User> usuarios;
+        private static List<Algoritmo> algoritmos;
+        private static int codAsignaturas = Actividad_a.UltimoCodigo;
 
         private static void Init()
         {
-            //Aqui hay que rellenar todos los atributos privados de esta clase desde el cad
             //Esta función se llama en el main.
 
+            /*
+             * 
+             *              FUNCIONES DE DATOS POR DEFECTO, CUANDO SE COMPRUEBE QUE FUNCIONAN LOS CAD, BORRAR
+             * 
+             * 
             asignaturas = new List<Actividad_a>();
             usuarios = new List<User>();
             algoritmos = new List<Algoritmo>();
@@ -61,6 +66,21 @@ namespace TaimerGUI {
 
             Usuarios[0].AddActPersonal(actP);
             Usuarios[0].AddActPersonal(actP2);
+             * */
+
+
+
+
+
+            usuarios = new List<User>();
+            asignaturas = new List<Actividad_a>();
+            SetDatos();
+            string message = "";
+            /*foreach (User u in usuarios)
+            {
+                message = u.Nombre + ": " + u.ActAcademicas.Count + "-" + u.ActPersonales.Count;
+                MessageBox.Show(message);
+            }*/
         }
 
         #endregion
@@ -85,13 +105,19 @@ namespace TaimerGUI {
             get { return algoritmos; }
         }
 
+        //Obtiene/Cambia el último codigo de la asignatura
+        public static int CodAsignaturas {
+            set { codAsignaturas = value; }
+            get { return codAsignaturas; }
+        }
 
         /// <summary>
         /// Añade una Asignatura (tambien en la BD)
         /// </summary>
         /// <param name="a">Asignatura que se quiere añadir</param>
         public static void AddAsignatura(Actividad_a a) {
-            a.Agregar();
+            /*codAsignaturas++;
+            a.Codigo = codAsignaturas;*/
             asignaturas.Add(a);
         }
 
@@ -207,8 +233,8 @@ namespace TaimerGUI {
 
 
         //Devuelve una actividad ya sea academica o personal a partir de código
-        //CAMBIAR CUANDO SE INTEGREN LOS CADs SERÁ MÁS RÁPIDO
-        public static Actividad getActividad(int codigo) {
+        public static Actividad GetActividad(int codigo) 
+        {
 
             if (codigo > 0)
             {
@@ -278,28 +304,12 @@ namespace TaimerGUI {
         }
 
         /// <summary>
-        /// Completa la lista de usuarios con los actuales en la BD
+        /// Rellena las listas de usuarios y actividades
         /// </summary>
-        public static void SetUsers()
+        public static void SetDatos()
         {
-            CAD.CADUser userCAD = new CAD.CADUser();         
-            DataSet users = userCAD.GetUsers();
-            //user.RellenoHorarios();
-
-        }
-
-        /// <summary>
-        /// Completa la lista de asignaturas con las actuales en la BD
-        /// </summary>
-        public static void SetAsignaturas()
-        {
-            CAD.CADActividad_a actCAD = new CAD.CADActividad_a();
-            DataSet acts = actCAD.GetActividades_a();
-
-            asignaturas = Actividad_a.Actividades_aToList(acts);
-          
-            foreach (Actividad_a ac in asignaturas)
-                MessageBox.Show(ac.Descripcion);
+            usuarios = User.GetAllUsers();            
+           // asignaturas=Actividad_a.GetAllActividades_a();
         }
 
         public static LoginForm loginForm;
@@ -312,7 +322,7 @@ namespace TaimerGUI {
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-
+            Init();
             loginForm = new LoginForm();
             Application.Run(loginForm);
 

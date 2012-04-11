@@ -79,11 +79,6 @@ namespace Taimer {
             //aux.Codigo = usuario.CodActPers;
         }
 
-        public Actividad_p()
-        {
-            // TODO: Complete member initialization
-        }
-
         /// <summary>
         /// Asigna/Devuelve el usuario de la Actividad_p
         /// </summary>
@@ -225,8 +220,8 @@ namespace Taimer {
 
                     if (aux != null)
                     {
-                        nom = aux.Tables[0].Rows[0].ItemArray[0].ToString();
-                        desc = aux.Tables[0].Rows[0].ItemArray[1].ToString();
+                        nom = aux.Tables[0].Rows[0].ItemArray[1].ToString();
+                        desc = aux.Tables[0].Rows[0].ItemArray[2].ToString();
 
                         list.Add(new Actividad_p(nom, desc, User.UserToObject(user.GetDatosUser(dniUser)), cod));
                     }
@@ -249,7 +244,7 @@ namespace Taimer {
             {
                 CAD.CADActividad act = new CAD.CADActividad();
                 CAD.CADUser user = new CAD.CADUser();
-                Actividad_p actp = new Actividad_p();
+                Actividad_p actp;
                 DataSet aux = new DataSet();
                 int cod;
                 string dniUser = "", nom, desc = "";
@@ -264,19 +259,20 @@ namespace Taimer {
 
                     if (aux != null)
                     {
-                        nom = aux.Tables[0].Rows[0].ItemArray[0].ToString();
-                        desc = aux.Tables[0].Rows[0].ItemArray[1].ToString();
-
+                        nom = aux.Tables[0].Rows[0].ItemArray[1].ToString();
+                        desc = aux.Tables[0].Rows[0].ItemArray[2].ToString();
                         actp = new Actividad_p(nom, desc, User.UserToObject(user.GetDatosUser(dniUser)), cod);
+                        actp.SetTurnos();
+
+                        return actp;
                     }
                     else
                         return null;
                 }
-                return actp;
             }
             return null;
         }
-
+        
         #endregion
     }
 }

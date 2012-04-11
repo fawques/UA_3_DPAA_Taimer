@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Data;
+using System.Windows.Forms;
 
 namespace Taimer {
     /// <summary>
@@ -104,11 +106,6 @@ namespace Taimer {
             {
                 turnos.Add(new Turno(item));
             }
-        }
-
-        public Actividad()
-        {
-            // TODO: Complete member initialization
         }
 
         /// <summary>
@@ -244,6 +241,15 @@ namespace Taimer {
                 return false;
         }
 
+        /// <summary>
+        /// Completa la lista de turnos de una actividad según el contenido de la BD
+        /// </summary>
+        public void SetTurnos()
+        {
+            CAD.CADTurno turno = new CAD.CADTurno();
+            DataSet data=turno.GetTurnosByAct(codigo);            
+            turnos = Turno.TurnosToList(data);            
+        }
 
         #endregion
     }
