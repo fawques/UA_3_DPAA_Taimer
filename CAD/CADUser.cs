@@ -64,8 +64,10 @@ namespace CAD
         public void CrearUserAll(string dni, string nombre, string email, string password, int curso, string codTit,int codH)
         {
             CADTitulacion tit = new CADTitulacion();
-            /*if(!tit.Exists(codTit))
-                "No existe la titulacion*/      
+            if (!tit.Exists(codTit))
+            {
+                tit.CrearTitulacion(codTit);
+            }        
             string comando = "INSERT INTO [User] VALUES('" + dni + "', '" + nombre + "', '" + email + "', '" + password + "','"+ curso+"','"+ codTit +"','"+codH+"')";
             SqlConnection c = null;
             SqlCommand comandoTBD;
