@@ -90,6 +90,7 @@ namespace TaimerGUI {
             nmUpDwnHorHasta.Value = 0;
             nmUpDwnMinDesde.Value = 0;
             nmUpDwnMinHasta.Value = 0;
+            comboBoxDia.SelectedIndex = 0;
         }
 
         private void btnTerminar_Click(object sender, EventArgs e) {
