@@ -212,6 +212,7 @@ namespace CAD {
         /// <returns></returns>
         public DataSet GetDatosActividad_a(int cod)
         {
+            
             SqlConnection con = null;
             DataSet datos = null;
             string comando = "Select * from [Actividad_a] where  codigo='"+cod+"'";

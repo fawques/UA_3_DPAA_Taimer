@@ -10,15 +10,24 @@ namespace TaimerGUI {
 
         #region PARTE PRIVADA
         
-        private static List<Actividad_a> asignaturas = new List<Actividad_a>();
-        private static List<User> usuarios = new List<User>();
-        private static List<Algoritmo> algoritmos = new List<Algoritmo>();
+        private static List<Actividad_a> asignaturas;
+        private static List<User> usuarios;
+        private static List<Algoritmo> algoritmos;
+        private static int codAsignaturas = Actividad_a.UltimoCodigo;
 
         private static void Init()
         {
             //Aqui hay que rellenar todos los atributos privados de esta clase desde el cad
             //Esta función se llama en el main.
+            usuarios = new List<User>();
+            asignaturas = new List<Actividad_a>();
             SetDatos();
+            string message = "";
+            /*foreach (User u in usuarios)
+            {
+                message = u.Nombre + ": " + u.ActAcademicas.Count + "-" + u.ActPersonales.Count;
+                MessageBox.Show(message);
+            }*/
         }
 
         #endregion
@@ -43,12 +52,16 @@ namespace TaimerGUI {
             get { return algoritmos; }
         }
 
-        /// <summary>
-        /// Añade una Asignatura (tambien en la BD)
-        /// </summary>
-        /// <param name="a">Asignatura que se quiere añadir</param>
+        //Obtiene/Cambia el último codigo de la asignatura
+        public static int CodAsignaturas {
+            set { codAsignaturas = value; }
+            get { return codAsignaturas; }
+        }
+
+        //Añade una asignatura
         public static void AddAsignatura(Actividad_a a) {
-            a.Agregar();
+            /*codAsignaturas++;
+            a.Codigo = codAsignaturas;*/
             asignaturas.Add(a);
         }
 
@@ -109,11 +122,21 @@ namespace TaimerGUI {
 
 
         //Devuelve una actividad ya sea academica o personal a partir de código
-        public static Actividad getActividad(int codigo) 
+        public static Actividad GetActividad(int codigo) 
         {
-                        
-        }
 
+            foreach (Actividad_a aa in asignaturas) {
+                if (aa.Codigo == codigo)
+                    return aa;
+            }
+
+            foreach (User u in Usuarios) {
+                List<Actividad_p> act = u.ActPersonales;
+                foreach (Actividad ap in act) {
+                    if (ap.Codigo == codigo)
+                        return ap;
+                }
+            }
             throw new ArgumentException("No existe una activida con ese código");
         }      
 
@@ -122,8 +145,8 @@ namespace TaimerGUI {
         /// </summary>
         public static void SetDatos()
         {
-            usuarios = User.GetAllUsers();
-            asignaturas = Actividad_a.GetAllActividades_a();
+            usuarios = User.GetAllUsers();            
+           // asignaturas=Actividad_a.GetAllActividades_a();
         }
 
         public static LoginForm loginForm;
@@ -136,7 +159,6 @@ namespace TaimerGUI {
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-
             Init();
             loginForm = new LoginForm();
             Application.Run(loginForm);

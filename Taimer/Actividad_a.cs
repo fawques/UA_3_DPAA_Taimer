@@ -99,11 +99,6 @@ namespace Taimer {
             curso = act.curso;
         }
 
-        public Actividad_a()
-        {
-            // TODO: Complete member initialization
-        }
-
         /// <summary>
         /// Asigna/Devuelve el curso de la Actividad_a
         /// </summary>
@@ -207,7 +202,6 @@ namespace Taimer {
                 return int.Parse(act.LastCode().Tables[0].Rows[0].ItemArray[0].ToString());
             }
         }
-
         /// <summary>
         /// Convierte un DataSet con filas de actividades académicas a una lista de objetos Actividad_a
         /// </summary>
@@ -242,10 +236,12 @@ namespace Taimer {
 
                     if (aux != null)
                     {
-                        nom = aux.Tables[0].Rows[0].ItemArray[0].ToString();
-                        desc = aux.Tables[0].Rows[0].ItemArray[1].ToString();
+                        nom = aux.Tables[0].Rows[0].ItemArray[1].ToString();
+                        desc = aux.Tables[0].Rows[0].ItemArray[2].ToString();
+                        Actividad_a nueva = new Actividad_a(nom, desc, prof, curso, tit, cod);
 
-                        list.Add(new Actividad_a(nom, desc, prof, curso,tit, cod));
+                        nueva.SetTurnos();
+                        list.Add(nueva);
                     }
                     else
                         return null;
@@ -267,9 +263,8 @@ namespace Taimer {
                 CAD.CADActividad act = new CAD.CADActividad();
                 CAD.CADUser user = new CAD.CADUser();
                 User autor = new User();
-                Actividad_a acta = new Actividad_a();
                 DataSet aux = new DataSet();
-                int cod, curso = 0;
+                int cod, curso = 1;
                 string prof = "", tit = "", nom, desc = "";
                 DataRowCollection rows = data.Tables[0].Rows;
 
@@ -288,18 +283,55 @@ namespace Taimer {
 
                     if (aux != null)
                     {
-                        nom = aux.Tables[0].Rows[0].ItemArray[0].ToString();
-                        desc = aux.Tables[0].Rows[0].ItemArray[1].ToString();
+                        nom = aux.Tables[0].Rows[0].ItemArray[1].ToString();
+                        desc = aux.Tables[0].Rows[0].ItemArray[2].ToString();
 
-                        acta = new Actividad_a(nom, desc, prof,curso,tit, cod);
+                        Actividad_a acta = new Actividad_a(nom,desc,prof,curso,tit,cod);
+                        acta.SetTurnos();
+                      
+                        return acta;
                     }
                     else
                         return null;
                 }
-                return acta;
             }
             return null;
         }
+
+        /// <summary>
+        /// Obtiene la lista de todas las actividades académicas
+        /// </summary>
+        public static List<Actividad_a> GetAllActividades_a()
+        {
+            CAD.CADActividad_a actCAD = new CAD.CADActividad_a();
+            DataSet acts = actCAD.GetActividades_a();
+
+            return Actividades_aToList(acts);
+        }
+
+        /// <summary>
+        /// Convierte un DataSet (que será una lista de códigos de actividades) en una lista de Actividad_a
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
+        public static List<Actividad_a> CodesToList(DataSet data)
+        {
+            DataRowCollection rows = data.Tables[0].Rows;
+            List<Actividad_a> list = new List<Actividad_a>();
+            CADActividad_a act = new CADActividad_a();
+            DataSet aux = new DataSet();
+
+            int cod;
+            
+            for (int i = 0; i < rows.Count; i++)
+            {                
+                cod = (int)rows[i].ItemArray[0];
+                aux = act.GetDatosActividad_a(cod);                
+                list.Add(Actividad_aToObject(aux));
+            }
+            return list;
+        }
+
         #endregion
     }
 }

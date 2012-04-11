@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Data;
+using System.Windows.Forms;
 
 namespace Taimer {
     /// <summary>
@@ -226,41 +227,15 @@ namespace Taimer {
         }
 
         /// <summary>
-        /// Convierte un objeto DataSet (que contendrá una actividad) en un objeto Actividad
-        /// </summary>
-        /// <param name="data"></param>
-        /// <returns></returns>
-        public static Actividad ActividadToObject(DataSet data)
-        {
-            if (data != null)
-            {
-                CAD.CADActividad act = new CAD.CADActividad();
-                CAD.CADUser user = new CAD.CADUser();
-                User autor = new User();
-                DataSet aux = new DataSet();
-                int cod;
-                string nom, desc = "";
-                DataRowCollection rows = data.Tables[0].Rows;
-
-                if (rows.Count != 0)
-                {
-                    nom = aux.Tables[0].Rows[0].ItemArray[1].ToString();
-                    desc = aux.Tables[0].Rows[0].ItemArray[2].ToString();
-                                                                            
-
-                }
-            }
-            return null;
-        }
-
-        /// <summary>
         /// Completa la lista de turnos de una actividad según el contenido de la BD
         /// </summary>
         public void SetTurnos()
         {
             CAD.CADTurno turno = new CAD.CADTurno();
-            turnos = Turno.TurnosToList(turno.GetTurnosByAct(codigo));            
+            DataSet data=turno.GetTurnosByAct(codigo);            
+            turnos = Turno.TurnosToList(data);            
         }
+
         #endregion
     }
 }

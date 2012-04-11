@@ -245,7 +245,6 @@ namespace Taimer {
                     {
                         nom = aux.Tables[0].Rows[0].ItemArray[1].ToString();
                         desc = aux.Tables[0].Rows[0].ItemArray[2].ToString();
-
                         actp = new Actividad_p(nom, desc, User.UserToObject(user.GetDatosUser(dniUser)), cod);
                         actp.SetTurnos();
 
@@ -253,11 +252,11 @@ namespace Taimer {
                     }
                     else
                         return null;
-                }                        
+                }
             }
             return null;
         }
-
+        
         #endregion
     }
 }

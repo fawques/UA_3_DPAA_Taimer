@@ -436,7 +436,7 @@ namespace Taimer {
                 string dni, nom, email, pass, tit = "";
                 int curso = 0, codH = 0;
                 DataRowCollection rows = data.Tables[0].Rows;
-
+                
                 for (int i = 0; i < rows.Count; i++)
                 {
                     dni = rows[i].ItemArray[0].ToString();
@@ -451,12 +451,11 @@ namespace Taimer {
                         tit = rows[i].ItemArray[5].ToString();
 
                     if (rows[i].ItemArray[6].ToString() != "")
-                        tit = rows[i].ItemArray[6].ToString();
-
-                   /* if (rows[i].ItemArray[7].ToString() != "")
-                        codH = (int)rows[i].ItemArray[7];*/
-
-                    list.Add(new User(nom, dni, email, pass, curso, tit,codH));
+                        codH = (int)rows[i].ItemArray[6];
+                    
+                    User user = new User(nom, dni, email, pass, curso, tit, codH);
+                    user.SetDatos();
+                    list.Add(user);
                 }
                 return list;
             }
@@ -493,6 +492,7 @@ namespace Taimer {
                         codH = (int)rows[0].ItemArray[6];
 
                     User user = new User(nom, dni, email, pass, curso, tit,codH);
+                    user.SetDatos();
                     return user;
                 }                
             }
@@ -510,8 +510,7 @@ namespace Taimer {
             CADUser userCAD = new CADUser();
             try
             {
-                User user = UserToObject(userCAD.GetDatosUser(email, pass));
-                user.SetDatos();
+                User user = UserToObject(userCAD.GetDatosUser(email, pass));                
                 return user;               
             }
             catch (Exception)
@@ -526,14 +525,12 @@ namespace Taimer {
         /// <param name="email"></param>
         /// <param name="pass"></param>
         /// <returns></returns>
-        public static User CheckLoginAdmin(string email, string pass)
+        public static List<User> CheckLoginAdmin(string email, string pass)
         {
             CADAdmin adminCAD = new CADAdmin();
             try
             {
-                User user = UserToObject(adminCAD.GetDatosAdmin(email, pass));
-                user.SetDatos();
-                return user;
+                return GetAllUsers();
             }
             catch (Exception)
             {
@@ -554,10 +551,11 @@ namespace Taimer {
         /// <summary>
         /// Completa la lista de actividades académicas matriculadas de un usuario
         /// </summary>
-        private void SetAsignaturas()
+        private void SetActAcademicas()
         {
             CADUser user = new CADUser();
-            actAcademicas = Actividad_a.Actividades_aToList(user.GetMatriculadas(this.dni));
+            DataSet data=user.GetMatriculadas(this.dni);                
+            actAcademicas = Actividad_a.CodesToList(data);
         }
 
         /// <summary>
@@ -574,9 +572,9 @@ namespace Taimer {
         /// </summary>
         public void SetDatos()
         {
-            SetAsignaturas();
-            SetActPersonales();
-            SetHorarios();
+            SetActAcademicas();
+            //SetActPersonales();
+            //SetHorarios();
         }
 
         /// <summary>
@@ -588,9 +586,6 @@ namespace Taimer {
             CADUser userCAD = new CADUser();
             DataSet users = userCAD.GetUsers();
             List<User> list = UsersToList(users);
-
-            foreach (User u in list)
-                u.SetDatos();
 
             return list;
         }

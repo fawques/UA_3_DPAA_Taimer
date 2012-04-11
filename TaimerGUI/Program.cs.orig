@@ -13,20 +13,16 @@ namespace TaimerGUI {
         private static List<Actividad_a> asignaturas;
         private static List<User> usuarios;
         private static List<Algoritmo> algoritmos;
-<<<<<<< HEAD
-        private static int codAsignaturas = 0;
+        private static int codAsignaturas = Actividad_a.UltimoCodigo;
 
-        private static void Init() { 
+        private static void Init()
+        {
             //Aqui hay que rellenar todos los atributos privados de esta clase desde el cad
             //Esta función se llama en el main.
             usuarios = new List<User>();
             asignaturas = new List<Actividad_a>();
-            SetUsers();
-            SetAsignaturas();
+            SetDatos();
         }
-=======
-        private static int codAsignaturas = Actividad_a.UltimoCodigo;
->>>>>>> 5fc8166a819fa7118aa732b7d8fc2d6714ee1545
 
         #endregion
 
@@ -120,7 +116,6 @@ namespace TaimerGUI {
 
 
         //Devuelve una actividad ya sea academica o personal a partir de código
-        //CAMBIAR CUANDO SE INTEGREN LOS CADs SERÁ MÁS RÁPIDO
         public static Actividad getActividad(int codigo) {
 
             foreach (Actividad_a aa in asignaturas) {
@@ -134,37 +129,18 @@ namespace TaimerGUI {
                     if (ap.Codigo == codigo)
                         return ap;
                 }
-            }
+         }
 
             throw new ArgumentException("No existe una activida con ese código");
-        }
+        }      
 
         /// <summary>
-        /// Completa la lista de usuarios con los actuales en la BD
+        /// Rellena las listas de usuarios, actividades y algoritmos
         /// </summary>
-        public static void SetUsers()
+        public static void SetDatos()
         {
-            CAD.CADUser userCAD = new CAD.CADUser();
-            User user = new User();
-            
-            DataSet users = userCAD.GetUsers();
-            usuarios = user.UsersToList(users);
-
-        }
-
-        /// <summary>
-        /// Completa la lista de asignaturas con las actuales en la BD
-        /// </summary>
-        public static void SetAsignaturas()
-        {
-            CAD.CADActividad_a actCAD = new CAD.CADActividad_a();
-            Actividad_a act = new Actividad_a();
-           
-            DataSet acts = actCAD.GetActividades_a();
-            asignaturas = act.Actividades_aToList(acts);
-          
-            foreach (Actividad_a ac in asignaturas)
-                MessageBox.Show(ac.Descripcion);
+            usuarios = User.GetAllUsers();
+            asignaturas=Actividad_a.GetAllActividades_a();
         }
 
         public static LoginForm loginForm;
