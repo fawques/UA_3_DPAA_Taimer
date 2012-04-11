@@ -8,16 +8,20 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace TaimerGUI {
-    public partial class LoginForm : Form {
-        public LoginForm() {
+namespace TaimerGUI
+{
+    public partial class LoginForm : Form
+    {
+        public LoginForm()
+        {
             InitializeComponent();
         }
 
-        protected override void OnPaint(PaintEventArgs e) {
+        protected override void OnPaint(PaintEventArgs e)
+        {
 
             GraphicsPath shape = RoundedRectangle.Create(0, 0, this.Width, this.Height, 10);
-            
+
             PathGradientBrush pgb = new PathGradientBrush(shape);
 
             pgb.CenterPoint = new PointF(this.Width * 2 / 3, this.Height / 2);
@@ -25,37 +29,43 @@ namespace TaimerGUI {
             pgb.SurroundColors = new Color[] { Color.Cornsilk };
 
             e.Graphics.FillPath(pgb, shape);
-            
+
             this.Region = new System.Drawing.Region(shape);
 
         }
-        
+
         private const int CS_DROPSHADOW = 0x00020000;
-        protected override CreateParams CreateParams {
-            get {
+        protected override CreateParams CreateParams
+        {
+            get
+            {
                 CreateParams p = base.CreateParams;
                 p.ClassStyle |= CS_DROPSHADOW;
                 return p;
             }
         }
-        
+
         bool beingDragged;
         Point mouseOffset;
-        private void panel1_MouseDown(object sender, MouseEventArgs e) {
+        private void panel1_MouseDown(object sender, MouseEventArgs e)
+        {
             beingDragged = true;
             mouseOffset.X = e.X;
             mouseOffset.Y = e.Y;
         }
 
-        private void btClose_Click(object sender, EventArgs e) {
+        private void btClose_Click(object sender, EventArgs e)
+        {
             Application.Exit();
         }
 
-        private void btMinimize_Click(object sender, EventArgs e) {
+        private void btMinimize_Click(object sender, EventArgs e)
+        {
             this.WindowState = FormWindowState.Minimized;
         }
 
-        private void btLoginEntrar_Click(object sender, EventArgs e) {
+        private void btLoginEntrar_Click(object sender, EventArgs e)
+        {
 
             // Cojemos el usuario
             string user = tbLoginUser.Text;
@@ -66,7 +76,8 @@ namespace TaimerGUI {
             // Comprobamos si es una combinacion correcta
             int loginStatus = checkUserPass(user, pass);
 
-            switch (loginStatus) {
+            switch (loginStatus)
+            {
                 case 0:     // Combinación incorrecta
                     lbLoginBadUserPass.Visible = true;
                     break;
@@ -87,50 +98,68 @@ namespace TaimerGUI {
             }
         }
 
-        private int checkUserPass(string usuario, string password) {
-
-            if (usuario == "admin" && password == "admin")
-                return 1;
-            
-            if (usuario == "user" && password == "user")
-                return 2;
-
-            return 0;
+        private int checkUserPass(string usuario, string password)
+        {
+            try
+            {
+                if (rbCliente.Checked)
+                {
+                    Program.Usuarios[0] = Taimer.User.CheckLoginUser(usuario, password);
+                    return 2;
+                }
+                else
+                {
+                    Program.Usuarios = Taimer.User.CheckLoginAdmin(usuario, password);
+                    return 1;
+                }
+            }
+            catch (Exception)
+            {
+                return 0;
+            }
         }
 
         /*
          *      Cambio de los iconos al pasar el raton por encima
          */
 
-        private void btMinimize_MouseEnter(object sender, EventArgs e) {
+        private void btMinimize_MouseEnter(object sender, EventArgs e)
+        {
             btMinimize.Image = TaimerGUI.Properties.Resources.tbMinimizeOn;
         }
 
-        private void btMinimize_MouseLeave(object sender, EventArgs e) {
+        private void btMinimize_MouseLeave(object sender, EventArgs e)
+        {
             btMinimize.Image = TaimerGUI.Properties.Resources.tbMinimizeOff;
         }
 
-        private void btMinimize_MouseDown(object sender, MouseEventArgs e) {
+        private void btMinimize_MouseDown(object sender, MouseEventArgs e)
+        {
             btMinimize.Image = TaimerGUI.Properties.Resources.tbMinimizeClick;
         }
 
-        private void btMinimize_MouseUp(object sender, MouseEventArgs e) {
+        private void btMinimize_MouseUp(object sender, MouseEventArgs e)
+        {
             btMinimize.Image = TaimerGUI.Properties.Resources.tbMinimizeOn;
         }
 
-        private void btClose_MouseEnter(object sender, EventArgs e) {
+        private void btClose_MouseEnter(object sender, EventArgs e)
+        {
             btClose.Image = TaimerGUI.Properties.Resources.tbCloseOn;
         }
 
-        private void btClose_MouseLeave(object sender, EventArgs e) {
+        private void btClose_MouseLeave(object sender, EventArgs e)
+        {
             btClose.Image = TaimerGUI.Properties.Resources.tbCloseOff;
         }
 
-        private void btClose_MouseDown(object sender, MouseEventArgs e) {
+        private void btClose_MouseDown(object sender, MouseEventArgs e)
+        {
             btClose.Image = TaimerGUI.Properties.Resources.tbCloseClick;
         }
 
-        private void btClose_MouseUp(object sender, MouseEventArgs e) {
+        private void btClose_MouseUp(object sender, MouseEventArgs e)
+        {
             btClose.Image = TaimerGUI.Properties.Resources.tbCloseOn;
         }
 
@@ -138,43 +167,53 @@ namespace TaimerGUI {
          *      Control del arrastrado de la ventana
          */
 
-        private void panel1_MouseMove(object sender, MouseEventArgs e) {
-            if (this.beingDragged) {
+        private void panel1_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (this.beingDragged)
+            {
                 Point currentScreenPos = PointToScreen(e.Location);
                 Point p = new Point(currentScreenPos.X - this.mouseOffset.X, currentScreenPos.Y - this.mouseOffset.Y);
                 this.Location = p;
             }
         }
 
-        private void panel1_MouseUp(object sender, MouseEventArgs e) {
+        private void panel1_MouseUp(object sender, MouseEventArgs e)
+        {
             this.beingDragged = false;
         }
 
-        private void LoginForm_Load(object sender, EventArgs e) {
+        private void LoginForm_Load(object sender, EventArgs e)
+        {
             beingDragged = false;
         }
 
-        private void lbTaimer_MouseDown(object sender, MouseEventArgs e) {
+        private void lbTaimer_MouseDown(object sender, MouseEventArgs e)
+        {
             panel1_MouseDown(sender, e);
         }
 
-        private void lbTaimer_MouseMove(object sender, MouseEventArgs e) {
+        private void lbTaimer_MouseMove(object sender, MouseEventArgs e)
+        {
             panel1_MouseMove(sender, e);
         }
 
-        private void lbTaimer_MouseUp(object sender, MouseEventArgs e) {
+        private void lbTaimer_MouseUp(object sender, MouseEventArgs e)
+        {
             panel1_MouseUp(sender, e);
         }
 
-        private void pnSystemButtons_MouseDown(object sender, MouseEventArgs e) {
+        private void pnSystemButtons_MouseDown(object sender, MouseEventArgs e)
+        {
             panel1_MouseDown(sender, e);
         }
 
-        private void pnSystemButtons_MouseMove(object sender, MouseEventArgs e) {
+        private void pnSystemButtons_MouseMove(object sender, MouseEventArgs e)
+        {
             panel1_MouseMove(sender, e);
         }
 
-        private void pnSystemButtons_MouseUp(object sender, MouseEventArgs e) {
+        private void pnSystemButtons_MouseUp(object sender, MouseEventArgs e)
+        {
             panel1_MouseUp(sender, e);
         }
 

@@ -70,7 +70,7 @@ namespace TaimerGUI {
                     // Set the BackColor of the MdiClient control.
                     ctlMDI.BackColor = this.BackColor;
                 }
-                catch (InvalidCastException exc)
+                catch (InvalidCastException)
                 {
                     // Catch and ignore the error if casting failed.
                 }
