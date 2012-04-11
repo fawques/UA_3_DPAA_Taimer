@@ -43,10 +43,10 @@ namespace Taimer {
         /// </summary>
         /// <param name="nom_"> Nombre de la Actividad_a</param>
         /// <param name="desc_"> Descripción de la Actividad_a</param>
-        /// <param name="cod_"> Código de la Actividad_a </param>
         /// <param name="nomCoord_"> Nómbre del coordinador de la Actividad_a</param>
         /// <param name="titulacion">Tilación de la Actividad_a</param>
-        public Actividad_a(string nom_, string desc_, int cod_, string nomCoord_, string titulacion)
+        /// <param name="cod_">Codigo de la Actividad_a (por defecto 0)</param>
+        public Actividad_a(string nom_, string desc_, string nomCoord_, string titulacion, int cod_ = 0)
             : base(nom_, desc_, cod_) {
 
             nombreCoordinador = nomCoord_;
@@ -59,11 +59,11 @@ namespace Taimer {
         /// </summary>
         /// <param name="nom_"> Nombre de la Actividad_a</param>
         /// <param name="desc_"> Descripción de la Activiad_a</param>
-        /// <param name="cod_"> Código de la Activiad_a </param>
         /// <param name="nomCoord_"> Nombre del coordinador de la Actividad_a </param>
         /// <param name="curso_"> Curso al que pertenece la Actividad_a </param>
         /// <param name="titulacion">Tilación de la Actividad_a</param>
-        public Actividad_a(string nom_, string desc_, int cod_, string nomCoord_, int curso_, string titulacion)
+        /// <param name="cod_">Codigo de la Actividad_a (por defecto 0)</param>
+        public Actividad_a(string nom_, string desc_, string nomCoord_, int curso_, string titulacion, int cod_ = 0)
             : base(nom_, desc_, cod_) {
 
             nombreCoordinador = nomCoord_;
@@ -76,12 +76,12 @@ namespace Taimer {
         /// </summary>
         /// <param name="nom_"> Nombre de la Actividad_a</param>
         /// <param name="desc_"> Descripción de la Actividad_a</param>
-        /// <param name="cod_"> Código de la Actividad_a</param>
         /// <param name="nomCoord_"> Nombre del coordinador de la Actividad_a</param>
         /// <param name="turnos_"> Listas de turnos en los que se realiza la Actividad_a</param>
         /// <param name="curso_"> Curso ql que pertence la Actividad_a</param>
         /// <param name="titulacion">Tilación de la Actividad_a</param>
-        public Actividad_a(string nom_, string desc_, int cod_, string nomCoord_, List<Turno> turnos_, int curso_, string titulacion)
+        /// <param name="cod_">Codigo de la Actividad_a (por defecto 0)</param>
+        public Actividad_a(string nom_, string desc_, string nomCoord_, List<Turno> turnos_, int curso_, string titulacion, int cod_ = 0)
             : base(nom_, desc_, cod_, turnos_) {
 
             nombreCoordinador = nomCoord_;
@@ -173,6 +173,9 @@ namespace Taimer {
             if (nombreCoordinador == "")
                 nombreCoordinador = null;
 
+            if (codigo == 0) //Codigo por defecto
+                codigo = UltimoCodigo + 1;
+
             act.CrearActivida_aAll(nombre, descripcion, codigo, nombreCoordinador, titulacion);
 
         }
@@ -242,7 +245,7 @@ namespace Taimer {
                         nom = aux.Tables[0].Rows[0].ItemArray[0].ToString();
                         desc = aux.Tables[0].Rows[0].ItemArray[1].ToString();
 
-                        list.Add(new Actividad_a(nom, desc, cod, prof, curso,tit));
+                        list.Add(new Actividad_a(nom, desc, prof, curso,tit, cod));
                     }
                     else
                         return null;
@@ -288,7 +291,7 @@ namespace Taimer {
                         nom = aux.Tables[0].Rows[0].ItemArray[0].ToString();
                         desc = aux.Tables[0].Rows[0].ItemArray[1].ToString();
 
-                        acta = new Actividad_a(nom, desc, cod, prof,curso,tit);
+                        acta = new Actividad_a(nom, desc, prof,curso,tit, cod);
                     }
                     else
                         return null;
