@@ -51,17 +51,10 @@
             this.editarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.verToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.crearToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ultimosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.horario1ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.horario2ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.horario3ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.herramientasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.verToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.matriculacionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.crearToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.recientesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.actiPers1ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.actiPers2ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ayudaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.acercaDeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label1 = new System.Windows.Forms.Label();
@@ -354,8 +347,7 @@
             // 
             this.editarToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.verToolStripMenuItem,
-            this.crearToolStripMenuItem,
-            this.ultimosToolStripMenuItem});
+            this.crearToolStripMenuItem});
             this.editarToolStripMenuItem.Name = "editarToolStripMenuItem";
             this.editarToolStripMenuItem.Size = new System.Drawing.Size(64, 20);
             this.editarToolStripMenuItem.Text = "Horarios";
@@ -363,52 +355,23 @@
             // verToolStripMenuItem
             // 
             this.verToolStripMenuItem.Name = "verToolStripMenuItem";
-            this.verToolStripMenuItem.Size = new System.Drawing.Size(115, 22);
+            this.verToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.verToolStripMenuItem.Text = "Ver";
             this.verToolStripMenuItem.Click += new System.EventHandler(this.verHorarios_Click);
             // 
             // crearToolStripMenuItem
             // 
             this.crearToolStripMenuItem.Name = "crearToolStripMenuItem";
-            this.crearToolStripMenuItem.Size = new System.Drawing.Size(115, 22);
+            this.crearToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.crearToolStripMenuItem.Text = "Crear";
             this.crearToolStripMenuItem.Click += new System.EventHandler(this.crearHorario_Click);
-            // 
-            // ultimosToolStripMenuItem
-            // 
-            this.ultimosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.horario1ToolStripMenuItem,
-            this.horario2ToolStripMenuItem,
-            this.horario3ToolStripMenuItem});
-            this.ultimosToolStripMenuItem.Name = "ultimosToolStripMenuItem";
-            this.ultimosToolStripMenuItem.Size = new System.Drawing.Size(115, 22);
-            this.ultimosToolStripMenuItem.Text = "Ultimos";
-            // 
-            // horario1ToolStripMenuItem
-            // 
-            this.horario1ToolStripMenuItem.Name = "horario1ToolStripMenuItem";
-            this.horario1ToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
-            this.horario1ToolStripMenuItem.Text = "Horario1";
-            // 
-            // horario2ToolStripMenuItem
-            // 
-            this.horario2ToolStripMenuItem.Name = "horario2ToolStripMenuItem";
-            this.horario2ToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
-            this.horario2ToolStripMenuItem.Text = "Horario2";
-            // 
-            // horario3ToolStripMenuItem
-            // 
-            this.horario3ToolStripMenuItem.Name = "horario3ToolStripMenuItem";
-            this.horario3ToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
-            this.horario3ToolStripMenuItem.Text = "Horario3";
             // 
             // herramientasToolStripMenuItem
             // 
             this.herramientasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.verToolStripMenuItem1,
             this.matriculacionToolStripMenuItem,
-            this.crearToolStripMenuItem1,
-            this.recientesToolStripMenuItem});
+            this.crearToolStripMenuItem1});
             this.herramientasToolStripMenuItem.Name = "herramientasToolStripMenuItem";
             this.herramientasToolStripMenuItem.Size = new System.Drawing.Size(80, 20);
             this.herramientasToolStripMenuItem.Text = "Actividades";
@@ -416,44 +379,23 @@
             // verToolStripMenuItem1
             // 
             this.verToolStripMenuItem1.Name = "verToolStripMenuItem1";
-            this.verToolStripMenuItem1.Size = new System.Drawing.Size(147, 22);
+            this.verToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.verToolStripMenuItem1.Text = "Ver";
             this.verToolStripMenuItem1.Click += new System.EventHandler(this.verActividades_Click);
             // 
             // matriculacionToolStripMenuItem
             // 
             this.matriculacionToolStripMenuItem.Name = "matriculacionToolStripMenuItem";
-            this.matriculacionToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
+            this.matriculacionToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.matriculacionToolStripMenuItem.Text = "Matriculacion";
             this.matriculacionToolStripMenuItem.Click += new System.EventHandler(this.matriculacion_Click);
             // 
             // crearToolStripMenuItem1
             // 
             this.crearToolStripMenuItem1.Name = "crearToolStripMenuItem1";
-            this.crearToolStripMenuItem1.Size = new System.Drawing.Size(147, 22);
+            this.crearToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.crearToolStripMenuItem1.Text = "Crear";
             this.crearToolStripMenuItem1.Click += new System.EventHandler(this.crearActividad_Click);
-            // 
-            // recientesToolStripMenuItem
-            // 
-            this.recientesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.actiPers1ToolStripMenuItem,
-            this.actiPers2ToolStripMenuItem});
-            this.recientesToolStripMenuItem.Name = "recientesToolStripMenuItem";
-            this.recientesToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
-            this.recientesToolStripMenuItem.Text = "Recientes";
-            // 
-            // actiPers1ToolStripMenuItem
-            // 
-            this.actiPers1ToolStripMenuItem.Name = "actiPers1ToolStripMenuItem";
-            this.actiPers1ToolStripMenuItem.Size = new System.Drawing.Size(129, 22);
-            this.actiPers1ToolStripMenuItem.Text = "Acti Pers 1";
-            // 
-            // actiPers2ToolStripMenuItem
-            // 
-            this.actiPers2ToolStripMenuItem.Name = "actiPers2ToolStripMenuItem";
-            this.actiPers2ToolStripMenuItem.Size = new System.Drawing.Size(129, 22);
-            this.actiPers2ToolStripMenuItem.Text = "Acti Pers 2";
             // 
             // ayudaToolStripMenuItem
             // 
@@ -723,16 +665,9 @@
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.ToolStripMenuItem verToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem crearToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem ultimosToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem horario1ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem horario2ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem horario3ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem verToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem matriculacionToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem crearToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem recientesToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem actiPers1ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem actiPers2ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cerrarSesionToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem salirToolStripMenuItem2;
         private System.Windows.Forms.GroupBox groupBoxUltimosHorarios;

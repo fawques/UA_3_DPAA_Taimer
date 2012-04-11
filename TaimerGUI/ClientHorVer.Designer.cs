@@ -53,6 +53,12 @@
             this.lblNombreAsig = new System.Windows.Forms.Label();
             this.txtBoxNombreHor = new System.Windows.Forms.TextBox();
             this.btnBorrar = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.lblUbica = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
             this.pnlHorario.SuspendLayout();
             this.grpBoxDatosAsig.SuspendLayout();
             this.SuspendLayout();
@@ -94,6 +100,8 @@
             this.pnlHorario.Name = "pnlHorario";
             this.pnlHorario.Size = new System.Drawing.Size(755, 398);
             this.pnlHorario.TabIndex = 21;
+            this.pnlHorario.MouseEnter += new System.EventHandler(this.pnlHorario_MouseEnter);
+            this.pnlHorario.MouseHover += new System.EventHandler(this.pnlHorario_MouseHover);
             // 
             // label9
             // 
@@ -257,6 +265,12 @@
             // grpBoxDatosAsig
             // 
             this.grpBoxDatosAsig.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.grpBoxDatosAsig.Controls.Add(this.label13);
+            this.grpBoxDatosAsig.Controls.Add(this.label12);
+            this.grpBoxDatosAsig.Controls.Add(this.label11);
+            this.grpBoxDatosAsig.Controls.Add(this.lblUbica);
+            this.grpBoxDatosAsig.Controls.Add(this.label10);
+            this.grpBoxDatosAsig.Controls.Add(this.label1);
             this.grpBoxDatosAsig.Controls.Add(this.lblHorFin);
             this.grpBoxDatosAsig.Controls.Add(this.lblHorIni);
             this.grpBoxDatosAsig.Controls.Add(this.lblDescripAsig);
@@ -270,30 +284,30 @@
             // 
             // lblHorFin
             // 
-            this.lblHorFin.Location = new System.Drawing.Point(399, 58);
+            this.lblHorFin.Location = new System.Drawing.Point(689, 58);
             this.lblHorFin.Name = "lblHorFin";
-            this.lblHorFin.Size = new System.Drawing.Size(100, 23);
+            this.lblHorFin.Size = new System.Drawing.Size(53, 23);
             this.lblHorFin.TabIndex = 3;
             // 
             // lblHorIni
             // 
-            this.lblHorIni.Location = new System.Drawing.Point(399, 22);
+            this.lblHorIni.Location = new System.Drawing.Point(686, 23);
             this.lblHorIni.Name = "lblHorIni";
-            this.lblHorIni.Size = new System.Drawing.Size(100, 23);
+            this.lblHorIni.Size = new System.Drawing.Size(56, 23);
             this.lblHorIni.TabIndex = 2;
             // 
             // lblDescripAsig
             // 
-            this.lblDescripAsig.Location = new System.Drawing.Point(150, 47);
+            this.lblDescripAsig.Location = new System.Drawing.Point(152, 42);
             this.lblDescripAsig.Name = "lblDescripAsig";
-            this.lblDescripAsig.Size = new System.Drawing.Size(100, 23);
+            this.lblDescripAsig.Size = new System.Drawing.Size(300, 46);
             this.lblDescripAsig.TabIndex = 1;
             // 
             // lblNombreAsig
             // 
-            this.lblNombreAsig.Location = new System.Drawing.Point(28, 47);
+            this.lblNombreAsig.Location = new System.Drawing.Point(24, 42);
             this.lblNombreAsig.Name = "lblNombreAsig";
-            this.lblNombreAsig.Size = new System.Drawing.Size(100, 23);
+            this.lblNombreAsig.Size = new System.Drawing.Size(112, 39);
             this.lblNombreAsig.TabIndex = 0;
             // 
             // txtBoxNombreHor
@@ -317,6 +331,63 @@
             this.btnBorrar.UseVisualStyleBackColor = true;
             this.btnBorrar.Click += new System.EventHandler(this.btnBorrar_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(15, 23);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(54, 13);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "Nombre:";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(138, 23);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(78, 13);
+            this.label10.TabIndex = 5;
+            this.label10.Text = "Descripción:";
+            // 
+            // lblUbica
+            // 
+            this.lblUbica.Location = new System.Drawing.Point(483, 42);
+            this.lblUbica.Name = "lblUbica";
+            this.lblUbica.Size = new System.Drawing.Size(96, 39);
+            this.lblUbica.TabIndex = 6;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(471, 23);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(68, 13);
+            this.label11.TabIndex = 7;
+            this.label11.Text = "Ubicación:";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(646, 23);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(42, 13);
+            this.label12.TabIndex = 8;
+            this.label12.Text = "Inicio:";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(656, 58);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(28, 13);
+            this.label13.TabIndex = 9;
+            this.label13.Text = "Fin:";
+            // 
             // ClientHorVer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -338,6 +409,7 @@
             this.pnlHorario.ResumeLayout(false);
             this.pnlHorario.PerformLayout();
             this.grpBoxDatosAsig.ResumeLayout(false);
+            this.grpBoxDatosAsig.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -370,5 +442,11 @@
         private System.Windows.Forms.Label lblHorIni;
         private System.Windows.Forms.TextBox txtBoxNombreHor;
         private System.Windows.Forms.Button btnBorrar;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label lblUbica;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label12;
     }
 }

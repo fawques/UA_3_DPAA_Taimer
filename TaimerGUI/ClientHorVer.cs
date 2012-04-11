@@ -141,6 +141,7 @@ namespace TaimerGUI {
                     lblDescripAsig.Text = trn.Actividad.Descripcion;
                     lblHorIni.Text = trn.HoraInicio.toString();
                     lblHorFin.Text = trn.HoraFin.toString();
+                    lblUbica.Text = trn.Ubicacion;
                 }
             }
 
@@ -213,6 +214,14 @@ namespace TaimerGUI {
                        }
             }
            
+        }
+
+        private void pnlHorario_MouseHover(object sender, EventArgs e) {
+
+        }
+
+        private void pnlHorario_MouseEnter(object sender, EventArgs e) {
+            ((Panel)sender).Focus();
         }
 
 

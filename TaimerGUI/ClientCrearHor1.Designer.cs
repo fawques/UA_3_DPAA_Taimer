@@ -69,6 +69,7 @@
             this.dataGridMyAct.AllowUserToAddRows = false;
             this.dataGridMyAct.AllowUserToDeleteRows = false;
             this.dataGridMyAct.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.dataGridMyAct.BackgroundColor = System.Drawing.Color.Wheat;
             this.dataGridMyAct.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridMyAct.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colCodigo,
@@ -120,6 +121,7 @@
             // 
             this.dataGridActHor.AllowUserToAddRows = false;
             this.dataGridActHor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.dataGridActHor.BackgroundColor = System.Drawing.Color.Wheat;
             this.dataGridActHor.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridActHor.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column4,
