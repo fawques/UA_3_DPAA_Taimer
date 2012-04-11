@@ -100,7 +100,7 @@
             this.bt3Tit.TabIndex = 3;
             this.bt3Tit.Text = "Cambiar";
             this.bt3Tit.UseVisualStyleBackColor = true;
-            this.bt3Tit.Click += new System.EventHandler(this.bt3Tit_Click);
+           
             // 
             // tb2Tit
             // 

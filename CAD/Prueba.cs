@@ -28,17 +28,12 @@ namespace CAD
             if (tit.Exists(tb1Tit.Text))
                 MessageBox.Show("La titulación ya existe");
             else
-                tit.CrearTitulacion(tb1Tit.Text,tb2Tit.Text);
+                tit.CrearTitulacion(tb2Tit.Text);
         }
 
         private void bt2Tit_Click(object sender, EventArgs e)
         {
             tit.BorrarTitulacion(tb1Tit.Text);            
-        }
-
-        private void bt3Tit_Click(object sender, EventArgs e)
-        {
-            tit.ModificaTitulacion(tb1Tit.Text,tb2Tit.Text);
         }
 
         private void bt1User_Click(object sender, EventArgs e)

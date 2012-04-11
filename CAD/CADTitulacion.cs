@@ -10,7 +10,7 @@ using System.Collections;
 
 namespace CAD
 {
-    class CADTitulacion
+    public class CADTitulacion
     {
         private static string conexionTBD;
         
@@ -23,11 +23,10 @@ namespace CAD
         /// <summary>
         /// Insertamos una titulación
         /// </summary>
-        /// <param name="cod"></param>
         /// <param name="nom"></param>
-        public void CrearTitulacion(string cod, string nom)
+        public void CrearTitulacion(string nom)
         {
-            string comando = "INSERT INTO [Titulacion](codigo,nombre) VALUES('"+cod+"','"+nom+"')";
+            string comando = "INSERT INTO [Titulacion](nombre) VALUES('"+nom+"')";
             SqlConnection c=null;
             SqlCommand comandoTBD;
             
@@ -48,15 +47,15 @@ namespace CAD
                 if (c != null) c.Close(); // Se asegura de cerrar la conexión.
             }
         }
+
         /// <summary>
         /// Borramos una titulación
         /// </summary>
-        /// <param name="cod"></param>
-        public void BorrarTitulacion(string cod)
+        /// <param name="nombre"></param>
+        public void BorrarTitulacion(string nombre)
         {   
             SqlConnection c = null;
-            string comando = "DELETE FROM [Titulacion] WHERE codigo='"+cod+"'";
-
+            string comando = "DELETE FROM [Titulacion] WHERE nombre='"+nombre+"'";
             try
             {
 
@@ -107,14 +106,14 @@ namespace CAD
          /// <summary>
         /// Obtenemos los datos de una titulación 
          /// </summary>
-         /// <param name="cod"></param>
+         /// <param name="nombre"></param>
          /// <returns></returns>
-        public DataSet GetDatos(string cod)
+        public DataSet GetDatos(string nombre)
         {
 
             SqlConnection con = null;
             DataSet datos = null;
-            string comando = "SELECT * FROM [Titulacion] where codigo='"+cod+"'";
+            string comando = "SELECT * FROM [Titulacion] where nombre='"+nombre+"'";
             try
             {
                 con = new SqlConnection(conexionTBD);
@@ -133,45 +132,15 @@ namespace CAD
                 if (con != null) con.Close(); // Se asegura de cerrar la conexión.
             }
         }
-        /// <summary>
-        /// Actualizar datos de una titulación
-        /// </summary>
-        /// <param name="cod"></param>
-        /// <param name="nom"></param>
-
-        public void ModificaTitulacion(string cod, string nom)
-        {
-
-            string comando = "UPDATE [Titulacion] SET codigo = '" + cod + "', nombre = '" + nom + "' WHERE codigo = '"+cod+"'";
-            SqlConnection c = null;
-            SqlCommand comandoTBD;
-            
-            try
-            {
-                c = new SqlConnection(conexionTBD);
-                comandoTBD = new SqlCommand(comando, c);
-                c.Open();
-                comandoTBD.CommandType = CommandType.Text;
-                comandoTBD.ExecuteNonQuery();
-            }
-            catch (SqlException)
-            {
-                throw;
-            }
-            finally
-            {
-                if (c != null) c.Close(); // Se asegura de cerrar la conexión.
-            }
-        }
 
         /// <summary>
         /// Devuelve true si una titulación existe
         /// </summary>
         /// <param name="cod"></param>
         /// <returns></returns>
-        public bool Exists(string cod)
+        public bool Exists(string nombre)
         {
-            DataSet data = GetDatos(cod);
+            DataSet data = GetDatos(nombre);
 
             if (data.Tables[0].Rows.Count == 0)
                 return false;
