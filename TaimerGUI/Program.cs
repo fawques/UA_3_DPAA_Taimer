@@ -151,6 +151,16 @@ namespace TaimerGUI {
                 throw new MissingMemberException("El usuario no existe");
         }
 
+        public static Algoritmo ComprobarAlgoritmo(List<Actividad_a> academicas, List<Actividad_p> personales)
+        {
+            foreach (Algoritmo item in algoritmos)
+	        {
+		         if(item.Seleccionadas_a.Equals(academicas) && item.Seleccionadas_p.Equals(personales))
+                     return item;
+	        }
+            return null;
+        }
+
 
         //Añade un algoritmo
         public static void AddAlgoritmo(Algoritmo a) {

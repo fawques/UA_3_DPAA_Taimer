@@ -10,7 +10,17 @@ namespace Taimer
         #region PARTE PRIVADA
         private List<Horario> posibles;
         private List<Actividad_a> seleccionadas_a;
+
+        public List<Actividad_a> Seleccionadas_a
+        {
+            get { return seleccionadas_a; }
+        }
         private List<Actividad_p> seleccionadas_p;
+
+        public List<Actividad_p> Seleccionadas_p
+        {
+            get { return seleccionadas_p; }
+        }
         private User usuario;
         #endregion
 
@@ -45,7 +55,7 @@ namespace Taimer
                 try
                 {
                     // hay que sumar a puntuacion las horas de hueco entre los turnos
-                    for (int j = 0; j < horario.ArrayTurnos[i].Count-1; j++)
+                    for (int j = 0; j < horario.ArrayTurnos[i].Count - 1; j++)
                     {
                         puntuacion += Hora.diff(horario.ArrayTurnos[i][j + 1].HoraInicio, horario.ArrayTurnos[i][j].HoraFin);
                     }
@@ -55,6 +65,44 @@ namespace Taimer
             }
 
             return puntuacion;
+        }
+
+        /// <summary>
+        /// Devuelve el horario óptimo minimizando según días o según huecos
+        /// </summary>
+        /// <param name="minDias">Booleano: dice si quieres mimimizar según días</param>
+        /// <returns></returns>
+        public Horario getOptimo(bool minDias)
+        {
+            Horario optimo = null;
+            if (posibles != null)
+            {
+                int puntuacion = int.MaxValue;
+                if (minDias)
+                {
+                    foreach (Horario sol in posibles)
+                    {
+                        if (puntuarDias(sol) < puntuacion)
+                        {
+                            optimo = sol;
+                            puntuacion = puntuarDias(sol);
+                        }
+                    }
+
+                }
+                else // suponemos que o es minDias o es minHuecos
+                {
+                    foreach (Horario sol in posibles)
+                    {
+                        if (puntuarHorasHueco(sol) < puntuacion)
+                        {
+                            optimo = sol;
+                            puntuacion = puntuarHorasHueco(sol);
+                        }
+                    }
+                }
+            }
+            return optimo;
         }
 
 
@@ -111,7 +159,7 @@ namespace Taimer
             Queue<Horario> nodos_vivos = new Queue<Horario>();
             Queue<Horario> nodos_vivos_aux = new Queue<Horario>();
             Queue<Horario> soluciones = new Queue<Horario>();
-            
+
             Horario optimo = new Horario(nombre, usuario);
 
             int cant_p = 0;
@@ -205,8 +253,11 @@ namespace Taimer
             }
             catch (NotSupportedException)
             {
-                posibles.Clear();
-                posibles = null;
+                if (posibles != null)
+                {
+                    posibles.Clear();
+                    posibles = null;
+                }
                 throw;
             }
 
