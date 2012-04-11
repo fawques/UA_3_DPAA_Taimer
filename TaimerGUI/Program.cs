@@ -10,9 +10,9 @@ namespace TaimerGUI {
 
         #region PARTE PRIVADA
         
-        private static List<Actividad_a> asignaturas;
-        private static List<User> usuarios;
-        private static List<Algoritmo> algoritmos;
+        private static List<Actividad_a> asignaturas = new List<Actividad_a>();
+        private static List<User> usuarios = new List<User>();
+        private static List<Algoritmo> algoritmos= new List<Algoritmo>();
         private static int codAsignaturas = Actividad_a.UltimoCodigo;
 
         private static void Init()
@@ -74,11 +74,12 @@ namespace TaimerGUI {
 
             usuarios = new List<User>();
             asignaturas = new List<Actividad_a>();
+            algoritmos = new List<Algoritmo>();
             SetDatos();
-            string message = "";
+
             /*foreach (User u in usuarios)
             {
-                message = u.Nombre + ": " + u.ActAcademicas.Count + "-" + u.ActPersonales.Count;
+                string message = u.Nombre + ": " + u.ActAcademicas.Count + "-" + u.ActPersonales.Count;
                 MessageBox.Show(message);
             }*/
         }
@@ -306,7 +307,8 @@ namespace TaimerGUI {
         /// </summary>
         public static void SetDatos()
         {
-            usuarios = User.GetAllUsers();            
+            usuarios = User.GetAllUsers();
+            usuarios[0].SetDatos();
            // asignaturas=Actividad_a.GetAllActividades_a();
         }
 

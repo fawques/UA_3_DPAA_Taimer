@@ -45,7 +45,7 @@ namespace TaimerGUI
             {
                 if (actAux == null || actAux.Turnos.Count <= 0)
                 {
-
+                    throw new NotImplementedException("Aquí qué tiene que ir?");
                 }
                 if (MessageBox.Show("¿Seguro que desea crearla?",
                 "¿Crear actividad?",
@@ -66,6 +66,7 @@ namespace TaimerGUI
                     catch (Exception ex)
                     {
                         MessageBox.Show(ex.Message);
+                        throw;
                     }
                     ((ClientForm)this.MdiParent).loadLastActividades();
                     ((ClientForm)this.MdiParent).verActividad_Click(null, null);

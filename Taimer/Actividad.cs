@@ -43,7 +43,6 @@ namespace Taimer {
         /// </summary>
         /// <param name="t"> turno a codificar </param>
         protected void AsignarCodigo(Turno t) {
-            
             t.Codigo = codigoturno;
             codigoturno++;
         }
@@ -63,6 +62,7 @@ namespace Taimer {
             descripcion = desc_;
             codigo = cod_;
             codigoturno = 1;
+            turnos = new List<Turno>();
         }
 
 

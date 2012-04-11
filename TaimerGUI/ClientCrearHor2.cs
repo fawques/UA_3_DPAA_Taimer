@@ -241,6 +241,7 @@ namespace TaimerGUI
                     try
                     {
                         Program.Usuarios[0].AddHorario(hAux);
+                        hAux.Agregar();
                     }
                     catch (NotSupportedException exc)
                     {

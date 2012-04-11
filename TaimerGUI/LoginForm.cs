@@ -7,6 +7,7 @@ using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using Taimer;
 
 namespace TaimerGUI
 {
@@ -222,6 +223,7 @@ namespace TaimerGUI
         private void button1_Click(object sender, EventArgs e)
         {
             ClientForm client = new ClientForm(null);
+            Program.Usuarios[0] = User.CheckLoginUser("alberto@alberto.es", "alberto");
             client.Show();
             this.Hide();
         }
