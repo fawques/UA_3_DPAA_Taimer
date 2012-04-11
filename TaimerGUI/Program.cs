@@ -76,10 +76,10 @@ namespace TaimerGUI {
             asignaturas = new List<Actividad_a>();
             algoritmos = new List<Algoritmo>();
             SetDatos();
-            string message = "";
+
             /*foreach (User u in usuarios)
             {
-                message = u.Nombre + ": " + u.ActAcademicas.Count + "-" + u.ActPersonales.Count;
+                string message = u.Nombre + ": " + u.ActAcademicas.Count + "-" + u.ActPersonales.Count;
                 MessageBox.Show(message);
             }*/
         }
@@ -309,7 +309,8 @@ namespace TaimerGUI {
         /// </summary>
         public static void SetDatos()
         {
-            usuarios = User.GetAllUsers();            
+            usuarios = User.GetAllUsers();
+            usuarios[0].SetDatos();
            // asignaturas=Actividad_a.GetAllActividades_a();
         }
 

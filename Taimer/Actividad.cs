@@ -62,6 +62,7 @@ namespace Taimer {
             descripcion = desc_;
             codigo = cod_;
             codigoturno = 1;
+            turnos = new List<Turno>();
         }
 
 
