@@ -69,10 +69,6 @@ namespace Taimer {
         private List<Horario> horarios = new List<Horario>();                       // Un usuario tiene (0,N) horarios
 
         /// <summary>
-        /// Ultimo código de actividades personales creadas
-        /// </summary>
-        private int codActPers;
-        /// <summary>
         /// Asigna un código un horario
         /// </summary>
         /// <param name="h">Horario al que se le quiere dar un código</param>
@@ -273,11 +269,12 @@ namespace Taimer {
 
 
         /// <summary>
-        /// Añade una actividad personal
-        /// ¡¡¡NO USAR!!! AÑADIR DESDE PROGRAM
+        /// Añade una actividad personal (también a la BD)
         /// </summary>
         /// <param name="act">Actividad personal que se desa añadir</param>
         public void AddActPersonal(Actividad_p act) {
+            act.Usuario = this;
+            act.Agregar();
             actPersonales.Add(act);
         }
 
@@ -350,14 +347,6 @@ namespace Taimer {
         }
 
         /// <summary>
-        /// Asigna/Devuelve el último código de la acitivadad personal asignada
-        /// </summary>
-        public int CodActPers {
-            set { codActPers = value; }
-            get { return codActPers; }
-        }
-
-        /// <summary>
         /// Borrar horario (booleano)
         /// </summary>
         /// <param name="hor">Horario que se desea borrar</param>
@@ -408,7 +397,16 @@ namespace Taimer {
         /// </sumary>
         public void Agregar() {
             CADUser user = new CADUser();
-            user.CrearUserAll(dni, nombre, email, password, curso, titulacion, 0);
+            CADTitulacion tit = new CADTitulacion();
+            try {
+                tit.CrearTitulacion(titulacion, null);
+            }
+            catch (Exception ex) {
+                //Ya existe en la BD esa titulacion
+            }
+            finally {
+                user.CrearUserAll(dni, nombre, email, password, curso, titulacion, codHorarios);
+            }
         }
 
         /// <summary>

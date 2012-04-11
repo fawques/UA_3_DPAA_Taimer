@@ -10,17 +10,14 @@ namespace TaimerGUI {
 
         #region PARTE PRIVADA
         
-        private static List<Actividad_a> asignaturas;
-        private static List<User> usuarios;
-        private static List<Algoritmo> algoritmos;
-        private static int codAsignaturas = Actividad_a.UltimoCodigo;
+        private static List<Actividad_a> asignaturas = new List<Actividad_a>();
+        private static List<User> usuarios = new List<User>();
+        private static List<Algoritmo> algoritmos = new List<Algoritmo>();
 
         private static void Init()
         {
             //Aqui hay que rellenar todos los atributos privados de esta clase desde el cad
             //Esta función se llama en el main.
-            usuarios = new List<User>();
-            asignaturas = new List<Actividad_a>();
             SetUsers();
             SetAsignaturas();
         }
@@ -47,16 +44,12 @@ namespace TaimerGUI {
             get { return algoritmos; }
         }
 
-        //Obtiene/Cambia el último codigo de la asignatura
-        public static int CodAsignaturas {
-            set { codAsignaturas = value; }
-            get { return codAsignaturas; }
-        }
-
-        //Añade una asignatura
+        /// <summary>
+        /// Añade una Asignatura (tambien en la BD)
+        /// </summary>
+        /// <param name="a">Asignatura que se quiere añadir</param>
         public static void AddAsignatura(Actividad_a a) {
-            /*codAsignaturas++;
-            a.Codigo = codAsignaturas;*/
+            a.Agregar();
             asignaturas.Add(a);
         }
 

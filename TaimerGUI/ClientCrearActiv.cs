@@ -56,7 +56,7 @@ namespace TaimerGUI
                 MessageBoxButtons.YesNo,
                 MessageBoxIcon.Question,
                 MessageBoxDefaultButton.Button2) == DialogResult.Yes) {
-                    Actividad_p actividad = new Taimer.Actividad_p(tBNombre.Text, rTBDescripcion.Text, -1, null);
+                    Actividad_p actividad = new Taimer.Actividad_p(tBNombre.Text, rTBDescripcion.Text);
 
                     foreach (DataGridViewRow filas in gVHorasTemp.Rows) {
                         Hora horI = new Hora(filas.Cells["horaInicio"].Value.ToString());

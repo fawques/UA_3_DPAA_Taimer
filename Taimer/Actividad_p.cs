@@ -6,6 +6,8 @@ using System.Linq;
 using System.Text;
 using System.Data;
 
+using System.Windows.Forms;
+
 namespace Taimer {
     /// <summary>
     /// Clase Actividad_p: esta clase hereda de Actividad y representa cualquier otro tipo de actividad idependiente del ambito academico.
@@ -30,9 +32,9 @@ namespace Taimer {
         /// </summary>
         /// <param name="nom_">Nombre de la Actividad_p</param>
         /// <param name="desc_">Descripción de la Actividad_p</param>
-        /// <param name="cod_">Código de la Actividad_p</param>
-        /// <param name="usu_">Usuario de la Activiad_p</param>
-        public Actividad_p(string nom_, string desc_, int cod_, User usu_)
+        /// <param name="usu_">Usuario de la Activiad_p (por defecto null se añade le usuario cuando se añade al propio usuario)</param>
+        /// <param name="cod_">Codigo de la actividad_p (por defecto 0)</param>
+        public Actividad_p(string nom_, string desc_, User usu_ = null, int cod_ = 0)
             : base(nom_, desc_, cod_) {
                 usuario = usu_;
         }
@@ -43,10 +45,10 @@ namespace Taimer {
         /// </summary>
         /// <param name="nom_">Nombre de la Actividad_p</param>
         /// <param name="desc_">Descripción de la Actividad_p</param>
-        /// <param name="cod_">Código de la Actividad_p</param>
         /// <param name="turnos_">Listas de turnos en los que se realiza la Actividad_p </param>
         /// <param name="usu_">Usuario al que pertenece esta Actividad_p</param>
-        public Actividad_p(string nom_, string desc_, int cod_, List<Turno> turnos_, User usu_)
+        /// <param name="cod_">Codigo de la actividad_p (por defecto 0)</param>
+        public Actividad_p(string nom_, string desc_, List<Turno> turnos_, User usu_ = null, int cod_ = 0)
             : base(nom_, desc_, cod_, turnos_) {
 
             usuario = usu_;
@@ -58,8 +60,6 @@ namespace Taimer {
         /// <param name="act">Actividad_p que se desea copiar</param>
         public Actividad_p(Actividad_p act)
             : base(act) {
-                usuario.CodActPers--;
-                act.Codigo = usuario.CodActPers;
                 usuario = act.usuario; 
         }
 
@@ -154,6 +154,12 @@ namespace Taimer {
         public void Agregar() {
             CADActividad_p act = new CADActividad_p();
 
+            foreach (Turno t in turnos) //se añaden los turnos a la BD
+                t.Agregar();
+
+            if (codigo == 0) //codigo por defecto
+                codigo = UltimoCodigo - 1;
+           // MessageBox.Show("nombre = " + nombre + ", descripcion = " + descripcion + ", codigo= " + codigo + ", dni = " + usuario.DNI);
             act.CrearActivida_pAll(nombre, descripcion, codigo, usuario.DNI);
         }
 
@@ -206,7 +212,7 @@ namespace Taimer {
                         nom = aux.Tables[0].Rows[0].ItemArray[0].ToString();
                         desc = aux.Tables[0].Rows[0].ItemArray[1].ToString();
 
-                        list.Add(new Actividad_p(nom, desc, cod, User.UserToObject(user.GetDatosUser(dniUser))));
+                        list.Add(new Actividad_p(nom, desc, User.UserToObject(user.GetDatosUser(dniUser)), cod));
                     }
                     else
                         return null;
@@ -245,7 +251,7 @@ namespace Taimer {
                         nom = aux.Tables[0].Rows[0].ItemArray[0].ToString();
                         desc = aux.Tables[0].Rows[0].ItemArray[1].ToString();
 
-                        actp = new Actividad_p(nom, desc, cod, User.UserToObject(user.GetDatosUser(dniUser)));
+                        actp = new Actividad_p(nom, desc, User.UserToObject(user.GetDatosUser(dniUser)), cod);
                     }
                     else
                         return null;
