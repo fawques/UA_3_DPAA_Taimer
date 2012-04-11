@@ -3,18 +3,19 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using System.Data;
 
 namespace TaimerGUI {
     static class Program {
 
         #region PARTE PRIVADA
         
-        private static List<Actividad_a> asignaturas;
-        private static List<User> usuarios;
-        private static List<Algoritmo> algoritmos;
-        private static int codAsignaturas = 0;
+        private static List<Actividad_a> asignaturas = new List<Actividad_a>();
+        private static List<User> usuarios = new List<User>();
+        private static List<Algoritmo> algoritmos = new List<Algoritmo>();
 
-        private static void Init() { 
+        private static void Init()
+        {
             //Aqui hay que rellenar todos los atributos privados de esta clase desde el cad
             //Esta función se llama en el main.
 
@@ -60,8 +61,6 @@ namespace TaimerGUI {
 
             Usuarios[0].AddActPersonal(actP);
             Usuarios[0].AddActPersonal(actP2);
-
-
         }
 
         #endregion
@@ -86,19 +85,13 @@ namespace TaimerGUI {
             get { return algoritmos; }
         }
 
-        //Obtiene/Cambia el último codigo de la asignatura
-        public static int CodAsignaturas {
-            set { codAsignaturas = value; }
-            get { return codAsignaturas; }
-        }
 
         /// <summary>
-        /// Añade una asignatura. Incrementa el código y lo asigna al código de la asignatura que se añade.
+        /// Añade una Asignatura (tambien en la BD)
         /// </summary>
-        /// <param name="a">Asignatura a añadir</param>
+        /// <param name="a">Asignatura que se quiere añadir</param>
         public static void AddAsignatura(Actividad_a a) {
-            codAsignaturas++;
-            a.Codigo = codAsignaturas;
+            a.Agregar();
             asignaturas.Add(a);
         }
 
@@ -284,6 +277,31 @@ namespace TaimerGUI {
             }
         }
 
+        /// <summary>
+        /// Completa la lista de usuarios con los actuales en la BD
+        /// </summary>
+        public static void SetUsers()
+        {
+            CAD.CADUser userCAD = new CAD.CADUser();         
+            DataSet users = userCAD.GetUsers();
+            //user.RellenoHorarios();
+
+        }
+
+        /// <summary>
+        /// Completa la lista de asignaturas con las actuales en la BD
+        /// </summary>
+        public static void SetAsignaturas()
+        {
+            CAD.CADActividad_a actCAD = new CAD.CADActividad_a();
+            DataSet acts = actCAD.GetActividades_a();
+
+            asignaturas = Actividad_a.Actividades_aToList(acts);
+          
+            foreach (Actividad_a ac in asignaturas)
+                MessageBox.Show(ac.Descripcion);
+        }
+
         public static LoginForm loginForm;
 
         /// <summary>
@@ -291,8 +309,6 @@ namespace TaimerGUI {
         /// </summary>
         [STAThread]
         static void Main() {
-
-            Init();
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

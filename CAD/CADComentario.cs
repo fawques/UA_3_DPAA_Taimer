@@ -20,7 +20,13 @@ namespace CAD
             // Adquiere la cadena de conexión desde un único sitio
 
         }
-        //Método para crear un nuevo usu
+        /// <summary>
+        /// Creamos un comentario
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="text"></param>
+        /// <param name="codActividad"></param>
+        /// <param name="codUser"></param>
         public void CrearCommentBasic(int id, string text, int codActividad, string codUser)
         {
             string comando = "INSERT INTO [Comentario](id,texto,actCod,actUser,usuario) VALUES('" + id + "', '" + text + "', '" + codActividad + "', '" + codUser + "', '" + codUser+ "')";
@@ -35,16 +41,19 @@ namespace CAD
                 comandoTBD.CommandType = CommandType.Text;
                 comandoTBD.ExecuteNonQuery();
             }
-            catch (SqlException ex)
+            catch (SqlException)
             {
-                throw ex;
+                throw;
             }
             finally
             {
                 if (c != null) c.Close(); // Se asegura de cerrar la conexión.
             }
         }
-
+        /// <summary>
+        /// Borramos un coment
+        /// </summary>
+        /// <param name="id"></param>
         public void BorrarComment(int id)
         {
             SqlConnection c = null;
@@ -57,9 +66,9 @@ namespace CAD
                 SqlCommand cmd = new SqlCommand(comando, c);
                 cmd.ExecuteNonQuery();
             }
-            catch (Exception ex)
+            catch (SqlException)
             {
-                throw ex;
+                throw;
             }
             finally
             {
@@ -67,7 +76,10 @@ namespace CAD
             }
         }
 
-        //Obtenemos un dataset con los datos de los usuarios
+        /// <summary>
+        /// Devolvemos la lista de comentarios
+        /// </summary>
+        /// <returns></returns>
         public DataSet GetComments()
         {
 
@@ -83,23 +95,27 @@ namespace CAD
                 return listComments;
 
             }
-            catch (Exception ex)
+            catch (SqlException)
             {
                 // Captura la condición general y la reenvía.
-                throw ex;
+                throw;
             }
             finally
             {
                 if (con != null) con.Close(); // Se asegura de cerrar la conexión.
             }
         }
-         //Obtenemos los datos de un usuario según su dni
+        /// <summary>
+        /// Devolvemos los datos de un comentario
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public DataSet GetDatosComment(int id)
         {
 
             SqlConnection con = null;
             DataSet datos = null;
-            string comando = "Select * from [Comentario] where id="+id+"'";
+            string comando = "Select * from [Comentario] where id='"+id+"'";
             try
             {
                 con = new SqlConnection(conexionTBD);
@@ -109,17 +125,23 @@ namespace CAD
                 return datos;
 
             }
-            catch (Exception ex)
+            catch (SqlException)
             {
                 // Captura la condición general y la reenvía.
-                throw ex;
+                throw;
             }
             finally
             {
                 if (con != null) con.Close(); // Se asegura de cerrar la conexión.
             }
         }
-        //Actualizar datos de un Usuario cuyo dni sea el que pasan como parámetro
+        /// <summary>
+        /// Actualizar datos de un comentario
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="text"></param>
+        /// <param name="codActividad"></param>
+        /// <param name="codUser"></param>
         public void ModificaComment(int id, string text, int codActividad, string codUser)
         {
             string comando = "UPDATE [Comentario] SET id = '" + id + "', texto = '" + text + "',  actCod = '" + codActividad + "', actUser = '" + codUser + "', usuario = '" + codUser+ "' WHERE id = '" + id + "'";
@@ -135,9 +157,9 @@ namespace CAD
                 comandoTBD.ExecuteNonQuery();
 
             }
-            catch (SqlException ex)
+            catch (SqlException)
             {
-                throw ex;
+                throw;
             }
             finally
             {

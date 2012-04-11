@@ -1,11 +1,13 @@
 ﻿// ¡SI SE CAMBIA LA HORA DE INICIO O FIN EN UN TURNO PERSONAL, COMPROBAR SOLAPAMIENTO!
-
+using CAD;
 using System;
 using System.Collections.Generic;
 using System.Collections;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Data;
+using System.Windows.Forms;
 
 namespace Taimer {
     /// <summary>
@@ -217,11 +219,6 @@ namespace Taimer {
             ubicacion = ubic_;
             actividad = null;
         }
- 
-
-
-
-
         /// <summary>
         /// Constructor que vincula el turno a una actividad
         /// </summary>
@@ -265,10 +262,6 @@ namespace Taimer {
             else
                 ((Actividad_p)actividad).AddTurno(this);
         }
-
-
-
-
 
         /// <summary>
         /// Constructor completo
@@ -320,6 +313,11 @@ namespace Taimer {
             diasemana = t.diasemana;
             ubicacion = t.ubicacion;
             actividad = t.actividad;
+        }
+
+        public Turno()
+        {
+            // TODO: Complete member initialization
         }
 
 
@@ -618,6 +616,80 @@ namespace Taimer {
             }
 
             return superpuesto;
+        }
+
+        /// <summary>
+        /// Guarda el turno en la base de datos
+        /// </summary>
+        public void Agregar() {
+            CADTurno t = new CADTurno();
+            t.CrearTurno(codigo, horaInicio.toString(), horaFin.toString(), diasemana.ToString()[0], ubicacion, actividad.Codigo);
+        }
+
+        /// <summary>
+        /// Borra el turno de la base de datos
+        /// </summary>
+        public void Borrar() {
+            CADTurno t = new CADTurno();
+            t.BorrarTurno(codigo, actividad.Codigo);
+        }
+
+        /// <summary>
+        /// Guarda los cambios del turno en la base de datos
+        /// </summary>
+        public void Modificar() {
+            CADTurno t = new CADTurno();
+            if (ubicacion == "")
+                ubicacion = null;
+            t.ModificarTurno(diasemana.ToString()[0], horaInicio.toString(), horaFin.toString(), ubicacion, codigo, actividad.Codigo);
+        }
+
+        /// <summary>
+        /// Convierte un objeto DataSet que contiene un conjunto de turnos en una lista de objetos Turno
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
+        public static List<Turno> TurnosToList(DataSet data)
+        {
+            if (data != null)
+            {
+                CAD.CADActividad_a actACAD = new CAD.CADActividad_a();
+                CAD.CADActividad_p actPCAD = new CAD.CADActividad_p();
+                CAD.CADTurno turn = new CAD.CADTurno();
+                DataSet aux = new DataSet();
+                List<Turno> list = new List<Turno>();
+
+                int cod, pertenece;
+                string dia;
+                string ubic;
+                Hora inicio;
+                Hora fin;
+
+                DataRowCollection rows = data.Tables[0].Rows;
+
+                for (int i = 0; i < rows.Count; i++)
+                {
+                    cod = (int)rows[i].ItemArray[0];
+                    inicio = new Hora(rows[i].ItemArray[1].ToString());
+                    fin = new Hora(rows[i].ItemArray[2].ToString());
+                    dia = rows[i].ItemArray[3].ToString();
+                    ubic = rows[i].ItemArray[4].ToString();
+                    pertenece = (int)rows[i].ItemArray[5];
+
+                    if (pertenece > 0)
+                    {
+                        aux = actACAD.GetDatosActividad_a(pertenece);                        
+                        list.Add(new Turno(cod, inicio, fin, dia, ubic, Actividad_a.Actividad_aToObject(aux)));
+                    }
+                    else
+                    {
+                        aux = actPCAD.GetDatosActividad_p(pertenece);                       
+                        list.Add(new Turno(cod, inicio, fin, dia, ubic, Actividad_p.Actividad_pToObject(aux)));
+                    }
+                }
+                return list;
+            }
+            return null;
         }
 
 

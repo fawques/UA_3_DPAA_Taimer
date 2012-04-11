@@ -10,7 +10,7 @@ using System.Collections;
 
 namespace CAD
 {
-    class CADTitulacion
+    public class CADTitulacion
     {
         private static string conexionTBD;
         
@@ -20,10 +20,13 @@ namespace CAD
             // Adquiere la cadena de conexión desde un único sitio
 
         }
-        //Método para crear un nuevo usu
-        public void CrearTitulacion(string cod, string nom)
+        /// <summary>
+        /// Insertamos una titulación
+        /// </summary>
+        /// <param name="nom"></param>
+        public void CrearTitulacion(string nom)
         {
-            string comando = "INSERT INTO [Titulacion](codigo,nombre) VALUES('"+cod+"','"+nom+"')";
+            string comando = "INSERT INTO [Titulacion](nombre) VALUES('"+nom+"')";
             SqlConnection c=null;
             SqlCommand comandoTBD;
             
@@ -35,20 +38,24 @@ namespace CAD
                 comandoTBD.CommandType = CommandType.Text;
                 comandoTBD.ExecuteNonQuery();
             }
-            catch (SqlException ex)
+            catch (SqlException)
             {
-                throw ex;
+                throw;
             }
             finally
             {
                 if (c != null) c.Close(); // Se asegura de cerrar la conexión.
             }
         }
-        public void BorrarTitulacion(string cod)
+
+        /// <summary>
+        /// Borramos una titulación
+        /// </summary>
+        /// <param name="nombre"></param>
+        public void BorrarTitulacion(string nombre)
         {   
             SqlConnection c = null;
-            string comando = "DELETE FROM [Titulacion] WHERE codigo='"+cod+"'";
-
+            string comando = "DELETE FROM [Titulacion] WHERE nombre='"+nombre+"'";
             try
             {
 
@@ -57,9 +64,9 @@ namespace CAD
                 SqlCommand cmd = new SqlCommand(comando, c);
                 cmd.ExecuteNonQuery();
             }
-            catch (Exception ex)
+            catch (SqlException )
             {
-                throw ex;
+                throw;
             }
             finally
             {
@@ -67,7 +74,10 @@ namespace CAD
             }
         }
 
-         //Obtenemos un dataset con los datos de los usuarios
+        /// <summary>
+        /// Devolvemos la lista de titulaciones de la BD
+        /// </summary>
+        /// <returns></returns>
         public DataSet GetTitulaciones()
         {
 
@@ -83,23 +93,27 @@ namespace CAD
                 return listTitulacions;
 
             }
-            catch (Exception ex)
+            catch (SqlException)
             {
                 // Captura la condición general y la reenvía.
-                throw ex;
+                throw ;
             }
             finally
             {
                 if (con != null) con.Close(); // Se asegura de cerrar la conexión.
             }
         }
-         //Obtenemos los datos de un usuario según su dni
-        public DataSet GetDatos(string cod)
+         /// <summary>
+        /// Obtenemos los datos de una titulación 
+         /// </summary>
+         /// <param name="nombre"></param>
+         /// <returns></returns>
+        public DataSet GetDatos(string nombre)
         {
 
             SqlConnection con = null;
             DataSet datos = null;
-            string comando = "SELECT * FROM [Titulacion] where codigo='"+cod+"'";
+            string comando = "SELECT * FROM [Titulacion] where nombre='"+nombre+"'";
             try
             {
                 con = new SqlConnection(conexionTBD);
@@ -108,40 +122,30 @@ namespace CAD
                 sqlAdaptador.Fill(datos);
                 return datos;
             }
-            catch (Exception ex)
+            catch (SqlException)
             {
                 // Captura la condición general y la reenvía.
-                throw ex;
+                throw;
             }
             finally
             {
                 if (con != null) con.Close(); // Se asegura de cerrar la conexión.
             }
         }
-        //Actualizar datos de un Usuario cuyo dni sea el que pasan como parámetro
-        public void ModificaTitulacion(string cod, string nom)
-        {
 
-            string comando = "UPDATE [Titulacion] SET codigo = '" + cod + "', nombre = '" + nom + "' WHERE codigo = '"+cod+"'";
-            SqlConnection c = null;
-            SqlCommand comandoTBD;
-            
-            try
-            {
-                c = new SqlConnection(conexionTBD);
-                comandoTBD = new SqlCommand(comando, c);
-                c.Open();
-                comandoTBD.CommandType = CommandType.Text;
-                comandoTBD.ExecuteNonQuery();
-            }
-            catch (SqlException ex)
-            {
-                throw ex;
-            }
-            finally
-            {
-                if (c != null) c.Close(); // Se asegura de cerrar la conexión.
-            }
+        /// <summary>
+        /// Devuelve true si una titulación existe
+        /// </summary>
+        /// <param name="cod"></param>
+        /// <returns></returns>
+        public bool Exists(string nombre)
+        {
+            DataSet data = GetDatos(nombre);
+
+            if (data.Tables[0].Rows.Count == 0)
+                return false;
+            else
+                return true;
         }
     }
 }

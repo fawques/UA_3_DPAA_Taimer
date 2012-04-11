@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Taimer;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
@@ -40,7 +41,33 @@ namespace rubenDesign
             loginWindow = new Login();
 
             //Application.Run(loginWindow);
-            Application.Run(new TestEN());
+            //Application.Run(new TestEN());
+
+            ///Pruebas///
+
+            /*List<Turno> lt = new List<Turno>();
+            lt.Add(new Turno(new Hora(0,0), new Hora(1,0), dias.J,"ua"));
+            User usr = new User("pepe2", "0000006", "pepe2@gmail.com", "pepemola", 3, "II", 0);
+            try {
+                usr.Agregar();
+
+            }
+            catch (Exception ex) {
+                //Ya existe el usuario
+            }
+            finally {
+                try {
+                    Actividad_p act = new Actividad_p("act1", "desc");
+                    MessageBox.Show("UltimoCodigo " + Actividad_p.UltimoCodigo);
+                    usr.AddActPersonal(act);
+                }
+                catch (Exception ex) {
+                    MessageBox.Show(ex.Message);
+                }
+            }*/
+            
+            
+
         }
     }
 }

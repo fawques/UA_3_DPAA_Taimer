@@ -6,6 +6,7 @@ using System.Data.SqlClient;
 using System.IO;
 using System.Configuration;
 using System.Collections;
+using System.Windows.Forms;
 
 
 namespace CAD {
@@ -20,7 +21,14 @@ namespace CAD {
             // Adquiere la cadena de conexión desde un único sitio
 
         }
-        //Método para crear una Actividad con todos sus parametros
+        /// <summary>
+        /// Se insertan actividades en la BD
+        /// </summary>
+        /// <param name="nombre"></param>
+        /// <param name="desc"></param>
+        /// <param name="codigo"></param>
+        /// <param name="profesor"></param>
+        /// <param name="titulacion"></param>
         public void CrearActivida_aAll(string nombre,string desc,int codigo,string profesor,string titulacion){
 
             string comando = "INSERT INTO [Actividad_a](profesor,codigo,titulacion) VALUES('" + profesor + "', '" + codigo +  "', '" + titulacion + "')";
@@ -38,9 +46,9 @@ namespace CAD {
                 comandoTBD.ExecuteNonQuery();
                 
             }
-            catch (SqlException ex)
+            catch (SqlException)
             {
-                throw ex;
+                throw;    
             }
             finally
             {
@@ -66,9 +74,9 @@ namespace CAD {
                 comandoTBD.ExecuteNonQuery();
 
             }
-            catch (SqlException ex)
+            catch (SqlException)
             {
-                throw ex;
+                throw;
             }
             finally
             {
@@ -77,7 +85,10 @@ namespace CAD {
 
         }
 
-        //Borrar una actividad
+        /// <summary>
+        /// Borra una actividad especificando su codigo
+        /// </summary>
+        /// <param name="codigo"></param>
         public void BorrarActividad_a(int codigo) {
 
             SqlConnection c = null;
@@ -92,9 +103,9 @@ namespace CAD {
                 CADActividad ca = new CADActividad();
                 ca.BorrarActividad(codigo);
             }
-            catch (Exception ex)
+            catch (SqlException)
             {
-                throw ex;
+                throw;    
             }
             finally
             {
@@ -103,7 +114,11 @@ namespace CAD {
 
         }
         
-        //Modificar una actividad
+        /// <summary>
+        /// Modifica una actividad
+        /// </summary>
+        /// <param name="profesor"></param>
+        /// <param name="cod"></param>
         public void ModificaActividad_a(string profesor, int cod)
         {
             string comando = "UPDATE [Actividad_a] SET profesor = '" + profesor + "' WHERE codigo = '" + cod + "'";
@@ -120,9 +135,9 @@ namespace CAD {
 
 
             }
-            catch (SqlException ex)
+            catch (SqlException)
             {
-                throw ex;
+                throw;
             }
             finally
             {
@@ -130,11 +145,73 @@ namespace CAD {
             }
 
 
-        }
-        //Obtenemos los datos de un Actividad según su id
-        public DataSet GetDatosActividad_a(string user,int cod)
+        } 
+        /// <summary>
+        /// Devuelve una lista de actividades de una cierta titulación y curso
+        /// </summary>
+        /// <param name="titu"></param>
+        /// <param name="curso"></param>
+        /// <returns></returns>
+        public DataSet GetActividad_tc(string titu, int curso)
         {
+            SqlConnection con = null;
+            DataSet listAct = null;
+            string comando = "Select * from [Actividad_a] where titulacion='"+titu+"' and curso='"+curso+"'";
+            try
+            {
+                con = new SqlConnection(conexionTBD);
+                SqlDataAdapter sqlAdaptador = new SqlDataAdapter(comando, con);
+                listAct = new DataSet();
+                sqlAdaptador.Fill(listAct);
+                return listAct;
 
+            }
+            catch (SqlException)
+            {
+                throw;
+               //return null;
+            }
+            finally
+            {
+                if (con != null) con.Close(); // Se asegura de cerrar la conexión.
+            }
+        }
+        /// <summary>
+        /// Devuelve una lista de actividades de una cierta titulación
+        /// </summary>
+        /// <param name="titu"></param>
+        /// <returns></returns>
+        public DataSet GetActividad_ti(string titu)
+        {
+            SqlConnection con = null;
+            DataSet listAct = null;
+            string comando = "Select * from [Actividad_a] where titulacion='" + titu + "'";
+            try
+            {
+                con = new SqlConnection(conexionTBD);
+                SqlDataAdapter sqlAdaptador = new SqlDataAdapter(comando, con);
+                listAct = new DataSet();
+                sqlAdaptador.Fill(listAct);
+                return listAct;
+
+            }
+            catch (SqlException)
+            {
+                throw;
+                //return null;
+            }
+            finally
+            {
+                if (con != null) con.Close(); // Se asegura de cerrar la conexión.
+            }
+        }
+        /// <summary>
+        /// Devuelve los datos de una determinada actividad académica
+        /// </summary>
+        /// <param name="cod"></param>
+        /// <returns></returns>
+        public DataSet GetDatosActividad_a(int cod)
+        {
             SqlConnection con = null;
             DataSet datos = null;
             string comando = "Select * from [Actividad_a] where  codigo='"+cod+"'";
@@ -147,17 +224,20 @@ namespace CAD {
                 return datos;
 
             }
-            catch (Exception ex)
+            catch (SqlException)
             {
-                // Captura la condición general y la reenvía.
-                throw ex;
+                throw;
+               //return null;
             }
             finally
             {
                 if (con != null) con.Close(); // Se asegura de cerrar la conexión.
             }
         }
-        //Devuelve la lista de Actividades
+        /// <summary>
+        /// Devuelve todas las actividades académicas de la BD
+        /// </summary>
+        /// <returns></returns>
         public DataSet GetActividades_a()
         {
             SqlConnection con = null;
@@ -172,10 +252,38 @@ namespace CAD {
                 return listAct;
 
             }
-            catch (Exception ex)
+            catch (SqlException)
             {
-                // Captura la condición general y la reenvía.
-                throw ex;
+                throw;
+                //return null;
+            }
+            finally
+            {
+                if (con != null) con.Close(); // Se asegura de cerrar la conexión.
+            }
+        }
+
+        /// <summary>
+        /// Devuelve el único código generado
+        /// </summary>
+        /// <returns></returns>
+        public DataSet LastCode()
+        {
+            SqlConnection con = null;
+            DataSet listAct = null;
+            string comando = "Select max(codigo) from [Actividad_a]";
+            try
+            {
+                con = new SqlConnection(conexionTBD);
+                SqlDataAdapter sqlAdaptador = new SqlDataAdapter(comando, con);
+                listAct = new DataSet();
+                sqlAdaptador.Fill(listAct);
+                return listAct;
+            }
+            catch (SqlException)
+            {
+                throw;
+               //return null;
             }
             finally
             {

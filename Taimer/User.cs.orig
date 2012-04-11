@@ -69,6 +69,11 @@ namespace Taimer {
         private List<Horario> horarios = new List<Horario>();                       // Un usuario tiene (0,N) horarios
 
         /// <summary>
+        /// Ultimo código de actividades personales creadas
+        /// </summary>
+        private int codActPers;
+
+        /// <summary>
         /// Asigna un código un horario
         /// </summary>
         /// <param name="h">Horario al que se le quiere dar un código</param>
@@ -91,6 +96,7 @@ namespace Taimer {
         /// <param name="curso_">Curso del usuario</param>
         /// <param name="tit_">Titulación del usuario</param>
         public User(string nom_, string dni_, string email_, string pass_, int curso_, string tit_,int codH_) {
+            codHorarios = 0;
             nombre = nom_;
             dni = dni_;
             password = pass_;
@@ -134,7 +140,6 @@ namespace Taimer {
             actAcademicas = acta_;
             actPersonales = actp_;
             horarios = hor_;
-            codActPers = (-1 * actPersonales.Count) + 1;
         }
      
         /// <summary>
@@ -148,23 +153,9 @@ namespace Taimer {
             email = u.email;
             password = u.password;
             curso = u.curso;
-            actAcademicas = new List<Actividad_a>(u.ActAcademicas.Count);
-            foreach (Actividad_a act_a in u.ActAcademicas)
-            {
-                ActAcademicas.Add(act_a);
-            }
-            
-            actPersonales = new List<Actividad_p>(u.actPersonales.Count);
-            foreach (Actividad_p act_p in u.ActPersonales)
-            {
-                ActPersonales.Add(act_p);
-            }
-            horarios = new List<Horario>(u.Horarios.Count);
-            foreach (Horario h in u.Horarios)
-            {
-                Horarios.Add(h);
-            }
-            codActPers = u.codActPers;
+            actAcademicas = new List<Actividad_a>(u.actAcademicas);
+            actPersonales = new List<Actividad_p>(u.actPersonales);
+            horarios = new List<Horario>(u.horarios);
             titulacion = u.titulacion;
         }
 
@@ -283,12 +274,11 @@ namespace Taimer {
 
 
         /// <summary>
-        /// Añade una actividad personal (también a la BD)
+        /// Añade una actividad personal
+        /// ¡¡¡NO USAR!!! AÑADIR DESDE PROGRAM
         /// </summary>
         /// <param name="act">Actividad personal que se desa añadir</param>
         public void AddActPersonal(Actividad_p act) {
-            act.Usuario = this;
-            act.Agregar();
             actPersonales.Add(act);
         }
 
@@ -361,6 +351,14 @@ namespace Taimer {
         }
 
         /// <summary>
+        /// Asigna/Devuelve el último código de la acitivadad personal asignada
+        /// </summary>
+        public int CodActPers {
+            set { codActPers = value; }
+            get { return codActPers; }
+        }
+
+        /// <summary>
         /// Borrar horario (booleano)
         /// </summary>
         /// <param name="hor">Horario que se desea borrar</param>
@@ -405,39 +403,13 @@ namespace Taimer {
                 throw new MissingMemberException("No existe el horario que se desea borrar.");
         }
 
-
-        /// <sumary>
-        /// Añade el User a la base de datos
-        /// </sumary>
-        public void Agregar()
-        {
-            CADUser user = new CADUser();
-            user.CrearUserAll(dni, nombre, email, password, curso, titulacion, codHorarios);
-
-        }
-
-        /// <summary>
-        /// Guarda los cambios del usuario en la base de datos
-        /// </summary>
-        public void Modificar() {
-            CADUser user = new CADUser();
-            user.ModificaUser(dni, nombre, email, password, titulacion);
-        }
-
-        ///<summary>
-        ///Borra el usuario de la base de datos
-        ///</summary>
-        public void Borrar() {
-            CADUser user = new CADUser();
-            user.BorrarUser(dni);
-        }
-
+<<<<<<< HEAD
         /// <summary>
         /// Convierte un DataSet (que tendrá filas de usuarios) en una lista de usuarios
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
-        public static List<User> UsersToList(DataSet data)
+        public List<User> UsersToList(DataSet data)
         {
             if (data != null)
             {
@@ -477,7 +449,7 @@ namespace Taimer {
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
-        public static User UserToObject(DataSet data)
+        public User UserToObject(DataSet data)
         {         
             if (data != null)
             {
@@ -514,7 +486,7 @@ namespace Taimer {
         /// <param name="email"></param>
         /// <param name="pass"></param>
         /// <returns></returns>
-        public static bool CheckLogin(string email, string pass)
+        public bool CheckLogin(string email, string pass)
         {
             CADUser userCAD = new CADUser();
             User user = UserToObject(userCAD.GetDatosUser(email, pass));
@@ -527,15 +499,33 @@ namespace Taimer {
             MessageBox.Show("Login correcto");
             return true;
         }
-        /// <summary>
-        /// Relleno del campo Horarios desde la BD
-        /// </summary>
-        public void RellenoHorarios()
-        {
-            CAD.CADHorario hor = new CADHorario();
-            DataSet horarios = hor.GetDatosHorarioUser(dni);
-            Horarios = Horario.HorariosToList(horarios);
+=======
+
+        /// <sumary>
+        /// Añade el User a la base de datos
+        /// </sumary>
+        public void Agregar() {
+            CADUser user = new CADUser();
+            user.CrearUserAll(dni, nombre, email, password, curso, titulacion, 0);
         }
+
+        /// <summary>
+        /// Guarda los cambios del usuario en la base de datos
+        /// </summary>
+        public void Modificar() {
+            CADUser user = new CADUser();
+            user.ModificaUser(dni, nombre, email, password, titulacion);
+        }
+
+        ///<summary>
+        ///Borra el usuario de la base de datos
+        ///</summary>
+        public void Borrar() {
+            CADUser user = new CADUser();
+            user.BorrarUser(dni);
+        }
+
+>>>>>>> 5fc8166a819fa7118aa732b7d8fc2d6714ee1545
         #endregion
     }
 }

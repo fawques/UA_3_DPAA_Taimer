@@ -17,7 +17,7 @@ namespace CAD
         private CADComentario com = new CADComentario();
         private CADHorario hor = new CADHorario();
         private CADActividad_p actp = new CADActividad_p();
-
+        
         public Prueba()
         {            
             InitializeComponent();
@@ -25,7 +25,10 @@ namespace CAD
 
         private void bt1Tit_Click(object sender, EventArgs e)
         {
-            tit.CrearTitulacion(tb1Tit.Text,tb2Tit.Text);
+            if (tit.Exists(tb1Tit.Text))
+                MessageBox.Show("La titulación ya existe");
+            else
+                tit.CrearTitulacion(tb2Tit.Text);
         }
 
         private void bt2Tit_Click(object sender, EventArgs e)
@@ -33,14 +36,9 @@ namespace CAD
             tit.BorrarTitulacion(tb1Tit.Text);            
         }
 
-        private void bt3Tit_Click(object sender, EventArgs e)
-        {
-            tit.ModificaTitulacion(tb1Tit.Text,tb2Tit.Text);
-        }
-
         private void bt1User_Click(object sender, EventArgs e)
         {
-            user.CrearUserBasic(tb2User.Text, tb1User.Text, tb3User.Text, tb4User.Text);
+            user.CrearUserAll(tb2User.Text, tb1User.Text, tb3User.Text, tb4User.Text,3,"II02",-2);
             //admin.CrearAdminBasic(tb2User.Text, tb1User.Text, tb3User.Text, tb4User.Text);
         }
 
@@ -51,13 +49,13 @@ namespace CAD
 
         private void bt3User_Click(object sender, EventArgs e)
         {
-            user.ModificaUser(tb2User.Text, tb1User.Text,tb3User.Text,tb4User.Text);
+            user.ModificaUser(tb2User.Text, tb1User.Text, tb3User.Text, tb4User.Text, "II02");
         }
 
         private void bt4User_Click(object sender, EventArgs e)
         {
             /*Obtiene el nombre del usuario mediante el DNI introducido*/
-            DataSet data = user.GetDatosUser(tb2User.Text);
+            /*DataSet data = user.GetDatosUser(tb2User.Text);
             if (data == null)
                 label1.Text = "No existe";
                 
@@ -65,12 +63,20 @@ namespace CAD
             {
                 string name = data.Tables[0].Rows[0].ItemArray[1].ToString();
                 label1.Text = "Nombre: "+name;
-            }
+            }*/
 
             /*Ejemplo para mostrar el último código generado
             DataSet code = actp.LastCode();
             string last = code.Tables[0].Rows[0].ItemArray[0].ToString();
             label1.Text = "Último código: " + last;*/
+
+            /*Obtiene los códigos de las asignaturas personales de un usuario*/
+            DataSet data = actp.GetCodesByUser(tb2User.Text);
+            DataRowCollection rows = data.Tables[0].Rows;
+            for (int i = 0; i < rows.Count; i++)
+            {
+                label1.Text += rows[i].ItemArray[0] + " ";
+            }
         }
 
         private void bt1Com_Click(object sender, EventArgs e)

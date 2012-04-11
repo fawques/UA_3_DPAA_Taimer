@@ -96,9 +96,11 @@ namespace TaimerGUI {
 
             if (parentForm != null && valid) {
 
+
                 Program.AddUsuario(new Taimer.User(tbName.Text, tbDni.Text, tbEmail.Text, 
                     tbPass.Text, (int) udCurso.Value, tbTitu.Text));
                 parentForm.updateTable();
+
 
                 tbName.Text = "";
                 tbDni.Text = "";

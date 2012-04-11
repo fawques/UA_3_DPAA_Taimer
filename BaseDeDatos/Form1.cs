@@ -17,15 +17,25 @@ namespace BaseDeDatos
         }
 
         private void button1_Click(object sender, EventArgs e)
-        {
-            CAD.CADUser user = new CAD.CADUser();
-            user.CrearUserBasic("0000008", "Higinio Mora", "higinio@mora.es", "higiniomola");
+        {            
+            Taimer.User.CheckLogin(textBox1.Text, textBox2.Text);
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             CAD.Prueba formp = new CAD.Prueba();
             formp.ShowDialog();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            CAD.CADTurno turnoCAD = new CAD.CADTurno();             
+            List<Taimer.Turno> turnos;
+
+            turnos = Taimer.Turno.TurnosToList(turnoCAD.GetTurnosByAct(Convert.ToInt16(textBox3.Text)));
+
+            foreach (Taimer.Turno turn in turnos)
+                MessageBox.Show(""+turn.Codigo);
         }
     }
 }

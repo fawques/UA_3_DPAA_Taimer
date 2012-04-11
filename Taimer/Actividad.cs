@@ -106,6 +106,10 @@ namespace Taimer {
             }
         }
 
+        public Actividad()
+        {
+            // TODO: Complete member initialization
+        }
 
         /// <summary>
         /// Asigna/Devuelve el nombre de la Actividad
