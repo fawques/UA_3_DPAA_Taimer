@@ -31,11 +31,9 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.dataGridMatric = new System.Windows.Forms.DataGridView();
-            this.Código = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nom = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridActuales = new System.Windows.Forms.DataGridView();
-            this.Codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Descrip = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
@@ -75,68 +73,66 @@
             // dataGridMatric
             // 
             this.dataGridMatric.AllowUserToAddRows = false;
+            this.dataGridMatric.AllowUserToDeleteRows = false;
             this.dataGridMatric.BackgroundColor = System.Drawing.Color.Wheat;
             this.dataGridMatric.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridMatric.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Código,
             this.Nom,
             this.Column1});
             this.dataGridMatric.Location = new System.Drawing.Point(442, 182);
             this.dataGridMatric.Name = "dataGridMatric";
             this.dataGridMatric.ReadOnly = true;
+            this.dataGridMatric.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridMatric.Size = new System.Drawing.Size(331, 373);
             this.dataGridMatric.TabIndex = 23;
             // 
-            // Código
-            // 
-            this.Código.HeaderText = "Código";
-            this.Código.Name = "Código";
-            this.Código.ReadOnly = true;
-            // 
             // Nom
             // 
+            this.Nom.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.Nom.HeaderText = "Nombre";
             this.Nom.Name = "Nom";
             this.Nom.ReadOnly = true;
+            this.Nom.Width = 69;
             // 
             // Column1
             // 
+            this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.Column1.HeaderText = "Descipcion";
             this.Column1.Name = "Column1";
             this.Column1.ReadOnly = true;
+            this.Column1.Width = 85;
             // 
             // dataGridActuales
             // 
             this.dataGridActuales.AllowUserToAddRows = false;
+            this.dataGridActuales.AllowUserToDeleteRows = false;
             this.dataGridActuales.BackgroundColor = System.Drawing.Color.Wheat;
             this.dataGridActuales.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridActuales.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Codigo,
             this.Nombre,
             this.Descrip});
             this.dataGridActuales.Location = new System.Drawing.Point(12, 182);
             this.dataGridActuales.Name = "dataGridActuales";
             this.dataGridActuales.ReadOnly = true;
+            this.dataGridActuales.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridActuales.Size = new System.Drawing.Size(331, 373);
             this.dataGridActuales.TabIndex = 21;
             // 
-            // Codigo
-            // 
-            this.Codigo.HeaderText = "Código";
-            this.Codigo.Name = "Codigo";
-            this.Codigo.ReadOnly = true;
-            // 
             // Nombre
             // 
+            this.Nombre.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.Nombre.HeaderText = "Nombre";
             this.Nombre.Name = "Nombre";
             this.Nombre.ReadOnly = true;
+            this.Nombre.Width = 69;
             // 
             // Descrip
             // 
+            this.Descrip.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.Descrip.HeaderText = "Descripcion";
             this.Descrip.Name = "Descrip";
             this.Descrip.ReadOnly = true;
+            this.Descrip.Width = 88;
             // 
             // label1
             // 
@@ -144,9 +140,9 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(12, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(133, 31);
+            this.label1.Size = new System.Drawing.Size(249, 31);
             this.label1.TabIndex = 20;
-            this.label1.Text = "Matrícula";
+            this.label1.Text = "Taimer - Matrícula";
             // 
             // label2
             // 
@@ -277,17 +273,15 @@
         private System.Windows.Forms.DataGridView dataGridActuales;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Código;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Nom;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Codigo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Descrip;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtBoxFiltroAct;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtBoxFiltroMat;
         private System.Windows.Forms.Button btnConfirm;
         private System.Windows.Forms.Button btnDescart;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Nom;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Descrip;
     }
 }

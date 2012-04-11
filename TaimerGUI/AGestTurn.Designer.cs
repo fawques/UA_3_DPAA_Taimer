@@ -230,11 +230,12 @@
             // 
             // btAdd
             // 
+            this.btAdd.BackgroundImage = global::TaimerGUI.Properties.Resources.flechaRight;
+            this.btAdd.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btAdd.Location = new System.Drawing.Point(222, 175);
             this.btAdd.Name = "btAdd";
             this.btAdd.Size = new System.Drawing.Size(43, 46);
             this.btAdd.TabIndex = 3;
-            this.btAdd.Text = "Add =>";
             this.btAdd.UseVisualStyleBackColor = true;
             this.btAdd.Click += new System.EventHandler(this.btAdd_Click);
             // 

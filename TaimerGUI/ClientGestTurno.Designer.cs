@@ -26,11 +26,11 @@
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.lbErrUbi = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.txtBoxLugar = new System.Windows.Forms.TextBox();
             this.lblErrorDate = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
+            this.txtBoxLugar = new System.Windows.Forms.TextBox();
             this.nmUpDwnMinHasta = new System.Windows.Forms.NumericUpDown();
             this.nmUpDwnMinDesde = new System.Windows.Forms.NumericUpDown();
             this.label9 = new System.Windows.Forms.Label();
@@ -43,6 +43,11 @@
             this.comboBoxDia = new System.Windows.Forms.ComboBox();
             this.button1 = new System.Windows.Forms.Button();
             this.gVHorasTemp = new System.Windows.Forms.DataGridView();
+            this.dia = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.horaInicio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.horaFin = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lugar = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.borrar = new System.Windows.Forms.DataGridViewButtonColumn();
             this.grpBoxTurno = new System.Windows.Forms.GroupBox();
             this.lblMenorTurno = new System.Windows.Forms.Label();
             this.btnCancelar = new System.Windows.Forms.Button();
@@ -64,11 +69,6 @@
             this.btnTerminar = new System.Windows.Forms.Button();
             this.btnConfCambios = new System.Windows.Forms.Button();
             this.label18 = new System.Windows.Forms.Label();
-            this.dia = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.horaInicio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.horaFin = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lugar = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.borrar = new System.Windows.Forms.DataGridViewButtonColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nmUpDwnMinHasta)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nmUpDwnMinDesde)).BeginInit();
@@ -88,18 +88,18 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(25, 20);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(240, 31);
+            this.label1.Size = new System.Drawing.Size(356, 31);
             this.label1.TabIndex = 66;
-            this.label1.Text = "Gestionar Turnos";
+            this.label1.Text = "Taimer - Gestionar Turnos";
             // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.lbErrUbi);
-            this.groupBox1.Controls.Add(this.label7);
-            this.groupBox1.Controls.Add(this.txtBoxLugar);
             this.groupBox1.Controls.Add(this.lblErrorDate);
+            this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.label11);
             this.groupBox1.Controls.Add(this.label10);
+            this.groupBox1.Controls.Add(this.txtBoxLugar);
             this.groupBox1.Controls.Add(this.nmUpDwnMinHasta);
             this.groupBox1.Controls.Add(this.nmUpDwnMinDesde);
             this.groupBox1.Controls.Add(this.label9);
@@ -115,14 +115,14 @@
             this.groupBox1.Size = new System.Drawing.Size(203, 235);
             this.groupBox1.TabIndex = 69;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Hora y Dia";
+            this.groupBox1.Text = "Turno";
             // 
             // lbErrUbi
             // 
             this.lbErrUbi.AutoSize = true;
             this.lbErrUbi.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbErrUbi.ForeColor = System.Drawing.Color.Red;
-            this.lbErrUbi.Location = new System.Drawing.Point(23, 202);
+            this.lbErrUbi.Location = new System.Drawing.Point(16, 53);
             this.lbErrUbi.Name = "lbErrUbi";
             this.lbErrUbi.Size = new System.Drawing.Size(156, 13);
             this.lbErrUbi.TabIndex = 65;
@@ -130,36 +130,29 @@
             this.lbErrUbi.Visible = false;
             this.lbErrUbi.Click += new System.EventHandler(this.lbErrUbi_Click);
             // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(25, 175);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(34, 13);
-            this.label7.TabIndex = 63;
-            this.label7.Text = "Lugar";
-            // 
-            // txtBoxLugar
-            // 
-            this.txtBoxLugar.Location = new System.Drawing.Point(89, 172);
-            this.txtBoxLugar.Name = "txtBoxLugar";
-            this.txtBoxLugar.Size = new System.Drawing.Size(100, 20);
-            this.txtBoxLugar.TabIndex = 61;
-            // 
             // lblErrorDate
             // 
             this.lblErrorDate.ForeColor = System.Drawing.Color.Red;
-            this.lblErrorDate.Location = new System.Drawing.Point(23, 137);
+            this.lblErrorDate.Location = new System.Drawing.Point(16, 195);
             this.lblErrorDate.Name = "lblErrorDate";
             this.lblErrorDate.Size = new System.Drawing.Size(166, 32);
             this.lblErrorDate.TabIndex = 60;
             this.lblErrorDate.Text = "La hora de inicio debe ser menor que la de fin.";
             this.lblErrorDate.Visible = false;
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(18, 26);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(34, 13);
+            this.label7.TabIndex = 63;
+            this.label7.Text = "Lugar";
+            // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(176, 113);
+            this.label11.Location = new System.Drawing.Point(169, 171);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(16, 13);
             this.label11.TabIndex = 12;
@@ -168,15 +161,22 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(108, 108);
+            this.label10.Location = new System.Drawing.Point(101, 166);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(15, 13);
             this.label10.TabIndex = 11;
             this.label10.Text = "H";
             // 
+            // txtBoxLugar
+            // 
+            this.txtBoxLugar.Location = new System.Drawing.Point(82, 23);
+            this.txtBoxLugar.Name = "txtBoxLugar";
+            this.txtBoxLugar.Size = new System.Drawing.Size(100, 20);
+            this.txtBoxLugar.TabIndex = 61;
+            // 
             // nmUpDwnMinHasta
             // 
-            this.nmUpDwnMinHasta.Location = new System.Drawing.Point(131, 108);
+            this.nmUpDwnMinHasta.Location = new System.Drawing.Point(124, 166);
             this.nmUpDwnMinHasta.Maximum = new decimal(new int[] {
             59,
             0,
@@ -188,7 +188,7 @@
             // 
             // nmUpDwnMinDesde
             // 
-            this.nmUpDwnMinDesde.Location = new System.Drawing.Point(131, 72);
+            this.nmUpDwnMinDesde.Location = new System.Drawing.Point(124, 130);
             this.nmUpDwnMinDesde.Maximum = new decimal(new int[] {
             59,
             0,
@@ -201,7 +201,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(176, 74);
+            this.label9.Location = new System.Drawing.Point(169, 132);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(16, 13);
             this.label9.TabIndex = 8;
@@ -210,7 +210,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(110, 74);
+            this.label8.Location = new System.Drawing.Point(103, 132);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(15, 13);
             this.label8.TabIndex = 7;
@@ -218,7 +218,7 @@
             // 
             // nmUpDwnHorHasta
             // 
-            this.nmUpDwnHorHasta.Location = new System.Drawing.Point(62, 106);
+            this.nmUpDwnHorHasta.Location = new System.Drawing.Point(55, 164);
             this.nmUpDwnHorHasta.Maximum = new decimal(new int[] {
             23,
             0,
@@ -230,7 +230,7 @@
             // 
             // nmUpDwnHorDesde
             // 
-            this.nmUpDwnHorDesde.Location = new System.Drawing.Point(62, 72);
+            this.nmUpDwnHorDesde.Location = new System.Drawing.Point(55, 130);
             this.nmUpDwnHorDesde.Maximum = new decimal(new int[] {
             23,
             0,
@@ -243,7 +243,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(30, 113);
+            this.label6.Location = new System.Drawing.Point(23, 171);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(14, 13);
             this.label6.TabIndex = 3;
@@ -252,7 +252,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(23, 74);
+            this.label4.Location = new System.Drawing.Point(16, 132);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(21, 13);
             this.label4.TabIndex = 2;
@@ -261,7 +261,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(28, 35);
+            this.label3.Location = new System.Drawing.Point(21, 93);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(16, 13);
             this.label3.TabIndex = 1;
@@ -278,7 +278,7 @@
             "Viernes",
             "Sabado",
             "Domingo"});
-            this.comboBoxDia.Location = new System.Drawing.Point(65, 32);
+            this.comboBoxDia.Location = new System.Drawing.Point(58, 90);
             this.comboBoxDia.Name = "comboBoxDia";
             this.comboBoxDia.Size = new System.Drawing.Size(121, 21);
             this.comboBoxDia.TabIndex = 0;
@@ -308,9 +308,46 @@
             this.gVHorasTemp.Location = new System.Drawing.Point(281, 123);
             this.gVHorasTemp.Name = "gVHorasTemp";
             this.gVHorasTemp.ReadOnly = true;
+            this.gVHorasTemp.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gVHorasTemp.Size = new System.Drawing.Size(491, 235);
             this.gVHorasTemp.TabIndex = 67;
             this.gVHorasTemp.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gVHorasTemp_CellClick);
+            // 
+            // dia
+            // 
+            this.dia.HeaderText = "Dia";
+            this.dia.MaxInputLength = 15;
+            this.dia.Name = "dia";
+            this.dia.ReadOnly = true;
+            this.dia.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.dia.Width = 95;
+            // 
+            // horaInicio
+            // 
+            this.horaInicio.HeaderText = "Hora inicio";
+            this.horaInicio.Name = "horaInicio";
+            this.horaInicio.ReadOnly = true;
+            // 
+            // horaFin
+            // 
+            this.horaFin.HeaderText = "Hora fin";
+            this.horaFin.Name = "horaFin";
+            this.horaFin.ReadOnly = true;
+            // 
+            // lugar
+            // 
+            this.lugar.HeaderText = "Lugar";
+            this.lugar.Name = "lugar";
+            this.lugar.ReadOnly = true;
+            // 
+            // borrar
+            // 
+            this.borrar.HeaderText = "Borrar";
+            this.borrar.Name = "borrar";
+            this.borrar.ReadOnly = true;
+            this.borrar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.borrar.Text = "Borrar";
+            this.borrar.Width = 53;
             // 
             // grpBoxTurno
             // 
@@ -336,7 +373,7 @@
             this.grpBoxTurno.Size = new System.Drawing.Size(760, 148);
             this.grpBoxTurno.TabIndex = 70;
             this.grpBoxTurno.TabStop = false;
-            this.grpBoxTurno.Text = "Turno";
+            this.grpBoxTurno.Text = "Modificar turno";
             this.grpBoxTurno.Visible = false;
             // 
             // lblMenorTurno
@@ -540,42 +577,6 @@
             this.label18.Size = new System.Drawing.Size(258, 13);
             this.label18.TabIndex = 73;
             this.label18.Text = "Añade, borra y modifica los turnos de tus actividades.";
-            // 
-            // dia
-            // 
-            this.dia.HeaderText = "Dia";
-            this.dia.MaxInputLength = 15;
-            this.dia.Name = "dia";
-            this.dia.ReadOnly = true;
-            this.dia.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.dia.Width = 95;
-            // 
-            // horaInicio
-            // 
-            this.horaInicio.HeaderText = "Hora inicio";
-            this.horaInicio.Name = "horaInicio";
-            this.horaInicio.ReadOnly = true;
-            // 
-            // horaFin
-            // 
-            this.horaFin.HeaderText = "Hora fin";
-            this.horaFin.Name = "horaFin";
-            this.horaFin.ReadOnly = true;
-            // 
-            // lugar
-            // 
-            this.lugar.HeaderText = "Lugar";
-            this.lugar.Name = "lugar";
-            this.lugar.ReadOnly = true;
-            // 
-            // borrar
-            // 
-            this.borrar.HeaderText = "Borrar";
-            this.borrar.Name = "borrar";
-            this.borrar.ReadOnly = true;
-            this.borrar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.borrar.Text = "Borrar";
-            this.borrar.Width = 53;
             // 
             // ClientGestTurno
             // 

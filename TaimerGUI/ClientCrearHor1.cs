@@ -105,12 +105,12 @@ namespace TaimerGUI
         private void loadActividadesMatriculadas() {
             dataGridMyAct.Rows.Clear();
             foreach (Actividad obj in usrAux.ActPersonales) {
-                dataGridMyAct.Rows.Add(obj.Codigo, obj.Nombre, obj.Descripcion);
+                dataGridMyAct.Rows.Add(obj.Nombre, obj.Descripcion);
                 dataGridMyAct.Rows[dataGridMyAct.Rows.Count - 1].Tag = obj;
             }
             dataGridActHor.Rows.Clear();
             foreach (Actividad obj in usrAux.ActAcademicas) {
-                dataGridMyAct.Rows.Add(obj.Codigo, obj.Nombre, obj.Descripcion);
+                dataGridMyAct.Rows.Add(obj.Nombre, obj.Descripcion);
                 dataGridMyAct.Rows[dataGridMyAct.Rows.Count - 1].Tag = obj;
             }
         }
@@ -119,13 +119,13 @@ namespace TaimerGUI
             dataGridMyAct.Rows.Clear();
             foreach (Actividad obj in usrAux.ActPersonales) {
                 if (obj.Nombre.ToLower().Contains(nom) && !isInGrid(obj.Codigo.ToString(), dataGridActHor)) {
-                    dataGridMyAct.Rows.Add(obj.Codigo, obj.Nombre, obj.Descripcion);
+                    dataGridMyAct.Rows.Add(obj.Nombre, obj.Descripcion);
                     dataGridMyAct.Rows[dataGridMyAct.Rows.Count - 1].Tag = obj;
                 }
             }
             foreach (Actividad obj in usrAux.ActAcademicas) {
                 if (obj.Nombre.ToLower().Contains(nom) && !isInGrid(obj.Codigo.ToString(), dataGridActHor)) {
-                    dataGridMyAct.Rows.Add(obj.Codigo, obj.Nombre, obj.Descripcion);
+                    dataGridMyAct.Rows.Add(obj.Nombre, obj.Descripcion);
                     dataGridMyAct.Rows[dataGridMyAct.Rows.Count - 1].Tag = obj;
                 }
             }
@@ -190,6 +190,9 @@ namespace TaimerGUI
         }
 
         private void dataGridMyAct_CellClick(object sender, DataGridViewCellEventArgs e) {
+            if (e.RowIndex >= 0) {
+               // dataGridMyAct.Rows[e.RowIndex].HeaderCell.
+            }
         }
 
     }

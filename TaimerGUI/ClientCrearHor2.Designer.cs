@@ -79,9 +79,9 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(12, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(186, 31);
+            this.label1.Size = new System.Drawing.Size(302, 31);
             this.label1.TabIndex = 12;
-            this.label1.Text = "Crear horario";
+            this.label1.Text = "Taimer - Crear horario";
             // 
             // chkBxLunes
             // 

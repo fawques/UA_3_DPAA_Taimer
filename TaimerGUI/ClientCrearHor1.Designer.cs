@@ -30,12 +30,10 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridMyAct = new System.Windows.Forms.DataGridView();
-            this.colCodigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colNombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colDescripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblNombre = new System.Windows.Forms.Label();
             this.dataGridActHor = new System.Windows.Forms.DataGridView();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnRight = new System.Windows.Forms.Button();
@@ -60,9 +58,9 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(12, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(186, 31);
+            this.label1.Size = new System.Drawing.Size(302, 31);
             this.label1.TabIndex = 12;
-            this.label1.Text = "Crear horario";
+            this.label1.Text = "Taimer - Crear horario";
             // 
             // dataGridMyAct
             // 
@@ -72,23 +70,15 @@
             this.dataGridMyAct.BackgroundColor = System.Drawing.Color.Wheat;
             this.dataGridMyAct.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridMyAct.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.colCodigo,
             this.colNombre,
             this.colDescripcion});
             this.dataGridMyAct.Location = new System.Drawing.Point(12, 183);
             this.dataGridMyAct.Name = "dataGridMyAct";
             this.dataGridMyAct.ReadOnly = true;
+            this.dataGridMyAct.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridMyAct.Size = new System.Drawing.Size(347, 287);
             this.dataGridMyAct.TabIndex = 13;
             this.dataGridMyAct.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridMyAct_CellClick);
-            // 
-            // colCodigo
-            // 
-            this.colCodigo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.colCodigo.HeaderText = "Codigo";
-            this.colCodigo.Name = "colCodigo";
-            this.colCodigo.ReadOnly = true;
-            this.colCodigo.Width = 65;
             // 
             // colNombre
             // 
@@ -120,36 +110,35 @@
             // dataGridActHor
             // 
             this.dataGridActHor.AllowUserToAddRows = false;
+            this.dataGridActHor.AllowUserToDeleteRows = false;
             this.dataGridActHor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.dataGridActHor.BackgroundColor = System.Drawing.Color.Wheat;
             this.dataGridActHor.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridActHor.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column4,
             this.Column5,
             this.Column6});
             this.dataGridActHor.Location = new System.Drawing.Point(425, 183);
             this.dataGridActHor.Name = "dataGridActHor";
             this.dataGridActHor.ReadOnly = true;
+            this.dataGridActHor.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridActHor.Size = new System.Drawing.Size(347, 287);
             this.dataGridActHor.TabIndex = 15;
             // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "Codigo";
-            this.Column4.Name = "Column4";
-            this.Column4.ReadOnly = true;
-            // 
             // Column5
             // 
+            this.Column5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.Column5.HeaderText = "Nombre";
             this.Column5.Name = "Column5";
             this.Column5.ReadOnly = true;
+            this.Column5.Width = 69;
             // 
             // Column6
             // 
+            this.Column6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.Column6.HeaderText = "Descipcion";
             this.Column6.Name = "Column6";
             this.Column6.ReadOnly = true;
+            this.Column6.Width = 85;
             // 
             // btnRight
             // 
@@ -329,16 +318,14 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtBoxFiltrMy;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
         private System.Windows.Forms.TextBox tBxNombre;
         private System.Windows.Forms.Label lblErrorNombre;
         private System.Windows.Forms.Label lblErrorActiv;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colCodigo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colNombre;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colDescripcion;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colNombre;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colDescripcion;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
     }
 }

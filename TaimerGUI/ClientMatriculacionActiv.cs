@@ -20,7 +20,7 @@ namespace TaimerGUI {
         private void loadMatriculadas() {
             dataGridMatric.Rows.Clear();
             foreach (Actividad_a act in usrAux.ActAcademicas) {
-                dataGridMatric.Rows.Add(act.Codigo.ToString(), act.Nombre, act.Descripcion);
+                dataGridMatric.Rows.Add(act.Nombre, act.Descripcion);
                 dataGridMatric.Rows[dataGridMatric.Rows.Count - 1].Tag = act;
             }
         }
@@ -29,7 +29,7 @@ namespace TaimerGUI {
             dataGridActuales.Rows.Clear();
             foreach (Actividad_a act in Program.Asignaturas) {
                 if (!usrAux.ActAcademicas.Contains(act)) {
-                    dataGridActuales.Rows.Add(act.Codigo.ToString(), act.Nombre, act.Descripcion);
+                    dataGridActuales.Rows.Add(act.Nombre, act.Descripcion);
                     dataGridActuales.Rows[dataGridActuales.Rows.Count-1].Tag = act;
                 }
             }
@@ -152,7 +152,7 @@ namespace TaimerGUI {
                     if (!usrAux.ActAcademicas.Contains(obj) &&
                         (obj.Nombre.ToLower().Contains(nom) || obj.Descripcion.ToLower().Contains(nom) || obj.NombreCoordinador.ToLower().Contains(nom)))
                     {
-                        dataGridActuales.Rows.Add(obj.Codigo.ToString(), obj.Nombre, obj.Descripcion);
+                        dataGridActuales.Rows.Add(obj.Nombre, obj.Descripcion);
                         dataGridActuales.Rows[dataGridActuales.Rows.Count - 1].Tag = obj;
                     }
                 }
@@ -174,7 +174,7 @@ namespace TaimerGUI {
                 {
                     if (obj.Nombre.ToLower().Contains(nom) || obj.Descripcion.ToLower().Contains(nom) || obj.NombreCoordinador.ToLower().Contains(nom))
                     {
-                        dataGridMatric.Rows.Add(obj.Codigo.ToString(), obj.Nombre, obj.Descripcion);
+                        dataGridMatric.Rows.Add(obj.Nombre, obj.Descripcion);
                         dataGridMatric.Rows[dataGridMatric.Rows.Count - 1].Tag = obj;
                     }
                 }

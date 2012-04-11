@@ -54,9 +54,22 @@ namespace TaimerGUI {
 
             Taimer.Hora horI = new Taimer.Hora((int)nmUpDwnHorDesde.Value, (int)nmUpDwnMinDesde.Value);
             Taimer.Hora horF = new Taimer.Hora((int)nmUpDwnHorHasta.Value, (int)nmUpDwnMinHasta.Value);
+            bool todoBien = true;
 
+            if (horI < horF) {
+                lblErrorDate.Visible = false;
+            } else {
+                lblErrorDate.Visible = true;
+                todoBien = false;
+            }
+            if (txtBoxLugar.Text == "") {
+                lbErrUbi.Visible = true;
+                todoBien = false;
+            } else {
+                lbErrUbi.Visible = false;
+            }
 
-            if (horI < horF && txtBoxLugar.Text != "") {
+            if (todoBien) {
                 gVHorasTemp.Rows.Add(comboBoxDia.Text, horI.toString(), horF.toString(), txtBoxLugar.Text);
 
                 Turno turnAux = new Turno(horI, horF, TaimerLibrary.convertToDais(comboBoxDia.Text), txtBoxLugar.Text);
@@ -70,14 +83,9 @@ namespace TaimerGUI {
 
                 lblErrorDate.Visible = false;
                 txtBoxLugar.Text = "";
+                comboBoxDia.SelectedIndex = 0;
                 lbErrUbi.Visible = false;
                 loadActividad(actividad);
-            } else if (txtBoxLugar.Text == "") {
-                lblErrorDate.Visible = false;
-                lbErrUbi.Visible = true;
-            } else {
-                lbErrUbi.Visible = false;
-                lblErrorDate.Visible = true;
             }
 
         }
