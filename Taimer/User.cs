@@ -326,8 +326,6 @@ namespace Taimer {
             throw new MissingMemberException("No existe ninguna actividad con ese código.");
         }
 
-
-
         /// <summary>
         /// Añade un Horario a la lista de horarios
         /// </summary>
@@ -509,27 +507,94 @@ namespace Taimer {
         /// <param name="email"></param>
         /// <param name="pass"></param>
         /// <returns></returns>
-        public static bool CheckLogin(string email, string pass)
+        public static User CheckLoginUser(string email, string pass)
         {
             CADUser userCAD = new CADUser();
-            User user = UserToObject(userCAD.GetDatosUser(email, pass));
-            if (user == null)
+            try
             {
-                MessageBox.Show("Login incorrecto");
-                return false;
+                User user = UserToObject(userCAD.GetDatosUser(email, pass));
+                user.SetDatos();
+                return user;               
             }
-
-            MessageBox.Show("Login correcto");
-            return true;
+            catch (Exception)
+            {
+                throw;                
+            }            
         }
+
+        /// <summary>
+        /// Comprueba que el login de un determinado admin es correcto
+        /// </summary>
+        /// <param name="email"></param>
+        /// <param name="pass"></param>
+        /// <returns></returns>
+        public static User CheckLoginAdmin(string email, string pass)
+        {
+            CADAdmin adminCAD = new CADAdmin();
+            try
+            {
+                User user = UserToObject(adminCAD.GetDatosAdmin(email, pass));
+                user.SetDatos();
+                return user;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
         /// <summary>
         /// Relleno del campo Horarios desde la BD
         /// </summary>
-        public void RellenoHorarios()
+        private void SetHorarios()
         {
             CAD.CADHorario hor = new CADHorario();
             DataSet horarios = hor.GetDatosHorarioUser(dni);
             Horarios = Horario.HorariosToList(horarios);
+        }
+
+        /// <summary>
+        /// Completa la lista de actividades académicas matriculadas de un usuario
+        /// </summary>
+        private void SetAsignaturas()
+        {
+            CADUser user = new CADUser();
+            actAcademicas = Actividad_a.Actividades_aToList(user.GetMatriculadas(this.dni));
+        }
+
+        /// <summary>
+        /// Completa la lista de actividades personales creadas por un usuario
+        /// </summary>
+        private void SetActPersonales()
+        {
+            CADActividad_p act = new CADActividad_p();
+            actPersonales = Actividad_p.Actividades_pToList(act.GetActividades_pByUser(this.dni));
+        }
+
+        /// <summary>
+        /// Completa las listas de actividades académicas, de actividades personales y de horarios de un usuario
+        /// </summary>
+        public void SetDatos()
+        {
+            SetAsignaturas();
+            SetActPersonales();
+            SetHorarios();
+        }
+
+        /// <summary>
+        /// Obtiene la lista de todos los usuarios actuales
+        /// </summary>
+        /// <returns></returns>
+        public static List<User> GetAllUsers()
+        {
+            CADUser userCAD = new CADUser();
+            DataSet users = userCAD.GetUsers();
+            List<User> list = UsersToList(users);
+
+            foreach (User u in list)
+                u.SetDatos();
+
+            return list;
         }
         #endregion
     }

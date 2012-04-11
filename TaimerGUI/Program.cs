@@ -21,8 +21,7 @@ namespace TaimerGUI {
             //Esta función se llama en el main.
             usuarios = new List<User>();
             asignaturas = new List<Actividad_a>();
-            SetUsers();
-            SetAsignaturas();
+            SetDatos();
         }
 
         #endregion
@@ -117,48 +116,21 @@ namespace TaimerGUI {
 
 
         //Devuelve una actividad ya sea academica o personal a partir de código
-        //CAMBIAR CUANDO SE INTEGREN LOS CADs SERÁ MÁS RÁPIDO
-        public static Actividad getActividad(int codigo) {
-
-            foreach (Actividad_a aa in asignaturas) {
-                if (aa.Codigo == codigo)
-                    return aa;
-            }
-
-            foreach (User u in Usuarios) {
-                List<Actividad_p> act = u.ActPersonales;
-                foreach (Actividad ap in act) {
-                    if (ap.Codigo == codigo)
-                        return ap;
-                }
-            }
+        public static Actividad getActividad(int codigo) 
+        {
+                        
+        }
 
             throw new ArgumentException("No existe una activida con ese código");
-        }
+        }      
 
         /// <summary>
-        /// Completa la lista de usuarios con los actuales en la BD
+        /// Rellena las listas de usuarios, actividades y algoritmos
         /// </summary>
-        public static void SetUsers()
+        public static void SetDatos()
         {
-            CAD.CADUser userCAD = new CAD.CADUser();         
-            DataSet users = userCAD.GetUsers();
-            //user.RellenoHorarios();
-
-        }
-
-        /// <summary>
-        /// Completa la lista de asignaturas con las actuales en la BD
-        /// </summary>
-        public static void SetAsignaturas()
-        {
-            CAD.CADActividad_a actCAD = new CAD.CADActividad_a();
-            DataSet acts = actCAD.GetActividades_a();
-
-            asignaturas = Actividad_a.Actividades_aToList(acts);
-          
-            foreach (Actividad_a ac in asignaturas)
-                MessageBox.Show(ac.Descripcion);
+            usuarios = User.GetAllUsers();
+            asignaturas = Actividad_a.GetAllActividades_a();
         }
 
         public static LoginForm loginForm;
@@ -172,6 +144,7 @@ namespace TaimerGUI {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
+            Init();
             loginForm = new LoginForm();
             Application.Run(loginForm);
 

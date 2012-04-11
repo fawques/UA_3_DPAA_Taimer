@@ -247,7 +247,7 @@ namespace CAD
         /// </summary>
         /// <param name="dni">Dni del usuario que queremos matricular en una actividad</param>
         /// <param name="codigo">Código de la asignatura que queremos matricular</param>
-        public void Matricularse(string dni, int codigo)
+        public void Matricular(string dni, int codigo)
         {
             string comando = "INSERT INTO [User_Actividad_a](usuario,codigo_act) VALUES('" + dni + "', '" +codigo+ "')";
             SqlConnection c = null;
@@ -276,7 +276,7 @@ namespace CAD
         /// </summary>
         /// <param name="dni">Dni del usuario</param>
         /// <param name="cod">Codigo de la actividad</param>
-        public void Desmatricularse(string dni, int cod)
+        public void Desmatricular(string dni, int cod)
         {
             SqlConnection c = null;
             string comand = "DELETE FROM [User_Actividad_a] WHERE usuario= '" + dni + "' and codigo_act= '" + cod + "'";
@@ -303,7 +303,7 @@ namespace CAD
         /// </summary>
         /// <param name="dni">Dni del usuario</param>
         /// <returns></returns>
-        public DataSet GetActividades(string dni)
+        public DataSet GetMatriculadas(string dni)
         {
 
             SqlConnection con = null;

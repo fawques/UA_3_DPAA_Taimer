@@ -18,7 +18,7 @@ namespace BaseDeDatos
 
         private void button1_Click(object sender, EventArgs e)
         {            
-            Taimer.User.CheckLogin(textBox1.Text, textBox2.Text);
+            Taimer.User.CheckLoginUser(textBox1.Text, textBox2.Text);
         }
 
         private void button2_Click(object sender, EventArgs e)

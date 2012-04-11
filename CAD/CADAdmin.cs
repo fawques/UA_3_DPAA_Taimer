@@ -10,7 +10,7 @@ using System.Collections;
 
 namespace CAD
 {
-    class CADAdmin
+    public class CADAdmin
     {
         private static string conexionTBD;
         
@@ -135,6 +135,38 @@ namespace CAD
                 if (con != null) con.Close(); // Se asegura de cerrar la conexión.
             }
         }
+
+        /// <summary>
+        /// Obtiene los datos de un admin a partir de un email y un password (datos de login)
+        /// </summary>
+        /// <param name="dni"></param>
+        /// <returns></returns>
+        public DataSet GetDatosAdmin(string email, string pass)
+        {
+
+            SqlConnection con = null;
+            DataSet datos = null;
+            string comando = "Select * from [Admin] where email='" + email + "' and password='" + pass + "'";
+            try
+            {
+                con = new SqlConnection(conexionTBD);
+                SqlDataAdapter sqlAdaptador = new SqlDataAdapter(comando, con);
+                datos = new DataSet();
+                sqlAdaptador.Fill(datos);
+                return datos;
+
+            }
+            catch (SqlException)
+            {
+                // Captura la condición general y la reenvía.
+                throw;
+            }
+            finally
+            {
+                if (con != null) con.Close(); // Se asegura de cerrar la conexión.
+            }
+        }
+
         /// <summary>
         /// Modifica un admin
         /// </summary>

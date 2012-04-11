@@ -99,11 +99,6 @@ namespace Taimer {
             curso = act.curso;
         }
 
-        public Actividad_a()
-        {
-            // TODO: Complete member initialization
-        }
-
         /// <summary>
         /// Asigna/Devuelve el curso de la Actividad_a
         /// </summary>
@@ -239,10 +234,12 @@ namespace Taimer {
 
                     if (aux != null)
                     {
-                        nom = aux.Tables[0].Rows[0].ItemArray[0].ToString();
-                        desc = aux.Tables[0].Rows[0].ItemArray[1].ToString();
-
-                        list.Add(new Actividad_a(nom, desc, cod, prof, curso,tit));
+                        nom = aux.Tables[0].Rows[0].ItemArray[1].ToString();
+                        desc = aux.Tables[0].Rows[0].ItemArray[2].ToString();
+                        Actividad_a nueva = new Actividad_a(nom, desc, cod, prof, curso, tit);
+                        
+                        nueva.SetTurnos();
+                        list.Add(nueva);
                     }
                     else
                         return null;
@@ -263,8 +260,7 @@ namespace Taimer {
             {
                 CAD.CADActividad act = new CAD.CADActividad();
                 CAD.CADUser user = new CAD.CADUser();
-                User autor = new User();
-                Actividad_a acta = new Actividad_a();
+                User autor = new User();                
                 DataSet aux = new DataSet();
                 int cod, curso = 0;
                 string prof = "", tit = "", nom, desc = "";
@@ -285,18 +281,32 @@ namespace Taimer {
 
                     if (aux != null)
                     {
-                        nom = aux.Tables[0].Rows[0].ItemArray[0].ToString();
-                        desc = aux.Tables[0].Rows[0].ItemArray[1].ToString();
+                        nom = aux.Tables[0].Rows[0].ItemArray[1].ToString();
+                        desc = aux.Tables[0].Rows[0].ItemArray[2].ToString();
 
-                        acta = new Actividad_a(nom, desc, cod, prof,curso,tit);
-                    }
+                        Actividad_a acta = new Actividad_a(nom, desc, cod, prof,curso,tit);
+                        acta.SetTurnos();
+
+                        return acta;
+                    }                    
                     else
                         return null;
-                }
-                return acta;
+                }                
             }
             return null;
         }
+
+        /// <summary>
+        /// Obtiene la lista de todas las actividades académicas
+        /// </summary>
+        public static List<Actividad_a> GetAllActividades_a()
+        {
+            CAD.CADActividad_a actCAD = new CAD.CADActividad_a();
+            DataSet acts = actCAD.GetActividades_a();
+            
+            return Actividades_aToList(acts);
+        }
+
         #endregion
     }
 }
