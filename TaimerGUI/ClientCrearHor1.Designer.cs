@@ -230,11 +230,11 @@
             // lblErrorNombre
             // 
             this.lblErrorNombre.AutoSize = true;
-            this.lblErrorNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblErrorNombre.ForeColor = System.Drawing.Color.Red;
+            this.lblErrorNombre.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold);
+            this.lblErrorNombre.ForeColor = System.Drawing.Color.Maroon;
             this.lblErrorNombre.Location = new System.Drawing.Point(258, 106);
             this.lblErrorNombre.Name = "lblErrorNombre";
-            this.lblErrorNombre.Size = new System.Drawing.Size(92, 12);
+            this.lblErrorNombre.Size = new System.Drawing.Size(103, 13);
             this.lblErrorNombre.TabIndex = 26;
             this.lblErrorNombre.Text = "No puede estar vacio";
             this.lblErrorNombre.Visible = false;
@@ -242,11 +242,11 @@
             // lblErrorActiv
             // 
             this.lblErrorActiv.AutoSize = true;
-            this.lblErrorActiv.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblErrorActiv.ForeColor = System.Drawing.Color.Red;
+            this.lblErrorActiv.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold);
+            this.lblErrorActiv.ForeColor = System.Drawing.Color.Maroon;
             this.lblErrorActiv.Location = new System.Drawing.Point(680, 165);
             this.lblErrorActiv.Name = "lblErrorActiv";
-            this.lblErrorActiv.Size = new System.Drawing.Size(92, 12);
+            this.lblErrorActiv.Size = new System.Drawing.Size(103, 13);
             this.lblErrorActiv.TabIndex = 27;
             this.lblErrorActiv.Text = "No puede estar vacio";
             this.lblErrorActiv.Visible = false;

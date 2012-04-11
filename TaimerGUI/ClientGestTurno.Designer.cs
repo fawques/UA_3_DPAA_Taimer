@@ -120,11 +120,11 @@
             // lbErrUbi
             // 
             this.lbErrUbi.AutoSize = true;
-            this.lbErrUbi.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbErrUbi.ForeColor = System.Drawing.Color.Red;
-            this.lbErrUbi.Location = new System.Drawing.Point(16, 53);
+            this.lbErrUbi.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbErrUbi.ForeColor = System.Drawing.Color.Maroon;
+            this.lbErrUbi.Location = new System.Drawing.Point(24, 53);
             this.lbErrUbi.Name = "lbErrUbi";
-            this.lbErrUbi.Size = new System.Drawing.Size(156, 13);
+            this.lbErrUbi.Size = new System.Drawing.Size(145, 13);
             this.lbErrUbi.TabIndex = 65;
             this.lbErrUbi.Text = "El campo no puede estar vacío";
             this.lbErrUbi.Visible = false;
@@ -132,7 +132,8 @@
             // 
             // lblErrorDate
             // 
-            this.lblErrorDate.ForeColor = System.Drawing.Color.Red;
+            this.lblErrorDate.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold);
+            this.lblErrorDate.ForeColor = System.Drawing.Color.Maroon;
             this.lblErrorDate.Location = new System.Drawing.Point(16, 195);
             this.lblErrorDate.Name = "lblErrorDate";
             this.lblErrorDate.Size = new System.Drawing.Size(166, 32);
@@ -378,7 +379,8 @@
             // 
             // lblMenorTurno
             // 
-            this.lblMenorTurno.ForeColor = System.Drawing.Color.Red;
+            this.lblMenorTurno.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold);
+            this.lblMenorTurno.ForeColor = System.Drawing.Color.Maroon;
             this.lblMenorTurno.Location = new System.Drawing.Point(26, 106);
             this.lblMenorTurno.Name = "lblMenorTurno";
             this.lblMenorTurno.Size = new System.Drawing.Size(166, 32);

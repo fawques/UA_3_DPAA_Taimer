@@ -153,11 +153,11 @@
             // lblErrorNombre
             // 
             this.lblErrorNombre.AutoSize = true;
-            this.lblErrorNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblErrorNombre.ForeColor = System.Drawing.Color.Red;
+            this.lblErrorNombre.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold);
+            this.lblErrorNombre.ForeColor = System.Drawing.Color.Maroon;
             this.lblErrorNombre.Location = new System.Drawing.Point(218, 136);
             this.lblErrorNombre.Name = "lblErrorNombre";
-            this.lblErrorNombre.Size = new System.Drawing.Size(92, 12);
+            this.lblErrorNombre.Size = new System.Drawing.Size(103, 13);
             this.lblErrorNombre.TabIndex = 58;
             this.lblErrorNombre.Text = "No puede estar vacio";
             this.lblErrorNombre.Visible = false;
