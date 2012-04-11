@@ -90,7 +90,7 @@ namespace Taimer {
         /// <param name="pass_">Constraseña del usuario</param>
         /// <param name="curso_">Curso del usuario</param>
         /// <param name="tit_">Titulación del usuario</param>
-        public User(string nom_, string dni_, string email_, string pass_, int curso_, string tit_,int codH_) {
+        public User(string nom_, string dni_, string email_, string pass_, int curso_, string tit_,int codH_ = 0) {
             nombre = nom_;
             dni = dni_;
             password = pass_;
@@ -134,7 +134,7 @@ namespace Taimer {
             actAcademicas = acta_;
             actPersonales = actp_;
             horarios = hor_;
-            codActPers = (-1 * actPersonales.Count) + 1;
+            //codActPers = (-1 * actPersonales.Count) + 1;
         }
      
         /// <summary>
@@ -164,13 +164,8 @@ namespace Taimer {
             {
                 Horarios.Add(h);
             }
-            codActPers = u.codActPers;
+            //codActPers = u.codActPers;
             titulacion = u.titulacion;
-        }
-
-        public User()
-        {
-            // TODO: Complete member initialization
         }
 
 

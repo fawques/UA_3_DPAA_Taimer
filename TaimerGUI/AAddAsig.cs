@@ -113,13 +113,18 @@ namespace TaimerGUI {
         }
 
         private void AAddAsig_Enter(object sender, EventArgs e) {
-            if (asig == null) {
-                asig = new Taimer.Actividad_a("", "", 0, "");
+            dgTurnos.Rows.Clear();
+            if (asig == null)
+            {
+                //asig = new Taimer.Actividad_a("", "", 0, "");
                 clearLabels();
             }
-            dgTurnos.Rows.Clear();
-            foreach (Taimer.Turno turno in asig.Turnos) {
-                dgTurnos.Rows.Add(turno.DiaString, turno.HoraInicio.toString(), turno.HoraFin.toString(), turno.Ubicacion);
+            else
+            {
+                foreach (Taimer.Turno turno in asig.Turnos)
+                {
+                    dgTurnos.Rows.Add(turno.DiaString, turno.HoraInicio.toString(), turno.HoraFin.toString(), turno.Ubicacion);
+                }
             }
 
         }

@@ -276,7 +276,7 @@ namespace Taimer {
             {
                 CAD.CADActividad act = new CAD.CADActividad();
                 CAD.CADUser user = new CAD.CADUser();
-                User autor = new User();
+                //User autor = new User();
                 DataSet aux = new DataSet();
                 int cod, curso = 1;
                 string prof = "", tit = "", nom, desc = "";

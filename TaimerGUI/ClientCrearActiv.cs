@@ -55,7 +55,7 @@ namespace TaimerGUI
                 {
                     if (actAux == null)
                     {
-                        actAux = new Actividad_p(tBNombre.Text, rTBDescripcion.Text, usrAux.CodActPers, usrAux);
+                        actAux = new Actividad_p(tBNombre.Text, rTBDescripcion.Text, usrAux);
                     }
                     actAux.Nombre = tBNombre.Text;
                     actAux.Descripcion = rTBDescripcion.Text;
@@ -106,7 +106,7 @@ namespace TaimerGUI
         {
             if (actAux == null)
             {
-                actAux = new Actividad_p(tBNombre.Text, rTBDescripcion.Text, usrAux.CodActPers, usrAux);
+                actAux = new Actividad_p(tBNombre.Text, rTBDescripcion.Text,usrAux);
             }
             this.formGestTurnos.reiniciar();
             this.formGestTurnos.setFormPadre(this);
