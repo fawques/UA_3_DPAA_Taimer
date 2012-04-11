@@ -18,6 +18,7 @@ namespace TaimerGUI {
 
         public void initPanelHorario(int minHor, int maxHor) {
 
+            pnlHoras.Controls.Clear();
             Hora hora = new Hora(0, 0);
             int posY = 0;
             int horAux = minHor;
