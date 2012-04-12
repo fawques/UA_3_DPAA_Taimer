@@ -222,8 +222,11 @@ namespace TaimerGUI
         //Puente para no tardar tanto en abrir la ventana
         private void button1_Click(object sender, EventArgs e)
         {
+            Program.Usuarios.Add(User.CheckLoginUser("alberto@alberto.es", "alberto"));
+            if (Program.Usuarios.Count != 1)
+                throw new Exception();
             ClientForm client = new ClientForm(null);
-            Program.Usuarios[0] = User.CheckLoginUser("alberto@alberto.es", "alberto");
+            
             client.Show();
             this.Hide();
         }

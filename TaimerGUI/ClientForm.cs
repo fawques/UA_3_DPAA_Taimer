@@ -32,7 +32,6 @@ namespace TaimerGUI {
             InitializeComponent();
             // Aquí debería llamar a la función que cargue desde la BD
             usuario = Program.Usuarios[0];
-            asignarActividadesUser();
 
             //Redondeado de bordes
             //shape = RoundedRectangle.Create(0, 0, this.Width, this.Height, 10);
@@ -41,14 +40,6 @@ namespace TaimerGUI {
 
         public User getUsuario() {
             return usuario;
-        }
-
-        //FUNCION SOLO PARA DEBUG, LUEGO BORRAR
-        private void asignarActividadesUser() {
-            foreach (Taimer.Actividad_a item in Program.Asignaturas)
-            {
-                usuario.AddActAcademica(item);
-            }
         }
         
         private void ClientForm_Load(object sender, EventArgs e)
