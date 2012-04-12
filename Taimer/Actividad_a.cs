@@ -93,11 +93,13 @@ namespace Taimer {
         /// Constructor de copia
         /// </summary>
         /// <param name="act">Actividad_a que se desea copiar</param>
-        public Actividad_a(Actividad_a act):base(act)
+        public Actividad_a(Actividad_a act)
+            : base(act)
         {
             // el constructor de copia de la clase base ya llama a CopiarDesde
             nombreCoordinador = act.nombreCoordinador;
             curso = act.curso;
+        }
 
         /// <summary>
         /// Copia una actividad_a en otra, sin necesidad de crearla. Llama a CopiarDesde de la clase Actividad, y añade lo específico para Actividad_a
