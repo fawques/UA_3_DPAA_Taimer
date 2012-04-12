@@ -165,6 +165,7 @@ namespace Taimer {
             {
                 Horarios.Add(h);
             }
+
             //codActPers = u.codActPers;
             titulacion = u.titulacion;
         }
@@ -266,6 +267,7 @@ namespace Taimer {
         /// <param name="act">Activdad que se desea borrar</param>
         /// <returns>Devuelve TRUE si se ha borrado y FALSE en caso contrario</returns>
         public bool BorraActAcademicaBool(Actividad_a act) {
+
             try {
                 CADUser usr = new CADUser();
                 usr.Desmatricular(dni, act.Codigo);
@@ -288,7 +290,6 @@ namespace Taimer {
                 throw new MissingMemberException("No existe la actividad académica que se desea borrar.");
             CADUser usr = new CADUser();
             usr.Desmatricular(dni, act.Codigo);
-
         }
 
 
@@ -435,6 +436,7 @@ namespace Taimer {
         {
             if(!BorraHorarioBool(idbuscado))
                 throw new MissingMemberException("No existe el horario que se desea borrar.");
+
             foreach (Horario h in horarios) {
                 if (h.ID == idbuscado)
                     h.Borrar();
@@ -449,7 +451,6 @@ namespace Taimer {
         {
             CADUser user = new CADUser();
             user.CrearUserAll(dni, nombre, email, password, curso, titulacion, codHorarios);
-
         }
 
         /// <summary>
@@ -589,8 +590,8 @@ namespace Taimer {
         private void SetHorarios()
         {
             CAD.CADHorario hor = new CADHorario();
-            DataSet horarios = hor.GetDatosHorarioUser(dni);
-            Horarios = Horario.HorariosToList(horarios);
+            DataSet data = hor.GetDatosHorarioUser(dni);            
+            horarios = Horario.HorariosToList(data, this);
         }
 
         /// <summary>
@@ -609,7 +610,8 @@ namespace Taimer {
         private void SetActPersonales()
         {
             CADActividad_p act = new CADActividad_p();
-            actPersonales = Actividad_p.Actividades_pToList(act.GetActividades_pByUser(this.dni));
+            actPersonales = Actividad_p.Actividades_pToList(act.GetActividades_pByUser(this.dni),this);
+            //actPersonales = Actividad_p.Actividades_pToList(act.GetActividades_pByUser(this.dni));
         }
 
         /// <summary>
@@ -618,8 +620,8 @@ namespace Taimer {
         public void SetDatos()
         {
             SetActAcademicas();
-            //SetActPersonales();
-            //SetHorarios();
+            SetActPersonales();
+            SetHorarios();
         }
 
         /// <summary>
@@ -637,3 +639,4 @@ namespace Taimer {
         #endregion
     }
 }
+

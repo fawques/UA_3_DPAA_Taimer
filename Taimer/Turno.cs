@@ -647,17 +647,109 @@ namespace Taimer {
         }
 
         /// <summary>
+        /// Convierte un objeto DataSet que contiene un turno en un objeto Turno
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
+        public static Turno TurnoToObject(DataSet data)
+        {
+            if (data != null)
+            {
+                CAD.CADActividad_a actACAD = new CAD.CADActividad_a();
+                CAD.CADActividad_p actPCAD = new CAD.CADActividad_p();
+  
+                DataSet aux = new DataSet();
+                Turno turno;
+                int cod, pertenece;
+                string dia;
+                string ubic;
+                Hora inicio;
+                Hora fin;
+
+                DataRowCollection rows = data.Tables[0].Rows;
+
+                cod = (int)rows[0].ItemArray[0];
+                inicio = new Hora(rows[0].ItemArray[1].ToString());
+                fin = new Hora(rows[0].ItemArray[2].ToString());
+                dia = rows[0].ItemArray[3].ToString();
+                ubic = rows[0].ItemArray[4].ToString();
+                pertenece = (int)rows[0].ItemArray[5];
+
+                if (pertenece > 0)
+                {
+                    aux = actACAD.GetDatosActividad_a(pertenece);
+                    turno=new Turno(cod, inicio, fin, dia, ubic, Actividad_a.Actividad_aToObject(aux));
+                    return turno;
+                }
+                else
+                {
+                    aux = actPCAD.GetDatosActividad_p(pertenece);
+                    turno=new Turno(cod, inicio, fin, dia, ubic, Actividad_p.Actividad_pToObject(aux));
+                    return turno;
+                }                
+            }
+            return null;
+        }
+
+        /// <summary>
         /// Convierte un objeto DataSet que contiene un conjunto de turnos en una lista de objetos Turno
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
         public static List<Turno> TurnosToList(DataSet data)
-        {   
-            /*if (data != null)
+        {
+            if (data != null)
             {
                 CAD.CADActividad_a actACAD = new CAD.CADActividad_a();
-                CAD.CADActividad_p actPCAD = new CAD.CADActividad_p();
-                CAD.CADTurno turn = new CAD.CADTurno();
+                CAD.CADActividad_p actPCAD = new CAD.CADActividad_p();                
+                DataSet aux = new DataSet();
+                List<Turno> list = new List<Turno>();
+
+                int cod, pertenece;
+                string dia;
+                string ubic;
+                Hora inicio;
+                Hora fin;
+
+                DataRowCollection rows = data.Tables[0].Rows;
+
+                for (int i = 0; i < rows.Count; i++)
+                {
+                    cod = (int)rows[i].ItemArray[0];
+                    inicio = new Hora(rows[i].ItemArray[1].ToString());
+                    fin = new Hora(rows[i].ItemArray[2].ToString());
+                    dia = rows[i].ItemArray[3].ToString();
+                    ubic = rows[i].ItemArray[4].ToString();
+                    pertenece = (int)rows[i].ItemArray[5];
+
+                    if (pertenece > 0)
+                    {                       
+                        aux = actACAD.GetDatosActividad_a(pertenece);                        
+                        list.Add(new Turno(cod, inicio, fin, dia, ubic, Actividad_a.Actividad_aToObject(aux)));
+                    }
+                    else
+                    {
+                        aux = actPCAD.GetDatosActividad_p(pertenece);                       
+                        list.Add(new Turno(cod, inicio, fin, dia, ubic, Actividad_p.Actividad_pToObject(aux)));
+                    }
+                }
+                return list;
+            }
+            return null;
+        }
+
+        /// <summary>
+        /// Convierte un objeto DataSet que contiene un conjunto de turnos en una lista de objetos Turno,
+        /// recibe también una actividad, que será a la que pertenezcan todos lo turnos de la lista
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
+        public static List<Turno> TurnosToList(DataSet data, Actividad act)
+        {            
+            if (data != null)
+            {
+                CAD.CADActividad_a actACAD = new CAD.CADActividad_a();
+                CAD.CADActividad_p actPCAD = new CAD.CADActividad_p();                
                 DataSet aux = new DataSet();
                 List<Turno> list = new List<Turno>();
 
@@ -677,24 +769,31 @@ namespace Taimer {
                     dia = rows[i].ItemArray[3].ToString();
                     ubic = rows[i].ItemArray[4].ToString();                    
                     pertenece = (int)rows[i].ItemArray[5];
-
-                    if (pertenece > 0)
-                    {
-                        aux = actACAD.GetDatosActividad_a(pertenece);                        
-                        list.Add(new Turno(cod, inicio, fin, dia, ubic, Actividad_a.Actividad_aToObject(aux)));
-                    }
-                    else
-                    {
-                        aux = actPCAD.GetDatosActividad_p(pertenece);                       
-                        list.Add(new Turno(cod, inicio, fin, dia, ubic, Actividad_p.Actividad_pToObject(aux)));
-                    }
+                             
+                    list.Add(new Turno(cod, inicio, fin, dia, ubic, act)); //Actividad_a.Actividad_aToObject(aux)));
                 }
                 return list;
-            }*/
+            }
             return null;
         }
 
+        public static List<Turno> CodesToList(DataSet data)
+        {
+            DataRowCollection rows = data.Tables[0].Rows;
+            List<Turno> list = new List<Turno>();
+            CADTurno turno = new CADTurno();
+            DataSet aux = new DataSet();
+            int cod, act;            
 
+            for (int i = 0; i < rows.Count; i++)
+            {
+                cod = (int)rows[i].ItemArray[0];
+                act = (int)rows[i].ItemArray[1];
+                aux = turno.GetDatosTurno(cod, act);
+                list.Add(TurnoToObject(aux));
+            }
+            return list;
+        }
         #endregion
     }
 }

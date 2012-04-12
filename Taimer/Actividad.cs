@@ -162,7 +162,6 @@ namespace Taimer {
 
         /// <summary>
         /// Borrar un turno
-        /// Lo borra tambien de la BD
         /// </summary>
         /// <param name="turno"> Turno que se quiere borrar </param>
         /// <returns> Devuelve TRUE si se ha borrado FALSE en caso contrario </returns>
@@ -179,7 +178,6 @@ namespace Taimer {
 
         /// <summary>
         /// Borrar un turno
-        /// Lo borra tambien de la BD
         /// Lanaza excepción si no se puede borrar el turno
         /// </summary>
         /// <param name="turno"> Turno que se quiere borrar </param>
@@ -271,9 +269,14 @@ namespace Taimer {
         {
             CAD.CADTurno turno = new CAD.CADTurno();
             DataSet data=turno.GetTurnosByAct(codigo);            
-            turnos = Turno.TurnosToList(data);            
+            turnos = Turno.TurnosToList(data,this);            
+        }
+
+        public Actividad()
+        {
         }
 
         #endregion
     }
 }
+

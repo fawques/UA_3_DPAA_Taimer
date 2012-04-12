@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Data;
+using System.Windows.Forms;
 
 namespace Taimer
 {
@@ -454,7 +455,7 @@ namespace Taimer
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
-        public static List<Horario> HorariosToList(DataSet data)
+        public static List<Horario> HorariosToList(DataSet data, User autor)
         {
             if (data != null)
             {
@@ -471,13 +472,27 @@ namespace Taimer
                     id = (int)rows[i].ItemArray[0];
                     titulo = rows[i].ItemArray[1].ToString();
                     usuario = rows[i].ItemArray[2].ToString();
-                    aux = user.GetDatosUser(usuario);
-                    list.Add(new Horario(id, titulo, User.UserToObject(aux)));
-                }
+                    
+                    list.Add(new Horario(id, titulo, autor));
+                }                
                 return list;
             }
             return null;
         }
+
+        public void SetTurnos()
+        {
+            CADTurno turno = new CADTurno();
+            DataSet data = turno.GetTurnosByHorario(this.ID, this.Usuario.DNI);
+            List<Turno> list = Turno.TurnosToList(data);
+            MessageBox.Show(list.Count + "");
+            /*
+            foreach (Turno t in list)
+            {
+
+            }*/
+        }
+
         #endregion
     }
 }

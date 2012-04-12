@@ -32,10 +32,20 @@ namespace BaseDeDatos
             CAD.CADTurno turnoCAD = new CAD.CADTurno();             
             List<Taimer.Turno> turnos;
 
-            turnos = Taimer.Turno.TurnosToList(turnoCAD.GetTurnosByAct(Convert.ToInt16(textBox3.Text)));
+           // turnos = Taimer.Turno.TurnosToList(turnoCAD.GetTurnosByAct(Convert.ToInt16(textBox3.Text)));
 
-            foreach (Taimer.Turno turn in turnos)
-                MessageBox.Show(""+turn.Codigo);
+           // foreach (Taimer.Turno turn in turnos)
+             //   MessageBox.Show(""+turn.Codigo);
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            CAD.CADTurno turnoCAD = new CAD.CADTurno();
+            List<Taimer.Turno> turnos;
+            DataSet data=turnoCAD.GetTurnosByHorario(Convert.ToInt16(textBox4.Text),textBox5.Text);
+            turnos = Taimer.Turno.CodesToList(data);
+
+            MessageBox.Show("El horario " + textBox4.Text + "," + textBox5.Text + " tiene " + turnos.Count + " turnos");
         }
     }
 }
