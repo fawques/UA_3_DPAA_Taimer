@@ -98,12 +98,6 @@ namespace Taimer {
             // el constructor de copia de la clase base ya llama a CopiarDesde
             nombreCoordinador = act.nombreCoordinador;
             curso = act.curso;
-        }
-
-        public Actividad_a()
-        {
-            // TODO: Complete member initialization
-        }
 
         /// <summary>
         /// Copia una actividad_a en otra, sin necesidad de crearla. Llama a CopiarDesde de la clase Actividad, y añade lo específico para Actividad_a
@@ -190,21 +184,7 @@ namespace Taimer {
             if (codigo == 0) //Codigo por defecto
                 codigo = UltimoCodigo + 1;
 
-            CADTitulacion tit = new CADTitulacion();
-            try {
-                tit.CrearTitulacion(titulacion);
-            }
-            catch {
-
-            }
-            finally {
-                act.CrearActivida_aAll(nombre, descripcion, codigo, nombreCoordinador, titulacion);
-                foreach (Turno t in turnos) {
-                    t.Actividad = this;
-                    AsignarCodigo(t);
-                    t.Agregar();
-                }
-            }
+            act.CrearActivida_aAll(nombre, descripcion, codigo, nombreCoordinador, titulacion);
 
         }
 

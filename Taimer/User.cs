@@ -164,6 +164,7 @@ namespace Taimer {
             {
                 Horarios.Add(h);
             }
+
             //codActPers = u.codActPers;
             titulacion = u.titulacion;
         }
@@ -405,16 +406,7 @@ namespace Taimer {
         public void Agregar()
         {
             CADUser user = new CADUser();
-            CADTitulacion tit = new CADTitulacion();
-            try {
-                tit.CrearTitulacion(titulacion);
-            }
-            catch {
-
-            }
-            finally {
-                user.CrearUserAll(dni, nombre, email, password, curso, titulacion, codHorarios);
-            }
+            user.CrearUserAll(dni, nombre, email, password, curso, titulacion, codHorarios);
 
         }
 
@@ -576,6 +568,7 @@ namespace Taimer {
         {
             CADActividad_p act = new CADActividad_p();
             actPersonales = Actividad_p.Actividades_pToList(act.GetActividades_pByUser(this.dni),this);
+//actPersonales = Actividad_p.Actividades_pToList(act.GetActividades_pByUser(this.dni));
         }
 
         /// <summary>
