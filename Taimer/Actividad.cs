@@ -162,16 +162,24 @@ namespace Taimer {
 
         /// <summary>
         /// Borrar un turno
+        /// Lo borra tambien de la BD
         /// </summary>
         /// <param name="turno"> Turno que se quiere borrar </param>
         /// <returns> Devuelve TRUE si se ha borrado FALSE en caso contrario </returns>
         public bool BorraTurnoBool(Turno turno) {
+            /*try {
+                turno.Borrar();
+            }
+            catch {
+                return false;
+            }*/
             return Turnos.Remove(turno);
         }
 
 
         /// <summary>
         /// Borrar un turno
+        /// Lo borra tambien de la BD
         /// Lanaza excepción si no se puede borrar el turno
         /// </summary>
         /// <param name="turno"> Turno que se quiere borrar </param>
@@ -180,6 +188,7 @@ namespace Taimer {
 
             if (!borrado)
                 throw new MissingMemberException("No existe el turno que se desea borrar.");
+           // turno.Borrar();
         }
 
         /// <summary>
@@ -189,8 +198,15 @@ namespace Taimer {
         /// <returns>Devuelve TRUE si se ha borrado y FALSE en caso contrario </returns>
         public bool BorraTurnoBool(int codigobuscado) {
             foreach (Turno t in turnos) {
-                if (t.Codigo == codigobuscado)
+                if (t.Codigo == codigobuscado) {
+                    /*try {
+                        t.Borrar();
+                    }
+                    catch {
+                        return false;
+                    }*/
                     return Turnos.Remove(t);
+                }
             }
             return false;
         }
@@ -207,6 +223,7 @@ namespace Taimer {
             foreach (Turno t in turnos) {
                 if (t.Codigo == codigobuscado) {
                     borrado = Turnos.Remove(t);
+                    //t.Borrar();
                     break;
                 }
             }

@@ -184,7 +184,6 @@ namespace Taimer {
         /// </summary>
         public void Borrar() {
             CADActividad_p act = new CADActividad_p();
-
             act.BorrarActividad_p(codigo);
         }
 

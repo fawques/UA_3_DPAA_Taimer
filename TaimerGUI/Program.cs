@@ -328,7 +328,7 @@ namespace TaimerGUI {
             loginForm = new LoginForm();
             Application.Run(loginForm);
 
-            ///prueba 1///
+            ///prueba 1: Insertar todo en la BD///
             
             /*User usr = new User("Madona", "0000006", "madona@gmail.com", "madonarules", 3, "II");
             usr.Agregar();
@@ -372,6 +372,54 @@ namespace TaimerGUI {
             Horario h2 = new Horario("Horario 2", usr);
             usr.AddHorario(h2);
             MessageBox.Show("Añade el Horario 2");*/
+
+            ///prueba 2: borrar una Actividad_p///
+           /* User usr = new User("Madona", "0000006", "madona@gmail.com", "madonarules", 3, "II");
+            usr.Agregar();
+
+            List<Turno> lt = new List<Turno>();
+            lt.Add(new Turno(new Hora(0, 0), new Hora(1, 0), dias.L, "Hospital"));
+            lt.Add(new Turno(new Hora(1, 0), new Hora(2, 0), dias.L, "Hospital"));
+            lt.Add(new Turno(new Hora(2, 0), new Hora(3, 0), dias.L, "Hospital"));
+            usr.AddActPersonal(new Actividad_p("medico", "dentista", lt));
+            MessageBox.Show("Ha metido la actividad medico");
+
+            usr.BorraActPersonal(usr.ActPersonales[0]);
+            MessageBox.Show("Borrada la Actividad_p");*/
+
+            ///prueba 3: borrar un horario///
+            /*User usr = new User("Madona", "0000006", "madona@gmail.com", "madonarules", 3, "II");
+            usr.Agregar();
+            Horario h = new Horario("H 1", usr);
+            Horario h2 = new Horario("H 2", usr);
+            usr.AddHorario(h);
+            usr.AddHorario(h2);
+            MessageBox.Show("Añadido los horarios");
+            usr.BorraHorario(usr.Horarios[0]);
+            MessageBox.Show("Borrado el horario");*/
+
+            ///Prueba 4: borrar una Actividad_a///
+            /*List<Turno> lt = new List<Turno>();
+            lt.Add(new Turno(new Hora(0, 0), new Hora(1, 0), dias.J, "ua"));
+            lt.Add(new Turno(new Hora(1, 0), new Hora(2, 0), dias.J, "ua"));
+            lt.Add(new Turno(new Hora(2, 0), new Hora(3, 0), dias.J, "ua"));
+            Actividad_a actA = new Actividad_a("Principios de vagueza", "no hacer nada", "Jack Black", lt, 1, "Cualquiera");
+            actA.Agregar();
+            MessageBox.Show("Añadida la Actividad_a");
+            actA.Borrar();
+            MessageBox.Show("Borrada la Actividad_a");*/
+
+            ///Prueba 5: borrar un turno de una actividad///
+            /*List<Turno> lt = new List<Turno>();
+            lt.Add(new Turno(new Hora(0, 0), new Hora(1, 0), dias.J, "ua"));
+            lt.Add(new Turno(new Hora(1, 0), new Hora(2, 0), dias.J, "ua"));
+            lt.Add(new Turno(new Hora(2, 0), new Hora(3, 0), dias.J, "ua"));
+            Actividad_a actA = new Actividad_a("Principios de vagueza", "no hacer nada", "Jack Black", lt, 1, "Cualquiera");
+            actA.Agregar();
+            MessageBox.Show("Añadida la Actividad_a");
+            actA.Turnos[0].Borrar();
+            actA.BorraTurno(0);
+            MessageBox.Show("Borrado turno");*/
 
 
         }

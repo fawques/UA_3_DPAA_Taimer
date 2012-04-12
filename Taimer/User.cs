@@ -261,22 +261,34 @@ namespace Taimer {
 
         /// <summary>
         ///  Borra una actividad académica (si existe). Devuelve valor booleano.
+        ///  La Borra también de la BD.
         /// </summary>
         /// <param name="act">Activdad que se desea borrar</param>
         /// <returns>Devuelve TRUE si se ha borrado y FALSE en caso contrario</returns>
         public bool BorraActAcademicaBool(Actividad_a act) {
+            try {
+                CADUser usr = new CADUser();
+                usr.Desmatricular(dni, act.Codigo);
+            }
+            catch {
+                return false;
+            }
             return actAcademicas.Remove(act);
         }
         
-        /// </summary>
+
         /// <summary>
         ///  Borra una actividad académica (si existe). Lanza excepción.
+        ///  La Borra también de la BD.
         /// </summary>
         /// <param name="act">Actividad que se desea borrar</param>
         public void BorraActAcademica(Actividad_a act)
         {
             if(!actAcademicas.Remove(act))
                 throw new MissingMemberException("No existe la actividad académica que se desea borrar.");
+            CADUser usr = new CADUser();
+            usr.Desmatricular(dni, act.Codigo);
+
         }
 
 
@@ -297,6 +309,12 @@ namespace Taimer {
         /// <returns>Devuelve TRUE si se ha borrado y FALSE en caso contrario</returns>
         public bool BorraActPersonalBool(Actividad_p act)
         {
+            try {
+                act.Borrar();
+            }
+            catch {
+                return false;
+            }
             return actPersonales.Remove(act);
         }
 
@@ -308,6 +326,7 @@ namespace Taimer {
         {
             if(!actPersonales.Remove(act))
                 throw new MissingMemberException("No existe la actividad personal que se desea borrar.");
+            act.Borrar();
         }
 
         /// <summary>
@@ -365,6 +384,12 @@ namespace Taimer {
         /// <param name="hor">Horario que se desea borrar</param>
         /// <returns>TRUE si borra el horario, FALSE en caso contrario.</returns>
         public bool BorraHorarioBool(Horario hor) {
+            try {
+                hor.Borrar();
+            }
+            catch {
+                return false;
+            }
             return horarios.Remove(hor);
         }
 
@@ -376,6 +401,7 @@ namespace Taimer {
         public void BorraHorario(Horario hor) {
             if(!horarios.Remove(hor))
                 throw new MissingMemberException("No existe el horario que se desea borrar.");
+            hor.Borrar();
         }
 
 
@@ -387,8 +413,15 @@ namespace Taimer {
         /// <returns>TRUE si consigue borrarlo, FALSE en caso contrario</returns>
         public bool BorraHorarioBool (int idbuscado) {
             foreach (Horario hor in horarios) {
-                if(hor.ID == idbuscado) 
+                if (hor.ID == idbuscado) {
+                    try {
+                        hor.Borrar();
+                    }
+                    catch {
+                        return false;
+                    }
                     return horarios.Remove(hor);
+                }
             }
             return false;
         }
@@ -402,6 +435,10 @@ namespace Taimer {
         {
             if(!BorraHorarioBool(idbuscado))
                 throw new MissingMemberException("No existe el horario que se desea borrar.");
+            foreach (Horario h in horarios) {
+                if (h.ID == idbuscado)
+                    h.Borrar();
+            }
         }
 
 
