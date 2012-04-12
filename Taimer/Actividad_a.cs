@@ -187,6 +187,11 @@ namespace Taimer {
 
             act.CrearActivida_aAll(nombre, descripcion, codigo, nombreCoordinador, titulacion);
 
+            foreach (Turno t in turnos) {
+                t.Actividad = this;
+                t.Agregar();
+            }
+
         }
 
         /// <summary>

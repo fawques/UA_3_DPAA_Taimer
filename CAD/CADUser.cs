@@ -220,9 +220,9 @@ namespace CAD
         /// <param name="email"></param>
         /// <param name="password"></param>
         /// <param name="tit"></param>
-        public void ModificaUser(string dni, string nombre, string email, string password, string tit)
+        public void ModificaUser(string dni, string nombre, string email, string password, string tit, int codHorarios)
         {
-            string comando = "UPDATE [User] SET nombre = '" + nombre + "', email = '" + email + "', password = '" + password + "', titulacion = '" + tit + "' WHERE dni = '" + dni + "'";
+            string comando = "UPDATE [User] SET nombre = '" + nombre + "', email = '" + email + "', password = '" + password + "', titulacion = '" + tit + "', codHorarios = '"+ codHorarios + "' WHERE dni = '" + dni + "'";
             SqlConnection c = null;
             SqlCommand comandoTBD;
 

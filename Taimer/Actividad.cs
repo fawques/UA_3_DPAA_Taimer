@@ -79,6 +79,11 @@ namespace Taimer {
             descripcion = desc_;
             codigo = cod_;
             turnos = new List<Turno>(turnos_);
+            foreach (Turno t in turnos) {
+                if (t.Codigo == -1) { //si tiene el codigo por defecto
+                    AsignarCodigo(t);
+                }
+            }
             codigoturno = 1;
         }
 

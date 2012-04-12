@@ -73,6 +73,7 @@ namespace Taimer {
         /// </summary>
         /// <param name="h">Horario al que se le quiere dar un código</param>
         private void AsignarCodigo(Horario h) {
+            CADUser usr = new CADUser();
             h.ID = codHorarios;
             codHorarios++;
         }
@@ -249,10 +250,12 @@ namespace Taimer {
 
 
         /// <summary>
-        /// Añade una Actividad Academica
+        /// Añade una Actividad Academica, y lo matricula en la base de datos (el Usurio debe estar en la BD);
         /// </summary>
         /// <param name="act">Actividad_a que se desea añadir</param>
         public void AddActAcademica(Actividad_a act) {
+            CADUser usr = new CADUser();
+            usr.Matricular(dni, act.Codigo);
             actAcademicas.Add(act);
         }
 
@@ -333,11 +336,14 @@ namespace Taimer {
         }
 
         /// <summary>
-        /// Añade un Horario a la lista de horarios
+        /// Añade un Horario a la lista de horarios y a la BD
         /// </summary>
-        /// <param name="horario">Hoaraio que se desea añadir</param>
+        /// <param name="horario">Horaio que se desea añadir</param>
         public void AddHorario(Horario horario) {
             AsignarCodigo(horario);
+            horario.Agregar();
+            CADUser usr = new CADUser();
+            usr.ModificaUser(dni, nombre, email, password, titulacion, codHorarios);
             horarios.Add(horario);
         }
 
@@ -414,7 +420,7 @@ namespace Taimer {
         /// </summary>
         public void Modificar() {
             CADUser user = new CADUser();
-            user.ModificaUser(dni, nombre, email, password, titulacion);
+            user.ModificaUser(dni, nombre, email, password, titulacion, codHorarios);
         }
 
         ///<summary>

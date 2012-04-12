@@ -328,6 +328,52 @@ namespace TaimerGUI {
             loginForm = new LoginForm();
             Application.Run(loginForm);
 
+            ///prueba 1///
+            
+            /*User usr = new User("Madona", "0000006", "madona@gmail.com", "madonarules", 3, "II");
+            usr.Agregar();
+            MessageBox.Show("Agrega el USR a la BD");
+
+            List<Turno> lt = new List<Turno>();
+            lt.Add(new Turno(new Hora(0, 0), new Hora(1, 0), dias.L, "Hospital"));
+            lt.Add(new Turno(new Hora(1, 0), new Hora(2, 0), dias.L, "Hospital"));
+            lt.Add(new Turno(new Hora(2, 0), new Hora(3, 0), dias.L, "Hospital"));
+            usr.AddActPersonal(new Actividad_p("medico", "dentista", lt));
+            MessageBox.Show("Ha metido la actividad medico");
+
+            lt.Clear();
+            lt.Add(new Turno(new Hora(0, 0), new Hora(1, 0), dias.M, "Escuela de idiomas"));
+            lt.Add(new Turno(new Hora(1, 0), new Hora(2, 0), dias.M, "Escuela de idiomas"));
+            lt.Add(new Turno(new Hora(2, 0), new Hora(3, 0), dias.M, "Escuela de idiomas"));
+            usr.AddActPersonal(new Actividad_p("Ingles", "preparación para el first", lt));
+            MessageBox.Show("Ha metido la actividad Ingles");
+
+            lt.Clear();
+            lt.Add(new Turno(new Hora(0, 0), new Hora(1, 0), dias.J, "Tu casa"));
+            lt.Add(new Turno(new Hora(1, 0), new Hora(2, 0), dias.J, "Tu casa"));
+            lt.Add(new Turno(new Hora(2, 0), new Hora(3, 0), dias.J, "Tu casa"));
+            Actividad_a actA = new Actividad_a("Principios de vagueza", "no hacer nada", "Jack Black", lt, 1, "Cualquiera");
+           
+            actA.Agregar();
+            MessageBox.Show("Ha metido la actividad Principios de vagueza");
+            usr.AddActAcademica(actA);
+            MessageBox.Show("Ha matriculado al usuario");
+
+            Horario h = new Horario("Horario 1", usr);
+            h.AddTurno(usr.ActAcademicas[0].Turnos[0]);
+
+            foreach(Actividad_p a in usr.ActPersonales){
+                foreach (Turno t in a.Turnos)
+                    h.AddTurno(t);
+            }
+
+            usr.AddHorario(h);
+            MessageBox.Show("Añade el Horario 1");
+            Horario h2 = new Horario("Horario 2", usr);
+            usr.AddHorario(h2);
+            MessageBox.Show("Añade el Horario 2");*/
+
+
         }
         #endregion
     }

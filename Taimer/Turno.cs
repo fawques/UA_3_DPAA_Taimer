@@ -102,7 +102,7 @@ namespace Taimer {
         /// <summary>
         /// Actividad a la que pertenece este turno
         /// </summary>
-        private Actividad actividad;        // Un turno pertenece a (1,1) actividades
+        private Actividad actividad = null;        // Un turno pertenece a (1,1) actividades
 
 
         /// <summary>
@@ -195,7 +195,7 @@ namespace Taimer {
         /// <param name="dia_"> Día de la semana</param>
         /// <param name="ubic_">Ubicación en la que se realiza el turno</param>
         public Turno(Hora horaI_, Hora horaF_, dias dia_, string ubic_) {
-            codigo = 0;
+            codigo = -1;
             CambiarHoras(horaI_, horaF_);
             diasemana = dia_;
             ubicacion = ubic_;
@@ -213,7 +213,7 @@ namespace Taimer {
         /// <param name="ubic_">Ubicación en la que se realiza el turno</param>
         public Turno(Hora horaI_, Hora horaF_, string dia_, string ubic_)
         {
-            codigo = 0;
+            codigo = -1;
             CambiarHoras(horaI_, horaF_);
             CambiarDiaSemana(dia_);
             ubicacion = ubic_;
@@ -228,7 +228,7 @@ namespace Taimer {
         /// <param name="ubic_"> Ubicación en la que se realiza el Turno </param>
         /// <param name="act_"> Actividad a la que pertence el Turno</param>
         public Turno(Hora horaI_, Hora horaF_, dias dia_, string ubic_, Actividad act_) {
-            codigo = 0;
+            codigo = -1;
             CambiarHoras(horaI_, horaF_);
             diasemana = dia_;
             ubicacion = ubic_;
@@ -251,7 +251,7 @@ namespace Taimer {
         /// <param name="act_"> Actividad a la que pertence el Turno</param>
         public Turno(Hora horaI_, Hora horaF_, string dia_, string ubic_, Actividad act_)
         {
-            codigo = 0;
+            codigo = -1;
             CambiarHoras(horaI_, horaF_);
             CambiarDiaSemana(dia_);
             ubicacion = ubic_;
@@ -354,13 +354,15 @@ namespace Taimer {
         /// </summary>
         public int Codigo {
             set {
+                if (actividad != null) {
                     foreach (Turno existente in actividad.Turnos) {
                         if (existente.Codigo == value)
                             throw new ArgumentException("El código ya existe.");
                     }
+                }
 
                 codigo = value;
-                }
+            }
 
             get { return codigo; }
         }

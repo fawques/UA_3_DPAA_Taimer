@@ -49,7 +49,7 @@ namespace CAD
 
         private void bt3User_Click(object sender, EventArgs e)
         {
-            user.ModificaUser(tb2User.Text, tb1User.Text, tb3User.Text, tb4User.Text, "II02");
+            user.ModificaUser(tb2User.Text, tb1User.Text, tb3User.Text, tb4User.Text, "II02", 0);
         }
 
         private void bt4User_Click(object sender, EventArgs e)
