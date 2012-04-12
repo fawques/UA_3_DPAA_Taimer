@@ -68,20 +68,10 @@ namespace TaimerGUI {
             Usuarios[0].AddActPersonal(actP2);
              * */
 
-
-
-
-
             usuarios = new List<User>();
             asignaturas = new List<Actividad_a>();
             algoritmos = new List<Algoritmo>();
-            SetDatos();
-
-            /*foreach (User u in usuarios)
-            {
-                string message = u.Nombre + ": " + u.ActAcademicas.Count + "-" + u.ActPersonales.Count;
-                MessageBox.Show(message);
-            }*/
+            SetDatos();            
         }
 
         #endregion
@@ -308,8 +298,18 @@ namespace TaimerGUI {
         public static void SetDatos()
         {
             usuarios = User.GetAllUsers();
-            usuarios[0].SetDatos();
-           // asignaturas=Actividad_a.GetAllActividades_a();
+            /*string message = "";
+            foreach (User u in usuarios)
+            {
+                message = u.DNI + ": " + u.ActAcademicas.Count + " academicas, "+u.ActPersonales.Count+" personales y "+u.Horarios.Count+" horarios";
+                MessageBox.Show(message);
+            }*/
+            asignaturas=Actividad_a.GetAllActividades_a();
+            /*foreach (Actividad_a act in asignaturas)
+            {
+                message = act.Codigo + ": " + act.Turnos.Count + " turnos";
+                MessageBox.Show(message);
+            }*/
         }
 
         public static LoginForm loginForm;

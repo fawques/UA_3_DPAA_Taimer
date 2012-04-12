@@ -204,7 +204,7 @@ namespace Taimer {
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
-        public static List<Actividad_p> Actividades_pToList(DataSet data)
+        public static List<Actividad_p> Actividades_pToList(DataSet data, User autor)
         {
             if (data != null)
             {
@@ -228,7 +228,7 @@ namespace Taimer {
                         nom = aux.Tables[0].Rows[0].ItemArray[1].ToString();
                         desc = aux.Tables[0].Rows[0].ItemArray[2].ToString();
 
-                        list.Add(new Actividad_p(nom, desc, User.UserToObject(user.GetDatosUser(dniUser)), cod));
+                        list.Add(new Actividad_p(nom, desc, autor, cod)); //User.UserToObject(user.GetDatosUser(dniUser)), cod));
                     }
                     else
                         return null;

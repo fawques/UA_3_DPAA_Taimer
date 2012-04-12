@@ -249,7 +249,11 @@ namespace Taimer {
         {
             CAD.CADTurno turno = new CAD.CADTurno();
             DataSet data=turno.GetTurnosByAct(codigo);            
-            turnos = Turno.TurnosToList(data);            
+            turnos = Turno.TurnosToList(data,this);            
+        }
+
+        public Actividad()
+        {
         }
 
         #endregion

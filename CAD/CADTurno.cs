@@ -173,5 +173,36 @@ namespace CAD
                 if (con != null) con.Close(); // Se asegura de cerrar la conexión.
             }
         }
+
+        /// <summary>
+        /// Obtiene un conjunto de (código turno, código actividad), que serán claves principales de turnos pertenecientes a un determinado horario
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="user"></param>
+        /// <returns></returns>
+        public DataSet GetTurnosByHorario(int id, string user)
+        {
+            SqlConnection con = null;
+            DataSet listAct = null;
+            string comando = "Select turnoCod,turnoAct from [Horario_Turno] where horarioId='" + id + "' and horarioUser='" + user + "'";
+            try
+            {
+                con = new SqlConnection(conexionTBD);
+                SqlDataAdapter sqlAdaptador = new SqlDataAdapter(comando, con);
+                listAct = new DataSet();
+                sqlAdaptador.Fill(listAct);
+                return listAct;
+
+            }
+            catch (SqlException)
+            {
+                // Captura la condición general y la reenvía.
+                throw;
+            }
+            finally
+            {
+                if (con != null) con.Close(); // Se asegura de cerrar la conexión.
+            }
+        }        
     }
 }

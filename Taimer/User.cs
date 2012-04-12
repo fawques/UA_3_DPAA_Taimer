@@ -555,8 +555,8 @@ namespace Taimer {
         private void SetHorarios()
         {
             CAD.CADHorario hor = new CADHorario();
-            DataSet horarios = hor.GetDatosHorarioUser(dni);
-            Horarios = Horario.HorariosToList(horarios);
+            DataSet data = hor.GetDatosHorarioUser(dni);            
+            horarios = Horario.HorariosToList(data, this);
         }
 
         /// <summary>
@@ -575,7 +575,7 @@ namespace Taimer {
         private void SetActPersonales()
         {
             CADActividad_p act = new CADActividad_p();
-            actPersonales = Actividad_p.Actividades_pToList(act.GetActividades_pByUser(this.dni));
+            actPersonales = Actividad_p.Actividades_pToList(act.GetActividades_pByUser(this.dni),this);
         }
 
         /// <summary>
@@ -584,8 +584,8 @@ namespace Taimer {
         public void SetDatos()
         {
             SetActAcademicas();
-            //SetActPersonales();
-            //SetHorarios();
+            SetActPersonales();
+            SetHorarios();
         }
 
         /// <summary>

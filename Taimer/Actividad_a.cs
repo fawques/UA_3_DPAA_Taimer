@@ -100,6 +100,11 @@ namespace Taimer {
             curso = act.curso;
         }
 
+        public Actividad_a()
+        {
+            // TODO: Complete member initialization
+        }
+
         /// <summary>
         /// Copia una actividad_a en otra, sin necesidad de crearla. Llama a CopiarDesde de la clase Actividad, y añade lo específico para Actividad_a
         /// </summary>
