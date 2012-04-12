@@ -14,7 +14,6 @@ namespace TaimerGUI {
         AGestTurn childTur = null;
         Taimer.Actividad_a currentAsig = null;
         Taimer.Actividad_a currentAsigCopy = null;
-        public List<Taimer.Actividad_a> asignaturas = new List<Taimer.Actividad_a>();
 
         public AGestAsig() {
             InitializeComponent();
@@ -96,7 +95,7 @@ namespace TaimerGUI {
 
         public void updateTableAsig() {
             dgAsig.Rows.Clear();
-            foreach (Taimer.Actividad_a acti in asignaturas) {
+            foreach (Taimer.Actividad_a acti in Program.Asignaturas) {
                 dgAsig.Rows.Add(acti.Nombre, acti.NombreCoordinador);
                 dgAsig.Rows[dgAsig.RowCount - 1].Tag = acti;
             }
@@ -147,7 +146,7 @@ namespace TaimerGUI {
                             clearInfo();
                         }
 
-                        asignaturas.Remove(asigBorr);
+                        Program.Asignaturas.Remove(asigBorr);
                         dgAsig.Rows.RemoveAt(e.RowIndex);
 
                     }
@@ -228,7 +227,7 @@ namespace TaimerGUI {
         }
 
         public void addAsig(Taimer.Actividad_a asig) {
-            asignaturas.Add(asig);
+            Program.Asignaturas.Add(asig);
 
             updateTableAsig();
         }

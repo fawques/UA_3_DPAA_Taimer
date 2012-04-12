@@ -23,12 +23,6 @@ namespace TaimerGUI {
             clearLabels();
 
 
-            Taimer.User user1 = new Taimer.User("Pepe Gotera", "11111111X", "asd@asd.com", "patata", 1, "Informatica",0);
-            Taimer.User user2 = new Taimer.User("Jaimito", "22222222D", "qwe@rty.com", "patata", 2, "Informatica",0);
-
-            Program.AddUsuario(user1);
-            Program.AddUsuario(user2);
-
             foreach (Taimer.User user in Program.Usuarios) {
                 dgUsers.Rows.Add(user.Nombre, user.DNI);
                 dgUsers.Rows[dgUsers.RowCount-1].Tag = user;
