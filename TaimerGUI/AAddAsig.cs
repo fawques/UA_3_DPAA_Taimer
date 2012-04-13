@@ -6,34 +6,43 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
-namespace TaimerGUI {
-    public partial class AAddAsig : Form {
+namespace TaimerGUI
+{
+    public partial class AAddAsig : Form
+    {
 
         AGestAsig parentForm = null;
         AGestTurn childForm = null;
 
         Taimer.Actividad_a asig = null;
 
-        public AAddAsig() {
+        public AAddAsig()
+        {
             InitializeComponent();
         }
 
-        public void setParent(AGestAsig form) {
+        public void setParent(AGestAsig form)
+        {
             parentForm = form;
         }
 
-        public void setChild(AGestTurn form) {
+        public void setChild(AGestTurn form)
+        {
             childForm = form;
         }
 
-        private void btCancel_Click(object sender, EventArgs e) {
+        private void btCancel_Click(object sender, EventArgs e)
+        {
 
             if (MessageBox.Show(
                     "¿Esta seguro de que desea descartar la asignatura?",
                     "Descartar asignatura",
-                    MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes) {
-                if (parentForm != null) {
+                    MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
+            {
+                if (parentForm != null)
+                {
                     Hide();
                     parentForm.Show();
 
@@ -71,29 +80,60 @@ namespace TaimerGUI {
                 lbErrCoord.Visible = false;
             }
 
+            if (tbTitu.Text == "") {
+                lbErrTit.Visible = true;
+                valid = false;
+            }else {
+                lbErrTit.Visible = false;
+            }
+
+
             if (valid && parentForm != null) {
 
-                // Creo una asignatura 
-                asig.Nombre = tbName.Text;
-                asig.Descripcion = tbDesc.Text;
-                asig.NombreCoordinador = tbCoord.Text;
-                clearLabels();
+                try
+                {
+                    if (asig == null)
+                    {
+                        asig = new Taimer.Actividad_a(tbName.Text, tbDesc.Text, tbCoord.Text, (int)udCurso.Value, tbTitu.Text);
+                    }
+                    else
+                    {
+                        // Creo una asignatura 
+                        asig.Nombre = tbName.Text;
+                        asig.Descripcion = tbDesc.Text;
+                        asig.NombreCoordinador = tbCoord.Text;
+                    }
 
-                // La añado a la lista
-                parentForm.addAsig(asig);
+                    asig.Agregar();
 
-                asig = null;
+                    clearLabels();
 
-                Hide();
-                parentForm.Show();
+                    // La añado a la lista
+                    parentForm.addAsig(asig);
 
-                AdminForm parent = (AdminForm)this.MdiParent;
-                parent.positionChilds();
+                    asig = null;
+
+                    Hide();
+                    parentForm.Show();
+
+                    AdminForm parent = (AdminForm)this.MdiParent;
+                    parent.positionChilds();
+
+                }
+                catch (SqlException ex)
+                {
+                    if(ex.Message.Contains("PRIMARY KEY"))
+                        MessageBox.Show("El código se repite");
+                    else
+                        MessageBox.Show(ex.Message);
+                }
             }
         }
 
-        private void btAddTurn_Click(object sender, EventArgs e) {
-            if (childForm != null) {
+        private void btAddTurn_Click(object sender, EventArgs e)
+        {
+            if (childForm != null)
+            {
                 Hide();
 
                 childForm.loadAsig(asig);
@@ -106,13 +146,15 @@ namespace TaimerGUI {
             }
         }
 
-        private void clearLabels() {
+        private void clearLabels()
+        {
             tbName.Clear();
             tbDesc.Clear();
             tbCoord.Clear();
         }
 
-        private void AAddAsig_Enter(object sender, EventArgs e) {
+        private void AAddAsig_Enter(object sender, EventArgs e)
+        {
             dgTurnos.Rows.Clear();
             if (asig == null)
             {
@@ -126,6 +168,16 @@ namespace TaimerGUI {
                     dgTurnos.Rows.Add(turno.DiaString, turno.HoraInicio.toString(), turno.HoraFin.toString(), turno.Ubicacion);
                 }
             }
+
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
 
         }
     }

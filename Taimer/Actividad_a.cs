@@ -46,9 +46,10 @@ namespace Taimer {
         /// <param name="nomCoord_"> Nómbre del coordinador de la Actividad_a</param>
         /// <param name="titulacion">Tilación de la Actividad_a</param>
         /// <param name="cod_">Codigo de la Actividad_a (por defecto 0)</param>
-        public Actividad_a(string nom_, string desc_, string nomCoord_, string titulacion, int cod_ = 0)
+        public Actividad_a(string nom_, string desc_, string nomCoord_, string tit, int cod_ = 0)
             : base(nom_, desc_, cod_) {
 
+                titulacion = tit;
             nombreCoordinador = nomCoord_;
             curso = 0;                      // Por defecto se asigna el número de curso a 0
         }
@@ -63,9 +64,10 @@ namespace Taimer {
         /// <param name="curso_"> Curso al que pertenece la Actividad_a </param>
         /// <param name="titulacion">Tilación de la Actividad_a</param>
         /// <param name="cod_">Codigo de la Actividad_a (por defecto 0)</param>
-        public Actividad_a(string nom_, string desc_, string nomCoord_, int curso_, string titulacion, int cod_ = 0)
+        public Actividad_a(string nom_, string desc_, string nomCoord_, int curso_, string tit, int cod_ = 0)
             : base(nom_, desc_, cod_) {
 
+                titulacion = tit;
             nombreCoordinador = nomCoord_;
             Curso = curso_;
         }
@@ -81,9 +83,9 @@ namespace Taimer {
         /// <param name="curso_"> Curso ql que pertence la Actividad_a</param>
         /// <param name="titulacion">Tilación de la Actividad_a</param>
         /// <param name="cod_">Codigo de la Actividad_a (por defecto 0)</param>
-        public Actividad_a(string nom_, string desc_, string nomCoord_, List<Turno> turnos_, int curso_, string titulacion, int cod_ = 0)
+        public Actividad_a(string nom_, string desc_, string nomCoord_, List<Turno> turnos_, int curso_, string tit, int cod_ = 0)
             : base(nom_, desc_, cod_, turnos_) {
-
+                titulacion = tit;
             nombreCoordinador = nomCoord_;
             Curso = curso_;
         }
@@ -97,6 +99,7 @@ namespace Taimer {
             : base(act)
         {
             // el constructor de copia de la clase base ya llama a CopiarDesde
+            titulacion = act.titulacion;
             nombreCoordinador = act.nombreCoordinador;
             curso = act.curso;
         }
