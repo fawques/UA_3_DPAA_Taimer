@@ -222,6 +222,11 @@ namespace CAD
         /// <param name="tit"></param>
         public void ModificaUser(string dni, string nombre, string email, string password, string tit, int codHorarios)
         {
+            CADTitulacion titu = new CADTitulacion();
+            if (!titu.Exists(tit))
+            {
+                titu.CrearTitulacion(tit);
+            }        
             string comando = "UPDATE [User] SET nombre = '" + nombre + "', email = '" + email + "', password = '" + password + "', titulacion = '" + tit + "', codHorarios = '"+ codHorarios + "' WHERE dni = '" + dni + "'";
             SqlConnection c = null;
             SqlCommand comandoTBD;
