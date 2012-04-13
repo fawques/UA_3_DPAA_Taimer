@@ -592,6 +592,14 @@ namespace Taimer {
             CAD.CADHorario hor = new CADHorario();
             DataSet data = hor.GetDatosHorarioUser(dni);            
             horarios = Horario.HorariosToList(data, this);
+            /*foreach (Horario h in horarios)
+            {
+                MessageBox.Show(h.ID + ": " + h.ArrayTurnos[0].Count + " lunes " +
+                                          h.ArrayTurnos[1].Count + " martes " +
+                                          h.ArrayTurnos[2].Count + " miercoles " +
+                                          h.ArrayTurnos[3].Count + " jueves " +
+                                          h.ArrayTurnos[4].Count + " viernes ");
+            }*/
         }
 
         /// <summary>
@@ -602,6 +610,10 @@ namespace Taimer {
             CADUser user = new CADUser();
             DataSet data=user.GetMatriculadas(this.dni);                
             actAcademicas = Actividad_a.CodesToList(data);
+            /*foreach (Actividad_a acta in actAcademicas)
+            {
+                MessageBox.Show(acta.Codigo + ": " + acta.Turnos.Count + " turnos");
+            }*/
         }
 
         /// <summary>
@@ -611,7 +623,10 @@ namespace Taimer {
         {
             CADActividad_p act = new CADActividad_p();
             actPersonales = Actividad_p.Actividades_pToList(act.GetActividades_pByUser(this.dni),this);
-            //actPersonales = Actividad_p.Actividades_pToList(act.GetActividades_pByUser(this.dni));
+            /*foreach (Actividad_p actp in actPersonales)
+            {
+                MessageBox.Show(actp.Codigo + ": " + actp.Turnos.Count + " turnos");
+            }*/
         }
 
         /// <summary>

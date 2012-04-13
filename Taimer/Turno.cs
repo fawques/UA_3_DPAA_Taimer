@@ -651,7 +651,7 @@ namespace Taimer {
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
-        public static Turno TurnoToObject(DataSet data)
+        public static Turno TurnoToObject(DataSet data, User user = null)
         {
             if (data != null)
             {
@@ -684,7 +684,7 @@ namespace Taimer {
                 else
                 {
                     aux = actPCAD.GetDatosActividad_p(pertenece);
-                    turno=new Turno(cod, inicio, fin, dia, ubic, Actividad_p.Actividad_pToObject(aux));
+                    turno=new Turno(cod, inicio, fin, dia, ubic, Actividad_p.Actividad_pToObject(aux,user));
                     return turno;
                 }                
             }
@@ -730,7 +730,7 @@ namespace Taimer {
                     else
                     {
                         aux = actPCAD.GetDatosActividad_p(pertenece);                       
-                        list.Add(new Turno(cod, inicio, fin, dia, ubic, Actividad_p.Actividad_pToObject(aux)));
+                        list.Add(new Turno(cod, inicio, fin, dia, ubic, Actividad_p.Actividad_pToObject(aux,null)));
                     }
                 }
                 return list;
@@ -777,7 +777,7 @@ namespace Taimer {
             return null;
         }
 
-        public static List<Turno> CodesToList(DataSet data)
+        public static List<Turno> CodesToList(DataSet data, User user = null)
         {
             DataRowCollection rows = data.Tables[0].Rows;
             List<Turno> list = new List<Turno>();
@@ -790,7 +790,7 @@ namespace Taimer {
                 cod = (int)rows[i].ItemArray[0];
                 act = (int)rows[i].ItemArray[1];
                 aux = turno.GetDatosTurno(cod, act);
-                list.Add(TurnoToObject(aux));
+                list.Add(TurnoToObject(aux,user));
             }
             return list;
         }

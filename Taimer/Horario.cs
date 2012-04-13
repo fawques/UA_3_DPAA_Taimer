@@ -472,8 +472,9 @@ namespace Taimer
                     id = (int)rows[i].ItemArray[0];
                     titulo = rows[i].ItemArray[1].ToString();
                     usuario = rows[i].ItemArray[2].ToString();
-                    
-                    list.Add(new Horario(id, titulo, autor));
+                    Horario nuevo = new Horario(id, titulo, autor);
+                    nuevo.SetTurnos();
+                    list.Add(nuevo);
                 }                
                 return list;
             }
@@ -484,13 +485,13 @@ namespace Taimer
         {
             CADTurno turno = new CADTurno();
             DataSet data = turno.GetTurnosByHorario(this.ID, this.Usuario.DNI);
-            List<Turno> list = Turno.TurnosToList(data);
-            MessageBox.Show(list.Count + "");
-            /*
+            List<Turno> list = Turno.CodesToList(data,usuario);
+            int dia;
             foreach (Turno t in list)
             {
-
-            }*/
+                dia=TaimerLibrary.convertToInt(t.Dia);
+                arrayTurnos[dia].Add(t);
+            }
         }
 
         #endregion

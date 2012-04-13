@@ -227,7 +227,9 @@ namespace Taimer {
                         nom = aux.Tables[0].Rows[0].ItemArray[1].ToString();
                         desc = aux.Tables[0].Rows[0].ItemArray[2].ToString();
 
-                        list.Add(new Actividad_p(nom, desc, autor, cod)); //User.UserToObject(user.GetDatosUser(dniUser)), cod));
+                        Actividad_p nueva = new Actividad_p(nom, desc, autor, cod);
+                        nueva.SetTurnos();
+                        list.Add(nueva);
                     }
                     else
                         return null;
@@ -242,7 +244,7 @@ namespace Taimer {
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
-        public static Actividad_p Actividad_pToObject(DataSet data)
+        public static Actividad_p Actividad_pToObject(DataSet data, User autor)
         {
             if (data != null)
             {
@@ -265,7 +267,8 @@ namespace Taimer {
                     {
                         nom = aux.Tables[0].Rows[0].ItemArray[1].ToString();
                         desc = aux.Tables[0].Rows[0].ItemArray[2].ToString();
-                        actp = new Actividad_p(nom, desc, User.UserToObject(user.GetDatosUser(dniUser)), cod);
+                        //actp = new Actividad_p(nom, desc, User.UserToObject(user.GetDatosUser(dniUser)), cod);
+                        actp = new Actividad_p(nom, desc, autor, cod);
                         actp.SetTurnos();
 
                         return actp;
