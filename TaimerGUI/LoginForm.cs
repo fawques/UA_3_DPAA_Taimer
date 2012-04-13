@@ -223,8 +223,6 @@ namespace TaimerGUI
         private void button1_Click(object sender, EventArgs e)
         {
             Program.Usuarios.Add(User.CheckLoginUser("alberto@alberto.es", "alberto"));
-            if (Program.Usuarios.Count != 1)
-                throw new Exception();
             ClientForm client = new ClientForm(null);
             
             client.Show();
@@ -233,6 +231,7 @@ namespace TaimerGUI
 
         private void button2_Click(object sender, EventArgs e)
         {
+            Program.Usuarios = Taimer.User.CheckLoginAdmin("ralph@nose.com", "ralph");
             AdminForm admin = new AdminForm();
             admin.Show();
             this.Hide();
