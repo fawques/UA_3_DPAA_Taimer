@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace TaimerGUI {
     public partial class AGestUser : Form {
@@ -192,7 +193,7 @@ namespace TaimerGUI {
 
             if (dataIsValid()) {
 
-                Taimer.User user = (Taimer.User)dgUsers.Rows[selectedRow].Tag;
+                Taimer.User user = new Taimer.User((Taimer.User)dgUsers.Rows[selectedRow].Tag);
 
                 dgUsers.Rows[selectedRow].Cells["Nombre"].Value = lbUserName.Text;
                 dgUsers.Rows[selectedRow].Cells["Dni"].Value = lbDni.Text;
@@ -203,8 +204,19 @@ namespace TaimerGUI {
                 user.Password = lbPass.Text;
                 user.Curso = Convert.ToInt32(lbCurso.Text);
                 user.Titulacion = lbTitu.Text;
-
-                user.Modificar();
+                try
+                {
+                    user.Modificar();
+                    dgUsers.Rows[selectedRow].Tag = user;
+                }
+                catch (SqlException ex)
+                {
+                    if (ex.Message.Contains("CAlt"))
+                    {
+                        MessageBox.Show("El email está repetido. Introduce otro");
+                    }
+                }
+                
 
                 btConfirm.Enabled = false;
                 btCancel.Enabled = false;
