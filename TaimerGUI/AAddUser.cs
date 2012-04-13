@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace TaimerGUI {
     public partial class AAddUser : Form {
@@ -95,25 +96,39 @@ namespace TaimerGUI {
 
 
             if (parentForm != null && valid) {
+                try
+                {
+                    Taimer.User nuevousuario = new Taimer.User(tbName.Text, tbDni.Text, tbEmail.Text,
+                    tbPass.Text, (int)udCurso.Value, tbTitu.Text);
+                    nuevousuario.Agregar();
+                    Program.AddUsuario(nuevousuario);
+                    parentForm.updateTable();
 
 
-                Program.AddUsuario(new Taimer.User(tbName.Text, tbDni.Text, tbEmail.Text, 
-                    tbPass.Text, (int) udCurso.Value, tbTitu.Text));
-                parentForm.updateTable();
+                    tbName.Text = "";
+                    tbDni.Text = "";
+                    tbEmail.Text = "";
+                    tbPass.Text = "";
+                    tbTitu.Text = "";
+                    udCurso.Value = 1;
 
+                    Hide();
+                    parentForm.Show();
 
-                tbName.Text = "";
-                tbDni.Text = "";
-                tbEmail.Text = "";
-                tbPass.Text = "";
-                tbTitu.Text = "";
-                udCurso.Value = 1;
-
-                Hide();
-                parentForm.Show();
-
-                AdminForm parent = (AdminForm)this.MdiParent;
-                parent.positionChilds();
+                    AdminForm parent = (AdminForm)this.MdiParent;
+                    parent.positionChilds();
+                }
+                catch (SqlException ex)
+                {
+                    if(ex.Message.Contains("CAlt"))
+                        MessageBox.Show("El email introducido ya existe. Introduce otro distinto");
+                    else if (ex.Message.Contains("PRIMARY KEY"))
+                        MessageBox.Show("El DNI introducido ya existe. Introduce otro distinto");
+                    else
+                        MessageBox.Show(ex.Message);
+                }
+                
+                
             }
 
         }
