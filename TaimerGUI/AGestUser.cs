@@ -148,8 +148,6 @@ namespace TaimerGUI {
                     Taimer.User user = (Taimer.User)dgUsers.Rows[selectedRow].Tag;
 
                     fillLabels(user);
-
-                    btCancel.Enabled = true;
                 }
             }
         }
@@ -166,6 +164,7 @@ namespace TaimerGUI {
                 fillLabels(user);
 
                 btCancel.Enabled = false;
+                btConfirm.Enabled = false;
             }
         }
 
@@ -203,7 +202,11 @@ namespace TaimerGUI {
                 user.Curso = Convert.ToInt32(lbCurso.Text);
                 user.Titulacion = lbTitu.Text;
 
-                
+                user.Modificar();
+
+                btConfirm.Enabled = false;
+                btCancel.Enabled = false;
+
             }
         }
 
