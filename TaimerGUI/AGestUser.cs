@@ -136,7 +136,9 @@ namespace TaimerGUI {
                     "Borrar usuario",
                     MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes) {
 
-                        Program.BorrarUsuario(((Taimer.User)dgUsers.Rows[e.RowIndex].Tag).DNI);
+                        Taimer.User borraruser = (Taimer.User)dgUsers.Rows[e.RowIndex].Tag;
+                        borraruser.Borrar();
+                        Program.BorrarUsuario(borraruser.DNI);
                         dgUsers.Rows.RemoveAt(e.RowIndex);
 
                     }
