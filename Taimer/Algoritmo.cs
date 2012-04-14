@@ -220,9 +220,13 @@ namespace Taimer
 
 
                 }
-                posibles = new List<Horario>(soluciones.ToList());
                 if (seleccionadas_a.Count != 0)
+                {
+                    posibles = new List<Horario>(soluciones.ToList());
                     optimo = null;
+                }
+                else
+                    posibles = new List<Horario>(nodos_vivos.ToList());
 
 
                 int puntuacion = int.MaxValue;
