@@ -15,7 +15,7 @@
         <div class="header">
             <div class="title">
                 <h1>
-                    Mi aplicación ASP.NET
+                    TAIMER
                 </h1>
             </div>
             <div class="loginDisplay">
@@ -32,8 +32,21 @@
             <div class="clear hideSkiplink">
                 <asp:Menu ID="NavigationMenu" runat="server" CssClass="menu" EnableViewState="false" IncludeStyleBlock="false" Orientation="Horizontal">
                     <Items>
-                        <asp:MenuItem NavigateUrl="~/Default.aspx" Text="Página principal"/>
-                        <asp:MenuItem NavigateUrl="~/About.aspx" Text="Acerca de"/>
+                        <asp:MenuItem NavigateUrl="~/TabInicio/SinLogin.aspx" Text="Inicio" 
+                            ToolTip="Muestra la pantalla de inicio."/>
+                        <asp:MenuItem NavigateUrl="~/TabHorarios/Horarios.aspx" Text="Mis horarios" 
+                            ToolTip="Ver tus horarios y hacerlos públicos si así lo deseas."/>
+                        <asp:MenuItem Text="Usuarios" Value="Usuarios" 
+                            NavigateUrl="~/TabUsuarios/Usuarios.aspx" 
+                            ToolTip="Aquí puedes ver los horarios que otros usuarios hayan hecho públicos."></asp:MenuItem>
+                        <asp:MenuItem Text="Peticiones" Value="Peticiones" 
+                            NavigateUrl="~/TabPeticiones/Peticiones.aspx" 
+                            ToolTip="Crear peticiones para cambiar turnos de asignaturas con otros usuarios."></asp:MenuItem>
+                        <asp:MenuItem Text="Asignaturas" Value="Asignaturas" 
+                            NavigateUrl="~/TabAsignaturas/Asignaturas.aspx" 
+                            ToolTip="Ver las asignaturas y comentarlas."></asp:MenuItem>
+                        <asp:MenuItem Text="Perfil" Value="Perfil" 
+                            ToolTip="Cambiar los datos de tu perfil."></asp:MenuItem>
                     </Items>
                 </asp:Menu>
             </div>
