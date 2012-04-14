@@ -49,8 +49,8 @@ namespace TaimerGUI {
                 foreach (DataGridViewRow selRow in dataGridActuales.SelectedRows) {
                     try
                     {
-                        
-                        usrAux.AddActAcademica((Actividad_a)selRow.Tag);
+                        //Hacer que aqui no haga nada en la bd
+                        //usrAux.AddActAcademica((Actividad_a)selRow.Tag);
                     }
                     catch (Exception ex)
                     {
@@ -72,7 +72,8 @@ namespace TaimerGUI {
                 foreach (DataGridViewRow selRow in dataGridMatric.SelectedRows) {
                     try
                     {
-                        usrAux.BorraActAcademica((Actividad_a)selRow.Tag);
+                        //Hacer que aqui no haga nada en la bd
+                        //usrAux.BorraActAcademica((Actividad_a)selRow.Tag);
                     }
                     catch (Exception ex)
                     {
@@ -95,6 +96,9 @@ namespace TaimerGUI {
                       MessageBoxIcon.Question,
                       MessageBoxDefaultButton.Button2) == DialogResult.Yes) {
                           Program.Usuarios[0] = usrAux;
+                            //Hacer que esto guarde todos los cambios en las matriculadas en la bd
+                          //usrAux.Matricular();
+
                 //Miro las filas de las matriculadas y si no estaban ya se las anyado
                 /*foreach (DataGridViewRow row in dataGridMatric.Rows) {
                     if (row.Tag is Actividad_a) {

@@ -7,6 +7,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace TaimerGUI
 {
@@ -43,11 +44,12 @@ namespace TaimerGUI
 
             if (validarTodo())
             {
-                if (actAux == null || actAux.Turnos.Count <= 0)
-                {
-                    throw new NotImplementedException("Aquí qué tiene que ir?");
+                string mensaje = "¿Seguro que desea crear la actividad?";
+                if (actAux == null || actAux.Turnos.Count <= 0) {
+                    //throw new NotImplementedException("Aquí qué tiene que ir?");
+                    mensaje = "¿Seguro que desea crear la actividad sin turnos?";
                 }
-                if (MessageBox.Show("¿Seguro que desea crearla?",
+                if (MessageBox.Show(mensaje,
                 "¿Crear actividad?",
                 MessageBoxButtons.YesNo,
                 MessageBoxIcon.Question,
@@ -59,15 +61,18 @@ namespace TaimerGUI
                     }
                     actAux.Nombre = tBNombre.Text;
                     actAux.Descripcion = rTBDescripcion.Text;
-                    try
-                    {
-                        usrAux.AddActPersonal(actAux);
+                    try {
+                        Program.Usuarios[0].AddActPersonal(actAux);
+
+                    } catch (Exception ex) {
+                        if (ex.Message.Contains("CAlt"))
+                            MessageBox.Show("Violacion de clave alternativa.");
+                        else if (ex.Message.Contains("PRIMARY KEY"))
+                            MessageBox.Show("El id de la actividad que intenta introducir ya existe.");
+                        else
+                            MessageBox.Show(ex.Message);
                     }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message);
-                        throw;
-                    }
+                    
                     ((ClientForm)this.MdiParent).loadLastActividades();
                     ((ClientForm)this.MdiParent).verActividad_Click(null, null);
                 }

@@ -152,9 +152,14 @@ namespace TaimerGUI
         }
 
         private void button1_Click(object sender, EventArgs e) {
-            if (grpBoxDatosAct.Tag is Actividad) {
-                ((Actividad)grpBoxDatosAct.Tag).Nombre = txtBoxNombre.Text;
-                ((Actividad)grpBoxDatosAct.Tag).Descripcion = txtBoxDescripcion.Text;
+            if (grpBoxDatosAct.Tag is Actividad_p) {
+                ((Actividad_p)grpBoxDatosAct.Tag).Nombre = txtBoxNombre.Text;
+                ((Actividad_p)grpBoxDatosAct.Tag).Descripcion = txtBoxDescripcion.Text;
+                try {
+                    ((Actividad_p)grpBoxDatosAct.Tag).Modificar();
+                } catch (Exception exc) {
+                    MessageBox.Show(exc.Message);
+                }
                 btnCancelar.Enabled = false;
                 btnGuardar.Enabled = false;
                 panel1.Focus();
@@ -276,6 +281,8 @@ namespace TaimerGUI
         private void txtBoxNombre_KeyPress(object sender, KeyPressEventArgs e) {
             if (e.KeyChar == (char)Keys.Enter) {//si se presiona la tecla enter
                 txtBoxNombre_Leave(sender, e);
+            } else if (e.KeyChar == (char)Keys.Tab) {
+                lblDescripcion_Click(null, null);
             }
         }
 

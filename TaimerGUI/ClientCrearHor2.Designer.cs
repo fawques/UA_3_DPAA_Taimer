@@ -33,8 +33,6 @@
             this.chkBxMartes = new System.Windows.Forms.CheckBox();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.trackBar1 = new System.Windows.Forms.TrackBar();
-            this.trackBar2 = new System.Windows.Forms.TrackBar();
             this.grpBoxRestric = new System.Windows.Forms.GroupBox();
             this.label11 = new System.Windows.Forms.Label();
             this.groubBoxDias = new System.Windows.Forms.GroupBox();
@@ -66,8 +64,6 @@
             this.btnGuardar = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.btnDescartar = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar2)).BeginInit();
             this.grpBoxRestric.SuspendLayout();
             this.groubBoxDias.SuspendLayout();
             this.pnlHorario.SuspendLayout();
@@ -125,27 +121,11 @@
             this.radioButton2.Text = "Menos dias";
             this.radioButton2.UseVisualStyleBackColor = true;
             // 
-            // trackBar1
-            // 
-            this.trackBar1.Location = new System.Drawing.Point(81, 271);
-            this.trackBar1.Name = "trackBar1";
-            this.trackBar1.Size = new System.Drawing.Size(139, 45);
-            this.trackBar1.TabIndex = 28;
-            // 
-            // trackBar2
-            // 
-            this.trackBar2.Location = new System.Drawing.Point(445, 271);
-            this.trackBar2.Name = "trackBar2";
-            this.trackBar2.Size = new System.Drawing.Size(139, 45);
-            this.trackBar2.TabIndex = 29;
-            // 
             // grpBoxRestric
             // 
             this.grpBoxRestric.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.grpBoxRestric.Controls.Add(this.label11);
             this.grpBoxRestric.Controls.Add(this.groubBoxDias);
-            this.grpBoxRestric.Controls.Add(this.trackBar2);
-            this.grpBoxRestric.Controls.Add(this.trackBar1);
             this.grpBoxRestric.Controls.Add(this.radioButton1);
             this.grpBoxRestric.Controls.Add(this.radioButton2);
             this.grpBoxRestric.Location = new System.Drawing.Point(35, 112);
@@ -159,7 +139,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(261, 221);
+            this.label11.Location = new System.Drawing.Point(271, 271);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(130, 13);
             this.label11.TabIndex = 36;
@@ -175,6 +155,7 @@
             this.groubBoxDias.Controls.Add(this.chkBoxMiercoles);
             this.groubBoxDias.Controls.Add(this.chkBoxViernes);
             this.groubBoxDias.Controls.Add(this.chkBoxJueves);
+            this.groubBoxDias.Enabled = false;
             this.groubBoxDias.Location = new System.Drawing.Point(153, 75);
             this.groubBoxDias.Name = "groubBoxDias";
             this.groubBoxDias.Size = new System.Drawing.Size(175, 117);
@@ -249,7 +230,7 @@
             this.btnCrear.Location = new System.Drawing.Point(630, 581);
             this.btnCrear.Name = "btnCrear";
             this.btnCrear.Size = new System.Drawing.Size(158, 52);
-            this.btnCrear.TabIndex = 31;
+            this.btnCrear.TabIndex = 2;
             this.btnCrear.Text = "Crear";
             this.btnCrear.UseVisualStyleBackColor = true;
             this.btnCrear.Click += new System.EventHandler(this.button1_Click);
@@ -262,7 +243,7 @@
             this.btnAtras.Location = new System.Drawing.Point(12, 581);
             this.btnAtras.Name = "btnAtras";
             this.btnAtras.Size = new System.Drawing.Size(158, 52);
-            this.btnAtras.TabIndex = 32;
+            this.btnAtras.TabIndex = 1;
             this.btnAtras.Text = "Volver";
             this.btnAtras.UseVisualStyleBackColor = true;
             this.btnAtras.Click += new System.EventHandler(this.button2_Click);
@@ -461,7 +442,7 @@
             this.btnGuardar.Location = new System.Drawing.Point(630, 581);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(151, 52);
-            this.btnGuardar.TabIndex = 34;
+            this.btnGuardar.TabIndex = 4;
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.UseVisualStyleBackColor = true;
             this.btnGuardar.Visible = false;
@@ -482,7 +463,7 @@
             this.btnDescartar.Location = new System.Drawing.Point(28, 581);
             this.btnDescartar.Name = "btnDescartar";
             this.btnDescartar.Size = new System.Drawing.Size(156, 52);
-            this.btnDescartar.TabIndex = 36;
+            this.btnDescartar.TabIndex = 3;
             this.btnDescartar.Text = "Descartar";
             this.btnDescartar.UseVisualStyleBackColor = true;
             this.btnDescartar.Visible = false;
@@ -508,8 +489,6 @@
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Activated += new System.EventHandler(this.ClientCrearHor2_Activated);
             this.Load += new System.EventHandler(this.ClientCrearHor2_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar2)).EndInit();
             this.grpBoxRestric.ResumeLayout(false);
             this.grpBoxRestric.PerformLayout();
             this.groubBoxDias.ResumeLayout(false);
@@ -528,8 +507,6 @@
         private System.Windows.Forms.CheckBox chkBxMartes;
         private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.TrackBar trackBar1;
-        private System.Windows.Forms.TrackBar trackBar2;
         private System.Windows.Forms.GroupBox grpBoxRestric;
         private System.Windows.Forms.Button btnCrear;
         private System.Windows.Forms.Button btnAtras;

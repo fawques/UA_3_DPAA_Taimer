@@ -75,7 +75,7 @@ namespace TaimerGUI {
                 Turno turnAux = new Turno(horI, horF, TaimerLibrary.convertToDais(comboBoxDia.Text), txtBoxLugar.Text);
                 try {
                     actividad.AddTurno(turnAux);
-                } catch (NotSupportedException exc) {
+                } catch (Exception exc) {
                     MessageBox.Show(exc.Message);
                 }
 
@@ -183,7 +183,7 @@ namespace TaimerGUI {
                     ((Turno)grpBoxTurno.Tag).HoraInicio = horI;
                     ((Turno)grpBoxTurno.Tag).HoraFin = horF;
                     ((Turno)grpBoxTurno.Tag).Dia = TaimerLibrary.convertToDais(cmbBoxDiaMod.Text);
-                } catch (NotSupportedException exc) {
+                } catch (Exception exc) {
                     MessageBox.Show(exc.Message);
                 }
                 ((Turno)grpBoxTurno.Tag).Ubicacion = txtBoxLugarMod.Text;
@@ -213,6 +213,13 @@ namespace TaimerGUI {
                     modificado = false;
                     this.reiniciar();
                     actividadDefinitiva.CopiarDesde(actividad);
+                    if (formBackCrear == null) {//si venimos desde ver las asignaturas y NO desde crear
+                        try {
+                            actividadDefinitiva.Modificar();
+                        } catch (Exception exc) {
+                            MessageBox.Show(exc.Message);
+                        }
+                    }
                     if (formBackVer != null)
                     {
                         this.formBackVer.Show();

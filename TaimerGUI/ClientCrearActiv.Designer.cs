@@ -61,7 +61,7 @@
             this.tBNombre.Location = new System.Drawing.Point(32, 132);
             this.tBNombre.Name = "tBNombre";
             this.tBNombre.Size = new System.Drawing.Size(180, 20);
-            this.tBNombre.TabIndex = 23;
+            this.tBNombre.TabIndex = 1;
             // 
             // label2
             // 
@@ -86,7 +86,7 @@
             this.rTBDescripcion.Location = new System.Drawing.Point(35, 194);
             this.rTBDescripcion.Name = "rTBDescripcion";
             this.rTBDescripcion.Size = new System.Drawing.Size(401, 101);
-            this.rTBDescripcion.TabIndex = 33;
+            this.rTBDescripcion.TabIndex = 2;
             this.rTBDescripcion.Text = "";
             // 
             // gVHorasTemp
@@ -103,7 +103,7 @@
             this.gVHorasTemp.Name = "gVHorasTemp";
             this.gVHorasTemp.ReadOnly = true;
             this.gVHorasTemp.Size = new System.Drawing.Size(479, 196);
-            this.gVHorasTemp.TabIndex = 35;
+            this.gVHorasTemp.TabIndex = 6;
             this.gVHorasTemp.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gVHorasTemp_CellContentClick);
             // 
             // dia
@@ -135,7 +135,7 @@
             this.bttnCrearActiv.Location = new System.Drawing.Point(535, 548);
             this.bttnCrearActiv.Name = "bttnCrearActiv";
             this.bttnCrearActiv.Size = new System.Drawing.Size(105, 35);
-            this.bttnCrearActiv.TabIndex = 38;
+            this.bttnCrearActiv.TabIndex = 4;
             this.bttnCrearActiv.Text = "Crear";
             this.bttnCrearActiv.UseVisualStyleBackColor = true;
             this.bttnCrearActiv.Click += new System.EventHandler(this.bttnCrearActiv_Click);
@@ -145,7 +145,7 @@
             this.bCancelar.Location = new System.Drawing.Point(659, 548);
             this.bCancelar.Name = "bCancelar";
             this.bCancelar.Size = new System.Drawing.Size(105, 35);
-            this.bCancelar.TabIndex = 39;
+            this.bCancelar.TabIndex = 5;
             this.bCancelar.Text = "Cancelar";
             this.bCancelar.UseVisualStyleBackColor = true;
             this.bCancelar.Click += new System.EventHandler(this.button3_Click);
@@ -167,7 +167,7 @@
             this.btnAddTurno.Location = new System.Drawing.Point(107, 396);
             this.btnAddTurno.Name = "btnAddTurno";
             this.btnAddTurno.Size = new System.Drawing.Size(130, 51);
-            this.btnAddTurno.TabIndex = 59;
+            this.btnAddTurno.TabIndex = 3;
             this.btnAddTurno.Text = "Gestionar turnos";
             this.btnAddTurno.UseVisualStyleBackColor = true;
             this.btnAddTurno.Click += new System.EventHandler(this.button2_Click);

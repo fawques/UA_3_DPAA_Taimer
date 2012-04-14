@@ -89,7 +89,7 @@
             this.txtBoxFiltro.Location = new System.Drawing.Point(85, 85);
             this.txtBoxFiltro.Name = "txtBoxFiltro";
             this.txtBoxFiltro.Size = new System.Drawing.Size(167, 20);
-            this.txtBoxFiltro.TabIndex = 22;
+            this.txtBoxFiltro.TabIndex = 1;
             this.txtBoxFiltro.TextChanged += new System.EventHandler(this.txtBoxFiltro_TextChanged);
             // 
             // panel1
@@ -274,7 +274,7 @@
             this.btnBorrar.Location = new System.Drawing.Point(234, 385);
             this.btnBorrar.Name = "btnBorrar";
             this.btnBorrar.Size = new System.Drawing.Size(85, 34);
-            this.btnBorrar.TabIndex = 46;
+            this.btnBorrar.TabIndex = 7;
             this.btnBorrar.Text = "Borrar";
             this.btnBorrar.UseVisualStyleBackColor = true;
             this.btnBorrar.Click += new System.EventHandler(this.btnBorrar_Click);
@@ -284,7 +284,7 @@
             this.btnGestTurn.Location = new System.Drawing.Point(209, 328);
             this.btnGestTurn.Name = "btnGestTurn";
             this.btnGestTurn.Size = new System.Drawing.Size(110, 22);
-            this.btnGestTurn.TabIndex = 45;
+            this.btnGestTurn.TabIndex = 4;
             this.btnGestTurn.Text = "Gestionar turnos";
             this.btnGestTurn.UseVisualStyleBackColor = true;
             this.btnGestTurn.Visible = false;
@@ -305,7 +305,7 @@
             this.btnCancelar.Location = new System.Drawing.Point(127, 385);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(85, 34);
-            this.btnCancelar.TabIndex = 40;
+            this.btnCancelar.TabIndex = 6;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
@@ -316,7 +316,7 @@
             this.btnGuardar.Location = new System.Drawing.Point(21, 385);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(85, 34);
-            this.btnGuardar.TabIndex = 39;
+            this.btnGuardar.TabIndex = 5;
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.UseVisualStyleBackColor = true;
             this.btnGuardar.Click += new System.EventHandler(this.button1_Click);
@@ -345,7 +345,7 @@
             this.txtBoxNombre.Location = new System.Drawing.Point(37, 48);
             this.txtBoxNombre.Name = "txtBoxNombre";
             this.txtBoxNombre.Size = new System.Drawing.Size(225, 20);
-            this.txtBoxNombre.TabIndex = 42;
+            this.txtBoxNombre.TabIndex = 2;
             this.txtBoxNombre.Visible = false;
             this.txtBoxNombre.TextChanged += new System.EventHandler(this.txtBoxNombre_TextChanged);
             this.txtBoxNombre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBoxNombre_KeyPress);
@@ -356,7 +356,7 @@
             this.txtBoxDescripcion.Location = new System.Drawing.Point(37, 103);
             this.txtBoxDescripcion.Name = "txtBoxDescripcion";
             this.txtBoxDescripcion.Size = new System.Drawing.Size(282, 37);
-            this.txtBoxDescripcion.TabIndex = 43;
+            this.txtBoxDescripcion.TabIndex = 3;
             this.txtBoxDescripcion.Text = "";
             this.txtBoxDescripcion.Visible = false;
             this.txtBoxDescripcion.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBoxDescripcion_KeyPress);
