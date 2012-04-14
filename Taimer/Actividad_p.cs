@@ -150,7 +150,7 @@ namespace Taimer {
         /// <summary>
         /// Asigna/Devuelve la lista de Turnos
         /// </summary>
-        new public List<Turno> Turnos {
+        public List<Turno> Turnos {
             set {
                 foreach (Turno t in value) {
                     AddTurno(t); //Para que los meta con codigo correcto y ordenados
@@ -177,6 +177,15 @@ namespace Taimer {
             }
 
             
+        }
+
+        /// <summary>
+        /// Modifica una Actividad Personal en la base de datos
+        /// </summary>
+        public void Modificar()
+        {
+            CADActividad act = new CADActividad();
+            act.ModificaActividad(Nombre, Descripcion, Codigo);
         }
 
         /// <summary>
