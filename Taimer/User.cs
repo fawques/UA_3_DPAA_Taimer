@@ -255,9 +255,35 @@ namespace Taimer {
         /// </summary>
         /// <param name="act">Actividad_a que se desea añadir</param>
         public void AddActAcademica(Actividad_a act) {
-            CADUser usr = new CADUser();
-            usr.Matricular(dni, act.Codigo);
+            //CADUser usr = new CADUser();
+            //usr.Matricular(dni, act.Codigo);
             actAcademicas.Add(act);
+        }
+
+        //Para matricularse en las que no estaba y desmatricularse en las que ya no esta
+        //Actualiza su lista de matriculadas a la lista pasada por parametros
+        public void UpdateMatricula(List<Actividad_a> actAc) {
+            CADUser usr = new CADUser();
+
+            List<Actividad_a> actAcademicasAux = new List<Actividad_a>();
+            foreach (Actividad_a act_a in actAcademicas) {
+                actAcademicasAux.Add(act_a);
+            }
+
+            foreach (Actividad_a act in actAcademicasAux) {
+                if (!actAc.Contains(act)) {
+                    actAcademicas.Remove(act);
+                    usr.Desmatricular(dni, act.Codigo);
+                }
+            }
+
+            foreach (Actividad_a act in actAc) {
+                if (!actAcademicas.Contains(act)) {
+                    actAcademicas.Add(act);
+                    usr.Matricular(dni, act.Codigo);
+                }
+            }
+            
         }
 
         /// <summary>
@@ -288,8 +314,8 @@ namespace Taimer {
         {
             if(!actAcademicas.Remove(act))
                 throw new MissingMemberException("No existe la actividad académica que se desea borrar.");
-            CADUser usr = new CADUser();
-            usr.Desmatricular(dni, act.Codigo);
+            //CADUser usr = new CADUser();
+            //usr.Desmatricular(dni, act.Codigo);
         }
 
 

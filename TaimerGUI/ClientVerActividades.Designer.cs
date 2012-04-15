@@ -31,7 +31,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.txtBoxFiltro = new System.Windows.Forms.TextBox();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.panelActividades = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
             this.pnlOficiales = new System.Windows.Forms.Panel();
@@ -58,7 +58,7 @@
             this.txtBoxNombre = new System.Windows.Forms.TextBox();
             this.txtBoxDescripcion = new System.Windows.Forms.RichTextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.panel1.SuspendLayout();
+            this.panelActividades.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
             this.grpBoxDatosAct.SuspendLayout();
@@ -92,17 +92,18 @@
             this.txtBoxFiltro.TabIndex = 1;
             this.txtBoxFiltro.TextChanged += new System.EventHandler(this.txtBoxFiltro_TextChanged);
             // 
-            // panel1
+            // panelActividades
             // 
-            this.panel1.AutoScroll = true;
-            this.panel1.BackColor = System.Drawing.Color.Wheat;
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel1.Controls.Add(this.panel3);
-            this.panel1.Controls.Add(this.panel2);
-            this.panel1.Location = new System.Drawing.Point(41, 111);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(358, 435);
-            this.panel1.TabIndex = 24;
+            this.panelActividades.AutoScroll = true;
+            this.panelActividades.BackColor = System.Drawing.Color.Wheat;
+            this.panelActividades.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panelActividades.Controls.Add(this.panel3);
+            this.panelActividades.Controls.Add(this.panel2);
+            this.panelActividades.Location = new System.Drawing.Point(41, 111);
+            this.panelActividades.Name = "panelActividades";
+            this.panelActividades.Size = new System.Drawing.Size(358, 435);
+            this.panelActividades.TabIndex = 24;
+            this.panelActividades.MouseEnter += new System.EventHandler(this.panel1_MouseEnter);
             // 
             // panel3
             // 
@@ -115,6 +116,7 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(354, 87);
             this.panel3.TabIndex = 3;
+            this.panel3.MouseEnter += new System.EventHandler(this.panel3_MouseEnter);
             // 
             // label4
             // 
@@ -164,6 +166,7 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(354, 93);
             this.panel2.TabIndex = 2;
+            this.panel2.MouseEnter += new System.EventHandler(this.panel2_MouseEnter);
             // 
             // label3
             // 
@@ -379,7 +382,7 @@
             this.ClientSize = new System.Drawing.Size(795, 595);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.grpBoxDatosAct);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.panelActividades);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtBoxFiltro);
             this.Controls.Add(this.label1);
@@ -389,8 +392,8 @@
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Activated += new System.EventHandler(this.ClientVerActividades_Activated);
             this.Load += new System.EventHandler(this.ClientVerActividades_Load);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.panelActividades.ResumeLayout(false);
+            this.panelActividades.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.panel2.ResumeLayout(false);
@@ -408,7 +411,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtBoxFiltro;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panelActividades;
         private System.Windows.Forms.Panel pnlOficiales;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel pnlPersonales;
