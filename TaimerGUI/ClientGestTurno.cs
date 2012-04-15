@@ -20,6 +20,7 @@ namespace TaimerGUI {
         private bool modificado = false;
         List<Turno> tModificados = new List<Turno>();
         List<Turno> tCreados = new List<Turno>();
+        List<Turno> tBorrados = new List<Turno>();
 
         public void setFormPadre(ClientVerActividades f) {
             formBackVer = f;
@@ -164,6 +165,7 @@ namespace TaimerGUI {
                 if (e.ColumnIndex == gVHorasTemp.Columns["Borrar"].Index) {
                     try {
                         actividad.BorraTurno((Turno)gVHorasTemp.Rows[e.RowIndex].Tag);
+                        tBorrados.Add((Turno)gVHorasTemp.Rows[e.RowIndex].Tag);
                         modificado = true;
                     } catch (NotSupportedException exc) {
                         MessageBox.Show(exc.Message);
@@ -182,19 +184,25 @@ namespace TaimerGUI {
         private void btnGuardar_Click(object sender, EventArgs e) {
             Hora horI = new Taimer.Hora((int)nUDHorIniMod.Value, (int)nUDMinIniMod.Value);
             Hora horF = new Taimer.Hora((int)nUDHorFinMod.Value, (int)nUDMinFinMod.Value);
+            Hora backup_horI = new Taimer.Hora(((Turno)grpBoxTurno.Tag).HoraInicio);
+            Hora backup_horF = new Taimer.Hora(((Turno)grpBoxTurno.Tag).HoraFin);
             if (horI < horF) {
                 try {
-                    ((Turno)grpBoxTurno.Tag).CambiarHoras(horI, horF);
+                    ((Turno)grpBoxTurno.Tag).CambiarHorasNoSuperpone(horI, horF);//El cambio de día ya comprueba la superposición
                     ((Turno)grpBoxTurno.Tag).Dia = TaimerLibrary.convertToDais(cmbBoxDiaMod.Text);
                     ((Turno)grpBoxTurno.Tag).Ubicacion = txtBoxLugarMod.Text;
+                    
 
-                    if(!tModificados.Contains((Turno)grpBoxTurno.Tag))
+                    if (!tModificados.Contains((Turno)grpBoxTurno.Tag))
                         tModificados.Add((Turno)grpBoxTurno.Tag);
                     modificado = true;
 
                     loadActividad(actividad);
                     lblMenorTurno.Visible = false;
                 } catch (Exception exc) {
+                    
+                    ((Turno)grpBoxTurno.Tag).HoraInicio = backup_horI;
+                    ((Turno)grpBoxTurno.Tag).HoraFin = backup_horF;
                     MessageBox.Show(exc.Message);
                 }
                 
@@ -222,6 +230,10 @@ namespace TaimerGUI {
                     if (formBackCrear == null) {//si venimos desde ver las asignaturas y NO desde crear
                         try {
                             actividadDefinitiva.Modificar();
+                            foreach (Turno item in tBorrados)
+                            {
+                                item.Borrar();
+                            }
                             foreach (Turno item in tCreados)
                             {
                                 item.Agregar();

@@ -12,7 +12,7 @@ namespace Taimer {
     /// <summary>
     /// Clase Actividad_a: esta clase hereda de Actividad y representa las asignaturas
     /// </summary>
-    public class Actividad_a : Actividad, IEquatable<Actividad_a> {//hereda tambien de IEquatable<Actividad_a> para poder utilizar el metodo contains y que funcione comparando codigo
+    public class Actividad_a : Actividad {//hereda tambien de IEquatable<Actividad_a> para poder utilizar el metodo contains y que funcione comparando codigo
 
         #region  PARTE PRIVADA
 

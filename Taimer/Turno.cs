@@ -69,7 +69,7 @@ namespace Taimer {
     /// <summary>
     /// Clase Turno: representa las diversas horas, localizaciones, etc que tiene una Actividad
     /// </summary>
-    public class Turno {
+    public class Turno: IEquatable<Turno> {
 
         #region PARTE PRIVADA
         
@@ -501,6 +501,24 @@ namespace Taimer {
                 }
             }
             else {
+                horaInicio = inicio;
+                horaFin = fin;
+            }
+        }
+
+        /// <summary>
+        /// Cambia las horas de inicio y de fin. No comprueba superposición
+        /// </summary>
+        /// <param name="inicio">Hora de inicio</param>
+        /// <param name="fin">Hora de fin</param>
+        public void CambiarHorasNoSuperpone(Hora inicio, Hora fin)
+        {
+            if (inicio > fin)
+            {
+                throw new ArgumentException("La hora de inicio es mayor que la de fin");
+            }
+            else
+            {
                 horaInicio = inicio;
                 horaFin = fin;
             }

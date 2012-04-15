@@ -9,7 +9,7 @@ namespace Taimer {
     /// <summary>
     /// Clase Actividad: clase abstracta de la que heredarán Actividad_a y Actividad_p
     /// </summary>
-    abstract public class Actividad {
+    abstract public class Actividad:IEquatable<Actividad> {
 
         #region PARTE PROTECTED
 
