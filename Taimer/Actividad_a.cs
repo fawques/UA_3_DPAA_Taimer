@@ -152,7 +152,8 @@ namespace Taimer {
             bool insertado = false;
 
             turnonuevo.Actividad = this;
-            AsignarCodigo(turnonuevo);
+            //AsignarCodigo(turnonuevo);
+            turnonuevo.Codigo = codigoturno;
 
             for (int i = 0; i < turnos.Count; i++) {
                 if (turnos[i].HoraInicio > turnonuevo.HoraInicio) {
@@ -164,6 +165,8 @@ namespace Taimer {
 
             if (!insertado)
                 turnos.Add(turnonuevo);
+
+            turnonuevo.Codigo++;
         }
 
         /// <summary>

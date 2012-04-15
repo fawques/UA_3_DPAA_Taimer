@@ -73,7 +73,6 @@ namespace Taimer {
         /// </summary>
         /// <param name="h">Horario al que se le quiere dar un código</param>
         private void AsignarCodigo(Horario h) {
-            CADUser usr = new CADUser();
             h.ID = codHorarios;
             codHorarios++;
         }
@@ -386,8 +385,10 @@ namespace Taimer {
         /// </summary>
         /// <param name="horario">Horaio que se desea añadir</param>
         public void AddHorario(Horario horario) {
-            AsignarCodigo(horario);
+            //AsignarCodigo(horario);
+            horario.ID = codHorarios;
             horario.Agregar();
+            horario.ID++;
             CADUser usr = new CADUser();
             usr.ModificaUser(dni, nombre, email, password, titulacion, codHorarios);
             horarios.Add(horario);

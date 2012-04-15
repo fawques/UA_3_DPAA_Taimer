@@ -36,7 +36,7 @@ namespace Taimer {
         /// <summary>
         /// Último código de turno asignado
         /// </summary>
-        private int codigoturno;
+        protected int codigoturno;
 
         public int CodTurnos
         {
