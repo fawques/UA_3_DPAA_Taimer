@@ -150,7 +150,7 @@ namespace Taimer {
         /// <summary>
         /// Asigna/Devuelve la lista de Turnos
         /// </summary>
-        public List<Turno> Turnos {
+        new public List<Turno> Turnos {
             set {
                 foreach (Turno t in value) {
                     AddTurno(t); //Para que los meta con codigo correcto y ordenados
