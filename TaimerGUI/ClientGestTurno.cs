@@ -18,6 +18,8 @@ namespace TaimerGUI {
         private ClientVerActividades formBackVer = null;
         private ClientCrearActiv formBackCrear = null;
         private bool modificado = false;
+        List<Turno> tModificados = new List<Turno>();
+        List<Turno> tCreados = new List<Turno>();
 
         public void setFormPadre(ClientVerActividades f) {
             formBackVer = f;
@@ -75,6 +77,7 @@ namespace TaimerGUI {
                 Turno turnAux = new Turno(horI, horF, TaimerLibrary.convertToDais(comboBoxDia.Text), txtBoxLugar.Text);
                 try {
                     actividad.AddTurno(turnAux);
+                    tCreados.Add(turnAux);
                 } catch (Exception exc) {
                     MessageBox.Show(exc.Message);
                 }
@@ -182,15 +185,17 @@ namespace TaimerGUI {
                 try {
                     ((Turno)grpBoxTurno.Tag).CambiarHoras(horI, horF);
                     ((Turno)grpBoxTurno.Tag).Dia = TaimerLibrary.convertToDais(cmbBoxDiaMod.Text);
+                    ((Turno)grpBoxTurno.Tag).Ubicacion = txtBoxLugarMod.Text;
+
+                    tModificados.Add((Turno)grpBoxTurno.Tag);
+                    modificado = true;
+
+                    loadActividad(actividad);
+                    lblMenorTurno.Visible = false;
                 } catch (Exception exc) {
                     MessageBox.Show(exc.Message);
                 }
-                ((Turno)grpBoxTurno.Tag).Ubicacion = txtBoxLugarMod.Text;
-
-                modificado = true;
-
-                loadActividad(actividad);
-                lblMenorTurno.Visible = false;
+                
             } else {
                 lblMenorTurno.Visible = true;
             }
@@ -215,6 +220,14 @@ namespace TaimerGUI {
                     if (formBackCrear == null) {//si venimos desde ver las asignaturas y NO desde crear
                         try {
                             actividadDefinitiva.Modificar();
+                            foreach (Turno item in tCreados)
+                            {
+                                item.Agregar();
+                            }
+                            foreach (Turno item in tModificados)
+                            {
+                                item.Modificar();
+                            }
                         } catch (Exception exc) {
                             MessageBox.Show(exc.Message);
                         }
