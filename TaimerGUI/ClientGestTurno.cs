@@ -188,7 +188,8 @@ namespace TaimerGUI {
                     ((Turno)grpBoxTurno.Tag).Dia = TaimerLibrary.convertToDais(cmbBoxDiaMod.Text);
                     ((Turno)grpBoxTurno.Tag).Ubicacion = txtBoxLugarMod.Text;
 
-                    tModificados.Add((Turno)grpBoxTurno.Tag);
+                    if(!tModificados.Contains((Turno)grpBoxTurno.Tag))
+                        tModificados.Add((Turno)grpBoxTurno.Tag);
                     modificado = true;
 
                     loadActividad(actividad);
