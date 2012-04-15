@@ -580,15 +580,9 @@ namespace Taimer {
         public static User CheckLoginUser(string email, string pass)
         {
             CADUser userCAD = new CADUser();
-            try
-            {
-                User user = UserToObject(userCAD.GetDatosUser(email, pass));                
-                return user;               
-            }
-            catch (Exception)
-            {
-                throw;                
-            }            
+            userCAD.Login(email, pass);
+            User user = UserToObject(userCAD.GetDatosUser(email, pass));
+            return user;                      
         }
 
         /// <summary>
@@ -600,14 +594,8 @@ namespace Taimer {
         public static List<User> CheckLoginAdmin(string email, string pass)
         {
             CADAdmin adminCAD = new CADAdmin();
-            try
-            {
-                return GetAllUsers();
-            }
-            catch (Exception)
-            {
-                throw;
-            }
+            adminCAD.Login(email, pass);
+            return GetAllUsers();
         }
 
         /// <summary>
