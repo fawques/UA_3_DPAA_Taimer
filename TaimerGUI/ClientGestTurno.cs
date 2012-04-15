@@ -180,8 +180,7 @@ namespace TaimerGUI {
             Hora horF = new Taimer.Hora((int)nUDHorFinMod.Value, (int)nUDMinFinMod.Value);
             if (horI < horF) {
                 try {
-                    ((Turno)grpBoxTurno.Tag).HoraInicio = horI;
-                    ((Turno)grpBoxTurno.Tag).HoraFin = horF;
+                    ((Turno)grpBoxTurno.Tag).CambiarHoras(horI, horF);
                     ((Turno)grpBoxTurno.Tag).Dia = TaimerLibrary.convertToDais(cmbBoxDiaMod.Text);
                 } catch (Exception exc) {
                     MessageBox.Show(exc.Message);
