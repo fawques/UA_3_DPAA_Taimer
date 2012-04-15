@@ -211,6 +211,8 @@ namespace TaimerGUI {
                     }
 
                 }
+                else
+                    iguales = false;
 
 
 		         if(iguales)
