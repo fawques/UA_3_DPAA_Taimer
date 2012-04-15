@@ -80,6 +80,7 @@ namespace TaimerGUI {
                     tCreados.Add(turnAux);
                 } catch (Exception exc) {
                     MessageBox.Show(exc.Message);
+                    actividad.CodTurnos--;
                 }
 
                 modificado = true;

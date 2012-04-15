@@ -36,15 +36,21 @@ namespace Taimer {
         /// <summary>
         /// Último código de turno asignado
         /// </summary>
-        protected int codigoturno;
+        private int codigoturno;
+
+        public int CodTurnos
+        {
+            get { return codigoturno; }
+            set { codigoturno = value; }
+        }
 
         /// <summary>
         ///  Codifica el código del un turno
         /// </summary>
         /// <param name="t"> turno a codificar </param>
         protected void AsignarCodigo(Turno t) {
-            t.Codigo = codigoturno;
             codigoturno++;
+            t.Codigo = codigoturno;
         }
 
         #endregion
