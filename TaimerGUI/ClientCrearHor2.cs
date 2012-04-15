@@ -212,7 +212,8 @@ namespace TaimerGUI
             Algoritmo alg = Program.ComprobarAlgoritmo(formBack.getActividadesA(), formBack.getActividadesP());
             if (alg != null)
             {
-                h = alg.getOptimo(radioButton2.Checked);
+                h = new Horario(alg.getOptimo(radioButton2.Checked));
+                h.Nombre = formBack.getNameHorario();
             }
             else
             {
