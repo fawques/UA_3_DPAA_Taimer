@@ -50,7 +50,7 @@ namespace TaimerGUI {
                     try
                     {
                         //Hacer que aqui no haga nada en la bd
-                        //usrAux.AddActAcademica((Actividad_a)selRow.Tag);
+                        usrAux.AddActAcademica((Actividad_a)selRow.Tag);
                     }
                     catch (Exception ex)
                     {
@@ -73,7 +73,7 @@ namespace TaimerGUI {
                     try
                     {
                         //Hacer que aqui no haga nada en la bd
-                        //usrAux.BorraActAcademica((Actividad_a)selRow.Tag);
+                        usrAux.BorraActAcademica((Actividad_a)selRow.Tag);
                     }
                     catch (Exception ex)
                     {
@@ -95,7 +95,11 @@ namespace TaimerGUI {
                       MessageBoxButtons.YesNo,
                       MessageBoxIcon.Question,
                       MessageBoxDefaultButton.Button2) == DialogResult.Yes) {
-                          Program.Usuarios[0] = usrAux;
+                          //try {
+                              Program.Usuarios[0].UpdateMatricula(usrAux.ActAcademicas);
+                          /*} catch (Exception exc) {
+                              MessageBox.Show(exc.Message);
+                          }*/
                             //Hacer que esto guarde todos los cambios en las matriculadas en la bd
                           //usrAux.Matricular();
 

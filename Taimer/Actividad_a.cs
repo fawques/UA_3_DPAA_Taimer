@@ -12,7 +12,7 @@ namespace Taimer {
     /// <summary>
     /// Clase Actividad_a: esta clase hereda de Actividad y representa las asignaturas
     /// </summary>
-    public class Actividad_a : Actividad {
+    public class Actividad_a : Actividad, IEquatable<Actividad_a> {//hereda tambien de IEquatable<Actividad_a> para poder utilizar el metodo contains y que funcione comparando codigo
 
         #region  PARTE PRIVADA
 
@@ -53,6 +53,12 @@ namespace Taimer {
             nombreCoordinador = nomCoord_;
             curso = 0;                      // Por defecto se asigna el número de curso a 0
         }
+
+        //Para poder utilizar el metodo contains y que este utilice esta funcion para comparar
+        public bool Equals(Actividad_a otra) {
+            return this.Codigo == otra.Codigo;
+        }
+    
 
 
         /// <summary>
