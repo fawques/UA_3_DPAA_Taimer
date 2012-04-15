@@ -162,7 +162,7 @@ namespace TaimerGUI
                 }
                 btnCancelar.Enabled = false;
                 btnGuardar.Enabled = false;
-                panel1.Focus();
+                panelActividades.Focus();
                 loadPersonales();
                 ClientForm pare = (ClientForm)this.MdiParent;
                 pare.loadLastActividades();
@@ -316,6 +316,18 @@ namespace TaimerGUI
                 }
             }
 
+        }
+
+        private void panel1_MouseEnter(object sender, EventArgs e) {
+            ((Panel)sender).Focus();
+        }
+
+        private void panel3_MouseEnter(object sender, EventArgs e) {
+            panelActividades.Focus();
+        }
+
+        private void panel2_MouseEnter(object sender, EventArgs e) {
+            panelActividades.Focus();
         }
 
         

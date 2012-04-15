@@ -49,7 +49,7 @@ namespace TaimerGUI
                 pnlHorarios.Controls.Clear();
                 int posY = 10;
                 foreach (Horario hor in usrAux.Horarios) {
-                    if (hor.Nombre.Contains(patron) || hor.ID.ToString().Contains(patron)){
+                    if (hor.Nombre.ToLower().Contains(patron.ToLower())) {
                         Label auxlbl = new Label();
                         auxlbl.AutoSize = false;
                         auxlbl.Width = 275;
@@ -85,6 +85,18 @@ namespace TaimerGUI
 
         private void txtBoxFilter_TextChanged(object sender, EventArgs e) {
             this.loadHorarios(txtBoxFilter.Text);
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e) {
+
+        }
+
+        private void panel1_MouseEnter(object sender, EventArgs e) {
+            ((Panel)sender).Focus();
+        }
+
+        private void pnlHorarios_MouseEnter(object sender, EventArgs e) {
+            panel1.Focus();
         }
     }
 }

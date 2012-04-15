@@ -182,6 +182,11 @@ namespace TaimerGUI {
                    MessageBoxDefaultButton.Button2) == DialogResult.Yes) {
                     lblNombreHora.Text = txtBoxNombreHor.Text;
                     horario.Nombre = txtBoxNombreHor.Text;
+                    try {
+                        horario.Modificar();
+                    } catch (Exception exc) {
+                        MessageBox.Show(exc.Message);
+                    }
                     ((ClientForm)this.MdiParent).loadLastHorarios();
                 }
 
