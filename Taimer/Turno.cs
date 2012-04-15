@@ -794,6 +794,17 @@ namespace Taimer {
             }
             return list;
         }
+
+        /// <summary>
+        /// Compara dos Turnos según su código y su actividad.
+        /// </summary>
+        /// <param name="otro">Turno a comparar</param>
+        /// <returns></returns>
+        public bool Equals(Turno otro)
+        {
+            return (this.Actividad.Equals(otro.Actividad) && this.Codigo == otro.Codigo);
+        }
+
         #endregion
     }
 }

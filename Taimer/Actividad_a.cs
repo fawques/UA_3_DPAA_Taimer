@@ -54,10 +54,7 @@ namespace Taimer {
             curso = 0;                      // Por defecto se asigna el número de curso a 0
         }
 
-        //Para poder utilizar el metodo contains y que este utilice esta funcion para comparar
-        public bool Equals(Actividad_a otra) {
-            return this.Codigo == otra.Codigo;
-        }
+        
     
 
 

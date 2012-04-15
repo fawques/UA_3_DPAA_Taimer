@@ -278,6 +278,16 @@ namespace Taimer {
             turnos = Turno.TurnosToList(data,this);            
         }
 
+        /// <summary>
+        /// Compara dos Actividades según su código.
+        /// </summary>
+        /// <param name="otra"></param>
+        /// <returns></returns>
+        public bool Equals(Actividad otra)
+        {
+            return this.Codigo == otra.Codigo;
+        }
+
         public Actividad()
         {
         }
