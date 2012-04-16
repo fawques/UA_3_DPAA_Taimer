@@ -276,6 +276,7 @@
             this.pnlHorario.Size = new System.Drawing.Size(771, 460);
             this.pnlHorario.TabIndex = 33;
             this.pnlHorario.Visible = false;
+            this.pnlHorario.MouseEnter += new System.EventHandler(this.pnlHorario_MouseEnter);
             // 
             // label9
             // 

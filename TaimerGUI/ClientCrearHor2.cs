@@ -311,5 +311,9 @@ namespace TaimerGUI
                 }
             }
         }
+
+        private void pnlHorario_MouseEnter(object sender, EventArgs e) {
+            ((Panel)sender).Focus();
+        }
     }
 }
