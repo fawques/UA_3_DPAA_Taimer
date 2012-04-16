@@ -13,5 +13,11 @@ namespace WebTaimer.TabPeticiones
         {
 
         }
+
+        protected void botNuevaPeticion_Click(object sender, EventArgs e)
+        {
+            // Lleva a la página de hacer una nueva petición
+            Response.Redirect("~/TabPeticiones/NuevaPeticion.aspx");
+        }
     }
 }

@@ -54,18 +54,20 @@
     <Content Include="Account\ChangePassword.aspx" />
     <Content Include="Account\ChangePasswordSuccess.aspx" />
     <Content Include="TabHorarios\Horarios.aspx" />
-    <Content Include="TabInicio\ForgotPassword.aspx" />
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Register.aspx" />
     <Content Include="Images\taimerLogo.png" />
     <Content Include="Styles\Site.css" />
     <Content Include="TabAsignaturas\Asignaturas.aspx" />
     <Content Include="TabAsignaturas\Comentar.aspx" />
+    <Content Include="TabInicio\ForgotPassword.aspx" />
     <Content Include="TabInicio\SinLogin.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\jquery-1.4.1-vsdoc.js" />
     <Content Include="Scripts\jquery-1.4.1.js" />
     <Content Include="Scripts\jquery-1.4.1.min.js" />
+    <Content Include="TabPerfil\EditarPerfil.aspx" />
+    <Content Include="TabPeticiones\NuevaPeticion.aspx" />
     <Content Include="TabPeticiones\Peticiones.aspx" />
     <Content Include="TabUsuarios\Usuarios.aspx" />
     <Content Include="Web.config" />
@@ -105,13 +107,6 @@
     <Compile Include="TabHorarios\Horarios.aspx.designer.cs">
       <DependentUpon>Horarios.aspx</DependentUpon>
     </Compile>
-    <Compile Include="TabInicio\ForgotPassword.aspx.cs">
-      <DependentUpon>ForgotPassword.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="TabInicio\ForgotPassword.aspx.designer.cs">
-      <DependentUpon>ForgotPassword.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Account\Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -140,6 +135,13 @@
     <Compile Include="TabAsignaturas\Comentar.aspx.designer.cs">
       <DependentUpon>Comentar.aspx</DependentUpon>
     </Compile>
+    <Compile Include="TabInicio\ForgotPassword.aspx.cs">
+      <DependentUpon>ForgotPassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TabInicio\ForgotPassword.aspx.designer.cs">
+      <DependentUpon>ForgotPassword.aspx</DependentUpon>
+    </Compile>
     <Compile Include="TabInicio\SinLogin.aspx.cs">
       <DependentUpon>SinLogin.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -157,6 +159,20 @@
     </Compile>
     <Compile Include="Site.Master.designer.cs">
       <DependentUpon>Site.Master</DependentUpon>
+    </Compile>
+    <Compile Include="TabPerfil\EditarPerfil.aspx.cs">
+      <DependentUpon>EditarPerfil.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TabPerfil\EditarPerfil.aspx.designer.cs">
+      <DependentUpon>EditarPerfil.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TabPeticiones\NuevaPeticion.aspx.cs">
+      <DependentUpon>NuevaPeticion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TabPeticiones\NuevaPeticion.aspx.designer.cs">
+      <DependentUpon>NuevaPeticion.aspx</DependentUpon>
     </Compile>
     <Compile Include="TabPeticiones\Peticiones.aspx.cs">
       <DependentUpon>Peticiones.aspx</DependentUpon>

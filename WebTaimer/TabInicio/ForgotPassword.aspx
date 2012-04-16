@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="Recuperar cuenta" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true"
-    CodeBehind="ForgotPassword.aspx.cs" Inherits="WebTaimer.Account.ForgotPassword" %>
+    CodeBehind="ForgotPassword.aspx.cs" Inherits="WebTaimer.TabInicio.ForgotPassword" %>
 
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
 </asp:Content>
@@ -7,13 +7,23 @@
     <h2>
         Recuperar cuenta
     </h2>
+
     <p>
-        <asp:PasswordRecovery ID="PasswordRecovery1" runat="server" 
-            
-            style="z-index: 1; left: 0px; top: 0px; position: relative; height: 105px; width: 344px" 
-            BackColor="#F7F7DE" BorderColor="#CCCC99" BorderStyle="Solid" BorderWidth="1px" 
-            Font-Names="Verdana" Font-Size="10pt">
-            <TitleTextStyle BackColor="#6B696B" Font-Bold="True" ForeColor="#FFFFFF" />
-        </asp:PasswordRecovery>
+        Escribe tu nombre de usuario y te enviaremos la contraseña a tu correo electrónico.
+    </p>
+
+    <p>
+        Nombre de usuario:<br />
+        <asp:TextBox ID="UserName" runat="server" Width="320px"></asp:TextBox>
+        <asp:RequiredFieldValidator ID="UserNameRequired" runat="server" CssClass="failureNotification"
+            ControlToValidate="UserName" 
+            ErrorMessage="El nombre de usuario es obligatorio." 
+            ToolTip="El nombre de usuario es obligatorio." 
+            ValidationGroup="PasswordRecovery">*
+        </asp:RequiredFieldValidator>
+    </p>
+
+    <p>
+    <asp:Button ID="SubmitButton" runat="server" CommandName="Submit" Text="Enviar" ValidationGroup="PasswordRecovery" />
     </p>
 </asp:Content>

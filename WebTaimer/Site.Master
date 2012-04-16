@@ -46,7 +46,8 @@
                             NavigateUrl="~/TabAsignaturas/Asignaturas.aspx" 
                             ToolTip="Ver las asignaturas y comentarlas."></asp:MenuItem>
                         <asp:MenuItem Text="Perfil" Value="Perfil" 
-                            ToolTip="Cambiar los datos de tu perfil."></asp:MenuItem>
+                            ToolTip="Cambiar los datos de tu perfil." 
+                            NavigateUrl="~/TabPerfil/EditarPerfil.aspx"></asp:MenuItem>
                     </Items>
                 </asp:Menu>
             </div>

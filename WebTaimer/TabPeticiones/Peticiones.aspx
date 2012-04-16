@@ -25,7 +25,7 @@
     </p>
     <asp:Button ID="botNuevaPeticion" runat="server" 
         style="z-index: 1; left: 35px; top: 5px; position: relative" 
-        Text="Nueva petición" />
+        Text="Nueva petición" onclick="botNuevaPeticion_Click" />
     <asp:Button ID="botBorrarPeticionSeleccionada" runat="server" 
             style="z-index: 1; left: 46px; top: 5px; position: relative; width: 191px" 
             Text="Borrar petición seleccionada" />

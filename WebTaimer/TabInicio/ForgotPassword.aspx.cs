@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace WebTaimer.Account
+namespace WebTaimer.TabInicio
 {
     public partial class ForgotPassword : System.Web.UI.Page
     {
