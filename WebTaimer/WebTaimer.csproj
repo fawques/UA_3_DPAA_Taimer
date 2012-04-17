@@ -53,14 +53,23 @@
     <Content Include="About.aspx" />
     <Content Include="Account\ChangePassword.aspx" />
     <Content Include="Account\ChangePasswordSuccess.aspx" />
+    <Content Include="TabHorarios\Horarios.aspx" />
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Register.aspx" />
+    <Content Include="Images\taimerLogo.png" />
     <Content Include="Styles\Site.css" />
-    <Content Include="Default.aspx" />
+    <Content Include="TabAsignaturas\Asignaturas.aspx" />
+    <Content Include="TabAsignaturas\Comentar.aspx" />
+    <Content Include="TabInicio\ForgotPassword.aspx" />
+    <Content Include="TabInicio\SinLogin.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\jquery-1.4.1-vsdoc.js" />
     <Content Include="Scripts\jquery-1.4.1.js" />
     <Content Include="Scripts\jquery-1.4.1.min.js" />
+    <Content Include="TabPerfil\EditarPerfil.aspx" />
+    <Content Include="TabPeticiones\NuevaPeticion.aspx" />
+    <Content Include="TabPeticiones\Peticiones.aspx" />
+    <Content Include="TabUsuarios\Usuarios.aspx" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -91,6 +100,13 @@
     <Compile Include="Account\ChangePasswordSuccess.aspx.designer.cs">
       <DependentUpon>ChangePasswordSuccess.aspx</DependentUpon>
     </Compile>
+    <Compile Include="TabHorarios\Horarios.aspx.cs">
+      <DependentUpon>Horarios.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TabHorarios\Horarios.aspx.designer.cs">
+      <DependentUpon>Horarios.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Account\Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -105,12 +121,33 @@
     <Compile Include="Account\Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Default.aspx.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
+    <Compile Include="TabAsignaturas\Asignaturas.aspx.cs">
+      <DependentUpon>Asignaturas.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Default.aspx.designer.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
+    <Compile Include="TabAsignaturas\Asignaturas.aspx.designer.cs">
+      <DependentUpon>Asignaturas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TabAsignaturas\Comentar.aspx.cs">
+      <DependentUpon>Comentar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TabAsignaturas\Comentar.aspx.designer.cs">
+      <DependentUpon>Comentar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TabInicio\ForgotPassword.aspx.cs">
+      <DependentUpon>ForgotPassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TabInicio\ForgotPassword.aspx.designer.cs">
+      <DependentUpon>ForgotPassword.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TabInicio\SinLogin.aspx.cs">
+      <DependentUpon>SinLogin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TabInicio\SinLogin.aspx.designer.cs">
+      <DependentUpon>SinLogin.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -122,6 +159,34 @@
     </Compile>
     <Compile Include="Site.Master.designer.cs">
       <DependentUpon>Site.Master</DependentUpon>
+    </Compile>
+    <Compile Include="TabPerfil\EditarPerfil.aspx.cs">
+      <DependentUpon>EditarPerfil.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TabPerfil\EditarPerfil.aspx.designer.cs">
+      <DependentUpon>EditarPerfil.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TabPeticiones\NuevaPeticion.aspx.cs">
+      <DependentUpon>NuevaPeticion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TabPeticiones\NuevaPeticion.aspx.designer.cs">
+      <DependentUpon>NuevaPeticion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TabPeticiones\Peticiones.aspx.cs">
+      <DependentUpon>Peticiones.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TabPeticiones\Peticiones.aspx.designer.cs">
+      <DependentUpon>Peticiones.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TabUsuarios\Usuarios.aspx.cs">
+      <DependentUpon>Usuarios.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TabUsuarios\Usuarios.aspx.designer.cs">
+      <DependentUpon>Usuarios.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
