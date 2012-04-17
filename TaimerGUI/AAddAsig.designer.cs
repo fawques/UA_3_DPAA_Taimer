@@ -253,7 +253,7 @@
             this.label7.Size = new System.Drawing.Size(34, 13);
             this.label7.TabIndex = 73;
             this.label7.Text = "Curso";
-            this.label7.Click += new System.EventHandler(this.label7_Click);
+
             // 
             // udCurso
             // 

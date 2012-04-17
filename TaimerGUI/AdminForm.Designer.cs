@@ -30,8 +30,13 @@
             this.cerrarSesionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.usuariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.verUsuariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.nuevoUsuarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.asignaturasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.verAsignaturasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.nuevaAsignaturaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.estadisticasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.verEstadisticasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ayudaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.acercaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -43,11 +48,6 @@
             this.btSidePanelEstad = new System.Windows.Forms.Button();
             this.btSidePanelAsig = new System.Windows.Forms.Button();
             this.btSidePanelUser = new System.Windows.Forms.Button();
-            this.verUsuariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.nuevoUsuarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.verAsignaturasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.nuevaAsignaturaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.verEstadisticasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pnTop.SuspendLayout();
             this.panel3.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -107,14 +107,14 @@
             // cerrarSesionToolStripMenuItem
             // 
             this.cerrarSesionToolStripMenuItem.Name = "cerrarSesionToolStripMenuItem";
-            this.cerrarSesionToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.cerrarSesionToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
             this.cerrarSesionToolStripMenuItem.Text = "Cerrar Sesion";
             this.cerrarSesionToolStripMenuItem.Click += new System.EventHandler(this.cerrarSesionToolStripMenuItem_Click);
             // 
             // salirToolStripMenuItem
             // 
             this.salirToolStripMenuItem.Name = "salirToolStripMenuItem";
-            this.salirToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.salirToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
             this.salirToolStripMenuItem.Text = "Salir";
             this.salirToolStripMenuItem.Click += new System.EventHandler(this.salirToolStripMenuItem_Click);
             // 
@@ -127,6 +127,20 @@
             this.usuariosToolStripMenuItem.Size = new System.Drawing.Size(64, 20);
             this.usuariosToolStripMenuItem.Text = "Usuarios";
             // 
+            // verUsuariosToolStripMenuItem
+            // 
+            this.verUsuariosToolStripMenuItem.Name = "verUsuariosToolStripMenuItem";
+            this.verUsuariosToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.verUsuariosToolStripMenuItem.Text = "Ver Usuarios";
+            this.verUsuariosToolStripMenuItem.Click += new System.EventHandler(this.verUsuariosToolStripMenuItem_Click);
+            // 
+            // nuevoUsuarioToolStripMenuItem
+            // 
+            this.nuevoUsuarioToolStripMenuItem.Name = "nuevoUsuarioToolStripMenuItem";
+            this.nuevoUsuarioToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.nuevoUsuarioToolStripMenuItem.Text = "Nuevo Usuario";
+            this.nuevoUsuarioToolStripMenuItem.Click += new System.EventHandler(this.nuevoUsuarioToolStripMenuItem_Click);
+            // 
             // asignaturasToolStripMenuItem
             // 
             this.asignaturasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -136,6 +150,20 @@
             this.asignaturasToolStripMenuItem.Size = new System.Drawing.Size(81, 20);
             this.asignaturasToolStripMenuItem.Text = "Asignaturas";
             // 
+            // verAsignaturasToolStripMenuItem
+            // 
+            this.verAsignaturasToolStripMenuItem.Name = "verAsignaturasToolStripMenuItem";
+            this.verAsignaturasToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
+            this.verAsignaturasToolStripMenuItem.Text = "Ver Asignaturas";
+            this.verAsignaturasToolStripMenuItem.Click += new System.EventHandler(this.verAsignaturasToolStripMenuItem_Click);
+            // 
+            // nuevaAsignaturaToolStripMenuItem
+            // 
+            this.nuevaAsignaturaToolStripMenuItem.Name = "nuevaAsignaturaToolStripMenuItem";
+            this.nuevaAsignaturaToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
+            this.nuevaAsignaturaToolStripMenuItem.Text = "Nueva Asignatura";
+            this.nuevaAsignaturaToolStripMenuItem.Click += new System.EventHandler(this.nuevaAsignaturaToolStripMenuItem_Click);
+            // 
             // estadisticasToolStripMenuItem
             // 
             this.estadisticasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -143,6 +171,13 @@
             this.estadisticasToolStripMenuItem.Name = "estadisticasToolStripMenuItem";
             this.estadisticasToolStripMenuItem.Size = new System.Drawing.Size(79, 20);
             this.estadisticasToolStripMenuItem.Text = "Estadisticas";
+            // 
+            // verEstadisticasToolStripMenuItem
+            // 
+            this.verEstadisticasToolStripMenuItem.Name = "verEstadisticasToolStripMenuItem";
+            this.verEstadisticasToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
+            this.verEstadisticasToolStripMenuItem.Text = "Ver Estadisticas";
+            this.verEstadisticasToolStripMenuItem.Click += new System.EventHandler(this.verEstadisticasToolStripMenuItem_Click);
             // 
             // ayudaToolStripMenuItem
             // 
@@ -155,8 +190,8 @@
             // acercaToolStripMenuItem
             // 
             this.acercaToolStripMenuItem.Name = "acercaToolStripMenuItem";
-            this.acercaToolStripMenuItem.Size = new System.Drawing.Size(110, 22);
-            this.acercaToolStripMenuItem.Text = "Acerca";
+            this.acercaToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.acercaToolStripMenuItem.Text = "Acerca de...";
             // 
             // panel2
             // 
@@ -176,41 +211,51 @@
             this.btMinimize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btMinimize.FlatAppearance.BorderSize = 0;
             this.btMinimize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btMinimize.Location = new System.Drawing.Point(5, 3);
+            this.btMinimize.Image = global::TaimerGUI.Properties.Resources.tbMinimizeOff;
+            this.btMinimize.Location = new System.Drawing.Point(5, 2);
             this.btMinimize.Name = "btMinimize";
             this.btMinimize.Size = new System.Drawing.Size(25, 25);
             this.btMinimize.TabIndex = 3;
-            this.btMinimize.Text = "__";
             this.btMinimize.UseVisualStyleBackColor = true;
-            this.btMinimize.MouseClick += new System.Windows.Forms.MouseEventHandler(this.btMinimize_MouseClick);
+            this.btMinimize.Click += new System.EventHandler(this.btMinimize_Click);
+            this.btMinimize.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btMinimize_MouseDown);
+            this.btMinimize.MouseEnter += new System.EventHandler(this.btMinimize_MouseEnter);
+            this.btMinimize.MouseLeave += new System.EventHandler(this.btMinimize_MouseLeave);
+            this.btMinimize.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btMinimize_MouseUp);
             // 
             // btMaximize
             // 
             this.btMaximize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btMaximize.FlatAppearance.BorderSize = 0;
             this.btMaximize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btMaximize.Location = new System.Drawing.Point(36, 3);
+            this.btMaximize.Image = global::TaimerGUI.Properties.Resources.maximizeOff1;
+            this.btMaximize.Location = new System.Drawing.Point(36, 6);
             this.btMaximize.Name = "btMaximize";
             this.btMaximize.Size = new System.Drawing.Size(25, 25);
             this.btMaximize.TabIndex = 4;
-            this.btMaximize.Text = "O";
             this.btMaximize.UseVisualStyleBackColor = true;
             this.btMaximize.Click += new System.EventHandler(this.btMaximize_Click);
-            this.btMaximize.MouseClick += new System.Windows.Forms.MouseEventHandler(this.btMinimize_MouseClick);
+            this.btMaximize.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btMaximize_MouseDown);
+            this.btMaximize.MouseEnter += new System.EventHandler(this.btMaximize_MouseEnter);
+            this.btMaximize.MouseLeave += new System.EventHandler(this.btMaximize_MouseLeave);
+            this.btMaximize.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btMaximize_MouseUp);
             // 
             // btClose
             // 
             this.btClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btClose.FlatAppearance.BorderSize = 0;
             this.btClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btClose.Image = global::TaimerGUI.Properties.Resources.tbCloseOff;
             this.btClose.Location = new System.Drawing.Point(67, 3);
             this.btClose.Name = "btClose";
             this.btClose.Size = new System.Drawing.Size(25, 25);
             this.btClose.TabIndex = 0;
-            this.btClose.Text = "X";
             this.btClose.UseVisualStyleBackColor = true;
             this.btClose.Click += new System.EventHandler(this.btClose_Click);
-            this.btClose.MouseClick += new System.Windows.Forms.MouseEventHandler(this.btMinimize_MouseClick);
+            this.btClose.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btClose_MouseDown);
+            this.btClose.MouseEnter += new System.EventHandler(this.btClose_MouseEnter);
+            this.btClose.MouseLeave += new System.EventHandler(this.btClose_MouseLeave);
+            this.btClose.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btClose_MouseUp);
             // 
             // label1
             // 
@@ -269,41 +314,6 @@
             this.btSidePanelUser.Text = "Gestionar Usuarios";
             this.btSidePanelUser.UseVisualStyleBackColor = true;
             this.btSidePanelUser.Click += new System.EventHandler(this.btSidePanelUser_Click);
-            // 
-            // verUsuariosToolStripMenuItem
-            // 
-            this.verUsuariosToolStripMenuItem.Name = "verUsuariosToolStripMenuItem";
-            this.verUsuariosToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.verUsuariosToolStripMenuItem.Text = "Ver Usuarios";
-            this.verUsuariosToolStripMenuItem.Click += new System.EventHandler(this.verUsuariosToolStripMenuItem_Click);
-            // 
-            // nuevoUsuarioToolStripMenuItem
-            // 
-            this.nuevoUsuarioToolStripMenuItem.Name = "nuevoUsuarioToolStripMenuItem";
-            this.nuevoUsuarioToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.nuevoUsuarioToolStripMenuItem.Text = "Nuevo Usuario";
-            this.nuevoUsuarioToolStripMenuItem.Click += new System.EventHandler(this.nuevoUsuarioToolStripMenuItem_Click);
-            // 
-            // verAsignaturasToolStripMenuItem
-            // 
-            this.verAsignaturasToolStripMenuItem.Name = "verAsignaturasToolStripMenuItem";
-            this.verAsignaturasToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
-            this.verAsignaturasToolStripMenuItem.Text = "Ver Asignaturas";
-            this.verAsignaturasToolStripMenuItem.Click += new System.EventHandler(this.verAsignaturasToolStripMenuItem_Click);
-            // 
-            // nuevaAsignaturaToolStripMenuItem
-            // 
-            this.nuevaAsignaturaToolStripMenuItem.Name = "nuevaAsignaturaToolStripMenuItem";
-            this.nuevaAsignaturaToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
-            this.nuevaAsignaturaToolStripMenuItem.Text = "Nueva Asignatura";
-            this.nuevaAsignaturaToolStripMenuItem.Click += new System.EventHandler(this.nuevaAsignaturaToolStripMenuItem_Click);
-            // 
-            // verEstadisticasToolStripMenuItem
-            // 
-            this.verEstadisticasToolStripMenuItem.Name = "verEstadisticasToolStripMenuItem";
-            this.verEstadisticasToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
-            this.verEstadisticasToolStripMenuItem.Text = "Ver Estadisticas";
-            this.verEstadisticasToolStripMenuItem.Click += new System.EventHandler(this.verEstadisticasToolStripMenuItem_Click);
             // 
             // AdminForm
             // 

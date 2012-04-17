@@ -126,10 +126,10 @@ namespace Taimer {
         public int Curso {
             get { return curso; }
             set { 
-                if(value >= 1)
+                if(value >= 0)
                     curso = value;
                 else                    
-                    throw new ArgumentOutOfRangeException("El número de curso debe ser mayor o igual que 1");
+                    throw new ArgumentOutOfRangeException("El número de curso debe ser mayor o igual que 0");
             }
         }
 

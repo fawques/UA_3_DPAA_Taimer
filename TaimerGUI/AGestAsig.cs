@@ -146,6 +146,7 @@ namespace TaimerGUI {
                             clearInfo();
                         }
 
+                        asigBorr.Borrar();
                         Program.Asignaturas.Remove(asigBorr);
                         dgAsig.Rows.RemoveAt(e.RowIndex);
 
@@ -194,6 +195,8 @@ namespace TaimerGUI {
             currentAsig.Nombre = lbName.Text;
             currentAsig.Descripcion = lbDesc.Text;
             currentAsig.NombreCoordinador = lbCoord.Text;
+
+            currentAsig.Modificar();
 
             clearInfo();
             updateTableAsig();
