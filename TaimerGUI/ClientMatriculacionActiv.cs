@@ -28,7 +28,17 @@ namespace TaimerGUI {
         private void loadDisponibles() {
             dataGridActuales.Rows.Clear();
             foreach (Actividad_a act in Program.Asignaturas) {
-                if (!usrAux.ActAcademicas.Contains(act)) {
+                bool contiene = false;
+
+                foreach (Actividad_a matriculada in usrAux.ActAcademicas)
+                {
+                    if (act.Equals(matriculada))
+                    {
+                        contiene = true;
+                        break;
+                    }
+                }
+                if (!contiene) {
                     dataGridActuales.Rows.Add(act.Nombre, act.Descripcion);
                     dataGridActuales.Rows[dataGridActuales.Rows.Count-1].Tag = act;
                 }
@@ -157,7 +167,18 @@ namespace TaimerGUI {
                 dataGridActuales.Rows.Clear();
                 foreach (Actividad_a obj in Program.Asignaturas)
                 {
-                    if (!usrAux.ActAcademicas.Contains(obj) &&
+                    bool contiene = false;
+
+                    foreach (Actividad_a matriculada in usrAux.ActAcademicas)
+                    {
+                        if (obj.Equals(matriculada))
+                        {
+                            contiene = true;
+                            break;
+                        }
+                    }
+
+                    if (!contiene &&
                         (obj.Nombre.ToLower().Contains(nom) || obj.Descripcion.ToLower().Contains(nom) || obj.NombreCoordinador.ToLower().Contains(nom)))
                     {
                         dataGridActuales.Rows.Add(obj.Nombre, obj.Descripcion);
