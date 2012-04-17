@@ -14,7 +14,9 @@ namespace TaimerGUI {
         AGestAsig parentGest = null;
         Taimer.Actividad_a currentAct = null;
         Taimer.Actividad_a currentActCopy = null;
-
+        List<Taimer.Turno> tModificados = new List<Taimer.Turno>();
+        List<Taimer.Turno> tCreados = new List<Taimer.Turno>();
+        List<Taimer.Turno> tBorrados = new List<Taimer.Turno>();
 
         public AGestTurn() {
             InitializeComponent();
@@ -78,7 +80,7 @@ namespace TaimerGUI {
                 dgTurnos.Rows[dgTurnos.RowCount - 1].Tag = turn;
                 
                 currentAct.AddTurno(turn);
-                turn.Agregar();
+                tCreados.Add(turn);
 
                 tbUbi.Text = "";
                 cbDia.SelectedIndex = 0;
@@ -95,7 +97,7 @@ namespace TaimerGUI {
                     try {
                         Taimer.Turno turno = (Taimer.Turno)dgTurnos.Rows[e.RowIndex].Tag;
                         currentAct.BorraTurno(turno);
-                        turno.Borrar();
+                        tBorrados.Add(turno);
 
                     } catch (NotSupportedException exc) {
                         MessageBox.Show(exc.Message);
@@ -142,8 +144,8 @@ namespace TaimerGUI {
                 turno.Dia = Taimer.TaimerLibrary.convertToDais(cmbBoxDiaMod.Text);
                 turno.Ubicacion = txtBoxLugarMod.Text;
                 loadAsig(currentAct);
+                tModificados.Add(turno);
 
-                turno.Modificar();
             } catch (NotSupportedException exc) {
                 MessageBox.Show(exc.Message);
             }
@@ -152,6 +154,21 @@ namespace TaimerGUI {
         private void btCreate_Click(object sender, EventArgs e) {
 
             if (parentGest != null) {
+
+                try {
+                    currentAct.Modificar();
+                    foreach (Taimer.Turno item in tBorrados) {
+                        item.Borrar();
+                    }
+                    foreach (Taimer.Turno item in tCreados) {
+                        item.Agregar();
+                    }
+                    foreach (Taimer.Turno item in tModificados) {
+                        item.Modificar();
+                    }
+                } catch (Exception exc) {
+                    MessageBox.Show(exc.Message);
+                }
 
                 parentGest.showInfo(currentAct);
 
