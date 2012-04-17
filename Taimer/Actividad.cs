@@ -9,7 +9,7 @@ namespace Taimer {
     /// <summary>
     /// Clase Actividad: clase abstracta de la que heredarán Actividad_a y Actividad_p
     /// </summary>
-    abstract public class Actividad:IEquatable<Actividad> {
+    abstract public class Actividad:IEquatable<object> {
 
         #region PARTE PROTECTED
 
@@ -283,9 +283,11 @@ namespace Taimer {
         /// </summary>
         /// <param name="otra"></param>
         /// <returns></returns>
-        public bool Equals(Actividad otra)
+        public override bool Equals(object otra)
         {
-            return this.Codigo == otra.Codigo;
+            var actividad = otra as Actividad;
+            if (actividad == null) return false;
+            return this.Codigo == actividad.Codigo;
         }
 
         public Actividad()
