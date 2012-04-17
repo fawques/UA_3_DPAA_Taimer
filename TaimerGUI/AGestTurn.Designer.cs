@@ -215,13 +215,13 @@
             this.cbDia.DisplayMember = "Lunes";
             this.cbDia.FormattingEnabled = true;
             this.cbDia.Items.AddRange(new object[] {
-            "Domingo",
-            "Jueves",
             "Lunes",
             "Martes",
             "Miercoles",
+            "Jueves",
+            "Viernes",
             "Sabado",
-            "Viernes"});
+            "Domingo"});
             this.cbDia.Location = new System.Drawing.Point(62, 32);
             this.cbDia.Name = "cbDia";
             this.cbDia.Size = new System.Drawing.Size(121, 21);
