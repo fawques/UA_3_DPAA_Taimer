@@ -112,7 +112,7 @@ namespace TaimerGUI
                 if (hor.maxHora().Hor < 23 && hor.maxHora().Min > 0) {
                     maximo++;
                 }
-            } catch (Exception exc) {
+            } catch (Exception) {
                 //MessageBox.Show(exc.Message);
             }
  

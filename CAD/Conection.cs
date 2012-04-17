@@ -12,7 +12,7 @@ namespace CAD
 
         public Conection()
         {
-            conectionString = "Data Source=.\\SQLEXPRESS;AttachDbFilename=C:\\Taimer\\BaseDeDatos\\BDTaimer.mdf;Integrated Security=True;User Instance=True";
+            conectionString = "Data Source=.\\SQLEXPRESS;AttachDbFilename=C:\\Taimer\\CAD\\BDTaimer.mdf;Integrated Security=True;User Instance=True";
             //conectionString = "Data Source=.\\SQLEXPRESS;AttachDbFilename=|DataDirectory|\\BDTaimer.mdf;Integrated Security=True;User Instance=True";
         }
 
