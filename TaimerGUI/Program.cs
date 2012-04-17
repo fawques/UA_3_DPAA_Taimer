@@ -308,7 +308,7 @@ namespace TaimerGUI {
         /// </summary>
         public static void SetDatos()
         {
-            usuarios = User.GetAllUsers();
+            //usuarios = User.GetAllUsers();
             /*string message = "";
             foreach (User u in usuarios)
             {
