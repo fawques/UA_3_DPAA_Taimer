@@ -107,6 +107,9 @@ namespace TaimerGUI
                     }
 
                     asig.Agregar();
+                    foreach (Taimer.Turno item in asig.Turnos) {
+                        item.Agregar();
+                    }
 
                     clearLabels();
 
@@ -164,12 +167,12 @@ namespace TaimerGUI
             dgTurnos.Rows.Clear();
             if (asig == null)
             {
-                asig = new Taimer.Actividad_a("", "", "", 1, "", 0);
+                asig = new Taimer.Actividad_a("", "", "", 1, "");
 
                 if (asig == null) {
                     lbErrCoord.Visible = true;
                 }
-                //throw new Exception();
+                
                 clearLabels();
             }
             else
