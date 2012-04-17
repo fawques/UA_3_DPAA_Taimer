@@ -15,6 +15,7 @@ namespace TaimerGUI {
         Taimer.Actividad_a currentAct = null;
         Taimer.Actividad_a currentActCopy = null;
 
+
         public AGestTurn() {
             InitializeComponent();
         }
@@ -31,7 +32,7 @@ namespace TaimerGUI {
 
         public void loadAsig(Taimer.Actividad_a asig) {
             currentAct = asig;
-            currentActCopy = new Taimer.Actividad_a(currentAct);
+            currentActCopy = new Taimer.Actividad_a(asig);
 
             dgTurnos.Rows.Clear();
             grpBoxTurno.Visible = false;
@@ -77,6 +78,7 @@ namespace TaimerGUI {
                 dgTurnos.Rows[dgTurnos.RowCount - 1].Tag = turn;
                 
                 currentAct.AddTurno(turn);
+                turn.Agregar();
 
                 tbUbi.Text = "";
                 cbDia.SelectedIndex = 0;
@@ -91,7 +93,10 @@ namespace TaimerGUI {
             if(e.RowIndex >= 0 && e.RowIndex < dgTurnos.Rows.Count){
                 if (e.ColumnIndex == dgTurnos.Columns["Borrar"].Index) {
                     try {
-                        currentAct.BorraTurno((Taimer.Turno)dgTurnos.Rows[e.RowIndex].Tag);
+                        Taimer.Turno turno = (Taimer.Turno)dgTurnos.Rows[e.RowIndex].Tag;
+                        currentAct.BorraTurno(turno);
+                        turno.Borrar();
+
                     } catch (NotSupportedException exc) {
                         MessageBox.Show(exc.Message);
                     } catch (MissingMemberException) {
@@ -135,13 +140,13 @@ namespace TaimerGUI {
                 turno.HoraInicio = horI;
                 turno.HoraFin = horF;
                 turno.Dia = Taimer.TaimerLibrary.convertToDais(cmbBoxDiaMod.Text);
+                turno.Ubicacion = txtBoxLugarMod.Text;
+                loadAsig(currentAct);
 
+                turno.Modificar();
             } catch (NotSupportedException exc) {
                 MessageBox.Show(exc.Message);
             }
-            turno.Ubicacion = txtBoxLugarMod.Text;
-
-            loadAsig(currentAct);
         }
 
         private void btCreate_Click(object sender, EventArgs e) {

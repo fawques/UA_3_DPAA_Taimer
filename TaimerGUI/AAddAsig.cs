@@ -98,10 +98,12 @@ namespace TaimerGUI
                     }
                     else
                     {
-                        // Creo una asignatura 
+                        // Meto los datos
                         asig.Nombre = tbName.Text;
                         asig.Descripcion = tbDesc.Text;
                         asig.NombreCoordinador = tbCoord.Text;
+                        asig.Titulacion = tbTitu.Text;
+                        asig.Curso = (int) udCurso.Value;
                     }
 
                     asig.Agregar();
@@ -136,6 +138,10 @@ namespace TaimerGUI
             {
                 Hide();
 
+                if (asig == null) {
+                    lbErrCoord.Visible = true;
+                }
+
                 childForm.loadAsig(asig);
 
                 childForm.setParent(this);
@@ -158,7 +164,12 @@ namespace TaimerGUI
             dgTurnos.Rows.Clear();
             if (asig == null)
             {
-                //asig = new Taimer.Actividad_a("", "", 0, "");
+                asig = new Taimer.Actividad_a("", "", "", 1, "", 0);
+
+                if (asig == null) {
+                    lbErrCoord.Visible = true;
+                }
+                //throw new Exception();
                 clearLabels();
             }
             else
@@ -168,16 +179,6 @@ namespace TaimerGUI
                     dgTurnos.Rows.Add(turno.DiaString, turno.HoraInicio.toString(), turno.HoraFin.toString(), turno.Ubicacion);
                 }
             }
-
-        }
-
-        private void label7_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
 
         }
     }
