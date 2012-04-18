@@ -32,6 +32,7 @@ namespace TaimerGUI {
             InitializeComponent();
             // Aquí debería llamar a la función que cargue desde la BD
             usuario = Program.Usuarios[0];
+            userTlSMnItem.Text = usuario.Nombre;
 
             //Redondeado de bordes
             //shape = RoundedRectangle.Create(0, 0, this.Width, this.Height, 10);
