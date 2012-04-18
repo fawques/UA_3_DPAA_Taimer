@@ -63,11 +63,11 @@ namespace Taimer {
         /// <param name="nom_"> Nombre de la Actividad</param>
         /// <param name="desc_"> Descripción de la Actividad</param>
         /// <param name="cod_"> Código de la Actividad </param>
-        public Actividad(string nom_, string desc_, int cod_) {
+        public Actividad(string nom_, string desc_, int cod_, int codTurno = 1) {
             nombre = nom_;
             descripcion = desc_;
             codigo = cod_;
-            codigoturno = 1;
+            codigoturno = codTurno;
             turnos = new List<Turno>();
         }
 
@@ -79,18 +79,18 @@ namespace Taimer {
         /// <param name="desc_"> Descripción de la Actividad </param>
         /// <param name="cod_"> Código de la Actividad </param>
         /// <param name="turnos_"> Lista de turnos a la que se puede asistir </param>
-        public Actividad(string nom_, string desc_, int cod_, List<Turno> turnos_)
+        public Actividad(string nom_, string desc_, int cod_,int codTurno, List<Turno> turnos_)
         {
             nombre = nom_;
             descripcion = desc_;
             codigo = cod_;
             turnos = new List<Turno>(turnos_);
+            codigoturno = codTurno;
             foreach (Turno t in turnos) {
                 if (t.Codigo == -1) { //si tiene el codigo por defecto
                     AsignarCodigo(t);
                 }
             }
-            codigoturno = 1;
         }
 
         /// <summary>
