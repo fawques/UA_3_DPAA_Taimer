@@ -94,6 +94,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.groupBox1.Controls.Add(this.lbErrUbi);
             this.groupBox1.Controls.Add(this.lblErrorDate);
             this.groupBox1.Controls.Add(this.label7);
@@ -286,6 +287,7 @@
             // 
             // button1
             // 
+            this.button1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.button1.BackgroundImage = global::TaimerGUI.Properties.Resources.flechaRight;
             this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.button1.Location = new System.Drawing.Point(232, 195);
@@ -298,6 +300,7 @@
             // gVHorasTemp
             // 
             this.gVHorasTemp.AllowUserToAddRows = false;
+            this.gVHorasTemp.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.gVHorasTemp.BackgroundColor = System.Drawing.Color.Wheat;
             this.gVHorasTemp.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gVHorasTemp.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -352,6 +355,7 @@
             // 
             // grpBoxTurno
             // 
+            this.grpBoxTurno.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.grpBoxTurno.Controls.Add(this.lblMenorTurno);
             this.grpBoxTurno.Controls.Add(this.btnCancelar);
             this.grpBoxTurno.Controls.Add(this.btnGuardar);
@@ -553,7 +557,8 @@
             // 
             // btnTerminar
             // 
-            this.btnTerminar.Location = new System.Drawing.Point(680, 570);
+            this.btnTerminar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnTerminar.Location = new System.Drawing.Point(681, 570);
             this.btnTerminar.Name = "btnTerminar";
             this.btnTerminar.Size = new System.Drawing.Size(92, 30);
             this.btnTerminar.TabIndex = 27;
@@ -563,6 +568,7 @@
             // 
             // btnConfCambios
             // 
+            this.btnConfCambios.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnConfCambios.Location = new System.Drawing.Point(564, 570);
             this.btnConfCambios.Name = "btnConfCambios";
             this.btnConfCambios.Size = new System.Drawing.Size(92, 30);
