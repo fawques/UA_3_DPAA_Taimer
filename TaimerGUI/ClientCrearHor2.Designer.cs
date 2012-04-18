@@ -34,7 +34,6 @@
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.grpBoxRestric = new System.Windows.Forms.GroupBox();
-            this.label11 = new System.Windows.Forms.Label();
             this.groubBoxDias = new System.Windows.Forms.GroupBox();
             this.chkBxAll = new System.Windows.Forms.CheckBox();
             this.chkBoxDomingo = new System.Windows.Forms.CheckBox();
@@ -102,7 +101,7 @@
             // radioButton1
             // 
             this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(465, 115);
+            this.radioButton1.Location = new System.Drawing.Point(262, 136);
             this.radioButton1.Name = "radioButton1";
             this.radioButton1.Size = new System.Drawing.Size(95, 17);
             this.radioButton1.TabIndex = 25;
@@ -113,7 +112,7 @@
             // 
             this.radioButton2.AutoSize = true;
             this.radioButton2.Checked = true;
-            this.radioButton2.Location = new System.Drawing.Point(465, 139);
+            this.radioButton2.Location = new System.Drawing.Point(262, 160);
             this.radioButton2.Name = "radioButton2";
             this.radioButton2.Size = new System.Drawing.Size(79, 17);
             this.radioButton2.TabIndex = 26;
@@ -124,26 +123,16 @@
             // grpBoxRestric
             // 
             this.grpBoxRestric.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.grpBoxRestric.Controls.Add(this.label11);
             this.grpBoxRestric.Controls.Add(this.groubBoxDias);
             this.grpBoxRestric.Controls.Add(this.radioButton1);
             this.grpBoxRestric.Controls.Add(this.radioButton2);
-            this.grpBoxRestric.Location = new System.Drawing.Point(35, 112);
+            this.grpBoxRestric.Location = new System.Drawing.Point(217, 112);
             this.grpBoxRestric.Name = "grpBoxRestric";
-            this.grpBoxRestric.Size = new System.Drawing.Size(688, 351);
+            this.grpBoxRestric.Size = new System.Drawing.Size(383, 351);
             this.grpBoxRestric.TabIndex = 30;
             this.grpBoxRestric.TabStop = false;
             this.grpBoxRestric.Text = "Restricciones";
             this.grpBoxRestric.Visible = false;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(271, 271);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(130, 13);
-            this.label11.TabIndex = 36;
-            this.label11.Text = "Si, esto debe ser diferente";
             // 
             // groubBoxDias
             // 
@@ -156,7 +145,7 @@
             this.groubBoxDias.Controls.Add(this.chkBoxViernes);
             this.groubBoxDias.Controls.Add(this.chkBoxJueves);
             this.groubBoxDias.Enabled = false;
-            this.groubBoxDias.Location = new System.Drawing.Point(153, 75);
+            this.groubBoxDias.Location = new System.Drawing.Point(60, 96);
             this.groubBoxDias.Name = "groubBoxDias";
             this.groubBoxDias.Size = new System.Drawing.Size(175, 117);
             this.groubBoxDias.TabIndex = 35;
@@ -537,7 +526,6 @@
         private System.Windows.Forms.Panel pnlLunes;
         private System.Windows.Forms.Button btnGuardar;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Button btnDescartar;
     }
 }
