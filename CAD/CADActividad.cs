@@ -96,9 +96,9 @@ namespace CAD {
 
         }
         //Modificar una actividad
-        public void ModificaActividad(string nombre,string desc,int cod) 
+        public void ModificaActividad(string nombre,string desc,int cod,int codTurno) 
         {
-            string comando = "UPDATE [Actividad] SET nombre = '" + nombre + "', descripcion = '" + desc +"' WHERE codigo = '" + cod + "'";
+            string comando = "UPDATE [Actividad] SET nombre = '" + nombre + "', descripcion = '" + desc +"', codigoTurno = '" + codTurno + "' WHERE codigo = '" + cod + "'";
             SqlConnection c = null;
             SqlCommand comandoTBD;
            

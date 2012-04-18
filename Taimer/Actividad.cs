@@ -274,8 +274,17 @@ namespace Taimer {
         public void SetTurnos()
         {
             CAD.CADTurno turno = new CAD.CADTurno();
+            CAD.CADActividad act = new CAD.CADActividad();
             DataSet data=turno.GetTurnosByAct(codigo);            
-            turnos = Turno.TurnosToList(data,this);            
+            turnos = Turno.TurnosToList(data,this);
+            /*int tope = turnos.Count;
+            MessageBox.Show("Actividad " + codigo + " tiene " + tope);
+            if(tope==0)
+                codigoturno = turnos[tope].Codigo;
+            else
+                codigoturno = turnos[tope-1].Codigo;
+
+            act.ModificaActividad(nombre, descripcion, codigo, codigoturno);*/
         }
 
         /// <summary>
