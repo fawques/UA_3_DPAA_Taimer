@@ -67,8 +67,8 @@ namespace Taimer {
         /// <param name="curso_"> Curso al que pertenece la Actividad_a </param>
         /// <param name="titulacion">Tilación de la Actividad_a</param>
         /// <param name="cod_">Codigo de la Actividad_a (por defecto 0)</param>
-        public Actividad_a(string nom_, string desc_, string nomCoord_, int curso_, string tit,int codTurno = 1, int cod_ = 0)
-            : base(nom_, desc_, cod_) {
+        public Actividad_a(string nom_, string desc_, string nomCoord_, int curso_, string tit, int cod_ = 0,int codTurno = 1)
+            : base(nom_, desc_, cod_,codTurno) {
 
                 titulacion = tit;
             nombreCoordinador = nomCoord_;
