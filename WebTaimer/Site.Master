@@ -8,6 +8,12 @@
     <link href="~/Styles/Site.css" rel="stylesheet" type="text/css" />
     <asp:ContentPlaceHolder ID="HeadContent" runat="server">
     </asp:ContentPlaceHolder>
+    <style type="text/css">
+        .menu
+        {
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
     <form runat="server">
@@ -15,7 +21,7 @@
         <div class="header">
             <div class="title">
                 <h1>
-                    TAIMER
+                    Taimer
                 </h1>
             </div>
             <div class="loginDisplay">
@@ -32,22 +38,26 @@
             <div class="clear hideSkiplink">
                 <asp:Menu ID="NavigationMenu" runat="server" CssClass="menu" EnableViewState="false" IncludeStyleBlock="false" Orientation="Horizontal">
                     <Items>
-                        <asp:MenuItem NavigateUrl="~/TabInicio/SinLogin.aspx" Text="Inicio" 
+                        <asp:MenuItem NavigateUrl="~/TabInicio/ConLogin.aspx" Text="Inicio" 
                             ToolTip="Muestra la pantalla de inicio."/>
+                        <asp:MenuItem Text="Descarga la aplicación" 
+                            ToolTip="Descarga Taimer para Windows para crear tus horarios." 
+                            Value="Descarga la aplicación" NavigateUrl="~/TabDescarga/Descarga.aspx"></asp:MenuItem>
                         <asp:MenuItem NavigateUrl="~/TabHorarios/Horarios.aspx" Text="Mis horarios" 
                             ToolTip="Ver tus horarios y hacerlos públicos si así lo deseas."/>
-                        <asp:MenuItem Text="Usuarios" Value="Usuarios" 
-                            NavigateUrl="~/TabUsuarios/Usuarios.aspx" 
+                        <asp:MenuItem Text="Horarios públicos" Value="Horarios públicos" 
+                            NavigateUrl="~/TabHorariosPublicos/HorariosPublicos.aspx" 
+                            
                             ToolTip="Aquí puedes ver los horarios que otros usuarios hayan hecho públicos."></asp:MenuItem>
-                        <asp:MenuItem Text="Peticiones" Value="Peticiones" 
-                            NavigateUrl="~/TabPeticiones/Peticiones.aspx" 
-                            ToolTip="Crear peticiones para cambiar turnos de asignaturas con otros usuarios."></asp:MenuItem>
+                        <asp:MenuItem Text="Mensajes" Value="Mensajes" 
+                            NavigateUrl="~/TabMensajes/Mensajes.aspx" 
+                            ToolTip="Enviar mensajes a otros usuarios"></asp:MenuItem>
                         <asp:MenuItem Text="Asignaturas" Value="Asignaturas" 
                             NavigateUrl="~/TabAsignaturas/Asignaturas.aspx" 
                             ToolTip="Ver las asignaturas y comentarlas."></asp:MenuItem>
-                        <asp:MenuItem Text="Perfil" Value="Perfil" 
+                        <asp:MenuItem Text="Mi perfil" Value="Mi perfil" 
                             ToolTip="Cambiar los datos de tu perfil." 
-                            NavigateUrl="~/TabPerfil/EditarPerfil.aspx"></asp:MenuItem>
+                            NavigateUrl="~/TabPerfil/VerPerfil.aspx"></asp:MenuItem>
                     </Items>
                 </asp:Menu>
             </div>
@@ -58,9 +68,9 @@
         <div class="clear">
         </div>
     </div>
-    <div class="footer">
-        
-    </div>
+    <div class="footer" align="right">
+        <a href="../About.aspx"
+            title="Sobre nosotros">Sobre nosotros</a></div>
     </form>
 </body>
 </html>

@@ -18,47 +18,29 @@
     <h2>
         Asignaturas</h2>
     <p>
-        Selecciona una asignatura:
-        <asp:DropDownList ID="listaAsignaturas" runat="server" 
+        <asp:TextBox ID="textboxTitulacion" runat="server" Width="160px">[ Titulación ]</asp:TextBox>
+        <asp:Label ID="labelNombreAsignatura" runat="server" Font-Size="XX-Large"
+        style="z-index: 1; left: 10px; top: 0px; position: relative;"
+            Text="[ Nombre de la asignatura ]"></asp:Label>
+        <br />
+        Curso: <asp:DropDownList ID="listaAsignaturas" runat="server" 
             
-            style="z-index: 1; left: 5px; top: 0px; position: relative; height: 20px; width: 280px">
+            
+            style="z-index: 1; left: 5px; top: 0px; position: relative; height: 20px; width: 118px">
         </asp:DropDownList>
-    </p>
-    <p>
-    <asp:Label ID="labelDescripcion" runat="server" 
-            style="z-index: 1; left: 0px; top: 0px; position: relative"
-            Text="Descripción" Font-Size="Medium"></asp:Label>
-        <asp:Label ID="labelTurnos" runat="server" 
-            style="z-index: 1; left: 578px; top: 0px; position: relative"
-            Text="Turnos" Font-Size="Medium"></asp:Label>
-        <asp:Button ID="Button1" runat="server" 
-            
-            style="z-index: 1; left: 525px; top: 152px; position: relative; width: 255px;" 
-            Text="Solicitar turno seleccionado" />
+        <asp:Label ID="labelDescripcion" runat="server" Text="[ Descripción ]"
+        style="z-index: 1; left: 17px; top: 0px; position: relative;"></asp:Label>
         <br />
-        <textarea id="TextArea1" name="S1" style="resize: none; z-index: 1; left: 0px; top: 0px; position: relative" 
-            readonly="readonly"></textarea>
-            <asp:ListBox ID="ListBox1" runat="server" 
-            
-            
-            
-            
-            
-            style="z-index: 1; left: 17px; top: -40px; position: relative; height: 118px; width: 255px;">
-        </asp:ListBox>
-    </p>
-    <p>
-    
-    <asp:Label ID="labelComentarios" runat="server" 
-            style="z-index: 1; left: 0px; top: 0px; position: relative"
-            Text="Comentarios" Font-Size="Medium"></asp:Label>
+        <asp:Button ID="botonFiltrar" runat="server" Text="Filtrar" style="z-index: 1; left: 107px; top: 0px; position: relative;"/>
+        <asp:Label ID="labelCoordinador" runat="server" Text="[ Coordinador ]"
+        style="z-index: 1; left: 121px; top: 0px; position: relative;"></asp:Label>
         <br />
-        <asp:ListBox ID="ListBox2" runat="server" 
-            
-            
-            style="z-index: 1; left: 0px; top: 0px; position: relative; height: 280px; width: 920px;">
+        <br />
+        <asp:ListBox ID="ListBox3" runat="server" Height="400px" Width="160px">
         </asp:ListBox>
-    <br />
+        <asp:Label ID="Label1" runat="server" Text="Puntuación: [ * * * * * ]" style="z-index: 1; left: 10px; top: -380px; position: relative; height: 20px; width: 118px"></asp:Label>
+        <br />
+        <br />
     </p>
     <asp:Button ID="botNuevoComentario" runat="server" 
         style="z-index: 1; left: 0px; top: 0px; position: relative" 

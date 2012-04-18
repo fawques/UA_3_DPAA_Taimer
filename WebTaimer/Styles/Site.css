@@ -3,7 +3,7 @@
 
 body   
 {
-    background: #b6b7bc;
+    background: #fff1bb;
     font-size: .80em;
     font-family: "Helvetica Neue", "Lucida Grande", "Segoe UI", Arial, Helvetica, Verdana, sans-serif;
     margin: 0px;
@@ -31,6 +31,7 @@ p
 {
     margin-bottom: 10px;
     line-height: 1.6em;
+    width: 920px;
 }
 
 
@@ -40,7 +41,7 @@ p
 h1, h2, h3, h4, h5, h6
 {
     font-size: 1.5em;
-    color: #666666;
+    color: #ffffff;
     font-variant: small-caps;
     text-transform: none;
     font-weight: 200;
@@ -89,7 +90,7 @@ first child of the left and right table columns */
 .page
 {
     width: 960px;
-    background-color: #fff;
+    background-color: #fff8dc;
     margin: 20px auto 0px auto;
     border: 1px solid #496077;
 }
@@ -99,7 +100,7 @@ first child of the left and right table columns */
     position: relative;
     margin: 0px;
     padding: 0px;
-    background: #4b6c9e;
+    background: #fff199;
     width: 100%;
 }
 
@@ -108,7 +109,7 @@ first child of the left and right table columns */
     font-weight: 700;
     margin: 0px;
     padding: 0px 0px 0px 20px;
-    color: #f9f9f9;
+    color: #800000;
     border: none;
     line-height: 2em;
     font-size: 2em;
@@ -134,7 +135,7 @@ first child of the left and right table columns */
     color: #4e5766;
     padding: 8px 0px 0px 0px;
     margin: 0px auto;
-    text-align: center;
+    text-align: right;
     line-height: normal;
 }
 
@@ -144,13 +145,14 @@ first child of the left and right table columns */
 
 div.hideSkiplink
 {
-    background-color:#3a4f63;
+    background-color:#fff199;
     width:100%;
 }
 
 div.menu
 {
     padding: 4px 0px 4px 8px;
+    text-align: left;
 }
 
 div.menu ul
@@ -163,9 +165,9 @@ div.menu ul
 
 div.menu ul li a, div.menu ul li a:visited
 {
-    background-color: #465c71;
-    border: 1px #4e667d solid;
-    color: #dde4ec;
+    background-color: #f5deb3;
+    border: 1px #000000 solid;
+    color: #000000;
     display: block;
     line-height: 1.35em;
     padding: 4px 20px;
@@ -263,23 +265,23 @@ div.accountInfo
 
 .loginDisplay a:link
 {
-    color: white;
+    color: #000000;
 }
 
 .loginDisplay a:visited
 {
-    color: white;
+    color: #000000;
 }
 
 .loginDisplay a:hover
 {
-    color: white;
+    color: #000000;
 }
 
 .failureNotification
 {
     font-size: 1.2em;
-    color: Red;
+    color: #ff0000;
 }
 
 .bold

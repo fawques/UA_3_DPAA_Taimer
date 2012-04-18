@@ -5,8 +5,7 @@
 </asp:Content>
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
     <h2>
-        Mis horarios
-    </h2>
+        Mis horarios</h2>
     <p>
         Selecciona el horario que deseas ver:<br />
 <asp:DropDownList ID="listaAsignaturas" runat="server" 
@@ -18,9 +17,6 @@
     </p>
     <p>
     </p>
-    <asp:Panel ID="panelHorario" runat="server" Height="700px" Width="920px" 
-        BorderColor="#666666">
-    </asp:Panel>
     
     <p>
         <br />

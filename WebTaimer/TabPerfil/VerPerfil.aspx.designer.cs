@@ -7,99 +7,72 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace WebTaimer.TabAsignaturas {
+namespace WebTaimer.TabPerfil {
     
     
-    public partial class Asignaturas {
+    public partial class VerPerfil {
         
         /// <summary>
-        /// Control textboxTitulacion.
+        /// Control panelInfo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox textboxTitulacion;
+        protected global::System.Web.UI.WebControls.Panel panelInfo;
         
         /// <summary>
-        /// Control labelNombreAsignatura.
+        /// Control labelNombreUsuario.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label labelNombreAsignatura;
+        protected global::System.Web.UI.WebControls.Label labelNombreUsuario;
         
         /// <summary>
-        /// Control listaAsignaturas.
+        /// Control labelTitulacion.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList listaAsignaturas;
+        protected global::System.Web.UI.WebControls.Label labelTitulacion;
         
         /// <summary>
-        /// Control labelDescripcion.
+        /// Control labelCurso.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label labelDescripcion;
+        protected global::System.Web.UI.WebControls.Label labelCurso;
         
         /// <summary>
-        /// Control botonFiltrar.
+        /// Control labelFrasePersonal.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button botonFiltrar;
+        protected global::System.Web.UI.WebControls.Label labelFrasePersonal;
         
         /// <summary>
-        /// Control labelCoordinador.
+        /// Control imagenAvatar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label labelCoordinador;
+        protected global::System.Web.UI.WebControls.Image imagenAvatar;
         
         /// <summary>
-        /// Control ListBox3.
+        /// Control botEditarPerfil.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ListBox ListBox3;
-        
-        /// <summary>
-        /// Control Label1.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label1;
-        
-        /// <summary>
-        /// Control botNuevoComentario.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button botNuevoComentario;
-        
-        /// <summary>
-        /// Control botBorrarComentario.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button botBorrarComentario;
+        protected global::System.Web.UI.WebControls.Button botEditarPerfil;
     }
 }
