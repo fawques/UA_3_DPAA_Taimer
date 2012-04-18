@@ -318,7 +318,7 @@ namespace TaimerGUI {
             asignaturas=Actividad_a.GetAllActividades_a();
             /*foreach (Actividad_a act in asignaturas)
             {
-                message = act.Codigo + ": " + act.Turnos.Count + " turnos";
+                message = act.Codigo + ": " + act.Turnos.Count + " turnos , el último es "+act.Codigoturno;
                 MessageBox.Show(message);
             }*/
         }
