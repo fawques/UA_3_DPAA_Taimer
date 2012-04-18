@@ -12,7 +12,7 @@ namespace Taimer {
     /// <summary>
     /// Clase Actividad_a: esta clase hereda de Actividad y representa las asignaturas
     /// </summary>
-    public class Actividad_a : Actividad {
+    public class Actividad_a : Actividad {//hereda tambien de IEquatable<Actividad_a> para poder utilizar el metodo contains y que funcione comparando codigo
 
         #region  PARTE PRIVADA
 
@@ -53,6 +53,9 @@ namespace Taimer {
             nombreCoordinador = nomCoord_;
             curso = 0;                      // Por defecto se asigna el número de curso a 0
         }
+
+        
+    
 
 
         /// <summary>
@@ -123,10 +126,10 @@ namespace Taimer {
         public int Curso {
             get { return curso; }
             set { 
-                if(value >= 1)
+                if(value >= 0)
                     curso = value;
                 else                    
-                    throw new ArgumentOutOfRangeException("El número de curso debe ser mayor o igual que 1");
+                    throw new ArgumentOutOfRangeException("El número de curso debe ser mayor o igual que 0");
             }
         }
 
@@ -149,7 +152,8 @@ namespace Taimer {
             bool insertado = false;
 
             turnonuevo.Actividad = this;
-            AsignarCodigo(turnonuevo);
+            //AsignarCodigo(turnonuevo);
+            turnonuevo.Codigo = codigoturno;
 
             for (int i = 0; i < turnos.Count; i++) {
                 if (turnos[i].HoraInicio > turnonuevo.HoraInicio) {
@@ -161,6 +165,8 @@ namespace Taimer {
 
             if (!insertado)
                 turnos.Add(turnonuevo);
+
+            turnonuevo.Codigo++;
         }
 
         /// <summary>

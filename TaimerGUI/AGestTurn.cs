@@ -14,6 +14,9 @@ namespace TaimerGUI {
         AGestAsig parentGest = null;
         Taimer.Actividad_a currentAct = null;
         Taimer.Actividad_a currentActCopy = null;
+        List<Taimer.Turno> tModificados = new List<Taimer.Turno>();
+        List<Taimer.Turno> tCreados = new List<Taimer.Turno>();
+        List<Taimer.Turno> tBorrados = new List<Taimer.Turno>();
 
         public AGestTurn() {
             InitializeComponent();
@@ -31,7 +34,7 @@ namespace TaimerGUI {
 
         public void loadAsig(Taimer.Actividad_a asig) {
             currentAct = asig;
-            currentActCopy = new Taimer.Actividad_a(currentAct);
+            currentActCopy = new Taimer.Actividad_a(asig);
 
             dgTurnos.Rows.Clear();
             grpBoxTurno.Visible = false;
@@ -77,6 +80,7 @@ namespace TaimerGUI {
                 dgTurnos.Rows[dgTurnos.RowCount - 1].Tag = turn;
                 
                 currentAct.AddTurno(turn);
+                tCreados.Add(turn);
 
                 tbUbi.Text = "";
                 cbDia.SelectedIndex = 0;
@@ -91,7 +95,10 @@ namespace TaimerGUI {
             if(e.RowIndex >= 0 && e.RowIndex < dgTurnos.Rows.Count){
                 if (e.ColumnIndex == dgTurnos.Columns["Borrar"].Index) {
                     try {
-                        currentAct.BorraTurno((Taimer.Turno)dgTurnos.Rows[e.RowIndex].Tag);
+                        Taimer.Turno turno = (Taimer.Turno)dgTurnos.Rows[e.RowIndex].Tag;
+                        currentAct.BorraTurno(turno);
+                        tBorrados.Add(turno);
+
                     } catch (NotSupportedException exc) {
                         MessageBox.Show(exc.Message);
                     } catch (MissingMemberException) {
@@ -135,18 +142,33 @@ namespace TaimerGUI {
                 turno.HoraInicio = horI;
                 turno.HoraFin = horF;
                 turno.Dia = Taimer.TaimerLibrary.convertToDais(cmbBoxDiaMod.Text);
+                turno.Ubicacion = txtBoxLugarMod.Text;
+                loadAsig(currentAct);
+                tModificados.Add(turno);
 
             } catch (NotSupportedException exc) {
                 MessageBox.Show(exc.Message);
             }
-            turno.Ubicacion = txtBoxLugarMod.Text;
-
-            loadAsig(currentAct);
         }
 
         private void btCreate_Click(object sender, EventArgs e) {
 
             if (parentGest != null) {
+
+                try {
+                    currentAct.Modificar();
+                    foreach (Taimer.Turno item in tBorrados) {
+                        item.Borrar();
+                    }
+                    foreach (Taimer.Turno item in tCreados) {
+                        item.Agregar();
+                    }
+                    foreach (Taimer.Turno item in tModificados) {
+                        item.Modificar();
+                    }
+                } catch (Exception exc) {
+                    MessageBox.Show(exc.Message);
+                }
 
                 parentGest.showInfo(currentAct);
 

@@ -104,12 +104,19 @@ namespace TaimerGUI
         private void loadHorario(Horario hor)
         {
             //Pasar maximos y minimos de horas (solo horas, tampoco vamos a recortar al minuto)
-            int minimo = hor.minHora().Hor;
-            int maximo = hor.maxHora().Hor;
-            if (hor.maxHora().Min > 0)
-            {
-                maximo++;
+            int minimo = 0;
+            int maximo = 23;
+            try {
+                minimo = hor.minHora().Hor;
+                maximo = hor.maxHora().Hor;
+                if (hor.maxHora().Hor < 23 && hor.maxHora().Min > 0) {
+                    maximo++;
+                }
+            } catch (Exception) {
+                //MessageBox.Show(exc.Message);
             }
+ 
+            
             int recorteArriba = (minimo) * 60;
             initPanelHorario(minimo, maximo);
             reducirPanelHorarios(minimo, maximo);
@@ -205,7 +212,8 @@ namespace TaimerGUI
             Algoritmo alg = Program.ComprobarAlgoritmo(formBack.getActividadesA(), formBack.getActividadesP());
             if (alg != null)
             {
-                h = alg.getOptimo(radioButton2.Checked);
+                h = new Horario(alg.getOptimo(radioButton2.Checked));
+                h.Nombre = formBack.getNameHorario();
             }
             else
             {
@@ -241,14 +249,17 @@ namespace TaimerGUI
                     try
                     {
                         Program.Usuarios[0].AddHorario(hAux);
-                        hAux.Agregar();
-                    }
-                    catch (NotSupportedException exc)
-                    {
-                        MessageBox.Show(exc.Message);
+                        MessageBox.Show("Guardado con exito");
+                        //hAux.Agregar();
+                    } catch (Exception ex) {
+                        if (ex.Message.Contains("CAlt"))
+                            MessageBox.Show("Violacion de clave alternativa.");
+                        else if (ex.Message.Contains("PRIMARY KEY"))
+                            MessageBox.Show("El id del horario que intenta introducir ya existe.");
+                        else
+                            MessageBox.Show(ex.Message);
                     }
                     ((ClientForm)this.MdiParent).loadLastHorarios();
-                    MessageBox.Show("Guardado con exito");
                     this.reiniciar();
                     formBack.reiniciar();
                     ((ClientForm)this.MdiParent).verHorarios_Click(null, null);
@@ -299,6 +310,10 @@ namespace TaimerGUI
                     ((ClientForm)this.MdiParent).verHorarios_Click(null, null);
                 }
             }
+        }
+
+        private void pnlHorario_MouseEnter(object sender, EventArgs e) {
+            ((Panel)sender).Focus();
         }
     }
 }

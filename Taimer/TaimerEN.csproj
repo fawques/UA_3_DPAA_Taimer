@@ -49,21 +49,9 @@
     <Compile Include="Comentario.cs" />
     <Compile Include="Hora.cs" />
     <Compile Include="Horario.cs" />
-    <Compile Include="TestEN.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="TestEN.Designer.cs">
-      <DependentUpon>TestEN.cs</DependentUpon>
-    </Compile>
     <Compile Include="User.cs" />
     <Compile Include="Turno.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="TestEN.resx">
-      <DependentUpon>TestEN.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CAD\CAD.csproj">

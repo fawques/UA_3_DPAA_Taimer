@@ -49,7 +49,7 @@ namespace TaimerGUI {
                 foreach (DataGridViewRow selRow in dataGridActuales.SelectedRows) {
                     try
                     {
-                        
+                        //Hacer que aqui no haga nada en la bd
                         usrAux.AddActAcademica((Actividad_a)selRow.Tag);
                     }
                     catch (Exception ex)
@@ -72,6 +72,7 @@ namespace TaimerGUI {
                 foreach (DataGridViewRow selRow in dataGridMatric.SelectedRows) {
                     try
                     {
+                        //Hacer que aqui no haga nada en la bd
                         usrAux.BorraActAcademica((Actividad_a)selRow.Tag);
                     }
                     catch (Exception ex)
@@ -94,7 +95,14 @@ namespace TaimerGUI {
                       MessageBoxButtons.YesNo,
                       MessageBoxIcon.Question,
                       MessageBoxDefaultButton.Button2) == DialogResult.Yes) {
-                          Program.Usuarios[0] = usrAux;
+                          //try {
+                              Program.Usuarios[0].UpdateMatricula(usrAux.ActAcademicas);
+                          /*} catch (Exception exc) {
+                              MessageBox.Show(exc.Message);
+                          }*/
+                            //Hacer que esto guarde todos los cambios en las matriculadas en la bd
+                          //usrAux.Matricular();
+
                 //Miro las filas de las matriculadas y si no estaban ya se las anyado
                 /*foreach (DataGridViewRow row in dataGridMatric.Rows) {
                     if (row.Tag is Actividad_a) {
@@ -149,7 +157,7 @@ namespace TaimerGUI {
                 dataGridActuales.Rows.Clear();
                 foreach (Actividad_a obj in Program.Asignaturas)
                 {
-                    if (!usrAux.ActAcademicas.Contains(obj) &&
+                    if (!!usrAux.ActAcademicas.Contains(obj) &&
                         (obj.Nombre.ToLower().Contains(nom) || obj.Descripcion.ToLower().Contains(nom) || obj.NombreCoordinador.ToLower().Contains(nom)))
                     {
                         dataGridActuales.Rows.Add(obj.Nombre, obj.Descripcion);

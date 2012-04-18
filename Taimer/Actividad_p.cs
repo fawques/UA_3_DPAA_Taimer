@@ -180,6 +180,15 @@ namespace Taimer {
         }
 
         /// <summary>
+        /// Modifica una Actividad Personal en la base de datos
+        /// </summary>
+        public void Modificar()
+        {
+            CADActividad act = new CADActividad();
+            act.ModificaActividad(Nombre, Descripcion, Codigo);
+        }
+
+        /// <summary>
         /// Borra la actividad personal de la base de datos
         /// </summary>
         public void Borrar() {

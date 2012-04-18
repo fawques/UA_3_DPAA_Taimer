@@ -226,6 +226,8 @@
             // 
             // tbName
             // 
+            this.tbName.AcceptsReturn = true;
+            this.tbName.AcceptsTab = true;
             this.tbName.Location = new System.Drawing.Point(547, 141);
             this.tbName.Name = "tbName";
             this.tbName.Size = new System.Drawing.Size(188, 20);

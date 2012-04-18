@@ -86,6 +86,8 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(358, 345);
             this.panel1.TabIndex = 37;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            this.panel1.MouseEnter += new System.EventHandler(this.panel1_MouseEnter);
             // 
             // pnlHorarios
             // 
@@ -94,6 +96,7 @@
             this.pnlHorarios.Name = "pnlHorarios";
             this.pnlHorarios.Size = new System.Drawing.Size(343, 39);
             this.pnlHorarios.TabIndex = 0;
+            this.pnlHorarios.MouseEnter += new System.EventHandler(this.pnlHorarios_MouseEnter);
             // 
             // panel3
             // 

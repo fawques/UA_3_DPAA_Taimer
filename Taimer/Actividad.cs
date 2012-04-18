@@ -9,7 +9,7 @@ namespace Taimer {
     /// <summary>
     /// Clase Actividad: clase abstracta de la que heredarán Actividad_a y Actividad_p
     /// </summary>
-    abstract public class Actividad {
+    abstract public class Actividad:IEquatable<object> {
 
         #region PARTE PROTECTED
 
@@ -38,13 +38,19 @@ namespace Taimer {
         /// </summary>
         protected int codigoturno;
 
+        public int CodTurnos
+        {
+            get { return codigoturno; }
+            set { codigoturno = value; }
+        }
+
         /// <summary>
         ///  Codifica el código del un turno
         /// </summary>
         /// <param name="t"> turno a codificar </param>
         protected void AsignarCodigo(Turno t) {
-            t.Codigo = codigoturno;
             codigoturno++;
+            t.Codigo = codigoturno;
         }
 
         #endregion
@@ -270,6 +276,18 @@ namespace Taimer {
             CAD.CADTurno turno = new CAD.CADTurno();
             DataSet data=turno.GetTurnosByAct(codigo);            
             turnos = Turno.TurnosToList(data,this);            
+        }
+
+        /// <summary>
+        /// Compara dos Actividades según su código.
+        /// </summary>
+        /// <param name="otra"></param>
+        /// <returns></returns>
+        public override bool Equals(object otra)
+        {
+            var actividad = otra as Actividad;
+            if (actividad == null) return false;
+            return this.Codigo == actividad.Codigo;
         }
 
         public Actividad()

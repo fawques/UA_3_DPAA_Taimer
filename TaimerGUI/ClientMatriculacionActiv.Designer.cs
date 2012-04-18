@@ -168,7 +168,7 @@
             this.txtBoxFiltroAct.Location = new System.Drawing.Point(61, 156);
             this.txtBoxFiltroAct.Name = "txtBoxFiltroAct";
             this.txtBoxFiltroAct.Size = new System.Drawing.Size(167, 20);
-            this.txtBoxFiltroAct.TabIndex = 29;
+            this.txtBoxFiltroAct.TabIndex = 1;
             this.txtBoxFiltroAct.TextChanged += new System.EventHandler(this.txtBoxFiltroAct_TextChanged);
             // 
             // label6
@@ -185,7 +185,7 @@
             this.txtBoxFiltroMat.Location = new System.Drawing.Point(486, 156);
             this.txtBoxFiltroMat.Name = "txtBoxFiltroMat";
             this.txtBoxFiltroMat.Size = new System.Drawing.Size(167, 20);
-            this.txtBoxFiltroMat.TabIndex = 31;
+            this.txtBoxFiltroMat.TabIndex = 3;
             this.txtBoxFiltroMat.TextChanged += new System.EventHandler(this.txtBoxFiltroMat_TextChanged);
             // 
             // button2
@@ -195,7 +195,7 @@
             this.button2.Location = new System.Drawing.Point(376, 432);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(47, 43);
-            this.button2.TabIndex = 25;
+            this.button2.TabIndex = 4;
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
@@ -206,7 +206,7 @@
             this.button1.Location = new System.Drawing.Point(376, 286);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(47, 42);
-            this.button1.TabIndex = 24;
+            this.button1.TabIndex = 2;
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -216,7 +216,7 @@
             this.btnConfirm.Location = new System.Drawing.Point(538, 581);
             this.btnConfirm.Name = "btnConfirm";
             this.btnConfirm.Size = new System.Drawing.Size(103, 33);
-            this.btnConfirm.TabIndex = 33;
+            this.btnConfirm.TabIndex = 5;
             this.btnConfirm.Text = "Confirmar";
             this.btnConfirm.UseVisualStyleBackColor = true;
             this.btnConfirm.Click += new System.EventHandler(this.btnConfirm_Click);
@@ -226,7 +226,7 @@
             this.btnDescart.Location = new System.Drawing.Point(670, 581);
             this.btnDescart.Name = "btnDescart";
             this.btnDescart.Size = new System.Drawing.Size(103, 33);
-            this.btnDescart.TabIndex = 34;
+            this.btnDescart.TabIndex = 6;
             this.btnDescart.Text = "Descartar";
             this.btnDescart.UseVisualStyleBackColor = true;
             this.btnDescart.Click += new System.EventHandler(this.btnDescart_Click);

@@ -31,7 +31,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.txtBoxFiltro = new System.Windows.Forms.TextBox();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.panelActividades = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
             this.pnlOficiales = new System.Windows.Forms.Panel();
@@ -58,7 +58,7 @@
             this.txtBoxNombre = new System.Windows.Forms.TextBox();
             this.txtBoxDescripcion = new System.Windows.Forms.RichTextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.panel1.SuspendLayout();
+            this.panelActividades.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
             this.grpBoxDatosAct.SuspendLayout();
@@ -89,20 +89,21 @@
             this.txtBoxFiltro.Location = new System.Drawing.Point(85, 85);
             this.txtBoxFiltro.Name = "txtBoxFiltro";
             this.txtBoxFiltro.Size = new System.Drawing.Size(167, 20);
-            this.txtBoxFiltro.TabIndex = 22;
+            this.txtBoxFiltro.TabIndex = 1;
             this.txtBoxFiltro.TextChanged += new System.EventHandler(this.txtBoxFiltro_TextChanged);
             // 
-            // panel1
+            // panelActividades
             // 
-            this.panel1.AutoScroll = true;
-            this.panel1.BackColor = System.Drawing.Color.Wheat;
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel1.Controls.Add(this.panel3);
-            this.panel1.Controls.Add(this.panel2);
-            this.panel1.Location = new System.Drawing.Point(41, 111);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(358, 435);
-            this.panel1.TabIndex = 24;
+            this.panelActividades.AutoScroll = true;
+            this.panelActividades.BackColor = System.Drawing.Color.Wheat;
+            this.panelActividades.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panelActividades.Controls.Add(this.panel3);
+            this.panelActividades.Controls.Add(this.panel2);
+            this.panelActividades.Location = new System.Drawing.Point(41, 111);
+            this.panelActividades.Name = "panelActividades";
+            this.panelActividades.Size = new System.Drawing.Size(358, 435);
+            this.panelActividades.TabIndex = 24;
+            this.panelActividades.MouseEnter += new System.EventHandler(this.panel1_MouseEnter);
             // 
             // panel3
             // 
@@ -115,6 +116,7 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(354, 87);
             this.panel3.TabIndex = 3;
+            this.panel3.MouseEnter += new System.EventHandler(this.panel3_MouseEnter);
             // 
             // label4
             // 
@@ -164,6 +166,7 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(354, 93);
             this.panel2.TabIndex = 2;
+            this.panel2.MouseEnter += new System.EventHandler(this.panel2_MouseEnter);
             // 
             // label3
             // 
@@ -274,7 +277,7 @@
             this.btnBorrar.Location = new System.Drawing.Point(234, 385);
             this.btnBorrar.Name = "btnBorrar";
             this.btnBorrar.Size = new System.Drawing.Size(85, 34);
-            this.btnBorrar.TabIndex = 46;
+            this.btnBorrar.TabIndex = 7;
             this.btnBorrar.Text = "Borrar";
             this.btnBorrar.UseVisualStyleBackColor = true;
             this.btnBorrar.Click += new System.EventHandler(this.btnBorrar_Click);
@@ -284,7 +287,7 @@
             this.btnGestTurn.Location = new System.Drawing.Point(209, 328);
             this.btnGestTurn.Name = "btnGestTurn";
             this.btnGestTurn.Size = new System.Drawing.Size(110, 22);
-            this.btnGestTurn.TabIndex = 45;
+            this.btnGestTurn.TabIndex = 4;
             this.btnGestTurn.Text = "Gestionar turnos";
             this.btnGestTurn.UseVisualStyleBackColor = true;
             this.btnGestTurn.Visible = false;
@@ -305,7 +308,7 @@
             this.btnCancelar.Location = new System.Drawing.Point(127, 385);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(85, 34);
-            this.btnCancelar.TabIndex = 40;
+            this.btnCancelar.TabIndex = 6;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
@@ -316,7 +319,7 @@
             this.btnGuardar.Location = new System.Drawing.Point(21, 385);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(85, 34);
-            this.btnGuardar.TabIndex = 39;
+            this.btnGuardar.TabIndex = 5;
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.UseVisualStyleBackColor = true;
             this.btnGuardar.Click += new System.EventHandler(this.button1_Click);
@@ -345,7 +348,7 @@
             this.txtBoxNombre.Location = new System.Drawing.Point(37, 48);
             this.txtBoxNombre.Name = "txtBoxNombre";
             this.txtBoxNombre.Size = new System.Drawing.Size(225, 20);
-            this.txtBoxNombre.TabIndex = 42;
+            this.txtBoxNombre.TabIndex = 2;
             this.txtBoxNombre.Visible = false;
             this.txtBoxNombre.TextChanged += new System.EventHandler(this.txtBoxNombre_TextChanged);
             this.txtBoxNombre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBoxNombre_KeyPress);
@@ -356,7 +359,7 @@
             this.txtBoxDescripcion.Location = new System.Drawing.Point(37, 103);
             this.txtBoxDescripcion.Name = "txtBoxDescripcion";
             this.txtBoxDescripcion.Size = new System.Drawing.Size(282, 37);
-            this.txtBoxDescripcion.TabIndex = 43;
+            this.txtBoxDescripcion.TabIndex = 3;
             this.txtBoxDescripcion.Text = "";
             this.txtBoxDescripcion.Visible = false;
             this.txtBoxDescripcion.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBoxDescripcion_KeyPress);
@@ -379,7 +382,7 @@
             this.ClientSize = new System.Drawing.Size(795, 595);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.grpBoxDatosAct);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.panelActividades);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtBoxFiltro);
             this.Controls.Add(this.label1);
@@ -389,8 +392,8 @@
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Activated += new System.EventHandler(this.ClientVerActividades_Activated);
             this.Load += new System.EventHandler(this.ClientVerActividades_Load);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.panelActividades.ResumeLayout(false);
+            this.panelActividades.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.panel2.ResumeLayout(false);
@@ -408,7 +411,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtBoxFiltro;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panelActividades;
         private System.Windows.Forms.Panel pnlOficiales;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel pnlPersonales;

@@ -173,7 +173,7 @@
             this.txtBoxLugar.Location = new System.Drawing.Point(82, 23);
             this.txtBoxLugar.Name = "txtBoxLugar";
             this.txtBoxLugar.Size = new System.Drawing.Size(100, 20);
-            this.txtBoxLugar.TabIndex = 61;
+            this.txtBoxLugar.TabIndex = 11;
             // 
             // nmUpDwnMinHasta
             // 
@@ -185,7 +185,7 @@
             0});
             this.nmUpDwnMinHasta.Name = "nmUpDwnMinHasta";
             this.nmUpDwnMinHasta.Size = new System.Drawing.Size(39, 20);
-            this.nmUpDwnMinHasta.TabIndex = 10;
+            this.nmUpDwnMinHasta.TabIndex = 16;
             // 
             // nmUpDwnMinDesde
             // 
@@ -197,7 +197,7 @@
             0});
             this.nmUpDwnMinDesde.Name = "nmUpDwnMinDesde";
             this.nmUpDwnMinDesde.Size = new System.Drawing.Size(39, 20);
-            this.nmUpDwnMinDesde.TabIndex = 9;
+            this.nmUpDwnMinDesde.TabIndex = 14;
             // 
             // label9
             // 
@@ -227,7 +227,7 @@
             0});
             this.nmUpDwnHorHasta.Name = "nmUpDwnHorHasta";
             this.nmUpDwnHorHasta.Size = new System.Drawing.Size(40, 20);
-            this.nmUpDwnHorHasta.TabIndex = 5;
+            this.nmUpDwnHorHasta.TabIndex = 15;
             // 
             // nmUpDwnHorDesde
             // 
@@ -239,7 +239,7 @@
             0});
             this.nmUpDwnHorDesde.Name = "nmUpDwnHorDesde";
             this.nmUpDwnHorDesde.Size = new System.Drawing.Size(42, 20);
-            this.nmUpDwnHorDesde.TabIndex = 4;
+            this.nmUpDwnHorDesde.TabIndex = 13;
             // 
             // label6
             // 
@@ -282,7 +282,7 @@
             this.comboBoxDia.Location = new System.Drawing.Point(58, 90);
             this.comboBoxDia.Name = "comboBoxDia";
             this.comboBoxDia.Size = new System.Drawing.Size(121, 21);
-            this.comboBoxDia.TabIndex = 0;
+            this.comboBoxDia.TabIndex = 12;
             // 
             // button1
             // 
@@ -291,7 +291,7 @@
             this.button1.Location = new System.Drawing.Point(232, 195);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(43, 58);
-            this.button1.TabIndex = 68;
+            this.button1.TabIndex = 17;
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -311,7 +311,7 @@
             this.gVHorasTemp.ReadOnly = true;
             this.gVHorasTemp.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gVHorasTemp.Size = new System.Drawing.Size(491, 235);
-            this.gVHorasTemp.TabIndex = 67;
+            this.gVHorasTemp.TabIndex = 28;
             this.gVHorasTemp.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gVHorasTemp_CellClick);
             // 
             // dia
@@ -393,7 +393,7 @@
             this.btnCancelar.Location = new System.Drawing.Point(548, 85);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(92, 30);
-            this.btnCancelar.TabIndex = 67;
+            this.btnCancelar.TabIndex = 25;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
@@ -403,7 +403,7 @@
             this.btnGuardar.Location = new System.Drawing.Point(548, 39);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(92, 29);
-            this.btnGuardar.TabIndex = 66;
+            this.btnGuardar.TabIndex = 24;
             this.btnGuardar.Text = "Confirmar";
             this.btnGuardar.UseVisualStyleBackColor = true;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
@@ -422,7 +422,7 @@
             this.txtBoxLugarMod.Location = new System.Drawing.Point(323, 48);
             this.txtBoxLugarMod.Name = "txtBoxLugarMod";
             this.txtBoxLugarMod.Size = new System.Drawing.Size(100, 20);
-            this.txtBoxLugarMod.TabIndex = 64;
+            this.txtBoxLugarMod.TabIndex = 22;
             // 
             // label2
             // 
@@ -452,7 +452,7 @@
             0});
             this.nUDMinFinMod.Name = "nUDMinFinMod";
             this.nUDMinFinMod.Size = new System.Drawing.Size(39, 20);
-            this.nUDMinFinMod.TabIndex = 22;
+            this.nUDMinFinMod.TabIndex = 21;
             // 
             // nUDMinIniMod
             // 
@@ -464,7 +464,7 @@
             0});
             this.nUDMinIniMod.Name = "nUDMinIniMod";
             this.nUDMinIniMod.Size = new System.Drawing.Size(39, 20);
-            this.nUDMinIniMod.TabIndex = 21;
+            this.nUDMinIniMod.TabIndex = 19;
             // 
             // label12
             // 
@@ -494,7 +494,7 @@
             0});
             this.nUDHorFinMod.Name = "nUDHorFinMod";
             this.nUDHorFinMod.Size = new System.Drawing.Size(40, 20);
-            this.nUDHorFinMod.TabIndex = 18;
+            this.nUDHorFinMod.TabIndex = 20;
             // 
             // nUDHorIniMod
             // 
@@ -506,7 +506,7 @@
             0});
             this.nUDHorIniMod.Name = "nUDHorIniMod";
             this.nUDHorIniMod.Size = new System.Drawing.Size(42, 20);
-            this.nUDHorIniMod.TabIndex = 17;
+            this.nUDHorIniMod.TabIndex = 18;
             // 
             // label14
             // 
@@ -549,14 +549,14 @@
             this.cmbBoxDiaMod.Location = new System.Drawing.Point(302, 89);
             this.cmbBoxDiaMod.Name = "cmbBoxDiaMod";
             this.cmbBoxDiaMod.Size = new System.Drawing.Size(121, 21);
-            this.cmbBoxDiaMod.TabIndex = 13;
+            this.cmbBoxDiaMod.TabIndex = 23;
             // 
             // btnTerminar
             // 
             this.btnTerminar.Location = new System.Drawing.Point(680, 570);
             this.btnTerminar.Name = "btnTerminar";
             this.btnTerminar.Size = new System.Drawing.Size(92, 30);
-            this.btnTerminar.TabIndex = 71;
+            this.btnTerminar.TabIndex = 27;
             this.btnTerminar.Text = "Cancelar";
             this.btnTerminar.UseVisualStyleBackColor = true;
             this.btnTerminar.Click += new System.EventHandler(this.btnTerminar_Click);
@@ -566,7 +566,7 @@
             this.btnConfCambios.Location = new System.Drawing.Point(564, 570);
             this.btnConfCambios.Name = "btnConfCambios";
             this.btnConfCambios.Size = new System.Drawing.Size(92, 30);
-            this.btnConfCambios.TabIndex = 72;
+            this.btnConfCambios.TabIndex = 26;
             this.btnConfCambios.Text = "Confirmar";
             this.btnConfCambios.UseVisualStyleBackColor = true;
             this.btnConfCambios.Click += new System.EventHandler(this.btnConfCambios_Click);

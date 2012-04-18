@@ -336,5 +336,38 @@ namespace CAD
             }
         }
 
+        /// <summary>
+        /// Lanza una excepción si el login es incorrecto.
+        /// </summary>
+        /// <param name="email"></param>
+        /// <param name="pass"></param>
+        /// <returns></returns>
+        public void Login(string email, string pass)
+        {
+
+            SqlConnection con = null;
+            DataSet datos = null;
+            string comando = "Select * from [User] where email='" + email + "' and password='" + pass + "'";
+            try
+            {
+                con = new SqlConnection(conexionTBD);
+                SqlDataAdapter sqlAdaptador = new SqlDataAdapter(comando, con);
+                datos = new DataSet();
+                sqlAdaptador.Fill(datos);
+                if (datos.Tables[0].Rows.Count == 0)
+                    throw new InvalidDataException("Usuario o contraseña incorrectos");
+
+            }
+            catch (SqlException)
+            {
+                // Captura la condición general y la reenvía.
+                throw;
+            }
+            finally
+            {
+                if (con != null) con.Close(); // Se asegura de cerrar la conexión.
+            }
+        }
+
     }
 }
