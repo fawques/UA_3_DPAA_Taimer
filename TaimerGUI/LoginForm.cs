@@ -85,6 +85,11 @@ namespace TaimerGUI
 
                 case 1:     // Es un administrador
                     lbLoginBadUserPass.Visible = false;
+                    if (!cbLoginRemeberData.Checked)
+                    {
+                        tbLoginUser.Text = "";
+                        tbLoginPassword.Text = "";
+                    }
                     AdminForm administrator = new AdminForm();
                     administrator.Show();
                     this.Hide();
@@ -92,11 +97,17 @@ namespace TaimerGUI
 
                 case 2:     // Es un usuario
                     lbLoginBadUserPass.Visible = false;
+                    if (!cbLoginRemeberData.Checked)
+                    {
+                        tbLoginUser.Text = "";
+                        tbLoginPassword.Text = "";
+                    }
                     ClientForm client = new ClientForm(null);//TODO
                     client.Show();
                     this.Hide();
                     break;
             }
+            
         }
 
         private int checkUserPass(string usuario, string password)
@@ -105,7 +116,10 @@ namespace TaimerGUI
             {
                 if (rbCliente.Checked)
                 {
-                    Program.Usuarios[0] = Taimer.User.CheckLoginUser(usuario, password);
+                    if(Program.Usuarios.Count == 0)
+                        Program.Usuarios.Add(Taimer.User.CheckLoginUser(usuario, password));
+                    else
+                        Program.Usuarios[0] = Taimer.User.CheckLoginUser(usuario, password);
                     return 2;
                 }
                 else
@@ -231,7 +245,7 @@ namespace TaimerGUI
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Program.Usuarios = Taimer.User.CheckLoginAdmin("ralph@nose.com", "ralph");
+            Program.Usuarios = Taimer.User.CheckLoginAdmin("admin@admin.com", "admin");
             AdminForm admin = new AdminForm();
             admin.Show();
             this.Hide();
