@@ -66,8 +66,12 @@ namespace TaimerGUI
             while (horAux <= maxHor)
             {
                 Label lblHora = new Label();
-                hora.setTiempo(horAux, 0);
-                lblHora.Text = hora.toString();
+                if (horAux >= 24) {
+                    lblHora.Text = "24:00";
+                } else {
+                    hora.setTiempo(horAux, 0);
+                    lblHora.Text = hora.toString();
+                }
                 lblHora.Location = new Point(20, posY);
                 lblHora.ForeColor = Color.White;
                 posY += 60;
@@ -115,18 +119,24 @@ namespace TaimerGUI
             } catch (Exception) {
                 //MessageBox.Show(exc.Message);
             }
- 
             
             int recorteArriba = (minimo) * 60;
-            initPanelHorario(minimo, maximo);
-            reducirPanelHorarios(minimo, maximo);
+            if (hor.maxHora().Hor == 23) {
+                initPanelHorario(minimo, 24);
+            } else {
+                initPanelHorario(minimo, maximo);
+            }
+            
+            if (!(hor.maxHora().Hor == 23 && hor.maxHora().Min > 0)) {
+                reducirPanelHorarios(minimo, maximo);
+            }
 
             for (int i = 0; i < hor.ArrayTurnos.Length; i++)
             {
                 foreach (Turno item in hor.ArrayTurnos[i])
                 {
-                    int posi = (item.HoraInicio.Hor * 60 + item.HoraFin.Min) - recorteArriba;
-                    int duracion = (item.HoraFin.Hor - item.HoraInicio.Hor) * 60;//TODO cambiar a la funcion que sabe restar horas
+                    int posi = (item.HoraInicio.Hor * 60 + item.HoraInicio.Min) - recorteArriba;
+                    int duracion = (item.HoraFin.Hor - item.HoraInicio.Hor) * 60 + item.HoraFin.Min;
                     Button b = new Button();
                     b.Height = duracion;
                     b.Width = 90;
