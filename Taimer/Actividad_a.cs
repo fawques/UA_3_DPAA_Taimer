@@ -48,10 +48,9 @@ namespace Taimer {
         /// <param name="cod_">Codigo de la Actividad_a (por defecto 0)</param>
         public Actividad_a(string nom_, string desc_, string nomCoord_, string tit, int cod_ = 0)
             : base(nom_, desc_, cod_) {
-
                 titulacion = tit;
-            nombreCoordinador = nomCoord_;
-            curso = 0;                      // Por defecto se asigna el número de curso a 0
+                nombreCoordinador = nomCoord_;
+                curso = 0;                      // Por defecto se asigna el número de curso a 0
         }
 
         
@@ -71,8 +70,8 @@ namespace Taimer {
             : base(nom_, desc_, cod_,codTurno) {
 
                 titulacion = tit;
-            nombreCoordinador = nomCoord_;
-            Curso = curso_;
+                nombreCoordinador = nomCoord_;
+                Curso = curso_;
         }
 
 
@@ -166,7 +165,7 @@ namespace Taimer {
             if (!insertado)
                 turnos.Add(turnonuevo);
 
-            turnonuevo.Codigo++;
+            //turnonuevo.Codigo++;
         }
 
         /// <summary>
@@ -228,7 +227,11 @@ namespace Taimer {
         public static int UltimoCodigo {
             get {
                 CADActividad_a act = new CADActividad_a();
-                return int.Parse(act.LastCode().Tables[0].Rows[0].ItemArray[0].ToString());
+                string aux = act.LastCode().Tables[0].Rows[0].ItemArray[0].ToString();
+                if (aux != "")
+                    return int.Parse(aux);
+                else
+                    return 0;
             }
         }
         /// <summary>

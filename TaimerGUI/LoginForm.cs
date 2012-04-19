@@ -120,11 +120,13 @@ namespace TaimerGUI
                         Program.Usuarios.Add(Taimer.User.CheckLoginUser(usuario, password));
                     else
                         Program.Usuarios[0] = Taimer.User.CheckLoginUser(usuario, password);
+                    Program.Asignaturas = Actividad_a.GetAllActividades_a();
                     return 2;
                 }
                 else
                 {
                     Program.Usuarios = Taimer.User.CheckLoginAdmin(usuario, password);
+                    Program.Asignaturas = Actividad_a.GetAllActividades_a();
                     return 1;
                 }
             }
@@ -236,7 +238,11 @@ namespace TaimerGUI
         //Puente para no tardar tanto en abrir la ventana
         private void button1_Click(object sender, EventArgs e)
         {
-            Program.Usuarios.Add(User.CheckLoginUser("alberto@alberto.es", "alberto"));
+            if (Program.Usuarios.Count == 0)
+                Program.Usuarios.Add(User.CheckLoginUser("alberto@alberto.es", "alberto"));
+            else
+                Program.Usuarios[0] = User.CheckLoginUser("alberto@alberto.es", "alberto");
+            Program.Asignaturas = Actividad_a.GetAllActividades_a();
             ClientForm client = new ClientForm(null);
             
             client.Show();
@@ -246,6 +252,7 @@ namespace TaimerGUI
         private void button2_Click(object sender, EventArgs e)
         {
             Program.Usuarios = Taimer.User.CheckLoginAdmin("admin@admin.com", "admin");
+            Program.Asignaturas = Actividad_a.GetAllActividades_a();
             AdminForm admin = new AdminForm();
             admin.Show();
             this.Hide();
