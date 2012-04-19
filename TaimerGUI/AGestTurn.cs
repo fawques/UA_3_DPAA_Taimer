@@ -227,7 +227,7 @@ namespace TaimerGUI
                     MessageBox.Show(exc.Message);
                 }
 
-                parentGest.showInfo(currentAct);
+                parentGest.changeCurrent(currentAct);
 
                 Hide();
                 parentGest.Show();

@@ -141,7 +141,7 @@
             this.dgTurnos.Name = "dgTurnos";
             this.dgTurnos.ReadOnly = true;
             this.dgTurnos.Size = new System.Drawing.Size(423, 176);
-            this.dgTurnos.TabIndex = 5;
+            this.dgTurnos.TabIndex = 7;
             // 
             // dataGridViewTextBoxColumn1
             // 
