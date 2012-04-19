@@ -256,7 +256,7 @@ namespace TaimerGUI
 
                 if (parentGest != null)
                 {
-
+                    dgTurnos.Rows.Clear();
                     // Reestablezco la asignatura
                     currentAct.CopiarDesde(currentActCopy);
 
@@ -270,6 +270,7 @@ namespace TaimerGUI
                 {
                     // Vacio la tabla
                     dgTurnos.Rows.Clear();
+                    currentAct.CopiarDesde(currentActCopy);
 
                     Hide();
                     parentAdd.Show();
