@@ -35,8 +35,6 @@
             this.asignaturasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.verAsignaturasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.nuevaAsignaturaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.estadisticasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.verEstadisticasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ayudaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.acercaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -45,7 +43,6 @@
             this.btClose = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btSidePanelEstad = new System.Windows.Forms.Button();
             this.btSidePanelAsig = new System.Windows.Forms.Button();
             this.btSidePanelUser = new System.Windows.Forms.Button();
             this.pnTop.SuspendLayout();
@@ -87,7 +84,6 @@
             this.taimerToolStripMenuItem,
             this.usuariosToolStripMenuItem,
             this.asignaturasToolStripMenuItem,
-            this.estadisticasToolStripMenuItem,
             this.ayudaToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -163,21 +159,6 @@
             this.nuevaAsignaturaToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
             this.nuevaAsignaturaToolStripMenuItem.Text = "Nueva Asignatura";
             this.nuevaAsignaturaToolStripMenuItem.Click += new System.EventHandler(this.nuevaAsignaturaToolStripMenuItem_Click);
-            // 
-            // estadisticasToolStripMenuItem
-            // 
-            this.estadisticasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.verEstadisticasToolStripMenuItem});
-            this.estadisticasToolStripMenuItem.Name = "estadisticasToolStripMenuItem";
-            this.estadisticasToolStripMenuItem.Size = new System.Drawing.Size(79, 20);
-            this.estadisticasToolStripMenuItem.Text = "Estadisticas";
-            // 
-            // verEstadisticasToolStripMenuItem
-            // 
-            this.verEstadisticasToolStripMenuItem.Name = "verEstadisticasToolStripMenuItem";
-            this.verEstadisticasToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
-            this.verEstadisticasToolStripMenuItem.Text = "Ver Estadisticas";
-            this.verEstadisticasToolStripMenuItem.Click += new System.EventHandler(this.verEstadisticasToolStripMenuItem_Click);
             // 
             // ayudaToolStripMenuItem
             // 
@@ -273,7 +254,6 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.btSidePanelEstad);
             this.panel1.Controls.Add(this.btSidePanelAsig);
             this.panel1.Controls.Add(this.btSidePanelUser);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
@@ -282,23 +262,13 @@
             this.panel1.Size = new System.Drawing.Size(200, 600);
             this.panel1.TabIndex = 1;
             // 
-            // btSidePanelEstad
-            // 
-            this.btSidePanelEstad.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btSidePanelEstad.Location = new System.Drawing.Point(0, 300);
-            this.btSidePanelEstad.Name = "btSidePanelEstad";
-            this.btSidePanelEstad.Size = new System.Drawing.Size(200, 150);
-            this.btSidePanelEstad.TabIndex = 2;
-            this.btSidePanelEstad.Text = "Ver Estadisticas";
-            this.btSidePanelEstad.UseVisualStyleBackColor = true;
-            this.btSidePanelEstad.Click += new System.EventHandler(this.btSidePanelEstad_Click);
-            // 
             // btSidePanelAsig
             // 
             this.btSidePanelAsig.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btSidePanelAsig.Location = new System.Drawing.Point(0, 150);
+            this.btSidePanelAsig.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btSidePanelAsig.Location = new System.Drawing.Point(0, 300);
             this.btSidePanelAsig.Name = "btSidePanelAsig";
-            this.btSidePanelAsig.Size = new System.Drawing.Size(200, 150);
+            this.btSidePanelAsig.Size = new System.Drawing.Size(200, 300);
             this.btSidePanelAsig.TabIndex = 1;
             this.btSidePanelAsig.Text = "Gestionar Asignaturas";
             this.btSidePanelAsig.UseVisualStyleBackColor = true;
@@ -307,9 +277,11 @@
             // btSidePanelUser
             // 
             this.btSidePanelUser.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btSidePanelUser.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btSidePanelUser.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btSidePanelUser.Location = new System.Drawing.Point(0, 0);
             this.btSidePanelUser.Name = "btSidePanelUser";
-            this.btSidePanelUser.Size = new System.Drawing.Size(200, 150);
+            this.btSidePanelUser.Size = new System.Drawing.Size(200, 300);
             this.btSidePanelUser.TabIndex = 0;
             this.btSidePanelUser.Text = "Gestionar Usuarios";
             this.btSidePanelUser.UseVisualStyleBackColor = true;
@@ -349,7 +321,6 @@
         private System.Windows.Forms.Button btMaximize;
         private System.Windows.Forms.Button btMinimize;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button btSidePanelEstad;
         private System.Windows.Forms.Button btSidePanelAsig;
         private System.Windows.Forms.Button btSidePanelUser;
         private System.Windows.Forms.Label label1;
@@ -359,7 +330,6 @@
         private System.Windows.Forms.ToolStripMenuItem taimerToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem usuariosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem asignaturasToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem estadisticasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ayudaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem acercaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cerrarSesionToolStripMenuItem;
@@ -368,6 +338,5 @@
         private System.Windows.Forms.ToolStripMenuItem nuevoUsuarioToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem verAsignaturasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem nuevaAsignaturaToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem verEstadisticasToolStripMenuItem;
     }
 }

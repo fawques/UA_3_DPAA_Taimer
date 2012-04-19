@@ -17,9 +17,8 @@ namespace TaimerGUI {
         AAddAsig addAsigForm;
         AAddUser addUserForm;
         AGestTurn gestTurnForm;
-        AEstadistica estadForm;
 
-        int currentForm;
+        int currentForm = 0;
 
         public AdminForm() {
             InitializeComponent();
@@ -30,7 +29,6 @@ namespace TaimerGUI {
             addAsigForm = new AAddAsig();
             addUserForm = new AAddUser();
             gestTurnForm = new AGestTurn();
-            estadForm = new AEstadistica();
 
             gestionUserForm.setChild(addUserForm);
             addUserForm.setParent(gestionUserForm);
@@ -46,7 +44,6 @@ namespace TaimerGUI {
             addAsigForm.MdiParent = this;
             addUserForm.MdiParent = this;
             gestTurnForm.MdiParent = this;
-            estadForm.MdiParent = this;
         }
 
         protected override void OnPaint(PaintEventArgs e) {
@@ -117,18 +114,11 @@ namespace TaimerGUI {
             positionChilds();
         }
 
-        private void btSidePanelEstad_Click(object sender, EventArgs e) {
-            hideChilds();
-            estadForm.Show();
-            positionChilds();
-        }
-
         public void hideChilds() {
             bienvenidaForm.Hide();
             gestionUserForm.Hide();
             gestionAsigForm.Hide();
             gestTurnForm.Hide();
-            estadForm.Hide();
             addAsigForm.Hide();
             addUserForm.Hide();
         }
@@ -138,7 +128,6 @@ namespace TaimerGUI {
             gestionUserForm.Location = new Point(0, 0);
             gestionAsigForm.Location = new Point(0, 0);
             gestTurnForm.Location = new Point(0, 0);
-            estadForm.Location = new Point(0, 0);
             addAsigForm.Location = new Point(0, 0);
             addUserForm.Location = new Point(0, 0);
         }
@@ -191,12 +180,6 @@ namespace TaimerGUI {
         private void nuevaAsignaturaToolStripMenuItem_Click(object sender, EventArgs e) {
             hideChilds();
             addAsigForm.Show();
-            positionChilds();
-        }
-
-        private void verEstadisticasToolStripMenuItem_Click(object sender, EventArgs e) {
-            hideChilds();
-            estadForm.Show();
             positionChilds();
         }
 

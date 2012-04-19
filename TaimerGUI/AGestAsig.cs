@@ -156,7 +156,7 @@ namespace TaimerGUI {
                     currentAsig = (Taimer.Actividad_a)dgAsig.Rows[e.RowIndex].Tag;
                     currentAsigCopy = new Taimer.Actividad_a(currentAsig);
 
-                    showInfo(currentAsig);
+                    changeCurrent(currentAsig);
 
                     btCancel.Enabled = true;
                     btCreate.Enabled = true;
@@ -174,7 +174,7 @@ namespace TaimerGUI {
             btGestTurno.Enabled = false;
         }
 
-        public void showInfo(Taimer.Actividad_a asig) {
+        public void changeCurrent(Taimer.Actividad_a asig) {
 
             lbName.Text = asig.Nombre;
             lbDesc.Text = asig.Descripcion;
@@ -186,6 +186,8 @@ namespace TaimerGUI {
             }
 
             btGestTurno.Enabled = true;
+
+            currentAsig.CopiarDesde(asig);
             //gbInfo.Visible = true;
         }
 
