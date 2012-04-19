@@ -154,7 +154,7 @@ namespace Taimer
             return h;
         }
 
-        public Horario generarHorarioBT(string nombre, bool minDias)
+        public Horario generarHorarioBT(string nombre, bool minDias, bool[] listaDias)
         {
             Queue<Horario> nodos_vivos = new Queue<Horario>();
             Queue<Horario> nodos_vivos_aux = new Queue<Horario>();
@@ -171,12 +171,14 @@ namespace Taimer
                 {
                     try
                     {
+                        if(!listaDias[TaimerLibrary.convertToInt(item.Dia)])
+                            throw new NotSupportedException();
                         optimo.AddTurno(item);
                         cant_p++;
                     }
                     catch (NotSupportedException)
                     {
-                        throw new NotSupportedException("La actividad " + personal.Nombre + " no se puede insertar");
+                        throw new NotSupportedException("Con las restricciones actuales, la actividad \"" + personal.Nombre + "\" no se puede insertar");
                     }
                 }
             }
@@ -199,6 +201,8 @@ namespace Taimer
                             temp = new Horario(optimo);
                             try
                             {
+                                if (!listaDias[TaimerLibrary.convertToInt(item.Dia)])
+                                    throw new NotSupportedException();
                                 temp.AddTurno(item);
                                 if (temp.Count - cant_p < seleccionadas_a.Count)
                                     nodos_vivos_aux.Enqueue(temp);
@@ -216,7 +220,7 @@ namespace Taimer
                     nodos_vivos_aux.Clear();
 
                     if (!asignado)
-                        throw new NotSupportedException("La asignatura " + academica.Nombre + " no se puede insertar");
+                        throw new NotSupportedException("Con las restricciones actuales, la asignatura \"" + academica.Nombre + "\" no se puede insertar");
 
 
                 }

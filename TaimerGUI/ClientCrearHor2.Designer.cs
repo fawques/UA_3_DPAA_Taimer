@@ -63,6 +63,7 @@
             this.btnGuardar = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.btnDescartar = new System.Windows.Forms.Button();
+            this.lbErrDias = new System.Windows.Forms.Label();
             this.grpBoxRestric.SuspendLayout();
             this.groubBoxDias.SuspendLayout();
             this.pnlHorario.SuspendLayout();
@@ -81,22 +82,28 @@
             // chkBxLunes
             // 
             this.chkBxLunes.AutoSize = true;
+            this.chkBxLunes.Checked = true;
+            this.chkBxLunes.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkBxLunes.Location = new System.Drawing.Point(18, 40);
             this.chkBxLunes.Name = "chkBxLunes";
             this.chkBxLunes.Size = new System.Drawing.Size(55, 17);
             this.chkBxLunes.TabIndex = 23;
             this.chkBxLunes.Text = "Lunes";
             this.chkBxLunes.UseVisualStyleBackColor = true;
+            this.chkBxLunes.CheckedChanged += new System.EventHandler(this.chkBxLunes_CheckedChanged);
             // 
             // chkBxMartes
             // 
             this.chkBxMartes.AutoSize = true;
+            this.chkBxMartes.Checked = true;
+            this.chkBxMartes.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkBxMartes.Location = new System.Drawing.Point(18, 64);
             this.chkBxMartes.Name = "chkBxMartes";
             this.chkBxMartes.Size = new System.Drawing.Size(58, 17);
             this.chkBxMartes.TabIndex = 24;
             this.chkBxMartes.Text = "Martes";
             this.chkBxMartes.UseVisualStyleBackColor = true;
+            this.chkBxMartes.CheckedChanged += new System.EventHandler(this.chkBxMartes_CheckedChanged);
             // 
             // radioButton1
             // 
@@ -136,6 +143,7 @@
             // 
             // groubBoxDias
             // 
+            this.groubBoxDias.Controls.Add(this.lbErrDias);
             this.groubBoxDias.Controls.Add(this.chkBxAll);
             this.groubBoxDias.Controls.Add(this.chkBxLunes);
             this.groubBoxDias.Controls.Add(this.chkBoxDomingo);
@@ -144,10 +152,9 @@
             this.groubBoxDias.Controls.Add(this.chkBoxMiercoles);
             this.groubBoxDias.Controls.Add(this.chkBoxViernes);
             this.groubBoxDias.Controls.Add(this.chkBoxJueves);
-            this.groubBoxDias.Enabled = false;
-            this.groubBoxDias.Location = new System.Drawing.Point(60, 96);
+            this.groubBoxDias.Location = new System.Drawing.Point(44, 72);
             this.groubBoxDias.Name = "groubBoxDias";
-            this.groubBoxDias.Size = new System.Drawing.Size(175, 117);
+            this.groubBoxDias.Size = new System.Drawing.Size(175, 162);
             this.groubBoxDias.TabIndex = 35;
             this.groubBoxDias.TabStop = false;
             this.groubBoxDias.Text = "Dias";
@@ -155,6 +162,8 @@
             // chkBxAll
             // 
             this.chkBxAll.AutoSize = true;
+            this.chkBxAll.Checked = true;
+            this.chkBxAll.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkBxAll.Location = new System.Drawing.Point(19, 17);
             this.chkBxAll.Name = "chkBxAll";
             this.chkBxAll.Size = new System.Drawing.Size(56, 17);
@@ -166,52 +175,67 @@
             // chkBoxDomingo
             // 
             this.chkBoxDomingo.AutoSize = true;
+            this.chkBoxDomingo.Checked = true;
+            this.chkBoxDomingo.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkBoxDomingo.Location = new System.Drawing.Point(105, 87);
             this.chkBoxDomingo.Name = "chkBoxDomingo";
             this.chkBoxDomingo.Size = new System.Drawing.Size(68, 17);
             this.chkBoxDomingo.TabIndex = 34;
             this.chkBoxDomingo.Text = "Domingo";
             this.chkBoxDomingo.UseVisualStyleBackColor = true;
+            this.chkBoxDomingo.CheckedChanged += new System.EventHandler(this.chkBoxDomingo_CheckedChanged);
             // 
             // chkBoxSabado
             // 
             this.chkBoxSabado.AutoSize = true;
+            this.chkBoxSabado.Checked = true;
+            this.chkBoxSabado.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkBoxSabado.Location = new System.Drawing.Point(105, 63);
             this.chkBoxSabado.Name = "chkBoxSabado";
             this.chkBoxSabado.Size = new System.Drawing.Size(63, 17);
             this.chkBoxSabado.TabIndex = 33;
             this.chkBoxSabado.Text = "Sabado";
             this.chkBoxSabado.UseVisualStyleBackColor = true;
+            this.chkBoxSabado.CheckedChanged += new System.EventHandler(this.chkBoxSabado_CheckedChanged);
             // 
             // chkBoxMiercoles
             // 
             this.chkBoxMiercoles.AutoSize = true;
+            this.chkBoxMiercoles.Checked = true;
+            this.chkBoxMiercoles.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkBoxMiercoles.Location = new System.Drawing.Point(18, 87);
             this.chkBoxMiercoles.Name = "chkBoxMiercoles";
             this.chkBoxMiercoles.Size = new System.Drawing.Size(71, 17);
             this.chkBoxMiercoles.TabIndex = 30;
             this.chkBoxMiercoles.Text = "Miercoles";
             this.chkBoxMiercoles.UseVisualStyleBackColor = true;
+            this.chkBoxMiercoles.CheckedChanged += new System.EventHandler(this.chkBoxMiercoles_CheckedChanged);
             // 
             // chkBoxViernes
             // 
             this.chkBoxViernes.AutoSize = true;
+            this.chkBoxViernes.Checked = true;
+            this.chkBoxViernes.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkBoxViernes.Location = new System.Drawing.Point(105, 40);
             this.chkBoxViernes.Name = "chkBoxViernes";
             this.chkBoxViernes.Size = new System.Drawing.Size(61, 17);
             this.chkBoxViernes.TabIndex = 32;
             this.chkBoxViernes.Text = "Viernes";
             this.chkBoxViernes.UseVisualStyleBackColor = true;
+            this.chkBoxViernes.CheckedChanged += new System.EventHandler(this.chkBoxViernes_CheckedChanged);
             // 
             // chkBoxJueves
             // 
             this.chkBoxJueves.AutoSize = true;
+            this.chkBoxJueves.Checked = true;
+            this.chkBoxJueves.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkBoxJueves.Location = new System.Drawing.Point(105, 17);
             this.chkBoxJueves.Name = "chkBoxJueves";
             this.chkBoxJueves.Size = new System.Drawing.Size(60, 17);
             this.chkBoxJueves.TabIndex = 31;
             this.chkBoxJueves.Text = "Jueves";
             this.chkBoxJueves.UseVisualStyleBackColor = true;
+            this.chkBoxJueves.CheckedChanged += new System.EventHandler(this.chkBoxJueves_CheckedChanged);
             // 
             // btnCrear
             // 
@@ -459,6 +483,18 @@
             this.btnDescartar.Visible = false;
             this.btnDescartar.Click += new System.EventHandler(this.btnDescartar_Click);
             // 
+            // lbErrDias
+            // 
+            this.lbErrDias.AutoSize = true;
+            this.lbErrDias.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbErrDias.ForeColor = System.Drawing.Color.Maroon;
+            this.lbErrDias.Location = new System.Drawing.Point(15, 125);
+            this.lbErrDias.Name = "lbErrDias";
+            this.lbErrDias.Size = new System.Drawing.Size(134, 13);
+            this.lbErrDias.TabIndex = 63;
+            this.lbErrDias.Text = "Debes seleccionar algún día";
+            this.lbErrDias.Visible = false;
+            // 
             // ClientCrearHor2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -527,5 +563,6 @@
         private System.Windows.Forms.Button btnGuardar;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Button btnDescartar;
+        private System.Windows.Forms.Label lbErrDias;
     }
 }

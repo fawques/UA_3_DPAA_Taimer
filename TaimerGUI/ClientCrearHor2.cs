@@ -15,6 +15,7 @@ namespace TaimerGUI
         ClientCrearHor1 formBack = null;
         User usrAux = null;
         Horario hAux = null;
+        bool[] listaDias = new bool[7];
 
         public ClientCrearHor2(User usr)
         {
@@ -46,11 +47,12 @@ namespace TaimerGUI
         }
         void switchCheckAllDays()
         {
+            
             foreach (Control c in groubBoxDias.Controls)
             {
                 if (c is CheckBox && ((CheckBox)c).Name != "chkBxAll")
                 {
-                    ((CheckBox)c).Checked = !((CheckBox)c).Checked;
+                    ((CheckBox)c).Checked = chkBxAll.Checked;
                 }
             }
 
@@ -204,24 +206,31 @@ namespace TaimerGUI
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Esta operación puede tomar varios minutos. ¿Seguro que desea continuar?",
-           "¿Crear horario?",
-           MessageBoxButtons.YesNo,
-           MessageBoxIcon.Question,
-           MessageBoxDefaultButton.Button2) == DialogResult.Yes)
+            if (!chkBxLunes.Checked && !chkBxMartes.Checked && !chkBoxMiercoles.Checked &&
+                !chkBoxJueves.Checked && !chkBoxViernes.Checked && !chkBoxSabado.Checked && !chkBoxDomingo.Checked) // si no hay ningún día seleccionado
+                lbErrDias.Visible = true;
+            else
             {
-                //Algoritmos guay con una ventana de "Estmos en ello"
-                (new ClientCreandoAlgoritmo()).ShowDialog();
-                hAux = generarHorario();
-                if (hAux != null)
+                lbErrDias.Visible = false;
+                if (MessageBox.Show("Esta operación puede tomar varios minutos. ¿Seguro que desea continuar?",
+               "¿Crear horario?",
+               MessageBoxButtons.YesNo,
+               MessageBoxIcon.Question,
+               MessageBoxDefaultButton.Button2) == DialogResult.Yes)
                 {
-                    loadHorario(hAux);
-                    btnCrear.Visible = false;
-                    btnGuardar.Visible = true;
-                    btnAtras.Visible = false;
-                    btnDescartar.Visible = true;
-                    pnlHorario.Visible = true;
-                    grpBoxRestric.Visible = false;
+                    //Algoritmos guay con una ventana de "Estmos en ello"
+                    (new ClientCreandoAlgoritmo()).ShowDialog();
+                    hAux = generarHorario();
+                    if (hAux != null)
+                    {
+                        loadHorario(hAux);
+                        btnCrear.Visible = false;
+                        btnGuardar.Visible = true;
+                        btnAtras.Visible = false;
+                        btnDescartar.Visible = true;
+                        pnlHorario.Visible = true;
+                        grpBoxRestric.Visible = false;
+                    }
                 }
             }
 
@@ -230,28 +239,18 @@ namespace TaimerGUI
         private Horario generarHorario()
         {
             Horario h = null;
-            Algoritmo alg = Program.ComprobarAlgoritmo(formBack.getActividadesA(), formBack.getActividadesP());
-            if (alg != null)
-            {
-                h = new Horario(alg.getOptimo(radioButton2.Checked));
-                h.Nombre = formBack.getNameHorario();
-            }
-            else
-            {
-                try
-                {
-                    alg = new Algoritmo(formBack.getActividadesA(), formBack.getActividadesP(), Program.Usuarios[0]);
-                    h = alg.generarHorarioBT(formBack.getNameHorario(), radioButton2.Checked);
-                    Program.AddAlgoritmo(alg);
-                }
-                catch (NotSupportedException exc)
-                {
-                    MessageBox.Show(exc.Message);
-                }
-            }
-            
-            
 
+            try
+            {   
+                Algoritmo alg = new Algoritmo(formBack.getActividadesA(), formBack.getActividadesP(), Program.Usuarios[0]);
+                h = alg.generarHorarioBT(formBack.getNameHorario(), radioButton2.Checked, listaDias);
+                Program.AddAlgoritmo(alg);
+            }
+            catch (NotSupportedException exc)
+            {
+                MessageBox.Show(exc.Message);
+            }
+            
             return h;
 
         }
@@ -298,6 +297,7 @@ namespace TaimerGUI
             btnDescartar.Visible = false;
             pnlHorario.Visible = false;
             grpBoxRestric.Visible = true;
+            chkBxAll.Checked = true;
             clearAllHorarioAct();
             initPanelHorario(0, 23);
         }
@@ -335,6 +335,41 @@ namespace TaimerGUI
 
         private void pnlHorario_MouseEnter(object sender, EventArgs e) {
             ((Panel)sender).Focus();
+        }
+
+        private void chkBxLunes_CheckedChanged(object sender, EventArgs e)
+        {
+                listaDias[0] = chkBxLunes.Checked;
+        }
+
+        private void chkBxMartes_CheckedChanged(object sender, EventArgs e)
+        {
+            listaDias[1] = chkBxMartes.Checked;
+        }
+
+        private void chkBoxMiercoles_CheckedChanged(object sender, EventArgs e)
+        {
+            listaDias[2] = chkBoxMiercoles.Checked;
+        }
+
+        private void chkBoxJueves_CheckedChanged(object sender, EventArgs e)
+        {
+            listaDias[3] = chkBoxJueves.Checked;
+        }
+
+        private void chkBoxViernes_CheckedChanged(object sender, EventArgs e)
+        {
+            listaDias[4] = chkBoxViernes.Checked;
+        }
+
+        private void chkBoxSabado_CheckedChanged(object sender, EventArgs e)
+        {
+            listaDias[5] = chkBoxSabado.Checked;
+        }
+
+        private void chkBoxDomingo_CheckedChanged(object sender, EventArgs e)
+        {
+            listaDias[6] = chkBoxDomingo.Checked;
         }
     }
 }
