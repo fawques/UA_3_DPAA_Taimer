@@ -83,15 +83,27 @@ namespace TaimerGUI {
                     //MessageBox.Show(exc.Message);
                 }
                 int recorteArriba = (minimo) * 60;
-                if (horario.maxHora().Hor == 23) {
-                    initPanelHorario(minimo, 24);
-                } else {
-                    initPanelHorario(minimo, maximo);
-                }
-                if (!(horario.maxHora().Hor == 23 && horario.maxHora().Min > 0)) {
-                    reducirPanelHorarios(minimo, maximo);
-                }
+                try
+                {
+                    if (horario.maxHora().Hor == 23)
+                    {
+                        initPanelHorario(minimo, 24);
+                    }
+                    else
+                    {
+                        initPanelHorario(minimo, maximo);
+                    }
 
+                    if (!(horario.maxHora().Hor == 23 && horario.maxHora().Min > 0))
+                    {
+                        reducirPanelHorarios(minimo, maximo);
+                    }
+                }
+                catch (NullReferenceException ex)
+                {
+                    initPanelHorario(minimo, maximo);
+                    MessageBox.Show(ex.Message);
+                }
                 for (int i = 0; i < horario.ArrayTurnos.Length; i++) {
                     foreach (Turno item in horario.ArrayTurnos[i]) {
                         int posi = (item.HoraInicio.Hor * 60 + item.HoraInicio.Min) - recorteArriba;

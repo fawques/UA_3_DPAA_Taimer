@@ -119,16 +119,27 @@ namespace TaimerGUI
             } catch (Exception) {
                 //MessageBox.Show(exc.Message);
             }
-            
             int recorteArriba = (minimo) * 60;
-            if (hor.maxHora().Hor == 23) {
-                initPanelHorario(minimo, 24);
-            } else {
-                initPanelHorario(minimo, maximo);
+            try{
+                
+                if (hor.maxHora().Hor == 23)
+                {
+                    initPanelHorario(minimo, 24);
+                }
+                else
+                {
+                    initPanelHorario(minimo, maximo);
+                }
+
+                if (!(hor.maxHora().Hor == 23 && hor.maxHora().Min > 0))
+                {
+                    reducirPanelHorarios(minimo, maximo);
+                }
             }
-            
-            if (!(hor.maxHora().Hor == 23 && hor.maxHora().Min > 0)) {
-                reducirPanelHorarios(minimo, maximo);
+            catch (NullReferenceException ex)
+            {
+                initPanelHorario(minimo, maximo);
+                MessageBox.Show(ex.Message);
             }
 
             for (int i = 0; i < hor.ArrayTurnos.Length; i++)
