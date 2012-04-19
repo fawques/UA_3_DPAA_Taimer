@@ -13,7 +13,7 @@ namespace TaimerGUI {
         private static List<Actividad_a> asignaturas = new List<Actividad_a>();
         private static List<User> usuarios = new List<User>();
         private static List<Algoritmo> algoritmos= new List<Algoritmo>();
-        private static int codAsignaturas = Actividad_a.UltimoCodigo;
+        private static int codAsignaturas = Actividad_a.UltimoCodigo+1;
 
         private static void Init()
         {
