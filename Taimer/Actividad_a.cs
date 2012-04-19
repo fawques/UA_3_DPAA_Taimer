@@ -113,10 +113,13 @@ namespace Taimer {
         /// <returns></returns>
         public override void CopiarDesde(Actividad act)
         {
-            base.CopiarDesde(act);
-            Actividad_a aux = (Actividad_a)act;
-            nombreCoordinador = aux.nombreCoordinador;
-            curso = aux.curso;
+            if (this != act)
+            {
+                base.CopiarDesde(act);
+                Actividad_a aux = (Actividad_a)act;
+                nombreCoordinador = aux.nombreCoordinador;
+                curso = aux.curso;
+            }
         }
 
         /// <summary>

@@ -108,15 +108,18 @@ namespace Taimer {
         /// <returns></returns>
         public virtual void CopiarDesde(Actividad act)
         {
-            nombre = act.nombre;
-            descripcion = act.descripcion;
-            codigo = act.codigo;
-            codigoturno = act.codigoturno;
-
-            turnos = new List<Turno>();
-            foreach (Turno item in act.turnos)
+            if (this != act)
             {
-                turnos.Add(new Turno(item));
+                nombre = act.nombre;
+                descripcion = act.descripcion;
+                codigo = act.codigo;
+                codigoturno = act.codigoturno;
+
+                turnos = new List<Turno>();
+                foreach (Turno item in act.turnos)
+                {
+                    turnos.Add(new Turno(item));
+                }
             }
         }
 

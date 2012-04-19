@@ -73,10 +73,13 @@ namespace Taimer {
         /// <returns></returns>
         public override void CopiarDesde(Actividad act)
         {
-            base.CopiarDesde(act);
-            Actividad_p aux = (Actividad_p) act;
-            usuario = aux.usuario;
-            //aux.Codigo = usuario.CodActPers;
+            if (this != act)
+            {
+                base.CopiarDesde(act);
+                Actividad_p aux = (Actividad_p)act;
+                usuario = aux.usuario;
+                //aux.Codigo = usuario.CodActPers;
+            }
         }
 
         /// <summary>
