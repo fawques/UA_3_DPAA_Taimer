@@ -315,7 +315,7 @@ namespace TaimerGUI {
                 message = u.DNI + ": " + u.ActAcademicas.Count + " academicas, "+u.ActPersonales.Count+" personales y "+u.Horarios.Count+" horarios";
                 MessageBox.Show(message);
             }*/
-            asignaturas=Actividad_a.GetAllActividades_a();
+            //asignaturas=Actividad_a.GetAllActividades_a();
             /*foreach (Actividad_a act in asignaturas)
             {
                 message = act.Codigo + ": " + act.Turnos.Count + " turnos , el último es "+act.Codigoturno;
