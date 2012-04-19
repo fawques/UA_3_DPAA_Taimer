@@ -91,12 +91,6 @@
     <Compile Include="AdminForm.Designer.cs">
       <DependentUpon>AdminForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="AEstadistica.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="AEstadistica.Designer.cs">
-      <DependentUpon>AEstadistica.cs</DependentUpon>
-    </Compile>
     <Compile Include="AGestAsig.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -201,9 +195,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AdminForm.resx">
       <DependentUpon>AdminForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="AEstadistica.resx">
-      <DependentUpon>AEstadistica.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AGestAsig.resx">
       <DependentUpon>AGestAsig.cs</DependentUpon>
