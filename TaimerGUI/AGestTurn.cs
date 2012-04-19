@@ -20,6 +20,7 @@ namespace TaimerGUI
         List<Taimer.Turno> tModificados = new List<Taimer.Turno>();
         List<Taimer.Turno> tCreados = new List<Taimer.Turno>();
         List<Taimer.Turno> tBorrados = new List<Taimer.Turno>();
+        bool modificado = false;
 
         public AGestTurn()
         {
@@ -106,6 +107,8 @@ namespace TaimerGUI
                 udHoraFin.Value = 0;
                 udMinFin.Value = 0;
                 udMinIni.Value = 0;
+
+                modificado = true;
             }
         }
 
@@ -121,6 +124,7 @@ namespace TaimerGUI
                         currentAct.BorraTurno(turno);
                         tBorrados.Add(turno);
 
+                        modificado = true;
                     }
                     catch (NotSupportedException exc)
                     {
@@ -185,6 +189,7 @@ namespace TaimerGUI
                         tModificados.Add(turno);
                     
                     lbErrHoraMod.Visible = false;
+                    modificado = true;
 
                 }
                 catch (NotSupportedException exc)
@@ -202,63 +207,126 @@ namespace TaimerGUI
 
         private void btCreate_Click(object sender, EventArgs e)
         {
-
-            if (parentGest != null)
+            if (modificado)
             {
-
-                try
+                if (MessageBox.Show(
+                        "¿Esta seguro de que desea confirmar los cambios?",
+                        "Confirmar cambios",
+                        MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
                 {
-                    currentAct.Modificar();
-                    foreach (Taimer.Turno item in tBorrados)
+                    if (parentGest != null)
                     {
-                        item.Borrar();
+
+                        try
+                        {
+                            currentAct.Modificar();
+                            foreach (Taimer.Turno item in tBorrados)
+                            {
+                                item.Borrar();
+                            }
+                            foreach (Taimer.Turno item in tCreados)
+                            {
+                                item.Agregar();
+                            }
+                            foreach (Taimer.Turno item in tModificados)
+                            {
+                                item.Modificar();
+                            }
+                        }
+                        catch (Exception exc)
+                        {
+                            MessageBox.Show(exc.Message);
+                        }
+
+                        parentGest.changeCurrent(currentAct);
+
+                        Hide();
+                        parentGest.Show();
+
+                        AdminForm parent = (AdminForm)this.MdiParent;
+                        parent.positionChilds();
                     }
-                    foreach (Taimer.Turno item in tCreados)
+                    else if (parentAdd != null)
                     {
-                        item.Agregar();
-                    }
-                    foreach (Taimer.Turno item in tModificados)
-                    {
-                        item.Modificar();
+
+                        Hide();
+                        parentAdd.Show();
+
+                        AdminForm parent = (AdminForm)this.MdiParent;
+                        parent.positionChilds();
                     }
                 }
-                catch (Exception exc)
-                {
-                    MessageBox.Show(exc.Message);
-                }
-
-                parentGest.changeCurrent(currentAct);
-
-                Hide();
-                parentGest.Show();
-
-                AdminForm parent = (AdminForm)this.MdiParent;
-                parent.positionChilds();
             }
-            else if (parentAdd != null)
+            else
             {
+                if (parentGest != null)
+                {
 
-                Hide();
-                parentAdd.Show();
 
-                AdminForm parent = (AdminForm)this.MdiParent;
-                parent.positionChilds();
+
+                    parentGest.changeCurrent(currentAct);
+
+                    Hide();
+                    parentGest.Show();
+
+                    AdminForm parent = (AdminForm)this.MdiParent;
+                    parent.positionChilds();
+                }
+                else if (parentAdd != null)
+                {
+
+                    Hide();
+                    parentAdd.Show();
+
+                    AdminForm parent = (AdminForm)this.MdiParent;
+                    parent.positionChilds();
+                }
             }
         }
 
         private void btCancel_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show(
-                    "¿Esta seguro de que desea descartar los cambios?",
-                    "Descartar cambios",
-                    MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
+            if (modificado)
             {
+                if (MessageBox.Show(
+                        "¿Esta seguro de que desea descartar los cambios?",
+                        "Descartar cambios",
+                        MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
+                {
 
+                    if (parentGest != null)
+                    {
+
+                        // Reestablezco la asignatura
+                        currentAct.CopiarDesde(currentActCopy);
+                        
+
+                        Hide();
+                        parentGest.Show();
+
+                        AdminForm parent = (AdminForm)this.MdiParent;
+                        parent.positionChilds();
+                    }
+                    else if (parentAdd != null)
+                    {
+                        // Vacio la tabla
+                        dgTurnos.Rows.Clear();
+
+                        Hide();
+                        parentAdd.Show();
+
+                        AdminForm parent = (AdminForm)this.MdiParent;
+                        parent.positionChilds();
+                    }
+                }
+            }
+            else
+            {
                 if (parentGest != null)
                 {
 
                     // Reestablezco la asignatura
-                    currentAct.CopiarDesde(currentActCopy);
+                    parentGest.changeCurrent(currentAct);
 
                     Hide();
                     parentGest.Show();

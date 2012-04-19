@@ -260,6 +260,9 @@ namespace TaimerGUI
 
         private void button3_Click(object sender, EventArgs e)
         {
+            Program.Usuarios = Taimer.User.CheckLoginAdmin("admin@admin.com", "admin");
+            Program.Usuarios.Insert(0,User.CheckLoginUser("alberto@alberto.es", "alberto"));
+            Program.Asignaturas = Actividad_a.GetAllActividades_a();
             ClientForm client = new ClientForm(null);
             client.Show();
             this.Hide();
