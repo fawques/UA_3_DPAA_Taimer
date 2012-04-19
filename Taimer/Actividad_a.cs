@@ -228,7 +228,11 @@ namespace Taimer {
         public static int UltimoCodigo {
             get {
                 CADActividad_a act = new CADActividad_a();
-                return int.Parse(act.LastCode().Tables[0].Rows[0].ItemArray[0].ToString());
+                string aux = act.LastCode().Tables[0].Rows[0].ItemArray[0].ToString();
+                if (aux != "")
+                    return int.Parse(aux);
+                else
+                    return 0;
             }
         }
         /// <summary>
