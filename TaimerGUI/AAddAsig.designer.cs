@@ -66,7 +66,7 @@
             this.btCreate.Location = new System.Drawing.Point(544, 549);
             this.btCreate.Name = "btCreate";
             this.btCreate.Size = new System.Drawing.Size(105, 35);
-            this.btCreate.TabIndex = 6;
+            this.btCreate.TabIndex = 7;
             this.btCreate.Text = "Crear";
             this.btCreate.UseVisualStyleBackColor = true;
             this.btCreate.Click += new System.EventHandler(this.btCreate_Click);
@@ -76,7 +76,7 @@
             this.btAddTurn.Location = new System.Drawing.Point(169, 371);
             this.btAddTurn.Name = "btAddTurn";
             this.btAddTurn.Size = new System.Drawing.Size(125, 57);
-            this.btAddTurn.TabIndex = 4;
+            this.btAddTurn.TabIndex = 6;
             this.btAddTurn.Text = "Gestionar Turnos";
             this.btAddTurn.UseVisualStyleBackColor = true;
             this.btAddTurn.Click += new System.EventHandler(this.btAddTurn_Click);
@@ -243,7 +243,7 @@
             this.tbTitu.Location = new System.Drawing.Point(44, 280);
             this.tbTitu.Name = "tbTitu";
             this.tbTitu.Size = new System.Drawing.Size(185, 20);
-            this.tbTitu.TabIndex = 70;
+            this.tbTitu.TabIndex = 4;
             // 
             // label7
             // 
@@ -253,7 +253,6 @@
             this.label7.Size = new System.Drawing.Size(34, 13);
             this.label7.TabIndex = 73;
             this.label7.Text = "Curso";
-
             // 
             // udCurso
             // 
@@ -265,7 +264,7 @@
             0});
             this.udCurso.Name = "udCurso";
             this.udCurso.Size = new System.Drawing.Size(41, 20);
-            this.udCurso.TabIndex = 74;
+            this.udCurso.TabIndex = 5;
             this.udCurso.Value = new decimal(new int[] {
             1,
             0,
