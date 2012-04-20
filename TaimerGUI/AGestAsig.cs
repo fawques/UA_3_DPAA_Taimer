@@ -104,27 +104,6 @@ namespace TaimerGUI {
         }
 
         private void AGestAsig_Load(object sender, EventArgs e) {
-            /*Taimer.Actividad_a acti1 = new Taimer.Actividad_a("DPAA", "Clases de DPAA de Teoria", Program.CodAsignaturas, "Irene");
-            Taimer.Actividad_a acti2 = new Taimer.Actividad_a("SO1", "Sistemas Operativos de 2º", Program.CodAsignaturas, "Mora");
-
-            Taimer.Hora hor1 = new Taimer.Hora(13, 30);
-            Taimer.Hora hor2 = new Taimer.Hora(15, 0);
-            Taimer.Hora hor3 = new Taimer.Hora(17, 0);
-
-            Taimer.Turno turn11 = new Taimer.Turno(hor1, hor2, "Lunes", "LAB01");
-            Taimer.Turno turn12 = new Taimer.Turno(hor1, hor2, "Martes", "LAB01");
-
-            acti1.AddTurno(turn11);
-            acti1.AddTurno(turn12);
-
-            Taimer.Turno turn21 = new Taimer.Turno(hor2, hor3, "Jueves", "LAB02");
-            Taimer.Turno turn22 = new Taimer.Turno(hor2, hor3, "Viernes", "LAB02");
-
-            acti2.AddTurno(turn21);
-            acti2.AddTurno(turn22);
-
-            asignaturas.Add(acti1);
-            asignaturas.Add(acti2);*/
 
             updateTableAsig();
 
