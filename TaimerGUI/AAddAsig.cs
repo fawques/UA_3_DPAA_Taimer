@@ -161,6 +161,8 @@ namespace TaimerGUI
             tbName.Clear();
             tbDesc.Clear();
             tbCoord.Clear();
+            tbTitu.Clear();
+            udCurso.Value = udCurso.Minimum;
         }
 
         private void AAddAsig_Enter(object sender, EventArgs e)

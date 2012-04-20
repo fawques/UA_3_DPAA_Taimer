@@ -46,6 +46,7 @@ namespace TaimerGUI
 
             dgTurnos.Rows.Clear();
             grpBoxTurno.Visible = false;
+            modificado = false;
 
             if (currentAct is Taimer.Actividad_a)
             {
@@ -310,6 +311,7 @@ namespace TaimerGUI
                     else if (parentAdd != null)
                     {
                         // Vacio la tabla
+                        currentAct.CopiarDesde(currentActCopy);
                         dgTurnos.Rows.Clear();
 
                         Hide();

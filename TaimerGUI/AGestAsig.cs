@@ -15,6 +15,8 @@ namespace TaimerGUI {
         Taimer.Actividad_a currentAsig = null;
         Taimer.Actividad_a currentAsigCopy = null;
 
+        bool modificado = false;
+
         public AGestAsig() {
             InitializeComponent();
         }
@@ -157,9 +159,6 @@ namespace TaimerGUI {
                     currentAsigCopy = new Taimer.Actividad_a(currentAsig);
 
                     changeCurrent(currentAsig);
-
-                    btCancel.Enabled = true;
-                    btCreate.Enabled = true;
                 }
             }
         }
