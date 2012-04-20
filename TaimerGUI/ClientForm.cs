@@ -360,12 +360,12 @@ namespace TaimerGUI {
 
         private void perfilToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start("http://plus.google.com/");
+            System.Diagnostics.Process.Start("http://www.taimer.com/usuario.aspx");
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start("http://google.es/");
+            System.Diagnostics.Process.Start("http://www.taimer.com/home.aspx");
         }
 
         public void verHorarios_Click(object sender, EventArgs e)

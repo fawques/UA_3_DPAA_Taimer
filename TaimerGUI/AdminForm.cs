@@ -263,5 +263,12 @@ namespace TaimerGUI {
         private void btMaximize_MouseUp(object sender, MouseEventArgs e) {
             btMaximize.Image = TaimerGUI.Properties.Resources.maximizeOn;
         }
+
+        private void acercaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            About ab = new About();
+            ab.ShowDialog();
+            ab.Dispose();
+        }
     }
 }

@@ -173,6 +173,7 @@
             this.acercaToolStripMenuItem.Name = "acercaToolStripMenuItem";
             this.acercaToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.acercaToolStripMenuItem.Text = "Acerca de...";
+            this.acercaToolStripMenuItem.Click += new System.EventHandler(this.acercaToolStripMenuItem_Click);
             // 
             // panel2
             // 

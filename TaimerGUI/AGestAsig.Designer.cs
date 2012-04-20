@@ -58,7 +58,7 @@
             // 
             // btNewUser
             // 
-            this.btNewUser.Location = new System.Drawing.Point(287, 484);
+            this.btNewUser.Location = new System.Drawing.Point(287, 496);
             this.btNewUser.Name = "btNewUser";
             this.btNewUser.Size = new System.Drawing.Size(107, 24);
             this.btNewUser.TabIndex = 3;
@@ -78,7 +78,7 @@
             this.Nombre,
             this.Profesor,
             this.Eliminar});
-            this.dgAsig.Location = new System.Drawing.Point(94, 129);
+            this.dgAsig.Location = new System.Drawing.Point(94, 141);
             this.dgAsig.Name = "dgAsig";
             this.dgAsig.ReadOnly = true;
             this.dgAsig.Size = new System.Drawing.Size(300, 349);
@@ -105,7 +105,7 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(135, 103);
+            this.textBox1.Location = new System.Drawing.Point(135, 115);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(259, 20);
             this.textBox1.TabIndex = 1;
@@ -124,7 +124,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(94, 106);
+            this.label1.Location = new System.Drawing.Point(94, 118);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(35, 13);
             this.label1.TabIndex = 67;
@@ -146,7 +146,7 @@
             this.gbInfo.Controls.Add(this.lbNameInfo);
             this.gbInfo.Controls.Add(this.lbName);
             this.gbInfo.Controls.Add(this.tbName);
-            this.gbInfo.Location = new System.Drawing.Point(420, 103);
+            this.gbInfo.Location = new System.Drawing.Point(420, 115);
             this.gbInfo.Name = "gbInfo";
             this.gbInfo.Size = new System.Drawing.Size(352, 405);
             this.gbInfo.TabIndex = 68;
@@ -333,10 +333,10 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(326, 29);
+            this.label2.Font = new System.Drawing.Font("Calibri", 8.5F);
+            this.label2.Location = new System.Drawing.Point(71, 63);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(389, 13);
+            this.label2.Size = new System.Drawing.Size(450, 14);
             this.label2.TabIndex = 69;
             this.label2.Text = "Modificar los datos de asignaturas existentes, así como crear asignaturas nuevas";
             // 

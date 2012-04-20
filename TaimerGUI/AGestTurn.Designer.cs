@@ -30,7 +30,9 @@
             this.lbErrHora = new System.Windows.Forms.Label();
             this.udMinFin = new System.Windows.Forms.NumericUpDown();
             this.udHoraFin = new System.Windows.Forms.NumericUpDown();
+            this.lbErrUbi = new System.Windows.Forms.Label();
             this.udMinIni = new System.Windows.Forms.NumericUpDown();
+            this.tbUbi = new System.Windows.Forms.TextBox();
             this.udHoraIni = new System.Windows.Forms.NumericUpDown();
             this.label6 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -38,8 +40,6 @@
             this.cbDia = new System.Windows.Forms.ComboBox();
             this.btAdd = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.tbUbi = new System.Windows.Forms.TextBox();
-            this.lbErrUbi = new System.Windows.Forms.Label();
             this.dgTurnos = new System.Windows.Forms.DataGridView();
             this.Dia = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.HoraInicio = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -47,6 +47,7 @@
             this.Ubicacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Borrar = new System.Windows.Forms.DataGridViewButtonColumn();
             this.grpBoxTurno = new System.Windows.Forms.GroupBox();
+            this.lbErrHoraMod = new System.Windows.Forms.Label();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.label17 = new System.Windows.Forms.Label();
@@ -64,7 +65,6 @@
             this.label16 = new System.Windows.Forms.Label();
             this.cmbBoxDiaMod = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.lbErrHoraMod = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.udMinFin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.udHoraFin)).BeginInit();
@@ -163,6 +163,18 @@
             this.udHoraFin.Size = new System.Drawing.Size(42, 20);
             this.udHoraFin.TabIndex = 4;
             // 
+            // lbErrUbi
+            // 
+            this.lbErrUbi.AutoSize = true;
+            this.lbErrUbi.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbErrUbi.ForeColor = System.Drawing.Color.Maroon;
+            this.lbErrUbi.Location = new System.Drawing.Point(16, 73);
+            this.lbErrUbi.Name = "lbErrUbi";
+            this.lbErrUbi.Size = new System.Drawing.Size(145, 13);
+            this.lbErrUbi.TabIndex = 64;
+            this.lbErrUbi.Text = "El campo no puede estar vacio";
+            this.lbErrUbi.Visible = false;
+            // 
             // udMinIni
             // 
             this.udMinIni.Location = new System.Drawing.Point(131, 150);
@@ -174,6 +186,13 @@
             this.udMinIni.Name = "udMinIni";
             this.udMinIni.Size = new System.Drawing.Size(39, 20);
             this.udMinIni.TabIndex = 3;
+            // 
+            // tbUbi
+            // 
+            this.tbUbi.Location = new System.Drawing.Point(13, 43);
+            this.tbUbi.Name = "tbUbi";
+            this.tbUbi.Size = new System.Drawing.Size(157, 20);
+            this.tbUbi.TabIndex = 1;
             // 
             // udHoraIni
             // 
@@ -253,25 +272,6 @@
             this.label1.TabIndex = 50;
             this.label1.Text = "Gestionar Turnos";
             // 
-            // tbUbi
-            // 
-            this.tbUbi.Location = new System.Drawing.Point(13, 43);
-            this.tbUbi.Name = "tbUbi";
-            this.tbUbi.Size = new System.Drawing.Size(157, 20);
-            this.tbUbi.TabIndex = 1;
-            // 
-            // lbErrUbi
-            // 
-            this.lbErrUbi.AutoSize = true;
-            this.lbErrUbi.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbErrUbi.ForeColor = System.Drawing.Color.Maroon;
-            this.lbErrUbi.Location = new System.Drawing.Point(16, 73);
-            this.lbErrUbi.Name = "lbErrUbi";
-            this.lbErrUbi.Size = new System.Drawing.Size(145, 13);
-            this.lbErrUbi.TabIndex = 64;
-            this.lbErrUbi.Text = "El campo no puede estar vacio";
-            this.lbErrUbi.Visible = false;
-            // 
             // dgTurnos
             // 
             this.dgTurnos.AllowUserToAddRows = false;
@@ -349,6 +349,17 @@
             this.grpBoxTurno.TabStop = false;
             this.grpBoxTurno.Text = "Modificar Turno";
             this.grpBoxTurno.Visible = false;
+            // 
+            // lbErrHoraMod
+            // 
+            this.lbErrHoraMod.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbErrHoraMod.ForeColor = System.Drawing.Color.Maroon;
+            this.lbErrHoraMod.Location = new System.Drawing.Point(41, 102);
+            this.lbErrHoraMod.Name = "lbErrHoraMod";
+            this.lbErrHoraMod.Size = new System.Drawing.Size(131, 32);
+            this.lbErrHoraMod.TabIndex = 67;
+            this.lbErrHoraMod.Text = "La hora de fin no puede ser menor que la de inicio";
+            this.lbErrHoraMod.Visible = false;
             // 
             // btnCancelar
             // 
@@ -516,23 +527,12 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Calibri", 8.25F);
+            this.label8.Font = new System.Drawing.Font("Calibri", 8.5F);
             this.label8.Location = new System.Drawing.Point(65, 51);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(321, 13);
+            this.label8.Size = new System.Drawing.Size(369, 14);
             this.label8.TabIndex = 65;
             this.label8.Text = "Modificar turnos existentes, así como la creación de turnos nuevos";
-            // 
-            // lbErrHoraMod
-            // 
-            this.lbErrHoraMod.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbErrHoraMod.ForeColor = System.Drawing.Color.Maroon;
-            this.lbErrHoraMod.Location = new System.Drawing.Point(41, 102);
-            this.lbErrHoraMod.Name = "lbErrHoraMod";
-            this.lbErrHoraMod.Size = new System.Drawing.Size(131, 32);
-            this.lbErrHoraMod.TabIndex = 67;
-            this.lbErrHoraMod.Text = "La hora de fin no puede ser menor que la de inicio";
-            this.lbErrHoraMod.Visible = false;
             // 
             // AGestTurn
             // 

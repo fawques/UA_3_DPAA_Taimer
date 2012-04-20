@@ -395,10 +395,10 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(287, 29);
+            this.label4.Font = new System.Drawing.Font("Calibri", 8.5F);
+            this.label4.Location = new System.Drawing.Point(69, 58);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(332, 13);
+            this.label4.Size = new System.Drawing.Size(386, 14);
             this.label4.TabIndex = 89;
             this.label4.Text = "Modificar datos de usuarios, así como la creación de usuarios nuevos";
             // 
