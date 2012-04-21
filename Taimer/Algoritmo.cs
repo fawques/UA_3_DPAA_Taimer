@@ -193,6 +193,7 @@ namespace Taimer
             {
                 foreach (Actividad_a academica in seleccionadas_a)
                 {
+                    asignado = false;
                     while (nodos_vivos.Count > 0)
                     {
                         optimo = nodos_vivos.Dequeue();

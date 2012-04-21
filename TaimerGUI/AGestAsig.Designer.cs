@@ -289,6 +289,7 @@
             this.tbCoord.Size = new System.Drawing.Size(246, 20);
             this.tbCoord.TabIndex = 6;
             this.tbCoord.Visible = false;
+            this.tbCoord.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbCoord_KeyPress);
             this.tbCoord.Validated += new System.EventHandler(this.tbCoord_Validated);
             // 
             // tbDesc
@@ -298,6 +299,7 @@
             this.tbDesc.Size = new System.Drawing.Size(246, 20);
             this.tbDesc.TabIndex = 5;
             this.tbDesc.Visible = false;
+            this.tbDesc.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbDesc_KeyPress);
             this.tbDesc.Validated += new System.EventHandler(this.tbDesc_Validated);
             // 
             // lbNameInfo
@@ -328,6 +330,7 @@
             this.tbName.Size = new System.Drawing.Size(140, 20);
             this.tbName.TabIndex = 4;
             this.tbName.Visible = false;
+            this.tbName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbName_KeyPress_1);
             this.tbName.Validated += new System.EventHandler(this.tbName_Validated);
             // 
             // label2

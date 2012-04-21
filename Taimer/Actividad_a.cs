@@ -221,7 +221,7 @@ namespace Taimer {
         public void Modificar() {
             CADActividad_a act = new CADActividad_a();
 
-            act.ModificaActividad_a(nombreCoordinador, codigo);
+            act.ModificaActividad_a(Nombre,Descripcion,codigo,Codigoturno,nombreCoordinador);
         }
 
         /// <summary>
