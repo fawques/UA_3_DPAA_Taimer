@@ -219,5 +219,29 @@ namespace TaimerGUI {
             clearInfo();
             dgAsig.ClearSelection();
         }
+
+        private void tbName_KeyPress_1(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {//si se presiona la tecla enter
+                tbName_Validated(null, null);
+            }
+        }
+
+        private void tbDesc_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {//si se presiona la tecla enter
+                tbDesc_Validated(null, null);
+            }
+        }
+
+        private void tbCoord_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {//si se presiona la tecla enter
+                tbCoord_Validated(null, null);
+            }
+        }
     }
 }

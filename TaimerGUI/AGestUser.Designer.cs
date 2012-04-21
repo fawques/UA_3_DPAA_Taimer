@@ -233,6 +233,7 @@
             this.tbName.Size = new System.Drawing.Size(188, 20);
             this.tbName.TabIndex = 4;
             this.tbName.Visible = false;
+            this.tbName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbName_KeyPress);
             this.tbName.Validated += new System.EventHandler(this.tbName_Validated);
             // 
             // tbEmail
@@ -242,6 +243,7 @@
             this.tbEmail.Size = new System.Drawing.Size(131, 20);
             this.tbEmail.TabIndex = 5;
             this.tbEmail.Visible = false;
+            this.tbEmail.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbEmail_KeyPress);
             this.tbEmail.Validated += new System.EventHandler(this.tbEmail_Validated);
             // 
             // tbTitu
@@ -251,6 +253,7 @@
             this.tbTitu.Size = new System.Drawing.Size(131, 20);
             this.tbTitu.TabIndex = 8;
             this.tbTitu.Visible = false;
+            this.tbTitu.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbTitu_KeyPress);
             this.tbTitu.Validated += new System.EventHandler(this.tbTitu_Validated);
             // 
             // btCancel
@@ -390,6 +393,7 @@
             this.tbPass.Size = new System.Drawing.Size(131, 20);
             this.tbPass.TabIndex = 6;
             this.tbPass.Visible = false;
+            this.tbPass.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbPass_KeyPress);
             this.tbPass.Validated += new System.EventHandler(this.tbPass_Validated);
             // 
             // label4
