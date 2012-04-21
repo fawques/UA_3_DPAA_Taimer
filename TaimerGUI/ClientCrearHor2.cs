@@ -231,7 +231,8 @@ namespace TaimerGUI
                MessageBoxDefaultButton.Button2) == DialogResult.Yes)
                 {
                     //Algoritmos guay con una ventana de "Estmos en ello"
-                    (new ClientCreandoAlgoritmo()).ShowDialog();
+                    //ClientCreandoAlgoritmo aux = new ClientCreandoAlgoritmo();
+                    //aux.ShowDialog();
                     hAux = generarHorario();
                     if (hAux != null)
                     {
