@@ -221,10 +221,7 @@ namespace TaimerGUI
                         try
                         {
                             currentAct.Modificar();
-                            foreach (Taimer.Turno item in tBorrados)
-                            {
-                                item.Borrar();
-                            }
+                            
                             foreach (Taimer.Turno item in tCreados)
                             {
                                 item.Agregar();
@@ -233,19 +230,22 @@ namespace TaimerGUI
                             {
                                 item.Modificar();
                             }
+                            foreach (Taimer.Turno item in tBorrados)
+                            {
+                                item.Borrar();
+                            }
+                            parentGest.changeCurrent(currentAct);
+
+                            Hide();
+                            parentGest.Show();
+
+                            AdminForm parent = (AdminForm)this.MdiParent;
+                            parent.positionChilds();
                         }
                         catch (Exception exc)
                         {
                             MessageBox.Show(exc.Message);
                         }
-
-                        parentGest.changeCurrent(currentAct);
-
-                        Hide();
-                        parentGest.Show();
-
-                        AdminForm parent = (AdminForm)this.MdiParent;
-                        parent.positionChilds();
                     }
                     else if (parentAdd != null)
                     {
