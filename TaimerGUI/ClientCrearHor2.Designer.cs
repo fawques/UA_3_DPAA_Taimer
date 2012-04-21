@@ -35,6 +35,7 @@
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.grpBoxRestric = new System.Windows.Forms.GroupBox();
             this.groubBoxDias = new System.Windows.Forms.GroupBox();
+            this.lbErrDias = new System.Windows.Forms.Label();
             this.chkBxAll = new System.Windows.Forms.CheckBox();
             this.chkBoxDomingo = new System.Windows.Forms.CheckBox();
             this.chkBoxSabado = new System.Windows.Forms.CheckBox();
@@ -63,7 +64,6 @@
             this.btnGuardar = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.btnDescartar = new System.Windows.Forms.Button();
-            this.lbErrDias = new System.Windows.Forms.Label();
             this.grpBoxRestric.SuspendLayout();
             this.groubBoxDias.SuspendLayout();
             this.pnlHorario.SuspendLayout();
@@ -90,7 +90,6 @@
             this.chkBxLunes.TabIndex = 23;
             this.chkBxLunes.Text = "Lunes";
             this.chkBxLunes.UseVisualStyleBackColor = true;
-            this.chkBxLunes.CheckedChanged += new System.EventHandler(this.chkBxLunes_CheckedChanged);
             // 
             // chkBxMartes
             // 
@@ -103,7 +102,6 @@
             this.chkBxMartes.TabIndex = 24;
             this.chkBxMartes.Text = "Martes";
             this.chkBxMartes.UseVisualStyleBackColor = true;
-            this.chkBxMartes.CheckedChanged += new System.EventHandler(this.chkBxMartes_CheckedChanged);
             // 
             // radioButton1
             // 
@@ -159,6 +157,18 @@
             this.groubBoxDias.TabStop = false;
             this.groubBoxDias.Text = "Dias";
             // 
+            // lbErrDias
+            // 
+            this.lbErrDias.AutoSize = true;
+            this.lbErrDias.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbErrDias.ForeColor = System.Drawing.Color.Maroon;
+            this.lbErrDias.Location = new System.Drawing.Point(15, 125);
+            this.lbErrDias.Name = "lbErrDias";
+            this.lbErrDias.Size = new System.Drawing.Size(134, 13);
+            this.lbErrDias.TabIndex = 63;
+            this.lbErrDias.Text = "Debes seleccionar algún día";
+            this.lbErrDias.Visible = false;
+            // 
             // chkBxAll
             // 
             this.chkBxAll.AutoSize = true;
@@ -183,7 +193,6 @@
             this.chkBoxDomingo.TabIndex = 34;
             this.chkBoxDomingo.Text = "Domingo";
             this.chkBoxDomingo.UseVisualStyleBackColor = true;
-            this.chkBoxDomingo.CheckedChanged += new System.EventHandler(this.chkBoxDomingo_CheckedChanged);
             // 
             // chkBoxSabado
             // 
@@ -196,7 +205,6 @@
             this.chkBoxSabado.TabIndex = 33;
             this.chkBoxSabado.Text = "Sabado";
             this.chkBoxSabado.UseVisualStyleBackColor = true;
-            this.chkBoxSabado.CheckedChanged += new System.EventHandler(this.chkBoxSabado_CheckedChanged);
             // 
             // chkBoxMiercoles
             // 
@@ -209,7 +217,6 @@
             this.chkBoxMiercoles.TabIndex = 30;
             this.chkBoxMiercoles.Text = "Miercoles";
             this.chkBoxMiercoles.UseVisualStyleBackColor = true;
-            this.chkBoxMiercoles.CheckedChanged += new System.EventHandler(this.chkBoxMiercoles_CheckedChanged);
             // 
             // chkBoxViernes
             // 
@@ -222,7 +229,6 @@
             this.chkBoxViernes.TabIndex = 32;
             this.chkBoxViernes.Text = "Viernes";
             this.chkBoxViernes.UseVisualStyleBackColor = true;
-            this.chkBoxViernes.CheckedChanged += new System.EventHandler(this.chkBoxViernes_CheckedChanged);
             // 
             // chkBoxJueves
             // 
@@ -235,7 +241,6 @@
             this.chkBoxJueves.TabIndex = 31;
             this.chkBoxJueves.Text = "Jueves";
             this.chkBoxJueves.UseVisualStyleBackColor = true;
-            this.chkBoxJueves.CheckedChanged += new System.EventHandler(this.chkBoxJueves_CheckedChanged);
             // 
             // btnCrear
             // 
@@ -482,18 +487,6 @@
             this.btnDescartar.UseVisualStyleBackColor = true;
             this.btnDescartar.Visible = false;
             this.btnDescartar.Click += new System.EventHandler(this.btnDescartar_Click);
-            // 
-            // lbErrDias
-            // 
-            this.lbErrDias.AutoSize = true;
-            this.lbErrDias.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbErrDias.ForeColor = System.Drawing.Color.Maroon;
-            this.lbErrDias.Location = new System.Drawing.Point(15, 125);
-            this.lbErrDias.Name = "lbErrDias";
-            this.lbErrDias.Size = new System.Drawing.Size(134, 13);
-            this.lbErrDias.TabIndex = 63;
-            this.lbErrDias.Text = "Debes seleccionar algún día";
-            this.lbErrDias.Visible = false;
             // 
             // ClientCrearHor2
             // 

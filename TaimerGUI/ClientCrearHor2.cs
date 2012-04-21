@@ -204,6 +204,17 @@ namespace TaimerGUI
 
         }
 
+        private void rellenarListaDias()
+        {
+            listaDias[0] = chkBxLunes.Checked;
+            listaDias[1] = chkBxMartes.Checked;
+            listaDias[2] = chkBoxMiercoles.Checked;
+            listaDias[3] = chkBoxJueves.Checked;
+            listaDias[4] = chkBoxViernes.Checked;
+            listaDias[5] = chkBoxSabado.Checked;
+            listaDias[6] = chkBoxDomingo.Checked;
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
             if (!chkBxLunes.Checked && !chkBxMartes.Checked && !chkBoxMiercoles.Checked &&
@@ -211,6 +222,7 @@ namespace TaimerGUI
                 lbErrDias.Visible = true;
             else
             {
+                rellenarListaDias();
                 lbErrDias.Visible = false;
                 if (MessageBox.Show("Esta operación puede tomar varios minutos. ¿Seguro que desea continuar?",
                "¿Crear horario?",
@@ -298,6 +310,13 @@ namespace TaimerGUI
             pnlHorario.Visible = false;
             grpBoxRestric.Visible = true;
             chkBxAll.Checked = true;
+            chkBxLunes.Checked = true;
+            chkBxMartes.Checked = true;
+            chkBoxMiercoles.Checked = true;
+            chkBoxJueves.Checked = true;
+            chkBoxViernes.Checked = true;
+            chkBoxSabado.Checked = true;
+            chkBoxDomingo.Checked = true;
             clearAllHorarioAct();
             initPanelHorario(0, 23);
         }
@@ -337,39 +356,5 @@ namespace TaimerGUI
             ((Panel)sender).Focus();
         }
 
-        private void chkBxLunes_CheckedChanged(object sender, EventArgs e)
-        {
-                listaDias[0] = chkBxLunes.Checked;
-        }
-
-        private void chkBxMartes_CheckedChanged(object sender, EventArgs e)
-        {
-            listaDias[1] = chkBxMartes.Checked;
-        }
-
-        private void chkBoxMiercoles_CheckedChanged(object sender, EventArgs e)
-        {
-            listaDias[2] = chkBoxMiercoles.Checked;
-        }
-
-        private void chkBoxJueves_CheckedChanged(object sender, EventArgs e)
-        {
-            listaDias[3] = chkBoxJueves.Checked;
-        }
-
-        private void chkBoxViernes_CheckedChanged(object sender, EventArgs e)
-        {
-            listaDias[4] = chkBoxViernes.Checked;
-        }
-
-        private void chkBoxSabado_CheckedChanged(object sender, EventArgs e)
-        {
-            listaDias[5] = chkBoxSabado.Checked;
-        }
-
-        private void chkBoxDomingo_CheckedChanged(object sender, EventArgs e)
-        {
-            listaDias[6] = chkBoxDomingo.Checked;
-        }
     }
 }
