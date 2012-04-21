@@ -48,8 +48,8 @@ namespace Taimer {
         /// <param name="turnos_">Listas de turnos en los que se realiza la Actividad_p </param>
         /// <param name="usu_">Usuario al que pertenece esta Actividad_p</param>
         /// <param name="cod_">Codigo de la actividad_p (por defecto 0)</param>
-        public Actividad_p(string nom_, string desc_, List<Turno> turnos_, User usu_ = null, int cod_ = 0)
-            : base(nom_, desc_, cod_, turnos_) {
+        public Actividad_p(string nom_, string desc_, List<Turno> turnos_, int codTurno, User usu_ = null, int cod_ = 0)
+            : base(nom_, desc_, cod_, codTurno, turnos_) {
 
             usuario = usu_;
         }
@@ -73,10 +73,13 @@ namespace Taimer {
         /// <returns></returns>
         public override void CopiarDesde(Actividad act)
         {
-            base.CopiarDesde(act);
-            Actividad_p aux = (Actividad_p) act;
-            usuario = aux.usuario;
-            //aux.Codigo = usuario.CodActPers;
+            if (this != act)
+            {
+                base.CopiarDesde(act);
+                Actividad_p aux = (Actividad_p)act;
+                usuario = aux.usuario;
+                //aux.Codigo = usuario.CodActPers;
+            }
         }
 
         /// <summary>
@@ -185,7 +188,7 @@ namespace Taimer {
         public void Modificar()
         {
             CADActividad act = new CADActividad();
-            act.ModificaActividad(Nombre, Descripcion, Codigo);
+            act.ModificaActividad(Nombre, Descripcion, Codigo,codigoturno);
         }
 
         /// <summary>

@@ -86,7 +86,7 @@
             // 
             // txtBoxFiltro
             // 
-            this.txtBoxFiltro.Location = new System.Drawing.Point(85, 85);
+            this.txtBoxFiltro.Location = new System.Drawing.Point(86, 85);
             this.txtBoxFiltro.Name = "txtBoxFiltro";
             this.txtBoxFiltro.Size = new System.Drawing.Size(167, 20);
             this.txtBoxFiltro.TabIndex = 1;

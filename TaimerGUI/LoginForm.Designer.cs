@@ -30,6 +30,9 @@
             this.btClose = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.pnLoginContents = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.rbAdmin = new System.Windows.Forms.RadioButton();
+            this.rbCliente = new System.Windows.Forms.RadioButton();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
@@ -42,9 +45,6 @@
             this.lbLoginPassword = new System.Windows.Forms.Label();
             this.lbLoginUser = new System.Windows.Forms.Label();
             this.btLoginEntrar = new System.Windows.Forms.Button();
-            this.rbCliente = new System.Windows.Forms.RadioButton();
-            this.rbAdmin = new System.Windows.Forms.RadioButton();
-            this.label2 = new System.Windows.Forms.Label();
             this.pnLogo.SuspendLayout();
             this.pnSystemButtons.SuspendLayout();
             this.pnLoginContents.SuspendLayout();
@@ -158,6 +158,43 @@
             this.pnLoginContents.Size = new System.Drawing.Size(500, 194);
             this.pnLoginContents.TabIndex = 1;
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.Maroon;
+            this.label2.Location = new System.Drawing.Point(365, 16);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(83, 13);
+            this.label2.TabIndex = 16;
+            this.label2.Text = "Tipo de Usuario:";
+            // 
+            // rbAdmin
+            // 
+            this.rbAdmin.AutoSize = true;
+            this.rbAdmin.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbAdmin.ForeColor = System.Drawing.Color.Maroon;
+            this.rbAdmin.Location = new System.Drawing.Point(368, 50);
+            this.rbAdmin.Name = "rbAdmin";
+            this.rbAdmin.Size = new System.Drawing.Size(93, 17);
+            this.rbAdmin.TabIndex = 15;
+            this.rbAdmin.Text = "Administrador";
+            this.rbAdmin.UseVisualStyleBackColor = true;
+            // 
+            // rbCliente
+            // 
+            this.rbCliente.AutoSize = true;
+            this.rbCliente.Checked = true;
+            this.rbCliente.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbCliente.ForeColor = System.Drawing.Color.Maroon;
+            this.rbCliente.Location = new System.Drawing.Point(368, 32);
+            this.rbCliente.Name = "rbCliente";
+            this.rbCliente.Size = new System.Drawing.Size(59, 17);
+            this.rbCliente.TabIndex = 14;
+            this.rbCliente.TabStop = true;
+            this.rbCliente.Text = "Cliente";
+            this.rbCliente.UseVisualStyleBackColor = true;
+            // 
             // button3
             // 
             this.button3.Location = new System.Drawing.Point(13, 20);
@@ -193,7 +230,7 @@
             this.llIrAWeb.AutoSize = true;
             this.llIrAWeb.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.llIrAWeb.LinkColor = System.Drawing.Color.Maroon;
-            this.llIrAWeb.Location = new System.Drawing.Point(276, 157);
+            this.llIrAWeb.Location = new System.Drawing.Point(433, 172);
             this.llIrAWeb.Name = "llIrAWeb";
             this.llIrAWeb.Size = new System.Drawing.Size(55, 13);
             this.llIrAWeb.TabIndex = 6;
@@ -205,12 +242,13 @@
             this.llRecordarDatos.AutoSize = true;
             this.llRecordarDatos.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.llRecordarDatos.LinkColor = System.Drawing.Color.Maroon;
-            this.llRecordarDatos.Location = new System.Drawing.Point(218, 144);
+            this.llRecordarDatos.Location = new System.Drawing.Point(217, 126);
             this.llRecordarDatos.Name = "llRecordarDatos";
             this.llRecordarDatos.Size = new System.Drawing.Size(113, 13);
             this.llRecordarDatos.TabIndex = 5;
             this.llRecordarDatos.TabStop = true;
             this.llRecordarDatos.Text = "No recuerdo mis datos";
+            this.llRecordarDatos.Visible = false;
             // 
             // cbLoginRemeberData
             // 
@@ -222,7 +260,7 @@
             this.cbLoginRemeberData.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.cbLoginRemeberData.Size = new System.Drawing.Size(86, 17);
             this.cbLoginRemeberData.TabIndex = 3;
-            this.cbLoginRemeberData.Text = "Recuerdame";
+            this.cbLoginRemeberData.Text = "Recuérdame";
             this.cbLoginRemeberData.UseVisualStyleBackColor = true;
             // 
             // lbLoginBadUserPass
@@ -234,7 +272,7 @@
             this.lbLoginBadUserPass.Name = "lbLoginBadUserPass";
             this.lbLoginBadUserPass.Size = new System.Drawing.Size(260, 13);
             this.lbLoginBadUserPass.TabIndex = 5;
-            this.lbLoginBadUserPass.Text = "La combinacion de usuario y contraseña es incorrecta";
+            this.lbLoginBadUserPass.Text = "La combinación de usuario y contraseña es incorrecta";
             this.lbLoginBadUserPass.Visible = false;
             // 
             // tbLoginPassword
@@ -274,9 +312,9 @@
             this.lbLoginUser.ForeColor = System.Drawing.Color.Maroon;
             this.lbLoginUser.Location = new System.Drawing.Point(170, 24);
             this.lbLoginUser.Name = "lbLoginUser";
-            this.lbLoginUser.Size = new System.Drawing.Size(44, 13);
+            this.lbLoginUser.Size = new System.Drawing.Size(33, 13);
             this.lbLoginUser.TabIndex = 1;
-            this.lbLoginUser.Text = "Usuario";
+            this.lbLoginUser.Text = "Email";
             // 
             // btLoginEntrar
             // 
@@ -289,43 +327,6 @@
             this.btLoginEntrar.Text = "Entrar";
             this.btLoginEntrar.UseVisualStyleBackColor = true;
             this.btLoginEntrar.Click += new System.EventHandler(this.btLoginEntrar_Click);
-            // 
-            // rbCliente
-            // 
-            this.rbCliente.AutoSize = true;
-            this.rbCliente.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbCliente.ForeColor = System.Drawing.Color.Maroon;
-            this.rbCliente.Location = new System.Drawing.Point(368, 32);
-            this.rbCliente.Name = "rbCliente";
-            this.rbCliente.Size = new System.Drawing.Size(59, 17);
-            this.rbCliente.TabIndex = 14;
-            this.rbCliente.TabStop = true;
-            this.rbCliente.Text = "Cliente";
-            this.rbCliente.UseVisualStyleBackColor = true;
-            // 
-            // rbAdmin
-            // 
-            this.rbAdmin.AutoSize = true;
-            this.rbAdmin.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbAdmin.ForeColor = System.Drawing.Color.Maroon;
-            this.rbAdmin.Location = new System.Drawing.Point(368, 50);
-            this.rbAdmin.Name = "rbAdmin";
-            this.rbAdmin.Size = new System.Drawing.Size(93, 17);
-            this.rbAdmin.TabIndex = 15;
-            this.rbAdmin.TabStop = true;
-            this.rbAdmin.Text = "Administrador";
-            this.rbAdmin.UseVisualStyleBackColor = true;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.Maroon;
-            this.label2.Location = new System.Drawing.Point(365, 16);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(83, 13);
-            this.label2.TabIndex = 16;
-            this.label2.Text = "Tipo de Usuario:";
             // 
             // LoginForm
             // 

@@ -52,6 +52,7 @@
             // 
             // label4
             // 
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(448, 137);
@@ -62,6 +63,7 @@
             // 
             // label3
             // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(23, 137);
@@ -74,6 +76,7 @@
             // 
             this.dataGridMatric.AllowUserToAddRows = false;
             this.dataGridMatric.AllowUserToDeleteRows = false;
+            this.dataGridMatric.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.dataGridMatric.BackgroundColor = System.Drawing.Color.Wheat;
             this.dataGridMatric.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridMatric.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -106,6 +109,7 @@
             // 
             this.dataGridActuales.AllowUserToAddRows = false;
             this.dataGridActuales.AllowUserToDeleteRows = false;
+            this.dataGridActuales.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.dataGridActuales.BackgroundColor = System.Drawing.Color.Wheat;
             this.dataGridActuales.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridActuales.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -156,6 +160,7 @@
             // 
             // label5
             // 
+            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(23, 159);
             this.label5.Name = "label5";
@@ -165,6 +170,7 @@
             // 
             // txtBoxFiltroAct
             // 
+            this.txtBoxFiltroAct.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.txtBoxFiltroAct.Location = new System.Drawing.Point(61, 156);
             this.txtBoxFiltroAct.Name = "txtBoxFiltroAct";
             this.txtBoxFiltroAct.Size = new System.Drawing.Size(167, 20);
@@ -173,6 +179,7 @@
             // 
             // label6
             // 
+            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(448, 159);
             this.label6.Name = "label6";
@@ -182,6 +189,7 @@
             // 
             // txtBoxFiltroMat
             // 
+            this.txtBoxFiltroMat.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.txtBoxFiltroMat.Location = new System.Drawing.Point(486, 156);
             this.txtBoxFiltroMat.Name = "txtBoxFiltroMat";
             this.txtBoxFiltroMat.Size = new System.Drawing.Size(167, 20);
@@ -190,6 +198,7 @@
             // 
             // button2
             // 
+            this.button2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.button2.BackgroundImage = global::TaimerGUI.Properties.Resources.flechaLeft;
             this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.button2.Location = new System.Drawing.Point(376, 432);
@@ -201,6 +210,7 @@
             // 
             // button1
             // 
+            this.button1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.button1.BackgroundImage = global::TaimerGUI.Properties.Resources.flechaRight;
             this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.button1.Location = new System.Drawing.Point(376, 286);
@@ -212,6 +222,7 @@
             // 
             // btnConfirm
             // 
+            this.btnConfirm.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnConfirm.Enabled = false;
             this.btnConfirm.Location = new System.Drawing.Point(538, 581);
             this.btnConfirm.Name = "btnConfirm";
@@ -223,6 +234,7 @@
             // 
             // btnDescart
             // 
+            this.btnDescart.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnDescart.Location = new System.Drawing.Point(670, 581);
             this.btnDescart.Name = "btnDescart";
             this.btnDescart.Size = new System.Drawing.Size(103, 33);
