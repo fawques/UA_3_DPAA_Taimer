@@ -269,11 +269,11 @@ namespace TaimerGUI
                     try
                     {
                         Program.Usuarios[0].AddHorario(hAux);
-                        MessageBox.Show("Guardado con exito");
+                        MessageBox.Show("Guardado con éxito");
                         //hAux.Agregar();
                     } catch (Exception ex) {
                         if (ex.Message.Contains("CAlt"))
-                            MessageBox.Show("Violacion de clave alternativa.");
+                            MessageBox.Show("Violación de clave alternativa.");
                         else if (ex.Message.Contains("PRIMARY KEY"))
                             MessageBox.Show("El id del horario que intenta introducir ya existe.");
                         else
