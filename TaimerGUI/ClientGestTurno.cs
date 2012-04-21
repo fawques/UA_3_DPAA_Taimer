@@ -104,6 +104,9 @@ namespace TaimerGUI {
             nmUpDwnMinDesde.Value = 0;
             nmUpDwnMinHasta.Value = 0;
             comboBoxDia.SelectedIndex = 0;
+            tBorrados = new List<Turno>();
+            tCreados = new List<Turno>();
+            tModificados = new List<Turno>();
         }
 
         private void btnTerminar_Click(object sender, EventArgs e) {

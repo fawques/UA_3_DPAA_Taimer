@@ -47,6 +47,9 @@ namespace TaimerGUI
             dgTurnos.Rows.Clear();
             grpBoxTurno.Visible = false;
             modificado = false;
+            tCreados = new List<Turno>();
+            tModificados = new List<Turno>();
+            tBorrados = new List<Turno>();
 
             if (currentAct is Taimer.Actividad_a)
             {
