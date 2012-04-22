@@ -289,6 +289,7 @@
             this.dgTurnos.Location = new System.Drawing.Point(271, 118);
             this.dgTurnos.Name = "dgTurnos";
             this.dgTurnos.ReadOnly = true;
+            this.dgTurnos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgTurnos.Size = new System.Drawing.Size(497, 230);
             this.dgTurnos.TabIndex = 4;
             this.dgTurnos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgTurnos_CellClick);
