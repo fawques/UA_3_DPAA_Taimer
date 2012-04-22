@@ -163,7 +163,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Maroon;
-            this.label2.Location = new System.Drawing.Point(365, 16);
+            this.label2.Location = new System.Drawing.Point(145, 129);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(83, 13);
             this.label2.TabIndex = 16;
@@ -174,7 +174,7 @@
             this.rbAdmin.AutoSize = true;
             this.rbAdmin.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rbAdmin.ForeColor = System.Drawing.Color.Maroon;
-            this.rbAdmin.Location = new System.Drawing.Point(368, 50);
+            this.rbAdmin.Location = new System.Drawing.Point(238, 148);
             this.rbAdmin.Name = "rbAdmin";
             this.rbAdmin.Size = new System.Drawing.Size(93, 17);
             this.rbAdmin.TabIndex = 15;
@@ -187,7 +187,7 @@
             this.rbCliente.Checked = true;
             this.rbCliente.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rbCliente.ForeColor = System.Drawing.Color.Maroon;
-            this.rbCliente.Location = new System.Drawing.Point(368, 32);
+            this.rbCliente.Location = new System.Drawing.Point(148, 148);
             this.rbCliente.Name = "rbCliente";
             this.rbCliente.Size = new System.Drawing.Size(59, 17);
             this.rbCliente.TabIndex = 14;
@@ -203,6 +203,7 @@
             this.button3.TabIndex = 11;
             this.button3.Text = "Los dos";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Visible = false;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button2
@@ -213,6 +214,7 @@
             this.button2.TabIndex = 10;
             this.button2.Text = "Puente admin";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Visible = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button1
@@ -223,6 +225,7 @@
             this.button1.TabIndex = 9;
             this.button1.Text = "Puente cliente";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Visible = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // llIrAWeb
@@ -242,7 +245,7 @@
             this.llRecordarDatos.AutoSize = true;
             this.llRecordarDatos.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.llRecordarDatos.LinkColor = System.Drawing.Color.Maroon;
-            this.llRecordarDatos.Location = new System.Drawing.Point(217, 126);
+            this.llRecordarDatos.Location = new System.Drawing.Point(12, 172);
             this.llRecordarDatos.Name = "llRecordarDatos";
             this.llRecordarDatos.Size = new System.Drawing.Size(113, 13);
             this.llRecordarDatos.TabIndex = 5;
@@ -268,7 +271,7 @@
             this.lbLoginBadUserPass.AutoSize = true;
             this.lbLoginBadUserPass.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbLoginBadUserPass.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lbLoginBadUserPass.Location = new System.Drawing.Point(119, 103);
+            this.lbLoginBadUserPass.Location = new System.Drawing.Point(119, 106);
             this.lbLoginBadUserPass.Name = "lbLoginBadUserPass";
             this.lbLoginBadUserPass.Size = new System.Drawing.Size(260, 13);
             this.lbLoginBadUserPass.TabIndex = 5;
