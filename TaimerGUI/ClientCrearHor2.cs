@@ -244,6 +244,10 @@ namespace TaimerGUI
                         pnlHorario.Visible = true;
                         grpBoxRestric.Visible = false;
                     }
+                    else
+                    {
+                        MessageBox.Show("Error desconocido. No se ha podido generar el horario");
+                    }
                 }
             }
 

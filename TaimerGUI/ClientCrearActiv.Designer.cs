@@ -104,6 +104,7 @@
             this.gVHorasTemp.Location = new System.Drawing.Point(279, 332);
             this.gVHorasTemp.Name = "gVHorasTemp";
             this.gVHorasTemp.ReadOnly = true;
+            this.gVHorasTemp.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gVHorasTemp.Size = new System.Drawing.Size(479, 196);
             this.gVHorasTemp.TabIndex = 6;
             this.gVHorasTemp.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gVHorasTemp_CellContentClick);

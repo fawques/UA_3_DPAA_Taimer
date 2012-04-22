@@ -239,6 +239,7 @@
             this.dgTurns.Location = new System.Drawing.Point(21, 177);
             this.dgTurns.Name = "dgTurns";
             this.dgTurns.ReadOnly = true;
+            this.dgTurns.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgTurns.Size = new System.Drawing.Size(298, 145);
             this.dgTurns.TabIndex = 47;
             this.dgTurns.Visible = false;

@@ -81,6 +81,7 @@
             this.dgAsig.Location = new System.Drawing.Point(94, 141);
             this.dgAsig.Name = "dgAsig";
             this.dgAsig.ReadOnly = true;
+            this.dgAsig.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgAsig.Size = new System.Drawing.Size(300, 349);
             this.dgAsig.TabIndex = 2;
             this.dgAsig.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgAsig_CellClick);
@@ -199,13 +200,12 @@
             this.Inicio,
             this.Fin,
             this.Ubicacion});
-            this.dgTurns.Enabled = false;
             this.dgTurns.Location = new System.Drawing.Point(97, 156);
             this.dgTurns.Name = "dgTurns";
             this.dgTurns.ReadOnly = true;
+            this.dgTurns.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgTurns.Size = new System.Drawing.Size(246, 140);
             this.dgTurns.TabIndex = 73;
-            this.dgTurns.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgAsig_CellClick);
             // 
             // Dia
             // 

@@ -82,6 +82,7 @@
             this.dgUsers.Location = new System.Drawing.Point(93, 132);
             this.dgUsers.Name = "dgUsers";
             this.dgUsers.ReadOnly = true;
+            this.dgUsers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgUsers.Size = new System.Drawing.Size(303, 334);
             this.dgUsers.TabIndex = 2;
             this.dgUsers.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgUsers_CellClick);

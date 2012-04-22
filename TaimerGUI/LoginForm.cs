@@ -271,5 +271,10 @@ namespace TaimerGUI
             this.Hide();
         }
 
+        private void llIrAWeb_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            System.Diagnostics.Process.Start("http://www.taimer.com/home.aspx");
+        }
+
     }
 }
