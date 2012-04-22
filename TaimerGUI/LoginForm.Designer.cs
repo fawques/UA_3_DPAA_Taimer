@@ -239,6 +239,7 @@
             this.llIrAWeb.TabIndex = 6;
             this.llIrAWeb.TabStop = true;
             this.llIrAWeb.Text = "Ir a la web";
+            this.llIrAWeb.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llIrAWeb_LinkClicked);
             // 
             // llRecordarDatos
             // 
