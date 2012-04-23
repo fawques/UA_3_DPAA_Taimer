@@ -2,16 +2,24 @@
     CodeBehind="ConLogin.aspx.cs" Inherits="WebTaimer.TabInicio.ConLogin" %>
 
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
+    <style type="text/css">
+        .style1
+        {
+            z-index: 1;
+            left: 100px;
+            top: 0px;
+            position: relative;
+        }
+    </style>
 </asp:Content>
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
     <h2>
         BIENVENIDO, [NOMBRE USUARIO]
     </h2>
     <p>
-        <asp:Button ID="botonHorariosPropios" runat="server" Font-Size="XX-Large"
-        style="z-index: 1; left: 100px; top: 0px; position: relative" 
+        <asp:Button ID="botonHorariosPropios" runat="server" Font-Size="XX-Large" 
         Height="100px" Text="Horarios propios" Width="310px" 
-            onclick="botonHorariosPropios_Click" />
+            onclick="botonHorariosPropios_Click" CssClass="style1" />
         <asp:Button ID="botonMatricula" runat="server" Font-Size="XX-Large"
         style="z-index: 1; left: 200px; top: 0px; position: relative" 
         Height="100px" Text="Matrícula" Width="310px" onclick="botonMatricula_Click" />
