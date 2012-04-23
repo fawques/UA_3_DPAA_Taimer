@@ -107,14 +107,15 @@ namespace TaimerGUI
                     }
 
                     asig.Agregar();
-                    foreach (Taimer.Turno item in asig.Turnos) {
-                        item.Agregar();
-                    }
+                    //foreach (Taimer.Turno item in asig.Turnos) {
+                    //    item.Agregar();
+                    //}
 
                     clearLabels();
 
                     // La añado a la lista
                     parentForm.addAsig(asig);
+                    Program.CodAsignaturas++;
 
                     asig = null;
 
@@ -160,6 +161,8 @@ namespace TaimerGUI
             tbName.Clear();
             tbDesc.Clear();
             tbCoord.Clear();
+            tbTitu.Clear();
+            udCurso.Value = udCurso.Minimum;
         }
 
         private void AAddAsig_Enter(object sender, EventArgs e)
@@ -167,7 +170,7 @@ namespace TaimerGUI
             dgTurnos.Rows.Clear();
             if (asig == null)
             {
-                asig = new Taimer.Actividad_a("", "", "", 1, "");
+                asig = new Taimer.Actividad_a("", "", "", "",Program.CodAsignaturas);
 
                 if (asig == null) {
                     lbErrCoord.Visible = true;

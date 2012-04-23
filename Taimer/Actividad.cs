@@ -63,11 +63,11 @@ namespace Taimer {
         /// <param name="nom_"> Nombre de la Actividad</param>
         /// <param name="desc_"> Descripción de la Actividad</param>
         /// <param name="cod_"> Código de la Actividad </param>
-        public Actividad(string nom_, string desc_, int cod_) {
+        public Actividad(string nom_, string desc_, int cod_, int codTurno = 1) {
             nombre = nom_;
             descripcion = desc_;
             codigo = cod_;
-            codigoturno = 1;
+            codigoturno = codTurno;
             turnos = new List<Turno>();
         }
 
@@ -79,18 +79,18 @@ namespace Taimer {
         /// <param name="desc_"> Descripción de la Actividad </param>
         /// <param name="cod_"> Código de la Actividad </param>
         /// <param name="turnos_"> Lista de turnos a la que se puede asistir </param>
-        public Actividad(string nom_, string desc_, int cod_, List<Turno> turnos_)
+        public Actividad(string nom_, string desc_, int cod_,int codTurno, List<Turno> turnos_)
         {
             nombre = nom_;
             descripcion = desc_;
             codigo = cod_;
             turnos = new List<Turno>(turnos_);
+            codigoturno = codTurno;
             foreach (Turno t in turnos) {
                 if (t.Codigo == -1) { //si tiene el codigo por defecto
                     AsignarCodigo(t);
                 }
             }
-            codigoturno = 1;
         }
 
         /// <summary>
@@ -108,15 +108,18 @@ namespace Taimer {
         /// <returns></returns>
         public virtual void CopiarDesde(Actividad act)
         {
-            nombre = act.nombre;
-            descripcion = act.descripcion;
-            codigo = act.codigo;
-            codigoturno = act.codigoturno;
-
-            turnos = new List<Turno>();
-            foreach (Turno item in act.turnos)
+            if (this != act)
             {
-                turnos.Add(new Turno(item));
+                nombre = act.nombre;
+                descripcion = act.descripcion;
+                codigo = act.codigo;
+                codigoturno = act.codigoturno;
+
+                turnos = new List<Turno>();
+                foreach (Turno item in act.turnos)
+                {
+                    turnos.Add(new Turno(item));
+                }
             }
         }
 
@@ -146,7 +149,11 @@ namespace Taimer {
             set { codigo = value; }
         }
 
-
+        public int Codigoturno
+        {
+            get { return codigoturno; }
+            set { codigoturno = value; }
+        }
 
 
         // *** FUNCIONES SOBRE LA LISTA DE TURNOS ***
@@ -274,8 +281,15 @@ namespace Taimer {
         public void SetTurnos()
         {
             CAD.CADTurno turno = new CAD.CADTurno();
+            CAD.CADActividad act = new CAD.CADActividad();
             DataSet data=turno.GetTurnosByAct(codigo);            
-            turnos = Turno.TurnosToList(data,this);            
+            turnos = Turno.TurnosToList(data,this);
+            int tope = turnos.Count;
+            //MessageBox.Show("Actividad " + codigo + " tiene " + tope);
+            if(tope>0)
+                codigoturno = turnos[tope-1].Codigo;
+            
+            act.ModificaActividad(nombre, descripcion, codigo, codigoturno);
         }
 
         /// <summary>

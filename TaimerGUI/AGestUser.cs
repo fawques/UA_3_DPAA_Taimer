@@ -297,5 +297,29 @@ namespace TaimerGUI {
             clearLabels();
             dgUsers.ClearSelection();
         }
+
+        private void tbName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+                tbName_Validated(null, null);
+        }
+
+        private void tbEmail_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+                tbEmail_Validated(null, null);
+        }
+
+        private void tbPass_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+                tbPass_Validated(null, null);
+        }
+
+        private void tbTitu_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+                tbTitu_Validated(null, null);
+        }
     }
 }

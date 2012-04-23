@@ -82,6 +82,7 @@
             this.dgUsers.Location = new System.Drawing.Point(93, 132);
             this.dgUsers.Name = "dgUsers";
             this.dgUsers.ReadOnly = true;
+            this.dgUsers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgUsers.Size = new System.Drawing.Size(303, 334);
             this.dgUsers.TabIndex = 2;
             this.dgUsers.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgUsers_CellClick);
@@ -233,6 +234,7 @@
             this.tbName.Size = new System.Drawing.Size(188, 20);
             this.tbName.TabIndex = 4;
             this.tbName.Visible = false;
+            this.tbName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbName_KeyPress);
             this.tbName.Validated += new System.EventHandler(this.tbName_Validated);
             // 
             // tbEmail
@@ -242,6 +244,7 @@
             this.tbEmail.Size = new System.Drawing.Size(131, 20);
             this.tbEmail.TabIndex = 5;
             this.tbEmail.Visible = false;
+            this.tbEmail.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbEmail_KeyPress);
             this.tbEmail.Validated += new System.EventHandler(this.tbEmail_Validated);
             // 
             // tbTitu
@@ -251,6 +254,7 @@
             this.tbTitu.Size = new System.Drawing.Size(131, 20);
             this.tbTitu.TabIndex = 8;
             this.tbTitu.Visible = false;
+            this.tbTitu.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbTitu_KeyPress);
             this.tbTitu.Validated += new System.EventHandler(this.tbTitu_Validated);
             // 
             // btCancel
@@ -390,15 +394,16 @@
             this.tbPass.Size = new System.Drawing.Size(131, 20);
             this.tbPass.TabIndex = 6;
             this.tbPass.Visible = false;
+            this.tbPass.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbPass_KeyPress);
             this.tbPass.Validated += new System.EventHandler(this.tbPass_Validated);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(287, 29);
+            this.label4.Font = new System.Drawing.Font("Calibri", 8.5F);
+            this.label4.Location = new System.Drawing.Point(69, 58);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(332, 13);
+            this.label4.Size = new System.Drawing.Size(386, 14);
             this.label4.TabIndex = 89;
             this.label4.Text = "Modificar datos de usuarios, así como la creación de usuarios nuevos";
             // 

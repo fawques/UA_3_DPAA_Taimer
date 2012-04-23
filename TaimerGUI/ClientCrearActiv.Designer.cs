@@ -92,6 +92,8 @@
             // gVHorasTemp
             // 
             this.gVHorasTemp.AllowUserToAddRows = false;
+            this.gVHorasTemp.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
             this.gVHorasTemp.BackgroundColor = System.Drawing.Color.Wheat;
             this.gVHorasTemp.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gVHorasTemp.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -102,6 +104,7 @@
             this.gVHorasTemp.Location = new System.Drawing.Point(279, 332);
             this.gVHorasTemp.Name = "gVHorasTemp";
             this.gVHorasTemp.ReadOnly = true;
+            this.gVHorasTemp.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gVHorasTemp.Size = new System.Drawing.Size(479, 196);
             this.gVHorasTemp.TabIndex = 6;
             this.gVHorasTemp.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gVHorasTemp_CellContentClick);
@@ -132,6 +135,7 @@
             // 
             // bttnCrearActiv
             // 
+            this.bttnCrearActiv.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.bttnCrearActiv.Location = new System.Drawing.Point(535, 548);
             this.bttnCrearActiv.Name = "bttnCrearActiv";
             this.bttnCrearActiv.Size = new System.Drawing.Size(105, 35);
@@ -142,6 +146,7 @@
             // 
             // bCancelar
             // 
+            this.bCancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.bCancelar.Location = new System.Drawing.Point(659, 548);
             this.bCancelar.Name = "bCancelar";
             this.bCancelar.Size = new System.Drawing.Size(105, 35);

@@ -388,7 +388,7 @@ namespace Taimer {
             //AsignarCodigo(horario);
             horario.ID = codHorarios;
             horario.Agregar();
-            horario.ID++;
+            codHorarios++;
             CADUser usr = new CADUser();
             usr.ModificaUser(dni, nombre, email, password, titulacion, codHorarios);
             horarios.Add(horario);

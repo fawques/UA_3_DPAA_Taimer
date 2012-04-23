@@ -40,6 +40,7 @@
             // 
             // label2
             // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(255, 146);
             this.label2.Name = "label2";
@@ -49,6 +50,7 @@
             // 
             // txtBoxFilter
             // 
+            this.txtBoxFilter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.txtBoxFilter.Location = new System.Drawing.Point(293, 143);
             this.txtBoxFilter.Name = "txtBoxFilter";
             this.txtBoxFilter.Size = new System.Drawing.Size(167, 20);

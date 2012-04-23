@@ -48,10 +48,9 @@ namespace Taimer {
         /// <param name="cod_">Codigo de la Actividad_a (por defecto 0)</param>
         public Actividad_a(string nom_, string desc_, string nomCoord_, string tit, int cod_ = 0)
             : base(nom_, desc_, cod_) {
-
                 titulacion = tit;
-            nombreCoordinador = nomCoord_;
-            curso = 0;                      // Por defecto se asigna el número de curso a 0
+                nombreCoordinador = nomCoord_;
+                curso = 0;                      // Por defecto se asigna el número de curso a 0
         }
 
         
@@ -67,12 +66,12 @@ namespace Taimer {
         /// <param name="curso_"> Curso al que pertenece la Actividad_a </param>
         /// <param name="titulacion">Tilación de la Actividad_a</param>
         /// <param name="cod_">Codigo de la Actividad_a (por defecto 0)</param>
-        public Actividad_a(string nom_, string desc_, string nomCoord_, int curso_, string tit, int cod_ = 0)
-            : base(nom_, desc_, cod_) {
+        public Actividad_a(string nom_, string desc_, string nomCoord_, int curso_, string tit, int cod_ = 0,int codTurno = 1)
+            : base(nom_, desc_, cod_,codTurno) {
 
                 titulacion = tit;
-            nombreCoordinador = nomCoord_;
-            Curso = curso_;
+                nombreCoordinador = nomCoord_;
+                Curso = curso_;
         }
 
 
@@ -86,8 +85,8 @@ namespace Taimer {
         /// <param name="curso_"> Curso ql que pertence la Actividad_a</param>
         /// <param name="titulacion">Tilación de la Actividad_a</param>
         /// <param name="cod_">Codigo de la Actividad_a (por defecto 0)</param>
-        public Actividad_a(string nom_, string desc_, string nomCoord_, List<Turno> turnos_, int curso_, string tit, int cod_ = 0)
-            : base(nom_, desc_, cod_, turnos_) {
+        public Actividad_a(string nom_, string desc_, string nomCoord_, List<Turno> turnos_, int curso_, string tit, int codTurno, int cod_ = 0)
+            : base(nom_, desc_, cod_,codTurno, turnos_) {
                 titulacion = tit;
             nombreCoordinador = nomCoord_;
             Curso = curso_;
@@ -114,10 +113,13 @@ namespace Taimer {
         /// <returns></returns>
         public override void CopiarDesde(Actividad act)
         {
-            base.CopiarDesde(act);
-            Actividad_a aux = (Actividad_a)act;
-            nombreCoordinador = aux.nombreCoordinador;
-            curso = aux.curso;
+            if (this != act)
+            {
+                base.CopiarDesde(act);
+                Actividad_a aux = (Actividad_a)act;
+                nombreCoordinador = aux.nombreCoordinador;
+                curso = aux.curso;
+            }
         }
 
         /// <summary>
@@ -152,8 +154,8 @@ namespace Taimer {
             bool insertado = false;
 
             turnonuevo.Actividad = this;
-            //AsignarCodigo(turnonuevo);
-            turnonuevo.Codigo = codigoturno;
+            AsignarCodigo(turnonuevo);
+            //turnonuevo.Codigo = codigoturno;
 
             for (int i = 0; i < turnos.Count; i++) {
                 if (turnos[i].HoraInicio > turnonuevo.HoraInicio) {
@@ -166,7 +168,7 @@ namespace Taimer {
             if (!insertado)
                 turnos.Add(turnonuevo);
 
-            turnonuevo.Codigo++;
+            //turnonuevo.Codigo++;
         }
 
         /// <summary>
@@ -219,7 +221,7 @@ namespace Taimer {
         public void Modificar() {
             CADActividad_a act = new CADActividad_a();
 
-            act.ModificaActividad_a(nombreCoordinador, codigo);
+            act.ModificaActividad_a(Nombre,Descripcion,codigo,Codigoturno,nombreCoordinador);
         }
 
         /// <summary>
@@ -228,7 +230,11 @@ namespace Taimer {
         public static int UltimoCodigo {
             get {
                 CADActividad_a act = new CADActividad_a();
-                return int.Parse(act.LastCode().Tables[0].Rows[0].ItemArray[0].ToString());
+                string aux = act.LastCode().Tables[0].Rows[0].ItemArray[0].ToString();
+                if (aux != "")
+                    return int.Parse(aux);
+                else
+                    return 0;
             }
         }
         /// <summary>

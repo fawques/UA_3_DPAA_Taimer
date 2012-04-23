@@ -24,8 +24,12 @@ namespace TaimerGUI {
             int horAux = minHor;
             while (horAux <= maxHor) {
                 Label lblHora = new Label();
-                hora.setTiempo(horAux, 0);
-                lblHora.Text = hora.toString();
+                if (horAux >= 24) {
+                    lblHora.Text = "24:00";
+                } else {
+                    hora.setTiempo(horAux, 0);
+                    lblHora.Text = hora.toString();
+                }
                 lblHora.Location = new Point(20, posY);
                 lblHora.ForeColor = Color.White;
                 posY += 60;
@@ -66,19 +70,44 @@ namespace TaimerGUI {
             pnlSabado.Controls.Clear();
             pnlDomingo.Controls.Clear();
             if (horario != null) {
-                int minimo = horario.minHora().Hor;
-                int maximo = horario.maxHora().Hor;
-                if (horario.maxHora().Min > 0) {
-                    maximo++;
+                //Pasar maximos y minimos de horas (solo horas, tampoco vamos a recortar al minuto)
+                int minimo = 0;
+                int maximo = 23;
+                try {
+                    minimo = horario.minHora().Hor;
+                    maximo = horario.maxHora().Hor;
+                    if (horario.maxHora().Hor < 23 && horario.maxHora().Min > 0) {
+                        maximo++;
+                    }
+                } catch (Exception) {
+                    //MessageBox.Show(exc.Message);
                 }
                 int recorteArriba = (minimo) * 60;
-                initPanelHorario(minimo, maximo);
-                reducirPanelHorarios(minimo, maximo);
+                try
+                {
+                    if (horario.maxHora().Hor == 23)
+                    {
+                        initPanelHorario(minimo, 24);
+                    }
+                    else
+                    {
+                        initPanelHorario(minimo, maximo);
+                    }
 
+                    if (!(horario.maxHora().Hor == 23 && horario.maxHora().Min > 0))
+                    {
+                        reducirPanelHorarios(minimo, maximo);
+                    }
+                }
+                catch (NullReferenceException ex)
+                {
+                    initPanelHorario(minimo, maximo);
+                    MessageBox.Show(ex.Message);
+                }
                 for (int i = 0; i < horario.ArrayTurnos.Length; i++) {
                     foreach (Turno item in horario.ArrayTurnos[i]) {
-                        int posi = (item.HoraInicio.Hor * 60 + item.HoraFin.Min) - recorteArriba;
-                        int duracion = item.HoraInicio.MinutosDeDiferencia(item.HoraFin);
+                        int posi = (item.HoraInicio.Hor * 60 + item.HoraInicio.Min) - recorteArriba;
+                        int duracion = (item.HoraFin.Hor - item.HoraInicio.Hor) * 60 + item.HoraFin.Min;
                         Button b = new Button();
                         b.Height = duracion;
                         b.Width = 90;

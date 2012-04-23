@@ -34,8 +34,8 @@
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.grpBoxRestric = new System.Windows.Forms.GroupBox();
-            this.label11 = new System.Windows.Forms.Label();
             this.groubBoxDias = new System.Windows.Forms.GroupBox();
+            this.lbErrDias = new System.Windows.Forms.Label();
             this.chkBxAll = new System.Windows.Forms.CheckBox();
             this.chkBoxDomingo = new System.Windows.Forms.CheckBox();
             this.chkBoxSabado = new System.Windows.Forms.CheckBox();
@@ -82,6 +82,8 @@
             // chkBxLunes
             // 
             this.chkBxLunes.AutoSize = true;
+            this.chkBxLunes.Checked = true;
+            this.chkBxLunes.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkBxLunes.Location = new System.Drawing.Point(18, 40);
             this.chkBxLunes.Name = "chkBxLunes";
             this.chkBxLunes.Size = new System.Drawing.Size(55, 17);
@@ -92,6 +94,8 @@
             // chkBxMartes
             // 
             this.chkBxMartes.AutoSize = true;
+            this.chkBxMartes.Checked = true;
+            this.chkBxMartes.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkBxMartes.Location = new System.Drawing.Point(18, 64);
             this.chkBxMartes.Name = "chkBxMartes";
             this.chkBxMartes.Size = new System.Drawing.Size(58, 17);
@@ -102,7 +106,7 @@
             // radioButton1
             // 
             this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(465, 115);
+            this.radioButton1.Location = new System.Drawing.Point(262, 136);
             this.radioButton1.Name = "radioButton1";
             this.radioButton1.Size = new System.Drawing.Size(95, 17);
             this.radioButton1.TabIndex = 25;
@@ -113,7 +117,7 @@
             // 
             this.radioButton2.AutoSize = true;
             this.radioButton2.Checked = true;
-            this.radioButton2.Location = new System.Drawing.Point(465, 139);
+            this.radioButton2.Location = new System.Drawing.Point(262, 160);
             this.radioButton2.Name = "radioButton2";
             this.radioButton2.Size = new System.Drawing.Size(79, 17);
             this.radioButton2.TabIndex = 26;
@@ -124,29 +128,20 @@
             // grpBoxRestric
             // 
             this.grpBoxRestric.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.grpBoxRestric.Controls.Add(this.label11);
             this.grpBoxRestric.Controls.Add(this.groubBoxDias);
             this.grpBoxRestric.Controls.Add(this.radioButton1);
             this.grpBoxRestric.Controls.Add(this.radioButton2);
-            this.grpBoxRestric.Location = new System.Drawing.Point(35, 112);
+            this.grpBoxRestric.Location = new System.Drawing.Point(217, 112);
             this.grpBoxRestric.Name = "grpBoxRestric";
-            this.grpBoxRestric.Size = new System.Drawing.Size(688, 351);
+            this.grpBoxRestric.Size = new System.Drawing.Size(383, 351);
             this.grpBoxRestric.TabIndex = 30;
             this.grpBoxRestric.TabStop = false;
             this.grpBoxRestric.Text = "Restricciones";
             this.grpBoxRestric.Visible = false;
             // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(271, 271);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(130, 13);
-            this.label11.TabIndex = 36;
-            this.label11.Text = "Si, esto debe ser diferente";
-            // 
             // groubBoxDias
             // 
+            this.groubBoxDias.Controls.Add(this.lbErrDias);
             this.groubBoxDias.Controls.Add(this.chkBxAll);
             this.groubBoxDias.Controls.Add(this.chkBxLunes);
             this.groubBoxDias.Controls.Add(this.chkBoxDomingo);
@@ -155,17 +150,30 @@
             this.groubBoxDias.Controls.Add(this.chkBoxMiercoles);
             this.groubBoxDias.Controls.Add(this.chkBoxViernes);
             this.groubBoxDias.Controls.Add(this.chkBoxJueves);
-            this.groubBoxDias.Enabled = false;
-            this.groubBoxDias.Location = new System.Drawing.Point(153, 75);
+            this.groubBoxDias.Location = new System.Drawing.Point(44, 72);
             this.groubBoxDias.Name = "groubBoxDias";
-            this.groubBoxDias.Size = new System.Drawing.Size(175, 117);
+            this.groubBoxDias.Size = new System.Drawing.Size(175, 162);
             this.groubBoxDias.TabIndex = 35;
             this.groubBoxDias.TabStop = false;
             this.groubBoxDias.Text = "Dias";
             // 
+            // lbErrDias
+            // 
+            this.lbErrDias.AutoSize = true;
+            this.lbErrDias.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbErrDias.ForeColor = System.Drawing.Color.Maroon;
+            this.lbErrDias.Location = new System.Drawing.Point(15, 125);
+            this.lbErrDias.Name = "lbErrDias";
+            this.lbErrDias.Size = new System.Drawing.Size(134, 13);
+            this.lbErrDias.TabIndex = 63;
+            this.lbErrDias.Text = "Debes seleccionar algún día";
+            this.lbErrDias.Visible = false;
+            // 
             // chkBxAll
             // 
             this.chkBxAll.AutoSize = true;
+            this.chkBxAll.Checked = true;
+            this.chkBxAll.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkBxAll.Location = new System.Drawing.Point(19, 17);
             this.chkBxAll.Name = "chkBxAll";
             this.chkBxAll.Size = new System.Drawing.Size(56, 17);
@@ -177,6 +185,8 @@
             // chkBoxDomingo
             // 
             this.chkBoxDomingo.AutoSize = true;
+            this.chkBoxDomingo.Checked = true;
+            this.chkBoxDomingo.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkBoxDomingo.Location = new System.Drawing.Point(105, 87);
             this.chkBoxDomingo.Name = "chkBoxDomingo";
             this.chkBoxDomingo.Size = new System.Drawing.Size(68, 17);
@@ -187,6 +197,8 @@
             // chkBoxSabado
             // 
             this.chkBoxSabado.AutoSize = true;
+            this.chkBoxSabado.Checked = true;
+            this.chkBoxSabado.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkBoxSabado.Location = new System.Drawing.Point(105, 63);
             this.chkBoxSabado.Name = "chkBoxSabado";
             this.chkBoxSabado.Size = new System.Drawing.Size(63, 17);
@@ -197,6 +209,8 @@
             // chkBoxMiercoles
             // 
             this.chkBoxMiercoles.AutoSize = true;
+            this.chkBoxMiercoles.Checked = true;
+            this.chkBoxMiercoles.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkBoxMiercoles.Location = new System.Drawing.Point(18, 87);
             this.chkBoxMiercoles.Name = "chkBoxMiercoles";
             this.chkBoxMiercoles.Size = new System.Drawing.Size(71, 17);
@@ -207,6 +221,8 @@
             // chkBoxViernes
             // 
             this.chkBoxViernes.AutoSize = true;
+            this.chkBoxViernes.Checked = true;
+            this.chkBoxViernes.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkBoxViernes.Location = new System.Drawing.Point(105, 40);
             this.chkBoxViernes.Name = "chkBoxViernes";
             this.chkBoxViernes.Size = new System.Drawing.Size(61, 17);
@@ -217,6 +233,8 @@
             // chkBoxJueves
             // 
             this.chkBoxJueves.AutoSize = true;
+            this.chkBoxJueves.Checked = true;
+            this.chkBoxJueves.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkBoxJueves.Location = new System.Drawing.Point(105, 17);
             this.chkBoxJueves.Name = "chkBoxJueves";
             this.chkBoxJueves.Size = new System.Drawing.Size(60, 17);
@@ -537,7 +555,7 @@
         private System.Windows.Forms.Panel pnlLunes;
         private System.Windows.Forms.Button btnGuardar;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Button btnDescartar;
+        private System.Windows.Forms.Label lbErrDias;
     }
 }

@@ -13,7 +13,7 @@ namespace TaimerGUI {
         private static List<Actividad_a> asignaturas = new List<Actividad_a>();
         private static List<User> usuarios = new List<User>();
         private static List<Algoritmo> algoritmos= new List<Algoritmo>();
-        private static int codAsignaturas = Actividad_a.UltimoCodigo;
+        private static int codAsignaturas = Actividad_a.UltimoCodigo+1;
 
         private static void Init()
         {
@@ -308,17 +308,17 @@ namespace TaimerGUI {
         /// </summary>
         public static void SetDatos()
         {
-            usuarios = User.GetAllUsers();
+            //usuarios = User.GetAllUsers();
             /*string message = "";
             foreach (User u in usuarios)
             {
                 message = u.DNI + ": " + u.ActAcademicas.Count + " academicas, "+u.ActPersonales.Count+" personales y "+u.Horarios.Count+" horarios";
                 MessageBox.Show(message);
             }*/
-            asignaturas=Actividad_a.GetAllActividades_a();
+            //asignaturas=Actividad_a.GetAllActividades_a();
             /*foreach (Actividad_a act in asignaturas)
             {
-                message = act.Codigo + ": " + act.Turnos.Count + " turnos";
+                message = act.Codigo + ": " + act.Turnos.Count + " turnos , el último es "+act.Codigoturno;
                 MessageBox.Show(message);
             }*/
         }

@@ -86,7 +86,7 @@
             // 
             // txtBoxFiltro
             // 
-            this.txtBoxFiltro.Location = new System.Drawing.Point(85, 85);
+            this.txtBoxFiltro.Location = new System.Drawing.Point(86, 85);
             this.txtBoxFiltro.Name = "txtBoxFiltro";
             this.txtBoxFiltro.Size = new System.Drawing.Size(167, 20);
             this.txtBoxFiltro.TabIndex = 1;
@@ -239,6 +239,7 @@
             this.dgTurns.Location = new System.Drawing.Point(21, 177);
             this.dgTurns.Name = "dgTurns";
             this.dgTurns.ReadOnly = true;
+            this.dgTurns.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgTurns.Size = new System.Drawing.Size(298, 145);
             this.dgTurns.TabIndex = 47;
             this.dgTurns.Visible = false;

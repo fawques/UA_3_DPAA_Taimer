@@ -58,7 +58,7 @@
             // 
             // btNewUser
             // 
-            this.btNewUser.Location = new System.Drawing.Point(287, 484);
+            this.btNewUser.Location = new System.Drawing.Point(287, 496);
             this.btNewUser.Name = "btNewUser";
             this.btNewUser.Size = new System.Drawing.Size(107, 24);
             this.btNewUser.TabIndex = 3;
@@ -78,9 +78,10 @@
             this.Nombre,
             this.Profesor,
             this.Eliminar});
-            this.dgAsig.Location = new System.Drawing.Point(94, 129);
+            this.dgAsig.Location = new System.Drawing.Point(94, 141);
             this.dgAsig.Name = "dgAsig";
             this.dgAsig.ReadOnly = true;
+            this.dgAsig.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgAsig.Size = new System.Drawing.Size(300, 349);
             this.dgAsig.TabIndex = 2;
             this.dgAsig.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgAsig_CellClick);
@@ -105,7 +106,7 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(135, 103);
+            this.textBox1.Location = new System.Drawing.Point(135, 115);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(259, 20);
             this.textBox1.TabIndex = 1;
@@ -124,7 +125,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(94, 106);
+            this.label1.Location = new System.Drawing.Point(94, 118);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(35, 13);
             this.label1.TabIndex = 67;
@@ -146,7 +147,7 @@
             this.gbInfo.Controls.Add(this.lbNameInfo);
             this.gbInfo.Controls.Add(this.lbName);
             this.gbInfo.Controls.Add(this.tbName);
-            this.gbInfo.Location = new System.Drawing.Point(420, 103);
+            this.gbInfo.Location = new System.Drawing.Point(420, 115);
             this.gbInfo.Name = "gbInfo";
             this.gbInfo.Size = new System.Drawing.Size(352, 405);
             this.gbInfo.TabIndex = 68;
@@ -199,13 +200,12 @@
             this.Inicio,
             this.Fin,
             this.Ubicacion});
-            this.dgTurns.Enabled = false;
             this.dgTurns.Location = new System.Drawing.Point(97, 156);
             this.dgTurns.Name = "dgTurns";
             this.dgTurns.ReadOnly = true;
+            this.dgTurns.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgTurns.Size = new System.Drawing.Size(246, 140);
             this.dgTurns.TabIndex = 73;
-            this.dgTurns.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgAsig_CellClick);
             // 
             // Dia
             // 
@@ -289,6 +289,7 @@
             this.tbCoord.Size = new System.Drawing.Size(246, 20);
             this.tbCoord.TabIndex = 6;
             this.tbCoord.Visible = false;
+            this.tbCoord.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbCoord_KeyPress);
             this.tbCoord.Validated += new System.EventHandler(this.tbCoord_Validated);
             // 
             // tbDesc
@@ -298,6 +299,7 @@
             this.tbDesc.Size = new System.Drawing.Size(246, 20);
             this.tbDesc.TabIndex = 5;
             this.tbDesc.Visible = false;
+            this.tbDesc.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbDesc_KeyPress);
             this.tbDesc.Validated += new System.EventHandler(this.tbDesc_Validated);
             // 
             // lbNameInfo
@@ -328,15 +330,16 @@
             this.tbName.Size = new System.Drawing.Size(140, 20);
             this.tbName.TabIndex = 4;
             this.tbName.Visible = false;
+            this.tbName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbName_KeyPress_1);
             this.tbName.Validated += new System.EventHandler(this.tbName_Validated);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(326, 29);
+            this.label2.Font = new System.Drawing.Font("Calibri", 8.5F);
+            this.label2.Location = new System.Drawing.Point(71, 63);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(389, 13);
+            this.label2.Size = new System.Drawing.Size(450, 14);
             this.label2.TabIndex = 69;
             this.label2.Text = "Modificar los datos de asignaturas existentes, así como crear asignaturas nuevas";
             // 

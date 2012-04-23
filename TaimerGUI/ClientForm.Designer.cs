@@ -332,14 +332,14 @@
             // cerrarSesionToolStripMenuItem1
             // 
             this.cerrarSesionToolStripMenuItem1.Name = "cerrarSesionToolStripMenuItem1";
-            this.cerrarSesionToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
-            this.cerrarSesionToolStripMenuItem1.Text = "Cerrar sesion";
+            this.cerrarSesionToolStripMenuItem1.Size = new System.Drawing.Size(142, 22);
+            this.cerrarSesionToolStripMenuItem1.Text = "Cerrar sesión";
             this.cerrarSesionToolStripMenuItem1.Click += new System.EventHandler(this.toolStripCloseSesion_Click);
             // 
             // salirToolStripMenuItem2
             // 
             this.salirToolStripMenuItem2.Name = "salirToolStripMenuItem2";
-            this.salirToolStripMenuItem2.Size = new System.Drawing.Size(152, 22);
+            this.salirToolStripMenuItem2.Size = new System.Drawing.Size(142, 22);
             this.salirToolStripMenuItem2.Text = "Salir";
             this.salirToolStripMenuItem2.Click += new System.EventHandler(this.toolStripExit_Click);
             // 
@@ -387,7 +387,7 @@
             // 
             this.matriculacionToolStripMenuItem.Name = "matriculacionToolStripMenuItem";
             this.matriculacionToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
-            this.matriculacionToolStripMenuItem.Text = "Matriculacion";
+            this.matriculacionToolStripMenuItem.Text = "Matriculación";
             this.matriculacionToolStripMenuItem.Click += new System.EventHandler(this.matriculacion_Click);
             // 
             // crearToolStripMenuItem1
@@ -471,8 +471,8 @@
             this.salirToolStripMenuItem1});
             this.userTlSMnItem.ForeColor = System.Drawing.Color.Black;
             this.userTlSMnItem.Name = "userTlSMnItem";
-            this.userTlSMnItem.Size = new System.Drawing.Size(64, 20);
-            this.userTlSMnItem.Text = "Problem";
+            this.userTlSMnItem.Size = new System.Drawing.Size(59, 20);
+            this.userTlSMnItem.Text = "Usuario";
             // 
             // perfilToolStripMenuItem
             // 

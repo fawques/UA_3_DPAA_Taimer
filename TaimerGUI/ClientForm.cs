@@ -32,7 +32,7 @@ namespace TaimerGUI {
             InitializeComponent();
             // Aquí debería llamar a la función que cargue desde la BD
             usuario = Program.Usuarios[0];
-
+            userTlSMnItem.Text = usuario.Nombre;
             //Redondeado de bordes
             //shape = RoundedRectangle.Create(0, 0, this.Width, this.Height, 10);
             //this.Region = new System.Drawing.Region(shape);
@@ -360,12 +360,12 @@ namespace TaimerGUI {
 
         private void perfilToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start("http://plus.google.com/");
+            System.Diagnostics.Process.Start("http://www.taimer.com/usuario.aspx");
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start("http://google.es/");
+            System.Diagnostics.Process.Start("http://www.taimer.com/home.aspx");
         }
 
         public void verHorarios_Click(object sender, EventArgs e)
