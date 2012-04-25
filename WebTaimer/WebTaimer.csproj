@@ -13,6 +13,7 @@
     <RootNamespace>WebTaimer</RootNamespace>
     <AssemblyName>WebTaimer</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <UseIISExpress>false</UseIISExpress>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -53,6 +54,13 @@
     <Content Include="About.aspx" />
     <Content Include="Account\ChangePassword.aspx" />
     <Content Include="Account\ChangePasswordSuccess.aspx" />
+    <Content Include="Images\avatar.png" />
+    <Content Include="Images\calendario.png" />
+    <Content Include="Images\default.jpg" />
+    <Content Include="Images\mensaje.gif" />
+    <Content Include="Styles\MyCSS.css" />
+    <Content Include="TabDescarga\Descarga.aspx" />
+    <Content Include="TabHorariosPublicos\HorariosPublicos.aspx" />
     <Content Include="TabHorarios\Horarios.aspx" />
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Register.aspx" />
@@ -60,16 +68,18 @@
     <Content Include="Styles\Site.css" />
     <Content Include="TabAsignaturas\Asignaturas.aspx" />
     <Content Include="TabAsignaturas\Comentar.aspx" />
+    <Content Include="TabInicio\ConLogin.aspx" />
     <Content Include="TabInicio\ForgotPassword.aspx" />
     <Content Include="TabInicio\SinLogin.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\jquery-1.4.1-vsdoc.js" />
     <Content Include="Scripts\jquery-1.4.1.js" />
     <Content Include="Scripts\jquery-1.4.1.min.js" />
+    <Content Include="TabMensajes\Mensajes.aspx" />
     <Content Include="TabPerfil\EditarPerfil.aspx" />
+    <Content Include="TabPerfil\VerPerfil.aspx" />
     <Content Include="TabPeticiones\NuevaPeticion.aspx" />
     <Content Include="TabPeticiones\Peticiones.aspx" />
-    <Content Include="TabUsuarios\Usuarios.aspx" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -99,6 +109,27 @@
     </Compile>
     <Compile Include="Account\ChangePasswordSuccess.aspx.designer.cs">
       <DependentUpon>ChangePasswordSuccess.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="NoLogin.Master.cs">
+      <DependentUpon>NoLogin.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="NoLogin.Master.designer.cs">
+      <DependentUpon>NoLogin.Master</DependentUpon>
+    </Compile>
+    <Compile Include="TabDescarga\Descarga.aspx.cs">
+      <DependentUpon>Descarga.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TabDescarga\Descarga.aspx.designer.cs">
+      <DependentUpon>Descarga.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TabHorariosPublicos\HorariosPublicos.aspx.cs">
+      <DependentUpon>HorariosPublicos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TabHorariosPublicos\HorariosPublicos.aspx.designer.cs">
+      <DependentUpon>HorariosPublicos.aspx</DependentUpon>
     </Compile>
     <Compile Include="TabHorarios\Horarios.aspx.cs">
       <DependentUpon>Horarios.aspx</DependentUpon>
@@ -135,6 +166,13 @@
     <Compile Include="TabAsignaturas\Comentar.aspx.designer.cs">
       <DependentUpon>Comentar.aspx</DependentUpon>
     </Compile>
+    <Compile Include="TabInicio\ConLogin.aspx.cs">
+      <DependentUpon>ConLogin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TabInicio\ConLogin.aspx.designer.cs">
+      <DependentUpon>ConLogin.aspx</DependentUpon>
+    </Compile>
     <Compile Include="TabInicio\ForgotPassword.aspx.cs">
       <DependentUpon>ForgotPassword.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -160,12 +198,26 @@
     <Compile Include="Site.Master.designer.cs">
       <DependentUpon>Site.Master</DependentUpon>
     </Compile>
+    <Compile Include="TabMensajes\Mensajes.aspx.cs">
+      <DependentUpon>Mensajes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TabMensajes\Mensajes.aspx.designer.cs">
+      <DependentUpon>Mensajes.aspx</DependentUpon>
+    </Compile>
     <Compile Include="TabPerfil\EditarPerfil.aspx.cs">
       <DependentUpon>EditarPerfil.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="TabPerfil\EditarPerfil.aspx.designer.cs">
       <DependentUpon>EditarPerfil.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TabPerfil\VerPerfil.aspx.cs">
+      <DependentUpon>VerPerfil.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TabPerfil\VerPerfil.aspx.designer.cs">
+      <DependentUpon>VerPerfil.aspx</DependentUpon>
     </Compile>
     <Compile Include="TabPeticiones\NuevaPeticion.aspx.cs">
       <DependentUpon>NuevaPeticion.aspx</DependentUpon>
@@ -181,13 +233,6 @@
     <Compile Include="TabPeticiones\Peticiones.aspx.designer.cs">
       <DependentUpon>Peticiones.aspx</DependentUpon>
     </Compile>
-    <Compile Include="TabUsuarios\Usuarios.aspx.cs">
-      <DependentUpon>Usuarios.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="TabUsuarios\Usuarios.aspx.designer.cs">
-      <DependentUpon>Usuarios.aspx</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -195,6 +240,9 @@
   <ItemGroup>
     <Content Include="Account\Web.config" />
     <Content Include="Site.Master" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="NoLogin.Master" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

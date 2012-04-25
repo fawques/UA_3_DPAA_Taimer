@@ -7,99 +7,72 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace WebTaimer.TabPerfil {
+namespace WebTaimer.TabMensajes {
     
     
-    public partial class EditarPerfil {
+    public partial class Mensajes {
         
         /// <summary>
-        /// Control UserNameLabel.
+        /// Control panelConversacion.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label UserNameLabel;
+        protected global::System.Web.UI.WebControls.Panel panelConversacion;
         
         /// <summary>
-        /// Control UserName.
+        /// Control listaUsuarios.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox UserName;
+        protected global::System.Web.UI.WebControls.ListBox listaUsuarios;
         
         /// <summary>
-        /// Control UserNameRequired.
+        /// Control botonConversar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator UserNameRequired;
+        protected global::System.Web.UI.WebControls.Button botonConversar;
         
         /// <summary>
-        /// Control TitulacionLabel.
+        /// Control botonOpciones.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label TitulacionLabel;
+        protected global::System.Web.UI.WebControls.Button botonOpciones;
         
         /// <summary>
-        /// Control Titulacion.
+        /// Control panelMensajes.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Titulacion;
+        protected global::System.Web.UI.WebControls.Panel panelMensajes;
         
         /// <summary>
-        /// Control TitulacionRequired.
+        /// Control panelMensajeria.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator TitulacionRequired;
+        protected global::System.Web.UI.WebControls.Panel panelMensajeria;
         
         /// <summary>
-        /// Control CursoLabel.
+        /// Control botonEnviarComentario.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label CursoLabel;
-        
-        /// <summary>
-        /// Control Curso.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList Curso;
-        
-        /// <summary>
-        /// Control CursoRequired.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator CursoRequired;
-        
-        /// <summary>
-        /// Control CreateUserButton.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button CreateUserButton;
+        protected global::System.Web.UI.WebControls.Button botonEnviarComentario;
     }
 }

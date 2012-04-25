@@ -7,9 +7,9 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace WebTaimer.TabUsuarios {
+namespace WebTaimer.TabHorariosPublicos {
     
     
-    public partial class Usuarios {
+    public partial class HorariosPublicos {
     }
 }

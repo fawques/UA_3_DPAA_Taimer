@@ -6,50 +6,68 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title></title>
     <link href="~/Styles/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Styles/MyCSS.css" rel="stylesheet" type="text/css" />
     <asp:ContentPlaceHolder ID="HeadContent" runat="server">
     </asp:ContentPlaceHolder>
+    <style type="text/css">
+        .menu
+        {
+            text-align: center;
+        }
+        .style1
+        {
+            width: 122px;
+        }
+    </style>
 </head>
 <body>
     <form runat="server">
     <div class="page">
         <div class="header">
             <div class="title">
-                <h1>
-                    TAIMER
-                </h1>
-            </div>
-            <div class="loginDisplay">
-                <asp:LoginView ID="HeadLoginView" runat="server" EnableViewState="false">
-                    <AnonymousTemplate>
-                        [ <a href="~/Account/Login.aspx" ID="HeadLoginStatus" runat="server">Iniciar sesión</a> ]
-                    </AnonymousTemplate>
-                    <LoggedInTemplate>
-                        Pantalla de bienvenida <span class="bold"><asp:LoginName ID="HeadLoginName" runat="server" /></span>!
-                        [ <asp:LoginStatus ID="HeadLoginStatus" runat="server" LogoutAction="Redirect" LogoutText="Cerrar sesión" LogoutPageUrl="~/"/> ]
-                    </LoggedInTemplate>
-                </asp:LoginView>
-            </div>
-            <div class="clear hideSkiplink">
+                    <table style="width:100%;">
+                        <tr>
+                            <td class="style1">
+                                <h1>Taimer</h1></td>
+                            <td>
                 <asp:Menu ID="NavigationMenu" runat="server" CssClass="menu" EnableViewState="false" IncludeStyleBlock="false" Orientation="Horizontal">
                     <Items>
-                        <asp:MenuItem NavigateUrl="~/TabInicio/SinLogin.aspx" Text="Inicio" 
+                        <asp:MenuItem NavigateUrl="~/TabInicio/ConLogin.aspx" Text="Inicio" 
                             ToolTip="Muestra la pantalla de inicio."/>
+                        <asp:MenuItem Text="Descarga la aplicación" 
+                            ToolTip="Descarga Taimer para Windows para crear tus horarios." 
+                            Value="Descarga la aplicación" NavigateUrl="~/TabDescarga/Descarga.aspx"></asp:MenuItem>
                         <asp:MenuItem NavigateUrl="~/TabHorarios/Horarios.aspx" Text="Mis horarios" 
                             ToolTip="Ver tus horarios y hacerlos públicos si así lo deseas."/>
-                        <asp:MenuItem Text="Usuarios" Value="Usuarios" 
-                            NavigateUrl="~/TabUsuarios/Usuarios.aspx" 
+                        <asp:MenuItem Text="Horarios públicos" Value="Horarios públicos" 
+                            NavigateUrl="~/TabHorariosPublicos/HorariosPublicos.aspx" 
+                            
                             ToolTip="Aquí puedes ver los horarios que otros usuarios hayan hecho públicos."></asp:MenuItem>
-                        <asp:MenuItem Text="Peticiones" Value="Peticiones" 
-                            NavigateUrl="~/TabPeticiones/Peticiones.aspx" 
-                            ToolTip="Crear peticiones para cambiar turnos de asignaturas con otros usuarios."></asp:MenuItem>
+                        <asp:MenuItem Text="Mensajes" Value="Mensajes" 
+                            NavigateUrl="~/TabMensajes/Mensajes.aspx" 
+                            ToolTip="Enviar mensajes a otros usuarios"></asp:MenuItem>
                         <asp:MenuItem Text="Asignaturas" Value="Asignaturas" 
                             NavigateUrl="~/TabAsignaturas/Asignaturas.aspx" 
                             ToolTip="Ver las asignaturas y comentarlas."></asp:MenuItem>
-                        <asp:MenuItem Text="Perfil" Value="Perfil" 
+                        <asp:MenuItem Text="Mi perfil" Value="Mi perfil" 
                             ToolTip="Cambiar los datos de tu perfil." 
-                            NavigateUrl="~/TabPerfil/EditarPerfil.aspx"></asp:MenuItem>
+                            NavigateUrl="~/TabPerfil/VerPerfil.aspx">
+                            <asp:MenuItem Text="Editar perfil" Value="Editar perfil"></asp:MenuItem>
+                            <asp:MenuItem Text="Cambiar e-mail" Value="Cambiar e-mail"></asp:MenuItem>
+                            <asp:MenuItem Text="Cambiar contraseña" Value="Cambiar contraseña">
+                            </asp:MenuItem>
+                            <asp:MenuItem Enabled="False"></asp:MenuItem>
+                            <asp:MenuItem Text="Cerrar sesión" Value="Cerrar sesión"></asp:MenuItem>
+                        </asp:MenuItem>
                     </Items>
                 </asp:Menu>
+                            </td>
+                        </tr>
+                    </table>
+            </div>
+            <div class="loginDisplay">
+            </div>
+            <div class="clear hideSkiplink">
             </div>
         </div>
         <div class="main">
@@ -58,8 +76,8 @@
         <div class="clear">
         </div>
     </div>
-    <div class="footer">
-        
+    <div class="footer" style="text-align: right; width: 960px; margin: 0 auto;">
+        <a href="../About.aspx" title="Sobre nosotros" style="margin-right: 10px">Sobre nosotros</a>
     </div>
     </form>
 </body>

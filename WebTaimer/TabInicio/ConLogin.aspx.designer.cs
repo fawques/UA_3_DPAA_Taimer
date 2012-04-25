@@ -7,126 +7,126 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace WebTaimer.TabAsignaturas {
+namespace WebTaimer.TabInicio {
     
     
-    public partial class Asignaturas {
+    public partial class ConLogin {
         
         /// <summary>
-        /// Control textboxTitulacion.
+        /// Control imagenAvatar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox textboxTitulacion;
+        protected global::System.Web.UI.WebControls.Image imagenAvatar;
         
         /// <summary>
-        /// Control dropdownCurso.
+        /// Control nombrePrincipalUser.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList dropdownCurso;
+        protected global::System.Web.UI.WebControls.Label nombrePrincipalUser;
         
         /// <summary>
-        /// Control botFiltrar.
+        /// Control labelUltimoLogin.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button botFiltrar;
+        protected global::System.Web.UI.WebControls.Label labelUltimoLogin;
         
         /// <summary>
-        /// Control ListBox1.
+        /// Control imagenMensaje.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ListBox ListBox1;
+        protected global::System.Web.UI.WebControls.Image imagenMensaje;
         
         /// <summary>
-        /// Control labelNombreAsignatura.
+        /// Control labelMensajesSinLeer.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label labelNombreAsignatura;
+        protected global::System.Web.UI.WebControls.Label labelMensajesSinLeer;
         
         /// <summary>
-        /// Control labelDescripcionAsignatura.
+        /// Control imagenCalendario.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label labelDescripcionAsignatura;
+        protected global::System.Web.UI.WebControls.Image imagenCalendario;
         
         /// <summary>
-        /// Control labelCoordinadorAsignatura.
+        /// Control listaActPer.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label labelCoordinadorAsignatura;
+        protected global::System.Web.UI.WebControls.BulletedList listaActPer;
         
         /// <summary>
-        /// Control labelPuntuacionAsignatura.
+        /// Control botonHorariosPropios.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label labelPuntuacionAsignatura;
+        protected global::System.Web.UI.WebControls.Button botonHorariosPropios;
         
         /// <summary>
-        /// Control labelTurnos.
+        /// Control botonMatricula.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label labelTurnos;
+        protected global::System.Web.UI.WebControls.Button botonMatricula;
         
         /// <summary>
-        /// Control listaTurnos.
+        /// Control botonHorariosPublicos.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ListBox listaTurnos;
+        protected global::System.Web.UI.WebControls.Button botonHorariosPublicos;
         
         /// <summary>
-        /// Control textbox1.
+        /// Control botonMensajes.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox textbox1;
+        protected global::System.Web.UI.WebControls.Button botonMensajes;
         
         /// <summary>
-        /// Control Button1.
+        /// Control botonActividadesPersonales.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
+        protected global::System.Web.UI.WebControls.Button botonActividadesPersonales;
         
         /// <summary>
-        /// Control checkbox1.
+        /// Control botonPerfil.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox checkbox1;
+        protected global::System.Web.UI.WebControls.Button botonPerfil;
     }
 }

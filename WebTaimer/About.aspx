@@ -5,9 +5,9 @@
 </asp:Content>
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
     <h2>
-        Acerca de
+        Sobre nosotros
     </h2>
     <p>
-        Coloque contenido aquí.
+        Y aquí ponemos cosas sobre nosotros.
     </p>
 </asp:Content>

@@ -7,9 +7,9 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace WebTaimer {
+namespace WebTaimer.TabDescarga {
     
     
-    public partial class _Default {
+    public partial class Descarga {
     }
 }
