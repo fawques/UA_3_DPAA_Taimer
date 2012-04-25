@@ -15,38 +15,5 @@
         <asp:CheckBox ID="checkHacerPublico" runat="server" 
             Text="Hacer público este horario" />
     </p>
-    <p>
-    </p>
-    
-    <p>
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-    </p>
-</asp:Content>
+
+    </asp:Content>

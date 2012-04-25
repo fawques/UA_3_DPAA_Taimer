@@ -7,11 +7,15 @@ CodeBehind="Mensajes.aspx.cs" Inherits="WebTaimer.TabMensajes.Mensajes" %>
         #TextArea1
         {
             z-index: 1;
-            left: 231px;
-            top: 251px;
+            left: 520px;
+            top: 588px;
             position: absolute;
-            height: 16px;
-            width: 617px;
+            height: 45px;
+            width: 606px;
+        }
+        .style1
+        {
+            width: 208px;
         }
     </style>
 </asp:Content>
@@ -19,23 +23,54 @@ CodeBehind="Mensajes.aspx.cs" Inherits="WebTaimer.TabMensajes.Mensajes" %>
     <h2>
         Mensajes
     </h2>
-    <p>
-        <asp:Label ID="labelConversacionCon" runat="server" Text="Conversación con:" 
-        style="z-index: 1; left: 45px; top: 0px; position: relative;"
-            Font-Size="Medium"></asp:Label>
-            </p>
-            <p>
-        <asp:ListBox ID="ListBox1" runat="server" Width="200px"
-        style="z-index: 1; left: 12px; top: 0px; position: relative; height: 400px;">
-        </asp:ListBox>
-            </p>
-            <p>
-                    <asp:Button ID="botNuevaConversacion" runat="server"
-        style="z-index: 1; left: 25px; top: 0px; position: relative; height: 25px; width: 175px"
-            Text="Nueva conversación" />
-        <textarea id="TextArea1" name="S1" 
-                        
-                        style="resize: none; z-index: 1; left: 50px; top: 3px; position: relative"></textarea>
-                        <asp:Button ID="botEnviar" runat="server" style="resize: none; z-index: 1; left: 55px; top: 0px; position: relative" Text="Enviar" />
-    </p>
-</asp:Content>
+
+    <table style="width: 100%;">
+        <tr>
+            <td class="style1">
+                <asp:Panel ID="panelConversacion" runat="server" GroupingText="Usuarios">
+                    <asp:ListBox ID="listaUsuarios" runat="server"
+        
+    style="z-index: 1; left: 0px; top: 0px; position: relative; height: 400px; width: 180px;">
+                    </asp:ListBox>
+                    <br />
+                    <br />
+                    <asp:Button ID="botonConversar" runat="server" Text="Conversar" Width="87px" />
+                    <asp:Button ID="botonVerPerfil" runat="server" Text="Ver perfil" Width="87px"/>
+                </asp:Panel>
+            
+            </td>
+            <td>
+                <asp:Panel ID="panelMensajes" runat="server" GroupingText="Conversación">
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <textarea ID="TextArea1" cols="20" name="S1" rows="2" style="z-index: 1; left: 0px; top: 0px; position: relative"></textarea><br />
+                </asp:Panel>
+            </td>
+        </tr>
+    </table>
+
+    </asp:Content>

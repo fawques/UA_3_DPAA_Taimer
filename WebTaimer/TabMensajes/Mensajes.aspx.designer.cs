@@ -13,39 +13,48 @@ namespace WebTaimer.TabMensajes {
     public partial class Mensajes {
         
         /// <summary>
-        /// Control labelConversacionCon.
+        /// Control panelConversacion.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label labelConversacionCon;
+        protected global::System.Web.UI.WebControls.Panel panelConversacion;
         
         /// <summary>
-        /// Control ListBox1.
+        /// Control listaUsuarios.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ListBox ListBox1;
+        protected global::System.Web.UI.WebControls.ListBox listaUsuarios;
         
         /// <summary>
-        /// Control botNuevaConversacion.
+        /// Control botonConversar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button botNuevaConversacion;
+        protected global::System.Web.UI.WebControls.Button botonConversar;
         
         /// <summary>
-        /// Control botEnviar.
+        /// Control botonVerPerfil.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button botEnviar;
+        protected global::System.Web.UI.WebControls.Button botonVerPerfil;
+        
+        /// <summary>
+        /// Control panelMensajes.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel panelMensajes;
     }
 }
