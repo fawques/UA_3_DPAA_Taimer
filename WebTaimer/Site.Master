@@ -13,6 +13,10 @@
         {
             text-align: center;
         }
+        .style1
+        {
+            width: 122px;
+        }
     </style>
 </head>
 <body>
@@ -20,22 +24,11 @@
     <div class="page">
         <div class="header">
             <div class="title">
-                <h1>
-                    Taimer
-                </h1>
-            </div>
-            <div class="loginDisplay">
-                <asp:LoginView ID="HeadLoginView" runat="server" EnableViewState="false">
-                    <AnonymousTemplate>
-                        [ <a href="~/Account/Login.aspx" ID="HeadLoginStatus" runat="server">Iniciar sesión</a> ]
-                    </AnonymousTemplate>
-                    <LoggedInTemplate>
-                        Pantalla de bienvenida <span class="bold"><asp:LoginName ID="HeadLoginName" runat="server" /></span>!
-                        [ <asp:LoginStatus ID="HeadLoginStatus" runat="server" LogoutAction="Redirect" LogoutText="Cerrar sesión" LogoutPageUrl="~/"/> ]
-                    </LoggedInTemplate>
-                </asp:LoginView>
-            </div>
-            <div class="clear hideSkiplink">
+                    <table style="width:100%;">
+                        <tr>
+                            <td class="style1">
+                                <h1>Taimer</h1></td>
+                            <td>
                 <asp:Menu ID="NavigationMenu" runat="server" CssClass="menu" EnableViewState="false" IncludeStyleBlock="false" Orientation="Horizontal">
                     <Items>
                         <asp:MenuItem NavigateUrl="~/TabInicio/ConLogin.aspx" Text="Inicio" 
@@ -60,6 +53,13 @@
                             NavigateUrl="~/TabPerfil/VerPerfil.aspx"></asp:MenuItem>
                     </Items>
                 </asp:Menu>
+                            </td>
+                        </tr>
+                    </table>
+            </div>
+            <div class="loginDisplay">
+            </div>
+            <div class="clear hideSkiplink">
             </div>
         </div>
         <div class="main">
