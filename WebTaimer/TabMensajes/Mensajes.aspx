@@ -40,31 +40,10 @@ CodeBehind="Mensajes.aspx.cs" Inherits="WebTaimer.TabMensajes.Mensajes" %>
             
             </td>
             <td>
-                <asp:Panel ID="panelMensajes" runat="server" GroupingText="Conversación">
-                    <br />
-                    <br />
-                    <br />
-                    <br />
-                    <br />
-                    <br />
-                    <br />
-                    <br />
-                    <br />
-                    <br />
-                    <br />
-                    <br />
-                    <br />
-                    <br />
-                    <br />
-                    <br />
-                    <br />
-                    <br />
-                    <br />
-                    <br />
-                    <br />
-                    <br />
-                    <br />
-                    <br />
+                <asp:Panel ID="panelMensajes" runat="server" 
+                    GroupingText="Conversación con [ Nombre del usuario ]">
+                    <asp:Panel ID="panelMensajeria" runat="server" Height="344px">
+                        Panel de conversación.</asp:Panel>
                     <br />
                     <br />
                     <textarea ID="TextArea1" cols="20" name="S1" rows="2" style="z-index: 1; left: 0px; top: 0px; position: relative"></textarea><br />
