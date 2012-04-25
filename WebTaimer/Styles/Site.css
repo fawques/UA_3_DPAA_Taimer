@@ -197,6 +197,8 @@ fieldset
     margin: 1em 0px;
     padding: 1em;
     border: 1px solid #ccc;
+    height: 192px;
+    width: 383px;
 }
 
 fieldset p 
@@ -235,7 +237,7 @@ input.passwordEntry
 
 div.accountInfo
 {
-    width: 42%;
+    width: 39%;
 }
 
 /* MISC  

@@ -55,7 +55,9 @@
     <Content Include="Account\ChangePassword.aspx" />
     <Content Include="Account\ChangePasswordSuccess.aspx" />
     <Content Include="Images\avatar.png" />
+    <Content Include="Images\calendario.png" />
     <Content Include="Images\default.jpg" />
+    <Content Include="Images\mensaje.gif" />
     <Content Include="Styles\MyCSS.css" />
     <Content Include="TabDescarga\Descarga.aspx" />
     <Content Include="TabHorariosPublicos\HorariosPublicos.aspx" />
