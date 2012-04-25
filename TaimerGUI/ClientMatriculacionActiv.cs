@@ -157,7 +157,7 @@ namespace TaimerGUI {
                 dataGridActuales.Rows.Clear();
                 foreach (Actividad_a obj in Program.Asignaturas)
                 {
-                    if (!!usrAux.ActAcademicas.Contains(obj) &&
+                    if (!usrAux.ActAcademicas.Contains(obj) &&
                         (obj.Nombre.ToLower().Contains(nom) || obj.Descripcion.ToLower().Contains(nom) || obj.NombreCoordinador.ToLower().Contains(nom)))
                     {
                         dataGridActuales.Rows.Add(obj.Nombre, obj.Descripcion);
