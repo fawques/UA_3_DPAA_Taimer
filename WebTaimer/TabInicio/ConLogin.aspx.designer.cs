@@ -31,6 +31,15 @@ namespace WebTaimer.TabInicio {
         protected global::System.Web.UI.WebControls.Label nombrePrincipalUser;
         
         /// <summary>
+        /// Control labelUltimoLogin.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label labelUltimoLogin;
+        
+        /// <summary>
         /// Control imagenMensaje.
         /// </summary>
         /// <remarks>
@@ -101,5 +110,23 @@ namespace WebTaimer.TabInicio {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button botonMensajes;
+        
+        /// <summary>
+        /// Control botonActividadesPersonales.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button botonActividadesPersonales;
+        
+        /// <summary>
+        /// Control botonPerfil.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button botonPerfil;
     }
 }
