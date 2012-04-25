@@ -13,13 +13,22 @@ namespace WebTaimer.TabPerfil {
     public partial class VerPerfil {
         
         /// <summary>
-        /// Control panelInfo.
+        /// Control imagenAvatar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel panelInfo;
+        protected global::System.Web.UI.WebControls.Image imagenAvatar;
+        
+        /// <summary>
+        /// Control botEditarPerfil.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button botEditarPerfil;
         
         /// <summary>
         /// Control labelNombreUsuario.
@@ -49,6 +58,24 @@ namespace WebTaimer.TabPerfil {
         protected global::System.Web.UI.WebControls.Label labelCurso;
         
         /// <summary>
+        /// Control labelDNI.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label labelDNI;
+        
+        /// <summary>
+        /// Control labelEmail.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label labelEmail;
+        
+        /// <summary>
         /// Control labelFrasePersonal.
         /// </summary>
         /// <remarks>
@@ -56,23 +83,5 @@ namespace WebTaimer.TabPerfil {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label labelFrasePersonal;
-        
-        /// <summary>
-        /// Control imagenAvatar.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Image imagenAvatar;
-        
-        /// <summary>
-        /// Control botEditarPerfil.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button botEditarPerfil;
     }
 }
