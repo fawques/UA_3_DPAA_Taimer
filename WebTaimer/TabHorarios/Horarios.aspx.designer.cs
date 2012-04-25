@@ -13,21 +13,21 @@ namespace WebTaimer.TabHorarios {
     public partial class Horarios {
         
         /// <summary>
-        /// Control listaAsignaturas.
+        /// Control listaHorarios.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList listaAsignaturas;
+        protected global::System.Web.UI.WebControls.ListBox listaHorarios;
         
         /// <summary>
-        /// Control checkHacerPublico.
+        /// Control CheckBox1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox checkHacerPublico;
+        protected global::System.Web.UI.WebControls.CheckBox CheckBox1;
     }
 }
