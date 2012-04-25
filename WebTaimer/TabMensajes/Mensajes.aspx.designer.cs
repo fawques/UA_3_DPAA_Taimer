@@ -40,13 +40,13 @@ namespace WebTaimer.TabMensajes {
         protected global::System.Web.UI.WebControls.Button botonConversar;
         
         /// <summary>
-        /// Control botonVerPerfil.
+        /// Control botonOpciones.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button botonVerPerfil;
+        protected global::System.Web.UI.WebControls.Button botonOpciones;
         
         /// <summary>
         /// Control panelMensajes.
@@ -65,5 +65,14 @@ namespace WebTaimer.TabMensajes {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel panelMensajeria;
+        
+        /// <summary>
+        /// Control botonEnviarComentario.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button botonEnviarComentario;
     }
 }

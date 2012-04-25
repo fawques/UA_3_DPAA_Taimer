@@ -35,18 +35,25 @@ CodeBehind="Mensajes.aspx.cs" Inherits="WebTaimer.TabMensajes.Mensajes" %>
                     <br />
                     <br />
                     <asp:Button ID="botonConversar" runat="server" Text="Conversar" Width="87px" />
-                    <asp:Button ID="botonVerPerfil" runat="server" Text="Ver perfil" Width="87px"/>
+                    <asp:Button ID="botonOpciones" runat="server" Text="Opciones" Width="87px" 
+                        onclick="DropDownButton_Click"/>
                 </asp:Panel>
             
             </td>
             <td>
                 <asp:Panel ID="panelMensajes" runat="server" 
                     GroupingText="Conversación con [ Nombre del usuario ]">
-                    <asp:Panel ID="panelMensajeria" runat="server" Height="344px">
+                    <asp:Panel ID="panelMensajeria" runat="server" Height="344px" 
+                        BorderStyle="Dotted">
                         Panel de conversación.</asp:Panel>
                     <br />
+                    <textarea ID="textareaMensaje" name="S1" rows="2"
+                        
+                        style="z-index: 1; left: 0px; top: 0px; position: relative; width: 619px; resize: none;"></textarea>
+                    <asp:Button ID="botonEnviarComentario" runat="server" 
+                        style="z-index: 1; left: 5px; top: 3px; position: relative; height: 23px; width: 45px;" 
+                        Text="Enviar" />
                     <br />
-                    <textarea ID="TextArea1" cols="20" name="S1" rows="2" style="z-index: 1; left: 0px; top: 0px; position: relative"></textarea><br />
                 </asp:Panel>
             </td>
         </tr>
