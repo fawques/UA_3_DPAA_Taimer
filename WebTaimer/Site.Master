@@ -6,6 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title></title>
     <link href="~/Styles/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Styles/MyCSS.css" rel="stylesheet" type="text/css" />
     <asp:ContentPlaceHolder ID="HeadContent" runat="server">
     </asp:ContentPlaceHolder>
     <style type="text/css">
@@ -68,9 +69,9 @@
         <div class="clear">
         </div>
     </div>
-    <div class="footer" align="right">
-        <a href="../About.aspx"
-            title="Sobre nosotros">Sobre nosotros</a></div>
+    <div class="footer" style="text-align: right; width: 960px; margin: 0 auto;">
+        <a href="../About.aspx" title="Sobre nosotros" style="margin-right: 10px">Sobre nosotros</a>
+    </div>
     </form>
 </body>
 </html>

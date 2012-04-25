@@ -13,6 +13,7 @@
     <RootNamespace>WebTaimer</RootNamespace>
     <AssemblyName>WebTaimer</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <UseIISExpress>false</UseIISExpress>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -54,6 +55,8 @@
     <Content Include="Account\ChangePassword.aspx" />
     <Content Include="Account\ChangePasswordSuccess.aspx" />
     <Content Include="Images\avatar.png" />
+    <Content Include="Images\default.jpg" />
+    <Content Include="Styles\MyCSS.css" />
     <Content Include="TabDescarga\Descarga.aspx" />
     <Content Include="TabHorariosPublicos\HorariosPublicos.aspx" />
     <Content Include="TabHorarios\Horarios.aspx" />
