@@ -9,5 +9,6 @@
     </h2>
     <p>
         Próximamente.
+        (Cuando esté hecha la página "horarios públicos", esto viene a ser un copy-paste)
     </p>
 </asp:Content>

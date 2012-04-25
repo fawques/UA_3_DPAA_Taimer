@@ -38,14 +38,42 @@
    <style>
         #divZonaHorario
         {
-            width:620px;
+            width:610px;
             background-color:Aqua;
         }
     </style>
 
-    <div id="divZonaHorario" style="float: left; margin-left: 0px">
+    <div id="divZonaHorario" style="float: left; margin-left: 5px">
 
-        AQUÍ VA EL HORARIO</div>
+        <asp:Panel ID="panelHorario" runat="server" Height="600px" 
+            ScrollBars="Vertical">
+
+            <div style="float: left; margin-left:0px; width:45px; height:1440px; background-color:Orange;">
+            </div>
+
+            <div style="float: left; margin-left:2px; width:76px; height:1440px; background-color:Orange;">
+            </div>
+
+            <div style="float: left; margin-left:2px; width:76px; height:1440px; background-color:Orange;">
+            </div>
+
+            <div style="float: left; margin-left:2px; width:76px; height:1440px; background-color:Orange;">
+            </div>
+
+            <div style="float: left; margin-left:2px; width:76px; height:1440px; background-color:Orange;">
+            </div>
+
+            <div style="float: left; margin-left:2px; width:76px; height:1440px; background-color:Orange;">
+            </div>
+
+            <div style="float: left; margin-left:2px; width:76px; height:1440px; background-color:Orange;">
+            </div>
+
+            <div style="float: left; margin-left:2px; width:76px; height:1440px; background-color:Orange;">
+            </div>
+
+        </asp:Panel>
+    </div>
 
 
 
@@ -59,7 +87,7 @@
         }
     </style>
 
-    <div id="divPanelDerecho" style="float: left; margin-left: 0px">
+    <div id="divPanelDerecho" style="float: left; margin-left: 5px">
         <fieldset class="fieldInfoAsignatura" style="width: 122px; height: 543px">
             <legend>Información</legend>
     </div>
