@@ -35,8 +35,7 @@ CodeBehind="Mensajes.aspx.cs" Inherits="WebTaimer.TabMensajes.Mensajes" %>
                     <br />
                     <br />
                     <asp:Button ID="botonConversar" runat="server" Text="Conversar" Width="87px" />
-                    <asp:Button ID="botonOpciones" runat="server" Text="Opciones" Width="87px" 
-                        onclick="DropDownButton_Click"/>
+                    <asp:Button ID="botonOpciones" runat="server" Text="Opciones" Width="87px"/>
                 </asp:Panel>
             
             </td>
