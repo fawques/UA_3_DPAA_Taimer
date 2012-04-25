@@ -34,7 +34,7 @@
     #divDatos
     {
         width:700px;
-        height:300px;
+        height:207px;
     }
     </style>
 

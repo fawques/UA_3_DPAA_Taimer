@@ -13,15 +13,6 @@ namespace WebTaimer.TabAsignaturas {
     public partial class Asignaturas {
         
         /// <summary>
-        /// Control panelFiltro.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel panelFiltro;
-        
-        /// <summary>
         /// Control textboxTitulacion.
         /// </summary>
         /// <remarks>
@@ -49,15 +40,6 @@ namespace WebTaimer.TabAsignaturas {
         protected global::System.Web.UI.WebControls.Button botFiltrar;
         
         /// <summary>
-        /// Control panelSeleccion.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel panelSeleccion;
-        
-        /// <summary>
         /// Control ListBox1.
         /// </summary>
         /// <remarks>
@@ -67,58 +49,49 @@ namespace WebTaimer.TabAsignaturas {
         protected global::System.Web.UI.WebControls.ListBox ListBox1;
         
         /// <summary>
-        /// Control panelInfoAsignatura.
+        /// Control labelNombreAsignatura.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel panelInfoAsignatura;
+        protected global::System.Web.UI.WebControls.Label labelNombreAsignatura;
         
         /// <summary>
-        /// Control Label1.
+        /// Control labelDescripcionAsignatura.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label1;
+        protected global::System.Web.UI.WebControls.Label labelDescripcionAsignatura;
         
         /// <summary>
-        /// Control Label2.
+        /// Control labelCoordinadorAsignatura.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label2;
+        protected global::System.Web.UI.WebControls.Label labelCoordinadorAsignatura;
         
         /// <summary>
-        /// Control Label3.
+        /// Control labelPuntuacionAsignatura.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label3;
+        protected global::System.Web.UI.WebControls.Label labelPuntuacionAsignatura;
         
         /// <summary>
-        /// Control labelPuntuacion.
+        /// Control labelTurnos.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label labelPuntuacion;
-        
-        /// <summary>
-        /// Control Label4.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label4;
+        protected global::System.Web.UI.WebControls.Label labelTurnos;
         
         /// <summary>
         /// Control listaTurnos.
@@ -130,39 +103,30 @@ namespace WebTaimer.TabAsignaturas {
         protected global::System.Web.UI.WebControls.ListBox listaTurnos;
         
         /// <summary>
-        /// Control panelComentarios.
+        /// Control textbox1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel panelComentarios;
+        protected global::System.Web.UI.WebControls.TextBox textbox1;
         
         /// <summary>
-        /// Control textboxComentario.
+        /// Control Button1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox textboxComentario;
+        protected global::System.Web.UI.WebControls.Button Button1;
         
         /// <summary>
-        /// Control botonEnviarComentario.
+        /// Control checkbox1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button botonEnviarComentario;
-        
-        /// <summary>
-        /// Control checkboxAnonimo.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox checkboxAnonimo;
+        protected global::System.Web.UI.WebControls.CheckBox checkbox1;
     }
 }

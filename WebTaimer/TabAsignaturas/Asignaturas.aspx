@@ -12,28 +12,36 @@
             height: 153px;
             width: 638px;
         }
-        .style4
-        {
-            width: 175px;
-        }
-        .style5
-        {
-            width: 10px;
-        }
         .style6
         {
-            width: 487px;
+            width: 724px;
         }
     </style>
 </asp:Content>
+
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
     <h2>
         Asignaturas</h2>
 
-        <table style="width: 100%; z-index: 1; left: 0px; top: 0px; position: relative; height: 600px;">
-            <tr>
-                <td class="style4" bgcolor="Yellow">
-                    <asp:Panel ID="panelFiltro" runat="server" GroupingText="Filtro">
+    <style>
+        #divPanelIzquierdo{
+            background-color:transparent;
+        }
+    </style>
+
+        <style>
+        #divPanelContenido{
+            background-color:transparent;
+        }
+            .style7
+            {
+                width: 242px;
+            }
+    </style>
+
+        <div id="divPanelIzquierdo" style="width:200px; float: left">
+         <fieldset class="filtro" style="width: 160px; height:80px">
+            <legend>Filtro</legend>
                         <asp:TextBox ID="textboxTitulacion" runat="server" Width="160px">Titulación</asp:TextBox>
                         Curso: 
                         <asp:DropDownList ID="dropdownCurso" runat="server" Width="58px">
@@ -45,46 +53,45 @@
                             <asp:ListItem>6</asp:ListItem>
                         </asp:DropDownList>
                         &nbsp;<asp:Button ID="botFiltrar" runat="server" Text="Filtrar" />
-                    </asp:Panel>
-                    <asp:Panel ID="panelSeleccion" runat="server" GroupingText="Selección">
+                    </fieldset>
+                     <fieldset class="asig" style="width: 160px; height: 440px">
+            <legend>Asignaturas</legend>
                         <asp:ListBox ID="ListBox1" runat="server" Height="412px" Width="160px">
                         </asp:ListBox>
-                    </asp:Panel>
-                    </td>
-                    <td class="style5"></td>
-                <td class="ParteContenido">
-                    <asp:Panel ID="panelInfoAsignatura" runat="server" 
-                        GroupingText="Información de la asignatura">
-                        <table style="width:100%;">
-                            <tr>
-                                <td class="style6">
-                                    <asp:Label ID="Label1" runat="server" Font-Bold="True" Font-Size="X-Large" 
+                    </fieldset>
+        </div>
+
+        <div id="divPanelContenido" style="width:715px; float: left; margin-left:5px">
+        <fieldset class="infoAsig" style="width: 687px; height:200px">
+            <legend>Información de la asignatura</legend>
+
+
+                            <div style="float:left; width:469px">
+                                    <asp:Label ID="labelNombreAsignatura" runat="server" Font-Bold="True" Font-Size="X-Large" 
                                         Text="[ Nombre de la asignatura ]"></asp:Label>
                                     <br />
                                     <br />
-                                    <asp:Label ID="Label2" runat="server" Font-Size="Medium" 
+                                    <asp:Label ID="labelDescripcionAsignatura" runat="server" Font-Size="Medium" 
                                         Text="[ Descripción de la asignatura ]"></asp:Label>
                                     <br />
                                     <br />
                                     Coordinador:
-                                    <asp:Label ID="Label3" runat="server" Text="[ Nombre del coordinador ]"></asp:Label>
+                                    <asp:Label ID="labelCoordinadorAsignatura" runat="server" Text="[ Nombre del coordinador ]"></asp:Label>
                                     <br />
                                     <br />
                                     Puntuación:
-                                    <asp:Label ID="labelPuntuacion" runat="server" Text="★★★★★"></asp:Label>
-                                </td>
-                                <td>
-                                    <asp:Label ID="Label4" runat="server" Font-Bold="True" Text="Turnos" align="center"></asp:Label>
+                                    <asp:Label ID="labelPuntuacionAsignatura" runat="server" Text="★★★★★"></asp:Label>
+                                </div>
+                                <div style="float:left">
+                                    <asp:Label ID="labelTurnos" runat="server" Font-Bold="True" Text="Turnos" align="center"></asp:Label>
                                     <br />
                                     <asp:ListBox ID="listaTurnos" runat="server" Height="118px" Width="190px">
                                         <asp:ListItem Selected="True">Miércoles, de 09:00 a 11:00</asp:ListItem>
                                     </asp:ListBox>
-                                </td>
-                            </tr>
-                        </table>
-                    </asp:Panel>
-                    <asp:Panel ID="panelComentarios" runat="server" GroupingText="Comentarios" 
-                        Height="400px">
+                                </div>
+                    </fieldset>
+                    <fieldset class="filtro" style="width: 687px; height:320px">
+                        <legend>Comentarios</legend>
                         <br />
                         <br />
                         <br />
@@ -100,15 +107,10 @@
                         <br />
                         <br />
                         <br />
-                        <br />
-                        <br />
-                        <asp:TextBox ID="textboxComentario" runat="server" Width="508px">Nuevo comentario</asp:TextBox>
-                        <asp:Button ID="botonEnviarComentario" runat="server" Text="Enviar" style="z-index: 1; left: 10px; top: 0px; position: relative"/>
-                        <asp:CheckBox ID="checkboxAnonimo" runat="server" Text="Anónimo" style="z-index: 1; left: 20px; top: 0px; position: relative"/>
+                        <asp:TextBox ID="textbox1" runat="server" Width="508px">Nuevo comentario</asp:TextBox>
+                        <asp:Button ID="Button1" runat="server" Text="Enviar" style="z-index: 1; left: 10px; top: 0px; position: relative"/>
+                        <asp:CheckBox ID="checkbox1" runat="server" Text="Anónimo" style="z-index: 1; left: 20px; top: 0px; position: relative"/>
                         <br />
                     </asp:Panel>
-                </td>
-            </tr>
-        </table>
-
+        </div>
 </asp:Content>
