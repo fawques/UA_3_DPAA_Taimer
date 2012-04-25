@@ -48,28 +48,29 @@
         <asp:Panel ID="panelHorario" runat="server" Height="600px" 
             ScrollBars="Vertical">
 
-            <div style="float: left; margin-left:0px; width:45px; height:1440px; background-color:Orange;">
+            <div style="float: left; margin-left:0px; width:31px; height:1440px; border: 1px solid black; text-align: center;"
+                ; background-color:Orange>
+                00:00</div>
+
+            <div style="float: left; margin-left:0px; width:78px; height:1440px; border: 1px solid black"; background-color:Orange">
             </div>
 
-            <div style="float: left; margin-left:2px; width:76px; height:1440px; background-color:Orange;">
+            <div style="float: left; margin-left:0px; width:78px; height:1440px; border: 1px solid black"; background-color:Orange">
             </div>
 
-            <div style="float: left; margin-left:2px; width:76px; height:1440px; background-color:Orange;">
+            <div style="float: left; margin-left:0px; width:78px; height:1440px; border: 1px solid black"; background-color:Orange">
             </div>
 
-            <div style="float: left; margin-left:2px; width:76px; height:1440px; background-color:Orange;">
+            <div style="float: left; margin-left:0px; width:78px; height:1440px; border: 1px solid black"; background-color:Orange">
             </div>
 
-            <div style="float: left; margin-left:2px; width:76px; height:1440px; background-color:Orange;">
+            <div style="float: left; margin-left:0px; width:78px; height:1440px; border: 1px solid black"; background-color:Orange">
             </div>
 
-            <div style="float: left; margin-left:2px; width:76px; height:1440px; background-color:Orange;">
+            <div style="float: left; margin-left:0px; width:78px; height:1440px; border: 1px solid black"; background-color:Orange">
             </div>
 
-            <div style="float: left; margin-left:2px; width:76px; height:1440px; background-color:Orange;">
-            </div>
-
-            <div style="float: left; margin-left:2px; width:76px; height:1440px; background-color:Orange;">
+            <div style="float: left; margin-left:0px; width:78px; height:1440px; border: 1px solid black"; background-color:Orange">
             </div>
 
         </asp:Panel>
