@@ -7,84 +7,125 @@ CodeBehind="Mensajes.aspx.cs" Inherits="WebTaimer.TabMensajes.Mensajes" %>
         #TextArea1
         {
             z-index: 1;
-            left: 520px;
-            top: 588px;
+            left: 513px;
+            top: 583px;
             position: absolute;
-            height: 45px;
-            width: 606px;
+            height: 80px;
+            width: 560px;
         }
         .style1
         {
             width: 208px;
         }
-        .style2
-        {
-            width: 48px;
-            height: 48px;
-        }
-    </style>
+        </style>
 </asp:Content>
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
     <h2>
-        Mensajes
-    </h2>
+        Mensajes</h2>
 
-    <table style="width: 100%;">
-        <tr>
-            <td class="style1">
-                <asp:Panel ID="panelConversacion" runat="server" GroupingText="Usuarios">
-                    <asp:ListBox ID="listaUsuarios" runat="server"
+    <style>
+        #divPanelIzquierdo{
+            background-color:transparent;
+        }
+    </style>
+
+        <style>
+        #divPanelContenido{
+            background-color:transparent;
+        }
+            #Button1
+            {
+                width: 57px;
+            }
+            .comentario
+            {
+                width: 633px;
+            }
+            .mensaje
+            {
+                width: 467px;
+            }
+            </style>
+
+        <div id="divPanelIzquierdo" 
+        style="width:200px; float: left; height: 623px;">
         
-    style="z-index: 1; left: 0px; top: 0px; position: relative; height: 400px; width: 180px;">
-                    </asp:ListBox>
-                    <br />
-                    <br />
-                    <asp:Button ID="botonConversar" runat="server" Text="Conversar" Width="87px" />
-                    <asp:Button ID="botonOpciones" runat="server" Text="Opciones" Width="87px"/>
-                </asp:Panel>
-            
-            </td>
-            <td>
-                <asp:Panel ID="panelMensajes" runat="server" 
-                    GroupingText="Conversación con [ Nombre del usuario ]">
-                    <asp:Panel ID="panelMensajeria" runat="server" Height="344px" 
-                        BorderStyle="Dotted">
-                        <style>
-                            .parrafosMensaje 
-                            {
-                                width: 427px;
-                            }
-                        </style>
-                        
-                        <div style="height: 342px; overflow: auto;">
+        <fieldset class="asig" style="width: 160px; height: 540px">
+            <legend>Usuarios</legend>
 
-                            <div style="width: 550px; margin: 0 auto; margin-top: 20px; background-color: White; border: 4px ridge White;">
-                                <img alt="imagen usuario" class="style2" style="border: 4px ridge White; margin: 10px; float: left;"
-                                    src="../Images/default.jpg" />
-                                <div style="width: 441px; float: right; margin: 10px;">
-                                    <p class="parrafosMensaje" style="color: Gray">Mensaje enviado por: [Amigo]</p>
-                                    <p class="parrafosMensaje">
-                                        Blablabla bla balbalbalbablabababbañbab
-                                        <br /> Blablabla bla balbalbalbablabababbañbab
-                                        <br /> Blablabla bla balbalbalbablabababbañbab
-                                        <br /> Blablabla bla balbalbalbablabababbañbab
-                                    </p>
-                                </div>
-                            </div>
-                            
+                <fieldset class="filtro" style="width: 132px; height: 60px; margin: 0 auto; margin-bottom: 20px;">
+                <legend>Busqueda</legend>
+                <asp:TextBox ID="textboxTitulacion" runat="server" Width="125px" placeholder="Buscar..."></asp:TextBox>
+                </fieldset>
+
+                        <asp:ListBox ID="ListBox1" runat="server" Height="398px" 
+                Width="160px" style="margin: 0 auto;">
+                            <asp:ListItem>Usuario 1</asp:ListItem>
+                            <asp:ListItem>Usuario 2</asp:ListItem>
+                            <asp:ListItem>Usuario 3</asp:ListItem>
+                            <asp:ListItem>Usuario 4</asp:ListItem>
+                            <asp:ListItem>Usuario 5</asp:ListItem>
+                        </asp:ListBox>
+                    </fieldset>
+        </div>
+
+        <div id="divPanelContenido" style="width:715px; float: left; margin-left:5px">
+        <fieldset class="infoAsig" style="width: 687px; height:540px">
+                        <legend>Conversación</legend>
+                    
+                <div style="height: 373px; overflow: auto;  border: 1px solid Gray" > 
+                    <div class="mensaje1">
+                        <div class="mensaje"><label class="mensaje"><p class="comentario">
+                            Enviado a las HH:MM el DD/MM/AAAA</p>
+                        blabla blabla blabla blabla blabla blabla blabla blabla blabla blabla blabla 
+                        blabla blabla blabla blabla blabla blabla blabla blabla blabla blabla blabla 
+                        blabla blabla blabla blabla blabla blabla blabla blabla blabla blabla blabla 
+                        blabla blabla blabla blabla blabla blabla blabla blabla
+                        </label>
                         </div>
-                    </asp:Panel>
-                    <br />
-                    <textarea ID="textareaMensaje" name="S1" rows="2"
+                    </div>
+
+                    <div class="mensaje2">
+                        <div class="mensaje"><label class="mensaje"><p class="comentario">
+                            Enviado a las HH:MM el DD/MM/AAAA</p>
+                        blabla blabla blabla blabla blabla blabla blabla blabla blabla blabla blabla 
+                        blabla blabla blabla blabla blabla blabla blabla blabla blabla blabla blabla 
+                        blabla blabla blabla blabla blabla blabla blabla blabla blabla blabla blabla 
+                        blabla blabla blabla blabla blabla blabla blabla blabla
+                        </label>
+                        </div>
+                    </div>
+                    <div class="mensaje1">
+                        <div class="mensaje"><label class="mensaje"><p class="comentario">
+                            Enviado a las HH:MM el DD/MM/AAAA</p>
+                        blabla blabla blabla blabla blabla blabla blabla blabla blabla blabla blabla 
+                        blabla blabla blabla blabla blabla blabla blabla blabla blabla blabla blabla 
+                        blabla blabla blabla blabla blabla blabla blabla blabla blabla blabla blabla 
+                        blabla blabla blabla blabla blabla blabla blabla blabla
+                        </label>
+                        </div>
+                    </div>
+
+                    <div class="mensaje2">
+                        <div class="mensaje"><label class="mensaje"><p class="comentario">
+                            Enviado a las HH:MM el DD/MM/AAAA</p>
+                        blabla blabla blabla blabla blabla blabla blabla blabla blabla blabla blabla 
+                        blabla blabla blabla blabla blabla blabla blabla blabla blabla blabla blabla 
+                        blabla blabla blabla blabla blabla blabla blabla blabla blabla blabla blabla 
+                        blabla blabla blabla blabla blabla blabla blabla blabla
+                        </label>
+                        </div>
+                    &nbsp;</div>
+                </div>
+
+
                         
-                        style="z-index: 1; left: 0px; top: 0px; position: relative; width: 619px; resize: none;"></textarea>
-                    <asp:Button ID="botonEnviarComentario" runat="server" 
-                        style="z-index: 1; left: 5px; top: 3px; position: relative; height: 23px; width: 45px;" 
-                        Text="Enviar" />
-                    <br />
-                </asp:Panel>
-            </td>
-        </tr>
-    </table>
+                        <div style="height: 150px; width: 658px;">
+                            <textarea 
+                                id="TextArea1" name="S1" style="float:left; resize: none;"></textarea><input id="Button1" type="button" value="Enviar" 
+                                style="float: right; margin-top:90px;" />
+                                                                
+                                </div>
+       </div>
 
     </asp:Content>

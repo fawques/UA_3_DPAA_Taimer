@@ -58,11 +58,11 @@
                      <fieldset class="asig" style="width: 160px; height: 440px">
             <legend>Asignaturas</legend>
                         <asp:ListBox ID="ListBox1" runat="server" Height="412px" Width="160px">
-                            <asp:ListItem>Usuario 1</asp:ListItem>
-                            <asp:ListItem>Usuario 2</asp:ListItem>
-                            <asp:ListItem>Usuario 3</asp:ListItem>
-                            <asp:ListItem>Usuario 4</asp:ListItem>
-                            <asp:ListItem>Usuario 5</asp:ListItem>
+                            <asp:ListItem>Asignatura 1</asp:ListItem>
+                            <asp:ListItem>Asignatura 2</asp:ListItem>
+                            <asp:ListItem>Asignatura 3</asp:ListItem>
+                            <asp:ListItem>Asignatura 4</asp:ListItem>
+                            <asp:ListItem>Asignatura 5</asp:ListItem>
                         </asp:ListBox>
                     </fieldset>
         </div>
@@ -106,7 +106,7 @@
                                     style="height: 40px; width: 40px" class="comentario"/>
                                 <span class="comentario">
                                     <label class="comentario">
-                                        <p class="comentario">Comentario enviado por: Ususario 1</p>
+                                        <p class="comentario">Comentario enviado por: Ususario 1 (DD/MM/AAAA HH:MM)</p>
                                         blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla
                                         blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla
                                         blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla
@@ -120,7 +120,7 @@
                                     style="height: 40px; width: 40px" class="comentario"/>
                                 <span class="comentario">
                                     <label class="comentario">
-                                        <p class="comentario">Comentario enviado por: Ususario 2</p>
+                                        <p class="comentario">Comentario enviado por: Ususario 2 (DD/MM/AAAA HH:MM)</p>
                                         blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla
                                         blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla
                                         blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla
@@ -134,7 +134,7 @@
                                     style="height: 40px; width: 40px" class="comentario"/>
                                 <span class="comentario">
                                     <label class="comentario">
-                                        <p class="comentario">Comentario enviado por: Ususario 3</p>
+                                        <p class="comentario">Comentario enviado por: Ususario 3 (DD/MM/AAAA HH:MM)</p>
                                         blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla
                                         blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla
                                         blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla
@@ -148,7 +148,7 @@
                                     style="height: 40px; width: 40px" class="comentario"/>
                                 <span class="comentario">
                                     <label class="comentario">
-                                        <p class="comentario">Comentario enviado por: Ususario 4</p>
+                                        <p class="comentario">Comentario enviado por: Ususario 4 (DD/MM/AAAA HH:MM)</p>
                                         blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla
                                         blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla
                                         blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla
@@ -159,7 +159,7 @@
                             </div>
                         </div>
                         
-                        <div style="height: 60px; width: 658px">
+                        <div style="height: 60px; width: 658px;">
                             &nbsp;<p style="float:right; width: 82px; margin: 0px; margin-left:10px; margin-top:22px;">Anónimo <input id="Checkbox1" type="checkbox" /></p>
                             &nbsp;<input id="Button1" type="button" value="Enviar" 
                                 style="float: right; margin-top:22px;" /><textarea 
