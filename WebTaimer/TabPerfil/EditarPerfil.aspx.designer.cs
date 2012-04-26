@@ -94,12 +94,75 @@ namespace WebTaimer.TabPerfil {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator CursoRequired;
         
         /// <summary>
-        /// Control CreateUserButton.
+        /// Control labelAvatar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button CreateUserButton;
+        protected global::System.Web.UI.WebControls.Label labelAvatar;
+        
+        /// <summary>
+        /// Control botonCargarDeArchivo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button botonCargarDeArchivo;
+        
+        /// <summary>
+        /// Control botonCargarDeURL.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button botonCargarDeURL;
+        
+        /// <summary>
+        /// Control imagenAvatar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image imagenAvatar;
+        
+        /// <summary>
+        /// Control labelFrasePersonal.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label labelFrasePersonal;
+        
+        /// <summary>
+        /// Control textboxFrasePersonal.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox textboxFrasePersonal;
+        
+        /// <summary>
+        /// Control botonModificarDatos.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button botonModificarDatos;
+        
+        /// <summary>
+        /// Control botonRechazarCambios.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button botonRechazarCambios;
     }
 }

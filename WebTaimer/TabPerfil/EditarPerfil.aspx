@@ -12,8 +12,13 @@
         Si deseas cambiar la contraseña,  <a href="../Account/ChangePassword.aspx"
             title="Cambiar contraseña">haz clic aquí</a>.
     </p>
-    <div class="accountInfo">
-                        <fieldset class="register" style="width: 340px">
+    <p>
+        Si deseas cambiar tu dirección de correo electrónico,  <a href="../Account/ChangePassword.aspx"
+            title="Cambiar contraseña">haz clic aquí</a>.
+    </p>
+
+    <div class="accountInfo" style="float: left; margin-left: 51px; width:384px">
+                        <fieldset class="register" style="width: 340px; height:190px">
                             <legend>Datos principales</legend>
                             <p style="width:333px">
                                 <asp:Label ID="UserNameLabel" runat="server" AssociatedControlID="UserName">Nombre de usuario:</asp:Label>
@@ -43,9 +48,37 @@
                                      ValidationGroup="RegisterUserValidationGroup">*</asp:RequiredFieldValidator>
                             </p>
                         </fieldset>
-                        <p class="submitButton">
-                            <asp:Button ID="CreateUserButton" runat="server" CommandName="MoveNext" Text="Modificar datos" 
-                                 ValidationGroup="RegisterUserValidationGroup"/>
-                        </p>
                     </div>
+
+                        <div class="datosAdicionales" style="float: left; margin-left: 51px; width:384px">
+                        <fieldset class="fieldDatosAdicionales" style="width: 340px; height:190px">
+                            <legend>Datos adicionales</legend>
+
+                            <div style="width:150px; margin-left:8px; float:left">
+                                <asp:Label ID="labelAvatar" runat="server">Imagen de perfil:</asp:Label>
+                                <br />
+                                <asp:Button ID="botonCargarDeArchivo" runat="server" Text="Cargar desde archivo" 
+                                    Width="150px" style="margin-top:15px" />
+                                <br />
+                                <asp:Button ID="botonCargarDeURL" runat="server" Text="Cargar desde URL" 
+                                    Width="150px" style="margin-top:15px" />
+                                <br />
+                            </div>
+
+                            <div style="width:163px; height:110px; margin-left:10px; float:left">
+                            <asp:Image ID="imagenAvatar" runat="server" ImageUrl="~/Images/avatar.png" />
+                            </div>
+
+                             <p style="width: 333px">
+                                 <br />
+                                <asp:Label ID="labelFrasePersonal" runat="server">Frase personal:</asp:Label>
+                                <asp:TextBox ID="textboxFrasePersonal" runat="server" CssClass="textEntry"></asp:TextBox>
+                            </p>
+                        </fieldset>
+                                            </div>
+                        <p class="submitButton">
+                            <asp:Button ID="botonModificarDatos" runat="server" CommandName="MoveNext" Text="Modificar datos" style="width:130px; height:30px" />
+                            <asp:Button ID="botonRechazarCambios" runat="server" Text="Rechazar cambios" style="margin-left:5px; width:130px; height:30px" />
+                        </p>
+
 </asp:Content>

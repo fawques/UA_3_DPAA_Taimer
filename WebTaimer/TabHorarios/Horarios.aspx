@@ -24,7 +24,11 @@
     <fieldset class="fieldHorarios" style="width: 122px; height: 523px">
             <legend>Horarios</legend>
 
-            <asp:ListBox ID="listaHorarios" runat="server" Height="493px" style="width:120px"></asp:ListBox>
+            <asp:ListBox ID="listaHorarios" runat="server" Height="493px" style="width:120px">
+                <asp:ListItem>Horario 1</asp:ListItem>
+                <asp:ListItem>Horario 2</asp:ListItem>
+                <asp:ListItem>Horario 3</asp:ListItem>
+            </asp:ListBox>
 
         </fieldset><br />
         <asp:CheckBox ID="CheckBox1" runat="server" Text="Hacer público" />
@@ -115,7 +119,8 @@
                 Font-Bold="True"></asp:Label>
             <br />
             <br />
-            <asp:Button ID="botonMasInformacion" runat="server" align="center" Text="Mas información" Width="120px" />
+            <asp:Button ID="botonMasInformacion" runat="server" align="center" 
+                Text="Más información" Width="120px" />
     </div>
 
     </asp:Content>
