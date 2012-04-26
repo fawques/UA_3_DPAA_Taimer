@@ -60,7 +60,9 @@
     <Content Include="Images\mensaje.gif" />
     <Content Include="Styles\MyCSS.css" />
     <Content Include="TabActividades\Actividades.aspx" />
+    <Content Include="TabAsignaturas\AsignaturasSin.aspx" />
     <Content Include="TabDescarga\Descarga.aspx" />
+    <Content Include="TabDescarga\DescargaSin.aspx" />
     <Content Include="TabHorariosPublicos\HorariosPublicos.aspx" />
     <Content Include="TabHorarios\Horarios.aspx" />
     <Content Include="Account\Login.aspx" />
@@ -125,12 +127,26 @@
     <Compile Include="TabActividades\Actividades.aspx.designer.cs">
       <DependentUpon>Actividades.aspx</DependentUpon>
     </Compile>
+    <Compile Include="TabAsignaturas\AsignaturasSin.aspx.cs">
+      <DependentUpon>AsignaturasSin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TabAsignaturas\AsignaturasSin.aspx.designer.cs">
+      <DependentUpon>AsignaturasSin.aspx</DependentUpon>
+    </Compile>
     <Compile Include="TabDescarga\Descarga.aspx.cs">
       <DependentUpon>Descarga.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="TabDescarga\Descarga.aspx.designer.cs">
       <DependentUpon>Descarga.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TabDescarga\DescargaSin.aspx.cs">
+      <DependentUpon>DescargaSin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TabDescarga\DescargaSin.aspx.designer.cs">
+      <DependentUpon>DescargaSin.aspx</DependentUpon>
     </Compile>
     <Compile Include="TabHorariosPublicos\HorariosPublicos.aspx.cs">
       <DependentUpon>HorariosPublicos.aspx</DependentUpon>

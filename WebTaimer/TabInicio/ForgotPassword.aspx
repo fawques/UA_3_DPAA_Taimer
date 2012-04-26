@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Recuperar cuenta" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true"
+﻿<%@ Page Title="Recuperar cuenta" Language="C#" MasterPageFile="~/NoLogin.master" AutoEventWireup="true"
     CodeBehind="ForgotPassword.aspx.cs" Inherits="WebTaimer.TabInicio.ForgotPassword" %>
 
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">

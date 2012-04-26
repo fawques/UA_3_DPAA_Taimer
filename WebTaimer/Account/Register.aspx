@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Registrarse" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true"
+﻿<%@ Page Title="Registrarse" Language="C#" MasterPageFile="~/NoLogin.master" AutoEventWireup="true"
     CodeBehind="Register.aspx.cs" Inherits="WebTaimer.Account.Register" %>
 
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
