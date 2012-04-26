@@ -26,6 +26,12 @@
         <asp:Button ID="botEditarPerfil" runat="server" Text="Editar perfil"
                 style="margin-top: 10px; width:100px; height:25px;"
                     onclick="botEditarPerfil_Click" />
+
+        <asp:Button ID="botEnviarMensaje" runat="server" Text="Enviar mensaje"
+                style="margin-top: 10px; width:100px; height:25px;" />
+
+        <asp:Button ID="botVerHorarios" runat="server" Text="Ver horarios"
+                style="margin-top: 10px; width:100px; height:25px;" />
     </div>
 
     <!-- HUECO ENTRE AVATAR Y DATOS ------------------------------------------------------------------------------->
@@ -60,7 +66,7 @@
         <br />
         <br />
         <asp:Label ID="labelFrasePersonal" runat="server" Font-Italic="True" 
-            Text="[ ¿Frase personal? ]"></asp:Label>
+            Text="[ Frase personal ]"></asp:Label>
     </div>
     
             <p>

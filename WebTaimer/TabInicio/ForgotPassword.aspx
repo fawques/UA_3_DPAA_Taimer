@@ -9,11 +9,11 @@
     </h2>
 
     <p>
-        Escribe tu nombre de usuario y te enviaremos la contraseña a tu correo electrónico.
+        Escribe tu nombre de usuario o tu e-mail y te enviaremos la contraseña a tu correo electrónico.
     </p>
 
     <p>
-        Nombre de usuario:<br />
+        Nombre de usuario o e-mail:<br />
         <asp:TextBox ID="UserName" runat="server" Width="320px"></asp:TextBox>
         <asp:RequiredFieldValidator ID="UserNameRequired" runat="server" CssClass="failureNotification"
             ControlToValidate="UserName" 
