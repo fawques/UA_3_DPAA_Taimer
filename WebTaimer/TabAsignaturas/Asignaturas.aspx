@@ -1,22 +1,19 @@
 ﻿<%@ Page Title="Asignaturas" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true"
     CodeBehind="Asignaturas.aspx.cs" Inherits="WebTaimer.TabAsignaturas.Asignaturas" %>
 
+
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
     <style type="text/css">
         #TextArea1
         {
             z-index: 1;
-            left: 231px;
-            top: 251px;
+            left: 512px;
+            top: 666px;
             position: absolute;
-            height: 153px;
-            width: 638px;
+            height: 39px;
+            width: 495px;
         }
-        .style6
-        {
-            width: 724px;
-        }
-    </style>
+        </style>
 </asp:Content>
 
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
@@ -33,16 +30,20 @@
         #divPanelContenido{
             background-color:transparent;
         }
-            .style7
+            #Button1
             {
-                width: 242px;
+                width: 57px;
             }
-    </style>
+            .comentario
+            {
+                width: 633px;
+            }
+            </style>
 
         <div id="divPanelIzquierdo" style="width:200px; float: left">
          <fieldset class="filtro" style="width: 160px; height:80px">
             <legend>Filtro</legend>
-                        <asp:TextBox ID="textboxTitulacion" runat="server" Width="160px">Titulación</asp:TextBox>
+                        <asp:TextBox ID="textboxTitulacion" runat="server" Width="160px" placeholder="Titulación"></asp:TextBox>
                         Curso: 
                         <asp:DropDownList ID="dropdownCurso" runat="server" Width="58px">
                             <asp:ListItem Selected="True">1</asp:ListItem>
@@ -57,6 +58,11 @@
                      <fieldset class="asig" style="width: 160px; height: 440px">
             <legend>Asignaturas</legend>
                         <asp:ListBox ID="ListBox1" runat="server" Height="412px" Width="160px">
+                            <asp:ListItem>Usuario 1</asp:ListItem>
+                            <asp:ListItem>Usuario 2</asp:ListItem>
+                            <asp:ListItem>Usuario 3</asp:ListItem>
+                            <asp:ListItem>Usuario 4</asp:ListItem>
+                            <asp:ListItem>Usuario 5</asp:ListItem>
                         </asp:ListBox>
                     </fieldset>
         </div>
@@ -87,30 +93,76 @@
                                     <br />
                                     <asp:ListBox ID="listaTurnos" runat="server" Height="118px" Width="190px">
                                         <asp:ListItem Selected="True">Miércoles, de 09:00 a 11:00</asp:ListItem>
+                                        <asp:ListItem>Jueves, de 10:30 a 12:30</asp:ListItem>
+                                        <asp:ListItem>Jueves, de 16:30 a 16:30</asp:ListItem>
                                     </asp:ListBox>
                                 </div>
                     </fieldset>
                     <fieldset class="filtro" style="width: 687px; height:320px">
                         <legend>Comentarios</legend>
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <asp:TextBox ID="textbox1" runat="server" Width="508px">Nuevo comentario</asp:TextBox>
-                        <asp:Button ID="Button1" runat="server" Text="Enviar" style="z-index: 1; left: 10px; top: 0px; position: relative"/>
-                        <asp:CheckBox ID="checkbox1" runat="server" Text="Anónimo" style="z-index: 1; left: 20px; top: 0px; position: relative"/>
-                        <br />
-                    </asp:Panel>
-        </div>
+                        <div style="height: 240px; overflow: auto; border: 1px solid Gray;">
+                            <div class="comentario">
+                                <img alt="Imagen del usuario que ha comentado" src="../Images/default.jpg" 
+                                    style="height: 40px; width: 40px" class="comentario"/>
+                                <span class="comentario">
+                                    <label class="comentario">
+                                        <p class="comentario">Comentario enviado por: Ususario 1</p>
+                                        blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla
+                                        blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla
+                                        blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla
+                                        blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blablablabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla
+
+                                    </label>
+                                </span>
+                            </div>
+                             <div class="comentario">
+                                <img alt="Imagen del usuario que ha comentado" src="../Images/default.jpg" 
+                                    style="height: 40px; width: 40px" class="comentario"/>
+                                <span class="comentario">
+                                    <label class="comentario">
+                                        <p class="comentario">Comentario enviado por: Ususario 2</p>
+                                        blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla
+                                        blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla
+                                        blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla
+                                        blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blablablabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla
+
+                                    </label>
+                                </span>
+                            </div>
+                             <div class="comentario">
+                                <img alt="Imagen del usuario que ha comentado" src="../Images/default.jpg" 
+                                    style="height: 40px; width: 40px" class="comentario"/>
+                                <span class="comentario">
+                                    <label class="comentario">
+                                        <p class="comentario">Comentario enviado por: Ususario 3</p>
+                                        blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla
+                                        blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla
+                                        blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla
+                                        blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blablablabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla
+
+                                    </label>
+                                </span>
+                            </div>
+                             <div class="comentario">
+                                <img alt="Imagen del usuario que ha comentado" src="../Images/default.jpg" 
+                                    style="height: 40px; width: 40px" class="comentario"/>
+                                <span class="comentario">
+                                    <label class="comentario">
+                                        <p class="comentario">Comentario enviado por: Ususario 4</p>
+                                        blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla
+                                        blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla
+                                        blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla
+                                        blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blablablabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla
+
+                                    </label>
+                                </span>
+                            </div>
+                        </div>
+                        
+                        <div style="height: 60px; width: 658px">
+                            &nbsp;<p style="float:right; width: 82px; margin: 0px; margin-left:10px; margin-top:22px;">Anónimo <input id="Checkbox1" type="checkbox" /></p>
+                            &nbsp;<input id="Button1" type="button" value="Enviar" 
+                                style="float: right; margin-top:22px;" /><textarea 
+                                id="TextArea1" name="S1" rows="2" style="float:left; resize: none;"></textarea></div>
+       </div>
 </asp:Content>

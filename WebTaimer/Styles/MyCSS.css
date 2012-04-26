@@ -2,3 +2,50 @@
 {
     color: Black;
 }
+
+div.comentario 
+{
+     border: 1px solid Gray;
+     height: 230px;
+     margin: 0 auto;
+     background-color: #f1be87;
+     border-radius: 30px;
+     margin-bottom: 10px;
+     margin-top: 10px;
+}
+
+img.comentario 
+{
+    border: 2px ridge White;
+    float: left;
+    margin: 20px;
+    margin-top: 40px;
+    width: 40px;
+    height: 40px;
+    display:inline;
+}
+
+p.comentario 
+{
+    color: #8c7052;
+    width: 400px;
+    font-style:italic;
+   
+}
+
+span.comentario 
+{
+    float: right;
+    color: #78532a;
+    margin-left: 5px;
+    height: auto;
+    width: 520px;
+    margin-right: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+label.comentario 
+{
+    margin-left: 15px;
+}
