@@ -28,13 +28,11 @@
                     <table style="width:100%;">
                         <tr>
                             <td class="style1">
-                                <h1>Taimer</h1></td>
+                                <h1><a href="../TabInicio/ConLogin.aspx" title="Ir a la página de inicio">Taimer</a></h1></td>
                             <td>
                 <asp:Menu ID="NavigationMenu" runat="server" CssClass="menu" EnableViewState="false" IncludeStyleBlock="false" Orientation="Horizontal">
                     <Items>
-                        <asp:MenuItem NavigateUrl="~/TabInicio/ConLogin.aspx" Text="Inicio" 
-                            ToolTip="Muestra la pantalla de inicio."/>
-                        <asp:MenuItem Text="Descarga la aplicación" 
+                        <asp:MenuItem Text="Descarga" 
                             ToolTip="Descarga Taimer para Windows para crear tus horarios." 
                             Value="Descarga la aplicación" NavigateUrl="~/TabDescarga/Descarga.aspx"></asp:MenuItem>
                         <asp:MenuItem NavigateUrl="~/TabHorarios/Horarios.aspx" Text="Mis horarios" 
@@ -49,6 +47,8 @@
                         <asp:MenuItem Text="Asignaturas" Value="Asignaturas" 
                             NavigateUrl="~/TabAsignaturas/Asignaturas.aspx" 
                             ToolTip="Ver las asignaturas y comentarlas."></asp:MenuItem>
+                        <asp:MenuItem NavigateUrl="~/TabActividades/Actividades.aspx" Text="Actividades" 
+                            ToolTip="Ver tus actividades personales." Value="Actividades"/>
                         <asp:MenuItem Text="Mi perfil" Value="Mi perfil" 
                             ToolTip="Cambiar los datos de tu perfil." 
                             NavigateUrl="~/TabPerfil/VerPerfil.aspx">

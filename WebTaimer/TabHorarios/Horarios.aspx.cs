@@ -13,5 +13,11 @@ namespace WebTaimer.TabHorarios
         {
 
         }
+
+        protected void botonMasInformacion_Click(object sender, EventArgs e)
+        {
+            // Lleva a la página de asignaturas
+            Response.Redirect("~/TabAsignaturas/Asignaturas.aspx");
+        }
     }
 }

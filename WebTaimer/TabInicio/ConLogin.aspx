@@ -25,8 +25,8 @@
         }
     </style>
 
-    <div id="divPanel" style="float: left; margin-left: 0px">
-        <fieldset class="info" style="width: 200px">
+    <div id="divPanel" style="float: left; margin-left: 0px; margin-top:-31px">
+        <fieldset class="info" style="width: 200px; height:300px">
             <legend>Información</legend>
 
             <div id="divCajaAvatarNombre" style="width:200px; height:48px">
@@ -62,7 +62,8 @@
                     ImageUrl="~/Images/calendario.png" />
             
                 Tienes 2 actividades hoy:<br />
-                <asp:BulletedList ID="listaActPer" runat="server" style="width:200px; position:relative; left:-25px">
+                <asp:BulletedList ID="listaActPer" runat="server" 
+                    style="width:200px; position:relative; left:-25px; top: 0px;">
                     <asp:ListItem>Meter un huevo al microondas</asp:ListItem>
                     <asp:ListItem>Hackear la web de la UA</asp:ListItem>
                 </asp:BulletedList>
@@ -101,12 +102,10 @@
     Height="100px" Text="Mensajes" Width="320px" onclick="botonMensajes_Click" style="margin-left: 5px; margin-top: 5px"/>
 
     
-    <asp:Button ID="botonActividadesPersonales" runat="server" Font-Size="XX-Large"
-    Height="100px" Text="Actividades" Width="320px" 
-        onclick="botonHorariosPublicos_Click" style="margin-top: 5px"/>
+    <asp:Button ID="botonActividadesPersonales" runat="server" Font-Size="XX-Large" Height="100px" Text="Actividades" Width="320px" style="margin-top: 5px"/>
 
     <asp:Button ID="botonPerfil" runat="server" Font-Size="XX-Large"
-    Height="100px" Text="Mi perfil" Width="320px" onclick="botonMensajes_Click" 
+    Height="100px" Text="Mi perfil" Width="320px" 
                 style="margin-left: 5px; margin-top: 5px"/>
 
     

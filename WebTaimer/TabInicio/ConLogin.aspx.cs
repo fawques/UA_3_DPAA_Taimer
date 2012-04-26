@@ -28,7 +28,7 @@ namespace WebTaimer.TabInicio
 
         protected void botonMatricula_Click(object sender, EventArgs e)
         {
-            // ¿Matrícula? Lleva a la página de asignaturas
+            // Lleva a la página de asignaturas
             Response.Redirect("~/TabAsignaturas/Asignaturas.aspx");
         }
 
@@ -36,6 +36,18 @@ namespace WebTaimer.TabInicio
         {
             // Lleva a la página de mensajería
             Response.Redirect("~/TabMensajes/Mensajes.aspx");
+        }
+
+        protected void botonActividadesPersonales_Click(object sender, EventArgs e)
+        {
+            // Lleva a la página de ver actividades personales
+            Response.Redirect("~/TabActividades/Actividades.aspx");
+        }
+
+        protected void botonPerfil_Click(object sender, EventArgs e)
+        {
+            // Lleva a la página de ver horarios públicos
+            Response.Redirect("~/TabPerfil/VerPerfil.aspx");
         }
     }
 }

@@ -59,6 +59,7 @@
     <Content Include="Images\default.jpg" />
     <Content Include="Images\mensaje.gif" />
     <Content Include="Styles\MyCSS.css" />
+    <Content Include="TabActividades\Actividades.aspx" />
     <Content Include="TabDescarga\Descarga.aspx" />
     <Content Include="TabHorariosPublicos\HorariosPublicos.aspx" />
     <Content Include="TabHorarios\Horarios.aspx" />
@@ -116,6 +117,13 @@
     </Compile>
     <Compile Include="NoLogin.Master.designer.cs">
       <DependentUpon>NoLogin.Master</DependentUpon>
+    </Compile>
+    <Compile Include="TabActividades\Actividades.aspx.cs">
+      <DependentUpon>Actividades.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TabActividades\Actividades.aspx.designer.cs">
+      <DependentUpon>Actividades.aspx</DependentUpon>
     </Compile>
     <Compile Include="TabDescarga\Descarga.aspx.cs">
       <DependentUpon>Descarga.aspx</DependentUpon>

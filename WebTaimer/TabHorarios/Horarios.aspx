@@ -91,8 +91,31 @@
     <div id="divPanelDerecho" style="float: left; margin-left: 5px">
         <fieldset class="fieldInfoAsignatura" style="width: 122px; height: 543px">
             <legend>Información</legend>
+            <asp:Label ID="labelNombreAsignatura" runat="server" Font-Bold="True" 
+                Font-Size="Medium" style="text-align: center" Text="[ Nom. Asignatura ]"></asp:Label>
+            <br />
+            <br />
+            Ubicación:<br />
+            <asp:Label ID="labelUbicacion" runat="server" style="text-align: right" 
+                Text="[ Ubicación ]" Font-Bold="True"></asp:Label>
+            <br />
+            <br />
+            Hora de inicio:<br />
+            <asp:Label ID="labelHoraInicio" runat="server" Text="[ Hora Ini. ]" 
+                Font-Bold="True"></asp:Label>
+            <br />
+            <br />
+            Hora de fin:<br />
+            <asp:Label ID="labelHoraFin" runat="server" Text="[ Hora Fin ]" 
+                Font-Bold="True"></asp:Label>
+            <br />
+            <br />
+            Coordinador:<br />
+            <asp:Label ID="labelCoordinador" runat="server" Text="[ Nom. Coord ]" 
+                Font-Bold="True"></asp:Label>
+            <br />
+            <br />
+            <asp:Button ID="botonMasInformacion" runat="server" align="center" Text="Mas información" Width="120px" />
     </div>
-
-
 
     </asp:Content>
