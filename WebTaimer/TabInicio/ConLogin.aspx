@@ -64,8 +64,8 @@
                 Tienes 2 actividades hoy:<br />
                 <asp:BulletedList ID="listaActPer" runat="server" 
                     style="width:200px; position:relative; left:-25px; top: 0px;">
-                    <asp:ListItem>Meter un huevo al microondas</asp:ListItem>
-                    <asp:ListItem>Hackear la web de la UA</asp:ListItem>
+                    <asp:ListItem>Ir al médico</asp:ListItem>
+                    <asp:ListItem>Revisión del coche</asp:ListItem>
                 </asp:BulletedList>
              </div>
 
