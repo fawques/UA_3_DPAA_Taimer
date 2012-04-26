@@ -13,7 +13,7 @@
             title="Cambiar contraseña">haz clic aquí</a>.
     </p>
     <p>
-        Si deseas cambiar tu dirección de correo electrónico,  <a href="../Account/ChangePassword.aspx"
+        Si deseas cambiar tu dirección de correo electrónico,  <a href="../Account/ChangeEmail.aspx"
             title="Cambiar contraseña">haz clic aquí</a>.
     </p>
 
