@@ -31,7 +31,7 @@ p
 {
     margin-bottom: 10px;
     line-height: 1.6em;
-    width: 920px;
+    width: 220px;
 }
 
 
@@ -204,6 +204,7 @@ fieldset
 fieldset p 
 {
     margin: 2px 12px 10px 10px;
+    height: 25px;
 }
 
 fieldset.login label, fieldset.register label, fieldset.changePassword label
