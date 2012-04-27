@@ -42,42 +42,66 @@
    <style>
         #divZonaHorario
         {
-            width:610px;
-            background-color:Aqua;
+            width:758px;
+            background-color:Maroon;
         }
+        
+        div.columnas 
+        {
+           color: White;
+           margin: 5px;
+           background-color: White;
+           width: 89px;
+           float: left;
+           height: 416px;
+       }
+       
+       .diasSem 
+       {
+           color: White; 
+           font-weight: bold; 
+           width: 89px;
+           text-align: center;
+           display: inline;
+       }
     </style>
 
-    <div id="divZonaHorario" style="float: left; margin-left: 5px">
+    <div id="divZonaHorario" style="float: left; margin-left: 5px; height: 461px;">
+        <div style="height: 460px; color: Maroon;">
 
-        <asp:Panel ID="panelHorario" runat="server" Height="600px" 
-            ScrollBars="Vertical">
+                <div style="background-color: Maroon; height: 23px; padding-left: 89px;">
+                    <p class="diasSem" style="margin-left: 0px">Lunes</p>
+                    <p class="diasSem" style="margin-left: 60px">Martes</p>
+                    <p class="diasSem" style="margin-left: 50px">Miércoles</p>
+                    <p class="diasSem" style="margin-left: 50px">Jueves</p>
+                    <p class="diasSem" style="margin-left: 55px">Viernes</p>
+                    <p class="diasSem" style="margin-left: 50px">Sábado</p>
+                    <p class="diasSem" style="margin-left: 50px">Domingo</p>
 
-            <div style="float: left; margin-left:0px; width:31px; height:1440px; border: 1px solid black; text-align: center;"
-                ; background-color:Orange>
-                00:00</div>
+                   
 
-            <div style="float: left; margin-left:0px; width:78px; height:1440px; border: 1px solid black"; background-color:Orange">
-            </div>
 
-            <div style="float: left; margin-left:0px; width:78px; height:1440px; border: 1px solid black"; background-color:Orange">
-            </div>
+                </div>
+                <div style="width: 55px; height: 437px; background-color: Maroon; float: left; clear:both; margin-right: 5px;">
+                </div>
+                
+                <div class="columnas">
+                </div>
+                <div class="columnas">
+                </div>
+                <div class="columnas">
+                </div>
+                <div class="columnas">
+                </div>
+                <div class="columnas">
+                </div>
+                <div class="columnas">
+                </div>
+                <div class="columnas">
+                </div>
 
-            <div style="float: left; margin-left:0px; width:78px; height:1440px; border: 1px solid black"; background-color:Orange">
-            </div>
-
-            <div style="float: left; margin-left:0px; width:78px; height:1440px; border: 1px solid black"; background-color:Orange">
-            </div>
-
-            <div style="float: left; margin-left:0px; width:78px; height:1440px; border: 1px solid black"; background-color:Orange">
-            </div>
-
-            <div style="float: left; margin-left:0px; width:78px; height:1440px; border: 1px solid black"; background-color:Orange">
-            </div>
-
-            <div style="float: left; margin-left:0px; width:78px; height:1440px; border: 1px solid black"; background-color:Orange">
-            </div>
-
-        </asp:Panel>
+                
+        </div>
     </div>
 
 
@@ -91,36 +115,5 @@
             background-color:Red;
         }
     </style>
-
-    <div id="divPanelDerecho" style="float: left; margin-left: 5px">
-        <fieldset class="fieldInfoAsignatura" style="width: 122px; height: 543px">
-            <legend>Información</legend>
-            <asp:Label ID="labelNombreAsignatura" runat="server" Font-Bold="True" 
-                Font-Size="Medium" style="text-align: center" Text="[ Nom. Asignatura ]"></asp:Label>
-            <br />
-            <br />
-            Ubicación:<br />
-            <asp:Label ID="labelUbicacion" runat="server" style="text-align: right" 
-                Text="[ Ubicación ]" Font-Bold="True"></asp:Label>
-            <br />
-            <br />
-            Hora de inicio:<br />
-            <asp:Label ID="labelHoraInicio" runat="server" Text="[ Hora Ini. ]" 
-                Font-Bold="True"></asp:Label>
-            <br />
-            <br />
-            Hora de fin:<br />
-            <asp:Label ID="labelHoraFin" runat="server" Text="[ Hora Fin ]" 
-                Font-Bold="True"></asp:Label>
-            <br />
-            <br />
-            Coordinador:<br />
-            <asp:Label ID="labelCoordinador" runat="server" Text="[ Nom. Coord ]" 
-                Font-Bold="True"></asp:Label>
-            <br />
-            <br />
-            <asp:Button ID="botonMasInformacion" runat="server" align="center" 
-                Text="Más información" Width="120px" />
-    </div>
 
     </asp:Content>
