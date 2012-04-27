@@ -8,7 +8,9 @@
         Descarga Taimer para Windows
     </h2>
     <p>
-        Si quieres crear tus propios horarios, necesitas la aplicación Taimer para Windows.</p>
+        Si quieres crear tus propios horarios y actividades, necesitas la aplicación Taimer para Windows.</p>
+    <p>
+        Es gratuita, sencilla e intuitiva.</p>
 <p>
         Descárgala <a href="" title="Descargar Taimer para Windows">haciendo clic aquí</a>.
     </p>

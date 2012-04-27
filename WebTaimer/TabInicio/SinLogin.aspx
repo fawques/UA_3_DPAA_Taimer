@@ -7,17 +7,17 @@
     <h2>
         Bienvenido a Taimer.</h2>
     <p>
-        Taimer te permite crear y publicar tus horarios fácilmente y sin esfuerzo.<br />
+        Con Taimer podrás crear y publicar tus horarios fácilmente y sin esfuerzo.<br />
         <br />
-        (Pequeña explicación...)<br />
-        <br />
-        <br />
-        <br />
-        <br />
+        Además, también te permite enviar mensajes entre sus usuarios, ver sus horarios, 
+        informarte sobre las asignaturas y comentarlas, revisar tus actividades 
+        personales, y mucho más.<br />
     </p>
     <p>
         Si aún no tienes una cuenta, no esperes más. <a href="../Account/Register.aspx" title="Registrarse">Regístrate</a>.
     </p>
+    <p>
+        &nbsp;</p>
     <p>
         ¿Olvidaste la contraseña? <a href="ForgotPassword.aspx"
             title="Recuperar cuenta">Haz clic aquí</a> para recuperar tu cuenta.
