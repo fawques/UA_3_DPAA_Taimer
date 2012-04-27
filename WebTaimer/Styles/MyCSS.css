@@ -8,7 +8,7 @@ div.comentario
      border: 1px solid Gray;
      height: 230px;
      margin: 0 auto;
-     background-color: #f1be87;
+     background-color: #ead3ab;
      border-radius: 30px;
      margin-bottom: 10px;
      margin-top: 10px;
@@ -53,11 +53,11 @@ label.comentario
 div.mensaje1 
 {
      float: right;
-     border: 5px double Green;
+     border: 5px double #8be0a7;
      width: 500px;
      height: 160px;
      margin: 0 auto;
-     background-color: #cff3d6;
+     background-color: #e5f7ea;
      border-radius: 30px;
      margin: 10px;
 }
@@ -76,11 +76,11 @@ div.mensaje
 div.mensaje2
 {
      float: left;
-     border: 5px double Blue;
+     border: 5px double #8bd7e0;
      width: 500px;
      height: 160px;
      margin: 0 auto;
-     background-color: #cfe9f3;
+     background-color: #e5f4f7;
      border-radius: 30px;
      margin: 10px;
 }

@@ -47,7 +47,7 @@
         
         div.columnas 
         {
-           color: White;
+           color: #78532a;
            margin: 5px;
            background-color: White;
            width: 89px;
@@ -100,19 +100,31 @@
                     <p class="horas"> 15:00</p>
                     <p class="horas"> 16:00</p>
                     <p class="horas"> 17:00</p>
+                    <p class="horas"> 18:00</p>
                     <p class="horas"> 19:00</p>
                     <p class="horas"> 20:00</p>
                     <p class="horas"> 21:00</p>
-                    <p class="horas"> 22:00</p>
                 </div>
                 
                 <div class="columnas">
                 </div>
                 <div class="columnas">
+                    <div style="height: 40px; background-color: #f1be87; text-align: center;">
+                        <br />
+                        <label>Asignatura</label>
+                    </div>
                 </div>
                 <div class="columnas">
+                    <div style="height: 40px;  background-color: #f1be87; text-align: center; margin-top: 167px;">
+                        <br />
+                        <label>Asignatura</label>
+                    </div>
                 </div>
                 <div class="columnas">
+                    <div style="height: 40px;  background-color: #f1be87; text-align: center; margin-top: 85px;">
+                        <br />
+                        <label>Asignatura</label>
+                    </div>
                 </div>
                 <div class="columnas">
                 </div>
@@ -139,11 +151,13 @@
         label.detalles 
         {
             font-weight: bold;
+            font-size: 13px;
         }
         p.detalles 
         {
             width:600px;
             margin: 0px;
+            display: inline;
         }
         
     </style>
@@ -151,26 +165,35 @@
     <fieldset class="fieldHorarios" 
         style=" height: 110px; float:right; width: 535px;">
             <legend>Detalles</legend>
-        <div style="width: 742px; height: 100px; overflow: auto; display: block; margin-top: -15px;">
-            <ul style="width: 600px; margin: 0px; float: left;">
+        <div style="width: 742px; height: 100px; display: block; margin-top: -15px;">
+            <ul style="width: 730px; float: left; margin-top: 20px; margin-left: -30px; margin-right: 0px; margin-bottom: 0px;">
                 <li>
                     <label class="detalles">Nombre:</label>
-                    <p class="detalles">  Asignatura 1</p>
+                    <p class="detalles">  Asignatura 1&nbsp;&nbsp;&nbsp;&nbsp; </p>
                 </li>
                 <li>
                     <label class="detalles">Descripción:</label>
-                    <p class="detalles">  bla bla bla blab bla bla </p>
+                    <p class="detalles">  bla bla bla blab bla bla&nbsp; &nbsp;&nbsp; </p>
                 </li>
                 <li>
                     <label class="detalles">Ubicación:</label>
-                    <p class="detalles">  universidad de alicante</p>
+                    <p class="detalles">  universidad de alicante&nbsp;&nbsp;&nbsp; </p>
                 </li>
                 <li>
                     <label class="detalles">Turno</label>
                     <p class="detalles">  HH:MM - HH:MM </p>
                 </li>
-                <li>
-                    <input id="comentar" type="button" value="Comentar" style= margin-right: 50px; position:static;"/>
+                <li style="float: right;">
+                    
+                    
+                    
+                    
+                    <asp:Button ID="ComentarBoton" runat="server" style= "margin-right: 50px; margin-top: 20px; position:static;"
+                        Text="Comentar" />
+                    
+                    
+                    
+                    
                 </li>
                 
             </ul>
