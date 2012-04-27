@@ -27,6 +27,7 @@
                                      CssClass="failureNotification" ErrorMessage="El nombre de usuario es obligatorio." ToolTip="El nombre de usuario es obligatorio." 
                                      ValidationGroup="RegisterUserValidationGroup">*</asp:RequiredFieldValidator>
                             </p>
+                            <br />
                             <p style="width: 333px">
                                 <asp:Label ID="TitulacionLabel" runat="server" AssociatedControlID="Titulacion">Titulación:</asp:Label>
                                 <asp:TextBox ID="Titulacion" runat="server" CssClass="textEntry"></asp:TextBox>
@@ -34,6 +35,7 @@
                                      CssClass="failureNotification" ErrorMessage="La titulación es obligatoria." ToolTip="La titulación es obligatoria." 
                                      ValidationGroup="RegisterUserValidationGroup">*</asp:RequiredFieldValidator>
                             </p>
+                            <br />
                             <p style="width: 333px">
                                 <asp:Label ID="CursoLabel" runat="server" AssociatedControlID="Curso">Curso:</asp:Label>
                                 <asp:DropDownList ID="Curso" runat="server" CssClass="textEntry" style="width: 320px">

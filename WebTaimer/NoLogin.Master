@@ -1,5 +1,6 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="NoLogin.master.cs" Inherits="WebTaimer.NoLogin" %>
 
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head id="Head1" runat="server">
@@ -14,6 +15,14 @@
         {
             text-align: center;
         }
+        .style1
+        {
+            width: 113px;
+        }
+        .style2
+        {
+            width: 373px;
+        }
     </style>
 </head>
 <body>
@@ -21,78 +30,38 @@
     <div class="page">
         <div class="header">
             <div class="title">
-                <h1>
-                    Taimer
-                </h1>
-            </div>
-            <div class="loginDisplay">
-                <asp:Login ID="Login1" runat="server" Height="111px" align="right">
-                    <LayoutTemplate>
-                        <table cellpadding="1" cellspacing="0" style="border-collapse:collapse; color: Maroon;">
-                            <tr>
-                                <td>
-                                    <table cellpadding="0" style="height:111px;">
-                                        <tr>
-                                            <td align="right">
-                                                <asp:Label ID="UserNameLabel" runat="server" AssociatedControlID="UserName" 
-                                                    Font-Bold="False">Nombre de usuario:</asp:Label>
-                                            </td>
-                                            <td>
-                                                <asp:TextBox ID="UserName" runat="server"></asp:TextBox>
-                                                <asp:RequiredFieldValidator ID="UserNameRequired" runat="server" 
-                                                    ControlToValidate="UserName" 
-                                                    ErrorMessage="El nombre de usuario es obligatorio." 
-                                                    ToolTip="El nombre de usuario es obligatorio." ValidationGroup="ctl00$Login1">*</asp:RequiredFieldValidator>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td align="right">
-                                                <asp:Label ID="PasswordLabel" runat="server" AssociatedControlID="Password">Contraseña:</asp:Label>
-                                            </td>
-                                            <td>
-                                                <asp:TextBox ID="Password" runat="server" TextMode="Password"></asp:TextBox>
-                                                <asp:RequiredFieldValidator ID="PasswordRequired" runat="server" 
-                                                    ControlToValidate="Password" ErrorMessage="La contraseña es obligatoria." 
-                                                    ToolTip="La contraseña es obligatoria." ValidationGroup="ctl00$Login1">*</asp:RequiredFieldValidator>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="2">
-                                                <asp:CheckBox ID="RememberMe" runat="server" 
-                                                    Text="Recordármelo la próxima vez." />
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td align="center" colspan="2" style="color:Red;">
-                                                <asp:Literal ID="FailureText" runat="server" EnableViewState="False"></asp:Literal>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td align="right" colspan="2">
-                                                <asp:Button ID="LoginButton" runat="server" CommandName="Login" 
-                                                    Text="Inicio de sesión" ValidationGroup="ctl00$Login1" />
-                                            </td>
-                                        </tr>
-                                    </table>
-                                </td>
-                            </tr>
-                        </table>
-                    </LayoutTemplate>
-                </asp:Login>
-            </div>
-            <div class="clear hideSkiplink">
+                    <table style="width:100%;">
+                        <tr>
+                            <td class="style1">
+                                <h1><a href="../TabInicio/SinLogin.aspx" title="Ir a la página de inicio" style="text-decoration: none; color: Maroon;">Taimer</a></h1></td>
+                            <td class="style2">
                 <asp:Menu ID="NavigationMenu" runat="server" CssClass="menu" EnableViewState="false" IncludeStyleBlock="false" Orientation="Horizontal">
                     <Items>
-                        <asp:MenuItem NavigateUrl="~/TabInicio/SinLogin.aspx" Text="Inicio" 
-                            ToolTip="Muestra la pantalla de inicio."/>
-                        <asp:MenuItem Text="Descarga la aplicación" 
+                        <asp:MenuItem Text="Descarga" 
                             ToolTip="Descarga Taimer para Windows para crear tus horarios." 
-                            Value="Descarga la aplicación" NavigateUrl="~/TabDescarga/DescargaSin.aspx"></asp:MenuItem>
+                            Value="Descarga la aplicación" NavigateUrl="~/TabDescarga/Descarga.aspx"></asp:MenuItem>
+                        <asp:MenuItem Text="Horarios públicos" Value="Horarios públicos" 
+                            NavigateUrl="~/TabHorariosPublicos/HorariosPublicos.aspx" 
+                            
+                            ToolTip="Aquí puedes ver los horarios que otros usuarios hayan hecho públicos."></asp:MenuItem>
                         <asp:MenuItem Text="Asignaturas" Value="Asignaturas" 
-                            NavigateUrl="~/TabAsignaturas/AsignaturasSin.aspx" 
+                            NavigateUrl="~/TabAsignaturas/Asignaturas.aspx" 
                             ToolTip="Ver las asignaturas y comentarlas."></asp:MenuItem>
                     </Items>
                 </asp:Menu>
+                            </td>
+                            <td>
+                        <asp:TextBox ID="textboxUsuario" runat="server" Width="120px" placeholder="Nombre de usuario"></asp:TextBox>
+                        <asp:TextBox ID="textboxPassword" runat="server" Width="120px" placeholder="Contraseña" style="margin-left:5px"></asp:TextBox>
+                                <asp:Button ID="botonIniciarSesion" runat="server" Text="Iniciar sesión" Width="90px" style="margin-left:5px" />
+                                <asp:CheckBox ID="checkboxRecordar" runat="server" Text="Recordar" style="margin-left:5px" />
+                            </td>
+                        </tr>
+                    </table>
+            </div>
+            <div class="loginDisplay">
+            </div>
+            <div class="clear hideSkiplink">
             </div>
         </div>
         <div class="main">
@@ -101,9 +70,9 @@
         <div class="clear">
         </div>
     </div>
-    <div class="footer" align="right">
-        <a href="../About.aspx"
-            title="Sobre nosotros">Sobre nosotros</a></div>
+    <div class="footer" style="text-align: right; width: 960px; margin: 0 auto;">
+        <a href="../About.aspx" title="Sobre nosotros" style="margin-right: 10px">Sobre nosotros</a>
+    </div>
     </form>
 </body>
 </html>
