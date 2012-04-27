@@ -25,6 +25,7 @@
                              CssClass="failureNotification" ErrorMessage="La contraseña es obligatoria." ToolTip="La contraseña anterior es obligatoria." 
                              ValidationGroup="ChangeUserPasswordValidationGroup">*</asp:RequiredFieldValidator>
                     </p>
+                    <br />
                     <p>
                         <asp:Label ID="NewPasswordLabel" runat="server" AssociatedControlID="NewPassword">Nuevo e-mail:</asp:Label>
                         <asp:TextBox ID="NewPassword" runat="server" CssClass="passwordEntry" TextMode="Password"></asp:TextBox>
@@ -32,6 +33,7 @@
                              CssClass="failureNotification" ErrorMessage="La nueva contraseña es obligatoria." ToolTip="La nueva contraseña es obligatoria." 
                              ValidationGroup="ChangeUserPasswordValidationGroup">*</asp:RequiredFieldValidator>
                     </p>
+                    <br />
                     <p>
                         <asp:Label ID="ConfirmNewPasswordLabel" runat="server" AssociatedControlID="ConfirmNewPassword">Confirmar el nuevo e-mail:</asp:Label>
                         <asp:TextBox ID="ConfirmNewPassword" runat="server" CssClass="passwordEntry" TextMode="Password"></asp:TextBox>
@@ -44,7 +46,7 @@
                     </p>
                 </fieldset>
                 <p class="submitButton">
-                    <asp:Button ID="CancelPushButton" runat="server" CausesValidation="False" CommandName="Cancel" Text="Cancelar"/>
+                    <asp:Button ID="CancelPushButton" runat="server" CausesValidation="False" CommandName="Cancel" Text="Cancelar" style="margin-right:5px"/>
                     <asp:Button ID="ChangePasswordPushButton" runat="server" CommandName="ChangePassword" Text="Cambiar e-mail" 
                          ValidationGroup="ChangeUserPasswordValidationGroup"/>
                 </p>
