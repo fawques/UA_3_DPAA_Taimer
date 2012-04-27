@@ -54,7 +54,7 @@ CodeBehind="Mensajes.aspx.cs" Inherits="WebTaimer.TabMensajes.Mensajes" %>
             <legend>Usuarios</legend>
 
                 <fieldset class="filtro" style="width: 132px; height: 60px; margin: 0 auto; margin-bottom: 20px;">
-                <legend>Busqueda</legend>
+                <legend>Búsqueda</legend>
                 <asp:TextBox ID="textboxTitulacion" runat="server" Width="125px" placeholder="Buscar..."></asp:TextBox>
                 </fieldset>
 

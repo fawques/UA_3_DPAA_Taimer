@@ -14,17 +14,16 @@
         #divPanelIzquierdo
         {
             width:150px;
-            height:600px;
-            background-color:Lime;
+            height:632px;
         }
     </style>
 
     <div id="divPanelIzquierdo" style="float: left; margin-left: 0px">
     
-    <fieldset class="fieldHorarios" style="width: 122px; height: 523px">
+    <fieldset class="fieldHorarios" style="width: 122px; height: 452px">
             <legend>Horarios</legend>
 
-            <asp:ListBox ID="listaHorarios" runat="server" Height="493px" style="width:120px">
+            <asp:ListBox ID="listaHorarios" runat="server" Height="420px" style="width:120px">
                 <asp:ListItem>Horario 1</asp:ListItem>
                 <asp:ListItem>Horario 2</asp:ListItem>
                 <asp:ListItem>Horario 3</asp:ListItem>
@@ -42,7 +41,7 @@
    <style>
         #divZonaHorario
         {
-            width:758px;
+            width:764px;
             background-color:Maroon;
         }
         
@@ -53,7 +52,7 @@
            background-color: White;
            width: 89px;
            float: left;
-           height: 416px;
+           height: 500px;
        }
        
        .diasSem 
@@ -64,10 +63,19 @@
            text-align: center;
            display: inline;
        }
+       
+       p.horas 
+       {
+           color: White;
+           width: 70px;
+           text-align: center;
+           margin: 0px;
+           margin-bottom:20px;
+       }
     </style>
 
-    <div id="divZonaHorario" style="float: left; margin-left: 5px; height: 461px;">
-        <div style="height: 460px; color: Maroon;">
+    <div id="divZonaHorario" style="float: right; height: 460px; overflow: auto; width: 768px; margin: 0px; margin-top: 29px; border: 1px solid Gray; border-left: none; ">
+        <div style="height: 460px; color: Maroon; width: 760px; margin-left: -10px; margin-right:-10px;">
 
                 <div style="background-color: Maroon; height: 23px; padding-left: 89px;">
                     <p class="diasSem" style="margin-left: 0px">Lunes</p>
@@ -83,6 +91,19 @@
 
                 </div>
                 <div style="width: 55px; height: 437px; background-color: Maroon; float: left; clear:both; margin-right: 5px;">
+                    <p class="horas"> 9:00</p>
+                    <p class="horas"> 10:00</p>
+                    <p class="horas"> 11:00</p>
+                    <p class="horas"> 12:00</p>
+                    <p class="horas"> 13:00</p>
+                    <p class="horas"> 14:00</p>
+                    <p class="horas"> 15:00</p>
+                    <p class="horas"> 16:00</p>
+                    <p class="horas"> 17:00</p>
+                    <p class="horas"> 19:00</p>
+                    <p class="horas"> 20:00</p>
+                    <p class="horas"> 21:00</p>
+                    <p class="horas"> 22:00</p>
                 </div>
                 
                 <div class="columnas">
@@ -106,14 +127,54 @@
 
 
 
-    <!-- PANEL DERECHO (información de asignatura) ------------>
+    <!-- PANEL ABAJO (información de asignatura) ------------>
 
     <style>
-        #divPanelDerecho
+        li 
         {
-            width:150px;
-            background-color:Red;
+            list-style-type:none;
+            display: inline;
+
         }
+        label.detalles 
+        {
+            font-weight: bold;
+        }
+        p.detalles 
+        {
+            width:600px;
+            margin: 0px;
+        }
+        
     </style>
+
+    <fieldset class="fieldHorarios" 
+        style=" height: 110px; float:right; width: 535px;">
+            <legend>Detalles</legend>
+        <div style="width: 742px; height: 100px; overflow: auto; display: block; margin-top: -15px;">
+            <ul style="width: 600px; margin: 0px; float: left;">
+                <li>
+                    <label class="detalles">Nombre:</label>
+                    <p class="detalles">  Asignatura 1</p>
+                </li>
+                <li>
+                    <label class="detalles">Descripción:</label>
+                    <p class="detalles">  bla bla bla blab bla bla </p>
+                </li>
+                <li>
+                    <label class="detalles">Ubicación:</label>
+                    <p class="detalles">  universidad de alicante</p>
+                </li>
+                <li>
+                    <label class="detalles">Turno</label>
+                    <p class="detalles">  HH:MM - HH:MM </p>
+                </li>
+                <li>
+                    <input id="comentar" type="button" value="Comentar" style= margin-right: 50px; position:static;"/>
+                </li>
+                
+            </ul>
+        </div>
+    </fieldset>
 
     </asp:Content>
