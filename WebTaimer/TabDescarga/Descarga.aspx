@@ -12,6 +12,6 @@
     <p>
         Es gratuita, sencilla e intuitiva.</p>
 <p>
-        Descárgala <a href="" title="Descargar Taimer para Windows">haciendo clic aquí</a>.
+        Descárgala <a href="https://github.com/fawques/ElTaimerEsElMejorProyectoDelMundoMundial/zipball/master" title="Descargar Taimer para Windows">haciendo clic aquí</a>.
     </p>
 </asp:Content>
