@@ -16,11 +16,14 @@ namespace WebTaimer.TabInicio
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            //Session.Add("prueba", "aaaaa");
             if (Session.Count == 0)
             {
                 Response.Redirect("SinLogin.aspx");
                 Response.Write("No estás logeado");
+            }
+            else
+            {
+                lbBienvenida.Text = "Bienvenido, " + Session["usuario"];
             }
         }
 

@@ -14,7 +14,7 @@
 </asp:Content>
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
     <h2 style="margin-bottom: 40px;">
-        BIENVENIDO, [NOMBRE USUARIO]
+        <asp:Label ID="lbBienvenida" runat="server" Text="Label"></asp:Label>
     </h2>
 
     <!-- CAPA INFORMACIÓN -------------------------------------------------------------------------------------->
