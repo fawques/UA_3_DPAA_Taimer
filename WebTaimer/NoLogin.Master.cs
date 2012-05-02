@@ -13,5 +13,11 @@ namespace WebTaimer
         {
 
         }
+
+        protected void botonIniciarSesion_Click(object sender, EventArgs e)
+        {
+            Session.Add("usuario",textboxUsuario.Text);
+            Response.Redirect("~/TabInicio/ConLogin.aspx");
+        }
     }
 }

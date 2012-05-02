@@ -9,9 +9,19 @@ namespace WebTaimer.TabInicio
 {
     public partial class ConLogin : System.Web.UI.Page
     {
+        protected void Page_Init(object sender, EventArgs e)
+        {
+            
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            //Session.Add("prueba", "aaaaa");
+            if (Session.Count == 0)
+            {
+                Response.Redirect("SinLogin.aspx");
+                Response.Write("No estás logeado");
+            }
         }
 
         protected void botonHorariosPropios_Click(object sender, EventArgs e)
