@@ -61,14 +61,14 @@ namespace CAD
         /// <param name="curso"></param>
         /// <param name="tit"></param>
         /// <param name="codH"></param>
-        public void CrearUserAll(string dni, string nombre, string email, string password, int curso, string codTit,int codH)
+        public void CrearUserAll(string dni, string nombre, string email, string password, int curso, string codTit,int codH, string avat, string frase)
         {
             CADTitulacion tit = new CADTitulacion();
             if (!tit.Exists(codTit))
             {
                 tit.CrearTitulacion(codTit);
-            }        
-            string comando = "INSERT INTO [User] VALUES('" + dni + "', '" + nombre + "', '" + email + "', '" + password + "','"+ curso+"','"+ codTit +"','"+codH+"')";
+            }
+            string comando = "INSERT INTO [User] VALUES('" + dni + "', '" + nombre + "', '" + email + "', '" + password + "','" + curso + "','" + codTit + "','" + codH + "','" + avat + "','" + frase + "')";
             SqlConnection c = null;
             SqlCommand comandoTBD;
 

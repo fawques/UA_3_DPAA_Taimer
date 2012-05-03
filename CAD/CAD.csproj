@@ -71,6 +71,7 @@
     <Compile Include="CADAdmin.cs" />
     <Compile Include="CADComentario.cs" />
     <Compile Include="CADHorario.cs" />
+    <Compile Include="CADMensajes.cs" />
     <Compile Include="CADTitulacion.cs" />
     <Compile Include="CADTurno.cs" />
     <Compile Include="CADUser.cs" />
