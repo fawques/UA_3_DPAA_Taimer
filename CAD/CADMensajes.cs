@@ -78,8 +78,22 @@ namespace CAD {
             }
         }
 
-        public int getNumNoRead(int id) {
-            return 0;
+        public int getNumNotRead(int id) {
+
+            SqlConnection con = null;
+            string comando = "SELECT * FROM [Mensajes] WHERE id ='"+id +"' AND leido='1'";
+            try {
+                con = new SqlConnection(conexionTBD);
+                SqlCommand sqlCmnd = new SqlCommand(comando, con);
+
+                return sqlCmnd.ExecuteNonQuery();
+
+            } catch (SqlException) {
+                // Captura la condición general y la reenvía.
+                throw;
+            } finally {
+                if (con != null) con.Close(); // Se asegura de cerrar la conexión.
+            }
         }
     }
 }

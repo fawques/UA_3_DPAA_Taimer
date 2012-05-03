@@ -29,14 +29,14 @@ namespace CAD {
         /// <param name="codigo"></param>
         /// <param name="profesor"></param>
         /// <param name="titulacion"></param>
-        public void CrearActivida_aAll(string nombre,string desc,int codigo,string profesor,string titulacion){
+        public void CrearActivida_aAll(string nombre,string desc,int codigo,string profesor,string titulacion,int puntuacion, int votos){
 
              CADTitulacion tit = new CADTitulacion();
              if (!tit.Exists(titulacion)) {
                  tit.CrearTitulacion(titulacion);
-             }    
+             }
 
-            string comando = "INSERT INTO [Actividad_a](profesor,codigo,titulacion) VALUES('" + profesor + "', '" + codigo +  "', '" + titulacion + "')";
+             string comando = "INSERT INTO [Actividad_a](profesor,codigo,titulacion,puntuacionTotal, nVotantes) VALUES('" + profesor + "', '" + codigo + "', '" + titulacion + "', '" + puntuacion + "', '" + votos + "')";
             SqlConnection c = null;
             SqlCommand comandoTBD;
             try

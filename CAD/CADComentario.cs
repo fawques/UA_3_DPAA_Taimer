@@ -27,9 +27,9 @@ namespace CAD
         /// <param name="text"></param>
         /// <param name="codActividad"></param>
         /// <param name="codUser"></param>
-        public void CrearCommentBasic(int id, string text, int codActividad, string codUser)
+        public void CrearCommentBasic(string text, int codActividad, string codUser)
         {
-            string comando = "INSERT INTO [Comentario](id,texto,actCod,actUser,usuario) VALUES('" + id + "', '" + text + "', '" + codActividad + "', '" + codUser + "', '" + codUser+ "')";
+            string comando = "INSERT INTO [Comentario](texto,actividad,usuario) VALUES('" + text + "', '" + codActividad + "', '" + codUser + "')";
             SqlConnection c=null;
             SqlCommand comandoTBD;
             
