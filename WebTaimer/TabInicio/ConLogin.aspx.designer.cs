@@ -13,6 +13,15 @@ namespace WebTaimer.TabInicio {
     public partial class ConLogin {
         
         /// <summary>
+        /// Control lbBienvenida.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbBienvenida;
+        
+        /// <summary>
         /// Control imagenAvatar.
         /// </summary>
         /// <remarks>

@@ -276,6 +276,12 @@
   <ItemGroup>
     <Content Include="NoLogin.Master" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Taimer\TaimerEN.csproj">
+      <Project>{329AECE9-732D-4307-AF83-AFDAE3E04AA4}</Project>
+      <Name>TaimerEN</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
   <ProjectExtensions>

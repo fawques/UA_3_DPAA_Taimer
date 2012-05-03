@@ -1,5 +1,4 @@
-﻿<%@ Page Title="Actividades personales" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true"
-    CodeBehind="Actividades.aspx.cs" Inherits="WebTaimer.TabActividades.Actividades" %>
+﻿<%@ Page Title="Actividades personales" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeBehind="Actividades.aspx.cs" Inherits="WebTaimer.TabActividades.Actividades" %>
 
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
 </asp:Content>
@@ -27,34 +26,14 @@
             }
             </style>
 
-        <div id="divPanelIzquierdo" style="width:160px; float: left">
-         <fieldset class="filtro" style="width: 130px; height:220px">
-            <legend>Filtro</legend>
-            Mostrar...<br />
-             <asp:RadioButtonList ID="radioFiltro" runat="server">
-                 <asp:ListItem>Todas</asp:ListItem>
-                 <asp:ListItem>Próximos 7 días</asp:ListItem>
-                 <asp:ListItem Selected="True">Fecha específica</asp:ListItem>
-             </asp:RadioButtonList>
-             <br />
-             Desde: 
-                        <asp:DropDownList ID="listaDesde" runat="server" style="width:85px">
-                            <asp:ListItem>28/04/12</asp:ListItem>
-             </asp:DropDownList>
-                        <br />
-             Hasta:&nbsp;
-             <asp:DropDownList ID="listaHasta" runat="server" style="width:85px">
-                 <asp:ListItem>30/04/12</asp:ListItem>
-             </asp:DropDownList>
-                        <br />
-                        &nbsp;<asp:Button ID="botFiltrar" runat="server" Text="Filtrar" style="margin-left:68px; margin-top:5px"/>
-                    </fieldset>
-        </div>
-
-        <div id="divPanelCentral" style="width:200px; float: left; margin-left:15px">
-            <fieldset class="act" style="width: 160px; height: 220px">
+        <div id="divPanelCentral" 
+        style="width:200px; float: left; margin-left:15px; height: 339px;">
+            <fieldset class="act" style="width: 160px; height: 294px">
             <legend>Actividades</legend>
-                        <asp:ListBox ID="ListBox1" runat="server" Height="180px" Width="160px">
+                        <asp:TextBox ID="TextBox1" runat="server">Filtrar...</asp:TextBox>
+                <br />
+                <br />
+                        <asp:ListBox ID="ListBox1" runat="server" Height="223px" Width="160px">
                             <asp:ListItem>Actividad 1</asp:ListItem>
                             <asp:ListItem>Actividad 2</asp:ListItem>
                             <asp:ListItem>Actividad 3</asp:ListItem>

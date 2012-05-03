@@ -53,7 +53,8 @@
                             <td>
                         <asp:TextBox ID="textboxUsuario" runat="server" Width="120px" placeholder="Nombre de usuario"></asp:TextBox>
                         <asp:TextBox ID="textboxPassword" runat="server" Width="120px" placeholder="Contraseña" style="margin-left:5px"></asp:TextBox>
-                                <asp:Button ID="botonIniciarSesion" runat="server" Text="Iniciar sesión" Width="90px" style="margin-left:5px" />
+                                <asp:Button ID="botonIniciarSesion" runat="server" Text="Iniciar sesión" 
+                                    Width="90px" style="margin-left:5px" onclick="botonIniciarSesion_Click" />
                                 <asp:CheckBox ID="checkboxRecordar" runat="server" Text="Recordar" style="margin-left:5px" />
                             </td>
                         </tr>

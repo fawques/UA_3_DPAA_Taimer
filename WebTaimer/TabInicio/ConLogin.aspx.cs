@@ -4,14 +4,29 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Taimer;
 
 namespace WebTaimer.TabInicio
 {
     public partial class ConLogin : System.Web.UI.Page
     {
+        protected void Page_Init(object sender, EventArgs e)
+        {
+            
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Session.Count == 0)
+            {
+                Response.Redirect("SinLogin.aspx");
+                Response.Write("No estás logeado");
+            }
+            else
+            {
+                User usuario = (User)Session["usuario"];
+                lbBienvenida.Text = "Bienvenido, " + usuario.Nombre;
+            }
         }
 
         protected void botonHorariosPropios_Click(object sender, EventArgs e)
