@@ -9,26 +9,41 @@ namespace Taimer
 
         #region PARTE PRIVADA
 
-        int id;                                 // Clave principal
-        string mensaje;                         // Comentario en sí (mensaje).
-        Actividad_a actividadAcademica;        // Un comentario es contenido por (1,1) actividades académicas
-        User usuario;                         // Un comentario es escrito por (1,1) usuarios
+        /// <summary>
+        /// Identificador del comentario
+        /// </summary>
+        private int id;
+ 
+        /// <summary>
+        /// Texto del comentario
+        /// </summary>
+        private string mensaje;                        
+
+        /// <summary>
+        /// Actividad académica de la que se realiza el comentario
+        /// </summary>
+        private Actividad_a actividadAcademica;       
+
+        /// <summary>
+        /// Usuario que realiza el comentario
+        /// </summary>
+        private User usuario;                        
         
-        //Uso de la fecha y la hora de un comentario
-        Hora hora;
-        string fecha;
+        /// <summary>
+        /// Fecha que se realiza el comentario
+        /// </summary>
+        private DateTime fecha;
          
         #endregion
 
         #region  PARTE PÚBLICA
 
         // Constructor
-        public Comentario(int id_, string mens_, Actividad_a acta_, User usu_, Hora hora_, string fecha_) {
+        public Comentario(int id_, string mens_, Actividad_a acta_, User usu_,DateTime fecha_) {
             id = id_;
             mensaje = mens_;
             actividadAcademica = acta_;
             usuario = usu_;
-            hora = hora_;
             fecha = fecha_;
         }
 
@@ -71,25 +86,36 @@ namespace Taimer
             set { usuario = value; }
         }
 
-        public Hora Hora
-        {
-            get { return hora; }
-            set { hora = value; }
-        }
+       
 
-        public string Fecha
+        public DateTime Fecha
         {
             get { return fecha; }
             set { fecha = value; }
         }
 
         /// <summary>
-        /// Asigna la fecha y hora de la clase a las actuales
+        /// Asigna la fecha de la clase a las actuales
         /// </summary>
         public void SetFechaHora()
         {
-            fecha = DateTime.Today.ToString("dd/MM/yyyy");
-            hora = new Hora(DateTime.Now.ToShortTimeString());
+            fecha = DateTime.Now;
+
+        }
+        /// <summary>
+        /// Creamos un string con un formato adecuado de la fecha para mostrarla
+        /// </summary>
+        /// <returns>string con la fecha en el formato adecuado</returns>
+        public string Fecha_String()
+        {
+            string fecha_s;
+            string dia;
+            string hora;
+
+            dia=fecha.ToString("dd/MM/yyyy");
+            hora=fecha.ToShortTimeString();
+            fecha_s = dia + " " + hora;
+            return fecha_s;
         }
         #endregion
     }

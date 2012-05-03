@@ -40,6 +40,11 @@ namespace Taimer
         private User usuario;                             // Un horario es creado por (1,1) usuarios
 
         /// <summary>
+        /// Booleano para saber si es o no el horario publico
+        /// </summary>
+        private bool publico;
+
+        /// <summary>
         /// Inserta un turno Ordenado en un determinado dia
         /// </summary>
         /// <param name="item">Turno que se quiere insertar </param>
@@ -88,12 +93,12 @@ namespace Taimer
         /// <param name="id_">Identificador del Horario</param>
         /// <param name="nom_">Nombre del Horario</param>
         /// <param name="usu_">Usuario al que pretenece el Horario</param>
-        public Horario(int id_, string nom_, User usu_)
+        public Horario(int id_, string nom_, User usu_,bool publico_=false)
         {
             id = id_;
             nombre = nom_;
             usuario = usu_;
-
+            publico = publico_;
             for (int i = 0; i < 7; i++)
             {
                 arrayTurnos[i] = new List<Turno>();
@@ -105,11 +110,12 @@ namespace Taimer
         /// </summary>
         /// <param name="nom_">Nombre del Horario</param>
         /// <param name="usu_">Usuario al que pertenece el Horario</param>
-        public Horario(string nom_, User usu_)
+        public Horario(string nom_, User usu_,bool publico_=false)
         {
             id = 0;
             nombre = nom_;
             usuario = usu_;
+            publico=publico_;
 
             for (int i = 0; i < 7; i++)
             {
@@ -126,6 +132,7 @@ namespace Taimer
             id = h.id;
             nombre = h.nombre;
             usuario = h.usuario;
+            publico = h.publico;
 
             for (int i = 0; i < 7; i++)
             {
@@ -166,7 +173,14 @@ namespace Taimer
             set { usuario = value; }
         }
 
-
+        /// <summary>
+        /// Asigna/Devuelve el booleano al de público o no
+        /// </summary>
+        public bool Publico
+        {
+            get { return publico; }
+            set { publico = value; }
+        }
         /// <summary>
         /// Devuelve en número de turno que tiene el horario
         /// </summary>

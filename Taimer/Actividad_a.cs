@@ -31,7 +31,17 @@ namespace Taimer {
         /// <summary>
         /// Titulacion en la que se encuentra esta actividad
         /// </summary>
-        private string titulacion;        
+        private string titulacion;
+
+        /// <summary>
+        /// Suma de las notas que puntuan los usuarios
+        /// </summary>
+        private int notaTotal;
+
+        /// <summary>
+        /// Número de votos que ha recibido la actividad
+        /// </summary>
+        private int numVotos;
 
         #endregion
 
@@ -46,16 +56,16 @@ namespace Taimer {
         /// <param name="nomCoord_"> Nómbre del coordinador de la Actividad_a</param>
         /// <param name="titulacion">Tilación de la Actividad_a</param>
         /// <param name="cod_">Codigo de la Actividad_a (por defecto 0)</param>
-        public Actividad_a(string nom_, string desc_, string nomCoord_, string tit, int cod_ = 0)
+        /// <param name="nota_">Nota de la actividad</param>
+        /// <param name="numvotos_">Numero de votos de la actividad</param>
+        public Actividad_a(string nom_, string desc_, string nomCoord_, string tit, int cod_ = 0,int nota_= 0,int numvotos_= 0)
             : base(nom_, desc_, cod_) {
                 titulacion = tit;
                 nombreCoordinador = nomCoord_;
                 curso = 0;                      // Por defecto se asigna el número de curso a 0
+                numVotos = numvotos_;
+                notaTotal = nota_;
         }
-
-        
-    
-
 
         /// <summary>
         /// Constructor básico (sin lista de turnos, pero sí con número de curso)
@@ -66,12 +76,16 @@ namespace Taimer {
         /// <param name="curso_"> Curso al que pertenece la Actividad_a </param>
         /// <param name="titulacion">Tilación de la Actividad_a</param>
         /// <param name="cod_">Codigo de la Actividad_a (por defecto 0)</param>
-        public Actividad_a(string nom_, string desc_, string nomCoord_, int curso_, string tit, int cod_ = 0,int codTurno = 1)
+        /// <param name="numVotos_">Número de votos</param>
+        /// <param name="nota_">Nota total de la actividad</param>
+        public Actividad_a(string nom_, string desc_, string nomCoord_, int curso_, string tit, int cod_ = 0,int codTurno = 1,int numVotos_= 0, int nota_= 0)
             : base(nom_, desc_, cod_,codTurno) {
 
                 titulacion = tit;
                 nombreCoordinador = nomCoord_;
                 Curso = curso_;
+                numVotos = numVotos_;
+                notaTotal = nota_;
         }
 
 
@@ -85,11 +99,13 @@ namespace Taimer {
         /// <param name="curso_"> Curso ql que pertence la Actividad_a</param>
         /// <param name="titulacion">Tilación de la Actividad_a</param>
         /// <param name="cod_">Codigo de la Actividad_a (por defecto 0)</param>
-        public Actividad_a(string nom_, string desc_, string nomCoord_, List<Turno> turnos_, int curso_, string tit, int codTurno, int cod_ = 0)
+        public Actividad_a(string nom_, string desc_, string nomCoord_, List<Turno> turnos_, int curso_, string tit, int codTurno, int cod_ = 0,int numVotos_= 0,int nota_= 0)
             : base(nom_, desc_, cod_,codTurno, turnos_) {
                 titulacion = tit;
             nombreCoordinador = nomCoord_;
             Curso = curso_;
+            notaTotal = nota_;
+            numVotos = numVotos_;
         }
 
 
@@ -104,6 +120,8 @@ namespace Taimer {
             titulacion = act.titulacion;
             nombreCoordinador = act.nombreCoordinador;
             curso = act.curso;
+            numVotos = act.numVotos;
+            notaTotal = act.notaTotal;
         }
 
         /// <summary>
@@ -119,6 +137,8 @@ namespace Taimer {
                 Actividad_a aux = (Actividad_a)act;
                 nombreCoordinador = aux.nombreCoordinador;
                 curso = aux.curso;
+                numVotos = aux.numVotos;
+                notaTotal = aux.notaTotal;
             }
         }
 
@@ -134,8 +154,6 @@ namespace Taimer {
                     throw new ArgumentOutOfRangeException("El número de curso debe ser mayor o igual que 0");
             }
         }
-
-
         /// <summary>
         /// Asigna/Devuelve el coordinador de la Actividad_a
         /// </summary>
@@ -143,7 +161,21 @@ namespace Taimer {
             get { return nombreCoordinador; }
             set { nombreCoordinador = value; }
         }
-
+        /// <summary>
+        /// Asigna/Devuelve la suma total de notas
+        /// </summary>
+        public int NotaTotal {
+            get { return notaTotal; }
+            set { notaTotal = value; }
+        }
+        /// <summary>
+        /// Asigna/Devuelve la suma total de votos
+        /// </summary>
+        public int NumVotos
+        {
+            get { return numVotos; }
+            set { numVotos = value; }
+        }
 
         /// <summary>
         /// Añade un Turno a la Actividad_a
@@ -366,7 +398,14 @@ namespace Taimer {
             }
             return list;
         }
-
+        /// <summary>
+        /// Realiza la nota media 
+        /// </summary>
+        /// <returns>Devuelve la nota media de la asignatura</returns>
+        public int NotaMedia()
+        {
+            return (notaTotal / numVotos);
+        }
         #endregion
     }
 }
