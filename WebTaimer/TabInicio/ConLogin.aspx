@@ -37,7 +37,7 @@
 
             <div id="divNombre" style="float: left; width: 152px; height: 48px">
                     <asp:Label ID="nombrePrincipalUser" runat="server" style="margin-left: 5px" 
-                    Text="[ Nom User ]" Font-Size="Large"></asp:Label>
+                        Font-Size="Large"></asp:Label>
             </div>
 
             </div>

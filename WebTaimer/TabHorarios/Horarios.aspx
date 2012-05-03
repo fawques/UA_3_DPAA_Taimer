@@ -23,10 +23,8 @@
     <fieldset class="fieldHorarios" style="width: 122px; height: 452px">
             <legend>Horarios</legend>
 
-            <asp:ListBox ID="listaHorarios" runat="server" Height="420px" style="width:120px">
-                <asp:ListItem>Horario 1</asp:ListItem>
-                <asp:ListItem>Horario 2</asp:ListItem>
-                <asp:ListItem>Horario 3</asp:ListItem>
+            <asp:ListBox ID="listaHorarios" runat="server" Height="420px" 
+                style="width:120px" onselectedindexchanged="listaHorarios_SelectedIndexChanged">
             </asp:ListBox>
 
         </fieldset><br />
