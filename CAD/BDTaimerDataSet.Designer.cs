@@ -76,7 +76,7 @@ namespace CAD {
         
         private global::System.Data.DataRelation relationMensajes_User_Emisor;
         
-        private global::System.Data.DataRelation relationUser_Mensajes;
+        private global::System.Data.DataRelation relationUser_Mensajes_Receptor;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
@@ -502,7 +502,7 @@ namespace CAD {
             this.relationFK_User_Actividad_a_Actividad_a = this.Relations["FK_User_Actividad_a_Actividad_a"];
             this.relationFK_User_Actividad_a_User = this.Relations["FK_User_Actividad_a_User"];
             this.relationMensajes_User_Emisor = this.Relations["Mensajes_User_Emisor"];
-            this.relationUser_Mensajes = this.Relations["User_Mensajes"];
+            this.relationUser_Mensajes_Receptor = this.Relations["User_Mensajes_Receptor"];
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -597,10 +597,10 @@ namespace CAD {
                         this.tableUser.dniColumn}, new global::System.Data.DataColumn[] {
                         this.tableMensajes.emisorColumn}, false);
             this.Relations.Add(this.relationMensajes_User_Emisor);
-            this.relationUser_Mensajes = new global::System.Data.DataRelation("User_Mensajes", new global::System.Data.DataColumn[] {
+            this.relationUser_Mensajes_Receptor = new global::System.Data.DataRelation("User_Mensajes_Receptor", new global::System.Data.DataColumn[] {
                         this.tableUser.dniColumn}, new global::System.Data.DataColumn[] {
                         this.tableMensajes.receptorColumn}, false);
-            this.Relations.Add(this.relationUser_Mensajes);
+            this.Relations.Add(this.relationUser_Mensajes_Receptor);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4236,7 +4236,7 @@ namespace CAD {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public MensajesRow AddMensajesRow(UserRow parentUserRowByMensajes_User_Emisor, UserRow parentUserRowByUser_Mensajes, string texto, System.DateTime fecha, bool leido) {
+            public MensajesRow AddMensajesRow(UserRow parentUserRowByMensajes_User_Emisor, UserRow parentUserRowByUser_Mensajes_Receptor, string texto, System.DateTime fecha, bool leido) {
                 MensajesRow rowMensajesRow = ((MensajesRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -4248,8 +4248,8 @@ namespace CAD {
                 if ((parentUserRowByMensajes_User_Emisor != null)) {
                     columnValuesArray[0] = parentUserRowByMensajes_User_Emisor[0];
                 }
-                if ((parentUserRowByUser_Mensajes != null)) {
-                    columnValuesArray[1] = parentUserRowByUser_Mensajes[0];
+                if ((parentUserRowByUser_Mensajes_Receptor != null)) {
+                    columnValuesArray[1] = parentUserRowByUser_Mensajes_Receptor[0];
                 }
                 rowMensajesRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowMensajesRow);
@@ -5391,12 +5391,12 @@ namespace CAD {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public MensajesRow[] GetMensajesRowsByUser_Mensajes() {
-                if ((this.Table.ChildRelations["User_Mensajes"] == null)) {
+            public MensajesRow[] GetMensajesRowsByUser_Mensajes_Receptor() {
+                if ((this.Table.ChildRelations["User_Mensajes_Receptor"] == null)) {
                     return new MensajesRow[0];
                 }
                 else {
-                    return ((MensajesRow[])(base.GetChildRows(this.Table.ChildRelations["User_Mensajes"])));
+                    return ((MensajesRow[])(base.GetChildRows(this.Table.ChildRelations["User_Mensajes_Receptor"])));
                 }
             }
         }
@@ -5553,12 +5553,12 @@ namespace CAD {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public UserRow UserRowByUser_Mensajes {
+            public UserRow UserRowByUser_Mensajes_Receptor {
                 get {
-                    return ((UserRow)(this.GetParentRow(this.Table.ParentRelations["User_Mensajes"])));
+                    return ((UserRow)(this.GetParentRow(this.Table.ParentRelations["User_Mensajes_Receptor"])));
                 }
                 set {
-                    this.SetParentRow(value, this.Table.ParentRelations["User_Mensajes"]);
+                    this.SetParentRow(value, this.Table.ParentRelations["User_Mensajes_Receptor"]);
                 }
             }
         }
