@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Taimer;
 
 namespace WebTaimer.TabInicio
 {
@@ -23,7 +24,8 @@ namespace WebTaimer.TabInicio
             }
             else
             {
-                lbBienvenida.Text = "Bienvenido, " + Session["usuario"];
+                User usuario = (User)Session["usuario"];
+                lbBienvenida.Text = "Bienvenido, " + usuario.Nombre;
             }
         }
 
