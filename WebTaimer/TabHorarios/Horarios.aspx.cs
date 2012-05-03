@@ -51,5 +51,15 @@ namespace WebTaimer.TabHorarios
 
 
         }
+
+        protected void botCambiarNombre_Click(object sender, EventArgs e)
+        {
+            // Debería mostrar lo que se conocía en VB como InputBox.
+        }
+
+        protected void botBorrarHorario_Click(object sender, EventArgs e)
+        {
+            // Muestra un mensaje de confirmación.
+        }
     }
 }

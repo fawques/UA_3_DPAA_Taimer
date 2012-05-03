@@ -22,21 +22,39 @@ namespace WebTaimer.TabHorarios {
         protected global::System.Web.UI.WebControls.ListBox listaHorarios;
         
         /// <summary>
-        /// Control CheckBox1.
+        /// Control checkPublico.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox CheckBox1;
+        protected global::System.Web.UI.WebControls.CheckBox checkPublico;
         
         /// <summary>
-        /// Control ComentarBoton.
+        /// Control botCambiarNombre.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ComentarBoton;
+        protected global::System.Web.UI.WebControls.Button botCambiarNombre;
+        
+        /// <summary>
+        /// Control botBorrarHorario.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button botBorrarHorario;
+        
+        /// <summary>
+        /// Control botonMasInformacion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button botonMasInformacion;
     }
 }

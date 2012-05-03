@@ -6,7 +6,7 @@
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
     <h2>
         Mis horarios
-    </h2>
+        (Viendo: Horario 1)</h2>
 
     <!-- PANEL IZQUIERDO (seleccionar horario) ---------------->
 
@@ -20,7 +20,7 @@
 
     <div id="divPanelIzquierdo" style="float: left; margin-left: 0px">
     
-    <fieldset class="fieldHorarios" style="width: 122px; height: 452px">
+    <fieldset class="fieldHorarios" style="width: 122px; height: 452px; margin-top:0px">
             <legend>Horarios</legend>
 
             <asp:ListBox ID="listaHorarios" runat="server" Height="420px" 
@@ -28,7 +28,19 @@
             </asp:ListBox>
 
         </fieldset><br />
-        <asp:CheckBox ID="CheckBox1" runat="server" Text="Hacer público" />
+        <fieldset class="fieldPropiedades" style="width: 122px; height: 105px; margin-top:-30px">
+            <legend>Propiedades</legend>
+
+                <asp:CheckBox ID="checkPublico" runat="server" Text="Hacer público"/>
+
+            <br />
+            <asp:Button ID="botCambiarNombre" runat="server" Text="Cambiar nombre" 
+                style="margin-top:5px; width:120px" onclick="botCambiarNombre_Click" />
+            <br />
+            <asp:Button ID="botBorrarHorario" runat="server" Text="Borrar horario" 
+                style="margin-top:5px; width:120px" onclick="botBorrarHorario_Click" />
+
+        </fieldset>
 
     </div>
 
@@ -186,8 +198,8 @@
                     
                     
                     
-                    <asp:Button ID="ComentarBoton" runat="server" style= "margin-right: 50px; margin-top: 20px; position:static;"
-                        Text="Comentar" />
+                    <asp:Button ID="botonMasInformacion" runat="server" style= "margin-right: 50px; margin-top: 20px; position:static;"
+                        Text="Más información" />
                     
                     
                     
