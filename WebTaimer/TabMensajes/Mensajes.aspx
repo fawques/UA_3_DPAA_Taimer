@@ -10,8 +10,8 @@ CodeBehind="Mensajes.aspx.cs" Inherits="WebTaimer.TabMensajes.Mensajes" %>
             left: 513px;
             top: 583px;
             position: absolute;
-            height: 80px;
-            width: 560px;
+            height: 122px;
+            width: 592px;
         }
         .style1
         {
@@ -52,12 +52,6 @@ CodeBehind="Mensajes.aspx.cs" Inherits="WebTaimer.TabMensajes.Mensajes" %>
         
         <fieldset class="asig" style="width: 160px; height: 540px">
             <legend>Usuarios</legend>
-
-                <fieldset class="filtro" style="width: 132px; height: 60px; margin: 0 auto; margin-bottom: 20px;">
-                <legend>Búsqueda</legend>
-                <asp:TextBox ID="textboxTitulacion" runat="server" Width="125px" placeholder="Buscar..."></asp:TextBox>
-                </fieldset>
-
                         <asp:ListBox ID="ListBox1" runat="server" Height="398px" 
                 Width="160px" style="margin: 0 auto;">
                             <asp:ListItem>Usuario 1</asp:ListItem>
@@ -122,8 +116,9 @@ CodeBehind="Mensajes.aspx.cs" Inherits="WebTaimer.TabMensajes.Mensajes" %>
                         
                         <div style="height: 150px; width: 658px;">
                             <textarea 
-                                id="TextArea1" name="S1" style="float:left; resize: none;"></textarea><input id="Button1" type="button" value="Enviar" 
-                                style="float: right; margin-top:90px;" />
+                                id="TextArea1" name="S1" style="resize: none; position:relative; left:0px; top:0px; margin-top:10px"></textarea>
+                                
+                                <input id="Button1" type="button" value="Enviar" />
                                                                 
                                 </div>
        </div>

@@ -10,8 +10,8 @@
             left: 512px;
             top: 666px;
             position: absolute;
-            height: 39px;
-            width: 495px;
+            height: 59px;
+            width: 473px;
         }
         </style>
 </asp:Content>
@@ -160,9 +160,12 @@
                         </div>
                         
                         <div style="height: 60px; width: 658px;">
-                            &nbsp;<p style="float:right; width: 82px; margin: 0px; margin-left:10px; margin-top:22px;">Anónimo <input id="Checkbox1" type="checkbox" /></p>
-                            &nbsp;<input id="Button1" type="button" value="Enviar" 
-                                style="float: right; margin-top:22px;" /><textarea 
-                                id="TextArea1" name="S1" rows="2" style="float:left; resize: none;"></textarea></div>
+                            &nbsp;&nbsp;<textarea 
+                                id="TextArea1" name="S1" 
+                                style="resize: none; position:relative; left:0px; top:0px; margin-top:10px"></textarea>
+                                <input id="Button1" type="button" value="Enviar" 
+                                style="margin-top:0px" />
+                                <asp:CheckBox ID="checkAnonimo" runat="server" Text="Anónimo" />
+                        </div>
        </div>
 </asp:Content>

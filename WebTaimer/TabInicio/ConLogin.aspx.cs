@@ -26,6 +26,7 @@ namespace WebTaimer.TabInicio
             {
                 User usuario = (User)Session["usuario"];
                 lbBienvenida.Text = "Bienvenido, " + usuario.Nombre;
+                nombrePrincipalUser.Text = usuario.Nombre;
             }
         }
 

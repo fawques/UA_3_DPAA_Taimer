@@ -37,7 +37,7 @@
 
             <div id="divNombre" style="float: left; width: 152px; height: 48px">
                     <asp:Label ID="nombrePrincipalUser" runat="server" style="margin-left: 5px" 
-                    Text="[ Nom User ]" Font-Size="Large"></asp:Label>
+                        Font-Size="Large"></asp:Label>
             </div>
 
             </div>
@@ -45,8 +45,6 @@
             <hr style="width: 200px; height: -12px;" />
 
             <div style="width:200px">
-                <asp:Label ID="labelUltimoLogin" runat="server" Text="Última visita: 24/04/12 13:43:23" 
-                    style="text-align: center"></asp:Label>
             </div>
 
             <div style="width:200px">
