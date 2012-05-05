@@ -17,7 +17,7 @@ namespace Taimer
         /// <summary>
         /// Texto del comentario
         /// </summary>
-        private string mensaje;                        
+        private string texto;                       
 
         /// <summary>
         /// Actividad académica de la que se realiza el comentario
@@ -38,40 +38,56 @@ namespace Taimer
 
         #region  PARTE PÚBLICA
 
-        // Constructor
-        public Comentario(int id_, string mens_, Actividad_a acta_, User usu_,DateTime fecha_) {
+        /// <summary>
+        /// Constructor completo, con todos los atributos como parámetros
+        /// </summary>
+        /// <param name="id_"></param>
+        /// <param name="mens_"></param>
+        /// <param name="acta_"></param>
+        /// <param name="usu_"></param>
+        /// <param name="fecha_"></param>
+        public Comentario(int id_, string texto_, Actividad_a acta_, User usu_,DateTime fecha_) {
             id = id_;
-            mensaje = mens_;
+            texto = texto_;
             actividadAcademica = acta_;
             usuario = usu_;
             fecha = fecha_;
         }
 
-        // Constructor de copia
+        /// <summary>
+        /// Constructor de copia
+        /// </summary>
+        /// <param name="c"></param>
         public Comentario(Comentario c) {
             id = c.id;
-            mensaje = c.mensaje;
+            texto = c.texto;
             actividadAcademica = c.actividadAcademica;
             usuario = c.usuario;
         }
 
-
-        // Ajustar/obtener identificador
+        /// <summary>
+        /// Modificar/obtener identificador
+        /// </summary>
+        
         public int ID {
             get { return id; }
             set { id = value; }
         }
 
-        
-        // Ajustar/obtener comentario (mensaje)
-        public string Mensaje
+
+        /// <summary>
+        /// Modificar/obtener el texto de un comentario
+        /// </summary>
+        public string Texto
         {
-            get { return mensaje; }
-            set { mensaje = value; }
+            get { return texto; }
+            set { texto = value; }
         }
 
 
-        // Ajustar/obtener código de actividad académica
+        /// <summary>
+        /// Modificar/obtener código de actividad académica
+        /// </summary>
         public Actividad_a ActividadAcademica
         {
             get { return actividadAcademica; }
@@ -79,15 +95,18 @@ namespace Taimer
         }
 
 
-        // Ajustar/obtener usuario
+        /// <summary>
+        /// Modificar/obtener usuario
+        /// </summary>
         public User Usuario
         {
             get { return usuario; }
             set { usuario = value; }
         }
 
-       
-
+       /// <summary>
+       /// Modificar/obtener la fecha
+       /// </summary>
         public DateTime Fecha
         {
             get { return fecha; }
@@ -102,11 +121,12 @@ namespace Taimer
             fecha = DateTime.Now;
 
         }
+
         /// <summary>
         /// Creamos un string con un formato adecuado de la fecha para mostrarla
         /// </summary>
         /// <returns>string con la fecha en el formato adecuado</returns>
-        public string Fecha_String()
+        public string FechaToString()
         {
             string fecha_s;
             string dia;
@@ -115,8 +135,10 @@ namespace Taimer
             dia=fecha.ToString("dd/MM/yyyy");
             hora=fecha.ToShortTimeString();
             fecha_s = dia + " " + hora;
+
             return fecha_s;
         }
+
         #endregion
     }
 }

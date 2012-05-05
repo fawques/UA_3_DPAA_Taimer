@@ -49,6 +49,7 @@
     <Compile Include="Comentario.cs" />
     <Compile Include="Hora.cs" />
     <Compile Include="Horario.cs" />
+    <Compile Include="Mensaje.cs" />
     <Compile Include="User.cs" />
     <Compile Include="Turno.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

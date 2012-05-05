@@ -69,6 +69,16 @@ namespace Taimer {
         private List<Horario> horarios = new List<Horario>();                       // Un usuario tiene (0,N) horarios
 
         /// <summary>
+        /// Frase personal del usuario
+        /// </summary>
+        private string frase;
+
+        /// <summary>
+        /// Imagen de perfil del usuario
+        /// </summary>
+        private FileDialog imagen;
+
+        /// <summary>
         /// Asigna un código un horario
         /// </summary>
         /// <param name="h">Horario al que se le quiere dar un código</param>
