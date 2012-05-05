@@ -229,7 +229,7 @@ namespace Taimer {
             if (codigo == 0) //Codigo por defecto
                 codigo = UltimoCodigo + 1;
 
-            act.CrearActivida_aAll(nombre, descripcion, codigo, nombreCoordinador, titulacion);
+            act.CrearActivida_aAll(nombre, descripcion, codigo, nombreCoordinador, titulacion,0,0);
 
             foreach (Turno t in turnos) {
                 t.Actividad = this;

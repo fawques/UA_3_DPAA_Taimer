@@ -379,7 +379,7 @@ namespace Taimer
         public void Agregar()
         {
             CADHorario h = new CADHorario();
-            h.CrearHorarioBasic(id, nombre, usuario.DNI);
+            h.CrearHorarioBasic(id, nombre, usuario.DNI,false);
 
             foreach (List<Turno> lt in arrayTurnos)
             {
