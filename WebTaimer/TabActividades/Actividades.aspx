@@ -41,23 +41,35 @@
                     </fieldset>
         </div>
 
-        <div id="divPanelContenido" style="width:535px; float: left; margin-left:5px">
-        <fieldset class="infoAsig" style="width: 507px; height:220px">
+        <div id="divPanelContenido" 
+        style="width:686px; float: left; margin-left:5px">
+        <fieldset class="infoAsig" style="width: 686px; height:275px">
             <legend>Información de la actividad personal</legend>
 
 
-                            <div style="float:left; width:314px">
+                            <div style="float:left; width:467px; height: 226px;">
                                     <asp:Label ID="labelNombreActividad" runat="server" Font-Bold="True" Font-Size="X-Large" 
                                         Text="[ Nombre de la actividad ]"></asp:Label>
                                     <br />
                                     <br />
                                     <asp:Label ID="labelDescripcionActividad" runat="server" Font-Size="Medium" 
                                         Text="[ Descripción de la actividad ]"></asp:Label>
+                                    <br />
+                                    <br />
+                                    <br />
+                                    <br />
+                                    <br />
+                                    <br />
+                                    <br />
+                                    <br />
+                                    <br />
+                                    <asp:Button ID="botonBorrarActividad" runat="server" Text="Borrar actividad" style="width:120px" />
+                                    <asp:Button ID="botonEditarActividad" runat="server" Text="Editar actividad" style="width:120px; margin-left:5px"/>
                                 </div>
                                 <div style="float:left">
                                     <asp:Label ID="labelTurnos" runat="server" Font-Bold="True" Text="Turnos" align="center"></asp:Label>
                                     <br />
-                                    <asp:ListBox ID="listaTurnos" runat="server" Height="167px" Width="190px">
+                                    <asp:ListBox ID="listaTurnos" runat="server" Height="210px" Width="190px">
                                         <asp:ListItem Selected="True">Miércoles, de 09:00 a 11:00</asp:ListItem>
                                         <asp:ListItem>Jueves, de 10:30 a 12:30</asp:ListItem>
                                         <asp:ListItem>Jueves, de 16:30 a 16:30</asp:ListItem>

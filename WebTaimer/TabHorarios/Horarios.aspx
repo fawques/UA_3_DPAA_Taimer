@@ -6,7 +6,9 @@
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
     <h2>
         Mis horarios
-        (Viendo: Horario 1)</h2>
+        (Viendo: 
+        <asp:Label ID="labelViendoHorario" runat="server" Text="[ HORARIO ]"></asp:Label>
+        )</h2>
 
     <!-- PANEL IZQUIERDO (seleccionar horario) ---------------->
 
