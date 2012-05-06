@@ -52,7 +52,7 @@ CodeBehind="Mensajes.aspx.cs" Inherits="WebTaimer.TabMensajes.Mensajes" %>
         
         <fieldset class="asig" style="width: 160px; height: 540px">
             <legend>Usuarios</legend>
-                        <asp:ListBox ID="ListBox1" runat="server" Height="398px" 
+                        <asp:ListBox ID="listaUsuarios" runat="server" Height="398px" 
                 Width="160px" style="margin: 0 auto;">
                             <asp:ListItem>Usuario 1</asp:ListItem>
                             <asp:ListItem>Usuario 2</asp:ListItem>

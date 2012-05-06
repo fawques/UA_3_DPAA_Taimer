@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Taimer;
 
 namespace WebTaimer.TabPerfil
 {
@@ -11,7 +12,17 @@ namespace WebTaimer.TabPerfil
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            // Muestra los botones adecuados dependiendo de si es nuestro perfil o no (a medias, sólo compara nombre con "Alberto")
 
+            if (((User)Session["usuario"]).Nombre == "Alberto")
+            {
+                botEditarPerfil.Visible = false;
+            }
+            else
+            {
+                botEnviarMensaje.Visible = false;
+                botVerHorarios.Visible = false;
+            }
         }
 
         protected void botEditarPerfil_Click(object sender, EventArgs e)

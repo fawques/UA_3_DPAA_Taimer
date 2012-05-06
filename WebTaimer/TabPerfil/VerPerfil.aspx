@@ -25,7 +25,7 @@
                 <br />
         <asp:Button ID="botEditarPerfil" runat="server" Text="Editar perfil"
                 style="margin-top: 10px; width:100px; height:25px;"
-                    onclick="botEditarPerfil_Click" />
+                    onclick="botEditarPerfil_Click" Visible="True" />
 
         <asp:Button ID="botEnviarMensaje" runat="server" Text="Enviar mensaje"
                 style="margin-top: 10px; width:100px; height:25px;" />
