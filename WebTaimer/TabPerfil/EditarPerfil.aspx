@@ -80,7 +80,8 @@
                                             </div>
                         <p class="submitButton">
                             <asp:Button ID="botonModificarDatos" runat="server" CommandName="MoveNext" Text="Modificar datos" style="width:130px; height:30px" />
-                            <asp:Button ID="botonRechazarCambios" runat="server" Text="Rechazar cambios" style="margin-left:5px; width:130px; height:30px" />
+                            <asp:Button ID="botonCancelar" runat="server" Text="Cancelar" 
+                                style="margin-left:5px; width:130px; height:30px" />
                         </p>
 
 </asp:Content>

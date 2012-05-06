@@ -19,10 +19,6 @@
     <p>
         &nbsp;</p>
     <p>
-        ¿Olvidaste la contraseña? <a href="ForgotPassword.aspx"
-            title="Recuperar cuenta">Haz clic aquí</a> para recuperar tu cuenta.
-    </p>
-    <p>
         Si aún no has descargado la aplicación Taimer para Windows, puedes hacerlo <a href=""
             title="Descargar Taimer para Windows">haciendo clic aquí</a>.
     </p>
