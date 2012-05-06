@@ -20,17 +20,20 @@
 
     <div id="divPanelIzquierdo" style="float: left; margin-left: 0px">
     
-    <fieldset class="fieldHorarios" style="width: 122px; height: 452px; margin-top:0px">
+    <fieldset class="fieldHorarios" style="width: 122px; height: 213px; margin-top:0px">
             <legend>Horarios</legend>
 
-            <asp:ListBox ID="listaHorarios" runat="server" Height="420px" 
-                style="width:120px" onselectedindexchanged="listaHorarios_SelectedIndexChanged">
+            <div style="margin-top:-15px">
+            <asp:ListBox ID="listaHorarios" runat="server" Height="200px" 
+                style="width:120px" 
+                onselectedindexchanged="listaHorarios_SelectedIndexChanged" Font-Size="X-Small">
             </asp:ListBox>
+            </div>
 
         </fieldset><br />
-        <fieldset class="fieldPropiedades" style="width: 122px; height: 105px; margin-top:-30px">
+        <fieldset class="fieldPropiedades" style="width: 122px; height: 90px; margin-top:-30px">
             <legend>Propiedades</legend>
-
+            <div style="margin-top:-15px">
                 <asp:CheckBox ID="checkPublico" runat="server" Text="Hacer público"/>
 
             <br />
@@ -39,7 +42,54 @@
             <br />
             <asp:Button ID="botBorrarHorario" runat="server" Text="Borrar horario" 
                 style="margin-top:5px; width:120px" onclick="botBorrarHorario_Click" />
+            </div>
+        </fieldset>
 
+
+
+        <fieldset class="fieldDetalles" style="width: 122px; height: 265px; margin-top:0px">
+            <legend>Detalles</legend>
+
+            <div style="margin-top: -15px; margin-left: -40px;">
+                <ul style="width: 122px; margin-top:-20px">
+                    <li>
+                        <label class="detalles">Nombre</br></label>
+                    </li>
+                    <li>
+                        Asignatura 1
+                    </li>
+                    <br />
+                    <br />
+                    <li>
+                        <label class="detalles">Descripción<br /></label>
+                    </li>
+                    <li>
+                        Aquí una descripción de la asignatura.
+                    </li>
+                    <br />
+                    <br />
+                    <li>
+                        <label class="detalles">Ubicación<br /></label>
+                    </li>
+                    <li>
+                        Aula D25 (Aulario 2)
+                    </li>
+                    <br />
+                    <br />
+                    <li>
+                        <label class="detalles">Turno<br /></label>
+                    </li>
+                    <li>
+                        13:00 - 15:00
+                    </li>
+                    <br />
+                    <br />
+                    <li>
+                    <asp:Button ID="botonMasInformacion" runat="server"
+                        Text="Más información" Width="122px" />
+                    </li>
+                </ul>
+            </div>
         </fieldset>
 
     </div>
@@ -84,7 +134,8 @@
        }
     </style>
 
-    <div id="divZonaHorario" style="float: right; height: 460px; overflow: auto; width: 768px; margin: 0px; margin-top: 29px; border: 1px solid Gray; border-left: none; ">
+    <div id="divZonaHorario" 
+        style="border-right: 1px solid Gray; border-top: 1px solid Gray; border-bottom: 1px solid Gray; float: right; height: 648px; overflow: auto; width: 768px; margin-top: 29px; border-left-style: none; border-left-color: inherit; border-left-width: medium; margin-left: 0px; margin-right: 0px; margin-bottom: 0px;">
         <div style="height: 460px; color: Maroon; width: 760px; margin-left: -10px; margin-right:-10px;">
 
                 <div style="background-color: Maroon; height: 23px; padding-left: 89px;">
@@ -161,7 +212,7 @@
         label.detalles 
         {
             font-weight: bold;
-            font-size: 13px;
+            font-size: 11px;
         }
         p.detalles 
         {
@@ -171,43 +222,5 @@
         }
         
     </style>
-
-    <fieldset class="fieldHorarios" 
-        style=" height: 110px; float:right; width: 535px;">
-            <legend>Detalles</legend>
-        <div style="width: 742px; height: 100px; display: block; margin-top: -15px;">
-            <ul style="width: 730px; float: left; margin-top: 20px; margin-left: -30px; margin-right: 0px; margin-bottom: 0px;">
-                <li>
-                    <label class="detalles">Nombre:</label>
-                    <p class="detalles">  Asignatura 1&nbsp;&nbsp;&nbsp;&nbsp; </p>
-                </li>
-                <li>
-                    <label class="detalles">Descripción:</label>
-                    <p class="detalles">  bla bla bla blab bla bla&nbsp; &nbsp;&nbsp; </p>
-                </li>
-                <li>
-                    <label class="detalles">Ubicación:</label>
-                    <p class="detalles">  universidad de alicante&nbsp;&nbsp;&nbsp; </p>
-                </li>
-                <li>
-                    <label class="detalles">Turno</label>
-                    <p class="detalles">  HH:MM - HH:MM </p>
-                </li>
-                <li style="float: right;">
-                    
-                    
-                    
-                    
-                    <asp:Button ID="botonMasInformacion" runat="server" style= "margin-right: 50px; margin-top: 20px; position:static;"
-                        Text="Más información" />
-                    
-                    
-                    
-                    
-                </li>
-                
-            </ul>
-        </div>
-    </fieldset>
 
     </asp:Content>
