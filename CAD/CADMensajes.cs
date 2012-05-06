@@ -9,7 +9,7 @@ using System.Collections;
 
 namespace CAD {
 
-    class CADMensajes {
+    public class CADMensajes {
         private static string conexionTBD;
 
         public CADMensajes() {

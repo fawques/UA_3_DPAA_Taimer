@@ -10,7 +10,7 @@ using System.Collections;
 
 namespace CAD
 {
-    class CADComentario
+    public class CADComentario
     {
         private static string conexionTBD;
         
