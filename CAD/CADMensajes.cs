@@ -9,7 +9,7 @@ using System.Collections;
 
 namespace CAD {
 
-    class CADMensajes {
+    public class CADMensajes {
         private static string conexionTBD;
 
         public CADMensajes() {
@@ -17,7 +17,8 @@ namespace CAD {
         }
 
         public void CrearMensaje(string codEmisor, string codReceptor, string texto, DateTime date, bool leido) {
-            string comando = "INSERT INTO [Mensajes](emisor,receptor,texto,fecha,leido) VALUES('" + codEmisor + "', '" + codReceptor + "', '" + texto + "', '" + date + "','"+ leido +"')";
+            string comando = "INSERT INTO [Mensajes](emisor,receptor,texto,fecha,leido) VALUES('" + codEmisor + "', '" 
+                + codReceptor + "', '" + texto + "', '" + date.ToString("yyyy-MM-dd HH:mm:ss")+"','" + leido + "')";
             SqlConnection c = null;
             SqlCommand comandoTBD;
 
@@ -81,9 +82,10 @@ namespace CAD {
         public int getNumNotRead(string codUser) {
 
             SqlConnection con = null;
-            string comando = "SELECT * FROM [Mensajes] WHERE receptor ='" + codUser + "' AND leido='1'";
+            string comando = "SELECT COUNT(*) FROM [Mensajes] WHERE receptor ='" + codUser + "' AND leido='False'";
             try {
                 con = new SqlConnection(conexionTBD);
+                con.Open();
                 SqlCommand sqlCmnd = new SqlCommand(comando, con);
 
                 return (int)sqlCmnd.ExecuteScalar();
@@ -93,6 +95,26 @@ namespace CAD {
                 throw;
             } finally {
                 if (con != null) con.Close(); // Se asegura de cerrar la conexión.
+            }
+        }
+
+        public void ModificarMensaje(int id, string codEmisor, string codReceptor, string texto, DateTime date, bool leido) {
+            string comando = "UPDATE [Mensajes] SET emisor = '" + codEmisor + "',  receptor = '" + codReceptor +
+                "', texto = '" + texto + "', fecha = '" + date.ToString("yyyy-MM-dd HH:mm:ss") + "', leido = '" + leido + "' WHERE id = '" + id + "'";
+            SqlConnection c = null;
+            SqlCommand comandoTBD;
+
+            try {
+                c = new SqlConnection(conexionTBD);
+                comandoTBD = new SqlCommand(comando, c);
+                c.Open();
+                comandoTBD.CommandType = CommandType.Text;
+                comandoTBD.ExecuteNonQuery();
+
+            } catch (SqlException) {
+                throw;
+            } finally {
+                if (c != null) c.Close(); // Se asegura de cerrar la conexión.
             }
         }
     }
