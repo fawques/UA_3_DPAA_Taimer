@@ -7,6 +7,7 @@ using Taimer;
 using CAD;
 using System.Data;
 using System.Windows.Forms;
+using System.IO;
 
 namespace Taimer {
 
@@ -76,7 +77,7 @@ namespace Taimer {
         /// <summary>
         /// Imagen de perfil del usuario
         /// </summary>
-        private FileDialog imagen;
+        public string imagen;
 
         /// <summary>
         /// Asigna un código un horario
@@ -673,8 +674,30 @@ namespace Taimer {
             CADUser userCAD = new CADUser();
             DataSet users = userCAD.GetUsers();
             List<User> list = UsersToList(users);
-
+            
             return list;
+        }
+
+        /// <summary>
+        /// Pide al usuario que abra un archivo para su imagen personal, y la copia al directorio Images
+        /// </summary>
+        //Falta asignar bien el nombre del archivo
+        public void InsertaFoto()
+        {
+            Stream myStream = null;
+            OpenFileDialog openFileDialog1 = new OpenFileDialog();
+
+            openFileDialog1.Filter = "Image files (*.jpg, *.jpeg, *.png, *.gif)|*.jpg;*.jpeg;*.png;*.gif";
+
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                if ((myStream = openFileDialog1.OpenFile()) != null)
+                {
+                    System.IO.File.Copy(openFileDialog1.FileName, "C:\\Taimer\\WebTaimer\\Images\\pepe.jpg");
+                    //imagen=FileName;
+                }
+            }
+
         }
         #endregion
     }

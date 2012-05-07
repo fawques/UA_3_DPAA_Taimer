@@ -137,9 +137,7 @@ namespace Taimer
 
             return fecha_s;
         }
-
-
-       /*Funciones de borrado e insertado en la BD, comentadas para que no de error (hasta que CADMensajes sea pública)
+       
         /// <summary>
         /// Añade el mensaje a la base de datos
         /// </summary>
@@ -156,7 +154,9 @@ namespace Taimer
         {
             CADMensajes mens = new CADMensajes();
             mens.BorrarMensaje(id);
-        }*/
+        }
+
+
 
         #endregion
    } 
