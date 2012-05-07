@@ -21,6 +21,7 @@ namespace WebTaimer.Account
             FormsAuthentication.SetAuthCookie(RegisterUser.UserName, false /* createPersistentCookie */);
 
             string continueUrl = RegisterUser.ContinueDestinationPageUrl;
+            Response.Write("<script>alert('pene'); </script>");
             if (String.IsNullOrEmpty(continueUrl))
             {
                 continueUrl = "~/";
