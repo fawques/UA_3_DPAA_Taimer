@@ -170,9 +170,9 @@ namespace CAD
         /// <param name="id"></param>
         /// <param name="tit"></param>
         /// <param name="user"></param>
-        public void ModificaHorario(int id, string tit, string user)
+        public void ModificaHorario(int id, string tit, string user, bool publico)
         {
-            string comando = "UPDATE [Horario] SET id = '" + id + "', titulo = '" + tit + "',  usuario = '" + user + "' WHERE id = '" + id + "' and usuario='"+user+"'";
+            string comando = "UPDATE [Horario] SET titulo = '" + tit + "', publico = '" + publico + "' WHERE id = '" + id + "' and usuario='"+user+"'";
             SqlConnection c = null;
             SqlCommand comandoTBD;
 

@@ -390,7 +390,7 @@ namespace Taimer {
             horario.Agregar();
             codHorarios++;
             CADUser usr = new CADUser();
-            usr.ModificaUser(dni, nombre, email, password, titulacion, codHorarios);
+            usr.ModificaUser(dni, nombre, email, password, titulacion, codHorarios, "", "");
             horarios.Add(horario);
         }
 
@@ -485,7 +485,7 @@ namespace Taimer {
         /// </summary>
         public void Modificar() {
             CADUser user = new CADUser();
-            user.ModificaUser(dni, nombre, email, password, titulacion, codHorarios);
+            user.ModificaUser(dni, nombre, email, password, titulacion, codHorarios, "", "");
         }
 
         ///<summary>

@@ -421,7 +421,7 @@ namespace Taimer
             if (nombre == "")
                 nombre = null;
 
-            h.ModificaHorario(id, nombre, usuario.DNI);
+            h.ModificaHorario(id, nombre, usuario.DNI, false);
         }
         /// <summary>
         /// Convierte un DataSet(será un Horario) en un objeto Horario
