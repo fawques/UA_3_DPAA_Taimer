@@ -64,6 +64,17 @@ CodeBehind="Mensajes.aspx.cs" Inherits="WebTaimer.TabMensajes.Mensajes" %>
         </div>
 
         <div id="divPanelContenido" style="width:715px; float: left; margin-left:5px">
+                <fieldset class="envMens" style="width: 687px; height:155px">
+                        <legend>Enviar mensaje</legend>
+                        <div style="height: 150px; width: 658px; margin-top:-15px">
+                            <textarea 
+                                id="TextArea1" name="S1" style="resize: none; position:relative; left:0px; top:0px; margin-top:10px"></textarea>
+                                
+                                <input id="Button1" type="button" value="Enviar" />
+                                                                
+                                </div>
+                </fieldset>
+
         <fieldset class="infoAsig" style="width: 687px; height:540px">
                         <legend>Conversación</legend>
                     
@@ -114,13 +125,7 @@ CodeBehind="Mensajes.aspx.cs" Inherits="WebTaimer.TabMensajes.Mensajes" %>
 
 
                         
-                        <div style="height: 150px; width: 658px;">
-                            <textarea 
-                                id="TextArea1" name="S1" style="resize: none; position:relative; left:0px; top:0px; margin-top:10px"></textarea>
-                                
-                                <input id="Button1" type="button" value="Enviar" />
-                                                                
-                                </div>
+                        
        </div>
 
     </asp:Content>

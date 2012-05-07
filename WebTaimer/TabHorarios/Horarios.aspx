@@ -22,12 +22,13 @@
 
     <div id="divPanelIzquierdo" style="float: left; margin-left: 0px">
     
-    <fieldset class="fieldHorarios" style="width: 122px; height: 213px; margin-top:0px">
+    <fieldset class="fieldHorarios" style="width: 122px; height: 233px; margin-top:0px">
             <legend>Horarios</legend>
 
             <div style="margin-top:-15px">
+            <asp:TextBox ID="textboxFiltro" runat="server" Width="118px" placeholder="Filtrar..."></asp:TextBox>
             <asp:ListBox ID="listaHorarios" runat="server" Height="200px" 
-                style="width:120px" 
+                style="width:120px; margin-top:2px" 
                 onselectedindexchanged="listaHorarios_SelectedIndexChanged" Font-Size="X-Small">
             </asp:ListBox>
             </div>
@@ -169,7 +170,7 @@
                     <p class="horas"> 21:00</p>
                 </div>
                 
-                <div class="columnas">
+                <div class="columnas" style="height:1440px">
                 </div>
                 <div class="columnas">
                     <div style="height: 40px; background-color: #f1be87; text-align: center;">
