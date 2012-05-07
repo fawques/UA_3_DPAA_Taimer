@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using Taimer;
+using CAD;
 
 namespace TaimerGUI
 {
@@ -274,6 +275,18 @@ namespace TaimerGUI
         private void llIrAWeb_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             System.Diagnostics.Process.Start("http://www.taimer.com/home.aspx");
+        }
+
+        private void button4_Click(object sender, EventArgs e) {
+            CADMensajes cad = new CADMensajes();
+            cad.ModificarMensaje(4, "00000001A", "00000002B", "Nuevo texto", DateTime.Now, true);
+            MessageBox.Show(cad.getNumNotRead("00000002B").ToString());
+            DataSet dt = cad.getMensajes();
+            MessageBox.Show(dt.Tables[0].Rows.Count.ToString());
+            /*CADComentario cad = new CADComentario();
+            cad.ModificaComment(2, "Nuevo", 2, "00000002B");
+            DataSet dt = cad.GetDatosComment(2);
+            MessageBox.Show(dt.Tables[0].Rows.Count.ToString());*/
         }
 
     }
