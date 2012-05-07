@@ -278,14 +278,22 @@ namespace TaimerGUI
         }
 
         private void button4_Click(object sender, EventArgs e) {
-            CADMensajes cad = new CADMensajes();
+            /*CADMensajes cad = new CADMensajes();
             cad.ModificarMensaje(4, "00000001A", "00000002B", "Nuevo texto", DateTime.Now, true);
             MessageBox.Show(cad.getNumNotRead("00000002B").ToString());
             DataSet dt = cad.getMensajes();
-            MessageBox.Show(dt.Tables[0].Rows.Count.ToString());
+            MessageBox.Show(dt.Tables[0].Rows.Count.ToString());*/
             /*CADComentario cad = new CADComentario();
             cad.ModificaComment(2, "Nuevo", 2, "00000002B");
             DataSet dt = cad.GetDatosComment(2);
+            MessageBox.Show(dt.Tables[0].Rows.Count.ToString());*/
+            /*CADUser cad = new CADUser();
+            cad.CrearUserAll("00000009I", "pepito", "asfd@asdf.com", "pepito", 1, "Ingeniería Civil", 0, "avatar.jpg", "Molo");
+            DataSet dt = cad.GetUsers();
+            MessageBox.Show(dt.Tables[0].Rows.Count.ToString());*/
+            /*CADActividad_a cad = new CADActividad_a();
+            cad.CrearActivida_aAll("Prueba1", "Prueba de la web", 12, "Sebastian", "Bla bla", 100, 30);
+            DataSet dt = cad.GetActividades_a();
             MessageBox.Show(dt.Tables[0].Rows.Count.ToString());*/
         }
 
