@@ -25,9 +25,9 @@ namespace CAD
         /// <param name="id"></param>
         /// <param name="tit"></param>
         /// <param name="user"></param>
-        public void CrearHorarioBasic(int id, string tit, string user)
+        public void CrearHorarioBasic(int id, string tit, string user, bool publico)
         {
-            string comando = "INSERT INTO [Horario](id,titulo,usuario) VALUES('" + id + "', '" + tit + "', '" + user + "')";
+            string comando = "INSERT INTO [Horario](id,titulo,usuario,publico) VALUES('" + id + "', '" + tit + "', '" + user + "', '" + publico + "')";
             SqlConnection c=null;
             SqlCommand comandoTBD;
             

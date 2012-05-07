@@ -69,6 +69,16 @@ namespace Taimer {
         private List<Horario> horarios = new List<Horario>();                       // Un usuario tiene (0,N) horarios
 
         /// <summary>
+        /// Frase personal del usuario
+        /// </summary>
+        private string frase;
+
+        /// <summary>
+        /// Imagen de perfil del usuario
+        /// </summary>
+        private FileDialog imagen;
+
+        /// <summary>
         /// Asigna un código un horario
         /// </summary>
         /// <param name="h">Horario al que se le quiere dar un código</param>
@@ -477,7 +487,7 @@ namespace Taimer {
         public void Agregar()
         {
             CADUser user = new CADUser();
-            user.CrearUserAll(dni, nombre, email, password, curso, titulacion, codHorarios);
+            user.CrearUserAll(dni, nombre, email, password, curso, titulacion, codHorarios,"","");//TODO
         }
 
         /// <summary>
