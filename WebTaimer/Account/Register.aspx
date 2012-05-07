@@ -44,6 +44,9 @@
                                 <asp:RequiredFieldValidator ID="EmailRequired" runat="server" ControlToValidate="Email" 
                                      CssClass="failureNotification" ErrorMessage="El correo electrónico es obligatorio." ToolTip="El correo electrónico es obligatorio." 
                                      ValidationGroup="RegisterUserValidationGroup">*</asp:RequiredFieldValidator>
+                                <asp:RegularExpressionValidator ID="emailValidation" ControlToValidate="Email" ValidationExpression="[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}" 
+                                     ValidationGroup="RegisterUserValidationGroup" runat="server" ErrorMessage="e-Mail no valido" CssClass="failureNotification"
+                                     ToolTip="e-Mail no valido">*</asp:RegularExpressionValidator>
                             </p>
                             <br />
                             <p>
@@ -71,6 +74,9 @@
                                 <asp:RequiredFieldValidator ID="DniRequired" runat="server" ControlToValidate="DNI" 
                                      CssClass="failureNotification" ErrorMessage="El DNI es obligatorio." ToolTip="El DNI es obligatorio." 
                                      ValidationGroup="RegisterUserValidationGroup">*</asp:RequiredFieldValidator>
+                                <asp:RegularExpressionValidator ID="DNIValidation" ControlToValidate="DNI" ValidationExpression="\d{8}([A-Z]|[a-z])" 
+                                     ValidationGroup="RegisterUserValidationGroup" runat="server" ErrorMessage="DNI no valido" CssClass="failureNotification"
+                                     ToolTip="DNI no valido">*</asp:RegularExpressionValidator>
                             </p>
                             <br />
                             <p>
