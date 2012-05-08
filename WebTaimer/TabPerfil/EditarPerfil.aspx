@@ -7,21 +7,12 @@
     <h2>
         Editar perfil
     </h2>
-    <p>
-        Cambia la información de tu cuenta usando el siguiente formulario.<p>
-        Si deseas cambiar la contraseña,  <a href="../Account/ChangePassword.aspx"
-            title="Cambiar contraseña">haz clic aquí</a>.
-    </p>
-    <p>
-        Si deseas cambiar tu dirección de correo electrónico,  <a href="../Account/ChangeEmail.aspx"
-            title="Cambiar contraseña">haz clic aquí</a>.
-    </p>
 
-    <div class="accountInfo" style="float: left; margin-left: 51px; width:384px">
-                        <fieldset class="register" style="width: 340px; height:190px">
+    <div class="accountInfo" style="margin-left: 0px; margin-top:-20px; width:384px">
+                        <fieldset class="register" style="width: 340px; height:245px">
                             <legend>Datos principales</legend>
                             <p style="width:333px">
-                                <asp:Label ID="UserNameLabel" runat="server" AssociatedControlID="UserName">Nombre de usuario:</asp:Label>
+                                <asp:Label ID="UserNameLabel" runat="server" AssociatedControlID="UserName">Nombre:</asp:Label>
                                 <asp:TextBox ID="UserName" runat="server" CssClass="textEntry"></asp:TextBox>
                                 <asp:RequiredFieldValidator ID="UserNameRequired" runat="server" ControlToValidate="UserName" 
                                      CssClass="failureNotification" ErrorMessage="El nombre de usuario es obligatorio." ToolTip="El nombre de usuario es obligatorio." 
@@ -33,6 +24,14 @@
                                 <asp:TextBox ID="Titulacion" runat="server" CssClass="textEntry"></asp:TextBox>
                                 <asp:RequiredFieldValidator ID="TitulacionRequired" runat="server" ControlToValidate="Titulacion" 
                                      CssClass="failureNotification" ErrorMessage="La titulación es obligatoria." ToolTip="La titulación es obligatoria." 
+                                     ValidationGroup="RegisterUserValidationGroup">*</asp:RequiredFieldValidator>
+                            </p>
+                            <br />
+                                <p style="width:333px">
+                                <asp:Label ID="EmailLabel" runat="server" AssociatedControlID="UserName">Correo electrónico:</asp:Label>
+                                <asp:TextBox ID="Email" runat="server" CssClass="textEntry"></asp:TextBox>
+                                <asp:RequiredFieldValidator ID="EmailRequired" runat="server" ControlToValidate="Email" 
+                                     CssClass="failureNotification" ErrorMessage="El e-mail es obligatorio." ToolTip="El e-mail es obligatorio." 
                                      ValidationGroup="RegisterUserValidationGroup">*</asp:RequiredFieldValidator>
                             </p>
                             <br />
@@ -52,7 +51,27 @@
                         </fieldset>
                     </div>
 
-                        <div class="datosAdicionales" style="float: left; margin-left: 51px; width:384px">
+    <div class="cambioPassword" style="margin-left: 0px; margin-top:-20px; width:384px">
+                        <fieldset class="register" style="width: 340px; height:200px">
+                            <legend>Contraseña</legend>
+                            <p style="width:333px">
+                                <asp:Label ID="labelPasswordAnterior" runat="server" AssociatedControlID="PasswordAnterior">Contraseña anterior:</asp:Label>
+                                <asp:TextBox ID="PasswordAnterior" runat="server" CssClass="textEntry"></asp:TextBox>
+                            </p>
+                            <br />
+                            <p style="width: 333px">
+                                <asp:Label ID="labelNuevoPassword" runat="server" AssociatedControlID="NuevoPassword">Nueva contraseña:</asp:Label>
+                                <asp:TextBox ID="NuevoPassword" runat="server" CssClass="textEntry"></asp:TextBox>
+                            </p>
+                            <br />
+                                <p style="width:333px">
+                                <asp:Label ID="labelConfirmarNuevoPassword" runat="server" AssociatedControlID="UserName">Confirmar nueva contraseña:</asp:Label>
+                                <asp:TextBox ID="ConfirmarNuevoPassword" runat="server" CssClass="textEntry"></asp:TextBox>
+                            </p>
+                        </fieldset>
+                    </div>
+
+                        <div class="datosAdicionales" style=" margin-left: 0px; margin-top:-20px; width:384px">
                         <fieldset class="fieldDatosAdicionales" style="width: 340px; height:190px">
                             <legend>Datos adicionales</legend>
 

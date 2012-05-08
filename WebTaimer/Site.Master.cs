@@ -13,5 +13,10 @@ namespace WebTaimer
         {
 
         }
+
+        protected void Cerrar_Sesion(object sender, EventArgs e)
+        {
+            Session.Abandon();
+        }
     }
 }
