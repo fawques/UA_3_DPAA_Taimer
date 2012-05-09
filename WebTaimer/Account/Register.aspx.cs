@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Taimer;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -13,20 +14,25 @@ namespace WebTaimer.Account
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            RegisterUser.ContinueDestinationPageUrl = Request.QueryString["ReturnUrl"];
+            
         }
 
-        protected void RegisterUser_CreatedUser(object sender, EventArgs e)
-        {
-            FormsAuthentication.SetAuthCookie(RegisterUser.UserName, false /* createPersistentCookie */);
-
-            string continueUrl = RegisterUser.ContinueDestinationPageUrl;
-            Response.Write("<script>alert('pene'); </script>");
-            if (String.IsNullOrEmpty(continueUrl))
-            {
-                continueUrl = "~/";
+        protected void btReg_Click(object sender, EventArgs e) {
+            string nom = UserName.Text;
+            string dni = DNI.Text;
+            string mail = Email.Text;
+            string pass = Password.Text;
+            int curso = 1;
+            try {
+                curso = int.Parse(Curso.SelectedItem.Value);
             }
-            Response.Redirect(continueUrl);
+            catch {
+
+            }
+            string titulacion = Titulacion.Text;
+            User user = new User(nom, dni, mail, pass, curso, titulacion);
+
+            //user.Agregar();
         }
 
     }
