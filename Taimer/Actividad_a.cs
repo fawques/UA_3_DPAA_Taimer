@@ -337,7 +337,7 @@ namespace Taimer {
                 CAD.CADUser user = new CAD.CADUser();
                 //User autor = new User();
                 DataSet aux = new DataSet();
-                int cod, curso = 1;
+                int cod, curso = 1, nota = 0, nVot = 0; 
                 string prof = "", tit = "", nom, desc = "";
                 DataRowCollection rows = data.Tables[0].Rows;
 
@@ -352,6 +352,12 @@ namespace Taimer {
                     if (rows[0].ItemArray[3].ToString() != "")
                         curso = (int)rows[0].ItemArray[3];
 
+                    if (rows[0].ItemArray[4].ToString() != "")
+                        nota = (int)rows[0].ItemArray[4];
+
+                    if (rows[0].ItemArray[5].ToString() != "")
+                        nVot = (int)rows[0].ItemArray[5];
+
                     aux = act.GetDatosActividad(cod);
 
                     if (aux != null)
@@ -359,7 +365,7 @@ namespace Taimer {
                         nom = aux.Tables[0].Rows[0].ItemArray[1].ToString();
                         desc = aux.Tables[0].Rows[0].ItemArray[2].ToString();
 
-                        Actividad_a acta = new Actividad_a(nom,desc,prof,curso,tit,cod);
+                        Actividad_a acta = new Actividad_a(nom,desc,prof,curso,tit,cod,nota,nVot);
                         acta.SetTurnos();
                       
                         return acta;
