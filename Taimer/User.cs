@@ -707,20 +707,20 @@ namespace Taimer {
         /// <summary>
         /// Pide al usuario que abra un archivo para su imagen personal, y la copia al directorio Images
         /// </summary>
-        //Falta asignar bien el nombre del archivo
         public void InsertaFoto()
         {
             Stream myStream = null;
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
 
             openFileDialog1.Filter = "Image files (*.jpg, *.jpeg, *.png, *.gif)|*.jpg;*.jpeg;*.png;*.gif";
-
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 if ((myStream = openFileDialog1.OpenFile()) != null)
                 {
-                    System.IO.File.Copy(openFileDialog1.FileName, "C:\\Taimer\\WebTaimer\\Images\\pepe.jpg");
-                    //imagen=FileName;
+                    string[] path = openFileDialog1.FileName.Split('.');
+                    string name = nombre + '.' + path[path.Length - 1];
+                    System.IO.File.Copy(openFileDialog1.FileName, "C:\\Taimer\\WebTaimer\\Images\\" + name);
+                    imagen = name;
                 }
             }
 
