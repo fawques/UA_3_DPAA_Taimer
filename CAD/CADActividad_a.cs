@@ -124,10 +124,10 @@ namespace CAD {
         /// </summary>
         /// <param name="profesor"></param>
         /// <param name="cod"></param>
-        public void ModificaActividad_a(string Nombre, string Descripcion, int cod, int Codigoturno, string profesor)
+        public void ModificaActividad_a(string Nombre, string Descripcion, int cod, int Codigoturno, string profesor, int puntuacion, int votos)
         {
-            string comando = "UPDATE [Actividad_a] SET profesor = '" + profesor + "' WHERE codigo = " + cod;
-            string comando2 = "UPDATE [Actividad] SET nombre = '" + Nombre + "', descripcion = '" + Descripcion + "', codigoturno = " + Codigoturno + " WHERE codigo = " + cod;
+            string comando = "UPDATE [Actividad_a] SET profesor = '" + profesor + "', puntuacionTotal = '" + puntuacion + "', nVotantes = '" + votos + "' WHERE codigo = " + cod;
+            string comando2 = "UPDATE [Actividad] SET nombre = '" + Nombre + "', descripcion = '" + Descripcion + "', codigoturno = '" + Codigoturno + "' WHERE codigo = " + cod;
             SqlConnection c = null;
             SqlCommand comandoTBD;
 

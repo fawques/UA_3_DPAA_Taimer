@@ -10,7 +10,7 @@ using System.Collections;
 
 namespace CAD
 {
-    class CADComentario
+    public class CADComentario
     {
         private static string conexionTBD;
         
@@ -29,8 +29,13 @@ namespace CAD
         /// <param name="codUser"></param>
         public void CrearCommentBasic(string text, int codActividad, string codUser)
         {
-            string comando = "INSERT INTO [Comentario](texto,actividad,usuario) VALUES('" + text + "', '" + codActividad + "', '" + codUser + "')";
-            SqlConnection c=null;
+            string comando;
+            if (codUser == null) {
+                comando = "INSERT INTO [Comentario](texto,actividad) VALUES('" + text + "', '" + codActividad + "')";
+            } else {
+                comando = "INSERT INTO [Comentario](texto,actividad,usuario) VALUES('" + text + "', '" + codActividad + "', '" + codUser + "')";
+            }    
+            SqlConnection c = null;
             SqlCommand comandoTBD;
             
             try
@@ -144,7 +149,8 @@ namespace CAD
         /// <param name="codUser"></param>
         public void ModificaComment(int id, string text, int codActividad, string codUser)
         {
-            string comando = "UPDATE [Comentario] SET id = '" + id + "', texto = '" + text + "',  actCod = '" + codActividad + "', actUser = '" + codUser + "', usuario = '" + codUser+ "' WHERE id = '" + id + "'";
+            string comando = "UPDATE [Comentario] SET texto = '" + text + "',  actividad = '" + 
+                codActividad + "', usuario = '" + codUser + "' WHERE id = '" + id + "'";
             SqlConnection c = null;
             SqlCommand comandoTBD;
 

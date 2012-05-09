@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Data;
+using System.Collections;
 using CAD;
 
 namespace Taimer
@@ -53,14 +55,13 @@ namespace Taimer
         /// <param name="receptor_"></param>
         /// <param name="hora_"></param>
         /// <param name="fecha_"></param>
-        public Mensaje(int id_, string texto_, User emisor_, User receptor_, DateTime fecha_)
+        public Mensaje(int id_, string texto_, User emisor_, User receptor_, DateTime fecha_, bool leido = false)
         {
             id = id_;
             texto = texto_;
             emisor = emisor_;
             receptor = receptor_;            
-            fecha = fecha_;
-            leido = false;
+            fecha = fecha_;            
         }
 
         /// <summary>
@@ -137,9 +138,7 @@ namespace Taimer
 
             return fecha_s;
         }
-
-
-       /*Funciones de borrado e insertado en la BD, comentadas para que no de error (hasta que CADMensajes sea pública)
+       
         /// <summary>
         /// Añade el mensaje a la base de datos
         /// </summary>
@@ -156,8 +155,43 @@ namespace Taimer
         {
             CADMensajes mens = new CADMensajes();
             mens.BorrarMensaje(id);
-        }*/
+        }
 
+        public static List<Mensaje> MensajesToList(DataSet data, User emisor)
+        {
+             if (data != null)
+            {
+                CADMensajes act = new CADMensajes();                
+                CADUser user=new CADUser();
+                User receptor;
+                List<Mensaje> list = new List<Mensaje>();
+                DateTime date;
+                int id;
+                bool leido;
+                string dniRecep = "", text="";
+                DataRowCollection rows = data.Tables[0].Rows;
+
+                for (int i = 0; i < rows.Count; i++)
+                {                   
+                    dniRecep = rows[i].ItemArray[1].ToString();
+                    receptor = User.UserToObject(user.GetDatosUser(dniRecep));
+                    text = rows[i].ItemArray[2].ToString();
+                    date = (DateTime)rows[i].ItemArray[3];
+                    leido = (bool)rows[i].ItemArray[4];
+                    id = (int)rows[i].ItemArray[5];
+
+                    if (receptor != null)
+                    {
+                        Mensaje nuevo = new Mensaje(id, text, emisor, receptor, date, leido);
+                        list.Add(nuevo);
+                    }
+                    else
+                        return null;
+                }
+                return list;
+            }
+            return null;   
+        }
         #endregion
    } 
 }
