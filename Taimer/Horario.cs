@@ -379,7 +379,7 @@ namespace Taimer
         public void Agregar()
         {
             CADHorario h = new CADHorario();
-            h.CrearHorarioBasic(id, nombre, usuario.DNI,false);
+            h.CrearHorarioBasic(id, nombre, usuario.DNI,publico);
 
             foreach (List<Turno> lt in arrayTurnos)
             {
@@ -435,7 +435,7 @@ namespace Taimer
             if (nombre == "")
                 nombre = null;
 
-            h.ModificaHorario(id, nombre, usuario.DNI, false);
+            h.ModificaHorario(id, nombre, usuario.DNI, publico);
         }
         /// <summary>
         /// Convierte un DataSet(será un Horario) en un objeto Horario
@@ -448,6 +448,7 @@ namespace Taimer
             {
                 string titulo, usuario = "";
                 int id = 0;
+                bool publico=false;
                 DataSet aux = new DataSet();
                 CADUser user = new CADUser();
                 DataRowCollection rows = data.Tables[0].Rows;
@@ -458,7 +459,8 @@ namespace Taimer
                     titulo = rows[0].ItemArray[1].ToString();
                     usuario = rows[0].ItemArray[2].ToString();
                     aux = user.GetDatosUser(usuario);
-                    Horario hor = new Horario(id, titulo, User.UserToObject(aux));
+                    publico =(bool)rows[0].ItemArray[3];
+                    Horario hor = new Horario(id, titulo, User.UserToObject(aux),publico);
                     return hor;
                 }
             }
@@ -478,6 +480,7 @@ namespace Taimer
                 CADUser user = new CADUser();
                 string titulo, usuario = "";
                 int id = 0;
+                bool publico = false;
                 DataRowCollection rows = data.Tables[0].Rows;
 
                 for (int i = 0; i < rows.Count; i++)
@@ -486,7 +489,8 @@ namespace Taimer
                     id = (int)rows[i].ItemArray[0];
                     titulo = rows[i].ItemArray[1].ToString();
                     usuario = rows[i].ItemArray[2].ToString();
-                    Horario nuevo = new Horario(id, titulo, autor);
+                    publico = (bool)rows[0].ItemArray[3];
+                    Horario nuevo = new Horario(id, titulo, autor,publico);
                     nuevo.SetTurnos();
                     list.Add(nuevo);
                 }                
