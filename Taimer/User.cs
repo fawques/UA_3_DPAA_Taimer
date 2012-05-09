@@ -101,7 +101,7 @@ namespace Taimer {
         /// <param name="pass_">Constraseña del usuario</param>
         /// <param name="curso_">Curso del usuario</param>
         /// <param name="tit_">Titulación del usuario</param>
-        public User(string nom_, string dni_, string email_, string pass_, int curso_, string tit_,int codH_ = 0) {
+        public User(string nom_, string dni_, string email_, string pass_, int curso_, string tit_,int codH_ = 0, string imagen_="",string frase_ = "") {
             nombre = nom_;
             dni = dni_;
             password = pass_;
@@ -109,6 +109,8 @@ namespace Taimer {
             curso = curso_;
             titulacion = tit_;
             codHorarios = codH_;
+            imagen = imagen_;
+            frase = frase_;
         }
 
 
@@ -125,7 +127,7 @@ namespace Taimer {
         /// <param name="acta_">Lista de actividades academicas en las que está matriculado el usuario</param>
         /// <param name="actp_">Lista de actividades personales que realiza el usuario</param>
         /// <param name="hor_">Lista de horarios que tiene alamacenados el usuario</param>
-        public User(string nom_, string dni_, string email_, string pass_, int curso_, string tit_, List<Actividad_a> acta_, List<Actividad_p> actp_, List<Horario> hor_){
+        public User(string nom_, string dni_, string email_, string pass_, int curso_, string tit_, List<Actividad_a> acta_, List<Actividad_p> actp_, List<Horario> hor_, string imagen_ = "", string frase_ = "") {
             codHorarios = hor_.Count;
             /* -- Al meterle las listas, sobre todo si vienen de los CAD, ya tienen su código puesto
             for (int i = 0; i < actp_.Count; i++)
@@ -145,6 +147,8 @@ namespace Taimer {
             actAcademicas = acta_;
             actPersonales = actp_;
             horarios = hor_;
+            imagen = imagen_;
+            frase = frase_;
             //codActPers = (-1 * actPersonales.Count) + 1;
         }
      
@@ -178,6 +182,9 @@ namespace Taimer {
 
             //codActPers = u.codActPers;
             titulacion = u.titulacion;
+
+            imagen = u.imagen;
+            frase = u.frase;
         }
 
 
@@ -257,6 +264,16 @@ namespace Taimer {
         {
             set { actPersonales = value; }
             get { return actPersonales; }
+        }
+
+        public string Frase {
+            set { frase = value; }
+            get { return frase; }
+        }
+
+        public string Imagen {
+            set { imagen = value; }
+            get { return imagen; }
         }
 
 
@@ -401,7 +418,7 @@ namespace Taimer {
             horario.Agregar();
             codHorarios++;
             CADUser usr = new CADUser();
-            usr.ModificaUser(dni, nombre, email, password, titulacion, codHorarios, "", "");
+            usr.ModificaUser(dni, nombre, email, password, titulacion, codHorarios, imagen, frase);
             horarios.Add(horario);
         }
 
@@ -488,7 +505,7 @@ namespace Taimer {
         public void Agregar()
         {
             CADUser user = new CADUser();
-            user.CrearUserAll(dni, nombre, email, password, curso, titulacion, codHorarios,"","");//TODO
+            user.CrearUserAll(dni, nombre, email, password, curso, titulacion, codHorarios,imagen,frase);
         }
 
         /// <summary>
@@ -496,7 +513,7 @@ namespace Taimer {
         /// </summary>
         public void Modificar() {
             CADUser user = new CADUser();
-            user.ModificaUser(dni, nombre, email, password, titulacion, codHorarios, "", "");
+            user.ModificaUser(dni, nombre, email, password, titulacion, codHorarios, imagen, frase);
         }
 
         ///<summary>
@@ -517,7 +534,7 @@ namespace Taimer {
             if (data != null)
             {
                 List<User> list = new List<User>();
-                string dni, nom, email, pass, tit = "";
+                string dni, nom, email, pass, tit = "",img="",frs = "";
                 int curso = 0, codH = 0;
                 DataRowCollection rows = data.Tables[0].Rows;
                 
@@ -536,8 +553,12 @@ namespace Taimer {
 
                     if (rows[i].ItemArray[6].ToString() != "")
                         codH = (int)rows[i].ItemArray[6];
-                    
-                    User user = new User(nom, dni, email, pass, curso, tit, codH);
+
+                    img = rows[i].ItemArray[7].ToString();
+
+                    frs = rows[i].ItemArray[8].ToString();
+
+                    User user = new User(nom, dni, email, pass, curso, tit, codH, frs);
                     user.SetDatos();
                     list.Add(user);
                 }
@@ -555,7 +576,7 @@ namespace Taimer {
         {         
             if (data != null)
             {
-                string dni, nom, email, pass, tit = "";
+                string dni, nom, email, pass, tit = "", img = "", frs = "";
                 int curso = 0, codH = 0;
                 DataRowCollection rows = data.Tables[0].Rows;
 
@@ -575,7 +596,12 @@ namespace Taimer {
                     if (rows[0].ItemArray[6].ToString() != "")
                         codH = (int)rows[0].ItemArray[6];
 
-                    User user = new User(nom, dni, email, pass, curso, tit,codH);
+
+                    img = rows[0].ItemArray[7].ToString();
+
+                    frs = rows[0].ItemArray[8].ToString();
+
+                    User user = new User(nom, dni, email, pass, curso, tit,codH,img,frs);
                     user.SetDatos();
                     return user;
                 }                
