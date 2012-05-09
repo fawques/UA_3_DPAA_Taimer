@@ -229,7 +229,7 @@ namespace Taimer {
             if (codigo == 0) //Codigo por defecto
                 codigo = UltimoCodigo + 1;
 
-            act.CrearActivida_aAll(nombre, descripcion, codigo, nombreCoordinador, titulacion,0,0);
+            act.CrearActivida_aAll(nombre, descripcion, codigo, nombreCoordinador, titulacion, notaTotal, numVotos);
 
             foreach (Turno t in turnos) {
                 t.Actividad = this;
@@ -253,7 +253,7 @@ namespace Taimer {
         public void Modificar() {
             CADActividad_a act = new CADActividad_a();
 
-            act.ModificaActividad_a(Nombre,Descripcion,codigo,Codigoturno,nombreCoordinador, 0, 0);
+            act.ModificaActividad_a(Nombre, Descripcion, codigo, Codigoturno, nombreCoordinador, notaTotal, numVotos);
         }
 
         /// <summary>
@@ -282,7 +282,7 @@ namespace Taimer {
                 List<Actividad_a> list = new List<Actividad_a>();
                 DataSet aux = new DataSet();
 
-                int cod, curso = 0;
+                int cod=0, curso=0,nota=0,nVot = 0;
                 string prof = "", tit = "", nom, desc = "";
 
                 DataRowCollection rows = data.Tables[0].Rows;
@@ -299,13 +299,19 @@ namespace Taimer {
                     if (rows[i].ItemArray[3].ToString() != "")
                         curso = (int)rows[i].ItemArray[3];
 
+                    if (rows[i].ItemArray[4].ToString() != "")
+                        nota = (int)rows[i].ItemArray[4];
+
+                    if (rows[i].ItemArray[5].ToString() != "")
+                        nVot = (int)rows[i].ItemArray[5];
+
                     aux = act.GetDatosActividad(cod);
 
                     if (aux != null)
                     {
                         nom = aux.Tables[0].Rows[0].ItemArray[1].ToString();
                         desc = aux.Tables[0].Rows[0].ItemArray[2].ToString();
-                        Actividad_a nueva = new Actividad_a(nom, desc, prof, curso, tit, cod);
+                        Actividad_a nueva = new Actividad_a(nom, desc, prof, curso, tit, cod, nota, nVot);
 
                         nueva.SetTurnos();
                         list.Add(nueva);
