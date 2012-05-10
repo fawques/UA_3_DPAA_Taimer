@@ -79,6 +79,25 @@ namespace CAD {
             }
         }
 
+        public DataSet getDatosMensaje(int idMsj) {
+            SqlConnection con = null;
+            DataSet datos = null;
+            string comando = "Select * from [Mensajes] where id='" + idMsj.ToString() + "'";
+            try {
+                con = new SqlConnection(conexionTBD);
+                SqlDataAdapter sqlAdaptador = new SqlDataAdapter(comando, con);
+                datos = new DataSet();
+                sqlAdaptador.Fill(datos);
+                return datos;
+
+            } catch (SqlException) {
+                // Captura la condición general y la reenvía.
+                throw;
+            } finally {
+                if (con != null) con.Close(); // Se asegura de cerrar la conexión.
+            }
+        }
+
         public DataSet getConversacion(string user1, string user2) {
             SqlConnection con = null;
             DataSet listComments = null;
