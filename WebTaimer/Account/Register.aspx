@@ -4,29 +4,11 @@
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
 </asp:Content>
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
-    <asp:CreateUserWizard ID="RegisterUser" runat="server" EnableViewState="False" 
-        OnCreatedUser="RegisterUser_CreatedUser">
-        <LayoutTemplate>
-            <asp:PlaceHolder ID="wizardStepPlaceholder" runat="server"></asp:PlaceHolder>
-            <asp:PlaceHolder ID="navigationPlaceholder" runat="server"></asp:PlaceHolder>
-        </LayoutTemplate>
-        <WizardSteps>
-            <asp:CreateUserWizardStep ID="RegisterUserWizardStep" runat="server">
-                <ContentTemplate>
-                    <h2>
                         Crear una nueva cuenta
                     </h2>
                     <p>
                         Use el formulario siguiente para crear una cuenta nueva.
                     </p>
-                    <p>
-                        Las contraseñas deben tener una longitud mínima de <%= Membership.MinRequiredPasswordLength %> caracteres.
-                    </p>
-                    <span class="failureNotification">
-                        <asp:Literal ID="ErrorMessage" runat="server"></asp:Literal>
-                    </span>
-                    <asp:ValidationSummary ID="RegisterUserValidationSummary" runat="server" CssClass="failureNotification" 
-                         ValidationGroup="RegisterUserValidationGroup"/>
                     <div class="accountInfo">
                         <fieldset class="register" style="width:400px; height:600px">
                             <legend>Información de cuenta</legend>
@@ -52,20 +34,20 @@
                             <p>
                                 <asp:Label ID="PasswordLabel" runat="server" AssociatedControlID="Password">Contraseña:</asp:Label>
                                 <asp:TextBox ID="Password" runat="server" CssClass="passwordEntry" TextMode="Password"></asp:TextBox>
-                                <asp:RequiredFieldValidator ID="PasswordRequired" runat="server" ControlToValidate="Password" 
+                                <!-- <asp:RequiredFieldValidator ID="PasswordRequired" runat="server" ControlToValidate="Password"
                                      CssClass="failureNotification" ErrorMessage="La contraseña es obligatoria." ToolTip="La contraseña es obligatoria." 
-                                     ValidationGroup="RegisterUserValidationGroup">*</asp:RequiredFieldValidator>
+                                     ValidationGroup="RegisterUserValidationGroup">*</asp:RequiredFieldValidator> -->
                             </p>
                             <br />
                             <p>
                                 <asp:Label ID="ConfirmPasswordLabel" runat="server" AssociatedControlID="ConfirmPassword">Confirmar contraseña:</asp:Label>
                                 <asp:TextBox ID="ConfirmPassword" runat="server" CssClass="passwordEntry" TextMode="Password"></asp:TextBox>
-                                <asp:RequiredFieldValidator ControlToValidate="ConfirmPassword" CssClass="failureNotification" Display="Dynamic" 
+                                <!-- <asp:RequiredFieldValidator ControlToValidate="ConfirmPassword" CssClass="failureNotification" Display="Dynamic" 
                                      ErrorMessage="Confirmar contraseña es obligatorio." ID="ConfirmPasswordRequired" runat="server" 
                                      ToolTip="Confirmar contraseña es obligatorio." ValidationGroup="RegisterUserValidationGroup">*</asp:RequiredFieldValidator>
                                 <asp:CompareValidator ID="PasswordCompare" runat="server" ControlToCompare="Password" ControlToValidate="ConfirmPassword" 
                                      CssClass="failureNotification" Display="Dynamic" ErrorMessage="Contraseña y Confirmar contraseña deben coincidir."
-                                     ValidationGroup="RegisterUserValidationGroup">*</asp:CompareValidator>
+                                     ValidationGroup="RegisterUserValidationGroup">*</asp:CompareValidator> -->
                             </p>
                             <br />
                             <p>
@@ -102,34 +84,8 @@
                             </p>
                         </fieldset>
                         <p class="submitButton">
-                            <asp:Button ID="CreateUserButton" runat="server" CommandName="MoveNext" Text="Crear usuario" 
-                                 ValidationGroup="RegisterUserValidationGroup"/>
+                            <asp:Button ID="crearUsuario" runat="server" onclick="crearUsuario_Click" 
+                                Text="Crear usuario" />
                         </p>
                     </div>
-                </ContentTemplate>
-                <CustomNavigationTemplate>
-                </CustomNavigationTemplate>
-            </asp:CreateUserWizardStep>
-<asp:CompleteWizardStep runat="server">
-    <ContentTemplate>
-        <table>
-            <tr>
-                <td align="center" colspan="2">
-                    Completar</td>
-            </tr>
-            <tr>
-                <td>
-                    La cuenta se ha creado correctamente.</td>
-            </tr>
-            <tr>
-                <td align="right" colspan="2">
-                    <asp:Button ID="ContinueButton" runat="server" CausesValidation="False" 
-                        CommandName="Continue" Text="Continuar" ValidationGroup="RegisterUser" />
-                </td>
-            </tr>
-        </table>
-    </ContentTemplate>
-            </asp:CompleteWizardStep>
-        </WizardSteps>
-    </asp:CreateUserWizard>
 </asp:Content>
