@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Data;
+using System.Collections;
+using CAD;
 
 namespace Taimer
 {
@@ -137,6 +140,79 @@ namespace Taimer
             fecha_s = dia + " " + hora;
 
             return fecha_s;
+        }
+
+        //FUNCIONES DE LOS CAD
+        public void Agregar() {
+            CADComentario mens = new CADComentario();
+            mens.CrearCommentBasic(texto, actividadAcademica.Codigo, usuario.DNI, fecha);
+        }
+
+        public void Borrar() {
+            CADComentario mens = new CADComentario();
+            mens.BorrarComment(id);
+        }
+
+        public List<Comentario> ComentariosToList(DataSet data) {
+            if (data != null) {
+                List<Comentario> list = new List<Comentario>();
+
+                CADUser user = new CADUser();
+                CADActividad_a actividadA = new CADActividad_a();
+                User usuario;
+                
+                DateTime date;
+                int id;
+                string text = "";
+                Actividad_a actividad;
+
+                DataRowCollection rows = data.Tables[0].Rows;
+
+                for (int i = 0; i < rows.Count; i++) {
+                    id = (int)rows[i].ItemArray[0];
+                    text = rows[i].ItemArray[1].ToString();
+                    actividad = Actividad_a.Actividad_aToObject(actividadA.GetDatosActividad_a((int)rows[i].ItemArray[2]));
+                    usuario = User.UserToObject(user.GetDatosUser(rows[i].ItemArray[3].ToString()));
+                    date = (DateTime)rows[i].ItemArray[4];
+
+                    Comentario nuevo = new Comentario(id, text,actividad,usuario,date);
+                    list.Add(nuevo);
+
+                }
+                return list;
+            }
+            return null; 
+        }
+
+        public static Comentario ComentarioToObject(DataSet data) {
+            if (data != null) {
+
+                CADUser user = new CADUser();
+                CADActividad_a actividadA = new CADActividad_a();
+                Comentario com;
+                int id;
+                string text;
+                Actividad_a act;
+                User usr;
+                DateTime dat;
+
+                DataRowCollection rows = data.Tables[0].Rows;
+
+                if (rows.Count != 0) {
+                    id = (int)rows[0].ItemArray[0];
+                    text = rows[0].ItemArray[1].ToString();
+                    act = Actividad_a.Actividad_aToObject(actividadA.GetDatosActividad_a((int)rows[0].ItemArray[2]));
+                    usr = User.UserToObject(user.GetDatosUser(rows[0].ItemArray[3].ToString()));
+                    dat = (DateTime)rows[0].ItemArray[4];
+
+                    com = new Comentario(id, text, act, usr, dat);
+                    return com;
+                }
+
+
+                
+            }
+            return null;
         }
 
         #endregion

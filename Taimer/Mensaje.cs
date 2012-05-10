@@ -157,13 +157,23 @@ namespace Taimer
             mens.BorrarMensaje(id);
         }
 
-        public static List<Mensaje> MensajesToList(DataSet data, User emisor)
+        public int getNunMensajesNoLeidos(User emisor) {
+            CADMensajes mens = new CADMensajes();
+            return mens.getNumNotRead(emisor.DNI);
+        }
+
+        public List<Mensaje> getConversacion(User emisor, User receptor) {
+            CADMensajes mens = new CADMensajes();
+            return MensajesToList(mens.getConversacion(emisor.DNI,receptor.DNI));
+        }
+
+        public static List<Mensaje> MensajesToList(DataSet data)
         {
              if (data != null)
             {
                 CADMensajes act = new CADMensajes();                
                 CADUser user=new CADUser();
-                User receptor;
+                User receptor,emisor;
                 List<Mensaje> list = new List<Mensaje>();
                 DateTime date;
                 int id;
@@ -174,6 +184,7 @@ namespace Taimer
                 for (int i = 0; i < rows.Count; i++)
                 {                   
                     dniRecep = rows[i].ItemArray[1].ToString();
+                    emisor = User.UserToObject(user.GetDatosUser(rows[i].ItemArray[0].ToString()));
                     receptor = User.UserToObject(user.GetDatosUser(dniRecep));
                     text = rows[i].ItemArray[2].ToString();
                     date = (DateTime)rows[i].ItemArray[3];
@@ -192,6 +203,38 @@ namespace Taimer
             }
             return null;   
         }
+
+        public static Mensaje MensajeToObject(DataSet data){
+            if (data != null) {
+                CADMensajes act = new CADMensajes();
+                CADUser user = new CADUser();
+                User receptor, emisor;
+                List<Mensaje> list = new List<Mensaje>();
+                DateTime date;
+                int id;
+                bool leido;
+                string dniRecep = "", text = "";
+                DataRowCollection rows = data.Tables[0].Rows;
+
+                if (rows.Count != 0) {
+                    dniRecep = rows[0].ItemArray[1].ToString();
+                    emisor = User.UserToObject(user.GetDatosUser(rows[0].ItemArray[0].ToString()));
+                    receptor = User.UserToObject(user.GetDatosUser(dniRecep));
+                    text = rows[0].ItemArray[2].ToString();
+                    date = (DateTime)rows[0].ItemArray[3];
+                    leido = (bool)rows[0].ItemArray[4];
+                    id = (int)rows[0].ItemArray[5];
+
+                    if (receptor != null) {
+                        Mensaje nuevo = new Mensaje(id, text, emisor, receptor, date, leido);
+                        list.Add(nuevo);
+                    } else
+                        return null;
+                }
+            }
+            return null;
+        }
+
         #endregion
    } 
 }
