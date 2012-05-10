@@ -27,13 +27,13 @@ namespace CAD
         /// <param name="text"></param>
         /// <param name="codActividad"></param>
         /// <param name="codUser"></param>
-        public void CrearCommentBasic(string text, int codActividad, string codUser)
+        public void CrearCommentBasic(string text, int codActividad, string codUser, DateTime date)
         {
             string comando;
             if (codUser == null) {
-                comando = "INSERT INTO [Comentario](texto,actividad) VALUES('" + text + "', '" + codActividad + "')";
+                comando = "INSERT INTO [Comentario](texto,actividad,fecha) VALUES('" + text + "', '" + codActividad + "', '" + date.ToString("yyyy-MM-dd HH:mm:ss") + "')";
             } else {
-                comando = "INSERT INTO [Comentario](texto,actividad,usuario) VALUES('" + text + "', '" + codActividad + "', '" + codUser + "')";
+                comando = "INSERT INTO [Comentario](texto,actividad,usuario,fecha) VALUES('" + text + "', '" + codActividad + "', '" + codUser + "', '" + date.ToString("yyyy-MM-dd HH:mm:ss") + "')";
             }    
             SqlConnection c = null;
             SqlCommand comandoTBD;
@@ -147,10 +147,10 @@ namespace CAD
         /// <param name="text"></param>
         /// <param name="codActividad"></param>
         /// <param name="codUser"></param>
-        public void ModificaComment(int id, string text, int codActividad, string codUser)
+        public void ModificaComment(int id, string text, int codActividad, string codUser, DateTime date)
         {
-            string comando = "UPDATE [Comentario] SET texto = '" + text + "',  actividad = '" + 
-                codActividad + "', usuario = '" + codUser + "' WHERE id = '" + id + "'";
+            string comando = "UPDATE [Comentario] SET texto = '" + text + "',  actividad = '" +
+                codActividad + "', usuario = '" + codUser + "', fecha = '" + date.ToString("yyyy-MM-dd HH:mm:ss") + "' WHERE id = '" + id + "'";
             SqlConnection c = null;
             SqlCommand comandoTBD;
 
