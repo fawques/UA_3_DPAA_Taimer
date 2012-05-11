@@ -66,6 +66,7 @@ namespace Taimer
             texto = c.texto;
             actividadAcademica = c.actividadAcademica;
             usuario = c.usuario;
+            fecha = c.fecha;
         }
 
         /// <summary>
@@ -153,7 +154,12 @@ namespace Taimer
             mens.BorrarComment(id);
         }
 
-        public List<Comentario> ComentariosToList(DataSet data) {
+        public void Modificar() {
+            CADComentario mens = new CADComentario();
+            mens.ModificaComment(id,texto, actividadAcademica.Codigo, usuario.DNI, fecha);
+        }
+
+        public static List<Comentario> ComentariosToList(DataSet data) {
             if (data != null) {
                 List<Comentario> list = new List<Comentario>();
 

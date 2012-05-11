@@ -55,13 +55,14 @@ namespace Taimer
         /// <param name="receptor_"></param>
         /// <param name="hora_"></param>
         /// <param name="fecha_"></param>
-        public Mensaje(int id_, string texto_, User emisor_, User receptor_, DateTime fecha_, bool leido = false)
+        public Mensaje(int id_, string texto_, User emisor_, User receptor_, DateTime fecha_, bool leido_ = false)
         {
             id = id_;
             texto = texto_;
             emisor = emisor_;
             receptor = receptor_;            
-            fecha = fecha_;            
+            fecha = fecha_;
+            leido = leido_;
         }
 
         /// <summary>
@@ -148,6 +149,11 @@ namespace Taimer
             mens.CrearMensaje(emisor.DNI, receptor.DNI, texto, fecha, leido);
         }
 
+        public void Modificar() {
+            CADMensajes mens = new CADMensajes();
+            mens.ModificarMensaje(id,emisor.DNI, receptor.DNI, texto, fecha, leido);
+        }
+
         /// <summary>
         /// Elimina el mensaje de la base de datos
         /// </summary>
@@ -225,11 +231,10 @@ namespace Taimer
                     leido = (bool)rows[0].ItemArray[4];
                     id = (int)rows[0].ItemArray[5];
 
-                    if (receptor != null) {
-                        Mensaje nuevo = new Mensaje(id, text, emisor, receptor, date, leido);
-                        list.Add(nuevo);
-                    } else
-                        return null;
+
+                    Mensaje nuevo = new Mensaje(id, text, emisor, receptor, date, leido);
+                    return nuevo;
+
                 }
             }
             return null;

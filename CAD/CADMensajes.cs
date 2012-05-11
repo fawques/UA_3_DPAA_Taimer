@@ -82,7 +82,7 @@ namespace CAD {
         public DataSet getDatosMensaje(int idMsj) {
             SqlConnection con = null;
             DataSet datos = null;
-            string comando = "Select * from [Mensajes] where id='" + idMsj.ToString() + "'";
+            string comando = "Select * from [Mensajes] where id='" + idMsj + "'";
             try {
                 con = new SqlConnection(conexionTBD);
                 SqlDataAdapter sqlAdaptador = new SqlDataAdapter(comando, con);
