@@ -1,43 +1,15 @@
-﻿<%@ Page Title="Horarios públicos" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true"
+﻿
+<%@ Page Title="Horarios públicos" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true"
     CodeBehind="HorariosPublicos.aspx.cs" Inherits="WebTaimer.TabHorariosPublicos.HorariosPublicos" %>
 
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
-</asp:Content>
-<asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
-    <h2>
-        Mis horarios
-    </h2>
-
-    <!-- PANEL IZQUIERDO (seleccionar horario) ---------------->
-
     <style>
         #divPanelIzquierdo
         {
             width:150px;
             height:632px;
         }
-    </style>
-
-    <div id="divPanelIzquierdo" style="float: left; margin-left: 0px">
-    
-    <fieldset class="fieldHorarios" style="width: 122px; height: 452px">
-            <legend>Horarios</legend>
-
-            <asp:ListBox ID="listaHorarios" runat="server" Height="420px" style="width:120px">
-                <asp:ListItem>Horario 1</asp:ListItem>
-                <asp:ListItem>Horario 2</asp:ListItem>
-                <asp:ListItem>Horario 3</asp:ListItem>
-            </asp:ListBox>
-
-        </fieldset><br />
-
-    </div>
-
-
-
-    <!-- ZONA DE HORARIO -------------------------------------->
-
-   <style>
+        
         #divZonaHorario
         {
             width:764px;
@@ -51,7 +23,7 @@
            background-color: White;
            width: 89px;
            float: left;
-           height: 500px;
+           height: 520px;
        }
        
        .diasSem 
@@ -63,84 +35,42 @@
            display: inline;
        }
        
+       div.horas 
+       {
+        width: 55px; 
+        height: 437px; 
+        background-color: Maroon; 
+        float: left; 
+        clear:both; 
+        margin-right: 5px;   
+       }
+       
        p.horas 
        {
            color: White;
            width: 70px;
            text-align: center;
            margin: 0px;
-           margin-bottom:20px;
+           height: 40px;
+           
        }
-    </style>
-
-    <div id="divZonaHorario" style="float: right; height: 460px; overflow: auto; width: 768px; margin: 0px; margin-top: 29px; border: 1px solid Gray; border-left: none; ">
-        <div style="height: 460px; color: Maroon; width: 760px; margin-left: -10px; margin-right:-10px;">
-
-                <div style="background-color: Maroon; height: 23px; padding-left: 89px;">
-                    <p class="diasSem" style="margin-left: 0px">Lunes</p>
-                    <p class="diasSem" style="margin-left: 60px">Martes</p>
-                    <p class="diasSem" style="margin-left: 50px">Miércoles</p>
-                    <p class="diasSem" style="margin-left: 50px">Jueves</p>
-                    <p class="diasSem" style="margin-left: 55px">Viernes</p>
-                    <p class="diasSem" style="margin-left: 50px">Sábado</p>
-                    <p class="diasSem" style="margin-left: 50px">Domingo</p>
-
-                   
-
-
-                </div>
-                <div style="width: 55px; height: 437px; background-color: Maroon; float: left; clear:both; margin-right: 5px;">
-                    <p class="horas"> 9:00</p>
-                    <p class="horas"> 10:00</p>
-                    <p class="horas"> 11:00</p>
-                    <p class="horas"> 12:00</p>
-                    <p class="horas"> 13:00</p>
-                    <p class="horas"> 14:00</p>
-                    <p class="horas"> 15:00</p>
-                    <p class="horas"> 16:00</p>
-                    <p class="horas"> 17:00</p>
-                    <p class="horas"> 18:00</p>
-                    <p class="horas"> 19:00</p>
-                    <p class="horas"> 20:00</p>
-                    <p class="horas"> 21:00</p>
-                </div>
-                
-                <div class="columnas">
-                </div>
-                <div class="columnas">
-                    <div style="height: 40px; background-color: #f1be87; text-align: center;">
-                        <br />
-                        <label>Asignatura</label>
-                    </div>
-                </div>
-                <div class="columnas">
-                    <div style="height: 40px;  background-color: #f1be87; text-align: center; margin-top: 167px;">
-                        <br />
-                        <label>Asignatura</label>
-                    </div>
-                </div>
-                <div class="columnas">
-                    <div style="height: 40px;  background-color: #f1be87; text-align: center; margin-top: 85px;">
-                        <br />
-                        <label>Asignatura</label>
-                    </div>
-                </div>
-                <div class="columnas">
-                </div>
-                <div class="columnas">
-                </div>
-                <div class="columnas">
-                </div>
-
-                
-        </div>
-    </div>
-
-
-
-    <!-- PANEL ABAJO (información de asignatura) ------------>
-
-    <style>
+       .Asignatura 
+       {
+        height: 38px; 
+        background-color: #f1be87; 
+        text-align: center; 
+        border: 1px solid Black;  
+        position: relative;
+       }
+       .asigText 
+       {
+           width: 89px; 
+           position: relative; 
+           top: 50%; height: 20px; 
+           margin: 0 px; 
+           margin-top: -10px;
+       }
+       
         li 
         {
             list-style-type:none;
@@ -158,8 +88,70 @@
             margin: 0px;
             display: inline;
         }
-        
     </style>
+</asp:Content>
+<asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
+    <h2>
+        Mis horarios
+    </h2>
+
+    <!-- PANEL IZQUIERDO (seleccionar horario) ---------------->
+
+   
+
+    <div id="divPanelIzquierdo" style="float: left; margin-left: 0px">
+    
+    <fieldset class="fieldHorarios" style="width: 122px; height: 452px">
+            <legend>Horarios</legend>
+
+            <asp:ListBox ID="listaHorarios" runat="server" Height="420px" style="width:120px">
+            </asp:ListBox>
+
+        </fieldset><br />
+
+        <!--<asp:Label ID="Label1" runat="server" Text="Label"><%; %></asp:Label>-->
+
+    </div>
+
+
+
+    <!-- ZONA DE HORARIO -------------------------------------->
+
+    <div id="divZonaHorario" style="float: right; width: 768px; margin: 0px; margin-top: 29px; border: 1px solid Gray; border-left: none;">
+        <div style="color: Maroon; width: 760px; ">
+
+                <div style="background-color: Maroon; height: 23px; padding-left: 89px;">
+                    <p class="diasSem" style="margin-left: 0px">Lunes</p>
+                    <p class="diasSem" style="margin-left: 60px">Martes</p>
+                    <p class="diasSem" style="margin-left: 50px">Miércoles</p>
+                    <p class="diasSem" style="margin-left: 50px">Jueves</p>
+                    <p class="diasSem" style="margin-left: 55px">Viernes</p>
+                    <p class="diasSem" style="margin-left: 50px">Sábado</p>
+                    <p class="diasSem" style="margin-left: 50px">Domingo</p>
+
+                   
+
+                   
+                </div>
+                <div class="horas" id="HorasTabla" runat="server">
+                 <% horarioPrueba(); Response.Write(setHoras()); %>
+                </div>
+                 <% Response.Write(setColums()); %>
+                <!--<div class="columnas" style="height: 480px;" >
+                    <div class='Asignatura' style="top: 40px;">
+                    <label>Asignatura</label>
+                    </div>
+                    <div class='Asignatura' style=" top: 40px;">
+                    <label style='height: 20px; top: 50%; margin-top: -10px;'>Asignatura2</label>
+                    </div>
+                </div>-->
+        </div>
+    </div>
+
+
+
+    <!-- PANEL ABAJO (información de asignatura) ------------>
+
 
     <fieldset class="fieldHorarios" 
         style=" height: 110px; float:right; width: 535px;">
