@@ -9,7 +9,8 @@
     </h2>
 
     <p>
-        Escribe tu nombre de usuario o tu e-mail y te enviaremos la contraseña a tu correo electrónico.
+        Escribe tu 
+        nombre de usuario o e-mail y te enviaremos la contraseña a tu correo electrónico.
     </p>
 
     <p>
@@ -24,6 +25,7 @@
     </p>
 
     <p>
-    <asp:Button ID="SubmitButton" runat="server" CommandName="Submit" Text="Enviar" ValidationGroup="PasswordRecovery" />
+    <asp:Button ID="SubmitButton" runat="server" CommandName="Submit" Text="Enviar" 
+            ValidationGroup="PasswordRecovery" onclick="SubmitButton_Click" />
     </p>
 </asp:Content>

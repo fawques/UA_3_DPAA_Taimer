@@ -15,6 +15,7 @@
     </style>
 </asp:Content>
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
+
 <h2> CREAR UNA NUEVA CUENTA</h2>
     <p> Use el formulario siguiente para crear una nueva cuenta.</p>
 
@@ -92,6 +93,4 @@
     <asp:Button ID="btReg" runat="server" onclick="btReg_Click" Text="Registrate" ValidationGroup="RegisterUserValidationGroup"/>
 
 </div>
-    
-    
 </asp:Content>

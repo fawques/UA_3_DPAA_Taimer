@@ -12,7 +12,8 @@ namespace WebTaimer.TabHorariosPublicos
     public partial class HorariosPublicos : System.Web.UI.Page
     {
         List<Horario> horarios;
-        protected Horario h;
+        protected string _horas;
+        protected string _columnas;
 
         protected int getMaxHora(Horario h) {
             Hora maxHora =  new Hora(0, 1);
@@ -30,7 +31,8 @@ namespace WebTaimer.TabHorariosPublicos
             return mh;
         }
 
-        protected void horarioPrueba() {
+        protected Horario horarioPrueba() {
+            Horario h;
             User user = new User("user", "12345678A", "email@email.com", "password", 1, "II");
             h = new Horario("horario", user);
             Actividad_a act = new Actividad_a("Actividad_a", "descripción", "pepe", "II");
@@ -45,9 +47,11 @@ namespace WebTaimer.TabHorariosPublicos
             h.AddTurno(new Turno(new Hora(21, 0), new Hora(23, 0), dias.V, "ua", act));
             h.AddTurno(new Turno(new Hora(13, 30), new Hora(16, 0), dias.S, "ua", act));
             h.AddTurno(new Turno(new Hora(16, 0), new Hora(20, 0), dias.S, "ua", act));
+
+            return h;
         }
         
-        protected string setHoras() {
+        protected string setHoras(Horario h) {
             int minHora = h.minHora().Hor;
             int maxHora = getMaxHora(h);
 
@@ -62,7 +66,7 @@ namespace WebTaimer.TabHorariosPublicos
             return horas;
         }
 
-        protected string setColums() {
+        protected string setColums(Horario h) {
             int minHora = h.minHora().Hor;
             int maxHora = getMaxHora(h);
             string columnas = "";
@@ -105,9 +109,19 @@ namespace WebTaimer.TabHorariosPublicos
                 //if (horarios.Count > 0)
                 listaHorarios.DataSource = listHorarios;
                 listaHorarios.DataBind();
+
+                _horas = setHoras(horarios[0]);
+                _columnas = setColums(horarios[0]);
             }
 
 
+        }
+
+        protected void listaHorarios_SelectedIndexChanged(object sender, EventArgs e) {
+            int i = listaHorarios.SelectedIndex;
+            _horas = setHoras(horarios[i]);
+            _columnas = setColums(horarios[i]);
+            Response.Redirect("~/TabHorariosPublicos/HorariosPublicos.aspx.cs");
         }
         
     }

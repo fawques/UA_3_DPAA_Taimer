@@ -17,7 +17,8 @@
         Si aún no tienes una cuenta, no esperes más. <a href="../Account/Register.aspx" title="Registrarse">Regístrate</a>.
     </p>
     <p>
-        &nbsp;</p>
+        Si has olvidado tu contraseña, <a href="../TabInicio/ForgotPassword.aspx" title="Recuperar contraseña">haz clic aquí</a> para recuperar tu cuenta.
+    </p>
     <p>
         Si aún no has descargado la aplicación Taimer para Windows, puedes hacerlo <a href=""
             title="Descargar Taimer para Windows">haciendo clic aquí</a>.

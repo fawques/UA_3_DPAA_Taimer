@@ -104,12 +104,13 @@
     <fieldset class="fieldHorarios" style="width: 122px; height: 452px">
             <legend>Horarios</legend>
 
-            <asp:ListBox ID="listaHorarios" runat="server" Height="420px" style="width:120px">
+            <asp:ListBox ID="listaHorarios" runat="server" Height="420px" 
+                style="width:120px" onselectedindexchanged="listaHorarios_SelectedIndexChanged">
             </asp:ListBox>
 
         </fieldset><br />
 
-        <!--<asp:Label ID="Label1" runat="server" Text="Label"><%; %></asp:Label>-->
+        <!--<asp:Label ID="Label1" runat="server" Text="Label"><%  %></asp:Label>-->
 
     </div>
 
@@ -134,9 +135,9 @@
                    
                 </div>
                 <div class="horas" id="HorasTabla" runat="server">
-                 <% horarioPrueba(); Response.Write(setHoras()); %>
+                 <% =_horas %>
                 </div>
-                 <% Response.Write(setColums()); %>
+                 <% =_columnas %>
                 <!--<div class="columnas" style="height: 480px;" >
                     <div class='Asignatura' style="top: 40px;">
                     <label>Asignatura</label>
