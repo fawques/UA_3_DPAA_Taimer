@@ -31,7 +31,17 @@ namespace Taimer {
         /// <summary>
         /// Titulacion en la que se encuentra esta actividad
         /// </summary>
-        private string titulacion;        
+        private string titulacion;
+
+        /// <summary>
+        /// Suma de las notas que puntuan los usuarios
+        /// </summary>
+        private int notaTotal;
+
+        /// <summary>
+        /// Número de votos que ha recibido la actividad
+        /// </summary>
+        private int numVotos;
 
         #endregion
 
@@ -46,16 +56,16 @@ namespace Taimer {
         /// <param name="nomCoord_"> Nómbre del coordinador de la Actividad_a</param>
         /// <param name="titulacion">Tilación de la Actividad_a</param>
         /// <param name="cod_">Codigo de la Actividad_a (por defecto 0)</param>
-        public Actividad_a(string nom_, string desc_, string nomCoord_, string tit, int cod_ = 0)
+        /// <param name="nota_">Nota de la actividad</param>
+        /// <param name="numvotos_">Numero de votos de la actividad</param>
+        public Actividad_a(string nom_, string desc_, string nomCoord_, string tit, int cod_ = 0,int nota_= 0,int numvotos_= 0)
             : base(nom_, desc_, cod_) {
                 titulacion = tit;
                 nombreCoordinador = nomCoord_;
                 curso = 0;                      // Por defecto se asigna el número de curso a 0
+                numVotos = numvotos_;
+                notaTotal = nota_;
         }
-
-        
-    
-
 
         /// <summary>
         /// Constructor básico (sin lista de turnos, pero sí con número de curso)
@@ -66,12 +76,16 @@ namespace Taimer {
         /// <param name="curso_"> Curso al que pertenece la Actividad_a </param>
         /// <param name="titulacion">Tilación de la Actividad_a</param>
         /// <param name="cod_">Codigo de la Actividad_a (por defecto 0)</param>
-        public Actividad_a(string nom_, string desc_, string nomCoord_, int curso_, string tit, int cod_ = 0,int codTurno = 1)
+        /// <param name="numVotos_">Número de votos</param>
+        /// <param name="nota_">Nota total de la actividad</param>
+        public Actividad_a(string nom_, string desc_, string nomCoord_, int curso_, string tit, int cod_ = 0,int codTurno = 1,int numVotos_= 0, int nota_= 0)
             : base(nom_, desc_, cod_,codTurno) {
 
                 titulacion = tit;
                 nombreCoordinador = nomCoord_;
                 Curso = curso_;
+                numVotos = numVotos_;
+                notaTotal = nota_;
         }
 
 
@@ -85,11 +99,13 @@ namespace Taimer {
         /// <param name="curso_"> Curso ql que pertence la Actividad_a</param>
         /// <param name="titulacion">Tilación de la Actividad_a</param>
         /// <param name="cod_">Codigo de la Actividad_a (por defecto 0)</param>
-        public Actividad_a(string nom_, string desc_, string nomCoord_, List<Turno> turnos_, int curso_, string tit, int codTurno, int cod_ = 0)
+        public Actividad_a(string nom_, string desc_, string nomCoord_, List<Turno> turnos_, int curso_, string tit, int codTurno, int cod_ = 0,int numVotos_= 0,int nota_= 0)
             : base(nom_, desc_, cod_,codTurno, turnos_) {
                 titulacion = tit;
             nombreCoordinador = nomCoord_;
             Curso = curso_;
+            notaTotal = nota_;
+            numVotos = numVotos_;
         }
 
 
@@ -104,6 +120,8 @@ namespace Taimer {
             titulacion = act.titulacion;
             nombreCoordinador = act.nombreCoordinador;
             curso = act.curso;
+            numVotos = act.numVotos;
+            notaTotal = act.notaTotal;
         }
 
         /// <summary>
@@ -119,6 +137,8 @@ namespace Taimer {
                 Actividad_a aux = (Actividad_a)act;
                 nombreCoordinador = aux.nombreCoordinador;
                 curso = aux.curso;
+                numVotos = aux.numVotos;
+                notaTotal = aux.notaTotal;
             }
         }
 
@@ -134,8 +154,6 @@ namespace Taimer {
                     throw new ArgumentOutOfRangeException("El número de curso debe ser mayor o igual que 0");
             }
         }
-
-
         /// <summary>
         /// Asigna/Devuelve el coordinador de la Actividad_a
         /// </summary>
@@ -143,7 +161,21 @@ namespace Taimer {
             get { return nombreCoordinador; }
             set { nombreCoordinador = value; }
         }
-
+        /// <summary>
+        /// Asigna/Devuelve la suma total de notas
+        /// </summary>
+        public int NotaTotal {
+            get { return notaTotal; }
+            set { notaTotal = value; }
+        }
+        /// <summary>
+        /// Asigna/Devuelve la suma total de votos
+        /// </summary>
+        public int NumVotos
+        {
+            get { return numVotos; }
+            set { numVotos = value; }
+        }
 
         /// <summary>
         /// Añade un Turno a la Actividad_a
@@ -197,7 +229,7 @@ namespace Taimer {
             if (codigo == 0) //Codigo por defecto
                 codigo = UltimoCodigo + 1;
 
-            act.CrearActivida_aAll(nombre, descripcion, codigo, nombreCoordinador, titulacion);
+            act.CrearActivida_aAll(nombre, descripcion, codigo, nombreCoordinador, titulacion, notaTotal, numVotos);
 
             foreach (Turno t in turnos) {
                 t.Actividad = this;
@@ -221,7 +253,7 @@ namespace Taimer {
         public void Modificar() {
             CADActividad_a act = new CADActividad_a();
 
-            act.ModificaActividad_a(Nombre,Descripcion,codigo,Codigoturno,nombreCoordinador);
+            act.ModificaActividad_a(Nombre, Descripcion, codigo, Codigoturno, nombreCoordinador, notaTotal, numVotos);
         }
 
         /// <summary>
@@ -250,7 +282,7 @@ namespace Taimer {
                 List<Actividad_a> list = new List<Actividad_a>();
                 DataSet aux = new DataSet();
 
-                int cod, curso = 0;
+                int cod=0, curso=0,nota=0,nVot = 0;
                 string prof = "", tit = "", nom, desc = "";
 
                 DataRowCollection rows = data.Tables[0].Rows;
@@ -267,13 +299,19 @@ namespace Taimer {
                     if (rows[i].ItemArray[3].ToString() != "")
                         curso = (int)rows[i].ItemArray[3];
 
+                    if (rows[i].ItemArray[4].ToString() != "")
+                        nota = (int)rows[i].ItemArray[4];
+
+                    if (rows[i].ItemArray[5].ToString() != "")
+                        nVot = (int)rows[i].ItemArray[5];
+
                     aux = act.GetDatosActividad(cod);
 
                     if (aux != null)
                     {
                         nom = aux.Tables[0].Rows[0].ItemArray[1].ToString();
                         desc = aux.Tables[0].Rows[0].ItemArray[2].ToString();
-                        Actividad_a nueva = new Actividad_a(nom, desc, prof, curso, tit, cod);
+                        Actividad_a nueva = new Actividad_a(nom, desc, prof, curso, tit, cod, nota, nVot);
 
                         nueva.SetTurnos();
                         list.Add(nueva);
@@ -299,7 +337,7 @@ namespace Taimer {
                 CAD.CADUser user = new CAD.CADUser();
                 //User autor = new User();
                 DataSet aux = new DataSet();
-                int cod, curso = 1;
+                int cod, curso = 1, nota = 0, nVot = 0; 
                 string prof = "", tit = "", nom, desc = "";
                 DataRowCollection rows = data.Tables[0].Rows;
 
@@ -314,6 +352,12 @@ namespace Taimer {
                     if (rows[0].ItemArray[3].ToString() != "")
                         curso = (int)rows[0].ItemArray[3];
 
+                    if (rows[0].ItemArray[4].ToString() != "")
+                        nota = (int)rows[0].ItemArray[4];
+
+                    if (rows[0].ItemArray[5].ToString() != "")
+                        nVot = (int)rows[0].ItemArray[5];
+
                     aux = act.GetDatosActividad(cod);
 
                     if (aux != null)
@@ -321,7 +365,7 @@ namespace Taimer {
                         nom = aux.Tables[0].Rows[0].ItemArray[1].ToString();
                         desc = aux.Tables[0].Rows[0].ItemArray[2].ToString();
 
-                        Actividad_a acta = new Actividad_a(nom,desc,prof,curso,tit,cod);
+                        Actividad_a acta = new Actividad_a(nom,desc,prof,curso,tit,cod,nota,nVot);
                         acta.SetTurnos();
                       
                         return acta;
@@ -366,7 +410,14 @@ namespace Taimer {
             }
             return list;
         }
-
+        /// <summary>
+        /// Realiza la nota media 
+        /// </summary>
+        /// <returns>Devuelve la nota media de la asignatura</returns>
+        public int NotaMedia()
+        {
+            return (notaTotal / numVotos);
+        }
         #endregion
     }
 }

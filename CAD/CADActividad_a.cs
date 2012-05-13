@@ -29,14 +29,14 @@ namespace CAD {
         /// <param name="codigo"></param>
         /// <param name="profesor"></param>
         /// <param name="titulacion"></param>
-        public void CrearActivida_aAll(string nombre,string desc,int codigo,string profesor,string titulacion){
+        public void CrearActivida_aAll(string nombre,string desc,int codigo,string profesor,string titulacion,int puntuacion, int votos){
 
              CADTitulacion tit = new CADTitulacion();
              if (!tit.Exists(titulacion)) {
                  tit.CrearTitulacion(titulacion);
-             }    
+             }
 
-            string comando = "INSERT INTO [Actividad_a](profesor,codigo,titulacion) VALUES('" + profesor + "', '" + codigo +  "', '" + titulacion + "')";
+             string comando = "INSERT INTO [Actividad_a](profesor,codigo,titulacion,puntuacionTotal, nVotantes) VALUES('" + profesor + "', '" + codigo + "', '" + titulacion + "', '" + puntuacion + "', '" + votos + "')";
             SqlConnection c = null;
             SqlCommand comandoTBD;
             try
@@ -124,10 +124,10 @@ namespace CAD {
         /// </summary>
         /// <param name="profesor"></param>
         /// <param name="cod"></param>
-        public void ModificaActividad_a(string Nombre, string Descripcion, int cod, int Codigoturno, string profesor)
+        public void ModificaActividad_a(string Nombre, string Descripcion, int cod, int Codigoturno, string profesor, int puntuacion, int votos)
         {
-            string comando = "UPDATE [Actividad_a] SET profesor = '" + profesor + "' WHERE codigo = " + cod;
-            string comando2 = "UPDATE [Actividad] SET nombre = '" + Nombre + "', descripcion = '" + Descripcion + "', codigoturno = " + Codigoturno + " WHERE codigo = " + cod;
+            string comando = "UPDATE [Actividad_a] SET profesor = '" + profesor + "', puntuacionTotal = '" + puntuacion + "', nVotantes = '" + votos + "' WHERE codigo = " + cod;
+            string comando2 = "UPDATE [Actividad] SET nombre = '" + Nombre + "', descripcion = '" + Descripcion + "', codigoturno = '" + Codigoturno + "' WHERE codigo = " + cod;
             SqlConnection c = null;
             SqlCommand comandoTBD;
 
