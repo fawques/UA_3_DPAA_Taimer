@@ -12,6 +12,12 @@ namespace WebTaimer.TabHorarios
     public partial class Horarios : System.Web.UI.Page
     {
         List<Horario> horarios;
+        protected void Page_PreInit(object sender, EventArgs e)
+        {
+            if (Session["usuario"] == null)
+                Response.Redirect("~/TabInicio/SinLogin.aspx");
+        }
+
         protected void Page_Init(object sender, EventArgs e)
         {
             listaHorarios.AutoPostBack = true;
