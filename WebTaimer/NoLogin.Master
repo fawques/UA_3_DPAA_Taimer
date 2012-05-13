@@ -39,7 +39,7 @@
                     <Items>
                         <asp:MenuItem Text="Descarga" 
                             ToolTip="Descarga Taimer para Windows para crear tus horarios." 
-                            Value="Descarga la aplicación" NavigateUrl="~/TabDescarga/Descarga.aspx"></asp:MenuItem>
+                            Value="Descarga la aplicación" NavigateUrl="~/TabDescarga/DescargaSin.aspx"></asp:MenuItem>
                         <asp:MenuItem Text="Horarios públicos" Value="Horarios públicos" 
                             NavigateUrl="~/TabHorariosPublicos/HorariosPublicos.aspx" 
                             
