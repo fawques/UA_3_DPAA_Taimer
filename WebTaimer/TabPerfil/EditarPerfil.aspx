@@ -33,6 +33,9 @@
                                 <asp:RequiredFieldValidator ID="EmailRequired" runat="server" ControlToValidate="Email" 
                                      CssClass="failureNotification" ErrorMessage="El e-mail es obligatorio." ToolTip="El e-mail es obligatorio." 
                                      ValidationGroup="RegisterUserValidationGroup">*</asp:RequiredFieldValidator>
+                                <asp:RegularExpressionValidator ID="EmailValidation" ControlToValidate="Email" ValidationExpression="^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$" 
+                                     ValidationGroup="RegisterUserValidationGroup" runat="server" ErrorMessage="e-Mail no valido" CssClass="failureNotification"
+                                     ToolTip="e-Mail no valido">*</asp:RegularExpressionValidator>
                             </p>
                             <br />
                             <p style="width: 333px">
@@ -57,16 +60,27 @@
                             <p style="width:333px">
                                 <asp:Label ID="labelPasswordAnterior" runat="server" AssociatedControlID="PasswordAnterior">Contraseña anterior:</asp:Label>
                                 <asp:TextBox ID="PasswordAnterior" runat="server" CssClass="textEntry"></asp:TextBox>
+                                <asp:RequiredFieldValidator ID="PasswordRequired" runat="server" ControlToValidate="PasswordAnterior" 
+                                    CssClass="failureNotification" ErrorMessage="La contraseña no es correcta." ToolTip="La contraseña no es correcta." 
+                                    ValidationGroup="RegisterUserValidationGroup">*</asp:RequiredFieldValidator>                                
                             </p>
                             <br />
                             <p style="width: 333px">
                                 <asp:Label ID="labelNuevoPassword" runat="server" AssociatedControlID="NuevoPassword">Nueva contraseña:</asp:Label>
                                 <asp:TextBox ID="NuevoPassword" runat="server" CssClass="textEntry"></asp:TextBox>
+                                <asp:RequiredFieldValidator ID="NuevoPassRequiered" runat="server" ControlToValidate="NuevoPassword" 
+                                    CssClass="failureNotification" ErrorMessage="La contraseña es obligatoria." ToolTip="Introduzca nueva contraseña" 
+                                    ValidationGroup="RegisterUserValidationGroup">*</asp:RequiredFieldValidator>
+                                <asp:RegularExpressionValidator CssClass="failureNotification" ControlToValidate="NuevoPassword" ID="NuevoPassValidator" runat="server" 
+                                    ValidationExpression="^[a-zA-Z0-9]{6,15}$" ErrorMessage="Error la contraseña tiene que tener entre 6 y 15 carácteres." ToolTip="Error la contraseña tiene que tener entre 6 y 15 carácteres." ValidationGroup="RegisterUserValidationGroup">*</asp:RegularExpressionValidator>
                             </p>
                             <br />
                                 <p style="width:333px">
                                 <asp:Label ID="labelConfirmarNuevoPassword" runat="server" AssociatedControlID="UserName">Confirmar nueva contraseña:</asp:Label>
                                 <asp:TextBox ID="ConfirmarNuevoPassword" runat="server" CssClass="textEntry"></asp:TextBox>
+                                <asp:RequiredFieldValidator ID="ConfirmarNuevoPassRequiered" runat="server" ControlToValidate="ConfirmarNuevoPassword" 
+                                    CssClass="failureNotification" ErrorMessage="Las contraseñas no coinciden." ToolTip="Las contraseñas no coinciden." 
+                                    ValidationGroup="RegisterUserValidationGroup">*</asp:RequiredFieldValidator>                                
                             </p>
                         </fieldset>
                     </div>
@@ -93,7 +107,7 @@
                              <p style="width: 333px">
                                  <br />
                                 <asp:Label ID="labelFrasePersonal" runat="server">Frase personal:</asp:Label>
-                                <asp:TextBox ID="textboxFrasePersonal" runat="server" CssClass="textEntry"></asp:TextBox>
+                                <asp:TextBox ID="FrasePersonal" runat="server" CssClass="textEntry"></asp:TextBox>
                             </p>
                         </fieldset>
                                             </div>

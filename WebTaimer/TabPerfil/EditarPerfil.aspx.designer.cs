@@ -94,6 +94,15 @@ namespace WebTaimer.TabPerfil {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator EmailRequired;
         
         /// <summary>
+        /// Control EmailValidation.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator EmailValidation;
+        
+        /// <summary>
         /// Control CursoLabel.
         /// </summary>
         /// <remarks>
@@ -139,6 +148,15 @@ namespace WebTaimer.TabPerfil {
         protected global::System.Web.UI.WebControls.TextBox PasswordAnterior;
         
         /// <summary>
+        /// Control PasswordRequired.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator PasswordRequired;
+        
+        /// <summary>
         /// Control labelNuevoPassword.
         /// </summary>
         /// <remarks>
@@ -157,6 +175,24 @@ namespace WebTaimer.TabPerfil {
         protected global::System.Web.UI.WebControls.TextBox NuevoPassword;
         
         /// <summary>
+        /// Control NuevoPassRequiered.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator NuevoPassRequiered;
+        
+        /// <summary>
+        /// Control NuevoPassValidator.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator NuevoPassValidator;
+        
+        /// <summary>
         /// Control labelConfirmarNuevoPassword.
         /// </summary>
         /// <remarks>
@@ -173,6 +209,15 @@ namespace WebTaimer.TabPerfil {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox ConfirmarNuevoPassword;
+        
+        /// <summary>
+        /// Control ConfirmarNuevoPassRequiered.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator ConfirmarNuevoPassRequiered;
         
         /// <summary>
         /// Control labelAvatar.
@@ -220,13 +265,13 @@ namespace WebTaimer.TabPerfil {
         protected global::System.Web.UI.WebControls.Label labelFrasePersonal;
         
         /// <summary>
-        /// Control textboxFrasePersonal.
+        /// Control FrasePersonal.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox textboxFrasePersonal;
+        protected global::System.Web.UI.WebControls.TextBox FrasePersonal;
         
         /// <summary>
         /// Control botonModificarDatos.
