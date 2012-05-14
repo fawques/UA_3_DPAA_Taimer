@@ -58,6 +58,15 @@ namespace WebTaimer {
         protected global::System.Web.UI.WebControls.TextBox textboxUsuario;
         
         /// <summary>
+        /// Control requiredTestuser.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator requiredTestuser;
+        
+        /// <summary>
         /// Control textboxPassword.
         /// </summary>
         /// <remarks>
@@ -65,6 +74,15 @@ namespace WebTaimer {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox textboxPassword;
+        
+        /// <summary>
+        /// Control requiredTextpass.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator requiredTextpass;
         
         /// <summary>
         /// Control botonIniciarSesion.
@@ -83,6 +101,24 @@ namespace WebTaimer {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.CheckBox checkboxRecordar;
+        
+        /// <summary>
+        /// Control validatorErrorUserPass.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CustomValidator validatorErrorUserPass;
+        
+        /// <summary>
+        /// Control validationSum.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ValidationSummary validationSum;
         
         /// <summary>
         /// Control MainContent.

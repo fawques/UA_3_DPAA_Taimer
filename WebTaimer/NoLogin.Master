@@ -23,6 +23,17 @@
         {
             width: 373px;
         }
+        
+        .styleLogin 
+        {
+            padding: 10px;
+        }
+        .validationSumary ul
+        {
+            margin-top: 3px;
+            margin-bottom: 0;
+        }
+
     </style>
 </head>
 <body>
@@ -50,12 +61,29 @@
                     </Items>
                 </asp:Menu>
                             </td>
-                            <td>
-                        <asp:TextBox ID="textboxUsuario" runat="server" Width="120px" placeholder="Nombre de usuario">alberto@alberto.es</asp:TextBox>
-                        <asp:TextBox ID="textboxPassword" runat="server" Width="120px" placeholder="Contraseña" style="margin-left:5px">alberto</asp:TextBox>
+                            <td class="styleLogin">
+                        <asp:TextBox ID="textboxUsuario" runat="server" Width="120px" 
+                                    placeholder="Nombre de usuario" ValidationGroup="loginValidation">alberto@alberto.es</asp:TextBox>
+                                <asp:RequiredFieldValidator ID="requiredTestuser" runat="server" 
+                                    ErrorMessage="El campo no puede estar vacio" 
+                                    ControlToValidate="textboxUsuario" ValidationGroup="loginValidation" 
+                                    ForeColor="Red">*</asp:RequiredFieldValidator>
+                        <asp:TextBox ID="textboxPassword" runat="server" Width="120px" placeholder="Contraseña" 
+                                    style="margin-left:5px" ValidationGroup="loginValidation" 
+                                    ontextchanged="textboxPassword_TextChanged">alberto</asp:TextBox>
+                                <asp:RequiredFieldValidator ID="requiredTextpass" runat="server" 
+                                    ErrorMessage="El campo contraseña no puede estar vacio" 
+                                    ValidationGroup="loginValidation" ControlToValidate="textboxPassword" 
+                                    ForeColor="Red">*</asp:RequiredFieldValidator>
                                 <asp:Button ID="botonIniciarSesion" runat="server" Text="Iniciar sesión" 
-                                    Width="90px" style="margin-left:5px" onclick="botonIniciarSesion_Click" />
+                                    Width="90px" style="margin-left:5px" onclick="botonIniciarSesion_Click" 
+                                    ValidationGroup="loginValidation" />
                                 <asp:CheckBox ID="checkboxRecordar" runat="server" Text="Recordar" style="margin-left:5px" />
+                                <asp:CustomValidator ID="validatorErrorUserPass" runat="server" 
+                                    ErrorMessage="Usuario o contraseña inválidos" Visible="False" 
+                                    ValidationGroup="loginValidation"></asp:CustomValidator>
+                                <asp:ValidationSummary ID="validationSum" runat="server" ForeColor="Red" 
+                                    ValidationGroup="loginValidation" CssClass="validationSumary" />
                             </td>
                         </tr>
                     </table>
