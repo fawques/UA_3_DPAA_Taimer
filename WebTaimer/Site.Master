@@ -52,9 +52,8 @@
                         <asp:MenuItem Text="Mi perfil" Value="Mi perfil" 
                             ToolTip="Cambiar los datos de tu perfil." 
                             NavigateUrl="~/TabPerfil/VerPerfil.aspx">
-                            <asp:MenuItem Text="Editar perfil" Value="Editar perfil" 
-                                NavigateUrl="~/TabPerfil/EditarPerfil.aspx"></asp:MenuItem>
-                            <asp:MenuItem Text="Cerrar sesión" Value="Cerrar sesión" Target="Cerrar_Sesion"></asp:MenuItem>
+                        </asp:MenuItem>
+                        <asp:MenuItem Target="Cerrar_Sesion" Text="Salir" Value="Cerrar sesión">
                         </asp:MenuItem>
                     </Items>
                 </asp:Menu>

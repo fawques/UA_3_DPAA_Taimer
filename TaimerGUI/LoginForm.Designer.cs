@@ -45,6 +45,7 @@
             this.lbLoginPassword = new System.Windows.Forms.Label();
             this.lbLoginUser = new System.Windows.Forms.Label();
             this.btLoginEntrar = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
             this.pnLogo.SuspendLayout();
             this.pnSystemButtons.SuspendLayout();
             this.pnLoginContents.SuspendLayout();
@@ -137,6 +138,7 @@
             // pnLoginContents
             // 
             this.pnLoginContents.BackColor = System.Drawing.Color.Transparent;
+            this.pnLoginContents.Controls.Add(this.button4);
             this.pnLoginContents.Controls.Add(this.label2);
             this.pnLoginContents.Controls.Add(this.rbAdmin);
             this.pnLoginContents.Controls.Add(this.rbCliente);
@@ -332,6 +334,16 @@
             this.btLoginEntrar.UseVisualStyleBackColor = true;
             this.btLoginEntrar.Click += new System.EventHandler(this.btLoginEntrar_Click);
             // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(365, 19);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(107, 23);
+            this.button4.TabIndex = 17;
+            this.button4.Text = "Probar cad";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
             // LoginForm
             // 
             this.AcceptButton = this.btLoginEntrar;
@@ -378,6 +390,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.RadioButton rbAdmin;
         private System.Windows.Forms.RadioButton rbCliente;
+        private System.Windows.Forms.Button button4;
     }
 }
 

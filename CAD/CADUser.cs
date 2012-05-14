@@ -61,14 +61,14 @@ namespace CAD
         /// <param name="curso"></param>
         /// <param name="tit"></param>
         /// <param name="codH"></param>
-        public void CrearUserAll(string dni, string nombre, string email, string password, int curso, string codTit,int codH)
+        public void CrearUserAll(string dni, string nombre, string email, string password, int curso, string codTit,int codH, string avat, string frase)
         {
             CADTitulacion tit = new CADTitulacion();
             if (!tit.Exists(codTit))
             {
                 tit.CrearTitulacion(codTit);
-            }        
-            string comando = "INSERT INTO [User] VALUES('" + dni + "', '" + nombre + "', '" + email + "', '" + password + "','"+ curso+"','"+ codTit +"','"+codH+"')";
+            }
+            string comando = "INSERT INTO [User] VALUES('" + dni + "', '" + nombre + "', '" + email + "', '" + password + "','" + curso + "','" + codTit + "','" + codH + "','" + avat + "','" + frase + "')";
             SqlConnection c = null;
             SqlCommand comandoTBD;
 
@@ -220,14 +220,14 @@ namespace CAD
         /// <param name="email"></param>
         /// <param name="password"></param>
         /// <param name="tit"></param>
-        public void ModificaUser(string dni, string nombre, string email, string password, string tit, int codHorarios)
+        public void ModificaUser(string dni, string nombre, string email, string password, string tit, int codHorarios, string avat, string frase)
         {
             CADTitulacion titu = new CADTitulacion();
             if (!titu.Exists(tit))
             {
                 titu.CrearTitulacion(tit);
             }        
-            string comando = "UPDATE [User] SET nombre = '" + nombre + "', email = '" + email + "', password = '" + password + "', titulacion = '" + tit + "', codHorarios = '"+ codHorarios + "' WHERE dni = '" + dni + "'";
+            string comando = "UPDATE [User] SET nombre = '" + nombre + "', email = '" + email + "', password = '" + password + "', titulacion = '" + tit + "', codHorarios = '"+ codHorarios + "', avatar = '" + avat + "', frase = '" + frase + "' WHERE dni = '" + dni + "'";
             SqlConnection c = null;
             SqlCommand comandoTBD;
 

@@ -12,8 +12,14 @@ namespace WebTaimer.TabHorariosPublicos
     public partial class HorariosPublicos : System.Web.UI.Page
     {
         List<Horario> horarios;
+        Horario horarioAct;
         protected string _horas;
         protected string _columnas;
+        protected string _script;
+
+        protected void Page_Init(object sender, EventArgs e) {
+            listaHorarios.AutoPostBack = true;
+        }
 
         protected int getMaxHora(Horario h) {
             Hora maxHora =  new Hora(0, 1);
@@ -71,47 +77,68 @@ namespace WebTaimer.TabHorariosPublicos
             int maxHora = getMaxHora(h);
             string columnas = "";
 
+            int indice = 0;
+
+            horarioDe.Text = "Horario de " + h.Usuario.Nombre;
+            horarioDe.NavigateUrl = "~/TabPerfil/VerPerfil.aspx?user=" + h.Usuario.Email;
+            
+
+            _script = "<script language='javascript'>";
             foreach(List<Turno> turnoDia in h.ArrayTurnos){
                 columnas += "<div class='columnas' style='height: " + (maxHora - minHora)*40 + "px;' >";
                 int antH = minHora;
                 int antM = 0;
+
                 foreach (Turno turno in turnoDia) {
+
+                    _script += "var detalle" + indice + " = new Array();";
+                    _script += "detalle" + indice + "[0]='" + turno.Actividad.Nombre + "';";
+                    _script += "detalle" + indice + "[1]='" + turno.Actividad.Descripcion + "';";
+                    _script += "detalle" + indice + "[2]='" + turno.Ubicacion + "';";
+                    _script += "detalle" + indice + "[3]='" + turno.HoraInicio.toString() + " - " + turno.HoraFin.toString() + "';";
+                    _script += "turno[" + indice.ToString() + "]=detalle" + indice + ";";
+
 
                     int height = (turno.HoraFin.toMin() - turno.HoraInicio.toMin())* 40 / 60; //calculamos el tamaño del cuadro
                     int top = (turno.HoraInicio.Hor - antH)*40;   //calculo de desplazamiento (horas)
                     top += (turno.HoraInicio.Min - antM) * 40 / 60;  //calculo de desplazamiento (minutos)
 
-                    columnas += "<div class='Asignatura' style='height: " + height + "px; margin-top: " + top + "px'>";
+                    columnas += "<div id='" + indice.ToString() + "' onclick='setDetalles(id)' onmouseover='selected(id)' onmouseout='unselected(id)' class='Asignatura' style='height: " + height + "px; margin-top: " + top + "px'>";
                         columnas += "<p class='asigText'>" + turno.Actividad.Nombre + "</p>";
                     columnas += "</div>";
 
                     antH = turno.HoraFin.Hor;
                     antM = turno.HoraFin.Min;
+                    indice++;
                 }
                 columnas += "</div>";
             }
 
+            _script += "</script>";
+
             return columnas;
+        }
+
+        protected void SelectHorario(int indice) {
+            horarios = ((User)Session["usuario"]).Horarios;
+
+            listaHorarios.DataBind();
+            listaHorarios.Items.Clear();
+            foreach (Horario item in horarios) {
+                listaHorarios.Items.Add(item.Nombre);
+            }
+
+            nomHorario.InnerText = horarios[indice].Nombre;
+            _horas = setHoras(horarios[indice]);
+            _columnas = setColums(horarios[indice]);
         }
 
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session.Count > 0) {
-                User user = (User)Session["usuario"];
-                horarios = user.Horarios;
-
-                ArrayList listHorarios = new ArrayList();
-
-                foreach (Horario horario in horarios) {
-                    listHorarios.Add(horario.Nombre);
+                if (!IsPostBack) {
+                    SelectHorario(0);
                 }
-
-                //if (horarios.Count > 0)
-                listaHorarios.DataSource = listHorarios;
-                listaHorarios.DataBind();
-
-                _horas = setHoras(horarios[0]);
-                _columnas = setColums(horarios[0]);
             }
 
 
@@ -119,10 +146,8 @@ namespace WebTaimer.TabHorariosPublicos
 
         protected void listaHorarios_SelectedIndexChanged(object sender, EventArgs e) {
             int i = listaHorarios.SelectedIndex;
-            _horas = setHoras(horarios[i]);
-            _columnas = setColums(horarios[i]);
-            Response.Redirect("~/TabHorariosPublicos/HorariosPublicos.aspx.cs");
+            SelectHorario(i);
         }
-        
+
     }
 }

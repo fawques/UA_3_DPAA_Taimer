@@ -10,7 +10,7 @@ using System.Collections;
 
 namespace CAD
 {
-    class CADComentario
+    public class CADComentario
     {
         private static string conexionTBD;
         
@@ -27,10 +27,15 @@ namespace CAD
         /// <param name="text"></param>
         /// <param name="codActividad"></param>
         /// <param name="codUser"></param>
-        public void CrearCommentBasic(int id, string text, int codActividad, string codUser)
+        public void CrearCommentBasic(string text, int codActividad, string codUser, DateTime date)
         {
-            string comando = "INSERT INTO [Comentario](id,texto,actCod,actUser,usuario) VALUES('" + id + "', '" + text + "', '" + codActividad + "', '" + codUser + "', '" + codUser+ "')";
-            SqlConnection c=null;
+            string comando;
+            if (codUser == null) {
+                comando = "INSERT INTO [Comentario](texto,actividad,fecha) VALUES('" + text + "', '" + codActividad + "', '" + date.ToString("yyyy-MM-dd HH:mm:ss") + "')";
+            } else {
+                comando = "INSERT INTO [Comentario](texto,actividad,usuario,fecha) VALUES('" + text + "', '" + codActividad + "', '" + codUser + "', '" + date.ToString("yyyy-MM-dd HH:mm:ss") + "')";
+            }    
+            SqlConnection c = null;
             SqlCommand comandoTBD;
             
             try
@@ -142,9 +147,10 @@ namespace CAD
         /// <param name="text"></param>
         /// <param name="codActividad"></param>
         /// <param name="codUser"></param>
-        public void ModificaComment(int id, string text, int codActividad, string codUser)
+        public void ModificaComment(int id, string text, int codActividad, string codUser, DateTime date)
         {
-            string comando = "UPDATE [Comentario] SET id = '" + id + "', texto = '" + text + "',  actCod = '" + codActividad + "', actUser = '" + codUser + "', usuario = '" + codUser+ "' WHERE id = '" + id + "'";
+            string comando = "UPDATE [Comentario] SET texto = '" + text + "',  actividad = '" +
+                codActividad + "', usuario = '" + codUser + "', fecha = '" + date.ToString("yyyy-MM-dd HH:mm:ss") + "' WHERE id = '" + id + "'";
             SqlConnection c = null;
             SqlCommand comandoTBD;
 

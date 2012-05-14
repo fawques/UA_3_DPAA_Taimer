@@ -13,6 +13,24 @@ namespace WebTaimer.TabHorariosPublicos {
     public partial class HorariosPublicos {
         
         /// <summary>
+        /// Control horarioDe.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink horarioDe;
+        
+        /// <summary>
+        /// Control textboxFiltro.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox textboxFiltro;
+        
+        /// <summary>
         /// Control listaHorarios.
         /// </summary>
         /// <remarks>
@@ -22,13 +40,13 @@ namespace WebTaimer.TabHorariosPublicos {
         protected global::System.Web.UI.WebControls.ListBox listaHorarios;
         
         /// <summary>
-        /// Control Label1.
+        /// Control nomHorario.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label1;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl nomHorario;
         
         /// <summary>
         /// Control HorasTabla.
@@ -38,14 +56,5 @@ namespace WebTaimer.TabHorariosPublicos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl HorasTabla;
-        
-        /// <summary>
-        /// Control ComentarBoton.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ComentarBoton;
     }
 }
