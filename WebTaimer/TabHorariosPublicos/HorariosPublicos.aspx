@@ -127,12 +127,11 @@
 
 </asp:Content>
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
-    <h2>
-        Mis horarios
-    </h2>
+    <h2><asp:HyperLink style="color: Maroon; text-decoration:none;" ID="horarioDe" runat="server" NavigateUrl=""/></h2>
+    
 
     <!-- PANEL IZQUIERDO (seleccionar horario) ---------------->
-
+    
    
 
     <div id="divPanelIzquierdo" style="float: left; margin-left: 0px">
