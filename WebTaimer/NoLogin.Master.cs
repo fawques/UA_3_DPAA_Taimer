@@ -24,8 +24,10 @@ namespace WebTaimer
                 string pass = textboxPassword.Text;
                 if (user != "" && pass != "")
                 {
+                    
                     Session.Add("usuario", User.CheckLoginUser(user, pass));
                     Response.Redirect("~/TabInicio/ConLogin.aspx");
+                    
                 }
                 else
                     throw new InvalidDataException();
@@ -34,10 +36,15 @@ namespace WebTaimer
             }
             catch (InvalidDataException)
             {
-                Response.Write("<script>alert(\"usuario o contraseña incorrectos!\")</script>");
+                //Response.Write("<script>alert(\"usuario o contraseña incorrectos!\")</script>");
+                validatorErrorUserPass.IsValid = false;
                 // TODO: Mostrar mensaje de error de usuario o contraseña
             }
             
+        }
+
+        protected void textboxPassword_TextChanged(object sender, EventArgs e) {
+
         }
     }
 }
