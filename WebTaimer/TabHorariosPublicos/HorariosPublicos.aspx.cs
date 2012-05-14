@@ -79,9 +79,11 @@ namespace WebTaimer.TabHorariosPublicos
 
             int indice = 0;
 
-            _script = "<script language='javascript'>";
+            horarioDe.Text = "Horario de " + h.Usuario.Nombre;
+            horarioDe.NavigateUrl = "~/TabPerfil/VerPerfil.aspx?user=" + h.Usuario.Email;
             
 
+            _script = "<script language='javascript'>";
             foreach(List<Turno> turnoDia in h.ArrayTurnos){
                 columnas += "<div class='columnas' style='height: " + (maxHora - minHora)*40 + "px;' >";
                 int antH = minHora;
