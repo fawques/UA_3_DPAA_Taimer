@@ -13,6 +13,15 @@ namespace WebTaimer.TabAsignaturas {
     public partial class Asignaturas {
         
         /// <summary>
+        /// Control ToolkitScriptManager1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::AjaxControlToolkit.ToolkitScriptManager ToolkitScriptManager1;
+        
+        /// <summary>
         /// Control textboxTitulacion.
         /// </summary>
         /// <remarks>
@@ -76,13 +85,13 @@ namespace WebTaimer.TabAsignaturas {
         protected global::System.Web.UI.WebControls.Label labelCoordinadorAsignatura;
         
         /// <summary>
-        /// Control labelPuntuacionAsignatura.
+        /// Control r1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label labelPuntuacionAsignatura;
+        protected global::AjaxControlToolkit.Rating r1;
         
         /// <summary>
         /// Control labelTurnos.
