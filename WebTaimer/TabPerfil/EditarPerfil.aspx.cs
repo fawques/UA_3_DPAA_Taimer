@@ -15,7 +15,7 @@ namespace WebTaimer.TabPerfil
             User user = (User)Session["usuario"];
             string name=UserName.Text, titulacion=Titulacion.Text, email=Email.Text;
             string pass=PasswordAnterior.Text, pass2=NuevoPassword.Text, pass2Check=ConfirmarNuevoPassword.Text;
-            string frase = FrasePersonal.Text;
+            string frase = FrasePersonal.Text, url="C:\\Taimer\\WebTaimer\\Images\\";
             int curso = Curso.SelectedIndex + 1;
             bool error = false, cambio = false;
 
@@ -86,12 +86,23 @@ namespace WebTaimer.TabPerfil
 
             if (frase != "")
             {
-                
+                user.Frase = frase;
+                cambio = true;
+            }
+
+            if (cargarArchivo.HasFile)
+            {
+                user.InsertaFoto(cargarArchivo.FileName);
+                url += user.Imagen;
+                cargarArchivo.SaveAs(url);
+                imagenAvatar.ImageUrl = "~/Images/" + user.Imagen;
+                cambio = true;
             }
             
             if (!error && cambio)
             {
-                Response.Write(user.Nombre+'\n'+user.Email+'\n'+user.Titulacion+'\n'+user.Password+'\n'+user.Curso);
+                //Response.Write(user.Nombre+'\n'+user.Email+'\n'+user.Titulacion+'\n'+user.Password+'\n'+user.Curso+'\n'+url);
+                user.Modificar();
             }
         }
     }

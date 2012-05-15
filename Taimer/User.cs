@@ -77,7 +77,7 @@ namespace Taimer {
         /// <summary>
         /// Imagen de perfil del usuario
         /// </summary>
-        public string imagen;
+        private string imagen;
 
         /// <summary>
         /// Asigna un código un horario
@@ -619,7 +619,7 @@ namespace Taimer {
         {
             CADUser userCAD = new CADUser();
             userCAD.Login(email, pass);
-            User user = UserToObject(userCAD.GetDatosUser(email, pass));
+            User user = UserToObject(userCAD.GetDatosUserByLogin(email, pass));
             return user;                      
         }
 
@@ -719,12 +719,30 @@ namespace Taimer {
                 {
                     string[] path = openFileDialog1.FileName.Split('.');
                     string name = nombre + '.' + path[path.Length - 1];
-                    System.IO.File.Copy(openFileDialog1.FileName, "C:\\Taimer\\WebTaimer\\Images\\" + name);
+                    System.IO.File.Copy(openFileDialog1.FileName, "C:\\Taimer\\WebTaimer\\Images\\" + name,true);
                     imagen = name;
                 }
             }
 
         }
+
+        /// <summary>
+        /// Cambia la imagen de perfil del usuario, a partir de un nombre de archivo parasdo por parámetro
+        /// </summary>
+        public void InsertaFoto(string file)
+        {            
+            string[] path = file.Split('.');
+            string name = nombre + '.' + path[path.Length - 1];            
+            //System.IO.File.Delete("C:\\Taimer\\WebTaimer\\Images\\" + imagen);
+            imagen = name;           
+        }
+
+        public static User GetUserByEmail(string email)
+        {            
+            CADUser cad=new CADUser();
+            return UserToObject(cad.GetDatosUserByLogin(email));
+        }
+
         #endregion
     }
 }

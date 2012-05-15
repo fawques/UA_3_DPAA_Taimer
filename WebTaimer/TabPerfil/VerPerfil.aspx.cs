@@ -10,26 +10,60 @@ namespace WebTaimer.TabPerfil
 {
     public partial class VerPerfil : System.Web.UI.Page
     {
-        string dnibuscado = "00000001A";
+        string dnibuscado = "00000001A";        
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            // Muestra los botones adecuados dependiendo de si es nuestro perfil o no (a medias, sólo compara nombre con "Alberto")
-            if (((User)Session["usuario"]).DNI != dnibuscado)
+            string email = Request.QueryString["user"];
+            
+            if (email != null && email != ((User)Session["usuario"]).Email)
             {
+                Taimer.User user = Taimer.User.GetUserByEmail(email);
                 botEditarPerfil.Visible = false;
+
+                labelNombreUsuario.Text = user.Nombre;
+                labelTitulacion.Text = user.Titulacion;
+                labelCurso.Text = user.Curso.ToString();
+                labelDNI.Text = user.DNI;
+                labelEmail.Text = user.Email;
             }
-            else
+
+            else if(email==((User)Session["usuario"]).Email || email==null)
             {
                 botEnviarMensaje.Visible = false;
                 botVerHorarios.Visible = false;
+
+                labelNombreUsuario.Text = ((User)Session["usuario"]).Nombre;
+                labelTitulacion.Text = ((User)Session["usuario"]).Titulacion;
+                labelCurso.Text = ((User)Session["usuario"]).Curso.ToString();
+                labelDNI.Text = ((User)Session["usuario"]).DNI;
+                labelEmail.Text = ((User)Session["usuario"]).Email;
             }
 
-            labelNombreUsuario.Text = ((User)Session["usuario"]).Nombre;
-            labelTitulacion.Text = ((User)Session["usuario"]).Titulacion;
-            labelCurso.Text = ((User)Session["usuario"]).Curso.ToString();
-            labelDNI.Text = ((User)Session["usuario"]).DNI;
-            labelEmail.Text = ((User)Session["usuario"]).Email;
+            /*if (((User)Session["usuario"]).Email != email && email!="")
+            {                
+                //user = Taimer.User.GetUserByEmail(email);                
+            }
+            else
+            {                
+                //user=(User)Session["usuario"];                
+            }
+            Response.Write(user.Email);
+            if (user == null)
+            {
+                if ((User)Session["usuario"] == null)
+                    Response.Write("NULL");
+            }
+
+            else
+            {
+                labelNombreUsuario.Text = user.Nombre;
+                labelTitulacion.Text = user.Titulacion;
+                labelCurso.Text = user.Curso.ToString();
+                labelDNI.Text = user.DNI;
+                labelEmail.Text = user.Email;
+            }*/
+            
         }
 
         protected void botEditarPerfil_Click(object sender, EventArgs e)

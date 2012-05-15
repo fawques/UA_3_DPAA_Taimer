@@ -92,7 +92,7 @@
                             <div style="width:150px; margin-left:8px; float:left">
                                 <asp:Label ID="labelAvatar" runat="server">Imagen de perfil:</asp:Label>
                                 <br />
-                                <asp:Button ID="botonCargarDeArchivo" runat="server" Text="Cargar desde archivo" 
+                                <asp:FileUpload ID="cargarArchivo" runat="server" Text="Cargar desde archivo" 
                                     Width="150px" style="margin-top:15px" />
                                 <br />
                                 <asp:Button ID="botonCargarDeURL" runat="server" Text="Cargar desde URL" 
@@ -101,7 +101,7 @@
                             </div>
 
                             <div style="width:163px; height:110px; margin-left:10px; float:left">
-                            <asp:Image ID="imagenAvatar" runat="server" ImageUrl="~/Images/avatar.png" />
+                            <asp:Image ID="imagenAvatar" runat="server" ImageUrl="~/Images/avatar.png" width="160px" height="110px"/>
                             </div>
 
                              <p style="width: 333px">

@@ -188,11 +188,17 @@ namespace CAD
         /// <param name="email"></param>
         /// <param name="pass"></param>
         /// <returns></returns>
-        public DataSet GetDatosUser(string email, string pass)
-        {
+        public DataSet GetDatosUserByLogin(string email, string pass=null)
+        {            
             SqlConnection con = null;
             DataSet datos = null;
-            string comando = "Select * from [User] where email='" + email + "' and password='" + pass + "'";
+            string comando;
+
+            if(pass!=null)
+               comando = "Select * from [User] where email='" + email + "' and password='" + pass + "'";
+            
+            else
+               comando = "Select * from [User] where email='" + email + "'";
             try
             {
                 con = new SqlConnection(conexionTBD);
