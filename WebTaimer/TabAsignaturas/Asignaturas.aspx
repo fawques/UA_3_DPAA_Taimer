@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="Asignaturas" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true"
     CodeBehind="Asignaturas.aspx.cs" Inherits="WebTaimer.TabAsignaturas.Asignaturas" %>
 
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
     <style type="text/css">
@@ -17,6 +18,8 @@
 </asp:Content>
 
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
+    <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server">
+    </asp:ToolkitScriptManager>
     <h2>
         Asignaturas</h2>
 
@@ -37,6 +40,41 @@
             .comentario
             {
                 width: 633px;
+            }
+            .filledRatingStar
+            {
+                display:block;
+                float:left;
+                background-image:url('Images/gSelected.gif');
+         
+            }
+
+            .savedRatingStar
+            {
+                display:block;
+                float:left;
+                background-image:url('Images/bSelected.gif');
+                
+            }
+
+            .emptyRatingStar
+            {
+                display:block;
+                float:left;
+                background-image:url('Images/blank.gif');
+                
+            }
+            .ratingStar
+            {
+               font-size: 0pt;
+              
+                width: 16px;
+                height: 14px;
+                margin: 0px;
+                padding: 0px;
+                cursor: pointer;
+                display: block;
+                background-repeat: no-repeat;
             }
             </style>
 
@@ -86,7 +124,12 @@
                                     <br />
                                     <br />
                                     Puntuación:
-                                    <asp:Label ID="labelPuntuacionAsignatura" runat="server" Text="★★★★★"></asp:Label>
+                                   <br />
+                                    <br />
+                                    <asp:Rating ID="r1" runat="server" CurrentRating="2" MaxRating="10" StarCssClass="ratingStar" WaitingStarCssClass="savedRatingStar" 
+                                    FilledStarCssClass="filledRatingStar" EmptyStarCssClass="emptyRatingStar" >
+                                    </asp:Rating>
+                                    &nbsp;<input id="Submit1" type="submit" value="Vota"  onclick="Submit1_onclick()" />
                                 </div>
                                 <div style="float:left">
                                     <asp:Label ID="labelTurnos" runat="server" Font-Bold="True" Text="Turnos" align="center"></asp:Label>
