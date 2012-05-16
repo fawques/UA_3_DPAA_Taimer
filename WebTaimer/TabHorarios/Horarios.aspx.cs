@@ -15,7 +15,7 @@ namespace WebTaimer.TabHorarios
         protected void Page_PreInit(object sender, EventArgs e)
         {
             if (Session["usuario"] == null)
-                Response.Redirect("~/TabInicio/SinLogin.aspx");
+                Response.Redirect("~/TabInicio/SinLogin.aspx?error=true");
         }
 
         protected void Page_Init(object sender, EventArgs e)

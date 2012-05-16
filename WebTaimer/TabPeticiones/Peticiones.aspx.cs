@@ -9,6 +9,12 @@ namespace WebTaimer.TabPeticiones
 {
     public partial class Peticiones : System.Web.UI.Page
     {
+
+        protected void Page_PreInit(object sender, EventArgs e) {
+            if (Session["usuario"] == null)
+                Response.Redirect("~/TabInicio/SinLogin.aspx?error=true");
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
 

@@ -12,7 +12,8 @@ namespace WebTaimer.TabInicio
     {
         protected void Page_Init(object sender, EventArgs e)
         {
-            
+            if (Session["usuario"] == null)
+                Response.Redirect("~/TabInicio/SinLogin.aspx?error=true");
         }
 
         protected void Page_Load(object sender, EventArgs e)

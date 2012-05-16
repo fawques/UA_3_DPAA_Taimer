@@ -11,9 +11,16 @@ namespace WebTaimer
 {
     public partial class NoLogin : System.Web.UI.MasterPage
     {
+        protected void Page_Init(object sender, EventArgs e) {
+
+
+        }
         protected void Page_Load(object sender, EventArgs e)
         {
 
+            if (Request.QueryString["error"] != null) {
+                notLoggedError.IsValid = false;
+            }
         }
 
         protected void botonIniciarSesion_Click(object sender, EventArgs e)

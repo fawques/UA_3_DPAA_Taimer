@@ -82,6 +82,9 @@
                                 <asp:CustomValidator ID="validatorErrorUserPass" runat="server" 
                                     ErrorMessage="Usuario o contraseña inválidos" Visible="False" 
                                     ValidationGroup="loginValidation"></asp:CustomValidator>
+                                <asp:CustomValidator ID="notLoggedError" runat="server" 
+                                    ErrorMessage="Debes logearte para poder ver ese contenido" 
+                                    ValidationGroup="loginValidation" Visible="False">Debes logearte para poder ver ese contenido</asp:CustomValidator>
                                 <asp:ValidationSummary ID="validationSum" runat="server" ForeColor="Red" 
                                     ValidationGroup="loginValidation" CssClass="validationSumary" />
                             </td>

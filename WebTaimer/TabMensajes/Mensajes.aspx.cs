@@ -18,6 +18,8 @@ namespace WebTaimer.TabMensajes
 
         protected void Page_Init(object sender, EventArgs e)
         {
+            if (Session["usuario"] == null)
+                Response.Redirect("~/TabInicio/SinLogin.aspx?error=true");
             listaUsuarios.AutoPostBack = true;
         }
 

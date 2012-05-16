@@ -11,7 +11,8 @@ namespace WebTaimer.TabActividades
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Session["usuario"] == null)
+                Response.Redirect("~/TabInicio/SinLogin.aspx?error=true");
         }
     }
 }

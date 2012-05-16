@@ -30,7 +30,9 @@
                             <td class="style1">
                                 <h1><a href="../TabInicio/ConLogin.aspx" title="Ir a la página de inicio" style="text-decoration: none; color: Maroon;">Taimer</a></h1></td>
                             <td>
-                <asp:Menu ID="NavigationMenu" runat="server" CssClass="menu" EnableViewState="false" IncludeStyleBlock="false" Orientation="Horizontal">
+                <asp:Menu ID="NavigationMenu" runat="server" CssClass="menu" EnableViewState="false" 
+                                    IncludeStyleBlock="false" Orientation="Horizontal" 
+                                    onmenuitemclick="NavigationMenu_MenuItemClick">
                     <Items>
                         <asp:MenuItem Text="Descarga" 
                             ToolTip="Descarga Taimer para Windows para crear tus horarios." 

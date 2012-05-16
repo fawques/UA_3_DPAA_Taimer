@@ -10,7 +10,12 @@ namespace WebTaimer.TabPerfil
 {
     public partial class VerPerfil : System.Web.UI.Page
     {
-        string dnibuscado = "00000001A";        
+        string dnibuscado = "00000001A";
+
+        protected void Page_PreInit(object sender, EventArgs e) {
+            if (Session["usuario"] == null)
+                Response.Redirect("~/TabInicio/SinLogin.aspx?error=true");
+        }
 
         protected void Page_Load(object sender, EventArgs e)
         {
