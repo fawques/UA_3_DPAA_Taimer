@@ -18,7 +18,8 @@ namespace CAD {
 
         public void CrearMensaje(string codEmisor, string codReceptor, string texto, DateTime date, bool leido) {
             string comando = "INSERT INTO [Mensajes](emisor,receptor,texto,fecha,leido) VALUES('" + codEmisor + "', '" 
-                + codReceptor + "', '" + texto + "', '" + date.ToString("yyyy-MM-dd HH:mm:ss")+"','" + leido + "')";
+//                + codReceptor + "', '" + texto + "', '" + date.ToString("yyyy-MM-dd HH:mm:ss")+"','" + leido + "')";
+                + codReceptor + "', '" + texto + "', '" + date + "','" + leido + "')";
             SqlConnection c = null;
             SqlCommand comandoTBD;
 
@@ -102,7 +103,7 @@ namespace CAD {
             SqlConnection con = null;
             DataSet listComments = null;
             string comando = "Select * from [Mensajes] WHERE (emisor='"+user1+"' or emisor='"+user2+"') and (receptor='"+
-                user1 + "' or receptor = '" + user2+"') ORDER BY fecha";
+                user1 + "' or receptor = '" + user2+"') ORDER BY fecha DESC";
             try {
                 con = new SqlConnection(conexionTBD);
                 SqlDataAdapter sqlAdaptador = new SqlDataAdapter(comando, con);

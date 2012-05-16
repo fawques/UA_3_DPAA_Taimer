@@ -704,6 +704,34 @@ namespace Taimer {
             return list;
         }
 
+
+        /// <summary>
+        /// Obtiene la lista de todos los usuarios actuales excepto el de cierto DNI
+        /// </summary>
+        /// <returns></returns>
+        public static List<User> GetAllUsersExceptoUno(string dnibuscado)
+        {
+            CADUser userCAD = new CADUser();
+            DataSet users = userCAD.GetUsersExceptoUno(dnibuscado);
+            List<User> list = UsersToList(users);
+
+            return list;
+        }
+
+
+        /// <summary>
+        /// Obtiene la lista de todos los usuarios a los que se les aplica el filtro en el nombre y el DNI es distinto del enviado
+        /// </summary>
+        public static List<User> GetUsersFiltro(string filtro, string dnipropio)
+        {
+            CADUser userCAD = new CADUser();
+            DataSet users = userCAD.GetUsersFiltro(filtro, dnipropio);
+            List<User> list = UsersToList(users);
+
+            return list;
+        }
+
+
         /// <summary>
         /// Pide al usuario que abra un archivo para su imagen personal, y la copia al directorio Images
         /// </summary>

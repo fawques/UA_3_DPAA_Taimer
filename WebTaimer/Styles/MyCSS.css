@@ -50,24 +50,27 @@ label.comentario
     margin-left: 15px;
 }
 
+/*
 div.mensaje1 
 {
+     overflow: auto;
      float: right;
      border: 5px double #8be0a7;
-     width: 500px;
-     height: 160px;
+     width: 600px;
+     /*height: 160px;
      margin: 0 auto;
      background-color: #e5f7ea;
      border-radius: 30px;
-     margin: 10px;
+     margin: 4px;
 }
 
 div.mensaje 
 {
+    overflow: auto;
     color: #4e504f;
     margin-left: 20px;
-    height: 137px;
-    width: 455px;
+    /*height: 137px;
+    width: 560px;
     margin-right: 0px;
     margin-top: 0px;
     margin-bottom: 20px;
@@ -75,17 +78,19 @@ div.mensaje
 
 div.mensaje2
 {
-     float: left;
-     border: 5px double #8bd7e0;
-     width: 500px;
-     height: 160px;
-     margin: 0 auto;
-     background-color: #e5f4f7;
-     border-radius: 30px;
-     margin: 10px;
+    overflow: auto;
+    float: left;
+    border: 5px double #8bd7e0;
+    width: 600px;
+    /*height: 160px;
+    margin: 0 auto;
+    background-color: #e5f4f7;
+    border-radius: 30px;
+    margin: 4px;
 }
 
 label.mensaje 
 {
     margin-left: 40px;
 }
+*/

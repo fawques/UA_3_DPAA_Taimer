@@ -182,6 +182,7 @@ namespace CAD
             }
         }
 
+
         /// <summary>
         /// Obtiene los datos de un usuario a partir de un email y un password (datos de login)
         /// </summary>
@@ -367,6 +368,66 @@ namespace CAD
             catch (SqlException)
             {
                 // Captura la condición general y la reenvía.
+                throw;
+            }
+            finally
+            {
+                if (con != null) con.Close(); // Se asegura de cerrar la conexión.
+            }
+        }
+
+
+        /// <summary>
+        /// Obtenemos un dataset con los datos de los usuarios (excepto uno, el del DNI buscado, que suele ser el usuario que ha iniciado sesión)
+        /// </summary>
+        /// <returns></returns>
+        public DataSet GetUsersExceptoUno(string dnipropio)
+        {
+            SqlConnection con = null;
+            DataSet listUsers = null;
+            string comando = "Select * from [User] where dni <> '" + dnipropio + "' order by nombre";
+            try
+            {
+                con = new SqlConnection(conexionTBD);
+                SqlDataAdapter sqlAdaptador = new SqlDataAdapter(comando, con);
+                listUsers = new DataSet();
+                sqlAdaptador.Fill(listUsers);
+                return listUsers;
+
+            }
+            catch (SqlException)
+            {
+                //return null;
+                throw;
+            }
+            finally
+            {
+                if (con != null) con.Close(); // Se asegura de cerrar la conexión.
+            }
+        }
+
+
+        /// <summary>
+        /// Obtenemos un dataset con los datos de los usuarios (filtrado) y exceptuando el DNI del usuario
+        /// </summary>
+        /// <returns></returns>
+        public DataSet GetUsersFiltro(string filtro, string dnipropio)
+        {
+            SqlConnection con = null;
+            DataSet listUsers = null;
+            string comando = "Select * from [User] where nombre like '%" + filtro + "%' and dni <> '" + dnipropio + "' order by nombre";
+            try
+            {
+                con = new SqlConnection(conexionTBD);
+                SqlDataAdapter sqlAdaptador = new SqlDataAdapter(comando, con);
+                listUsers = new DataSet();
+                sqlAdaptador.Fill(listUsers);
+                return listUsers;
+
+            }
+            catch (SqlException)
+            {
+                //return null;
                 throw;
             }
             finally

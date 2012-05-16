@@ -145,8 +145,8 @@ namespace Taimer
         /// </summary>
         public void Agregar()
         {
-            CADMensajes mens = new CADMensajes();
-            mens.CrearMensaje(emisor.DNI, receptor.DNI, texto, fecha, leido);
+                CADMensajes mens = new CADMensajes();
+                mens.CrearMensaje(emisor.DNI, receptor.DNI, texto, fecha, leido);
         }
 
         public void Modificar() {
@@ -168,7 +168,7 @@ namespace Taimer
             return mens.getNumNotRead(emisor.DNI);
         }
 
-        public List<Mensaje> getConversacion(User emisor, User receptor) {
+        public static List<Mensaje> getConversacion(User emisor, User receptor) {
             CADMensajes mens = new CADMensajes();
             return MensajesToList(mens.getConversacion(emisor.DNI,receptor.DNI));
         }
