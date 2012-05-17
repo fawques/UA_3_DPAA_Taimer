@@ -163,6 +163,18 @@ namespace Taimer
             mens.ModificarMensaje(id,emisor.DNI, receptor.DNI, texto, fecha, leido);
         }
 
+        public void MarcarComoLeido()
+        {
+            CADMensajes mens = new CADMensajes();
+            mens.MarcarLeido(id, true);
+        }
+
+        public void MarcarComoLeido(bool leido)
+        {
+            CADMensajes mens = new CADMensajes();
+            mens.MarcarLeido(id, leido);
+        }
+
         /// <summary>
         /// Elimina el mensaje de la base de datos
         /// </summary>

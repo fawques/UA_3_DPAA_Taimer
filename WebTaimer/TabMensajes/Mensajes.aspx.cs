@@ -66,10 +66,13 @@ namespace WebTaimer.TabMensajes
                 {
                     if (m.Emisor.DNI != ((User)Session["usuario"]).DNI)
                     {
-                        if(m.Leido)
+                        if (m.Leido)
                             cont += "<div class=\"mensajedeotro\">";
                         else
+                        {
                             cont += "<div class=\"mensajedeotronuevo\">";
+                            m.MarcarComoLeido();
+                        }
                     }
                     else
                     {

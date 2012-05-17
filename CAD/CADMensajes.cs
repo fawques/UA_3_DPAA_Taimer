@@ -157,5 +157,30 @@ namespace CAD {
                 if (c != null) c.Close(); // Se asegura de cerrar la conexión.
             }
         }
+
+        public void MarcarLeido(int id, bool leido)
+        {
+            string comando = "UPDATE [Mensajes] SET leido = '" + leido + "' WHERE id = '" + id + "'";
+            SqlConnection c = null;
+            SqlCommand comandoTBD;
+
+            try
+            {
+                c = new SqlConnection(conexionTBD);
+                comandoTBD = new SqlCommand(comando, c);
+                c.Open();
+                comandoTBD.CommandType = CommandType.Text;
+                comandoTBD.ExecuteNonQuery();
+
+            }
+            catch (SqlException)
+            {
+                throw;
+            }
+            finally
+            {
+                if (c != null) c.Close(); // Se asegura de cerrar la conexión.
+            }
+        }
     }
 }
