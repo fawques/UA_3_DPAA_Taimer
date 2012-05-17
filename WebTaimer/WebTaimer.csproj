@@ -70,6 +70,7 @@
     <Content Include="TabDescarga\Descarga.aspx" />
     <Content Include="TabDescarga\DescargaSin.aspx" />
     <Content Include="TabHorariosPublicos\HorariosPublicos.aspx" />
+    <Content Include="TabHorariosPublicos\HorariosPublicosSin.aspx" />
     <Content Include="TabHorarios\Horarios.aspx" />
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Register.aspx" />
@@ -173,6 +174,13 @@
     </Compile>
     <Compile Include="TabHorariosPublicos\HorariosPublicos.aspx.designer.cs">
       <DependentUpon>HorariosPublicos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TabHorariosPublicos\HorariosPublicosSin.aspx.cs">
+      <DependentUpon>HorariosPublicosSin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TabHorariosPublicos\HorariosPublicosSin.aspx.designer.cs">
+      <DependentUpon>HorariosPublicosSin.aspx</DependentUpon>
     </Compile>
     <Compile Include="TabHorarios\Horarios.aspx.cs">
       <DependentUpon>Horarios.aspx</DependentUpon>

@@ -1,17 +1,14 @@
-﻿using Taimer;
-using System;
-using System.Collections;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Taimer;
 using System.Text.RegularExpressions;
 
-namespace WebTaimer.TabHorariosPublicos
-{
-    public partial class HorariosPublicos : System.Web.UI.Page
-    {
+namespace WebTaimer.TabHorariosPublicos {
+    public partial class HorariosPublicosSin : System.Web.UI.Page {
         List<Horario> horarios;
         Horario horarioAct;
         protected string _horas;
@@ -209,6 +206,5 @@ namespace WebTaimer.TabHorariosPublicos
                 horarioDe.Text = "Horario de ";
             }
         }
-
     }
 }

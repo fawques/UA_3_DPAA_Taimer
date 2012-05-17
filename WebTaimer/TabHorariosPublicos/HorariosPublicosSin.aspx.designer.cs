@@ -7,55 +7,46 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace WebTaimer.TabMensajes {
+namespace WebTaimer.TabHorariosPublicos {
     
     
-    public partial class Mensajes {
+    public partial class HorariosPublicosSin {
         
         /// <summary>
-        /// Control ScriptManager.
+        /// Control horarioDe.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.ScriptManager ScriptManager;
+        protected global::System.Web.UI.WebControls.HyperLink horarioDe;
         
         /// <summary>
-        /// Control UpdatePanelNombreConversador.
+        /// Control Label1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel UpdatePanelNombreConversador;
+        protected global::System.Web.UI.WebControls.Label Label1;
         
         /// <summary>
-        /// Control labelConversador.
+        /// Control ScriptManager1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label labelConversador;
+        protected global::System.Web.UI.ScriptManager ScriptManager1;
         
         /// <summary>
-        /// Control labelDNI.
+        /// Control UpdatePanel1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label labelDNI;
-        
-        /// <summary>
-        /// Control UpdatePanelIzquierdo.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.UpdatePanel UpdatePanelIzquierdo;
+        protected global::System.Web.UI.UpdatePanel UpdatePanel1;
         
         /// <summary>
         /// Control textboxFiltro.
@@ -67,57 +58,39 @@ namespace WebTaimer.TabMensajes {
         protected global::System.Web.UI.WebControls.TextBox textboxFiltro;
         
         /// <summary>
-        /// Control botonBuscar.
+        /// Control Buscar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button botonBuscar;
+        protected global::System.Web.UI.WebControls.Button Buscar;
         
         /// <summary>
-        /// Control listaUsuarios.
+        /// Control listaHorarios.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ListBox listaUsuarios;
+        protected global::System.Web.UI.WebControls.ListBox listaHorarios;
         
         /// <summary>
-        /// Control UpdatePanelEnviarMensaje.
+        /// Control nomHorario.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel UpdatePanelEnviarMensaje;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl nomHorario;
         
         /// <summary>
-        /// Control textoMensaje.
+        /// Control HorasTabla.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox textoMensaje;
-        
-        /// <summary>
-        /// Control botonEnviar.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button botonEnviar;
-        
-        /// <summary>
-        /// Control UpdatePanelConversacion.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.UpdatePanel UpdatePanelConversacion;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl HorasTabla;
     }
 }
