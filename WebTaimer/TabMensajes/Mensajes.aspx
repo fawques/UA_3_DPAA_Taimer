@@ -38,6 +38,7 @@ p.texto
 
 
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
+<asp:ScriptManager ID="ScriptManager" runat="server"></asp:ScriptManager>
     <h2>
         Mensajes
         <asp:Label ID="labelConversador" runat="server"></asp:Label>
@@ -56,7 +57,6 @@ p.texto
         }
             #Button1
             {
-                width: 57px;
             }
             .comentario
             {
@@ -73,7 +73,8 @@ p.texto
         
         <fieldset class="asig" style="width: 160px; height: 540px">
             <legend>Usuarios</legend>
-            <!--<div style="width:160px; float:left">-->
+            <asp:UpdatePanel ID="UpdatePanelIzquierdo" runat="server">
+                <ContentTemplate>
                         <asp:TextBox ID="textboxFiltro" runat="server" Width="125px" style="float: left"
                 placeholder="Buscar usuario..." ontextchanged="textboxFiltro_TextChanged"></asp:TextBox>
                         
@@ -88,8 +89,10 @@ p.texto
                 <asp:Button ID="botonVerPerfil" runat="server" Text="Ver perfil" width="160px" style="float:left; margin-top:5px"></asp:Button>
 
                 <asp:Button ID="botonBorrarMensajes" runat="server" Text="Borrar mensajes" width="160px" style="float:left; margin-top:5px"></asp:Button>
-                    </fieldset>
-            <!--</div>-->
+                    </ContentTemplate>
+                </asp:UpdatePanel>
+                    
+                </fieldset>
         </div>
 
         <div id="divPanelContenido" style="width:715px; float: left; margin-left:5px; overflow: visible">
@@ -104,13 +107,16 @@ p.texto
                                 </div>
                 </fieldset>
 
-
+            <asp:UpdatePanel ID="UpdatePanelConversacion" runat="server">
+                <ContentTemplate>
                 <div style="overflow: visible" > 
-
+                    <asp:Button ID="Button1" runat="server" Text="Actualizar" Width="89px" />
+                    <br />
                     <% = conversacion %>
 
                 </div>
-                <!--<hr style="float:left"/>-->
+                </ContentTemplate>
+            </asp:UpdatePanel>
                         
        </div>
 

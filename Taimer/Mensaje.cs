@@ -231,6 +231,44 @@ namespace Taimer
             return null;   
         }
 
+        // Usar este *****************************************************************************************************
+        public static List<Mensaje> MensajesToListQuick(DataSet data)
+        {
+            if (data != null)
+            {
+                CADMensajes act = new CADMensajes();
+                CADUser user = new CADUser();
+                User receptor, emisor;
+                List<Mensaje> list = new List<Mensaje>();
+                DateTime date;
+                int id;
+                bool leido;
+                string dniRecep = "", text = "";
+                DataRowCollection rows = data.Tables[0].Rows;
+
+                for (int i = 0; i < rows.Count; i++)
+                {
+                    dniRecep = rows[i].ItemArray[1].ToString();
+                    emisor = User.UserToObjectQuick(user.GetDatosUserQuick(rows[i].ItemArray[0].ToString()));
+                    receptor = User.UserToObjectQuick(user.GetDatosUserQuick(dniRecep));
+                    text = rows[i].ItemArray[2].ToString();
+                    date = (DateTime)rows[i].ItemArray[3];
+                    leido = (bool)rows[i].ItemArray[4];
+                    id = (int)rows[i].ItemArray[5];
+
+                    if (receptor != null)
+                    {
+                        Mensaje nuevo = new Mensaje(id, text, emisor, receptor, date, leido);
+                        list.Add(nuevo);
+                    }
+                    else
+                        return null;
+                }
+                return list;
+            }
+            return null;
+        }
+
         public static Mensaje MensajeToObject(DataSet data){
             if (data != null) {
                 CADMensajes act = new CADMensajes();
@@ -259,6 +297,12 @@ namespace Taimer
                 }
             }
             return null;
+        }
+
+        public static List<Mensaje> getMensajesUsuario(User usuario)
+        {
+            CADMensajes mens = new CADMensajes();
+            return MensajesToListQuick(mens.getMensajesUsuario(usuario.DNI));
         }
 
         #endregion

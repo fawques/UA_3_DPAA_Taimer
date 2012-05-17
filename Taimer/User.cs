@@ -128,7 +128,8 @@ namespace Taimer {
         /// <param name="actp_">Lista de actividades personales que realiza el usuario</param>
         /// <param name="hor_">Lista de horarios que tiene alamacenados el usuario</param>
         public User(string nom_, string dni_, string email_, string pass_, int curso_, string tit_, List<Actividad_a> acta_, List<Actividad_p> actp_, List<Horario> hor_, string imagen_ = "", string frase_ = "") {
-            codHorarios = hor_.Count;
+            if(hor_ != null)
+                codHorarios = hor_.Count;
             /* -- Al meterle las listas, sobre todo si vienen de los CAD, ya tienen su código puesto
             for (int i = 0; i < actp_.Count; i++)
                 actp_[i].Codigo = i;
@@ -605,6 +606,30 @@ namespace Taimer {
                     user.SetDatos();
                     return user;
                 }                
+            }
+            return null;
+        }
+
+        /// <summary>
+        /// Convierte un DataSet (será un usuario) en un objeto User (sólo con nombre y DNI)
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
+        public static User UserToObjectQuick(DataSet data)
+        {
+            if (data != null)
+            {
+                string dni, nom;
+                DataRowCollection rows = data.Tables[0].Rows;
+
+                if (rows.Count != 0)
+                {
+                    dni = rows[0].ItemArray[0].ToString();
+                    nom = rows[0].ItemArray[1].ToString();
+
+                    User user = new User(nom, dni, null, null, 0, null, null, null, null);
+                    return user;
+                }
             }
             return null;
         }
