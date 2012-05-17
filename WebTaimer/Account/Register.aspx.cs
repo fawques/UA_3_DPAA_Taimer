@@ -38,7 +38,7 @@ namespace WebTaimer.Account
             string titulacion = Titulacion.Text;
             User user = new User(nom, dni, mail, pass, curso, titulacion);
 
-            //user.Agregar();
+            user.Agregar();
 
             //Se envia un email de registro
             try

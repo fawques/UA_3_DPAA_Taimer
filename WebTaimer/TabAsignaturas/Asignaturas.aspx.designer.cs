@@ -40,13 +40,13 @@ namespace WebTaimer.TabAsignaturas {
         protected global::System.Web.UI.WebControls.Button botFiltrar;
         
         /// <summary>
-        /// Control ListBox1.
+        /// Control ListAct.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ListBox ListBox1;
+        protected global::System.Web.UI.WebControls.ListBox ListAct;
         
         /// <summary>
         /// Control labelNombreAsignatura.

@@ -90,7 +90,8 @@
                 ValidationGroup="RegisterUserValidationGroup">*</asp:RequiredFieldValidator>
     </p>
 
-    <asp:Button ID="btReg" runat="server" onclick="btReg_Click" Text="Registrate" ValidationGroup="RegisterUserValidationGroup"/>
+    <asp:Button ID="btReg" runat="server" onclick="crearUsuario_Click" 
+        Text="Registrate" ValidationGroup="RegisterUserValidationGroup"/>
 
 </div>
 </asp:Content>
