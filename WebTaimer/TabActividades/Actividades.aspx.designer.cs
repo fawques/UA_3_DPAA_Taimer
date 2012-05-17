@@ -13,22 +13,31 @@ namespace WebTaimer.TabActividades {
     public partial class Actividades {
         
         /// <summary>
-        /// Control TextBox1.
+        /// Control textboxFilter.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox1;
+        protected global::System.Web.UI.WebControls.TextBox textboxFilter;
         
         /// <summary>
-        /// Control ListBox1.
+        /// Control botFiltrar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ListBox ListBox1;
+        protected global::System.Web.UI.WebControls.Button botFiltrar;
+        
+        /// <summary>
+        /// Control ListAct.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ListBox ListAct;
         
         /// <summary>
         /// Control labelNombreActividad.
@@ -40,6 +49,15 @@ namespace WebTaimer.TabActividades {
         protected global::System.Web.UI.WebControls.Label labelNombreActividad;
         
         /// <summary>
+        /// Control tbNombreActividad.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox tbNombreActividad;
+        
+        /// <summary>
         /// Control labelDescripcionActividad.
         /// </summary>
         /// <remarks>
@@ -47,6 +65,15 @@ namespace WebTaimer.TabActividades {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label labelDescripcionActividad;
+        
+        /// <summary>
+        /// Control tbDescActividad.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox tbDescActividad;
         
         /// <summary>
         /// Control botonBorrarActividad.

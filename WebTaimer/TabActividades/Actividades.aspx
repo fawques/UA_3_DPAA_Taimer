@@ -26,20 +26,21 @@
             }
             </style>
 
-        <div id="divPanelCentral" 
-        style="width:200px; float: left; margin-left:15px; height: 339px;">
-            <fieldset class="act" style="width: 160px; height: 294px">
-            <legend>Actividades</legend>
-                        <asp:TextBox ID="TextBox1" runat="server">Filtrar...</asp:TextBox>
-                <br />
-                <br />
-                        <asp:ListBox ID="ListBox1" runat="server" Height="223px" Width="160px">
-                            <asp:ListItem>Actividad 1</asp:ListItem>
-                            <asp:ListItem>Actividad 2</asp:ListItem>
-                            <asp:ListItem>Actividad 3</asp:ListItem>
+        <div id="divPanelIzquierdo" style="width:200px; float: left">
+            <fieldset class="filtro" style="width: 160px; height:80px">
+                <legend>Filtro</legend>
+                        <asp:TextBox ID="textboxFilter" runat="server" Width="160px"></asp:TextBox>
+                        &nbsp;<asp:Button ID="botFiltrar" runat="server" Text="Filtrar" onclick="botFiltrar_Click"/>
+            </fieldset>
+            
+            <fieldset class="asig" style="width: 160px; height: 440px">
+                <legend>Actividades</legend>
+                        <asp:ListBox ID="ListAct" runat="server" 
+                        Height="412px" Width="160px" Autopostback="true"  OnSelectedIndexChanged="seleccionar">
                         </asp:ListBox>
-                    </fieldset>
+           </fieldset>
         </div>
+
 
         <div id="divPanelContenido" 
         style="width:686px; float: left; margin-left:5px">
@@ -47,13 +48,16 @@
             <legend>Información de la actividad personal</legend>
 
 
-                            <div style="float:left; width:467px; height: 226px;">
+                                <div style="float:left; width:467px; height: 226px;">
                                     <asp:Label ID="labelNombreActividad" runat="server" Font-Bold="True" Font-Size="X-Large" 
                                         Text="[ Nombre de la actividad ]"></asp:Label>
+                                    <asp:TextBox ID="tbNombreActividad" runat="server" Visible="false"></asp:TextBox>
+                                    <asp:Te
                                     <br />
                                     <br />
                                     <asp:Label ID="labelDescripcionActividad" runat="server" Font-Size="Medium" 
                                         Text="[ Descripción de la actividad ]"></asp:Label>
+                                    <asp:TextBox ID="tbDescActividad" runat="server" Visible="false"></asp:TextBox>
                                     <br />
                                     <br />
                                     <br />
@@ -63,8 +67,10 @@
                                     <br />
                                     <br />
                                     <br />
-                                    <asp:Button ID="botonBorrarActividad" runat="server" Text="Borrar actividad" style="width:120px" />
-                                    <asp:Button ID="botonEditarActividad" runat="server" Text="Editar actividad" style="width:120px; margin-left:5px"/>
+                                    <asp:Button ID="botonBorrarActividad" runat="server" Text="Borrar actividad" 
+                                        style="width:120px" onclick="botonBorrarActividad_Click" />
+                                    <asp:Button ID="botonEditarActividad" runat="server" Text="Editar actividad" 
+                                        style="width:120px; margin-left:5px" onclick="botonEditarActividad_Click"/>
                                 </div>
                                 <div style="float:left">
                                     <asp:Label ID="labelTurnos" runat="server" Font-Bold="True" Text="Turnos" align="center"></asp:Label>
@@ -76,4 +82,5 @@
                                     </asp:ListBox>
                                 </div>
                     </fieldset>
+            </div>
 </asp:Content>
