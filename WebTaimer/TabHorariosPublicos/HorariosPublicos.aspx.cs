@@ -19,6 +19,9 @@ namespace WebTaimer.TabHorariosPublicos
 
         protected void Page_Init(object sender, EventArgs e)
         {
+            if (Session["usuario"] == null)
+                Response.Redirect("~/TabInicio/SinLogin.aspx?error=true");
+
             listaHorarios.AutoPostBack = true;
             horarios = Horario.getPublicos();
         }
