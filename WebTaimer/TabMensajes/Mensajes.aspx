@@ -4,81 +4,31 @@ CodeBehind="Mensajes.aspx.cs" Inherits="WebTaimer.TabMensajes.Mensajes" %>
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
 
 <style type="text/css">
-
-
-div.mensaje1 
+div.mensajepropio
 {
-     overflow: visible;
-     float: right;
-     border: 5px double #8be0a7;
-     width: 600px;
-     /*height: 160px;*/
-     /* margin: 0 auto; */
-     background-color: #e5f7ea;
-     border-radius: 10px;
-     margin: 4px;
+	color: #000000; float:right; border: 5px double #8be0a7; background-color: #e5f7ea; overflow: visible; width:600px; border-radius: 10px; margin: 4px;
 }
 
-div.mensaje 
+div.mensajedeotro
 {
-    <!--overflow: visible;-->
-    color: #4e504f;
-    margin-left: 5px;
-    /*height: 137px;*/
-    width: 590px;
-    margin-right: 0px;
-    margin-top: 5px;
-    margin-bottom: 5px;
-}
-
-div.mensaje2
-{
-    overflow: visible;
-    float: left;
-    border: 5px double #8bd7e0;
-    width: 600px;
-    /*height: 160px;*/
-    margin: 0 auto;
-    background-color: #e5f4f7;
-    border-radius: 10px;
-    margin: 4px;
+	color: #000000; float:left; border: 5px double #8bd7e0; background-color: #e5f4f7; overflow: visible; width:600px; border-radius: 10px; margin: 4px;
 }
 
 label.mensaje 
 {
-    margin-left: 40px;
-    overflow: visible;
+    margin-left: 40px; overflow: visible;
 }
 
 p.coment
 {
-    overflow: visible;
-    color: #8c7052;
-    width: 590px;
-    font-style:italic;
-    float: right;
-    margin-right:5px;
-    text-align: right;
+    overflow: visible; color: #8c7052; width: 590px; font-style:italic; float: right; margin-right:5px; text-align: right;
 }
 
-/* FIN DEL CSS */
-
-        #TextArea1
-        {
-            z-index: 1;
-            left: 513px;
-            top: 583px;
-            position: absolute;
-            height: 122px;
-            width: 592px;
-        }
-        .style1
-        {
-            width: 208px;
-        }
-
+p.texto
+{
+    width:590px; margin-left:5px
+}
 </style>
-
 </asp:Content>
 
 
@@ -141,7 +91,6 @@ p.coment
                 <fieldset class="envMens" style="width: 687px; height:155px">
                         <legend>Enviar mensaje</legend>
                         <div style="height: 150px; width: 687px; margin-top:-15px">
-                            <!--<textarea  id="TextArea1" name="S1" style="resize: none; position:relative; left:0px; top:0px; margin-top:10px"></textarea>&nbsp;-->
                             <asp:TextBox ID="textoMensaje" TextMode="MultiLine" runat="server" 
                                 Height="145px" Width="622px" style="resize: none; position:relative; left:0px; top:0px; margin-top:0px"></asp:TextBox>
                             <asp:Button ID="botonEnviar" runat="server" Width="50px" onclick="botonEnviar_Click" style="margin-left:5px; margin-top:-13px"

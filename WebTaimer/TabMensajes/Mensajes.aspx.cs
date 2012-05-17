@@ -66,14 +66,14 @@ namespace WebTaimer.TabMensajes
                 {
                     if (m.Emisor.DNI != ((User)Session["usuario"]).DNI)
                     {
-                        cont += "<div style=\"color: #000000; float:left; border: 5px double #8bd7e0; background-color: #e5f4f7;";
+                        cont += "<div class=\"mensajedeotro\">";
                     }
                     else
                     {
-                        cont += "<div style=\"color: #000000; float:right; border: 5px double #8be0a7; background-color: #e5f7ea;";
+                        cont += "<div class=\"mensajepropio\">";
                     }
 
-                    cont += "overflow: visible; width:600px; border-radius: 10px; margin: 4px;\" ><p class=\"coment\">Enviado por " + m.Emisor.Nombre + " - " + m.FechaToString() + "</p><p style=\"width:590px; margin-left:5px\">" + m.Texto + "</p></div>";
+                    cont += "<p class=\"coment\">Enviado por " + m.Emisor.Nombre + " - " + m.FechaToString() + "</p><p class=\"texto\">" + m.Texto + "</p></div>";
                 }
             }
 
