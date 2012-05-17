@@ -189,7 +189,17 @@ namespace Taimer
             }
             return null; 
         }
+        /// <summary>
+        /// Llama al cad para dar la lista de comentarios
+        /// </summary>
+        /// <returns></returns>
+        public static List<Comentario> GetAllComentarios()
+        {
+            CAD.CADComentario comCAD = new CAD.CADComentario();
+            DataSet coms = comCAD.GetComments();
 
+            return ComentariosToList(coms);
+        }
         public static Comentario ComentarioToObject(DataSet data) {
             if (data != null) {
 

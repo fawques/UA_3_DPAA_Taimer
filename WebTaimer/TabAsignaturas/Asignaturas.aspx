@@ -86,7 +86,7 @@
                     </fieldset>
                      <fieldset class="asig" style="width: 160px; height: 440px">
             <legend>Asignaturas</legend>
-                        <asp:ListBox ID="ListBox1" runat="server" Height="412px" Width="160px"  onselectedindexchanged="seleccionar">
+                        <asp:ListBox ID="ListAct" runat="server" Height="412px" Width="160px" >
                             <asp:ListItem >Asignatura 1</asp:ListItem>
                             <asp:ListItem>Asignatura 2</asp:ListItem>
                             <asp:ListItem>Asignatura 3</asp:ListItem>

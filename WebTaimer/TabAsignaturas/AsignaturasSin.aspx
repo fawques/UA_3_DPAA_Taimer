@@ -112,11 +112,11 @@
                                         Text="[ Descripción de la asignatura ]"></asp:Label>
                                     <br />
                                     <br />
-                                    Coordinador:
+                                    <asp:Label ID="tituloCoor" runat="server">Coordinador:</asp:Label>
                                     <asp:Label ID="labelCoordinadorAsignatura" runat="server" Text="[ Nombre del coordinador ]"></asp:Label>
                                     <br />
                                     <br />
-                                    Puntuación:
+                                    <asp:Label ID="tituPun" runat="server">Puntuación:</asp:Label>    
                                     <br />
                                     <br />
                                     <asp:Rating ID="r1" runat="server" CurrentRating="0" MaxRating="10" StarCssClass="ratingStar" WaitingStarCssClass="savedRatingStar" 
@@ -130,71 +130,13 @@
                                     </asp:ListBox>
                                 </div>
                     </fieldset>
-                    <fieldset class="filtro" style="width: 687px; height:320px">
-                        <legend>Comentarios</legend>
+                    <fieldset class="filtro" id="coment"  style="width: 687px; height:320px" runat="server">
+                        <legend >Comentarios</legend>
                         <div style="height: 240px; overflow: auto; border: 1px solid Gray;">
-                            <div class="comentario">
-                                <img alt="Imagen del usuario que ha comentado" src="../Images/default.jpg" 
-                                    style="height: 40px; width: 40px" class="comentario"/>
-                                <span class="comentario">
-                                    <label class="comentario">
-                                        <p class="comentario">Comentario enviado por: Usuario 1 (DD/MM/AAAA HH:MM)</p>
-                                        blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla
-                                        blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla
-                                        blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla
-                                        blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blablablabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla
 
-                                    </label>
-                                </span>
-                            </div>
-                             <div class="comentario">
-                                <img alt="Imagen del usuario que ha comentado" src="../Images/default.jpg" 
-                                    style="height: 40px; width: 40px" class="comentario"/>
-                                <span class="comentario">
-                                    <label class="comentario">
-                                        <p class="comentario">Comentario enviado por: Usuario 2 (DD/MM/AAAA HH:MM)</p>
-                                        blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla
-                                        blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla
-                                        blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla
-                                        blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blablablabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla
+                            <% = comentarios %>
 
-                                    </label>
-                                </span>
-                            </div>
-                             <div class="comentario">
-                                <img alt="Imagen del usuario que ha comentado" src="../Images/default.jpg" 
-                                    style="height: 40px; width: 40px" class="comentario"/>
-                                <span class="comentario">
-                                    <label class="comentario">
-                                        <p class="comentario">Comentario enviado por: Usuario 3 (DD/MM/AAAA HH:MM)</p>
-                                        blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla
-                                        blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla
-                                        blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla
-                                        blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blablablabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla
-
-                                    </label>
-                                </span>
-                            </div>
-                             <div class="comentario">
-                                <img alt="Imagen del usuario que ha comentado" src="../Images/default.jpg" 
-                                    style="height: 40px; width: 40px" class="comentario"/>
-                                <span class="comentario">
-                                    <label class="comentario">
-                                        <p class="comentario">Comentario enviado por: Usuario 4 (DD/MM/AAAA HH:MM)</p>
-                                        blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla
-                                        blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla
-                                        blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla
-                                        blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blablablabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla
-
-                                    </label>
-                                </span>
-                            </div>
                         </div>
-                        
-                        <div style="height: 60px; width: 658px;">
-                            &nbsp;<p style="float:right; width: 82px; margin: 0px; margin-left:10px; margin-top:22px;">Anónimo <input id="Checkbox1" type="checkbox" disabled="disabled" /></p>
-                            &nbsp;<input id="Button1" type="button" value="Enviar" 
-                                style="float: right; margin-top:22px;" disabled="disabled" /><textarea
-                                id="TextArea1" name="S1" rows="2" style="float:left; " disabled="disabled"></textarea></div>
+                        </fieldset>
        </div>
 </asp:Content>

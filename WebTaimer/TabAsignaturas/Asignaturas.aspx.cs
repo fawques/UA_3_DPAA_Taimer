@@ -13,8 +13,14 @@ namespace WebTaimer.TabAsignaturas
         {
 
         }
-        
 
+        protected void Page_Init(object sender, EventArgs e)
+        {
+            if (Session["usuario"] == null)
+                Response.Redirect("~/TabInicio/SinLogin.aspx?error=true");
+
+            ListAct.AutoPostBack = true;
+        }
         protected void botNuevoComentario_Click(object sender, EventArgs e)
         {
             // Lleva a la página de crear comentarios

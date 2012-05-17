@@ -11,23 +11,44 @@ namespace WebTaimer.TabAsignaturas
     public partial class AsignaturasSin : System.Web.UI.Page
     {
         List<Actividad_a> actividades=new List<Actividad_a>();
+        List<Actividad_a> actodas = new List<Actividad_a>();
+        List<Comentario> listaComentarios= new List<Comentario>();
+        List<Comentario> comentariosAct=new List<Comentario>();
+        protected string comentarios;
 
+        protected void Page_Init(object sender, EventArgs e)
+        {
+            actodas = Actividad_a.GetAllActividades_a();
+            listaComentarios = Comentario.GetAllComentarios();
+            string id = Request.QueryString["idActividad"];
+            if (id != null)
+            {
+                int idact = Convert.ToInt32(id);
+                cargarTodasActividades();
+                rellenocuadro(idact);
+            }
+            else
+            {
+                cargarTodasActividades();
+                rellenocuadroPrimero(0);
+               
+            }
+        }
+        
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            
             if (!IsPostBack)
             {
                 cargarTodasActividades();
-
+                
             }
-
+           
         }
         // Carga todas las actividades de la lista
         protected void cargarTodasActividades()
         {
-            actividades = Actividad_a.GetAllActividades_a();
-            rellenocuadroPrimero(0);
-
+            actividades = actodas; 
             llenarLista();
         }
         protected void cargarTurnos(Actividad_a act)
@@ -63,7 +84,7 @@ namespace WebTaimer.TabAsignaturas
         }
         protected void rellenocuadro(int codigo)
         {
-            actividades = Actividad_a.GetAllActividades_a();
+            actividades = actodas;
             foreach (Actividad_a act in actividades)
             {
                 if (act.Codigo == codigo)
@@ -73,6 +94,13 @@ namespace WebTaimer.TabAsignaturas
                     labelDescripcionAsignatura.Text = act.Descripcion;
                     r1.CurrentRating = Convert.ToInt16(Math.Round(act.NotaMedia()));
                     cargarTurnos(act);
+                    tituPun.Visible = true;
+                    tituloCoor.Visible = true;
+                    labelTurnos.Visible = true;
+                    r1.Visible = true;
+                    listaTurnos.Visible = true;
+                    coment.Visible = true;
+                    cargarComentarios(act);
                 }
 
             }
@@ -83,11 +111,33 @@ namespace WebTaimer.TabAsignaturas
         {
             if (actividades.Count > 0)
             {
+
                 labelNombreAsignatura.Text = actividades[indice].Nombre;
                 labelCoordinadorAsignatura.Text = actividades[indice].NombreCoordinador;
                 labelDescripcionAsignatura.Text = actividades[indice].Descripcion;
                 r1.CurrentRating = Convert.ToInt16(Math.Round(actividades[indice].NotaMedia()));
                 cargarTurnos(actividades[indice]);
+                tituPun.Visible = true;
+                tituloCoor.Visible = true;
+                labelTurnos.Visible = true;
+                r1.Visible = true;
+                listaTurnos.Visible = true;
+                coment.Visible = true;
+                cargarComentarios(actividades[indice]);
+
+            }
+            else 
+            {
+                labelNombreAsignatura.Text = "No hay resultados en la lista de actividades";
+                labelCoordinadorAsignatura.Text = "";
+                labelDescripcionAsignatura.Text = "";
+                tituPun.Visible = false;
+                tituloCoor.Visible = false;
+                labelTurnos.Visible = false;
+                r1.Visible = false;
+                listaTurnos.Visible = false;
+                coment.Visible = false;
+                
             }
                   
         }
@@ -99,29 +149,85 @@ namespace WebTaimer.TabAsignaturas
         // Carga los usuarios a los que se aplique el filtro
         protected void cargaFiltro(string nom)
         {
-            List<Actividad_a> actfiltro = new List<Actividad_a>();
-            if (nom != null && nom != "")
+     
+           List <Actividad_a> actfiltro = new List<Actividad_a>();
+           if (nom != null && nom != "")
+           {
+               cargarTodasActividades();
+               foreach (Actividad_a obj in actividades)
+               {
+                   if (obj.Nombre.ToLower().Contains(nom) || obj.Descripcion.ToLower().Contains(nom) || obj.NombreCoordinador.ToLower().Contains(nom))
+                   {
+                       actfiltro.Add(obj);
+
+                   }
+
+               }
+               actividades = actfiltro;
+               rellenocuadroPrimero(0);
+               llenarLista();
+           }
+           else
+           {
+               cargarTodasActividades();
+               rellenocuadroPrimero(0);
+           }
+                
+        }
+        protected List<Comentario> rellenoComenAct(Actividad_a act)
+        {
+            List<Comentario> coment = new List<Comentario>();
+
+            if (listaComentarios.Count > 0)
             {
-                cargarTodasActividades();
-                    foreach (Actividad_a obj in actividades)
-                    {
-                        if (obj.Nombre.ToLower().Contains(nom) || obj.Descripcion.ToLower().Contains(nom) || obj.NombreCoordinador.ToLower().Contains(nom))
-                        {
-                            actfiltro.Add(obj);
-                           
-                            
-                        }
-             
-                    }
-                    actividades = actfiltro;
-                    rellenocuadroPrimero(0);
-                    llenarLista(); 
+                foreach (Comentario com in listaComentarios)
+                {
+                    if (com.ActividadAcademica.Codigo == act.Codigo)
+                        coment.Add(com);
+
+                }
+            }
+            return coment;
+        
+        }
+        protected void  cargarComentarios(Actividad_a act)
+        {
+            
+            comentariosAct= rellenoComenAct(act);
+            if (comentariosAct.Count == 0)
+            {
+                comentarios = "<div style=\"color: #000000; float:center; border: 5px double #117777; background-color: #118888; overflow: visible; border-radius: 10px; margin: 4px; text-align:center \" >No tiene comentarios en esta Actividad</div>";
             }
             else
-                cargarTodasActividades();
+            {
+                
+                
+                comentarios="<div>"+listaComentarios[0].Texto+"</div>";
+                /*
+                foreach (Mensaje m in listamensajes)
+                {
+                    if (m.Emisor.DNI != ((User)Session["usuario"]).DNI)
+                    {
+                        if (m.Leido)
+                            cont += "<div class=\"mensajedeotro\">";
+                        else
+                        {
+                            cont += "<div class=\"mensajedeotronuevo\">";
+                            m.MarcarComoLeido();
+                        }
+                    }
+                    else
+                    {
+                        cont += "<div class=\"mensajepropio\">";
+                    }
+
+                    cont += "<p class=\"coment\">Enviado por " + m.Emisor.Nombre + " - " + m.FechaToString() + "</p><p class=\"texto\">" + m.Texto + "</p></div>";*/
+                }
+            }
+            
+            
         }
          
                 
-    }
+ }
         
-}

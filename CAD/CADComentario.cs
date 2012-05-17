@@ -90,7 +90,7 @@ namespace CAD
 
             SqlConnection con = null;
             DataSet listComments = null;
-            string comando = "Select * from [Comentario]";
+            string comando = "Select * from [Comentario] order by actividad";
             try
             {
                 con = new SqlConnection(conexionTBD);
