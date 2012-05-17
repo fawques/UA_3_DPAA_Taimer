@@ -56,7 +56,7 @@
                             
                             ToolTip="Aquí puedes ver los horarios que otros usuarios hayan hecho públicos."></asp:MenuItem>
                         <asp:MenuItem Text="Asignaturas" Value="Asignaturas" 
-                            NavigateUrl="~/TabAsignaturas/Asignaturas.aspx" 
+                            NavigateUrl="~/TabAsignaturas/AsignaturasSin.aspx" 
                             ToolTip="Ver las asignaturas y comentarlas."></asp:MenuItem>
                     </Items>
                 </asp:Menu>
