@@ -1,7 +1,4 @@
-﻿
-<%@ Page Title="Horarios públicos" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true"
-    CodeBehind="HorariosPublicos.aspx.cs" Inherits="WebTaimer.TabHorariosPublicos.HorariosPublicos" %>
-
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/NoLogin.Master" AutoEventWireup="true" CodeBehind="HorariosPublicosSin.aspx.cs" Inherits="WebTaimer.TabHorariosPublicos.HorariosPublicosSin" %>
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">  
     <style>
         #divPanelIzquierdo
@@ -125,12 +122,12 @@
                 }
                 document.getElementById("botonComent").innerHTML = "<a href='" + url + "'><label style='text-decoration: none; font-weight: bold;'>Más información</lable></a>";
             }
-            else if(detalles[5] == 1){
+            else if (detalles[5] == 1) {
                 url = "../TabActividades/Actividades.aspx?idActividad=" + detalles[4];
                 document.getElementById("botonComent").innerHTML = "<a href='" + url + "'><label style='text-decoration: none; font-weight: bold;'>Más información</lable></a>";
             }
 
-            
+
         }
 
         function selected(id) {
