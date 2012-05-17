@@ -27,6 +27,7 @@ namespace WebTaimer.TabAsignaturas
         {
             actividades = Actividad_a.GetAllActividades_a();
             rellenocuadroPrimero(0);
+
             llenarLista();
         }
         protected void cargarTurnos(Actividad_a act)

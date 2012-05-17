@@ -13,6 +13,7 @@
             top: 767px;
             position: absolute;
             height: 39px;
+            
             width: 495px;
         }
         </style>

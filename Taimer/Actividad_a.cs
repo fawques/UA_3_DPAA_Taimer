@@ -420,6 +420,7 @@ namespace Taimer {
         {
             double nota = notaTotal;
             double num = numVotos;
+
             if (num == 0)
             {
                 return 0;
