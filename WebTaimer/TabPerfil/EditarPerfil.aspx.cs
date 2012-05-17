@@ -9,13 +9,33 @@ using Taimer;
 namespace WebTaimer.TabPerfil
 {
     public partial class EditarPerfil : System.Web.UI.Page
-    {
+    {       
         protected void Page_PreInit(object sender, EventArgs e) {
             if (Session["usuario"] == null)
-                Response.Redirect("~/TabInicio/SinLogin.aspx?error=true");
+                Response.Redirect("~/TabInicio/SinLogin.aspx?error=true");                    
         }
-        protected void botonModificarDatos_Click(object sender, EventArgs e)
+
+        protected void Page_Load(object sender, EventArgs e)
         {
+            if (!Page.IsPostBack)
+            {
+                User u = ((User)Session["usuario"]);
+                UserName.Text = u.Nombre;
+                Email.Text = u.Email;
+                Titulacion.Text = u.Titulacion;
+                Curso.SelectedIndex = u.Curso - 1;
+
+                if (u.Imagen != "" && u.Imagen != null)
+                    imagenAvatar.ImageUrl = "~/Images/" + u.Imagen;
+                else
+                    imagenAvatar.ImageUrl = "~/Images/default.jpg";
+
+                FrasePersonal.Text = u.Frase;
+            }
+        }
+
+        protected void botonModificarDatos_Click(object sender, EventArgs e)
+        {                
             User user = (User)Session["usuario"];
             string name=UserName.Text, titulacion=Titulacion.Text, email=Email.Text;
             string pass=PasswordAnterior.Text, pass2=NuevoPassword.Text, pass2Check=ConfirmarNuevoPassword.Text;
@@ -31,17 +51,17 @@ namespace WebTaimer.TabPerfil
 
             if (titulacion != "")
             {
-                user.Nombre = titulacion;
+                user.Titulacion = titulacion;
                 cambio = true;
             }
 
             if (email != "")
-            {
+            {                
                 EmailValidation.Validate();
 
-                if (!EmailValidation.IsValid)
+                if (!EmailValidation.IsValid)                                  
                     error = true;
-
+               
                 else
                 {
                     user.Email = email;
@@ -98,16 +118,23 @@ namespace WebTaimer.TabPerfil
             {
                 user.InsertaFoto(cargarArchivo.FileName);
                 url += user.Imagen;
-                cargarArchivo.SaveAs(url);
-                imagenAvatar.ImageUrl = "~/Images/" + user.Imagen;
+                cargarArchivo.SaveAs(url);                
+                imagenAvatar.ImageUrl = "~/Images/" + user.Imagen;                
                 cambio = true;
             }
-            
+
             if (!error && cambio)
             {
-                //Response.Write(user.Nombre+'\n'+user.Email+'\n'+user.Titulacion+'\n'+user.Password+'\n'+user.Curso+'\n'+url);
-                user.Modificar();
+                user.Modificar();                
+                Session.Remove("usuario");
+                Session.Add("usuario", user);
+                Response.Redirect("~/TabPerfil/VerPerfil.aspx");
             }
+        }
+
+        protected void botonCancelar_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/TabPerfil/VerPerfil.aspx");
         }
     }
 }

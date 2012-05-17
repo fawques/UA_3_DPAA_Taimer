@@ -512,7 +512,7 @@ namespace Taimer {
         /// Guarda los cambios del usuario en la base de datos
         /// </summary>
         public void Modificar() {
-            CADUser user = new CADUser();
+            CADUser user = new CADUser();            
             user.ModificaUser(dni, nombre, email, password, titulacion, codHorarios, imagen, frase);
         }
 
@@ -745,10 +745,18 @@ namespace Taimer {
             {
                 if ((myStream = openFileDialog1.OpenFile()) != null)
                 {
+                    int index = NameExists();
                     string[] path = openFileDialog1.FileName.Split('.');
-                    string name = nombre + '.' + path[path.Length - 1];
-                    System.IO.File.Copy(openFileDialog1.FileName, "C:\\Taimer\\WebTaimer\\Images\\" + name,true);
-                    imagen = name;
+                    string name = nombre;
+
+                    index = 1;
+                    if(index>0)
+                        name += index;
+
+                    name +=  '.' + path[path.Length - 1];                    
+                    File.Copy(openFileDialog1.FileName, "C:\\Taimer\\WebTaimer\\Images\\"+name, true);
+
+                    //imagen = name;
                 }
             }
 
@@ -758,17 +766,47 @@ namespace Taimer {
         /// Cambia la imagen de perfil del usuario, a partir de un nombre de archivo parasdo por parámetro
         /// </summary>
         public void InsertaFoto(string file)
-        {            
+        {
+            int index = NameExists();
             string[] path = file.Split('.');
-            string name = nombre + '.' + path[path.Length - 1];            
-            //System.IO.File.Delete("C:\\Taimer\\WebTaimer\\Images\\" + imagen);
+            string name = nombre;
+            
+            if (index > 0)
+                name += index;
+
+            name += '.' + path[path.Length - 1];                    
+                       
+            //File.Delete(imagen);
             imagen = name;           
         }
 
+        /// <summary>
+        /// Obtiene un objeto User a partir de su email
+        /// </summary>
+        /// <param name="email"></param>
+        /// <returns></returns>
         public static User GetUserByEmail(string email)
         {            
             CADUser cad=new CADUser();
             return UserToObject(cad.GetDatosUserByLogin(email));
+        }
+
+        /// <summary>
+        /// Comprueba si el nombre del usuario está repetido, devolviendo el número del resto de usuarios con dicho nombre
+        /// </summary>
+        /// <returns></returns>
+        public int NameExists()
+        {
+            CADUser cad=new CADUser();
+            List<User> users = UsersToList(cad.GetUsers());
+            int index = 0;
+
+            foreach (User u in users)
+            {
+                if (u.Nombre == Nombre && u.Email != Email)
+                    index++;
+            }
+            return index;
         }
 
         #endregion

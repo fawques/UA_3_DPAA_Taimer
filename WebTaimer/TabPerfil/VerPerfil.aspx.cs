@@ -31,44 +31,33 @@ namespace WebTaimer.TabPerfil
                 labelCurso.Text = user.Curso.ToString();
                 labelDNI.Text = user.DNI;
                 labelEmail.Text = user.Email;
+                labelFrasePersonal.Text = user.Frase;
+
+                if (user.Imagen != "" && user.Imagen != null)                
+                    imagenAvatar.ImageUrl = "~/Images/" + user.Imagen;                
+                else                                    
+                    imagenAvatar.ImageUrl = "~/Images/default.jpg";
+                
             }
 
             else if(email==((User)Session["usuario"]).Email || email==null)
             {
                 botEnviarMensaje.Visible = false;
                 botVerHorarios.Visible = false;
+                User user = ((User)Session["usuario"]);
 
-                labelNombreUsuario.Text = ((User)Session["usuario"]).Nombre;
-                labelTitulacion.Text = ((User)Session["usuario"]).Titulacion;
-                labelCurso.Text = ((User)Session["usuario"]).Curso.ToString();
-                labelDNI.Text = ((User)Session["usuario"]).DNI;
-                labelEmail.Text = ((User)Session["usuario"]).Email;
-            }
-
-            /*if (((User)Session["usuario"]).Email != email && email!="")
-            {                
-                //user = Taimer.User.GetUserByEmail(email);                
-            }
-            else
-            {                
-                //user=(User)Session["usuario"];                
-            }
-            Response.Write(user.Email);
-            if (user == null)
-            {
-                if ((User)Session["usuario"] == null)
-                    Response.Write("NULL");
-            }
-
-            else
-            {
                 labelNombreUsuario.Text = user.Nombre;
                 labelTitulacion.Text = user.Titulacion;
                 labelCurso.Text = user.Curso.ToString();
                 labelDNI.Text = user.DNI;
                 labelEmail.Text = user.Email;
-            }*/
-            
+                labelFrasePersonal.Text = user.Frase;
+
+                if (user.Imagen != "" && user.Imagen != null)                
+                    imagenAvatar.ImageUrl = "~/Images/" + user.Imagen;                
+                else                                    
+                    imagenAvatar.ImageUrl = "~/Images/default.jpg";                
+            }            
         }
 
         protected void botEditarPerfil_Click(object sender, EventArgs e)
