@@ -74,7 +74,7 @@ namespace WebTaimer.TabHorariosPublicos {
             int maxHora = getMaxHora(h);
 
             string horas = "";
-            for(int i = minHora; i <= maxHora; i++) {
+            for(int i = minHora; i < maxHora; i++) {
                 if(i == minHora)
                     horas += "<p class='horas' style='margin-top: 5px;'> " + i.ToString() + ":00 </p>";
                 else
