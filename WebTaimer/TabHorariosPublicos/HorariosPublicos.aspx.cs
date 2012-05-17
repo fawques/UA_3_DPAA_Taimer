@@ -84,6 +84,11 @@ namespace WebTaimer.TabHorariosPublicos
             
 
             _script = "<script language='javascript'>";
+            if (Session["usuario"] != null){
+                _script += "sesion = true;";
+            }
+
+
             foreach(List<Turno> turnoDia in h.ArrayTurnos){
                 columnas += "<div class='columnas' style='height: " + (maxHora - minHora)*40 + "px;' >";
                 int antH = minHora;
@@ -97,6 +102,11 @@ namespace WebTaimer.TabHorariosPublicos
                     _script += "detalle" + indice + "[2]='" + turno.Ubicacion + "';";
                     _script += "detalle" + indice + "[3]='" + turno.HoraInicio.toString() + " - " + turno.HoraFin.toString() + "';";
                     _script += "detalle" + indice + "[4]='" + turno.Actividad.Codigo.ToString() + "';";
+                    _script += "detalle" + indice + "[5]='";
+                    if (turno.Actividad.Codigo < 0 && ((Actividad_p)turno.Actividad).Usuario == ((User)Session["usuario"]))
+                        _script += "1';";
+                    else
+                        _script += "0';";
                     _script += "turno[" + indice.ToString() + "]=detalle" + indice + ";";
 
 

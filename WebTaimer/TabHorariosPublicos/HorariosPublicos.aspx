@@ -103,6 +103,8 @@
     </style>
 
     <script language="javascript">
+        var sesion;
+        var actividadPropia;
         var turno = new Array();
         function setDetalles(id) {
             document.getElementById("Det").style.display = "inherit";
@@ -111,7 +113,23 @@
             document.getElementById("descripcion").innerHTML = detalles[1];
             document.getElementById("ubicacion").innerHTML = detalles[2];
             document.getElementById("turno").innerHTML = detalles[3];
-            document.getElementById("botonComent").innerHTML = "<a href='../TabAsignaturas/Asignaturas.aspx?idActividad=" + detalles[4] + "' style='text-decoration: none; font-weight: bold;'>Comentar</a>";
+
+            var url;
+            if (detalles[4] > 0) {
+                if (sesion == true) {
+                    url = "../TabAsignaturas/Asignaturas.aspx?idActividad=" + detalles[4];
+                }
+                else {
+                    url = "../TabAsignaturas/AsignaturasSin.aspx?idActividad=" + detalles[4];
+                }
+                document.getElementById("botonComent").innerHTML = "<a href='" + url + "'><label style='text-decoration: none; font-weight: bold;'>Más información</lable></a>";
+            }
+            else if(detalles[5] == 1){
+                url = "../TabActividades/Actividades.aspx?idActividad=" + detalles[4];
+                document.getElementById("botonComent").innerHTML = "<a href='" + url + "'><label style='text-decoration: none; font-weight: bold;'>Más información</lable></a>";
+            }
+
+            
         }
 
         function selected(id) {
@@ -183,7 +201,7 @@
                 <p class="detalles">Turno:</p>
                 <label id="turno"></label>
             </li>
-            <li id="botonComent">
+            <li id="botonComent" style ="margin-left: -10px;">
                 
             </li>
         </ul>
