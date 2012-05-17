@@ -22,13 +22,13 @@ namespace WebTaimer.TabAsignaturas {
         protected global::AjaxControlToolkit.ToolkitScriptManager ToolkitScriptManager1;
         
         /// <summary>
-        /// Control textboxTitulacion.
+        /// Control textboxFilter.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox textboxTitulacion;
+        protected global::System.Web.UI.WebControls.TextBox textboxFilter;
         
         /// <summary>
         /// Control botFiltrar.
@@ -67,6 +67,15 @@ namespace WebTaimer.TabAsignaturas {
         protected global::System.Web.UI.WebControls.Label labelDescripcionAsignatura;
         
         /// <summary>
+        /// Control tituloCoor.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label tituloCoor;
+        
+        /// <summary>
         /// Control labelCoordinadorAsignatura.
         /// </summary>
         /// <remarks>
@@ -74,6 +83,15 @@ namespace WebTaimer.TabAsignaturas {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label labelCoordinadorAsignatura;
+        
+        /// <summary>
+        /// Control tituPun.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label tituPun;
         
         /// <summary>
         /// Control r1.
@@ -101,6 +119,33 @@ namespace WebTaimer.TabAsignaturas {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ListBox listaTurnos;
+        
+        /// <summary>
+        /// Control coment.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl coment;
+        
+        /// <summary>
+        /// Control textoComent.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox textoComent;
+        
+        /// <summary>
+        /// Control botonEnviar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button botonEnviar;
         
         /// <summary>
         /// Control checkAnonimo.

@@ -87,7 +87,7 @@
         <div id="divPanelIzquierdo" style="width:200px; float: left">
          <fieldset class="filtro" style="width: 160px; height:80px">
             <legend>Filtro</legend>
-                        <asp:TextBox ID="textboxFilter" runat="server" Width="160px"></asp:TextBox>
+                        <asp:TextBox ID="textboxFilter" runat="server" Width="160px" placeholder="palabra clave"></asp:TextBox>
                         &nbsp;<asp:Button ID="botFiltrar" runat="server" Text="Filtrar" onclick="botFiltrar_Click"/>
                     </fieldset>
                      <fieldset class="asig" style="width: 160px; height: 440px">
@@ -137,6 +137,6 @@
                             <% = comentarios %>
 
                         </div>
-                        </fieldset>
+                    </fieldset>
        </div>
 </asp:Content>
