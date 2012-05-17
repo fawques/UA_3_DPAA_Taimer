@@ -13,6 +13,7 @@ namespace WebTaimer.TabActividades
         protected List<Actividad_p> listaFiltro = new List<Actividad_p>();
         protected List<Actividad_p> todas = new List<Actividad_p>();
         protected User user;
+        Actividad_p actividad;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -28,21 +29,9 @@ namespace WebTaimer.TabActividades
             else
             {
                 user = ((User)Session["usuario"]);
-                todas = user.ActPersonales;
-                
-                string id = Request.QueryString["idActividad"];
-                if (id != null)
-                {
-                    int idAct = Convert.ToInt32(id);
-                    cargarTodas();
-                    rellenocuadro(idAct);
-                }
-                else
-                {
-                    cargarTodas();
-                    rellenocuadroPrimero(0);
-
-                }
+                todas = user.ActPersonales;                
+                cargarTodas();
+                rellenocuadroPrimero(0);
             }
         }
 
@@ -95,7 +84,6 @@ namespace WebTaimer.TabActividades
                 ListAct.Items.Add(act.Nombre);
                 ListAct.Items[i].Value = Convert.ToString(act.Codigo);
                 i++;
-
             }
         }
 
@@ -114,7 +102,7 @@ namespace WebTaimer.TabActividades
 
         protected void seleccionar(object sender, EventArgs e)
         {
-            int indicelista = Convert.ToInt32(ListAct.SelectedValue);
+            int indicelista = Convert.ToInt32(ListAct.SelectedValue);            
             rellenocuadro(indicelista);
         }
         protected void rellenocuadro(int codigo)
@@ -125,8 +113,8 @@ namespace WebTaimer.TabActividades
                 if (act.Codigo == codigo)
                 {
                     labelNombreActividad.Text = act.Nombre;
-                    labelDescripcionActividad.Text = act.Descripcion;
-                    cargarTurnos(act);
+                    labelDescripcionActividad.Text = act.Descripcion;                    
+                    cargarTurnos(act);                    
                     labelTurnos.Visible = true;
                     listaTurnos.Visible = true;
                 }
@@ -137,10 +125,9 @@ namespace WebTaimer.TabActividades
         {
             if (listaFiltro.Count > 0)
             {
-
                 labelNombreActividad.Text = listaFiltro[indice].Nombre;                
-                labelDescripcionActividad.Text = listaFiltro[indice].Descripcion;                
-                cargarTurnos(listaFiltro[indice]);
+                labelDescripcionActividad.Text = listaFiltro[indice].Descripcion;                             
+                cargarTurnos(listaFiltro[indice]);                
                 labelTurnos.Visible = true;
                 listaTurnos.Visible = true;                
             }
@@ -157,13 +144,73 @@ namespace WebTaimer.TabActividades
         }
 
         protected void botonEditarActividad_Click(object sender, EventArgs e)
-        {
-            labelNombreActividad.Visible = false;
-            labelDescripcionActividad.Visible = false;
+        {            
             tbNombreActividad.Text = labelNombreActividad.Text;
-            tbDescActividad.Text = labelDescripcionActividad.Text;
+            tbDescActividad.Text = labelDescripcionActividad.Text;            
+
+            labelNombreActividad.Text = "Nombre: ";
+            labelNombreActividad.Font.Bold = false;
+            labelNombreActividad.Font.Size = FontUnit.Medium;
+            labelDescripcionActividad.Text = "Descripción: ";
+
             tbNombreActividad.Visible = true;
             tbDescActividad.Visible = true;
+
+            botonBorrarActividad.Visible = false;
+            botonEditarActividad.Visible = false;
+            botonModificar.Visible = true;
+            botonCancelar.Visible = true;
+
+            divTurnos.Visible = false;
+            filtro.Visible = false;
+            asig.Visible = false;
+        }
+
+        protected void botonBorrarActividad_Click(object sender, EventArgs e)
+        {
+            botonBorrarActividad.Visible = false;
+            botonEditarActividad.Visible = false;
+            botonConfirmar.Visible = true;
+            botonCancelar.Visible = true;
+
+            divTurnos.Visible = false;
+            filtro.Visible = false;
+            asig.Visible = false;
+        }
+
+        protected void botonCancelar_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/TabActividades/Actividades.aspx");
+        }
+
+        protected void botonConfirmar_Click(object sender, EventArgs e)
+        {
+            int id = Convert.ToInt32(ListAct.SelectedValue);            
+
+            foreach (Actividad_p act in listaFiltro)
+            {
+                if (act.Codigo == id)
+                    actividad = act;
+            }
+
+            user.BorraActPersonal(actividad);
+            Response.Redirect("~/TabActividades/Actividades.aspx");
+        }
+
+        protected void botonModificar_Click(object sender, EventArgs e)
+        {            
+            int id = Convert.ToInt32(ListAct.SelectedValue);
+            
+            foreach (Actividad_p act in listaFiltro)
+            {
+                if (act.Codigo == id)
+                    actividad = act;
+            }
+            
+            actividad.Nombre = tbNombreActividad.Text;
+            actividad.Descripcion = tbDescActividad.Text;
+            actividad.Modificar();
+            Response.Redirect("~/TabActividades/Actividades.aspx");
         }
     }
 }

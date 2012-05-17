@@ -117,6 +117,39 @@ namespace CAD
             }
 
         }
+
+        public void ModificaActividad_p(string Nombre, string Descripcion, int cod, int Codigoturno, string autor)
+        {
+            string comando = "UPDATE [Actividad_p] SET autor = '" + autor +  "' WHERE codigo = " + cod;
+            string comando2 = "UPDATE [Actividad] SET nombre = '" + Nombre + "', descripcion = '" + Descripcion + "', codigoturno = '" + Codigoturno + "' WHERE codigo = " + cod;
+            SqlConnection c = null;
+            SqlCommand comandoTBD;
+
+            try
+            {
+                c = new SqlConnection(conexionTBD);
+                comandoTBD = new SqlCommand(comando2, c);
+                c.Open();
+                comandoTBD.CommandType = CommandType.Text;
+                comandoTBD.ExecuteNonQuery();
+                comandoTBD = new SqlCommand(comando, c);
+                comandoTBD.CommandType = CommandType.Text;
+                comandoTBD.ExecuteNonQuery();
+
+
+
+            }
+            catch (SqlException)
+            {
+                throw;
+            }
+            finally
+            {
+                if (c != null) c.Close(); // Se asegura de cerrar la conexión.
+            }
+
+
+        } 
                 
         /// <summary>
         /// Coge los datos de una actividad concreta

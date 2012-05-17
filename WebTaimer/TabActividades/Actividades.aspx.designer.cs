@@ -13,6 +13,15 @@ namespace WebTaimer.TabActividades {
     public partial class Actividades {
         
         /// <summary>
+        /// Control filtro.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl filtro;
+        
+        /// <summary>
         /// Control textboxFilter.
         /// </summary>
         /// <remarks>
@@ -29,6 +38,15 @@ namespace WebTaimer.TabActividades {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button botFiltrar;
+        
+        /// <summary>
+        /// Control asig.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl asig;
         
         /// <summary>
         /// Control ListAct.
@@ -76,6 +94,15 @@ namespace WebTaimer.TabActividades {
         protected global::System.Web.UI.WebControls.TextBox tbDescActividad;
         
         /// <summary>
+        /// Control optionButtons.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl optionButtons;
+        
+        /// <summary>
         /// Control botonBorrarActividad.
         /// </summary>
         /// <remarks>
@@ -92,6 +119,42 @@ namespace WebTaimer.TabActividades {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button botonEditarActividad;
+        
+        /// <summary>
+        /// Control botonConfirmar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button botonConfirmar;
+        
+        /// <summary>
+        /// Control botonModificar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button botonModificar;
+        
+        /// <summary>
+        /// Control botonCancelar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button botonCancelar;
+        
+        /// <summary>
+        /// Control divTurnos.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divTurnos;
         
         /// <summary>
         /// Control labelTurnos.

@@ -187,8 +187,8 @@ namespace Taimer {
         /// </summary>
         public void Modificar()
         {
-            CADActividad act = new CADActividad();
-            act.ModificaActividad(Nombre, Descripcion, Codigo,codigoturno);
+            CADActividad_p act = new CADActividad_p();
+            act.ModificaActividad_p(Nombre, Descripcion, Codigo,codigoturno,usuario.DNI);
         }
 
         /// <summary>

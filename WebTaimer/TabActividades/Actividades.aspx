@@ -27,13 +27,13 @@
             </style>
 
         <div id="divPanelIzquierdo" style="width:200px; float: left">
-            <fieldset class="filtro" style="width: 160px; height:80px">
+            <fieldset class="filtro" style="width: 160px; height:80px" runat="server" id="filtro">
                 <legend>Filtro</legend>
                         <asp:TextBox ID="textboxFilter" runat="server" Width="160px"></asp:TextBox>
                         &nbsp;<asp:Button ID="botFiltrar" runat="server" Text="Filtrar" onclick="botFiltrar_Click"/>
             </fieldset>
             
-            <fieldset class="asig" style="width: 160px; height: 440px">
+            <fieldset class="asig" style="width: 160px; height: 440px" runat="server" id="asig">
                 <legend>Actividades</legend>
                         <asp:ListBox ID="ListAct" runat="server" 
                         Height="412px" Width="160px" Autopostback="true"  OnSelectedIndexChanged="seleccionar">
@@ -41,46 +41,40 @@
            </fieldset>
         </div>
 
+        <div id="divPanelContenido" style="width:686px; float: left; margin-left:5px">
+            <fieldset class="infoAsig" style="width: 686px; height:275px" runat="server">
+                <legend>Información de la actividad personal</legend>
 
-        <div id="divPanelContenido" 
-        style="width:686px; float: left; margin-left:5px">
-        <fieldset class="infoAsig" style="width: 686px; height:275px">
-            <legend>Información de la actividad personal</legend>
-
-
-                                <div style="float:left; width:467px; height: 226px;">
-                                    <asp:Label ID="labelNombreActividad" runat="server" Font-Bold="True" Font-Size="X-Large" 
-                                        Text="[ Nombre de la actividad ]"></asp:Label>
-                                    <asp:TextBox ID="tbNombreActividad" runat="server" Visible="false"></asp:TextBox>
-                                    <asp:Te
-                                    <br />
-                                    <br />
-                                    <asp:Label ID="labelDescripcionActividad" runat="server" Font-Size="Medium" 
-                                        Text="[ Descripción de la actividad ]"></asp:Label>
-                                    <asp:TextBox ID="tbDescActividad" runat="server" Visible="false"></asp:TextBox>
-                                    <br />
-                                    <br />
-                                    <br />
-                                    <br />
-                                    <br />
-                                    <br />
-                                    <br />
-                                    <br />
-                                    <br />
-                                    <asp:Button ID="botonBorrarActividad" runat="server" Text="Borrar actividad" 
-                                        style="width:120px" onclick="botonBorrarActividad_Click" />
-                                    <asp:Button ID="botonEditarActividad" runat="server" Text="Editar actividad" 
-                                        style="width:120px; margin-left:5px" onclick="botonEditarActividad_Click"/>
-                                </div>
-                                <div style="float:left">
-                                    <asp:Label ID="labelTurnos" runat="server" Font-Bold="True" Text="Turnos" align="center"></asp:Label>
-                                    <br />
-                                    <asp:ListBox ID="listaTurnos" runat="server" Height="210px" Width="190px">
-                                        <asp:ListItem Selected="True">Miércoles, de 09:00 a 11:00</asp:ListItem>
-                                        <asp:ListItem>Jueves, de 10:30 a 12:30</asp:ListItem>
-                                        <asp:ListItem>Jueves, de 16:30 a 16:30</asp:ListItem>
-                                    </asp:ListBox>
-                                </div>
-                    </fieldset>
-            </div>
+                    <div style="float:left; width:467px; height: 226px;">
+                        <asp:Label ID="labelNombreActividad" runat="server" Font-Bold="True" Font-Size="X-Large"
+                            Text="[ Nombre de la actividad ]"></asp:Label>
+                        <br />
+                        <asp:TextBox ID="tbNombreActividad" runat="server" Visible="false" style="margin-bottom: 15px"></asp:TextBox>                                                
+                        <br />
+                        <asp:Label ID="labelDescripcionActividad" runat="server" Font-Size="Medium" 
+                            Text="[ Descripción de la actividad ]"></asp:Label>
+                         <br />
+                        <asp:TextBox ID="tbDescActividad" runat="server" Visible="false"></asp:TextBox>
+                        
+                        <div id="optionButtons" runat="server" style="margin-top: 50px">
+                            <asp:Button ID="botonBorrarActividad" runat="server" Text="Borrar actividad" 
+                                style="width:120px" onclick="botonBorrarActividad_Click" />
+                            <asp:Button ID="botonEditarActividad" runat="server" Text="Editar actividad" 
+                                style="width:120px; margin-left:5px" onclick="botonEditarActividad_Click"/>
+                            <asp:Button ID="botonConfirmar" runat="server" Text="Confirmar" visible=false
+                                style="width:120px" onclick="botonConfirmar_Click" />
+                            <asp:Button ID="botonModificar" runat="server" Text="Modificar" visible=false
+                                style="width:120px" onclick="botonModificar_Click" />
+                            <asp:Button ID="botonCancelar" runat="server" Text="Cancelar" visible=false
+                                style="width:120px; margin-left:5px" onclick="botonCancelar_Click"/>
+                        </div>
+                    </div>
+                    <div style="float:left" id="divTurnos" runat="server">
+                        <asp:Label ID="labelTurnos" runat="server" Font-Bold="True" Text="Turnos" align="center"></asp:Label>
+                        <br />
+                        <asp:ListBox ID="listaTurnos" runat="server" Height="210px" Width="190px">                            
+                        </asp:ListBox>
+                    </div>
+            </fieldset>
+          </div>
 </asp:Content>
