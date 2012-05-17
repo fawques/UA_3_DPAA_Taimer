@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Text.RegularExpressions;
 
 namespace WebTaimer.TabHorariosPublicos
 {
@@ -16,6 +17,20 @@ namespace WebTaimer.TabHorariosPublicos
         protected string _horas;
         protected string _columnas;
         protected string _script;
+
+        private void NormalizarCadena(ref string s) {
+            s = s.ToLower();
+            Regex a = new Regex("[á|à|ä|â]", RegexOptions.Compiled);
+            Regex e = new Regex("[é|è|ë|ê]", RegexOptions.Compiled);
+            Regex i = new Regex("[í|ì|ï|î]", RegexOptions.Compiled);
+            Regex o = new Regex("[ó|ò|ö|ô]", RegexOptions.Compiled);
+            Regex u = new Regex("[ú|ù|ü|û]", RegexOptions.Compiled);
+            s = a.Replace(s, "a");
+            s = e.Replace(s, "e");
+            s = i.Replace(s, "i");
+            s = o.Replace(s, "o");
+            s = u.Replace(s, "u");
+        }
 
         protected void Page_Init(object sender, EventArgs e) {
             listaHorarios.AutoPostBack = true;
@@ -103,7 +118,7 @@ namespace WebTaimer.TabHorariosPublicos
                     _script += "detalle" + indice + "[3]='" + turno.HoraInicio.toString() + " - " + turno.HoraFin.toString() + "';";
                     _script += "detalle" + indice + "[4]='" + turno.Actividad.Codigo.ToString() + "';";
                     _script += "detalle" + indice + "[5]='";
-                    if (turno.Actividad.Codigo < 0 && ((Actividad_p)turno.Actividad).Usuario == ((User)Session["usuario"]))
+                    if (turno.Actividad.Codigo < 0 && ((User)Session["usuario"]) != null &&((Actividad_p)turno.Actividad).Usuario.Email == ((User)Session["usuario"]).Email)
                         _script += "1';";
                     else
                         _script += "0';";
@@ -131,7 +146,7 @@ namespace WebTaimer.TabHorariosPublicos
         }
 
         protected void SelectHorario(int indice) {
-            horarios = ((User)Session["usuario"]).Horarios;
+            horarios = Horario.getPublicos();
 
             int value = 0;
             listaHorarios.DataBind();
@@ -149,11 +164,11 @@ namespace WebTaimer.TabHorariosPublicos
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session.Count > 0) {
+            //if (Session.Count > 0) {
                 if (!IsPostBack) {
                     SelectHorario(0);
                 }
-            }
+            //}
 
 
         }
@@ -165,13 +180,19 @@ namespace WebTaimer.TabHorariosPublicos
 
         protected void Buscar_Click(object sender, EventArgs e) {
             string buscar = textboxFiltro.Text;
+            NormalizarCadena(ref buscar);
             listaHorarios.Items.Clear();
-            horarios = ((User)Session["usuario"]).Horarios;
+            horarios = Horario.getPublicos();//((User)Session["usuario"]).Horarios;
 
 
             int value = 0;
             foreach (Horario h in horarios) {
-                if (h.Nombre.Contains(buscar)/* || h.Usuario.Nombre.Contains(buscar)*/) {
+                string nom = h.Nombre;
+                string usr = h.Usuario.Nombre;
+                NormalizarCadena(ref nom);
+                NormalizarCadena(ref usr);
+
+                if (nom.Contains(buscar) || usr.Contains(buscar)) {
                     listaHorarios.Items.Add(h.Nombre);
                     listaHorarios.Items[listaHorarios.Items.Count - 1].Value = value.ToString();
                 }
@@ -183,27 +204,9 @@ namespace WebTaimer.TabHorariosPublicos
                 _horas = setHoras(horarios[indice]);
                 _columnas = setColums(horarios[indice]);
             }
-        }
-
-        protected void textboxFiltro_TextChanged(object sender, EventArgs e) {
-            string buscar = textboxFiltro.Text;
-            listaHorarios.Items.Clear();
-            horarios = ((User)Session["usuario"]).Horarios;
-
-
-            int value = 0;
-            foreach (Horario h in horarios) {
-                if (h.Nombre.Contains(buscar)/* || h.Usuario.Nombre.Contains(buscar)*/) {
-                    listaHorarios.Items.Add(h.Nombre);
-                    listaHorarios.Items[listaHorarios.Items.Count - 1].Value = value.ToString();
-                }
-                value++;
-            }
-            if (listaHorarios.Items.Count != 0) {
-                int indice = int.Parse(listaHorarios.Items[0].Value);
-                nomHorario.InnerText = horarios[indice].Nombre;
-                _horas = setHoras(horarios[indice]);
-                _columnas = setColums(horarios[indice]);
+            else {
+                nomHorario.InnerText = "";
+                horarioDe.Text = "Horario de ";
             }
         }
 

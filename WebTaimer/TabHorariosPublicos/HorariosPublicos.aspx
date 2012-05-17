@@ -115,6 +115,7 @@
             document.getElementById("turno").innerHTML = detalles[3];
 
             var url;
+            document.getElementById("botonComent").innerHTML = "";
             if (detalles[4] > 0) {
                 if (sesion == true) {
                     url = "../TabAsignaturas/Asignaturas.aspx?idActividad=" + detalles[4];
@@ -171,7 +172,7 @@
         <asp:UpdatePanel ID="UpdatePanel1" runat="server">
             <ContentTemplate>-->
                 <asp:TextBox ID="textboxFiltro" runat="server" Width="114px"
-                    placeholder="Filtrar..." ontextchanged="textboxFiltro_TextChanged"></asp:TextBox>
+                    placeholder="Filtrar..."></asp:TextBox>
                 <asp:Button style="margin: 5px; float: right; " ID="Buscar" runat="server" 
                     Text="Buscar" onclick="Buscar_Click" />
                 <asp:ListBox ID="listaHorarios" runat="server" Height="200px" Font-Size="X-Small"
@@ -235,14 +236,6 @@
                 </div>
                  <% =_columnas %>
                  <% =_script %>
-                <!--<div class="columnas" style="height: 480px;" >
-                    <div class='Asignatura' style="top: 40px;">
-                    <label>Asignatura</label>
-                    </div>
-                    <div class='Asignatura' style=" top: 40px;">
-                    <label style='height: 20px; top: 50%; margin-top: -10px;'>Asignatura2</label>
-                    </div>
-                </div>-->
         </div>
     </div>
 
