@@ -40,8 +40,6 @@ namespace WebTaimer.TabMensajes
         {
             receptor = Taimer.User.GetUserByDNI(indice);
 
-            cargarTodosUsuarios();
-
             labelConversador.Text = "- Conversación con " + receptor.Nombre;
             labelEmail.Text = receptor.Email;   // Solución que roza los límites de la cutrez
 
@@ -89,10 +87,8 @@ namespace WebTaimer.TabMensajes
         // Detecta si se ha cambiado el usuario seleccionado en la lista
         protected void listaUsuarios_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //int indicelista = Convert.ToInt32(listaUsuarios.SelectedValue);
             string indicelista = listaUsuarios.SelectedValue;
             SelectUser(indicelista);
-            //receptor = usuarios[indicelista];
         }
 
 
@@ -125,7 +121,6 @@ namespace WebTaimer.TabMensajes
             foreach (User u in usuarios)
             {
                 listaUsuarios.Items.Add(u.Nombre);
-                //listaUsuarios.Items[i].Value = Convert.ToString(u.DNI);
                 listaUsuarios.Items[i].Value = u.DNI;
                 i++;
             }
