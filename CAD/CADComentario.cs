@@ -30,6 +30,7 @@ namespace CAD
         public void CrearCommentBasic(string text, int codActividad, string codUser, DateTime date)
         {
             string comando;
+
             if (codUser == null) {
                 comando = "INSERT INTO [Comentario](texto,actividad,fecha) VALUES('" + text + "', '" + codActividad + "', '" + date+ "')";
             } else {
