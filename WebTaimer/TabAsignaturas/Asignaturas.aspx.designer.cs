@@ -31,15 +31,6 @@ namespace WebTaimer.TabAsignaturas {
         protected global::System.Web.UI.WebControls.TextBox textboxTitulacion;
         
         /// <summary>
-        /// Control dropdownCurso.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList dropdownCurso;
-        
-        /// <summary>
         /// Control botFiltrar.
         /// </summary>
         /// <remarks>

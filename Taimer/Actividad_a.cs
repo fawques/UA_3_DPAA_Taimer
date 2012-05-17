@@ -282,7 +282,7 @@ namespace Taimer {
                 List<Actividad_a> list = new List<Actividad_a>();
                 DataSet aux = new DataSet();
 
-                int cod=0, curso=0,nota=0,nVot = 0;
+                int cod=0, curso=0,nota=0,nVot = 0,codT=0;
                 string prof = "", tit = "", nom, desc = "";
 
                 DataRowCollection rows = data.Tables[0].Rows;
@@ -301,7 +301,9 @@ namespace Taimer {
 
                     if (rows[i].ItemArray[4].ToString() != "")
                         nota = (int)rows[i].ItemArray[4];
-
+                       
+                    
+                       
                     if (rows[i].ItemArray[5].ToString() != "")
                         nVot = (int)rows[i].ItemArray[5];
 
@@ -311,8 +313,8 @@ namespace Taimer {
                     {
                         nom = aux.Tables[0].Rows[0].ItemArray[1].ToString();
                         desc = aux.Tables[0].Rows[0].ItemArray[2].ToString();
-                        Actividad_a nueva = new Actividad_a(nom, desc, prof, curso, tit, cod, nota, nVot);
-
+                        codT=(int) aux.Tables[0].Rows[0].ItemArray[3];
+                        Actividad_a nueva = new Actividad_a(nom, desc, prof, curso, tit, cod, codT, nVot, nota);
                         nueva.SetTurnos();
                         list.Add(nueva);
                     }
@@ -414,9 +416,17 @@ namespace Taimer {
         /// Realiza la nota media 
         /// </summary>
         /// <returns>Devuelve la nota media de la asignatura</returns>
-        public int NotaMedia()
+        public double NotaMedia()
         {
-            return (notaTotal / numVotos);
+            double nota = notaTotal;
+            double num = numVotos;
+            if (num == 0)
+            {
+                return 0;
+            }
+            else { return (nota / numVotos); }
+
+            
         }
         #endregion
     }
