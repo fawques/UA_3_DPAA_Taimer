@@ -93,7 +93,7 @@ namespace Taimer
         /// <param name="id_">Identificador del Horario</param>
         /// <param name="nom_">Nombre del Horario</param>
         /// <param name="usu_">Usuario al que pretenece el Horario</param>
-        public Horario(int id_, string nom_, User usu_,bool publico_=false)
+        public Horario(int id_, string nom_, User usu_, bool publico_ = false)
         {
             id = id_;
             nombre = nom_;
@@ -110,12 +110,12 @@ namespace Taimer
         /// </summary>
         /// <param name="nom_">Nombre del Horario</param>
         /// <param name="usu_">Usuario al que pertenece el Horario</param>
-        public Horario(string nom_, User usu_,bool publico_=false)
+        public Horario(string nom_, User usu_, bool publico_ = false)
         {
             id = 0;
             nombre = nom_;
             usuario = usu_;
-            publico=publico_;
+            publico = publico_;
 
             for (int i = 0; i < 7; i++)
             {
@@ -379,7 +379,7 @@ namespace Taimer
         public void Agregar()
         {
             CADHorario h = new CADHorario();
-            h.CrearHorarioBasic(id, nombre, usuario.DNI,publico);
+            h.CrearHorarioBasic(id, nombre, usuario.DNI, publico);
 
             foreach (List<Turno> lt in arrayTurnos)
             {
@@ -448,7 +448,7 @@ namespace Taimer
             {
                 string titulo, usuario = "";
                 int id = 0;
-                bool publico=false;
+                bool publico = false;
                 DataSet aux = new DataSet();
                 CADUser user = new CADUser();
                 DataRowCollection rows = data.Tables[0].Rows;
@@ -459,8 +459,8 @@ namespace Taimer
                     titulo = rows[0].ItemArray[1].ToString();
                     usuario = rows[0].ItemArray[2].ToString();
                     aux = user.GetDatosUser(usuario);
-                    publico =(bool)rows[0].ItemArray[3];
-                    Horario hor = new Horario(id, titulo, User.UserToObject(aux),publico);
+                    publico = (bool)rows[0].ItemArray[3];
+                    Horario hor = new Horario(id, titulo, User.UserToObject(aux), publico);
                     return hor;
                 }
             }
@@ -490,10 +490,15 @@ namespace Taimer
                     titulo = rows[i].ItemArray[1].ToString();
                     usuario = rows[i].ItemArray[2].ToString();
                     publico = (bool)rows[0].ItemArray[3];
-                    Horario nuevo = new Horario(id, titulo, autor,publico);
+                    if (autor == null)
+                    {
+                        autor = User.UserToObject(user.GetDatosUser(usuario));
+
+                    }
+                    Horario nuevo = new Horario(id, titulo, autor, publico);
                     nuevo.SetTurnos();
                     list.Add(nuevo);
-                }                
+                }
                 return list;
             }
             return null;
@@ -503,13 +508,33 @@ namespace Taimer
         {
             CADTurno turno = new CADTurno();
             DataSet data = turno.GetTurnosByHorario(this.ID, this.Usuario.DNI);
-            List<Turno> list = Turno.CodesToList(data,usuario);
+            List<Turno> list = Turno.CodesToList(data, usuario);
             int dia;
             foreach (Turno t in list)
             {
-                dia=TaimerLibrary.convertToInt(t.Dia);
+                dia = TaimerLibrary.convertToInt(t.Dia);
                 arrayTurnos[dia].Add(t);
             }
+        }
+
+        public void SetTurnos(string idusuario)
+        {
+            CADTurno turno = new CADTurno();
+            DataSet data = turno.GetTurnosByHorario(this.ID, idusuario);
+            List<Turno> list = Turno.CodesToList(data);
+            int dia;
+            foreach (Turno t in list)
+            {
+                dia = TaimerLibrary.convertToInt(t.Dia);
+                arrayTurnos[dia].Add(t);
+            }
+        }
+
+        public static List<Horario> getPublicos()
+        {
+            CADHorario cad = new CADHorario();
+            DataSet aux = cad.GetHorariosPublicos();
+            return HorariosToList(aux, null);
         }
 
         #endregion
