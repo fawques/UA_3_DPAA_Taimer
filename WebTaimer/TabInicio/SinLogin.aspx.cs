@@ -13,5 +13,19 @@ namespace WebTaimer
 
 
         }
+
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            if (Request.QueryString["nuevo"] != null)
+            {
+                NuevoUsuarioOK.Visible = true;
+            }
+        }
+
+        protected void BotAceptar_Click(object sender, EventArgs e)
+        {
+            //NuevoUsuarioOK.Visible = false; --> con redirect quita los parámetros de la url
+            Response.Redirect("./SinLogin.aspx");
+        }
     }
 }

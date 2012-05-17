@@ -11,5 +11,23 @@ namespace WebTaimer {
     
     
     public partial class _Default {
+        
+        /// <summary>
+        /// Control NuevoUsuarioOK.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel NuevoUsuarioOK;
+        
+        /// <summary>
+        /// Control BotAceptar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button BotAceptar;
     }
 }
