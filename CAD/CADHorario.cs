@@ -310,5 +310,31 @@ namespace CAD
                 if (con != null) con.Close(); // Se asegura de cerrar la conexión.
             }
         }
+
+        public DataSet GetHorariosPublicos()
+        {
+            SqlConnection con = null;
+            DataSet datos = null;
+            string comando = "Select * from [Horario] where publico='True' order by usuario";
+            try
+            {
+                con = new SqlConnection(conexionTBD);
+                SqlDataAdapter sqlAdaptador = new SqlDataAdapter(comando, con);
+                datos = new DataSet();
+                sqlAdaptador.Fill(datos);
+                return datos;
+
+            }
+            catch (SqlException)
+            {
+                // Captura la condición general y la reenvía.
+                throw;
+            }
+            finally
+            {
+                if (con != null) con.Close(); // Se asegura de cerrar la conexión.
+            }
+        }
+
     }
 }
