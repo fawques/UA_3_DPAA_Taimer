@@ -14,6 +14,11 @@ div.mensajedeotro
 	color: #000000; float:left; border: 5px double #8bd7e0; background-color: #e5f4f7; overflow: visible; width:600px; border-radius: 10px; margin: 4px;
 }
 
+div.mensajedeotronuevo
+{
+	color: #000000; float:left; border: 5px double #aa0000; background-color: #e5f4f7; overflow: visible; width:600px; border-radius: 10px; margin: 4px;
+}
+
 label.mensaje 
 {
     margin-left: 40px; overflow: visible;

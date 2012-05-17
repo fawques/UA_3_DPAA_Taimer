@@ -66,7 +66,10 @@ namespace WebTaimer.TabMensajes
                 {
                     if (m.Emisor.DNI != ((User)Session["usuario"]).DNI)
                     {
-                        cont += "<div class=\"mensajedeotro\">";
+                        if(m.Leido)
+                            cont += "<div class=\"mensajedeotro\">";
+                        else
+                            cont += "<div class=\"mensajedeotronuevo\">";
                     }
                     else
                     {
