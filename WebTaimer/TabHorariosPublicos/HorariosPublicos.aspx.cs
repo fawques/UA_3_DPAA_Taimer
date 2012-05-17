@@ -96,6 +96,7 @@ namespace WebTaimer.TabHorariosPublicos
                     _script += "detalle" + indice + "[1]='" + turno.Actividad.Descripcion + "';";
                     _script += "detalle" + indice + "[2]='" + turno.Ubicacion + "';";
                     _script += "detalle" + indice + "[3]='" + turno.HoraInicio.toString() + " - " + turno.HoraFin.toString() + "';";
+                    _script += "detalle" + indice + "[4]='" + turno.Actividad.Codigo.ToString() + "';";
                     _script += "turno[" + indice.ToString() + "]=detalle" + indice + ";";
 
 
@@ -122,10 +123,13 @@ namespace WebTaimer.TabHorariosPublicos
         protected void SelectHorario(int indice) {
             horarios = ((User)Session["usuario"]).Horarios;
 
+            int value = 0;
             listaHorarios.DataBind();
             listaHorarios.Items.Clear();
             foreach (Horario item in horarios) {
                 listaHorarios.Items.Add(item.Nombre);
+                listaHorarios.Items[listaHorarios.Items.Count - 1].Value = value.ToString();
+                value++;
             }
 
             nomHorario.InnerText = horarios[indice].Nombre;
@@ -145,8 +149,52 @@ namespace WebTaimer.TabHorariosPublicos
         }
 
         protected void listaHorarios_SelectedIndexChanged(object sender, EventArgs e) {
-            int i = listaHorarios.SelectedIndex;
+            int i = int.Parse(listaHorarios.SelectedValue);
             SelectHorario(i);
+        }
+
+        protected void Buscar_Click(object sender, EventArgs e) {
+            string buscar = textboxFiltro.Text;
+            listaHorarios.Items.Clear();
+            horarios = ((User)Session["usuario"]).Horarios;
+
+
+            int value = 0;
+            foreach (Horario h in horarios) {
+                if (h.Nombre.Contains(buscar)/* || h.Usuario.Nombre.Contains(buscar)*/) {
+                    listaHorarios.Items.Add(h.Nombre);
+                    listaHorarios.Items[listaHorarios.Items.Count - 1].Value = value.ToString();
+                }
+                value++;
+            }
+            if (listaHorarios.Items.Count != 0) {
+                int indice = int.Parse(listaHorarios.Items[0].Value);
+                nomHorario.InnerText = horarios[indice].Nombre;
+                _horas = setHoras(horarios[indice]);
+                _columnas = setColums(horarios[indice]);
+            }
+        }
+
+        protected void textboxFiltro_TextChanged(object sender, EventArgs e) {
+            string buscar = textboxFiltro.Text;
+            listaHorarios.Items.Clear();
+            horarios = ((User)Session["usuario"]).Horarios;
+
+
+            int value = 0;
+            foreach (Horario h in horarios) {
+                if (h.Nombre.Contains(buscar)/* || h.Usuario.Nombre.Contains(buscar)*/) {
+                    listaHorarios.Items.Add(h.Nombre);
+                    listaHorarios.Items[listaHorarios.Items.Count - 1].Value = value.ToString();
+                }
+                value++;
+            }
+            if (listaHorarios.Items.Count != 0) {
+                int indice = int.Parse(listaHorarios.Items[0].Value);
+                nomHorario.InnerText = horarios[indice].Nombre;
+                _horas = setHoras(horarios[indice]);
+                _columnas = setColums(horarios[indice]);
+            }
         }
 
     }

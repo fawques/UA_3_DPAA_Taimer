@@ -97,6 +97,7 @@
             margin-bottom: 5px;
             margin-left: -40px;
             display: block;
+            
         }
         
     </style>
@@ -110,6 +111,7 @@
             document.getElementById("descripcion").innerHTML = detalles[1];
             document.getElementById("ubicacion").innerHTML = detalles[2];
             document.getElementById("turno").innerHTML = detalles[3];
+            document.getElementById("botonComent").innerHTML = "<a href='../TabAsignaturas/Asignaturas.aspx?idActividad=" + detalles[4] + "' style='text-decoration: none; font-weight: bold;'>Comentar</a>";
         }
 
         function selected(id) {
@@ -123,11 +125,19 @@
             document.getElementById(id).style.cursor = "default";
             document.getElementById(id).style.color = "#78532a";
         }
+
+        function gotoComentarios(id) {
+            alert("redirecciona");
+            window.location = "../TabAsignaturas/Comentar.aspx";
+        }
     </script>
+
 
 </asp:Content>
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
-    <h2><asp:HyperLink style="color: Maroon; text-decoration:none;" ID="horarioDe" runat="server" NavigateUrl=""/></h2>
+    <h2><asp:HyperLink style="color: Maroon; text-decoration:none;" ID="horarioDe" runat="server" NavigateUrl=""/>
+        <asp:Label ID="Label1" runat="server" Text=""></asp:Label>
+    </h2>
     
 
     <!-- PANEL IZQUIERDO (seleccionar horario) ---------------->
@@ -136,13 +146,21 @@
 
     <div id="divPanelIzquierdo" style="float: left; margin-left: 0px">
     
-    <fieldset class="fieldHorarios" style="width: 100px; height: 260px; margin-top: -5px;">
+    <fieldset class="fieldHorarios" 
+            style="width: 110px; height: 291px; margin-top: -5px;">
         <legend>Horarios</legend>
-        <asp:TextBox ID="textboxFiltro" runat="server" Width="114px" placeholder="Filtrar..."></asp:TextBox>
-        <asp:ListBox ID="listaHorarios" runat="server" Height="200px" Font-Size="X-Small"
-            style="width:120px" onselectedindexchanged="listaHorarios_SelectedIndexChanged" >
-        </asp:ListBox>
-
+        <!--<asp:ScriptManager ID="ScriptManager1" runat="server" />
+        <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+            <ContentTemplate>-->
+                <asp:TextBox ID="textboxFiltro" runat="server" Width="114px"
+                    placeholder="Filtrar..." ontextchanged="textboxFiltro_TextChanged"></asp:TextBox>
+                <asp:Button style="margin: 5px; float: right; " ID="Buscar" runat="server" 
+                    Text="Buscar" onclick="Buscar_Click" />
+                <asp:ListBox ID="listaHorarios" runat="server" Height="200px" Font-Size="X-Small"
+                    style="width:120px" onselectedindexchanged="listaHorarios_SelectedIndexChanged" >
+                </asp:ListBox>
+           <!-- </ContentTemplate>
+        </asp:UpdatePanel>-->
     </fieldset>
 
     <fieldset id="Det" class="fieldHorarios" style="width: 120px; height: auto; margin-top: -10px; display: none;">
@@ -164,6 +182,9 @@
             <li>
                 <p class="detalles">Turno:</p>
                 <label id="turno"></label>
+            </li>
+            <li id="botonComent">
+                
             </li>
         </ul>
 
