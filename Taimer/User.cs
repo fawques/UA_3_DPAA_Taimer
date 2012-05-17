@@ -128,7 +128,8 @@ namespace Taimer {
         /// <param name="actp_">Lista de actividades personales que realiza el usuario</param>
         /// <param name="hor_">Lista de horarios que tiene alamacenados el usuario</param>
         public User(string nom_, string dni_, string email_, string pass_, int curso_, string tit_, List<Actividad_a> acta_, List<Actividad_p> actp_, List<Horario> hor_, string imagen_ = "", string frase_ = "") {
-            codHorarios = hor_.Count;
+            if(hor_ != null)
+                codHorarios = hor_.Count;
             /* -- Al meterle las listas, sobre todo si vienen de los CAD, ya tienen su código puesto
             for (int i = 0; i < actp_.Count; i++)
                 actp_[i].Codigo = i;
@@ -512,7 +513,7 @@ namespace Taimer {
         /// Guarda los cambios del usuario en la base de datos
         /// </summary>
         public void Modificar() {
-            CADUser user = new CADUser();
+            CADUser user = new CADUser();            
             user.ModificaUser(dni, nombre, email, password, titulacion, codHorarios, imagen, frase);
         }
 
@@ -605,6 +606,30 @@ namespace Taimer {
                     user.SetDatos();
                     return user;
                 }                
+            }
+            return null;
+        }
+
+        /// <summary>
+        /// Convierte un DataSet (será un usuario) en un objeto User (sólo con nombre y DNI)
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
+        public static User UserToObjectQuick(DataSet data)
+        {
+            if (data != null)
+            {
+                string dni, nom;
+                DataRowCollection rows = data.Tables[0].Rows;
+
+                if (rows.Count != 0)
+                {
+                    dni = rows[0].ItemArray[0].ToString();
+                    nom = rows[0].ItemArray[1].ToString();
+
+                    User user = new User(nom, dni, null, null, 0, null, null, null, null);
+                    return user;
+                }
             }
             return null;
         }
@@ -745,10 +770,18 @@ namespace Taimer {
             {
                 if ((myStream = openFileDialog1.OpenFile()) != null)
                 {
+                    int index = NameExists();
                     string[] path = openFileDialog1.FileName.Split('.');
-                    string name = nombre + '.' + path[path.Length - 1];
-                    System.IO.File.Copy(openFileDialog1.FileName, "C:\\Taimer\\WebTaimer\\Images\\" + name,true);
-                    imagen = name;
+                    string name = nombre;
+
+                    index = 1;
+                    if(index>0)
+                        name += index;
+
+                    name +=  '.' + path[path.Length - 1];                    
+                    File.Copy(openFileDialog1.FileName, "C:\\Taimer\\WebTaimer\\Images\\"+name, true);
+
+                    //imagen = name;
                 }
             }
 
@@ -758,17 +791,54 @@ namespace Taimer {
         /// Cambia la imagen de perfil del usuario, a partir de un nombre de archivo parasdo por parámetro
         /// </summary>
         public void InsertaFoto(string file)
-        {            
+        {
+            int index = NameExists();
             string[] path = file.Split('.');
-            string name = nombre + '.' + path[path.Length - 1];            
-            //System.IO.File.Delete("C:\\Taimer\\WebTaimer\\Images\\" + imagen);
+            string name = nombre;
+            
+            if (index > 0)
+                name += index;
+
+            name += '.' + path[path.Length - 1];                    
+                       
+            //File.Delete(imagen);
             imagen = name;           
         }
 
+        /// <summary>
+        /// Obtiene un objeto User a partir de su email
+        /// </summary>
+        /// <param name="email"></param>
+        /// <returns></returns>
         public static User GetUserByEmail(string email)
         {            
             CADUser cad=new CADUser();
             return UserToObject(cad.GetDatosUserByLogin(email));
+        }
+
+
+        public static User GetUserByDNI(string dni)
+        {
+            CADUser cad = new CADUser();
+            return UserToObject(cad.GetUserByDNI(dni));
+        }
+
+        /// <summary>
+        /// Comprueba si el nombre del usuario está repetido, devolviendo el número del resto de usuarios con dicho nombre
+        /// </summary>
+        /// <returns></returns>
+        public int NameExists()
+        {
+            CADUser cad=new CADUser();
+            List<User> users = UsersToList(cad.GetUsers());
+            int index = 0;
+
+            foreach (User u in users)
+            {
+                if (u.Nombre == Nombre && u.Email != Email)
+                    index++;
+            }
+            return index;
         }
 
         #endregion

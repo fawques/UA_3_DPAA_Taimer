@@ -4,6 +4,25 @@
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
 </asp:Content>
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
+<style type:"text/css">
+    .MensajeNuevoUsuarioOK
+    {
+        background-color: #fff1bb;
+        position:absolute;
+        left:25%;
+        top:25%;
+        height:100px;
+        width:600px;
+        padding:10px;
+        padding-left:20px;
+        padding-top:30px;
+    }
+    .MensajeNuevoUsuarioOK.p
+    {
+        position:relative;
+        top:50%;
+    }
+    </style>
     <h2>
         Bienvenido a Taimer.</h2>
     <p>
@@ -23,7 +42,18 @@
         Si aún no has descargado la aplicación Taimer para Windows, puedes hacerlo <a href=""
             title="Descargar Taimer para Windows">haciendo clic aquí</a>.
     </p>
+        <asp:Panel ID="NuevoUsuarioOK" runat="server" BorderColor="Black" 
+        BorderStyle="Solid" Font-Bold="True" Font-Size="Large" Visible="False" 
+        Width="541px" CssClass="MensajeNuevoUsuarioOK">
         <p>
+            Usuario creado correctamente. Bienvenido, inicia sesión para acceder.
+        </p>
+        <p>
+            <asp:Button ID="BotAceptar" runat="server" onclick="BotAceptar_Click" 
+                Text="Aceptar" />
+        </p>
+    </asp:Panel>
+    <p>
         <br />
         <br />
     <a href="ConLogin.aspx"

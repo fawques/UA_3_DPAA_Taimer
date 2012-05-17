@@ -183,6 +183,36 @@ namespace CAD
         }
 
 
+
+        /// <summary>
+        /// Sólo obtiene el nombre del usuario a partir del DNI
+        /// </summary>
+        /// <param name="dni"></param>
+        public DataSet GetDatosUserQuick(string dni)
+        {
+            SqlConnection con = null;
+            DataSet datos = null;
+            string comando = "Select dni, nombre from [User] where dni='" + dni + "'";
+            try
+            {
+                con = new SqlConnection(conexionTBD);
+                SqlDataAdapter sqlAdaptador = new SqlDataAdapter(comando, con);
+                datos = new DataSet();
+                sqlAdaptador.Fill(datos);
+                return datos;
+            }
+            catch (SqlException)
+            {
+                //return null;
+                throw;
+            }
+            finally
+            {
+                if (con != null) con.Close(); // Se asegura de cerrar la conexión.
+            }
+        }
+
+
         /// <summary>
         /// Obtiene los datos de un usuario a partir de un email y un password (datos de login)
         /// </summary>
@@ -429,6 +459,34 @@ namespace CAD
             {
                 //return null;
                 throw;
+            }
+            finally
+            {
+                if (con != null) con.Close(); // Se asegura de cerrar la conexión.
+            }
+        }
+
+        public DataSet GetUserByDNI(string dni)
+        {
+            SqlConnection con = null;
+            DataSet datos = null;
+            string comando;
+
+                comando = "Select * from [User] where dni='" + dni + "'";
+
+            try
+            {
+                con = new SqlConnection(conexionTBD);
+                SqlDataAdapter sqlAdaptador = new SqlDataAdapter(comando, con);
+                datos = new DataSet();
+                sqlAdaptador.Fill(datos);
+                return datos;
+            }
+            catch (SqlException)
+            {
+                //return null;
+                throw;
+
             }
             finally
             {

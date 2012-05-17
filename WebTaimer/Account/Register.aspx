@@ -4,7 +4,7 @@
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
     <style>
         p.campo {
-            width: 350px;
+            width: 360px;
         }
     
         #RegisterForm 
@@ -18,7 +18,8 @@
 
 <h2> CREAR UNA NUEVA CUENTA</h2>
     <p> Use el formulario siguiente para crear una nueva cuenta.</p>
-
+    <div ID:"contenido_completo" style="margin-left: 228px">
+        <br />
 <asp:ValidationSummary ID="ValSumReg" CssClass="failureNotification" HeaderText="Se han producido los siguientes errores:" runat="server" ValidationGroup="RegisterUserValidationGroup"/>
 
         
@@ -39,9 +40,12 @@
         <asp:RegularExpressionValidator ID="emailValidation" ControlToValidate="Email" ValidationExpression="^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$" 
                 ValidationGroup="RegisterUserValidationGroup" runat="server" ErrorMessage="e-Mail no valido" CssClass="failureNotification"
                 ToolTip="e-Mail no valido">*</asp:RegularExpressionValidator>
+        <asp:CustomValidator ID="EmailRepe" runat="server" ValidationGroup="RegisterUserValidationGroup" ControlToValidate="Email" 
+                ErrorMessage="El e-Mail está repetido" CssClass="failureNotification" ToolTip="El e-Mail está repetido">*</asp:CustomValidator>
     </p>
     <p class="campo">
         <asp:Label ID="PasswordLabel" runat="server" AssociatedControlID="Password">Contraseña:</asp:Label>
+        <br />
         <asp:TextBox ID="Password" runat="server" CssClass="passwordEntry" TextMode="Password"></asp:TextBox>
         <asp:RequiredFieldValidator ID="PasswordRequired" runat="server" ControlToValidate="Password" 
                 CssClass="failureNotification" ErrorMessage="La contraseña es obligatoria." ToolTip="La contraseña es obligatoria." 
@@ -61,6 +65,7 @@
     </p>
     <p class="campo">
         <asp:Label ID="DniLabel" runat="server" AssociatedControlID="DNI">DNI:</asp:Label>
+        <br />
         <asp:TextBox ID="DNI" runat="server" CssClass="textEntry"></asp:TextBox>
         <asp:RequiredFieldValidator ID="DniRequired" runat="server" ControlToValidate="DNI" 
                 CssClass="failureNotification" ErrorMessage="El DNI es obligatorio." ToolTip="El DNI es obligatorio." 
@@ -68,9 +73,12 @@
         <asp:RegularExpressionValidator ID="DNIValidation" ControlToValidate="DNI" ValidationExpression="\d{8}([A-Z]|[a-z])" 
                 ValidationGroup="RegisterUserValidationGroup" runat="server" ErrorMessage="DNI no valido" CssClass="failureNotification"
                 ToolTip="DNI no valido">*</asp:RegularExpressionValidator>
+        <asp:CustomValidator ID="DNIRepe" runat="server" ControlToValidate="DNI" ValidationGroup="RegisterUserValidationGroup" CssClass="failureNotification" 
+                ToolTip="El DNI está repetido" ErrorMessage="El DNI está repetido">*</asp:CustomValidator>
     </p>
     <p class="campo">
         <asp:Label ID="TitulacionLabel" runat="server" AssociatedControlID="Titulacion">Titulación:</asp:Label>
+        <br />
         <asp:TextBox ID="Titulacion" runat="server" CssClass="textEntry"></asp:TextBox>
         <asp:RequiredFieldValidator ID="TitulacionRequired" runat="server" ControlToValidate="Titulacion" 
                 CssClass="failureNotification" ErrorMessage="La titulación es obligatoria." ToolTip="La titulación es obligatoria." 
@@ -78,6 +86,7 @@
     </p>
     <p class="campo">
         <asp:Label ID="CursoLabel" runat="server" AssociatedControlID="Curso">Curso:</asp:Label>
+        <br />
         <asp:DropDownList ID="Curso" runat="server" CssClass="textEntry" style="width: 320px">
             <asp:ListItem Value="1">Primero</asp:ListItem>
             <asp:ListItem Value="2">Segundo</asp:ListItem>
@@ -90,7 +99,12 @@
                 ValidationGroup="RegisterUserValidationGroup">*</asp:RequiredFieldValidator>
     </p>
 
-    <asp:Button ID="btReg" runat="server" onclick="btReg_Click" Text="Registrate" ValidationGroup="RegisterUserValidationGroup"/>
+    <asp:Button ID="btReg" runat="server" onclick="crearUsuario_Click" 
+        Text="Registrate" ValidationGroup="RegisterUserValidationGroup"/>
 
+    <br />
+    <br />
+
+</div>
 </div>
 </asp:Content>

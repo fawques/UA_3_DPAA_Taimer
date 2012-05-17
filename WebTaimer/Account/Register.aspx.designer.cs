@@ -85,6 +85,15 @@ namespace WebTaimer.Account {
         protected global::System.Web.UI.WebControls.RegularExpressionValidator emailValidation;
         
         /// <summary>
+        /// Control EmailRepe.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CustomValidator EmailRepe;
+        
+        /// <summary>
         /// Control PasswordLabel.
         /// </summary>
         /// <remarks>
@@ -191,6 +200,15 @@ namespace WebTaimer.Account {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RegularExpressionValidator DNIValidation;
+        
+        /// <summary>
+        /// Control DNIRepe.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CustomValidator DNIRepe;
         
         /// <summary>
         /// Control TitulacionLabel.

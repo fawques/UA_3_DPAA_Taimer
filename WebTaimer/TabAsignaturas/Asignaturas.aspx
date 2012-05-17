@@ -82,21 +82,12 @@
          <fieldset class="filtro" style="width: 160px; height:80px">
             <legend>Filtro</legend>
                         <asp:TextBox ID="textboxTitulacion" runat="server" Width="160px" placeholder="Titulación"></asp:TextBox>
-                        Curso: 
-                        <asp:DropDownList ID="dropdownCurso" runat="server" Width="58px">
-                            <asp:ListItem Selected="True">1</asp:ListItem>
-                            <asp:ListItem>2</asp:ListItem>
-                            <asp:ListItem>3</asp:ListItem>
-                            <asp:ListItem>4</asp:ListItem>
-                            <asp:ListItem>5</asp:ListItem>
-                            <asp:ListItem>6</asp:ListItem>
-                        </asp:DropDownList>
                         &nbsp;<asp:Button ID="botFiltrar" runat="server" Text="Filtrar" />
                     </fieldset>
                      <fieldset class="asig" style="width: 160px; height: 440px">
             <legend>Asignaturas</legend>
-                        <asp:ListBox ID="ListBox1" runat="server" Height="412px" Width="160px">
-                            <asp:ListItem>Asignatura 1</asp:ListItem>
+                        <asp:ListBox ID="ListAct" runat="server" Height="412px" Width="160px" >
+                            <asp:ListItem >Asignatura 1</asp:ListItem>
                             <asp:ListItem>Asignatura 2</asp:ListItem>
                             <asp:ListItem>Asignatura 3</asp:ListItem>
                             <asp:ListItem>Asignatura 4</asp:ListItem>

@@ -20,33 +20,35 @@ namespace WebTaimer.TabMensajes
         {
             if (Session["usuario"] == null)
                 Response.Redirect("~/TabInicio/SinLogin.aspx?error=true");
-            listaUsuarios.AutoPostBack = true;
+            //listaUsuarios.AutoPostBack = true;
+            cargarTodosUsuarios();
+            cargarTodosMensajes();
         }
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session.Count > 0)
+            /*if (Session.Count > 0)
             {
                 if (!IsPostBack)
                 {
                     cargarTodosUsuarios();
+                    cargarTodosMensajes();
                 }
-            }
+            }*/
         }
 
 
         // Selecciona un usuario al hacer clic sobre él en la lista
-        protected void SelectUser(int indice)
+        protected void SelectUser(string indice)
         {
-            cargarTodosUsuarios();
+            receptor = Taimer.User.GetUserByDNI(indice);
 
-            labelConversador.Text = "- Conversación con " + usuarios[indice].Nombre;
-            receptor = usuarios[indice];
+            labelConversador.Text = "- Conversación con " + receptor.Nombre;
             labelEmail.Text = receptor.Email;   // Solución que roza los límites de la cutrez
 
-            conversacion = cargarConversacion();
+            conversacion = "<div style=\"color: #000000; float:center; border: 5px double #117777; background-color: #118888; overflow: visible; border-radius: 10px; margin: 4px; text-align:center \" >Cargando...</div>";
 
-            receptor = usuarios[indice];
+            conversacion = cargarConversacion();
         }
 
 
@@ -54,28 +56,39 @@ namespace WebTaimer.TabMensajes
         protected string cargarConversacion()
         {
             string cont = "";
-            listamensajes = Taimer.Mensaje.getConversacion((User)Session["usuario"], receptor);
+            //listamensajes = Taimer.Mensaje.getConversacion((User)Session["usuario"], receptor);
+            string dnipropio = ((User)Session["usuario"]).DNI;
+            string dniotro = receptor.DNI;
 
-            if (listamensajes.Count == 0)
-            {
-                cont = "<div style=\"color: #000000; float:center; border: 5px double #117777; background-color: #118888; overflow: visible; border-radius: 10px; margin: 4px; text-align:center \" >No tienes mensajes con " + receptor.Nombre + ".</div>";
-            }
-            else
-            {
+            //if (listamensajes.Count == 0)
+            //{
+            //    cont = "<div style=\"color: #000000; float:center; border: 5px double #117777; background-color: #118888; overflow: visible; border-radius: 10px; margin: 4px; text-align:center \" >No tienes mensajes con " + receptor.Nombre + ".</div>";
+            //}
+            //else
+            //{
                 foreach (Mensaje m in listamensajes)
                 {
-                    if (m.Emisor.DNI != ((User)Session["usuario"]).DNI)
+                    if (m.Receptor.DNI == dnipropio && m.Emisor.DNI == dniotro)      // Mensaje del "otro"
                     {
-                        cont = "<div style=\"color: #000000; float:left; border: 5px double #8bd7e0; background-color: #e5f4f7;";
+                        if (m.Leido)
+                            cont += "<div class=\"mensajedeotro\">";
+                        else
+                        {
+                            cont += "<div class=\"mensajedeotronuevo\">";
+                            m.MarcarComoLeido();
+                        }
+                        cont += "<p class=\"coment\">Enviado por " + m.Emisor.Nombre + " - " + m.FechaToString() + "</p><p class=\"texto\">" + m.Texto + "</p></div>";
                     }
-                    else
+                    else if (m.Emisor.DNI == dnipropio && m.Receptor.DNI == dniotro)   // Mensaje propio
                     {
-                        cont += "<div style=\"color: #000000; float:right; border: 5px double #8be0a7; background-color: #e5f7ea;";
+                        cont += "<div class=\"mensajepropio\">";
+                        cont += "<p class=\"coment\">Enviado por " + m.Emisor.Nombre + " - " + m.FechaToString() + "</p><p class=\"texto\">" + m.Texto + "</p></div>";
                     }
-
-                    cont += "overflow: visible; width:600px; border-radius: 10px; margin: 4px;\" ><p class=\"coment\">Enviado por " + m.Emisor.Nombre + " - " + m.FechaToString() + "</p><p style=\"width:590px; margin-left:5px\">" + m.Texto + "</p></div>";
                 }
-            }
+            //}
+
+            if(cont == "")
+                cont = "<div style=\"color: #000000; float:center; border: 5px double #117777; background-color: #118888; overflow: visible; border-radius: 10px; margin: 4px; text-align:center \" >No tienes mensajes con " + receptor.Nombre + ".</div>";
 
             return cont;
         }
@@ -84,18 +97,16 @@ namespace WebTaimer.TabMensajes
         // Detecta si se ha cambiado el usuario seleccionado en la lista
         protected void listaUsuarios_SelectedIndexChanged(object sender, EventArgs e)
         {
-            int indicelista = listaUsuarios.SelectedIndex;
+            string indicelista = listaUsuarios.SelectedValue;
             SelectUser(indicelista);
-            receptor = usuarios[indicelista];
         }
 
 
-        // Enviar mensaje (NO FUNCIONA)
+        // Enviar mensaje
         protected void botonEnviar_Click(object sender, EventArgs e)
         {
             receptor = Taimer.User.GetUserByEmail(labelEmail.Text);
             Mensaje mensaje = new Mensaje(100, textoMensaje.Text, ((User)Session["usuario"]), receptor, DateTime.Now, false);
-            //Mensaje mensaje = new Mensaje(100, "AW YEAH", ((User)Session["usuario"]), receptor, DateTime.Now, false);
             mensaje.Agregar();
             textoMensaje.Text = "";
         }
@@ -115,9 +126,13 @@ namespace WebTaimer.TabMensajes
             listaUsuarios.DataBind();
             listaUsuarios.Items.Clear();
 
+            int i = 0;
+
             foreach (User u in usuarios)
             {
                 listaUsuarios.Items.Add(u.Nombre);
+                listaUsuarios.Items[i].Value = u.DNI;
+                i++;
             }
         }
 
@@ -143,6 +158,11 @@ namespace WebTaimer.TabMensajes
         protected void textboxFiltro_TextChanged(object sender, EventArgs e)
         {
             //cargaFiltro(textboxFiltro.Text);
+        }
+
+        protected void cargarTodosMensajes()
+        {
+            listamensajes = Taimer.Mensaje.getMensajesUsuario((User)Session["usuario"]);
         }
     }
 }

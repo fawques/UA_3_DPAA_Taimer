@@ -29,20 +29,23 @@ namespace WebTaimer.Account
             string mail = Email.Text;
             string pass = Password.Text;
             int curso = 1;
-            try {
+            try
+            {
                 curso = int.Parse(Curso.SelectedItem.Value);
             }
-            catch {
-
+            catch
+            {
+                throw;
             }
             string titulacion = Titulacion.Text;
             User user = new User(nom, dni, mail, pass, curso, titulacion);
 
-            //user.Agregar();
-
-            //Se envia un email de registro
             try
             {
+                user.Agregar();
+
+                //Se envia un email de registro
+
                 SmtpClient smtpClient = new SmtpClient("smtp.gmail.com", 587);
                 MailMessage mensaje = new MailMessage();
 
@@ -64,11 +67,24 @@ namespace WebTaimer.Account
                 smtpClient.Credentials = new System.Net.NetworkCredential("taimerapp@gmail.com", "thisistaimer");    // Usuario y contraseña del correo de Taimer
                 smtpClient.Send(mensaje);
 
-                // ¿Redirigir a una página que diga "Enhorabuena, has creado tu cuenta, revisa tu e-mail, blablabla"?
+                Response.Redirect("~/TabInicio/SinLogin.aspx?nuevo=true");
             }
             catch (Exception ex)
             {
-                // ¿Avisar de que ha fallado?
+                if (ex.Message.Contains("PRIMARY KEY"))
+                {
+                    // El DNI está repetido
+                    DNIRepe.IsValid = false;
+                }
+                else if (ex.Message.Contains("Alt"))
+                {
+                    // El mail está repetido
+                    EmailRepe.IsValid = false;
+                }
+                else
+                {
+                    throw;
+                }
             }
         }
 
