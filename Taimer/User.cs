@@ -816,6 +816,13 @@ namespace Taimer {
             return UserToObject(cad.GetDatosUserByLogin(email));
         }
 
+
+        public static User GetUserByDNI(string dni)
+        {
+            CADUser cad = new CADUser();
+            return UserToObject(cad.GetUserByDNI(dni));
+        }
+
         /// <summary>
         /// Comprueba si el nombre del usuario está repetido, devolviendo el número del resto de usuarios con dicho nombre
         /// </summary>
