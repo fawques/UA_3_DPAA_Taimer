@@ -116,6 +116,15 @@ namespace Taimer
         }
 
         /// <summary>
+        /// Modifica/obtiene el booleado que indica si el mensaje se ha leído o no
+        /// </summary>
+        public bool Leido
+        {
+            get { return leido; }
+            set { leido = value; }
+        }
+
+        /// <summary>
         /// Asigna la fecha y hora de un mensaje a las actuales
         /// </summary>
         public void SetFechaHora()
