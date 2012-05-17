@@ -436,5 +436,33 @@ namespace CAD
             }
         }
 
+        public DataSet GetUserByDNI(string dni)
+        {
+            SqlConnection con = null;
+            DataSet datos = null;
+            string comando;
+
+                comando = "Select * from [User] where dni='" + dni + "'";
+
+            try
+            {
+                con = new SqlConnection(conexionTBD);
+                SqlDataAdapter sqlAdaptador = new SqlDataAdapter(comando, con);
+                datos = new DataSet();
+                sqlAdaptador.Fill(datos);
+                return datos;
+            }
+            catch (SqlException)
+            {
+                //return null;
+                throw;
+
+            }
+            finally
+            {
+                if (con != null) con.Close(); // Se asegura de cerrar la conexión.
+            }
+        }
+
     }
 }

@@ -771,6 +771,12 @@ namespace Taimer {
             return UserToObject(cad.GetDatosUserByLogin(email));
         }
 
+        public static User GetUserByDNI(string dni)
+        {            
+            CADUser cad=new CADUser();
+            return UserToObject(cad.GetUserByDNI(dni));
+        }
+
         #endregion
     }
 }
