@@ -20,55 +20,72 @@ namespace WebTaimer.TabMensajes
         {
             if (Session["usuario"] == null)
                 Response.Redirect("~/TabInicio/SinLogin.aspx?error=true");
-            //listaUsuarios.AutoPostBack = true;
-            cargarTodosUsuarios();
-            cargarTodosMensajes();
+
+            listaUsuarios.AutoPostBack = true;
+
+            if (usuarios == null)
+                cargarTodosUsuarios();
+
+            if (conversacion == null)
+            {
+                textoMensaje.Enabled = false;
+                botonEnviar.Enabled = false;
+                conversacion = "<div style=\"color: #000000; float:center; border: 5px double #117777; background-color: #118888; overflow: visible; border-radius: 10px; margin: 4px; text-align:center \" >Selecciona un usuario para ver sus mensajes.</div>";
+            }
+
+            //if (listamensajes == null)
+            //    cargarTodosMensajes();
         }
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            /*if (Session.Count > 0)
+            if (Session.Count > 0)
             {
                 if (!IsPostBack)
                 {
-                    cargarTodosUsuarios();
-                    cargarTodosMensajes();
+
                 }
-            }*/
+            }
         }
 
 
         // Selecciona un usuario al hacer clic sobre él en la lista
         protected void SelectUser(string indice)
         {
-            receptor = Taimer.User.GetUserByDNI(indice);
+            receptor = Taimer.User.GetUserByDNIQuick(indice);
 
-            labelConversador.Text = "- Conversación con " + receptor.Nombre;
-            labelEmail.Text = receptor.Email;   // Solución que roza los límites de la cutrez
+            labelConversador.Text = " - Conversación con " + receptor.Nombre;
+            labelDNI.Text = receptor.DNI;
 
-            conversacion = "<div style=\"color: #000000; float:center; border: 5px double #117777; background-color: #118888; overflow: visible; border-radius: 10px; margin: 4px; text-align:center \" >Cargando...</div>";
+            //conversacion = "<div style=\"color: #000000; float:center; border: 5px double #117777; background-color: #118888; overflow: visible; border-radius: 10px; margin: 4px; text-align:center \" >Cargando...</div>";
+            //UpdatePanelConversacion.Update();
 
             conversacion = cargarConversacion();
+            UpdatePanelConversacion.Update();
+            UpdatePanelNombreConversador.Update();
         }
 
 
         // Carga la conversación (la "dibuja") del usuario seleccionado
         protected string cargarConversacion()
         {
+            textoMensaje.Enabled = true;
+            botonEnviar.Enabled = true;
+
             string cont = "";
-            //listamensajes = Taimer.Mensaje.getConversacion((User)Session["usuario"], receptor);
+            listamensajes = Taimer.Mensaje.getConversacionQuick((User)Session["usuario"], receptor);
             string dnipropio = ((User)Session["usuario"]).DNI;
             string dniotro = receptor.DNI;
 
-            //if (listamensajes.Count == 0)
-            //{
-            //    cont = "<div style=\"color: #000000; float:center; border: 5px double #117777; background-color: #118888; overflow: visible; border-radius: 10px; margin: 4px; text-align:center \" >No tienes mensajes con " + receptor.Nombre + ".</div>";
-            //}
-            //else
-            //{
+            if (listamensajes.Count == 0)
+            {
+                cont = "<div style=\"color: #000000; float:center; border: 5px double #117777; background-color: #118888; overflow: visible; border-radius: 10px; margin: 4px; text-align:center \" >No tienes mensajes con " + receptor.Nombre + ".</div>";
+            }
+            else
+            {
                 foreach (Mensaje m in listamensajes)
                 {
-                    if (m.Receptor.DNI == dnipropio && m.Emisor.DNI == dniotro)      // Mensaje del "otro"
+                    if (m.Receptor.DNI == dnipropio)      // Mensaje del "otro"
                     {
                         if (m.Leido)
                             cont += "<div class=\"mensajedeotro\">";
@@ -79,13 +96,13 @@ namespace WebTaimer.TabMensajes
                         }
                         cont += "<p class=\"coment\">Enviado por " + m.Emisor.Nombre + " - " + m.FechaToString() + "</p><p class=\"texto\">" + m.Texto + "</p></div>";
                     }
-                    else if (m.Emisor.DNI == dnipropio && m.Receptor.DNI == dniotro)   // Mensaje propio
+                    else if (m.Emisor.DNI == dnipropio)   // Mensaje propio
                     {
                         cont += "<div class=\"mensajepropio\">";
                         cont += "<p class=\"coment\">Enviado por " + m.Emisor.Nombre + " - " + m.FechaToString() + "</p><p class=\"texto\">" + m.Texto + "</p></div>";
                     }
                 }
-            //}
+            }
 
             if(cont == "")
                 cont = "<div style=\"color: #000000; float:center; border: 5px double #117777; background-color: #118888; overflow: visible; border-radius: 10px; margin: 4px; text-align:center \" >No tienes mensajes con " + receptor.Nombre + ".</div>";
@@ -99,16 +116,18 @@ namespace WebTaimer.TabMensajes
         {
             string indicelista = listaUsuarios.SelectedValue;
             SelectUser(indicelista);
+            //UpdatePanelConversacion.Update();       // EUREKA
         }
 
 
         // Enviar mensaje
         protected void botonEnviar_Click(object sender, EventArgs e)
         {
-            receptor = Taimer.User.GetUserByEmail(labelEmail.Text);
+            receptor = Taimer.User.GetUserByDNIQuick(labelDNI.Text);
             Mensaje mensaje = new Mensaje(100, textoMensaje.Text, ((User)Session["usuario"]), receptor, DateTime.Now, false);
             mensaje.Agregar();
             textoMensaje.Text = "";
+            SelectUser(receptor.DNI);
         }
 
 
@@ -160,9 +179,14 @@ namespace WebTaimer.TabMensajes
             //cargaFiltro(textboxFiltro.Text);
         }
 
-        protected void cargarTodosMensajes()
+        protected void botonVerPerfil_Click(object sender, EventArgs e)
         {
-            listamensajes = Taimer.Mensaje.getMensajesUsuario((User)Session["usuario"]);
+            
         }
+
+        //protected void cargarTodosMensajes()
+        //{
+        //    listamensajes = Taimer.Mensaje.getMensajesUsuario((User)Session["usuario"]);
+        //}
     }
 }

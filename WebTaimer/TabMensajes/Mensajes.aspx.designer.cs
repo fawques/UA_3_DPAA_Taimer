@@ -22,6 +22,15 @@ namespace WebTaimer.TabMensajes {
         protected global::System.Web.UI.ScriptManager ScriptManager;
         
         /// <summary>
+        /// Control UpdatePanelNombreConversador.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdatePanelNombreConversador;
+        
+        /// <summary>
         /// Control labelConversador.
         /// </summary>
         /// <remarks>
@@ -31,13 +40,13 @@ namespace WebTaimer.TabMensajes {
         protected global::System.Web.UI.WebControls.Label labelConversador;
         
         /// <summary>
-        /// Control labelEmail.
+        /// Control labelDNI.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label labelEmail;
+        protected global::System.Web.UI.WebControls.Label labelDNI;
         
         /// <summary>
         /// Control UpdatePanelIzquierdo.
@@ -76,22 +85,13 @@ namespace WebTaimer.TabMensajes {
         protected global::System.Web.UI.WebControls.ListBox listaUsuarios;
         
         /// <summary>
-        /// Control botonVerPerfil.
+        /// Control UpdatePanelEnviarMensaje.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button botonVerPerfil;
-        
-        /// <summary>
-        /// Control botonBorrarMensajes.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button botonBorrarMensajes;
+        protected global::System.Web.UI.UpdatePanel UpdatePanelEnviarMensaje;
         
         /// <summary>
         /// Control textoMensaje.
@@ -119,14 +119,5 @@ namespace WebTaimer.TabMensajes {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel UpdatePanelConversacion;
-        
-        /// <summary>
-        /// Control Button1.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
     }
 }

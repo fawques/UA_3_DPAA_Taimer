@@ -36,13 +36,18 @@ p.texto
 </style>
 </asp:Content>
 
-
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
 <asp:ScriptManager ID="ScriptManager" runat="server"></asp:ScriptManager>
     <h2>
-        Mensajes
-        <asp:Label ID="labelConversador" runat="server"></asp:Label>
-        <asp:Label ID="labelEmail" runat="server" Visible="False"></asp:Label>
+        &nbsp;<asp:UpdatePanel ID="UpdatePanelNombreConversador" runat="server" 
+        UpdateMode="Conditional" style="float:left">
+            <ContentTemplate>
+                <div style="float:left">
+                    Mensajes<asp:Label ID="labelConversador" runat="server"></asp:Label>
+                    <asp:Label ID="labelDNI" runat="server" Visible="False"></asp:Label>
+                </div>
+            </ContentTemplate>
+        </asp:UpdatePanel>
     </h2>
 
     <style>
@@ -75,20 +80,17 @@ p.texto
             <legend>Usuarios</legend>
             <asp:UpdatePanel ID="UpdatePanelIzquierdo" runat="server">
                 <ContentTemplate>
-                        <asp:TextBox ID="textboxFiltro" runat="server" Width="125px" style="float: left"
+                        <asp:TextBox ID="textboxFiltro" runat="server" Width="125px" style="float: left; margin-top:-10px"
                 placeholder="Buscar usuario..." ontextchanged="textboxFiltro_TextChanged"></asp:TextBox>
                         
                         <asp:Button ID="botonBuscar" runat="server" Text="B" Width="25px" 
-                style="float: left; margin-left:5px" onclick="botonBuscar_Click" />
+                style="float: left; margin-left:5px; margin-top:-10px" onclick="botonBuscar_Click" />
                         
-                        <asp:ListBox ID="listaUsuarios" runat="server" Height="398px" 
+                        <asp:ListBox ID="listaUsuarios" runat="server" Height="490px" 
                 Width="160px" style="margin: 0 auto; float:left; margin-top:5px" 
                 onselectedindexchanged="listaUsuarios_SelectedIndexChanged">
                         </asp:ListBox>
 
-                <asp:Button ID="botonVerPerfil" runat="server" Text="Ver perfil" width="160px" style="float:left; margin-top:5px"></asp:Button>
-
-                <asp:Button ID="botonBorrarMensajes" runat="server" Text="Borrar mensajes" width="160px" style="float:left; margin-top:5px"></asp:Button>
                     </ContentTemplate>
                 </asp:UpdatePanel>
                     
@@ -98,20 +100,23 @@ p.texto
         <div id="divPanelContenido" style="width:715px; float: left; margin-left:5px; overflow: visible">
                 <fieldset class="envMens" style="width: 687px; height:155px">
                         <legend>Enviar mensaje</legend>
-                        <div style="height: 150px; width: 687px; margin-top:-15px">
-                            <asp:TextBox ID="textoMensaje" TextMode="MultiLine" runat="server" 
-                                Height="145px" Width="622px" style="resize: none; position:relative; left:0px; top:0px; margin-top:0px"></asp:TextBox>
-                            <asp:Button ID="botonEnviar" runat="server" Width="50px" onclick="botonEnviar_Click" style="margin-left:5px; margin-top:-13px"
-                                Text="Enviar" />
-                                                                
-                                </div>
+                        <asp:UpdatePanel ID="UpdatePanelEnviarMensaje" runat="server">
+                            <ContentTemplate>
+                            <div style="height: 150px; width: 687px; margin-top:-15px">
+                                <asp:TextBox ID="textoMensaje" TextMode="MultiLine" runat="server" 
+                                    Height="135px" Width="622px" style="resize: none; position:relative; left:0px; top:0px; margin-top:5px"></asp:TextBox>
+                                <asp:Button ID="botonEnviar" runat="server" Width="50px" onclick="botonEnviar_Click" style="margin-left:5px; margin-top:-20px"
+                                    Text="Enviar" />
+                            </ContentTemplate>
+                        </asp:UpdatePanel>              
+                    </div>
                 </fieldset>
 
-            <asp:UpdatePanel ID="UpdatePanelConversacion" runat="server">
+            <asp:UpdatePanel ID="UpdatePanelConversacion" runat="server" 
+        UpdateMode="Conditional">
                 <ContentTemplate>
                 <div style="overflow: visible" > 
-                    <asp:Button ID="Button1" runat="server" Text="Actualizar" Width="89px" />
-                    <br />
+                    
                     <% = conversacion %>
 
                 </div>
