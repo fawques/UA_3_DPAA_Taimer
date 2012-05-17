@@ -10,10 +10,10 @@ namespace WebTaimer.TabAsignaturas
 {
     public partial class AsignaturasSin : System.Web.UI.Page
     {
-        List<Actividad_a> actividades=new List<Actividad_a>();
-        List<Actividad_a> actodas = new List<Actividad_a>();
-        List<Comentario> listaComentarios= new List<Comentario>();
-        List<Comentario> comentariosAct=new List<Comentario>();
+        protected List<Actividad_a> actividades = new List<Actividad_a>();
+        protected List<Actividad_a> actodas = new List<Actividad_a>();
+        protected List<Comentario> listaComentarios = new List<Comentario>();
+        protected List<Comentario> comentariosAct = new List<Comentario>();
         protected string comentarios;
 
         protected void Page_Init(object sender, EventArgs e)
@@ -31,24 +31,24 @@ namespace WebTaimer.TabAsignaturas
             {
                 cargarTodasActividades();
                 rellenocuadroPrimero(0);
-               
+
             }
         }
-        
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+
             if (!IsPostBack)
             {
                 cargarTodasActividades();
-                
+
             }
-           
+
         }
         // Carga todas las actividades de la lista
         protected void cargarTodasActividades()
         {
-            actividades = actodas; 
+            actividades = actodas;
             llenarLista();
         }
         protected void cargarTurnos(Actividad_a act)
@@ -68,13 +68,13 @@ namespace WebTaimer.TabAsignaturas
         {
             ListAct.DataBind();
             ListAct.Items.Clear();
-            int i=0;
+            int i = 0;
             foreach (Actividad_a act in actividades)
             {
                 ListAct.Items.Add(act.Nombre);
                 ListAct.Items[i].Value = Convert.ToString(act.Codigo);
                 i++;
-                
+
             }
         }
         protected void seleccionar(object sender, EventArgs e)
@@ -126,7 +126,7 @@ namespace WebTaimer.TabAsignaturas
                 cargarComentarios(actividades[indice]);
 
             }
-            else 
+            else
             {
                 labelNombreAsignatura.Text = "No hay resultados en la lista de actividades";
                 labelCoordinadorAsignatura.Text = "";
@@ -137,9 +137,9 @@ namespace WebTaimer.TabAsignaturas
                 r1.Visible = false;
                 listaTurnos.Visible = false;
                 coment.Visible = false;
-                
+
             }
-                  
+
         }
         // Carga el filtro del TextBox de filtrado
         protected void botFiltrar_Click(object sender, EventArgs e)
@@ -149,30 +149,30 @@ namespace WebTaimer.TabAsignaturas
         // Carga los usuarios a los que se aplique el filtro
         protected void cargaFiltro(string nom)
         {
-     
-           List <Actividad_a> actfiltro = new List<Actividad_a>();
-           if (nom != null && nom != "")
-           {
-               cargarTodasActividades();
-               foreach (Actividad_a obj in actividades)
-               {
-                   if (obj.Nombre.ToLower().Contains(nom) || obj.Descripcion.ToLower().Contains(nom) || obj.NombreCoordinador.ToLower().Contains(nom))
-                   {
-                       actfiltro.Add(obj);
 
-                   }
+            List<Actividad_a> actfiltro = new List<Actividad_a>();
+            if (nom != null && nom != "")
+            {
+                cargarTodasActividades();
+                foreach (Actividad_a obj in actividades)
+                {
+                    if (obj.Nombre.ToLower().Contains(nom) || obj.Descripcion.ToLower().Contains(nom) || obj.NombreCoordinador.ToLower().Contains(nom))
+                    {
+                        actfiltro.Add(obj);
 
-               }
-               actividades = actfiltro;
-               rellenocuadroPrimero(0);
-               llenarLista();
-           }
-           else
-           {
-               cargarTodasActividades();
-               rellenocuadroPrimero(0);
-           }
-                
+                    }
+
+                }
+                actividades = actfiltro;
+                rellenocuadroPrimero(0);
+                llenarLista();
+            }
+            else
+            {
+                cargarTodasActividades();
+                rellenocuadroPrimero(0);
+            }
+
         }
         protected List<Comentario> rellenoComenAct(Actividad_a act)
         {
@@ -188,46 +188,43 @@ namespace WebTaimer.TabAsignaturas
                 }
             }
             return coment;
-        
+
         }
-        protected void  cargarComentarios(Actividad_a act)
+        protected void cargarComentarios(Actividad_a act)
         {
             
-            comentariosAct= rellenoComenAct(act);
+            comentariosAct = rellenoComenAct(act);
             if (comentariosAct.Count == 0)
             {
-                comentarios = "<div style=\"color: #000000; float:center; border: 5px double #117777; background-color: #118888; overflow: visible; border-radius: 10px; margin: 4px; text-align:center \" >No tiene comentarios en esta Actividad</div>";
+                comentarios = "<div style=\"color: #000000; float:center; background-color:#fff199;; overflow: visible; border-radius: 10px; margin: 4px; text-align:center \" >No tiene comentarios en esta Actividad</div>";
             }
             else
             {
-                
-                
-                comentarios="<div>"+listaComentarios[0].Texto+"</div>";
-                /*
-                foreach (Mensaje m in listamensajes)
+                comentarios = "";
+                foreach (Comentario com in comentariosAct)
                 {
-                    if (m.Emisor.DNI != ((User)Session["usuario"]).DNI)
-                    {
-                        if (m.Leido)
-                            cont += "<div class=\"mensajedeotro\">";
-                        else
-                        {
-                            cont += "<div class=\"mensajedeotronuevo\">";
-                            m.MarcarComoLeido();
-                        }
-                    }
-                    else
-                    {
-                        cont += "<div class=\"mensajepropio\">";
-                    }
-
-                    cont += "<p class=\"coment\">Enviado por " + m.Emisor.Nombre + " - " + m.FechaToString() + "</p><p class=\"texto\">" + m.Texto + "</p></div>";*/
+                    
+                    comentarios+= "<div class='comentario'> <img src='"+ 
+                    rutaImagen(com.Usuario)+"' style='height: 100px; width: 100px' class='comentario' />"
+                    +"<span class='comentario'><p class='comentario'>Comentario enviado por: "
+                    + com.Usuario.Nombre + "(" + com.FechaToString() +")</p><p>" + com.Texto + "</p></span></div>";
+                                    
                 }
             }
             
-            
+
         }
-         
-                
+        protected string rutaImagen(User user)
+        {
+            string ruta = "";
+            if (user.Imagen != "" && user.Imagen != null)
+                ruta = "../Images/" + user.Imagen;
+            else
+                ruta = "../Images/default.jpg";
+            return ruta;
+        }
+        
+
+    }        
  }
         

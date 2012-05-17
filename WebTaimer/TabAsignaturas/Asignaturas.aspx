@@ -15,15 +15,7 @@
             width: 473px;
         }
         </style>
-</asp:Content>
-
-<asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
-    <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server">
-    </asp:ToolkitScriptManager>
-    <h2>
-        Asignaturas</h2>
-
-    <style>
+        <style>
         #divPanelIzquierdo{
             background-color:transparent;
         }
@@ -77,21 +69,22 @@
                 background-repeat: no-repeat;
             }
             </style>
+</asp:Content>
 
+<asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
+    <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server">
+    </asp:ToolkitScriptManager>
+    <h2>
+        Asignaturas</h2>
         <div id="divPanelIzquierdo" style="width:200px; float: left">
          <fieldset class="filtro" style="width: 160px; height:80px">
             <legend>Filtro</legend>
-                        <asp:TextBox ID="textboxTitulacion" runat="server" Width="160px" placeholder="Titulación"></asp:TextBox>
-                        &nbsp;<asp:Button ID="botFiltrar" runat="server" Text="Filtrar" />
+                        <asp:TextBox ID="textboxFilter" runat="server" Width="160px" placeholder="palabra clave"></asp:TextBox>
+                        &nbsp;<asp:Button ID="botFiltrar" runat="server" Text="Filtrar" onclick="botFiltrar_Click" />
                     </fieldset>
                      <fieldset class="asig" style="width: 160px; height: 440px">
             <legend>Asignaturas</legend>
-                        <asp:ListBox ID="ListAct" runat="server" Height="412px" Width="160px" >
-                            <asp:ListItem >Asignatura 1</asp:ListItem>
-                            <asp:ListItem>Asignatura 2</asp:ListItem>
-                            <asp:ListItem>Asignatura 3</asp:ListItem>
-                            <asp:ListItem>Asignatura 4</asp:ListItem>
-                            <asp:ListItem>Asignatura 5</asp:ListItem>
+                        <asp:ListBox ID="ListAct" runat="server" Height="412px" Width="160px" Autopostback="true"  OnSelectedIndexChanged="seleccionar">
                         </asp:ListBox>
                     </fieldset>
         </div>
@@ -110,14 +103,14 @@
                                         Text="[ Descripción de la asignatura ]"></asp:Label>
                                     <br />
                                     <br />
-                                    Coordinador:
+                                    <asp:Label ID="tituloCoor" runat="server">Coordinador:</asp:Label>
                                     <asp:Label ID="labelCoordinadorAsignatura" runat="server" Text="[ Nombre del coordinador ]"></asp:Label>
                                     <br />
                                     <br />
-                                    Puntuación:
+                                    <asp:Label ID="tituPun" runat="server">Puntuación:</asp:Label>
                                    <br />
                                     <br />
-                                    <asp:Rating ID="r1" runat="server" CurrentRating="2" MaxRating="10" StarCssClass="ratingStar" WaitingStarCssClass="savedRatingStar" 
+                                    <asp:Rating ID="r1" runat="server" CurrentRating="0" MaxRating="10" StarCssClass="ratingStar" WaitingStarCssClass="savedRatingStar" 
                                     FilledStarCssClass="filledRatingStar" EmptyStarCssClass="emptyRatingStar" >
                                     </asp:Rating>
                                     &nbsp;<input id="Submit1" type="submit" value="Vota"  onclick="Submit1_onclick()" />
@@ -126,80 +119,23 @@
                                     <asp:Label ID="labelTurnos" runat="server" Font-Bold="True" Text="Turnos" align="center"></asp:Label>
                                     <br />
                                     <asp:ListBox ID="listaTurnos" runat="server" Height="118px" Width="190px">
-                                        <asp:ListItem Selected="True">Miércoles, de 09:00 a 11:00</asp:ListItem>
-                                        <asp:ListItem>Jueves, de 10:30 a 12:30</asp:ListItem>
-                                        <asp:ListItem>Jueves, de 16:30 a 16:30</asp:ListItem>
                                     </asp:ListBox>
                                 </div>
                     </fieldset>
-                    <fieldset class="filtro" style="width: 687px; height:320px">
+                    <fieldset class="filtro"  id="coment" runat="server" style="width: 687px; height:380px">
                         <legend>Comentarios</legend>
                         <div style="height: 240px; overflow: auto; border: 1px solid Gray;">
-                            <div class="comentario">
-                                <img alt="Imagen del usuario que ha comentado" src="../Images/default.jpg" 
-                                    style="height: 40px; width: 40px" class="comentario"/>
-                                <span class="comentario">
-                                    <label class="comentario">
-                                        <p class="comentario">Comentario enviado por: Usuario 1 (DD/MM/AAAA HH:MM)</p>
-                                        blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla
-                                        blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla
-                                        blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla
-                                        blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blablablabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla
-
-                                    </label>
-                                </span>
-                            </div>
-                             <div class="comentario">
-                                <img alt="Imagen del usuario que ha comentado" src="../Images/default.jpg" 
-                                    style="height: 40px; width: 40px" class="comentario"/>
-                                <span class="comentario">
-                                    <label class="comentario">
-                                        <p class="comentario">Comentario enviado por: Usuario 2 (DD/MM/AAAA HH:MM)</p>
-                                        blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla
-                                        blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla
-                                        blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla
-                                        blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blablablabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla
-
-                                    </label>
-                                </span>
-                            </div>
-                             <div class="comentario">
-                                <img alt="Imagen del usuario que ha comentado" src="../Images/default.jpg" 
-                                    style="height: 40px; width: 40px" class="comentario"/>
-                                <span class="comentario">
-                                    <label class="comentario">
-                                        <p class="comentario">Comentario enviado por: Usuario 3 (DD/MM/AAAA HH:MM)</p>
-                                        blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla
-                                        blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla
-                                        blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla
-                                        blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blablablabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla
-
-                                    </label>
-                                </span>
-                            </div>
-                             <div class="comentario">
-                                <img alt="Imagen del usuario que ha comentado" src="../Images/default.jpg" 
-                                    style="height: 40px; width: 40px" class="comentario"/>
-                                <span class="comentario">
-                                    <label class="comentario">
-                                        <p class="comentario">Comentario enviado por: Usuario 4 (DD/MM/AAAA HH:MM)</p>
-                                        blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla
-                                        blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla
-                                        blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla
-                                        blabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blablablabla  blabla blabla  blabla blabla  blabla blabla  blabla blabla  blabla
-
-                                    </label>
-                                </span>
-                            </div>
+                             <% = comentarios %>
                         </div>
-                        
+                     
                         <div style="height: 60px; width: 658px;">
-                            &nbsp;&nbsp;<textarea 
-                                id="TextArea1" name="S1" 
-                                style="resize: none; position:relative; left:0px; top:0px; margin-top:10px"></textarea>
-                                <input id="Button1" type="button" value="Enviar" 
-                                style="margin-top:0px" />
-                                <asp:CheckBox ID="checkAnonimo" runat="server" Text="Anónimo" />
+                            &nbsp;&nbsp;<asp:TextBox ID="textoComent" TextMode="MultiLine" runat="server" 
+                                Height="80px" Width="550px" style=" position:relative; left:0px; top:0px; margin-top:10px"></asp:TextBox>
+                                <asp:Button ID="botonEnviar" runat="server"  Text="Comentar" 
+                                style="margin-top:0px; width:70px;" onclick="botNuevoComentario_Click"/>
+                               <br />
+                                <asp:CheckBox ID="checkAnonimo" runat="server" Text="Enviar de forma anónima" />
                         </div>
+                    </fieldset>
        </div>
 </asp:Content>

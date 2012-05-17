@@ -77,7 +77,6 @@
     <Content Include="Images\taimerLogo.png" />
     <Content Include="Styles\Site.css" />
     <Content Include="TabAsignaturas\Asignaturas.aspx" />
-    <Content Include="TabAsignaturas\Comentar.aspx" />
     <Content Include="TabInicio\ConLogin.aspx" />
     <Content Include="TabInicio\ForgotPassword.aspx" />
     <Content Include="TabInicio\SinLogin.aspx" />
@@ -210,13 +209,6 @@
     </Compile>
     <Compile Include="TabAsignaturas\Asignaturas.aspx.designer.cs">
       <DependentUpon>Asignaturas.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="TabAsignaturas\Comentar.aspx.cs">
-      <DependentUpon>Comentar.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="TabAsignaturas\Comentar.aspx.designer.cs">
-      <DependentUpon>Comentar.aspx</DependentUpon>
     </Compile>
     <Compile Include="TabInicio\ConLogin.aspx.cs">
       <DependentUpon>ConLogin.aspx</DependentUpon>

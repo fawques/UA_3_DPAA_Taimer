@@ -30,10 +30,11 @@ namespace CAD
         public void CrearCommentBasic(string text, int codActividad, string codUser, DateTime date)
         {
             string comando;
+
             if (codUser == null) {
-                comando = "INSERT INTO [Comentario](texto,actividad,fecha) VALUES('" + text + "', '" + codActividad + "', '" + date.ToString("yyyy-MM-dd HH:mm:ss") + "')";
+                comando = "INSERT INTO [Comentario](texto,actividad,fecha) VALUES('" + text + "', '" + codActividad + "', '" + date+ "')";
             } else {
-                comando = "INSERT INTO [Comentario](texto,actividad,usuario,fecha) VALUES('" + text + "', '" + codActividad + "', '" + codUser + "', '" + date.ToString("yyyy-MM-dd HH:mm:ss") + "')";
+                comando = "INSERT INTO [Comentario](texto,actividad,usuario,fecha) VALUES('" + text + "', '" + codActividad + "', '" + codUser + "', '" + date+ "')";
             }    
             SqlConnection c = null;
             SqlCommand comandoTBD;
@@ -90,7 +91,7 @@ namespace CAD
 
             SqlConnection con = null;
             DataSet listComments = null;
-            string comando = "Select * from [Comentario] order by actividad";
+            string comando = "Select * from [Comentario] order by actividad,fecha desc";
             try
             {
                 con = new SqlConnection(conexionTBD);

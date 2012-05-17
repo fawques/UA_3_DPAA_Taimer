@@ -194,6 +194,12 @@ namespace Taimer
             return MensajesToList(mens.getConversacion(emisor.DNI,receptor.DNI));
         }
 
+        public static List<Mensaje> getConversacionQuick(User emisor, User receptor)
+        {
+            CADMensajes mens = new CADMensajes();
+            return MensajesToListQuick(mens.getConversacion(emisor.DNI, receptor.DNI));
+        }
+
         public static List<Mensaje> MensajesToList(DataSet data)
         {
              if (data != null)
