@@ -74,12 +74,12 @@ namespace WebTaimer.Account
                 if (ex.Message.Contains("PRIMARY KEY"))
                 {
                     // El DNI está repetido
-                    Response.Write("<script>alert(\"DNI repetido - esto hay que ponerlo mejor \");</script>");
+                    DNIRepe.IsValid = false;
                 }
                 else if (ex.Message.Contains("Alt"))
                 {
                     // El mail está repetido
-                    Response.Write("<script>alert(\"mail repetido - esto hay que ponerlo mejor \");</script>");
+                    EmailRepe.IsValid = false;
                 }
                 else
                 {
