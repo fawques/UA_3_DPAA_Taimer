@@ -66,7 +66,7 @@ namespace WebTaimer.TabMensajes
                 {
                     if (m.Emisor.DNI != ((User)Session["usuario"]).DNI)
                     {
-                        cont = "<div style=\"color: #000000; float:left; border: 5px double #8bd7e0; background-color: #e5f4f7;";
+                        cont += "<div style=\"color: #000000; float:left; border: 5px double #8bd7e0; background-color: #e5f4f7;";
                     }
                     else
                     {
@@ -90,12 +90,11 @@ namespace WebTaimer.TabMensajes
         }
 
 
-        // Enviar mensaje (NO FUNCIONA)
+        // Enviar mensaje
         protected void botonEnviar_Click(object sender, EventArgs e)
         {
             receptor = Taimer.User.GetUserByEmail(labelEmail.Text);
             Mensaje mensaje = new Mensaje(100, textoMensaje.Text, ((User)Session["usuario"]), receptor, DateTime.Now, false);
-            //Mensaje mensaje = new Mensaje(100, "AW YEAH", ((User)Session["usuario"]), receptor, DateTime.Now, false);
             mensaje.Agregar();
             textoMensaje.Text = "";
         }
