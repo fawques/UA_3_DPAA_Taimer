@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Taimer;
+using System.Windows.Forms;
 
 namespace WebTaimer.TabActividades
 {
@@ -13,25 +14,44 @@ namespace WebTaimer.TabActividades
         protected List<Actividad_p> listaFiltro = new List<Actividad_p>();
         protected List<Actividad_p> todas = new List<Actividad_p>();
         protected User user;
-        Actividad_p actividad;
+        protected Actividad_p actividad;       
 
-        protected void Page_Load(object sender, EventArgs e)
+        /*protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["usuario"] == null)
-                Response.Redirect("~/TabInicio/SinLogin.aspx?error=true");
-        }
+            if (!IsPostBack)
+            {
+                if (Session["usuario"] == null)
+                    Response.Redirect("~/TabInicio/SinLogin.aspx?error=true");
 
+                else
+                    cargarTodas();
+            }
+        }*/
+        
         protected void Page_Init(object sender, EventArgs e)
         {
             if (Session["usuario"] == null)
                 Response.Redirect("~/TabInicio/SinLogin.aspx?error=true");
-
+              
             else
-            {
+            {                
+                string id = Request.QueryString["id"];
                 user = ((User)Session["usuario"]);
-                todas = user.ActPersonales;                
-                cargarTodas();
-                rellenocuadroPrimero(0);
+                todas = user.ActPersonales;
+
+                if (id != null)
+                {
+                    int idact = Convert.ToInt32(id);
+                    cargarTodas();
+                    rellenocuadro(idact);
+                }
+                else
+                {
+                    cargarTodas();
+                    rellenocuadroPrimero(0);
+
+                }
+                ListAct.SelectedIndex = 0;
             }
         }
 
@@ -96,7 +116,6 @@ namespace WebTaimer.TabActividades
             {
                 fecha = turno.DiaString + ", de " + turno.HoraInicio.toString() + " a " + turno.HoraFin.toString();
                 listaTurnos.Items.Add(fecha);
-
             }
         }        
 
@@ -105,6 +124,7 @@ namespace WebTaimer.TabActividades
             int indicelista = Convert.ToInt32(ListAct.SelectedValue);            
             rellenocuadro(indicelista);
         }
+
         protected void rellenocuadro(int codigo)
         {
             listaFiltro=todas;
@@ -114,7 +134,7 @@ namespace WebTaimer.TabActividades
                 {
                     labelNombreActividad.Text = act.Nombre;
                     labelDescripcionActividad.Text = act.Descripcion;                    
-                    cargarTurnos(act);                    
+                    cargarTurnos(act);                                 
                     labelTurnos.Visible = true;
                     listaTurnos.Visible = true;
                 }
@@ -128,7 +148,7 @@ namespace WebTaimer.TabActividades
                 labelNombreActividad.Text = listaFiltro[indice].Nombre;                
                 labelDescripcionActividad.Text = listaFiltro[indice].Descripcion;                             
                 cargarTurnos(listaFiltro[indice]);                
-                labelTurnos.Visible = true;
+                labelTurnos.Visible = true;                
                 listaTurnos.Visible = true;                
             }
             else
@@ -144,26 +164,16 @@ namespace WebTaimer.TabActividades
         }
 
         protected void botonEditarActividad_Click(object sender, EventArgs e)
-        {            
-            tbNombreActividad.Text = labelNombreActividad.Text;
-            tbDescActividad.Text = labelDescripcionActividad.Text;            
+        {
+            int id = Convert.ToInt16(ListAct.SelectedValue);
 
-            labelNombreActividad.Text = "Nombre: ";
-            labelNombreActividad.Font.Bold = false;
-            labelNombreActividad.Font.Size = FontUnit.Medium;
-            labelDescripcionActividad.Text = "Descripción: ";
+            foreach (Actividad_p act in listaFiltro)
+            {
+                if (id == act.Codigo)
+                    actividad = act;
+            }
 
-            tbNombreActividad.Visible = true;
-            tbDescActividad.Visible = true;
-
-            botonBorrarActividad.Visible = false;
-            botonEditarActividad.Visible = false;
-            botonModificar.Visible = true;
-            botonCancelar.Visible = true;
-
-            divTurnos.Visible = false;
-            filtro.Visible = false;
-            asig.Visible = false;
+            Response.Redirect("EditarActividad.aspx?id=" + actividad.Codigo);
         }
 
         protected void botonBorrarActividad_Click(object sender, EventArgs e)
@@ -172,8 +182,7 @@ namespace WebTaimer.TabActividades
             botonEditarActividad.Visible = false;
             botonConfirmar.Visible = true;
             botonCancelar.Visible = true;
-
-            divTurnos.Visible = false;
+            
             filtro.Visible = false;
             asig.Visible = false;
         }
@@ -185,32 +194,14 @@ namespace WebTaimer.TabActividades
 
         protected void botonConfirmar_Click(object sender, EventArgs e)
         {
-            int id = Convert.ToInt32(ListAct.SelectedValue);            
-
-            foreach (Actividad_p act in listaFiltro)
-            {
-                if (act.Codigo == id)
-                    actividad = act;
-            }
-
             user.BorraActPersonal(actividad);
             Response.Redirect("~/TabActividades/Actividades.aspx");
         }
 
-        protected void botonModificar_Click(object sender, EventArgs e)
-        {            
-            int id = Convert.ToInt32(ListAct.SelectedValue);
-            
-            foreach (Actividad_p act in listaFiltro)
-            {
-                if (act.Codigo == id)
-                    actividad = act;
-            }
-            
-            actividad.Nombre = tbNombreActividad.Text;
-            actividad.Descripcion = tbDescActividad.Text;
-            actividad.Modificar();
-            Response.Redirect("~/TabActividades/Actividades.aspx");
+        protected void CambiarTurno(object sender, EventArgs e)
+        {
+            MessageBox.Show(listaTurnos.SelectedItem.Text);
         }
+
     }
 }

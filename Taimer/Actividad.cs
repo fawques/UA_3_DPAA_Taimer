@@ -179,13 +179,14 @@ namespace Taimer {
         /// <param name="turno"> Turno que se quiere borrar </param>
         /// <returns> Devuelve TRUE si se ha borrado FALSE en caso contrario </returns>
         public bool BorraTurnoBool(Turno turno) {
-            /*try {
+            try {
                 turno.Borrar();
+                return true;
             }
             catch {
                 return false;
-            }*/
-            return Turnos.Remove(turno);
+            }
+            //return Turnos.Remove(turno);
         }
 
 
@@ -234,7 +235,7 @@ namespace Taimer {
             foreach (Turno t in turnos) {
                 if (t.Codigo == codigobuscado) {
                     borrado = Turnos.Remove(t);
-                    //t.Borrar();
+                    t.Borrar();
                     break;
                 }
             }

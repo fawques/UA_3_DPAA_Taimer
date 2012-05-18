@@ -43,6 +43,7 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
@@ -66,6 +67,7 @@
     <Content Include="Images\mensaje.gif" />
     <Content Include="Styles\MyCSS.css" />
     <Content Include="TabActividades\Actividades.aspx" />
+    <Content Include="TabActividades\EditarActividad.aspx" />
     <Content Include="TabAsignaturas\AsignaturasSin.aspx" />
     <Content Include="TabDescarga\Descarga.aspx" />
     <Content Include="TabDescarga\DescargaSin.aspx" />
@@ -146,6 +148,13 @@
     </Compile>
     <Compile Include="TabActividades\Actividades.aspx.designer.cs">
       <DependentUpon>Actividades.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TabActividades\EditarActividad.aspx.cs">
+      <DependentUpon>EditarActividad.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TabActividades\EditarActividad.aspx.designer.cs">
+      <DependentUpon>EditarActividad.aspx</DependentUpon>
     </Compile>
     <Compile Include="TabAsignaturas\AsignaturasSin.aspx.cs">
       <DependentUpon>AsignaturasSin.aspx</DependentUpon>

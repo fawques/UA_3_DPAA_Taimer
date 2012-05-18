@@ -24,6 +24,7 @@
             {
                 width: 633px;
             }
+            
             </style>
 
         <div id="divPanelIzquierdo" style="width:200px; float: left">
@@ -45,34 +46,29 @@
             <fieldset class="infoAsig" style="width: 686px; height:275px" runat="server">
                 <legend>Información de la actividad personal</legend>
 
-                    <div style="float:left; width:467px; height: 226px;">
+                    <div style="float:left; width:330px; height: 226px;">
                         <asp:Label ID="labelNombreActividad" runat="server" Font-Bold="True" Font-Size="X-Large"
                             Text="[ Nombre de la actividad ]"></asp:Label>
-                        <br />
-                        <asp:TextBox ID="tbNombreActividad" runat="server" Visible="false" style="margin-bottom: 15px"></asp:TextBox>                                                
-                        <br />
+                        <br />                        
                         <asp:Label ID="labelDescripcionActividad" runat="server" Font-Size="Medium" 
                             Text="[ Descripción de la actividad ]"></asp:Label>
-                         <br />
-                        <asp:TextBox ID="tbDescActividad" runat="server" Visible="false"></asp:TextBox>
-                        
                         <div id="optionButtons" runat="server" style="margin-top: 50px">
                             <asp:Button ID="botonBorrarActividad" runat="server" Text="Borrar actividad" 
                                 style="width:120px" onclick="botonBorrarActividad_Click" />
                             <asp:Button ID="botonEditarActividad" runat="server" Text="Editar actividad" 
                                 style="width:120px; margin-left:5px" onclick="botonEditarActividad_Click"/>
                             <asp:Button ID="botonConfirmar" runat="server" Text="Confirmar" visible=false
-                                style="width:120px" onclick="botonConfirmar_Click" />
-                            <asp:Button ID="botonModificar" runat="server" Text="Modificar" visible=false
-                                style="width:120px" onclick="botonModificar_Click" />
+                                style="width:120px" onclick="botonConfirmar_Click" />                            
                             <asp:Button ID="botonCancelar" runat="server" Text="Cancelar" visible=false
                                 style="width:120px; margin-left:5px" onclick="botonCancelar_Click"/>
                         </div>
                     </div>
-                    <div style="float:left" id="divTurnos" runat="server">
-                        <asp:Label ID="labelTurnos" runat="server" Font-Bold="True" Text="Turnos" align="center"></asp:Label>
+
+                    <div style="float:right; width: 340px" id="divTurnos" runat="server">                                    
+
+                        <asp:Label ID="labelTurnos" runat="server" Font-Bold="True" Text="Turnos" align="center" style="float: right"></asp:Label>                        
                         <br />
-                        <asp:ListBox ID="listaTurnos" runat="server" Height="210px" Width="190px">                            
+                        <asp:ListBox ID="listaTurnos" runat="server" Height="210px" Width="190px" style="float: right">                            
                         </asp:ListBox>
                     </div>
             </fieldset>

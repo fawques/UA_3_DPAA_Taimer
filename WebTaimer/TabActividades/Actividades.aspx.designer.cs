@@ -67,15 +67,6 @@ namespace WebTaimer.TabActividades {
         protected global::System.Web.UI.WebControls.Label labelNombreActividad;
         
         /// <summary>
-        /// Control tbNombreActividad.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbNombreActividad;
-        
-        /// <summary>
         /// Control labelDescripcionActividad.
         /// </summary>
         /// <remarks>
@@ -83,15 +74,6 @@ namespace WebTaimer.TabActividades {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label labelDescripcionActividad;
-        
-        /// <summary>
-        /// Control tbDescActividad.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbDescActividad;
         
         /// <summary>
         /// Control optionButtons.
@@ -128,15 +110,6 @@ namespace WebTaimer.TabActividades {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button botonConfirmar;
-        
-        /// <summary>
-        /// Control botonModificar.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button botonModificar;
         
         /// <summary>
         /// Control botonCancelar.
