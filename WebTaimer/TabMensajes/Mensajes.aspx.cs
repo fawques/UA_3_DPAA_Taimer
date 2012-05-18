@@ -42,7 +42,7 @@ namespace WebTaimer.TabMensajes
         {
             string email = Request.QueryString["email"];
 
-            if (email == null)
+            if (email == null && labelConversador.Visible == false)
             {
                 textoMensaje.Enabled = false;
                 botonEnviar.Enabled = false;
