@@ -195,8 +195,6 @@ namespace Taimer
             return mens.getNumNotReadSpecific(usuario.DNI, emisor.DNI);
         }
 
-        //public int getNumNotReadSpecific(string codUser, string codOtro)
-
         public static List<Mensaje> getConversacion(User emisor, User receptor) {
             CADMensajes mens = new CADMensajes();
             return MensajesToList(mens.getConversacion(emisor.DNI,receptor.DNI));

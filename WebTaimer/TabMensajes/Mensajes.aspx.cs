@@ -244,18 +244,11 @@ namespace WebTaimer.TabMensajes
             //{
                 if (noleidos)
                 {
-                    usuarios.Clear();
-
-                    List<User> usuariosaux = Taimer.User.GetUsersFiltro(textofiltro, ((User)Session["usuario"]).DNI);
-                    foreach (User u in usuariosaux)
-                    {
-                        if (Taimer.Mensaje.getNumMensajesNoLeidosEspecifico((User)Session["usuario"], u) > 0)
-                            usuarios.Add(u);
-                    }
+                    usuarios = Taimer.User.GetUsersFiltroNoLeidosQuick(textofiltro, ((User)Session["usuario"]).DNI);
                 }
                 else
                 {
-                    usuarios = Taimer.User.GetUsersFiltro(textofiltro, ((User)Session["usuario"]).DNI);
+                    usuarios = Taimer.User.GetUsersFiltroQuick(textofiltro, ((User)Session["usuario"]).DNI);
                 }
 
                 llenarLista();

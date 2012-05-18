@@ -468,14 +468,44 @@ namespace CAD
 
 
         /// <summary>
-        /// Obtenemos un dataset con los datos de los usuarios (filtrado y que tienen mensajes no leídos por el usuario del DNI introducido), exceptuando el DNI del usuario
+        /// Obtenemos un dataset con los datos de los usuarios (filtrado) y exceptuando el DNI del usuario (se obtiene un usuario con pocos detalles, sólo DNI, nombre y e-mail)
         /// </summary>
         /// <returns></returns>
-        public DataSet GetUsersFiltroNoLeidos(string filtro, string dnipropio)
+        public DataSet GetUsersFiltroQuick(string filtro, string dnipropio)
         {
             SqlConnection con = null;
             DataSet listUsers = null;
-            string comando = "Select * from [User] where nombre like '%" + filtro + "%' and dni <> '" + dnipropio + "' order by nombre";
+            string comando = "Select dni, nombre, email from [User] where nombre like '%" + filtro + "%' and dni <> '" + dnipropio + "' order by nombre";
+            try
+            {
+                con = new SqlConnection(conexionTBD);
+                SqlDataAdapter sqlAdaptador = new SqlDataAdapter(comando, con);
+                listUsers = new DataSet();
+                sqlAdaptador.Fill(listUsers);
+                return listUsers;
+
+            }
+            catch (SqlException)
+            {
+                //return null;
+                throw;
+            }
+            finally
+            {
+                if (con != null) con.Close(); // Se asegura de cerrar la conexión.
+            }
+        }
+
+
+        /// <summary>
+        /// Obtenemos un dataset con los datos de los usuarios (filtrado y que tienen mensajes no leídos por el usuario del DNI introducido), exceptuando el DNI del usuario
+        /// </summary>
+        /// <returns></returns>
+        public DataSet GetUsersFiltroNoLeidosQuick(string filtro, string dnipropio)
+        {
+            SqlConnection con = null;
+            DataSet listUsers = null;
+            string comando = "Select dni, nombre, email, count(m.id) from [User] u, [Mensajes] m where u.dni = m.emisor and nombre like '%" + filtro + "%' and dni <> '" + dnipropio + "' and m.emisor = dni and m.receptor ='" + dnipropio + "' and m.leido = 'false' group by dni, nombre, email having count(m.id)>0 order by nombre";
             try
             {
                 con = new SqlConnection(conexionTBD);

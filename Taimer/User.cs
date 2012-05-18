@@ -568,6 +568,35 @@ namespace Taimer {
             return null;
         }
 
+
+        /// <summary>
+        /// Convierte un DataSet (que tendrá filas de usuarios) en una lista de usuarios (con poco detalle, sólo DNI, nombre y e-mail)
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
+        public static List<User> UsersToListQuick(DataSet data)
+        {
+            if (data != null)
+            {
+                List<User> list = new List<User>();
+                string dni, nom, email;
+                DataRowCollection rows = data.Tables[0].Rows;
+
+                for (int i = 0; i < rows.Count; i++)
+                {
+                    dni = rows[i].ItemArray[0].ToString();
+                    nom = rows[i].ItemArray[1].ToString();
+                    email = rows[i].ItemArray[2].ToString();
+
+                    User user = new User(nom, dni, email, null, 0, null, null, null, null);
+                    list.Add(user);
+                }
+                return list;
+            }
+            return null;
+        }
+
+
         /// <summary>
         /// Convierte un DataSet(será un usuario) en un objeto User
         /// </summary>
@@ -759,13 +788,26 @@ namespace Taimer {
 
 
         /// <summary>
-        /// Obtiene la lista de todos los usuarios a los que se les aplica el filtro en el nombre, el DNI es distinto del enviado y tienen mensajes que no ha leído el usuario del DNI introducido
+        /// Obtiene la lista de todos los usuarios a los que se les aplica el filtro en el nombre y el DNI es distinto del enviado (usuario con pocos detalles)
         /// </summary>
-        public static List<User> GetUsersFiltroNoLeidos(string filtro, string dnipropio)
+        public static List<User> GetUsersFiltroQuick(string filtro, string dnipropio)
         {
             CADUser userCAD = new CADUser();
-            DataSet users = userCAD.GetUsersFiltroNoLeidos(filtro, dnipropio);
-            List<User> list = UsersToList(users);
+            DataSet users = userCAD.GetUsersFiltroQuick(filtro, dnipropio);
+            List<User> list = UsersToListQuick(users);
+
+            return list;
+        }
+
+
+        /// <summary>
+        /// Obtiene la lista de todos los usuarios a los que se les aplica el filtro en el nombre, el DNI es distinto del enviado y tienen mensajes que no ha leído el usuario del DNI introducido
+        /// </summary>
+        public static List<User> GetUsersFiltroNoLeidosQuick(string filtro, string dnipropio)
+        {
+            CADUser userCAD = new CADUser();
+            DataSet users = userCAD.GetUsersFiltroNoLeidosQuick(filtro, dnipropio);
+            List<User> list = UsersToListQuick(users);
 
             return list;
         }
