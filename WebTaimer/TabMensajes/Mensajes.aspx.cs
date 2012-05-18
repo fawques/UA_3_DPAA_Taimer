@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Taimer;
+//using System.Windows.Forms;
 
 namespace WebTaimer.TabMensajes
 {
@@ -39,9 +40,9 @@ namespace WebTaimer.TabMensajes
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            string dni = Request.QueryString["dni"];
+            string email = Request.QueryString["email"];
 
-            if (dni == null)
+            if (email == null)
             {
                 textoMensaje.Enabled = false;
                 botonEnviar.Enabled = false;
@@ -49,8 +50,12 @@ namespace WebTaimer.TabMensajes
             }
             else
             {
-                receptor = Taimer.User.GetUserByDNI(dni);
-                LoadUser();
+                receptor = Taimer.User.GetUserByEmail(email);
+
+                if(receptor != null)
+                    LoadUser();
+                else
+                    conversacion = "<div style=\"color: #000000; float:center; border: 5px double #117777; background-color: #118888; overflow: visible; border-radius: 10px; margin: 4px; text-align:center \" >El usuario no existe.</div>";
             }
         }
 
@@ -60,7 +65,8 @@ namespace WebTaimer.TabMensajes
         {
             receptor = Taimer.User.GetUserByDNIQuick(indice);
 
-            labelConversador.Text = " - Conversación con " + receptor.Nombre;
+            HyperLinkConversador.Text = receptor.Nombre;
+            HyperLinkConversador.NavigateUrl = "~/TabPerfil/VerPerfil.aspx?user=" + receptor.Email;
             labelDNI.Text = receptor.DNI;
 
             conversacion = cargarConversacion();
@@ -72,12 +78,16 @@ namespace WebTaimer.TabMensajes
         // Selecciona un usuario al hacer clic sobre él en la lista
         protected void LoadUser()
         {
-            labelConversador.Text = " - Conversación con " + receptor.Nombre;
-            labelDNI.Text = receptor.DNI;
+            if (receptor != null)
+            {
+                HyperLinkConversador.Text = receptor.Nombre;
+                HyperLinkConversador.NavigateUrl = "~/TabPerfil/VerPerfil.aspx?user=" + receptor.Email;
+                labelDNI.Text = receptor.DNI;
 
-            conversacion = cargarConversacion();
-            UpdatePanelConversacion.Update();
-            UpdatePanelNombreConversador.Update();
+                conversacion = cargarConversacion();
+                UpdatePanelConversacion.Update();
+                UpdatePanelNombreConversador.Update();
+            }
         }
 
 
@@ -86,6 +96,7 @@ namespace WebTaimer.TabMensajes
         {
             textoMensaje.Enabled = true;
             botonEnviar.Enabled = true;
+            labelConversador.Visible = true;
 
             string cont = "";
 
@@ -140,19 +151,51 @@ namespace WebTaimer.TabMensajes
         // Enviar mensaje
         protected void botonEnviar_Click(object sender, EventArgs e)
         {
-            try
+            string contenido = textoMensaje.Text;
+            string nuevotexto = "";
+            //bool advertencia = false;
+
+            // Fragmentar las palabras de más de 50 caracteres para no descuadrar el cuadro de mensajes
+            int acumuladas = 0;
+            for (int i = 0; i < contenido.Length; i++)
             {
+                if (contenido[i].Equals(" "))
+                    acumuladas = 0;
+                else
+                    acumuladas++;
+
+                if (acumuladas > 50)
+                {
+                    nuevotexto += " " + contenido[i];
+                    //advertencia = true;
+                    acumuladas = 1;
+                }
+                else
+                {
+                    nuevotexto += contenido[i];
+                }
+
+            }
+
+            /*
+            if (advertencia)
+            {
+                //Response.Write("<script>alert('Las palabras de más de 50 caracteres se fragmentarán.');</script>");
+                DialogResult enviar = MessageBox.Show("Las palabras de más de 50 caracteres se fragmentarán. ¿Continuar?","Atención",MessageBoxButtons.YesNo,MessageBoxIcon.Information);
+
+                if (enviar == DialogResult.Yes)
+                    advertencia = false;
+            }
+            */
+
+            //if (!advertencia)
+            //{
                 receptor = Taimer.User.GetUserByDNIQuick(labelDNI.Text);
-                Mensaje mensaje = new Mensaje(100, textoMensaje.Text, ((User)Session["usuario"]), receptor, DateTime.Now, false);
+                Mensaje mensaje = new Mensaje(100, nuevotexto, ((User)Session["usuario"]), receptor, DateTime.Now, false);
                 mensaje.Agregar();
                 textoMensaje.Text = "";
                 SelectUser(receptor.DNI);
-            }
-            catch(Exception ex)
-            {
-                labelConversador.Text = ex.Message;
-                UpdatePanelNombreConversador.Update();
-            }
+            //}
         }
 
 

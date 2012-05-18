@@ -40,6 +40,15 @@ namespace WebTaimer.TabMensajes {
         protected global::System.Web.UI.WebControls.Label labelConversador;
         
         /// <summary>
+        /// Control HyperLinkConversador.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink HyperLinkConversador;
+        
+        /// <summary>
         /// Control labelDNI.
         /// </summary>
         /// <remarks>

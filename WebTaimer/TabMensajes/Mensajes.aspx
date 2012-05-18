@@ -43,7 +43,8 @@ p.texto
         UpdateMode="Conditional" style="float:left">
             <ContentTemplate>
                 <div style="float:left">
-                    Mensajes<asp:Label ID="labelConversador" runat="server"></asp:Label>
+                    Mensajes<asp:Label ID="labelConversador" runat="server" Visible="False"> - Conversación con </asp:Label>
+                    <asp:HyperLink ID="HyperLinkConversador" runat="server"></asp:HyperLink>
                     <asp:Label ID="labelDNI" runat="server" Visible="False"></asp:Label>
                 </div>
             </ContentTemplate>

@@ -619,15 +619,16 @@ namespace Taimer {
         {
             if (data != null)
             {
-                string dni, nom;
+                string dni, nom, email;
                 DataRowCollection rows = data.Tables[0].Rows;
 
                 if (rows.Count != 0)
                 {
                     dni = rows[0].ItemArray[0].ToString();
                     nom = rows[0].ItemArray[1].ToString();
+                    email = rows[0].ItemArray[2].ToString();
 
-                    User user = new User(nom, dni, null, null, 0, null, null, null, null);
+                    User user = new User(nom, dni, email, null, 0, null, null, null, null);
                     return user;
                 }
             }
