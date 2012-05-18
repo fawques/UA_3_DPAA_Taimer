@@ -68,6 +68,7 @@ namespace WebTaimer.TabMensajes
             HyperLinkConversador.Text = receptor.Nombre;
             HyperLinkConversador.NavigateUrl = "~/TabPerfil/VerPerfil.aspx?user=" + receptor.Email;
             labelDNI.Text = receptor.DNI;
+            listaUsuarios.SelectedItem.Text = receptor.Nombre;  // De este modo se limpia el número de mensajes no leídos
 
             conversacion = cargarConversacion();
             UpdatePanelConversacion.Update();
@@ -144,7 +145,6 @@ namespace WebTaimer.TabMensajes
         {
             string indicelista = listaUsuarios.SelectedValue;
             SelectUser(indicelista);
-            //UpdatePanelConversacion.Update();       // EUREKA
         }
 
 
@@ -214,10 +214,19 @@ namespace WebTaimer.TabMensajes
             listaUsuarios.Items.Clear();
 
             int i = 0;
+            int noleidos = 0;
+            string aux = "";
 
             foreach (User u in usuarios)
             {
-                listaUsuarios.Items.Add(u.Nombre);
+                noleidos = Taimer.Mensaje.getNumMensajesNoLeidosEspecifico((User)Session["usuario"], u);
+
+                aux = u.Nombre;
+
+                if(noleidos > 0)
+                    aux += " (" + noleidos.ToString() + ")";
+
+                listaUsuarios.Items.Add(aux);
                 listaUsuarios.Items[i].Value = u.DNI;
                 i++;
             }

@@ -192,7 +192,7 @@ namespace CAD
         {
             SqlConnection con = null;
             DataSet datos = null;
-            string comando = "Select dni, nombre from [User] where dni='" + dni + "'";
+            string comando = "Select dni, nombre, email from [User] where dni='" + dni + "'";
             try
             {
                 con = new SqlConnection(conexionTBD);

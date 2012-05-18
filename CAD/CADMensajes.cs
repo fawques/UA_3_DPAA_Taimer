@@ -138,6 +138,31 @@ namespace CAD {
             }
         }
 
+        public int getNumNotReadSpecific(string codUser, string codOtro)
+        {
+
+            SqlConnection con = null;
+            string comando = "SELECT COUNT(*) FROM [Mensajes] WHERE receptor ='" + codUser + "' AND emisor = '" + codOtro + "' AND leido='False'";
+            try
+            {
+                con = new SqlConnection(conexionTBD);
+                con.Open();
+                SqlCommand sqlCmnd = new SqlCommand(comando, con);
+
+                return (int)sqlCmnd.ExecuteScalar();
+
+            }
+            catch (SqlException)
+            {
+                // Captura la condición general y la reenvía.
+                throw;
+            }
+            finally
+            {
+                if (con != null) con.Close(); // Se asegura de cerrar la conexión.
+            }
+        }
+
         public void ModificarMensaje(int id, string codEmisor, string codReceptor, string texto, DateTime date, bool leido) {
             string comando = "UPDATE [Mensajes] SET emisor = '" + codEmisor + "',  receptor = '" + codReceptor +
                 "', texto = '" + texto + "', fecha = '" + date.ToString("yyyy-MM-dd HH:mm:ss") + "', leido = '" + leido + "' WHERE id = '" + id + "'";
