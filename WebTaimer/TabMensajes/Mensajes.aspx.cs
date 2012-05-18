@@ -26,12 +26,12 @@ namespace WebTaimer.TabMensajes
             if (usuarios == null)
                 cargarTodosUsuarios();
 
-            if (conversacion == null)
-            {
-                textoMensaje.Enabled = false;
-                botonEnviar.Enabled = false;
-                conversacion = "<div style=\"color: #000000; float:center; border: 5px double #117777; background-color: #118888; overflow: visible; border-radius: 10px; margin: 4px; text-align:center \" >Selecciona un usuario para ver sus mensajes.</div>";
-            }
+            //if (conversacion == null)
+            //{
+            //    textoMensaje.Enabled = false;
+            //    botonEnviar.Enabled = false;
+            //    conversacion = "<div style=\"color: #000000; float:center; border: 5px double #117777; background-color: #118888; overflow: visible; border-radius: 10px; margin: 4px; text-align:center \" >Selecciona un usuario para ver sus mensajes.</div>";
+            //}
 
             //if (listamensajes == null)
             //    cargarTodosMensajes();
@@ -39,12 +39,18 @@ namespace WebTaimer.TabMensajes
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session.Count > 0)
-            {
-                if (!IsPostBack)
-                {
+            string dni = Request.QueryString["dni"];
 
-                }
+            if (dni == null)
+            {
+                textoMensaje.Enabled = false;
+                botonEnviar.Enabled = false;
+                conversacion = "<div style=\"color: #000000; float:center; border: 5px double #117777; background-color: #118888; overflow: visible; border-radius: 10px; margin: 4px; text-align:center \" >Selecciona un usuario para ver sus mensajes.</div>";
+            }
+            else
+            {
+                receptor = Taimer.User.GetUserByDNI(dni);
+                LoadUser();
             }
         }
 
@@ -57,8 +63,17 @@ namespace WebTaimer.TabMensajes
             labelConversador.Text = " - Conversación con " + receptor.Nombre;
             labelDNI.Text = receptor.DNI;
 
-            //conversacion = "<div style=\"color: #000000; float:center; border: 5px double #117777; background-color: #118888; overflow: visible; border-radius: 10px; margin: 4px; text-align:center \" >Cargando...</div>";
-            //UpdatePanelConversacion.Update();
+            conversacion = cargarConversacion();
+            UpdatePanelConversacion.Update();
+            UpdatePanelNombreConversador.Update();
+        }
+
+
+        // Selecciona un usuario al hacer clic sobre él en la lista
+        protected void LoadUser()
+        {
+            labelConversador.Text = " - Conversación con " + receptor.Nombre;
+            labelDNI.Text = receptor.DNI;
 
             conversacion = cargarConversacion();
             UpdatePanelConversacion.Update();
@@ -73,7 +88,9 @@ namespace WebTaimer.TabMensajes
             botonEnviar.Enabled = true;
 
             string cont = "";
+
             listamensajes = Taimer.Mensaje.getConversacionQuick((User)Session["usuario"], receptor);
+
             string dnipropio = ((User)Session["usuario"]).DNI;
             string dniotro = receptor.DNI;
 
@@ -123,11 +140,19 @@ namespace WebTaimer.TabMensajes
         // Enviar mensaje
         protected void botonEnviar_Click(object sender, EventArgs e)
         {
-            receptor = Taimer.User.GetUserByDNIQuick(labelDNI.Text);
-            Mensaje mensaje = new Mensaje(100, textoMensaje.Text, ((User)Session["usuario"]), receptor, DateTime.Now, false);
-            mensaje.Agregar();
-            textoMensaje.Text = "";
-            SelectUser(receptor.DNI);
+            try
+            {
+                receptor = Taimer.User.GetUserByDNIQuick(labelDNI.Text);
+                Mensaje mensaje = new Mensaje(100, textoMensaje.Text, ((User)Session["usuario"]), receptor, DateTime.Now, false);
+                mensaje.Agregar();
+                textoMensaje.Text = "";
+                SelectUser(receptor.DNI);
+            }
+            catch(Exception ex)
+            {
+                labelConversador.Text = ex.Message;
+                UpdatePanelNombreConversador.Update();
+            }
         }
 
 
