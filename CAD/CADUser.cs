@@ -466,6 +466,37 @@ namespace CAD
             }
         }
 
+
+        /// <summary>
+        /// Obtenemos un dataset con los datos de los usuarios (filtrado y que tienen mensajes no leídos por el usuario del DNI introducido), exceptuando el DNI del usuario
+        /// </summary>
+        /// <returns></returns>
+        public DataSet GetUsersFiltroNoLeidos(string filtro, string dnipropio)
+        {
+            SqlConnection con = null;
+            DataSet listUsers = null;
+            string comando = "Select * from [User] where nombre like '%" + filtro + "%' and dni <> '" + dnipropio + "' order by nombre";
+            try
+            {
+                con = new SqlConnection(conexionTBD);
+                SqlDataAdapter sqlAdaptador = new SqlDataAdapter(comando, con);
+                listUsers = new DataSet();
+                sqlAdaptador.Fill(listUsers);
+                return listUsers;
+
+            }
+            catch (SqlException)
+            {
+                //return null;
+                throw;
+            }
+            finally
+            {
+                if (con != null) con.Close(); // Se asegura de cerrar la conexión.
+            }
+        }
+
+
         public DataSet GetUserByDNI(string dni)
         {
             SqlConnection con = null;

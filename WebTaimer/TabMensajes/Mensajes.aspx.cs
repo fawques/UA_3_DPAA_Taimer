@@ -23,6 +23,7 @@ namespace WebTaimer.TabMensajes
                 Response.Redirect("~/TabInicio/SinLogin.aspx?error=true");
 
             listaUsuarios.AutoPostBack = true;
+            checkSoloNoLeidos.AutoPostBack = true;
 
             if (usuarios == null)
                 cargarTodosUsuarios();
@@ -217,48 +218,61 @@ namespace WebTaimer.TabMensajes
             int noleidos = 0;
             string aux = "";
 
-            foreach (User u in usuarios)
+            if (usuarios != null)
             {
-                noleidos = Taimer.Mensaje.getNumMensajesNoLeidosEspecifico((User)Session["usuario"], u);
+                foreach (User u in usuarios)
+                {
+                    noleidos = Taimer.Mensaje.getNumMensajesNoLeidosEspecifico((User)Session["usuario"], u);
 
-                aux = u.Nombre;
+                    aux = u.Nombre;
 
-                if(noleidos > 0)
-                    aux += " (" + noleidos.ToString() + ")";
+                    if (noleidos > 0)
+                        aux += " (" + noleidos.ToString() + ")";
 
-                listaUsuarios.Items.Add(aux);
-                listaUsuarios.Items[i].Value = u.DNI;
-                i++;
+                    listaUsuarios.Items.Add(aux);
+                    listaUsuarios.Items[i].Value = u.DNI;
+                    i++;
+                }
             }
         }
 
 
         // Carga los usuarios a los que se aplique el filtro
-        protected void cargaFiltro(string textofiltro)
+        protected void cargaFiltro(string textofiltro, bool noleidos)
         {
-            if (textofiltro != null && textofiltro != "")
-            {
-                usuarios = Taimer.User.GetUsersFiltro(textofiltro, ((User)Session["usuario"]).DNI);
+            //if (textofiltro != null && textofiltro != "")
+            //{
+                if (noleidos)
+                {
+                    usuarios.Clear();
+
+                    List<User> usuariosaux = Taimer.User.GetUsersFiltro(textofiltro, ((User)Session["usuario"]).DNI);
+                    foreach (User u in usuariosaux)
+                    {
+                        if (Taimer.Mensaje.getNumMensajesNoLeidosEspecifico((User)Session["usuario"], u) > 0)
+                            usuarios.Add(u);
+                    }
+                }
+                else
+                {
+                    usuarios = Taimer.User.GetUsersFiltro(textofiltro, ((User)Session["usuario"]).DNI);
+                }
+
                 llenarLista();
-            }
-            else
-                cargarTodosUsuarios();
+            //}
+            //else
+            //    cargarTodosUsuarios();
         }
 
         // Carga el filtro del TextBox de filtrado
         protected void botonBuscar_Click(object sender, EventArgs e)
         {
-            cargaFiltro(textboxFiltro.Text);
+            cargaFiltro(textboxFiltro.Text, checkSoloNoLeidos.Checked);
         }
 
-        protected void textboxFiltro_TextChanged(object sender, EventArgs e)
+        protected void checkSoloNoLeidos_CheckedChanged(object sender, EventArgs e)
         {
-            //cargaFiltro(textboxFiltro.Text);
-        }
-
-        protected void botonVerPerfil_Click(object sender, EventArgs e)
-        {
-            
+            cargaFiltro(textboxFiltro.Text, checkSoloNoLeidos.Checked);
         }
 
         //protected void cargarTodosMensajes()

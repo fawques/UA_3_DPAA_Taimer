@@ -759,6 +759,19 @@ namespace Taimer {
 
 
         /// <summary>
+        /// Obtiene la lista de todos los usuarios a los que se les aplica el filtro en el nombre, el DNI es distinto del enviado y tienen mensajes que no ha leído el usuario del DNI introducido
+        /// </summary>
+        public static List<User> GetUsersFiltroNoLeidos(string filtro, string dnipropio)
+        {
+            CADUser userCAD = new CADUser();
+            DataSet users = userCAD.GetUsersFiltroNoLeidos(filtro, dnipropio);
+            List<User> list = UsersToList(users);
+
+            return list;
+        }
+
+
+        /// <summary>
         /// Pide al usuario que abra un archivo para su imagen personal, y la copia al directorio Images
         /// </summary>
         public void InsertaFoto()
