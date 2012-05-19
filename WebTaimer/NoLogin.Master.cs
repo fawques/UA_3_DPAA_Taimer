@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Taimer;
 using System.IO;
+using System.Data.SqlClient;
 
 namespace WebTaimer
 {
@@ -46,6 +47,9 @@ namespace WebTaimer
                 //Response.Write("<script>alert(\"usuario o contraseña incorrectos!\")</script>");
                 validatorErrorUserPass.IsValid = false;
                 // TODO: Mostrar mensaje de error de usuario o contraseña
+            }
+            catch(SqlException){
+                throw new TimeoutException("Error desconocido en la Base de Datos. Inténtalo de nuevo");
             }
             
         }
