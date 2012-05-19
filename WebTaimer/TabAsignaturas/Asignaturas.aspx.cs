@@ -35,6 +35,11 @@ namespace WebTaimer.TabAsignaturas
                 {
                     int idact = Convert.ToInt32(id);
                     actividades.Add(darActividad(idact));
+                    foreach(Actividad_a a in actodas)
+                    {
+                        if (a.Codigo != darActividad(idact).Codigo)
+                            actividades.Add(a);
+                    }
                     llenarLista();           
                     rellenocuadro(idact);
                     
@@ -262,8 +267,8 @@ namespace WebTaimer.TabAsignaturas
                         {
                             
                             comentarios += "<div class='comentario'> <div style='width:120px; heigth:400px;  float:left; '><img src='" + imagen
-                            + "' style='height: 100px; width: 100px margin-left:10px;' class='comentario' /><br/>" + "<input type='button' value='Borrar' ID='Borrar' runat='server' "
-                            + " style=' width:70px;' value='Borrar' onclick='Borrar()'/></div>" + "<span class='comentario'><p class='comentario' >Comentario enviado por: " +
+                            + "' style='height: 100px; width: 100px margin-left:10px;' class='comentario' /><br/>" + "<input type='submit' name='ctl00$MainContent$Button' TagName='"+com.ID+"'  value='Borrar' id='Button' />"
+                           + "</div>" + "<span class='comentario'><p class='comentario' >Comentario enviado por: " +
                             nomUsuario + " (" + com.FechaToString() + ")</p><div><p style='color: #8c7052; width:400px; font-style:italic;  text-align: left;'>" + com.Texto + "</p></div></span></div>";
                             
                            
@@ -283,10 +288,11 @@ namespace WebTaimer.TabAsignaturas
             }
             return comentarios;
         }
-        void Borrar()
+        protected void Borrar(object sender, EventArgs e)
         {
-            MessageBox.Show("Haz caso");
+            //MessageBox.Show(Convert.ToString(Button.Text));
         }
+
         protected string rutaImagen(User user)
         {
             string ruta = "";

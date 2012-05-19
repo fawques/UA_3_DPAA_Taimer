@@ -143,6 +143,7 @@
                                 <asp:CheckBox ID="checkAnonimo" runat="server" Text="Enviar de forma anónima" />
                         </div>
                      </ContentTemplate>
-                        </asp:UpdatePanel>   
+                        </asp:UpdatePanel> 
+            
       
 </asp:Content>
