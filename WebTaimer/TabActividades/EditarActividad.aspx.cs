@@ -56,6 +56,7 @@ namespace WebTaimer.TabActividades
                             tbCambiaDia.Text = t.DiaString;
                             tbCambiaHoraI.Text = t.HoraInicio.toString();
                             tbCambiaHoraF.Text = t.HoraFin.toString();
+                            tbCambiaUbic.Text=t.Ubicacion;
                             turnoSelec = t;
                         }
                     }
@@ -77,13 +78,10 @@ namespace WebTaimer.TabActividades
         }
 
         protected void CambiarTurno(object sender, EventArgs e)
-        {
+        {            
             if (actividad.Turnos.Count > 0)
-            {
-                cargarTurnos(actividad);
-                listaTurnos.SelectedIndex = 0;
-                int index = Convert.ToInt16(listaTurnos.SelectedValue);
-
+            {         
+                int index = Convert.ToInt16(listaTurnos.SelectedValue);                
                 foreach (Turno t in actividad.Turnos)
                 {
                     if (t.Codigo == index)
@@ -91,6 +89,7 @@ namespace WebTaimer.TabActividades
                         tbCambiaDia.Text = t.DiaString;
                         tbCambiaHoraI.Text = t.HoraInicio.toString();
                         tbCambiaHoraF.Text = t.HoraFin.toString();
+                        tbCambiaUbic.Text = t.Ubicacion.ToString();                        
                         turnoSelec = t;
                     }
                 }
@@ -100,10 +99,14 @@ namespace WebTaimer.TabActividades
         protected Actividad_p getActividad()
         {            
             int cod = Convert.ToInt32(Request.QueryString["id"]);
+            
+            
             foreach (Actividad_p a in user.ActPersonales)
             {
                 if (cod == a.Codigo)
+                {
                     return a;
+                }
             }
             return null;
         }
@@ -115,7 +118,7 @@ namespace WebTaimer.TabActividades
             listaTurnos.Items.Clear();
             int i = 0;
             foreach (Turno turno in act.Turnos)
-            {
+            {                
                 fecha = turno.DiaString + ", de " + turno.HoraInicio.toString() + " a " + turno.HoraFin.toString();
                 listaTurnos.Items.Add(fecha);
                 listaTurnos.Items[i].Value = Convert.ToString(turno.Codigo);
@@ -127,12 +130,26 @@ namespace WebTaimer.TabActividades
         {
             if (listaTurnos.Items.Count > 0)
             {
+                int index = Convert.ToInt16(listaTurnos.SelectedValue);
+                foreach (Turno t in actividad.Turnos)
+                {
+                    if (t.Codigo == index)
+                    {
+                        tbCambiaDia.Text = t.DiaString;
+                        tbCambiaHoraI.Text = t.HoraInicio.toString();
+                        tbCambiaHoraF.Text = t.HoraFin.toString();
+                        tbCambiaUbic.Text = t.Ubicacion.ToString();
+                        turnoSelec = t;
+                    }
+                }
 
                 divCambiaTurno.Visible = true;
                 btCambiaTurno.Visible = false;
                 btBorraTurno.Visible = false;
                 btCancelaTurno.Visible = true;
                 btNuevoTurno.Visible = false;
+
+
             }
         }
 
@@ -150,29 +167,41 @@ namespace WebTaimer.TabActividades
 
         protected void btConfirmaTurno_Click(object sender, EventArgs e)
         {            
-            turnoSelec.DiaString = tbCambiaDia.Text;           
+            turnoSelec.DiaString = tbCambiaDia.Text;
             turnoSelec.HoraI(tbCambiaHoraI.Text);
             turnoSelec.HoraF(tbCambiaHoraF.Text);
-            turnoSelec.Ubicacion=tbCambiaUbic.Text;
+            turnoSelec.Ubicacion = tbCambiaUbic.Text;
+
             turnoSelec.Modificar();
 
             btCancelaTurno.Visible = false;
             btConfirmaTurno.Visible = false;
 
-            Response.Redirect("EditarActividad.aspx?id="+actividad.Codigo);
+            Response.Redirect("EditarActividad.aspx?id=" + actividad.Codigo);            
         }
 
         protected void btCancelaTurno_Click(object sender, EventArgs e)
-        {
+        {            
             divCambiaTurno.Visible = false;
             btCambiaTurno.Visible = true;
             btBorraTurno.Visible = true;
             btCancelaTurno.Visible = false;
             btNuevoTurno.Visible = true;
+            //MessageBox.Show("Salgo");
+            Response.Redirect("EditarActividad.aspx?id=" + actividad.Codigo);
         }
 
         protected void btConfirmaBorrar_Click(object sender, EventArgs e)
-        {            
+        {
+            int index = Convert.ToInt16(listaTurnos.SelectedValue);
+            foreach (Turno t in actividad.Turnos)
+            {
+                if (t.Codigo == index)
+                {
+                    turnoSelec = t;
+                }
+            }
+
             actividad.BorraTurno(turnoSelec.Codigo);
             btCambiaTurno.Visible = true;
             btConfirmaBorrar.Visible = false;
@@ -190,6 +219,7 @@ namespace WebTaimer.TabActividades
 
         protected void btNuevoTurno_Click(object sender, EventArgs e)
         {
+            divCambiaTurno.Disabled = true;            
             divNuevoTurno.Visible = true;
             btCambiaTurno.Visible = false;
             btBorraTurno.Visible = false;
@@ -201,14 +231,15 @@ namespace WebTaimer.TabActividades
         {
             Hora ini = new Hora(tbNuevaHoraI.Text);
             Hora fin = new Hora(tbNuevaHoraF.Text);
-            turnoSelec = new Turno(ini,fin,tbNuevoDia.Text,tbNuevaUbic.Text);
-          
-            actividad.AddTurno(turnoSelec);
+            turnoSelec = new Turno(ini, fin, tbNuevoDia.Text, tbNuevaUbic.Text, actividad);
+
+            turnoSelec.Agregar();
+            //actividad.AddTurno(turnoSelec);
 
             btCancelaNuevo.Visible = false;
             btConfirmaNuevo.Visible = false;
 
-            Response.Redirect("EditarActividad.aspx?id=" + actividad.Codigo);
+            Response.Redirect("EditarActividad.aspx?id=" + actividad.Codigo);            
         }
         
         protected void btCancelaNuevo_Click(object sender, EventArgs e)

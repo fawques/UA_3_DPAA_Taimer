@@ -94,6 +94,15 @@ namespace WebTaimer.TabActividades {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl divTurnos;
         
         /// <summary>
+        /// Control listaTurnos.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ListBox listaTurnos;
+        
+        /// <summary>
         /// Control divCambiaTurno.
         /// </summary>
         /// <remarks>
@@ -121,6 +130,15 @@ namespace WebTaimer.TabActividades {
         protected global::System.Web.UI.WebControls.TextBox tbCambiaDia;
         
         /// <summary>
+        /// Control cambiaDiaValidate.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator cambiaDiaValidate;
+        
+        /// <summary>
         /// Control tbCambiaHoraI.
         /// </summary>
         /// <remarks>
@@ -128,6 +146,15 @@ namespace WebTaimer.TabActividades {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox tbCambiaHoraI;
+        
+        /// <summary>
+        /// Control cambiaHoraIValidate.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator cambiaHoraIValidate;
         
         /// <summary>
         /// Control tbCambiaHoraF.
@@ -139,6 +166,15 @@ namespace WebTaimer.TabActividades {
         protected global::System.Web.UI.WebControls.TextBox tbCambiaHoraF;
         
         /// <summary>
+        /// Control cambiarHoraFValidate.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator cambiarHoraFValidate;
+        
+        /// <summary>
         /// Control tbCambiaUbic.
         /// </summary>
         /// <remarks>
@@ -146,6 +182,15 @@ namespace WebTaimer.TabActividades {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox tbCambiaUbic;
+        
+        /// <summary>
+        /// Control cambiaUbicRequiered.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator cambiaUbicRequiered;
         
         /// <summary>
         /// Control btConfirmaTurno.
@@ -238,6 +283,15 @@ namespace WebTaimer.TabActividades {
         protected global::System.Web.UI.WebControls.TextBox tbNuevoDia;
         
         /// <summary>
+        /// Control nuevoDiaValidate.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator nuevoDiaValidate;
+        
+        /// <summary>
         /// Control tbNuevaHoraI.
         /// </summary>
         /// <remarks>
@@ -247,6 +301,15 @@ namespace WebTaimer.TabActividades {
         protected global::System.Web.UI.WebControls.TextBox tbNuevaHoraI;
         
         /// <summary>
+        /// Control nuevaHoraIValidate.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator nuevaHoraIValidate;
+        
+        /// <summary>
         /// Control tbNuevaHoraF.
         /// </summary>
         /// <remarks>
@@ -254,6 +317,15 @@ namespace WebTaimer.TabActividades {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox tbNuevaHoraF;
+        
+        /// <summary>
+        /// Control nuevaHoraFValidate.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator nuevaHoraFValidate;
         
         /// <summary>
         /// Control tbNuevaUbic.
@@ -281,14 +353,5 @@ namespace WebTaimer.TabActividades {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btCancelaNuevo;
-        
-        /// <summary>
-        /// Control listaTurnos.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ListBox listaTurnos;
     }
 }
