@@ -82,16 +82,16 @@ namespace WebTaimer.TabInicio {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button botonHorariosPropios;
+        protected global::System.Web.UI.WebControls.ImageButton botonHorariosPropios;
         
         /// <summary>
-        /// Control botonMatricula.
+        /// Control botonAsignaturas.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button botonMatricula;
+        protected global::System.Web.UI.WebControls.ImageButton botonAsignaturas;
         
         /// <summary>
         /// Control botonHorariosPublicos.
@@ -100,7 +100,7 @@ namespace WebTaimer.TabInicio {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button botonHorariosPublicos;
+        protected global::System.Web.UI.WebControls.ImageButton botonHorariosPublicos;
         
         /// <summary>
         /// Control botonMensajes.
@@ -109,16 +109,16 @@ namespace WebTaimer.TabInicio {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button botonMensajes;
+        protected global::System.Web.UI.WebControls.ImageButton botonMensajes;
         
         /// <summary>
-        /// Control botonActividadesPersonales.
+        /// Control botonActividades.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button botonActividadesPersonales;
+        protected global::System.Web.UI.WebControls.ImageButton botonActividades;
         
         /// <summary>
         /// Control botonPerfil.
@@ -127,6 +127,6 @@ namespace WebTaimer.TabInicio {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button botonPerfil;
+        protected global::System.Web.UI.WebControls.ImageButton botonPerfil;
     }
 }
