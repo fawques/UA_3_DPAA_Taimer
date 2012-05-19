@@ -289,6 +289,9 @@ namespace Taimer {
 
                 for (int i = 0; i < rows.Count; i++)
                 {
+                    nota = 0;
+                    nVot = 0;
+                    codT = 0;
                     cod = (int)rows[i].ItemArray[0];
 
                     if (rows[i].ItemArray[1].ToString() != "")
@@ -421,7 +424,7 @@ namespace Taimer {
             double nota = notaTotal;
             double num = numVotos;
 
-            if (num == 0)
+            if (num == 0 && nota==0)
             {
                 return 0;
             }

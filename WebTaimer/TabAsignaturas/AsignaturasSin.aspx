@@ -117,9 +117,11 @@
                                     <br />
                                     <br />
                                     <asp:Label ID="tituPun" runat="server">Puntuación:</asp:Label>    
+                              
                                     <br />
                                     <br />
-                                    <asp:Rating ID="r1" runat="server" CurrentRating="0" MaxRating="10" StarCssClass="ratingStar" WaitingStarCssClass="savedRatingStar" 
+                                    <br />
+                                    <asp:Rating ID="r1" runat="server"  MaxRating="10" StarCssClass="ratingStar" WaitingStarCssClass="savedRatingStar" 
                                     FilledStarCssClass="filledRatingStar" EmptyStarCssClass="emptyRatingStar" ReadOnly="true" >
                                     </asp:Rating>
                                     </div>

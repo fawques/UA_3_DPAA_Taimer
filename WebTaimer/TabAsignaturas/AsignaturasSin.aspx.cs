@@ -20,11 +20,13 @@ namespace WebTaimer.TabAsignaturas
         {
             actodas = Actividad_a.GetAllActividades_a();
             listaComentarios = Comentario.GetAllComentarios();
-            string id = Request.QueryString["idActividad"];
+           string id = Request.QueryString["idActividad"];
             if (id != null)
             {
                 int idact = Convert.ToInt32(id);
-                cargarTodasActividades();
+                actividades.Add(darActividad(idact));
+                llenarLista();
+                rellenocuadro(idact);
                 rellenocuadro(idact);
             }
             else
@@ -35,16 +37,20 @@ namespace WebTaimer.TabAsignaturas
             }
         }
 
-        protected void Page_Load(object sender, EventArgs e)
+        protected Actividad_a darActividad(int indice)
         {
 
-            if (!IsPostBack)
+            foreach (Actividad_a act in actodas)
             {
-                cargarTodasActividades();
-
+                if (act.Codigo == indice)
+                {
+                    return act;
+                }
             }
-
+            return null;
         }
+
+        
         // Carga todas las actividades de la lista
         protected void cargarTodasActividades()
         {
@@ -85,6 +91,7 @@ namespace WebTaimer.TabAsignaturas
         protected void rellenocuadro(int codigo)
         {
             actividades = actodas;
+            bool existe = false;
             foreach (Actividad_a act in actividades)
             {
                 if (act.Codigo == codigo)
@@ -101,8 +108,21 @@ namespace WebTaimer.TabAsignaturas
                     listaTurnos.Visible = true;
                     coment.Visible = true;
                     cargarComentarios(act);
+                    existe = true;
                 }
 
+            }
+            if (existe == false)
+            {
+                labelNombreAsignatura.Text = "El indice que se pasa no es correcto";
+                labelCoordinadorAsignatura.Text = "";
+                labelDescripcionAsignatura.Text = "";
+                tituPun.Visible = false;
+                tituloCoor.Visible = false;
+                labelTurnos.Visible = false;
+                r1.Visible = false;
+                listaTurnos.Visible = false;
+                coment.Visible = false;
             }
 
         }
@@ -203,11 +223,22 @@ namespace WebTaimer.TabAsignaturas
                 comentarios = "";
                 foreach (Comentario com in comentariosAct)
                 {
-                    
-                    comentarios+= "<div class='comentario'> <img src='"+ 
-                    rutaImagen(com.Usuario)+"' style='height: 100px; width: 100px' class='comentario' />"
+                    string nomUsuario="";
+                    string imagen = "";
+                    if (com.Usuario != null)
+                    {
+                        nomUsuario = com.Usuario.Nombre;
+                        imagen = rutaImagen(com.Usuario);
+                    }
+                    else
+                    { 
+                        nomUsuario="Anónimo";
+                        imagen = "../Images/default.jpg";
+                    }
+                    comentarios+= "<div class='comentario'> <img src='"+ imagen
+                    +"' style='height: 100px; width: 100px' class='comentario' />"
                     +"<span class='comentario'><p class='comentario'>Comentario enviado por: "
-                    + com.Usuario.Nombre + "(" + com.FechaToString() +")</p><p>" + com.Texto + "</p></span></div>";
+                    + nomUsuario + " (" + com.FechaToString() + ")</p><div  ><p style='color: #8c7052; width:400px; font-style:italic;  text-align: left;'>" + com.Texto + "</p></div></span></div>";
                                     
                 }
             }
@@ -217,6 +248,7 @@ namespace WebTaimer.TabAsignaturas
         protected string rutaImagen(User user)
         {
             string ruta = "";
+
             if (user.Imagen != "" && user.Imagen != null)
                 ruta = "../Images/" + user.Imagen;
             else

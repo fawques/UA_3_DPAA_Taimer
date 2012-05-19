@@ -146,7 +146,10 @@ namespace Taimer
         //FUNCIONES DE LOS CAD
         public void Agregar() {
             CADComentario mens = new CADComentario();
-            mens.CrearCommentBasic(texto, actividadAcademica.Codigo, usuario.DNI, fecha);
+            if (usuario != null)
+                mens.CrearCommentBasic(texto, actividadAcademica.Codigo, usuario.DNI, fecha);
+            else
+                mens.CrearCommentBasic(texto, actividadAcademica.Codigo,null, fecha);
         }
 
         public void Borrar() {
