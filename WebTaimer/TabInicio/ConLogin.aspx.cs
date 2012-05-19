@@ -16,53 +16,45 @@ namespace WebTaimer.TabInicio
                 Response.Redirect("~/TabInicio/SinLogin.aspx?error=true");
         }
 
-        protected void Page_Load(object sender, EventArgs e)
-        {
-            if (Session.Count == 0)
-            {
+        protected void Page_Load(object sender, EventArgs e) {
+            if (Session.Count == 0) {
                 Response.Redirect("SinLogin.aspx");
                 Response.Write("No estás logeado");
-            }
-            else
-            {
+            } else {
                 User usuario = (User)Session["usuario"];
                 lbBienvenida.Text = "Bienvenido, " + usuario.Nombre;
                 nombrePrincipalUser.Text = usuario.Nombre;
+                labelMensajesSinLeer.Text = "Tienes " + Taimer.Mensaje.getNunMensajesNoLeidos(usuario).ToString()
+                    + " mensaje(s) sin leer.";
             }
         }
 
-        protected void botonHorariosPropios_Click(object sender, EventArgs e)
-        {
+        protected void botonHorariosPropios_Click(object sender, ImageClickEventArgs e) {
             // Lleva a la página de ver horarios
             Response.Redirect("~/TabHorarios/Horarios.aspx");
         }
 
-        protected void botonHorariosPublicos_Click(object sender, EventArgs e)
-        {
-            // Lleva a la página de ver horarios públicos
-            Response.Redirect("~/TabHorariosPublicos/HorariosPublicos.aspx");
-        }
-
-        protected void botonMatricula_Click(object sender, EventArgs e)
-        {
+        protected void botonAsignaturas_Click(object sender, ImageClickEventArgs e) {
             // Lleva a la página de asignaturas
             Response.Redirect("~/TabAsignaturas/Asignaturas.aspx");
         }
 
-        protected void botonMensajes_Click(object sender, EventArgs e)
-        {
+        protected void botonHorariosPublicos_Click(object sender, ImageClickEventArgs e) {
+            // Lleva a la página de ver horarios públicos
+            Response.Redirect("~/TabHorariosPublicos/HorariosPublicos.aspx");
+        }
+
+        protected void botonMensajes_Click(object sender, ImageClickEventArgs e) {
             // Lleva a la página de mensajería
             Response.Redirect("~/TabMensajes/Mensajes.aspx");
         }
 
-        protected void botonActividadesPersonales_Click(object sender, EventArgs e)
-        {
+        protected void botonActividades_Click(object sender, ImageClickEventArgs e) {
             // Lleva a la página de ver actividades personales
             Response.Redirect("~/TabActividades/Actividades.aspx");
         }
 
-        protected void botonPerfil_Click(object sender, EventArgs e)
-        {
+        protected void botonPerfil_Click(object sender, ImageClickEventArgs e) {
             // Lleva a la página de ver horarios públicos
             Response.Redirect("~/TabPerfil/VerPerfil.aspx");
         }
