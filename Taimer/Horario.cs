@@ -250,6 +250,13 @@ namespace Taimer
         }
 
         /// <summary>
+        /// Devuelve un array de Turnos que contiene los turnos del dia
+        /// </summary>
+        public List<Turno> getTurnosDia(Taimer.dias dia){
+            return arrayTurnos[(int) dia];
+        }
+
+        /// <summary>
         /// Borrar turno (a partir de su código, si se encuentra)
         /// </summary>
         /// <param name="codigobuscado">Código del turno que se desea borrar</param>

@@ -166,7 +166,15 @@ namespace WebTaimer.TabHorarios
         protected void Page_Load(object sender, EventArgs e) {
             if (Session.Count > 0) {
                 if (!IsPostBack) {
-                    SelectHorario(0);
+                    System.Collections.Specialized.NameValueCollection gets;
+                    gets = Request.QueryString;
+
+                    if (gets.Count == 1 && gets["id"] != "" && gets["id"] != null) {
+                        int id = Convert.ToInt16(gets["id"]);
+                        SelectHorario(id);
+                    } else {
+                        SelectHorario(0);
+                    }
                 }
             }
             else {
