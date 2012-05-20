@@ -85,6 +85,15 @@ namespace WebTaimer.TabActividades {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl optionButtons;
         
         /// <summary>
+        /// Control botonEditarActividad.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button botonEditarActividad;
+        
+        /// <summary>
         /// Control botonBorrarActividad.
         /// </summary>
         /// <remarks>
@@ -94,13 +103,13 @@ namespace WebTaimer.TabActividades {
         protected global::System.Web.UI.WebControls.Button botonBorrarActividad;
         
         /// <summary>
-        /// Control botonEditarActividad.
+        /// Control ConfirmaBorrar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button botonEditarActividad;
+        protected global::System.Web.UI.WebControls.Panel ConfirmaBorrar;
         
         /// <summary>
         /// Control botonConfirmar.

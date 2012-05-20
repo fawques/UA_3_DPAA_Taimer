@@ -37,7 +37,7 @@
             <fieldset class="asig" style="width: 160px; height: 440px" runat="server" id="asig">
                 <legend>Actividades</legend>
                         <asp:ListBox ID="ListAct" runat="server" 
-                        Height="412px" Width="160px" Autopostback="true"  OnSelectedIndexChanged="seleccionar">
+                            Height="412px" Width="160px" Autopostback="true"  OnSelectedIndexChanged="seleccionar">
                         </asp:ListBox>
            </fieldset>
         </div>
@@ -53,14 +53,25 @@
                         <asp:Label ID="labelDescripcionActividad" runat="server" Font-Size="Medium" 
                             Text="[ Descripción de la actividad ]"></asp:Label>
                         <div id="optionButtons" runat="server" style="margin-top: 50px">
+                             <asp:Button ID="botonEditarActividad" runat="server" Text="Editar actividad" 
+                                style="width:120px; margin-left:5px" onclick="botonEditarActividad_Click"/>      
+
                             <asp:Button ID="botonBorrarActividad" runat="server" Text="Borrar actividad" 
                                 style="width:120px" onclick="botonBorrarActividad_Click" />
-                            <asp:Button ID="botonEditarActividad" runat="server" Text="Editar actividad" 
-                                style="width:120px; margin-left:5px" onclick="botonEditarActividad_Click"/>
-                            <asp:Button ID="botonConfirmar" runat="server" Text="Confirmar" visible=false
-                                style="width:120px" onclick="botonConfirmar_Click" />                            
-                            <asp:Button ID="botonCancelar" runat="server" Text="Cancelar" visible=false
-                                style="width:120px; margin-left:5px" onclick="botonCancelar_Click"/>
+
+                            <asp:Panel ID="ConfirmaBorrar" class="confirmaBorrado" runat="server" BorderColor="Black" 
+                                BorderStyle="Solid" Font-Bold="True"  Font-Size="Large" Visible="False" 
+                                Width="300px">
+                                 <p>
+                                    ¿Deseas borrar la actividad?
+                                 </p>
+                                <p>
+                                     <asp:Button ID="botonConfirmar" runat="server" Text="Confirmar"
+                                        style="width:120px" onclick="botonConfirmar_Click" />                            
+                                    <asp:Button ID="botonCancelar" runat="server" Text="Cancelar"
+                                        style="width:120px; margin-left:5px" onclick="botonCancelar_Click"/> 
+                                 </p>                          
+                            </asp:Panel>                                                          
                         </div>
                     </div>
 

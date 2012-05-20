@@ -11,12 +11,25 @@
         #divPanelIzquierdo{
             background-color:transparent;
         }
+          #ConfirmaBorrar
+            {
+                
+                background-color: #fff1bb;
+                position:absolute;
+                left:25%;
+                top:25%;
+                height:100px;
+                width:600px;
+                padding:10px;
+                padding-left:20px;
+                padding-top:30px;
+            }  
     </style>
 
         <style>
-        #divPanelContenido{
-            background-color:transparent;
-        }
+            #divPanelContenido{
+                background-color:transparent;
+            }
             #Button1
             {
                 width: 57px;
@@ -25,11 +38,12 @@
             {
                 width: 633px;
             }
+                    
             
-            </style>
+        </style>
 
-        <div id="divPanelContenido" style="width:686px; float: left; margin-left:5px">
-            <fieldset id="Fieldset1" class="infoAsig" style="width: 750px; height:300px" runat="server">
+        <div id="divPanelContenido" style="width:780px; float: left; margin-left:15px">
+            <fieldset id="Fieldset1" class="infoAsig" style="width: 325px; height:300px; float: left" runat="server">
                 <legend>Información de la actividad personal</legend>
 
                     <div style="float:left; width:330px; height: 226px;">
@@ -44,22 +58,30 @@
                         
                         <div id="optionButtons" runat="server" style="margin-top: 50px">                                                        
                             <asp:Button ID="botonModificar" runat="server" Text="Modificar"
-                                style="width:120px" onclick="botonModificar_Click" />
-                            <asp:Button ID="botonCancelar" runat="server" Text="Cancelar"
-                                style="width:120px; margin-left:5px" onclick="botonCancelar_Click"/>
+                                style="width:120px" onclick="botonModificar_Click" />                            
                         </div>
                     </div>
+          </fieldset>
+
+          <fieldset id="Fieldset2" class="infoAsig" style="width: 325px; height:300px; float: right; margin-left: 10px" runat="server">
+                <legend>Gestión de turnos de la actividad</legend>
 
                     <div style="float:right; width: 360px" id="divTurnos" runat="server">
-                         <asp:ListBox ID="listaTurnos" runat="server" Height="210px" Width="190px" OnSelectedIndexChanged="CambiarTurno" style="float: right">                            
+                         <asp:ListBox ID="listaTurnos" runat="server" Autopostback="true" Height="210px" Width="190px" OnSelectedIndexChanged="CambiarTurno" style="float: right">                            
                         </asp:ListBox>
 
                         <div id="divCambiaTurno" runat="server" style="float: left" Visible="false">
                             <asp:Label ID="labelCambiaTurno" runat="server" Text="Modificar turno: "></asp:Label>
                             <br />
-                            <asp:TextBox ID="tbCambiaDia" runat="server"></asp:TextBox>
-                            <asp:RegularExpressionValidator ID="cambiaDiaValidate" ErrorMessage="Día no válido" ValidationExpression="^(Lunes|Martes|Miercoles|Miércoles|Jueves|Viernes)$" ToolTip="Día no válido" runat="server" 
-                                CssClass="failureNotification" ControlToValidate="tbCambiaDia">*</asp:RegularExpressionValidator>
+                             <asp:DropDownList ID="cambiaDia" runat="server" style="width: 142px">
+                                <asp:ListItem Value="1">Lunes</asp:ListItem>
+                                <asp:ListItem Value="2">Martes</asp:ListItem>
+                                <asp:ListItem Value="3">Miércoles</asp:ListItem>
+                                <asp:ListItem Value="4">Jueves</asp:ListItem>
+                                <asp:ListItem Value="5">Viernes</asp:ListItem>
+                                <asp:ListItem Value="5">Sábado</asp:ListItem>
+                                <asp:ListItem Value="5">Domingo</asp:ListItem>
+                            </asp:DropDownList>
                             <br />
                             <asp:TextBox ID="tbCambiaHoraI" runat="server"></asp:TextBox>
                             <asp:RegularExpressionValidator ID="cambiaHoraIValidate" runat="server" ValidationExpression="^[0-2][0-9]\:[0-5][0-9]$" ControlToValidate="tbCambiaHoraI" 
@@ -93,28 +115,45 @@
                         <asp:Button ID="btNuevoTurno" runat="server" Text="Añadir turno"
                             style="width:120px; float: left" onclick="btNuevoTurno_Click"/>
                         <br />
-
-                        <asp:Button ID="btConfirmaBorrar" runat="server" Text="Confirmar" Visible="false"
-                            style="width:120px; float: left" onclick="btConfirmaBorrar_Click"/>
-                        <br />
-                        <asp:Button ID="btCancelaBorrar" runat="server" Text="Cancelar" Visible="false"
-                            style="float: left; width:120px" onclick="btCancelaBorrar_Click"/>
-
+                        
+                        <asp:Panel ID="ConfirmaBorrar" class="confirmaBorrado"  runat="server" BorderColor="Black" 
+                            BorderStyle="Solid" Visible="False" 
+                            Width="300px" style="padding-left: 5px; font-size: medium; font-weight: normal" >
+                             <p style="margin-left: 15px">
+                                ¿Deseas borrar el turno del 
+                             </p>
+                             <p id="infoTurno" runat="server" style="margin-left: 15px">
+                             </p>
+                             <p>                               
+                                
+                                 <asp:Button ID="btConfirmaBorrar" runat="server" Text="Confirmar" Visible="false"
+                                   style="width:120px; float: left" onclick="btConfirmaBorrar_Click"/>                                
+                                <asp:Button ID="btCancelaBorrar" runat="server" Text="Cancelar" Visible="false"
+                                    style="float: left; width:120px" onclick="btCancelaBorrar_Click"/>                            
+                              </p>
+                         </asp:Panel>                      
+                        
                         <div id="divNuevoTurno" runat="server" style="float: left" Visible="false">
                             <asp:Label ID="lbNuevoTurno" runat="server" Text="Nuevo turno: "></asp:Label>
                             <br />
 
-                            <asp:TextBox ID="tbNuevoDia" runat="server" Text="Día"></asp:TextBox>
-                            <asp:RegularExpressionValidator ID="nuevoDiaValidate" ControlToValidate="tbNuevoDia" ToolTip="Día no válido" ErrorMessage="Día no válido" 
-                                ValidationExpression="^(Lunes|Martes|Miercoles|Miércoles|Jueves|Viernes)$" CssClass="failureNotification" runat="server">*</asp:RegularExpressionValidator>
+                            <asp:DropDownList ID="NuevoDia" runat="server" style="width: 142px">
+                                <asp:ListItem Value="1">Lunes</asp:ListItem>
+                                <asp:ListItem Value="2">Martes</asp:ListItem>
+                                <asp:ListItem Value="3">Miércoles</asp:ListItem>
+                                <asp:ListItem Value="4">Jueves</asp:ListItem>
+                                <asp:ListItem Value="5">Viernes</asp:ListItem>
+                                <asp:ListItem Value="5">Sábado</asp:ListItem>
+                                <asp:ListItem Value="5">Domingo</asp:ListItem>
+                            </asp:DropDownList>
                             <br />
 
-                            <asp:TextBox ID="tbNuevaHoraI" runat="server" Text="hh:mm"></asp:TextBox>
+                            <asp:TextBox ID="tbNuevaHoraI" runat="server" Text="00:00"></asp:TextBox>
                             <asp:RegularExpressionValidator ID="nuevaHoraIValidate" runat="server" ValidationExpression="^[0-2][0-9]\:[0-5][0-9]$" ControlToValidate="tbNuevaHoraI" 
                                 CssClass="failureNotification" ErrorMessage="Hora no válida" ToolTip="Hora no válida">*</asp:RegularExpressionValidator>
                             <br />
 
-                            <asp:TextBox ID="tbNuevaHoraF" runat="server" Text="hh:mm"></asp:TextBox>
+                            <asp:TextBox ID="tbNuevaHoraF" runat="server" Text="00:00"></asp:TextBox>
                             <asp:RegularExpressionValidator ID="nuevaHoraFValidate" runat="server" ValidationExpression="^[0-2][0-9]\:[0-5][0-9]$" ControlToValidate="tbNuevaHoraF" 
                                 CssClass="failureNotification" ErrorMessage="Hora no válida" ToolTip="Hora no válida">*</asp:RegularExpressionValidator>
                             <br />
@@ -123,13 +162,15 @@
                             <br />
 
                             <asp:Button ID="btConfirmaNuevo" runat="server" Text="Añadir"
-                                style="width:120px; margin-left:5px" onclick="btConfirmaNuevo_Click"/>
+                                style="width:120px; margin-left:5px; margin-top: 10px" onclick="btConfirmaNuevo_Click"/>
                             <br />
                             <asp:Button ID="btCancelaNuevo" runat="server" Text="Cancelar"
                                 style="width:120px; margin-left:5px" onclick="btCancelaNuevo_Click"/>
                         </div>                                                                    
                                                
                     </div>
-            </fieldset>
+             </fieldset>
+             <asp:Button ID="botonCancelar" runat="server" Text="Volver a Actividades"
+                   style="margin-left: 600px" onclick="botonCancelar_Click"/>
           </div>
 </asp:Content>

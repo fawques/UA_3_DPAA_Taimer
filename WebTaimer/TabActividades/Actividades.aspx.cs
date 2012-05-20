@@ -131,6 +131,7 @@ namespace WebTaimer.TabActividades
 
         protected void seleccionar(object sender, EventArgs e)
         {
+            MessageBox.Show(ListAct.SelectedItem.Text);
             int indicelista = Convert.ToInt32(ListAct.SelectedValue);            
             rellenocuadro(indicelista);
         }
@@ -188,11 +189,10 @@ namespace WebTaimer.TabActividades
 
         protected void botonBorrarActividad_Click(object sender, EventArgs e)
         {
+            ConfirmaBorrar.Visible = true;
             botonBorrarActividad.Visible = false;
             botonEditarActividad.Visible = false;
-            botonConfirmar.Visible = true;
-            botonCancelar.Visible = true;
-            
+   
             filtro.Visible = false;
             asig.Visible = false;
         }
@@ -207,11 +207,5 @@ namespace WebTaimer.TabActividades
             user.BorraActPersonal(actividad);
             Response.Redirect("~/TabActividades/Actividades.aspx");
         }
-
-        protected void CambiarTurno(object sender, EventArgs e)
-        {
-            MessageBox.Show(listaTurnos.SelectedItem.Text);
-        }
-
     }
 }
