@@ -13,7 +13,6 @@ namespace WebTaimer.TabHorarios
     public partial class Horarios : System.Web.UI.Page
     {
         List<Horario> horarios;
-        Horario horarioAct;
         protected string _horas;
         protected string _columnas;
         protected string _script;
@@ -149,24 +148,41 @@ namespace WebTaimer.TabHorarios
         protected void SelectHorario(int indice) {
             horarios = ((User)Session["usuario"]).Horarios;
 
-            int value = 0;
-            listaHorarios.DataBind();
-            listaHorarios.Items.Clear();
-            foreach (Horario item in horarios) {
-                listaHorarios.Items.Add(item.Nombre);
-                listaHorarios.Items[listaHorarios.Items.Count - 1].Value = value.ToString();
-                value++;
-            }
+            if (horarios.Count > 0) {
+                int value = 0;
+                listaHorarios.DataBind();
+                listaHorarios.Items.Clear();
+                foreach (Horario item in horarios) {
+                    listaHorarios.Items.Add(item.Nombre);
+                    listaHorarios.Items[listaHorarios.Items.Count - 1].Value = value.ToString();
+                    value++;
+                }
 
-            nomHorario.InnerText = horarios[indice].Nombre;
-            _horas = setHoras(horarios[indice]);
-            _columnas = setColums(horarios[indice]);
+                nomHorario.InnerText = horarios[indice].Nombre;
+                _horas = setHoras(horarios[indice]);
+                _columnas = setColums(horarios[indice]);
+                checkPublico.Checked = horarios[indice].Publico;
+            }
         }
 
         protected void Page_Load(object sender, EventArgs e) {
             if (Session.Count > 0) {
                 if (!IsPostBack) {
                     SelectHorario(0);
+                    if (Session["indice"] == null)
+                        Session.Add("indice", 0);
+                    else {
+                        Session.Remove("indice");
+                        Session.Add("indice", 0);
+                    /*System.Collections.Specialized.NameValueCollection gets;
+                    gets = Request.QueryString;
+
+                    if (gets.Count == 1 && gets["id"] != "" && gets["id"] != null) {
+                        int id = Convert.ToInt16(gets["id"]);
+                        SelectHorario(id);
+                    } else {
+                        SelectHorario(0);*/
+                    }
                 }
             }
             else {
@@ -179,6 +195,8 @@ namespace WebTaimer.TabHorarios
         protected void listaHorarios_SelectedIndexChanged(object sender, EventArgs e) {
             _indice = int.Parse(listaHorarios.SelectedValue);
             SelectHorario(_indice);
+            Session.Remove("indice");
+            Session.Add("indice", _indice);
         }
 
         protected void Buscar_Click(object sender, EventArgs e) {
@@ -215,20 +233,31 @@ namespace WebTaimer.TabHorarios
 
         protected void botCambiarNombre_Click(object sender, EventArgs e) {
 
-            nomHorario.InnerText = "indice " + listaHorarios.SelectedValue;
-            
-            //Response.Write("<script>alert('"+ _indice +"');</script>");
-            if (newNomHorario.Text.Count() > 0) {
-                Response.Write("<script>alert('No esta vacio');</script>");
-
-            }
-
-
+            int _indice = ((int)Session["indice"]);
+            horarios = ((User)Session["usuario"]).Horarios;
+            horarios[_indice].Nombre = newNomHorario.Text;
+            horarios[_indice].Modificar();
+            nomHorario.InnerText = newNomHorario.Text;
+            SelectHorario(_indice);
         }
 
         protected void botBorrarHorario_Click(object sender, EventArgs e) {
-
-
+            int _indice = ((int)Session["indice"]);
+            horarios = ((User)Session["usuario"]).Horarios;
+            horarios[_indice].Borrar();
+            horarios.Remove(horarios[_indice]);
+            SelectHorario(0);
+            Session.Remove("indice");
+            Session.Add("indice", 0);
         }
+
+        protected void checkPublico_CheckedChanged(object sender, EventArgs e) {
+            int _indice = ((int)Session["indice"]);
+            horarios = ((User)Session["usuario"]).Horarios;
+            horarios[_indice].Publico = !(horarios[_indice].Publico);
+            horarios[_indice].Modificar();
+            SelectHorario(_indice);
+        }
+
     }
 }

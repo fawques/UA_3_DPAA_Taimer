@@ -5,6 +5,9 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Taimer;
+using System.Collections;
+using System.Text;
+using System.Windows.Forms;
 
 namespace WebTaimer.TabAsignaturas
 {
@@ -15,12 +18,14 @@ namespace WebTaimer.TabAsignaturas
         protected List<Comentario> listaComentarios = new List<Comentario>();
         protected List<Comentario> comentariosAct = new List<Comentario>();
         protected string comentarios;
+        protected string puntuacion;
         protected Actividad_a actividadactual=null;
 
         protected void Page_Init(object sender, EventArgs e)
         {
+
             if (Session["usuario"] == null)
-                Response.Redirect("~/TabInicio/SinLogin.aspx?error=true");
+                Response.Redirect("~/TabAsignaturas/AsignaturasSin.aspx?error=true");
             else
             {
                 actodas = Actividad_a.GetAllActividades_a();
@@ -29,15 +34,21 @@ namespace WebTaimer.TabAsignaturas
                 if (id != null)
                 {
                     int idact = Convert.ToInt32(id);
-                    actividadactual = darActividad(idact);
-                    cargarTodasActividades();
+                    actividades.Add(darActividad(idact));
+                    foreach(Actividad_a a in actodas)
+                    {
+                        if (a.Codigo != darActividad(idact).Codigo)
+                            actividades.Add(a);
+                    }
+                    llenarLista();           
                     rellenocuadro(idact);
+                    
                 }
                 else
                 {
                     cargarTodasActividades();
                     rellenocuadroPrimero(0);
-
+                    
                 }
             }
             
@@ -49,12 +60,13 @@ namespace WebTaimer.TabAsignaturas
                 Response.Redirect("~/TabInicio/SinLogin.aspx?error=true");
             else
             {
-                if (!IsPostBack)
-                {
-                    cargarTodasActividades();
-                }
-            }
 
+               
+                 //rellenocuadro(Convert.ToInt16(ListAct.SelectedValue));
+
+            }
+           
+           
         }
         // Carga todas las actividades de la lista
         protected void cargarTodasActividades()
@@ -87,34 +99,51 @@ namespace WebTaimer.TabAsignaturas
                 i++;
 
             }
+            ListAct.SelectedIndex = 0;
         }
         protected void seleccionar(object sender, EventArgs e)
         {
             int indicelista = Convert.ToInt32(ListAct.SelectedValue);
             rellenocuadro(indicelista);
         }
+        
+
         protected void rellenocuadro(int codigo)
         {
             actividades = actodas;
+            bool existe = false;
             foreach (Actividad_a act in actividades)
             {
                 if (act.Codigo == codigo)
                 {
+                    
                     labelNombreAsignatura.Text = act.Nombre;
                     labelCoordinadorAsignatura.Text = act.NombreCoordinador;
                     labelDescripcionAsignatura.Text = act.Descripcion;
-                    r1.CurrentRating = Convert.ToInt16(Math.Round(act.NotaMedia()));
                     cargarTurnos(act);
                     tituPun.Visible = true;
                     tituloCoor.Visible = true;
                     labelTurnos.Visible = true;
-                    r1.Visible = true;
+                    r1.CurrentRating = Convert.ToInt16(Math.Round(act.NotaMedia()));
                     listaTurnos.Visible = true;
-                    coment.Visible = true;
-                    cargarComentarios(act);
-                    actividadactual = act;
+                    //coment.Visible = true;
+                    comentarios = cargarComentarios(act);
+                    UpdatePanelConversacion.Update();
+                    existe = true;
                 }
 
+            }
+            if (existe == false)
+            {
+                labelNombreAsignatura.Text = "El indice que se pasa no es correcto";
+                labelCoordinadorAsignatura.Text = "";
+                labelDescripcionAsignatura.Text = "";
+                tituPun.Visible = false;
+                tituloCoor.Visible = false;
+                labelTurnos.Visible = false;
+                
+                listaTurnos.Visible = false;
+                //coment.Visible = false;
             }
 
         }
@@ -132,12 +161,12 @@ namespace WebTaimer.TabAsignaturas
                 tituPun.Visible = true;
                 tituloCoor.Visible = true;
                 labelTurnos.Visible = true;
-                r1.Visible = true;
                 listaTurnos.Visible = true;
-                coment.Visible = true;
-                cargarComentarios(actividades[indice]);
-                actividadactual = actividades[indice];
-
+                //coment.Visible = true;
+                //cargarComentarios(actividades[indice]);
+                comentarios = cargarComentarios(actividades[indice]);
+                UpdatePanelConversacion.Update();
+                
             }
             else
             {
@@ -147,9 +176,9 @@ namespace WebTaimer.TabAsignaturas
                 tituPun.Visible = false;
                 tituloCoor.Visible = false;
                 labelTurnos.Visible = false;
-                r1.Visible = false;
+                
                 listaTurnos.Visible = false;
-                coment.Visible = false;
+                //coment.Visible = false;
 
             }
 
@@ -183,6 +212,7 @@ namespace WebTaimer.TabAsignaturas
             else
             {
                 cargarTodasActividades();
+                
                 rellenocuadroPrimero(0);
             }
 
@@ -203,10 +233,11 @@ namespace WebTaimer.TabAsignaturas
             return coment;
 
         }
-        protected void cargarComentarios(Actividad_a act)
+        protected string cargarComentarios(Actividad_a act)
         {
 
             comentariosAct = rellenoComenAct(act);
+            string comentarios = "";
             if (comentariosAct.Count == 0)
             {
                 comentarios = "<div style=\"color: #000000; float:center; background-color:#fff199;; overflow: visible; border-radius: 10px; margin: 4px; text-align:center \" >No tiene comentarios en esta Actividad</div>";
@@ -217,16 +248,51 @@ namespace WebTaimer.TabAsignaturas
                 foreach (Comentario com in comentariosAct)
                 {
 
-                    comentarios += "<div class='comentario'> <img src='" +
-                    rutaImagen(com.Usuario) + "' style='height: 100px; width: 100px' class='comentario' />"
-                    + "<span class='comentario'><p class='comentario'>Comentario enviado por: "
-                    + com.Usuario.Nombre + "(" + com.FechaToString() + ")</p><p>" + com.Texto + "</p></span></div>";
-
+                    string nomUsuario = "";
+                    string imagen = "";
+                    if (com.Usuario != null)
+                    {
+                        nomUsuario = com.Usuario.Nombre;
+                        imagen = rutaImagen(com.Usuario);
+                    }
+                    else
+                    {
+                        nomUsuario = "Anónimo";
+                        imagen = "../Images/default.jpg";
+                    }
+                   
+                    if (com.Usuario != null)
+                    {
+                        if (((User)Session["usuario"]).DNI == com.Usuario.DNI)
+                        {
+                            
+                            comentarios += "<div class='comentario'> <div style='width:120px; heigth:400px;  float:left; '><img src='" + imagen
+                            + "' style='height: 100px; width: 100px margin-left:10px;' class='comentario' /><br/>" + "<input type='submit' name='ctl00$MainContent$Button' TagName='"+com.ID+"'  value='Borrar' id='Button' />"
+                           + "</div>" + "<span class='comentario'><p class='comentario' >Comentario enviado por: " +
+                            nomUsuario + " (" + com.FechaToString() + ")</p><div><p style='color: #8c7052; width:400px; font-style:italic;  text-align: left;'>" + com.Texto + "</p></div></span></div>";
+                            
+                           
+                        }
+                        else
+                        {
+                             comentarios += "<div class='comentario'> <img src='" + imagen
+                            + "' style='height: 100px; width: 100px' class='comentario' />"
+                            + "<span class='comentario'><p class='comentario' >Comentario enviado por: "
+                            + nomUsuario + " (" + com.FechaToString() + ")</p><div  ><p style='color: #8c7052; width:400px; font-style:italic;  text-align: left;'>" + com.Texto + "</p></div></span></div>";
+                        }
+                    }                    else                    {                         comentarios += "<div class='comentario'> <img src='" + imagen
+                            + "' style='height: 100px; width: 100px' class='comentario' />"
+                            + "<span class='comentario'><p class='comentario' >Comentario enviado por: "
+                            + nomUsuario + " (" + com.FechaToString() + ")</p><div  ><p style='color: #8c7052; width:400px; font-style:italic;  text-align: left;'>" + com.Texto + "</p></div></span></div>";                    }
                 }
             }
-
-
+            return comentarios;
         }
+        protected void Borrar(object sender, EventArgs e)
+        {
+            //MessageBox.Show(Convert.ToString(Button.Text));
+        }
+
         protected string rutaImagen(User user)
         {
             string ruta = "";
@@ -236,6 +302,7 @@ namespace WebTaimer.TabAsignaturas
                 ruta = "../Images/default.jpg";
             return ruta;
         }
+
         protected Actividad_a darActividad(int indice)
         {
 
@@ -252,25 +319,62 @@ namespace WebTaimer.TabAsignaturas
         {
             string texto = textoComent.Text; 
             Comentario com = null;
-            Actividad_a a = null;
+            actividadactual = darActividad(Convert.ToInt32(ListAct.SelectedValue));
+            
             if (texto != null || texto != "")
             {
-                
-                
+                // Fragmentar las palabras de más de 50 caracteres para no descuadrar el cuadro de mensajes
+                int acumuladas = 0;
+                string nuevotexto = "";
+                for (int i = 0; i < texto.Length; i++)
+                {
+                    if (texto[i].Equals(" "))
+                        acumuladas = 0;
+                    else
+                        acumuladas++;
+
+                    if (acumuladas > 50)
+                    {
+                        nuevotexto += " " + texto[i];
+                        //advertencia = true;
+                        acumuladas = 1;
+                    }
+                    else
+                    {
+                        nuevotexto += texto[i];
+                    }
+
+                }
                 if(checkAnonimo.Checked)
                 {
 
-                    com = new Comentario(0, texto, actividadactual, null, DateTime.Now);
+                    com = new Comentario(0, nuevotexto, actividadactual, null, DateTime.Now);
                 }
                 else
                 {
 
-                    com = new Comentario(0, texto, actividadactual, (User)Session["usuario"], DateTime.Now);
+                    com = new Comentario(0,nuevotexto, actividadactual, (User)Session["usuario"], DateTime.Now);
                 }
+
                 com.Agregar();
-                comentariosAct.Insert(0,com);
-                textoComent.Text="";
+                listaComentarios.Insert(0, com);
+                rellenocuadro(Convert.ToInt32(ListAct.SelectedValue));
+                com = null;
+                textoComent.Text = "";
+                
             }
         }
+        protected void Submit1_onclick(object sender, AjaxControlToolkit.RatingEventArgs e)
+        {
+            actividadactual = darActividad(Convert.ToInt32(ListAct.SelectedValue));
+            actodas.Remove(actividadactual);
+            int nota = Convert.ToInt16(e.Value);
+            actividadactual.NotaTotal = actividadactual.NotaTotal+nota;
+            actividadactual.NumVotos++;
+            actividadactual.Modificar();
+            actodas.Insert(0,actividadactual);
+            rellenocuadro(Convert.ToInt32(ListAct.SelectedValue));
+        }
+
     }
 }

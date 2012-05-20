@@ -121,13 +121,22 @@ namespace WebTaimer.TabAsignaturas {
         protected global::System.Web.UI.WebControls.ListBox listaTurnos;
         
         /// <summary>
-        /// Control coment.
+        /// Control UpdatePanelConversacion.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl coment;
+        protected global::System.Web.UI.UpdatePanel UpdatePanelConversacion;
+        
+        /// <summary>
+        /// Control UpdatePanelEnviarMensaje.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdatePanelEnviarMensaje;
         
         /// <summary>
         /// Control textoComent.

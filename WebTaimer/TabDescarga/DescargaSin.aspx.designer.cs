@@ -10,6 +10,6 @@
 namespace WebTaimer.TabDescarga {
     
     
-    public partial class Descarga {
+    public partial class DescargaSin {
     }
 }

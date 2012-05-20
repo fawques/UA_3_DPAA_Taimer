@@ -4,6 +4,7 @@
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
+
     <style type="text/css">
         #TextArea1
         {
@@ -32,6 +33,7 @@
             .comentario
             {
                 width: 633px;
+                
             }
             .filledRatingStar
             {
@@ -107,13 +109,12 @@
                                     <asp:Label ID="labelCoordinadorAsignatura" runat="server" Text="[ Nombre del coordinador ]"></asp:Label>
                                     <br />
                                     <br />
-                                    <asp:Label ID="tituPun" runat="server">Puntuación:</asp:Label>
+                                    <asp:Label ID="tituPun" runat="server">Puntuación: (Vota la Asignatura)</asp:Label>
                                    <br />
                                     <br />
                                     <asp:Rating ID="r1" runat="server" CurrentRating="0" MaxRating="10" StarCssClass="ratingStar" WaitingStarCssClass="savedRatingStar" 
-                                    FilledStarCssClass="filledRatingStar" EmptyStarCssClass="emptyRatingStar" >
+                                    FilledStarCssClass="filledRatingStar" AutoPostBack="true" EmptyStarCssClass="emptyRatingStar" onchanged="Submit1_onclick">
                                     </asp:Rating>
-                                    &nbsp;<input id="Submit1" type="submit" value="Vota"  onclick="Submit1_onclick()" />
                                 </div>
                                 <div style="float:left">
                                     <asp:Label ID="labelTurnos" runat="server" Font-Bold="True" Text="Turnos" align="center"></asp:Label>
@@ -122,12 +123,17 @@
                                     </asp:ListBox>
                                 </div>
                     </fieldset>
-                    <fieldset class="filtro"  id="coment" runat="server" style="width: 687px; height:380px">
-                        <legend>Comentarios</legend>
-                        <div style="height: 240px; overflow: auto; border: 1px solid Gray;">
+                    
+                        <asp:UpdatePanel ID="UpdatePanelConversacion" runat="server" 
+                            UpdateMode="Conditional">
+                <ContentTemplate>
+                        <div  style="height: 240px; overflow: auto; border: 1px solid Gray;">
                              <% = comentarios %>
                         </div>
-                     
+                </ContentTemplate>
+            </asp:UpdatePanel>
+                     <asp:UpdatePanel ID="UpdatePanelEnviarMensaje" runat="server">
+                            <ContentTemplate>
                         <div style="height: 60px; width: 658px;">
                             &nbsp;&nbsp;<asp:TextBox ID="textoComent" TextMode="MultiLine" runat="server" 
                                 Height="80px" Width="550px" style=" position:relative; left:0px; top:0px; margin-top:10px"></asp:TextBox>
@@ -136,6 +142,8 @@
                                <br />
                                 <asp:CheckBox ID="checkAnonimo" runat="server" Text="Enviar de forma anónima" />
                         </div>
-                    </fieldset>
-       </div>
+                     </ContentTemplate>
+                        </asp:UpdatePanel> 
+            
+      
 </asp:Content>
