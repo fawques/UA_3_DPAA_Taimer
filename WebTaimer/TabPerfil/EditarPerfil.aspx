@@ -9,7 +9,7 @@
     </h2>
 
     <div class="datosAdicionales" style="float: right; margin-left: 0px; margin-right: 50px; margin-top:-20px; width:384px">
-        <fieldset class="fieldDatosAdicionales" style="width: 360px; height:200px">
+        <fieldset class="fieldDatosAdicionales" style="width: 360px; height:245px">
             <legend>Datos adicionales</legend>
            
             <div style="width:260px; height:110px; margin-left:10px; float:left">
@@ -24,10 +24,9 @@
                 </div>
             </div>          
 
-             <div style="margin-left:10px; width: 333px; clear: both">
-                    <br />
+             <div style="margin-left:10px; width: 333px; clear: both">                    
                 <asp:Label ID="labelFrasePersonal" runat="server">Frase personal:</asp:Label>
-                <asp:TextBox ID="FrasePersonal" runat="server" CssClass="textEntry"></asp:TextBox>
+                <asp:TextBox ID="FrasePersonal" runat="server" TextMode="MultiLine" Width="335px" Height="75px" CssClass="textEntry"></asp:TextBox>
             </div>
         </fieldset>
         </div>
@@ -89,7 +88,7 @@
             <legend>Contraseña</legend>
             <p style="width:333px">
                 <asp:Label ID="labelPasswordAnterior" runat="server" AssociatedControlID="PasswordAnterior">Contraseña anterior:</asp:Label>
-                <asp:TextBox ID="PasswordAnterior" runat="server" CssClass="textEntry"></asp:TextBox>
+                <asp:TextBox ID="PasswordAnterior" runat="server" CssClass="passwordEntry" TextMode="Password"></asp:TextBox>
                 <asp:RequiredFieldValidator ID="PasswordRequired" runat="server" ControlToValidate="PasswordAnterior" 
                     CssClass="failureNotification" ErrorMessage="La contraseña no es correcta." ToolTip="La contraseña no es correcta." 
                     ValidationGroup="RegisterUserValidationGroup">*</asp:RequiredFieldValidator>                                
@@ -97,7 +96,7 @@
             <br />
             <p class="dataBox">
                 <asp:Label ID="labelNuevoPassword" runat="server" AssociatedControlID="NuevoPassword">Nueva contraseña:</asp:Label>
-                <asp:TextBox ID="NuevoPassword" runat="server" CssClass="textEntry"></asp:TextBox>
+                <asp:TextBox ID="NuevoPassword" runat="server" CssClass="passwordEntry" TextMode="Password"></asp:TextBox>
                 <asp:RequiredFieldValidator ID="NuevoPassRequiered" runat="server" ControlToValidate="NuevoPassword" 
                     CssClass="failureNotification" ErrorMessage="La contraseña es obligatoria." ToolTip="Introduzca nueva contraseña" 
                     ValidationGroup="RegisterUserValidationGroup">*</asp:RequiredFieldValidator>
@@ -107,7 +106,7 @@
             <br />
                 <p class="dataBox">
                 <asp:Label ID="labelConfirmarNuevoPassword" runat="server" AssociatedControlID="UserName">Confirmar nueva contraseña:</asp:Label>
-                <asp:TextBox ID="ConfirmarNuevoPassword" runat="server" CssClass="textEntry"></asp:TextBox>
+                <asp:TextBox ID="ConfirmarNuevoPassword" runat="server" CssClass="passwordEntry" TextMode="Password"></asp:TextBox>
                 <asp:RequiredFieldValidator ID="ConfirmarNuevoPassRequiered" runat="server" ControlToValidate="ConfirmarNuevoPassword" 
                     CssClass="failureNotification" ErrorMessage="Las contraseñas no coinciden." ToolTip="Las contraseñas no coinciden." 
                     ValidationGroup="RegisterUserValidationGroup">*</asp:RequiredFieldValidator>                                

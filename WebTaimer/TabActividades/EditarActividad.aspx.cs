@@ -15,22 +15,6 @@ namespace WebTaimer.TabActividades
         Turno turnoSelec;
         User user;
 
-        /*protected void Page_Load(object sender, EventArgs e)
-        {
-            if (!IsPostBack)
-            {
-                if (Session["usuario"] == null)
-                    Response.Redirect("~/TabInicio/SinLogin.aspx?error=true");
-
-                else
-                {
-                    user = (User)Session["usuario"];
-                    actividad = getActividad();
-                    MessageBox.Show(actividad.Nombre);
-                }
-            }
-        }*/
-
         protected void Page_Init(object sender, EventArgs e)
         {            
             if (Session["usuario"] == null)
@@ -52,11 +36,7 @@ namespace WebTaimer.TabActividades
                     foreach (Turno t in actividad.Turnos)
                     {
                         if (t.Codigo == index)
-                        {
-                            tbCambiaDia.Text = t.DiaString;
-                            tbCambiaHoraI.Text = t.HoraInicio.toString();
-                            tbCambiaHoraF.Text = t.HoraFin.toString();
-                            tbCambiaUbic.Text=t.Ubicacion;
+                        {                           
                             turnoSelec = t;
                         }
                     }
@@ -73,8 +53,7 @@ namespace WebTaimer.TabActividades
         {
             actividad.Nombre = tbNombreActividad.Text;
             actividad.Descripcion = tbDescActividad.Text;
-            actividad.Modificar();
-            Response.Redirect("~/TabActividades/Actividades.aspx");            
+            actividad.Modificar();            
         }
 
         protected void CambiarTurno(object sender, EventArgs e)
@@ -86,7 +65,7 @@ namespace WebTaimer.TabActividades
                 {
                     if (t.Codigo == index)
                     {
-                        tbCambiaDia.Text = t.DiaString;
+                        cambiaDia.SelectedIndex = getDayIndex(t.DiaString);
                         tbCambiaHoraI.Text = t.HoraInicio.toString();
                         tbCambiaHoraF.Text = t.HoraFin.toString();
                         tbCambiaUbic.Text = t.Ubicacion.ToString();                        
@@ -135,7 +114,7 @@ namespace WebTaimer.TabActividades
                 {
                     if (t.Codigo == index)
                     {
-                        tbCambiaDia.Text = t.DiaString;
+                        cambiaDia.SelectedIndex = getDayIndex(t.DiaString);
                         tbCambiaHoraI.Text = t.HoraInicio.toString();
                         tbCambiaHoraF.Text = t.HoraFin.toString();
                         tbCambiaUbic.Text = t.Ubicacion.ToString();
@@ -147,27 +126,63 @@ namespace WebTaimer.TabActividades
                 btCambiaTurno.Visible = false;
                 btBorraTurno.Visible = false;
                 btCancelaTurno.Visible = true;
-                btNuevoTurno.Visible = false;
-
-
+                btNuevoTurno.Visible = false;                
             }
+        }
+
+        /// <summary>
+        /// Obtiene un índice según el día de la semana que se le pasa por parámetro.
+        /// Sirve para seleccionar el adecuado en la lista desplegable a la hora de cambiar un turno.
+        /// </summary>
+        /// <param name="dia"></param>
+        /// <returns></returns>
+        protected int getDayIndex(string dia)
+        {
+            int index = 0;
+            switch (dia)
+            {
+                case "Lunes": index = 0;
+                    break;
+
+                case "Martes": index = 1;
+                    break;
+
+                case "Miércoles": index = 2;
+                    break;
+
+                case "Jueves": index = 3;
+                    break;
+
+                case "Viernes": index = 4;
+                    break;
+
+                case "Sábado": index = 5;
+                    break;
+
+                case "Domingo": index = 6;
+                    break;                            
+            }
+            return index;
         }
 
         protected void btBorraTurno_Click(object sender, EventArgs e)
         {
             if (listaTurnos.Items.Count > 0)
             {
+                ConfirmaBorrar.Visible = true;
                 btBorraTurno.Visible = false;
                 btCambiaTurno.Visible = false;
                 btConfirmaBorrar.Visible = true;
                 btCancelaBorrar.Visible = true;
                 btNuevoTurno.Visible = false;
+                listaTurnos.Visible = false;
+                infoTurno.InnerText = listaTurnos.SelectedItem.Text + "?";
             }
         }
 
         protected void btConfirmaTurno_Click(object sender, EventArgs e)
         {            
-            turnoSelec.DiaString = tbCambiaDia.Text;
+            turnoSelec.DiaString = cambiaDia.SelectedItem.Text;
             turnoSelec.HoraI(tbCambiaHoraI.Text);
             turnoSelec.HoraF(tbCambiaHoraF.Text);
             turnoSelec.Ubicacion = tbCambiaUbic.Text;
@@ -187,7 +202,7 @@ namespace WebTaimer.TabActividades
             btBorraTurno.Visible = true;
             btCancelaTurno.Visible = false;
             btNuevoTurno.Visible = true;
-            //MessageBox.Show("Salgo");
+            
             Response.Redirect("EditarActividad.aspx?id=" + actividad.Codigo);
         }
 
@@ -205,6 +220,8 @@ namespace WebTaimer.TabActividades
             actividad.BorraTurno(turnoSelec.Codigo);
             btCambiaTurno.Visible = true;
             btConfirmaBorrar.Visible = false;
+            ConfirmaBorrar.Visible = false;
+            listaTurnos.Visible = true;
             Response.Redirect("EditarActividad.aspx?id=" + actividad.Codigo);
         }
 
@@ -215,6 +232,8 @@ namespace WebTaimer.TabActividades
             btCancelaBorrar.Visible = false;
             btConfirmaBorrar.Visible = false;
             btNuevoTurno.Visible = true;
+            ConfirmaBorrar.Visible = false;
+            listaTurnos.Visible = true;
         }
 
         protected void btNuevoTurno_Click(object sender, EventArgs e)
@@ -223,18 +242,16 @@ namespace WebTaimer.TabActividades
             divNuevoTurno.Visible = true;
             btCambiaTurno.Visible = false;
             btBorraTurno.Visible = false;
-            btNuevoTurno.Visible = false;
-         
+            btNuevoTurno.Visible = false;                     
         }
 
         protected void btConfirmaNuevo_Click(object sender, EventArgs e)
         {
             Hora ini = new Hora(tbNuevaHoraI.Text);
             Hora fin = new Hora(tbNuevaHoraF.Text);
-            turnoSelec = new Turno(ini, fin, tbNuevoDia.Text, tbNuevaUbic.Text, actividad);
+            turnoSelec = new Turno(ini, fin, NuevoDia.SelectedItem.Text, tbNuevaUbic.Text, actividad);
 
-            turnoSelec.Agregar();
-            //actividad.AddTurno(turnoSelec);
+            turnoSelec.Agregar();            
 
             btCancelaNuevo.Visible = false;
             btConfirmaNuevo.Visible = false;
