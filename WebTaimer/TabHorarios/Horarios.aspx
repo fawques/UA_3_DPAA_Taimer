@@ -6,7 +6,7 @@
         #divPanelIzquierdo
         {
             width:150px;
-            height:765px;
+            /*height:765px;*/
         }
         
         #divZonaHorario
@@ -37,7 +37,7 @@
        div.horas 
        {
         width: 55px; 
-        height: 437px; 
+        /*height: 437px; */
         background-color: Maroon; 
         float: left; 
         clear:both; 
@@ -154,8 +154,7 @@
 </asp:Content>
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
     <h2><asp:HyperLink style="color: Maroon; text-decoration:none;" ID="horarioDe" runat="server" NavigateUrl=""/>
-        <asp:Label ID="Label1" runat="server" Text=""></asp:Label>
-    </h2>
+    </h2><br />
     
 
     <!-- PANEL IZQUIERDO (seleccionar horario) ---------------->
@@ -230,7 +229,7 @@
     <!-- ZONA DE HORARIO -------------------------------------->
 
     <div id="divZonaHorario" 
-        style="border-right: 1px solid Gray; border-bottom: 1px solid Gray; float: right; width: 768px; margin: 0px; height: 724px; border-left-style: none; border-left-color: inherit; border-left-width: medium; border-top-style: none; border-top-color: inherit; border-top-width: medium;">
+        style="border-right: 1px solid Gray; border-bottom: 1px solid Gray; float: right; width: 768px; margin-left:10px; margin: 0px; border-left-style: none; border-left-color: inherit; border-left-width: medium; border-top-style: none; border-top-color: inherit; border-top-width: medium; padding-bottom:15px;">
         <div style="color: Maroon; width: 760px; ">
 
                 <div style="background-color: Maroon; height: 23px; padding-left: 89px;">

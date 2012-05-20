@@ -74,7 +74,7 @@ namespace WebTaimer.TabHorarios
 
         protected string setHoras(Horario h) {
             int minHora = h.minHora().Hor;
-            int maxHora = getMaxHora(h);
+            int maxHora = h.maxHora().Hor + 1;
 
             string horas = "";
             for (int i = minHora; i < maxHora; i++) {
@@ -94,7 +94,7 @@ namespace WebTaimer.TabHorarios
 
             int indice = 0;
 
-            horarioDe.Text = "Horario de " + h.Usuario.Nombre;
+            horarioDe.Text = "Mis Horarios";
             horarioDe.NavigateUrl = "~/TabPerfil/VerPerfil.aspx?user=" + h.Usuario.Email;
 
 

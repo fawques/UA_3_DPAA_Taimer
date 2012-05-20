@@ -69,7 +69,6 @@
     <Content Include="Images\mensaje.gif" />
     <Content Include="Images\pencil.gif" />
     <Content Include="Images\recycle.gif" />
-    <Content Include="Images\recyclebin.png" />
     <Content Include="Images\tick.png" />
     <Content Include="Styles\MyCSS.css" />
     <Content Include="TabActividades\Actividades.aspx" />
