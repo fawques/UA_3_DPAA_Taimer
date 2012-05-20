@@ -4,7 +4,7 @@
         #divPanelIzquierdo
         {
             width:150px;
-            height:632px;
+            /*height:632px;*/
         }
         
         #divZonaHorario
@@ -20,7 +20,7 @@
            background-color: White;
            width: 89px;
            float: left;
-           height: 520px;
+           /*height: 520px;*/
        }
        
        .diasSem 
@@ -35,7 +35,7 @@
        div.horas 
        {
         width: 55px; 
-        height: 437px; 
+        /*height: 437px; */
         background-color: Maroon; 
         float: left; 
         clear:both; 
@@ -152,13 +152,16 @@
 </asp:Content>
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
 <asp:ScriptManager ID="ScriptManager1" runat="server" />
-<legend>Horarios</legend>
+<h1 style="color: Maroon; text-decoration:none;">Horarios públicos</h1>
+    
+
+    <h2 style="font-size:medium;"><asp:HyperLink ID="horarioDe" runat="server" NavigateUrl="" 
+            style="color: Maroon; text-decoration:none;" />
+        <asp:Label ID="Label2" runat="server" Text=""></asp:Label>&nbsp;&nbsp;&nbsp; </h2>
+        <br />
             <asp:UpdatePanel ID="UpdatePanel1" runat="server">
             <ContentTemplate>
 
-    <h2><asp:HyperLink style="color: Maroon; text-decoration:none;" ID="horarioDe" runat="server" NavigateUrl=""/>
-        <asp:Label ID="Label1" runat="server" Text=""></asp:Label>
-    </h2>
     
 
     <!-- PANEL IZQUIERDO (seleccionar horario) ---------------->
