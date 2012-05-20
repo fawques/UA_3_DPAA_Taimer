@@ -174,6 +174,14 @@ namespace WebTaimer.TabHorarios
                     else {
                         Session.Remove("indice");
                         Session.Add("indice", 0);
+                    /*System.Collections.Specialized.NameValueCollection gets;
+                    gets = Request.QueryString;
+
+                    if (gets.Count == 1 && gets["id"] != "" && gets["id"] != null) {
+                        int id = Convert.ToInt16(gets["id"]);
+                        SelectHorario(id);
+                    } else {
+                        SelectHorario(0);*/
                     }
                 }
             }
@@ -239,6 +247,8 @@ namespace WebTaimer.TabHorarios
             horarios[_indice].Borrar();
             horarios.Remove(horarios[_indice]);
             SelectHorario(0);
+            Session.Remove("indice");
+            Session.Add("indice", 0);
         }
 
         protected void checkPublico_CheckedChanged(object sender, EventArgs e) {

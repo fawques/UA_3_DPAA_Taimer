@@ -35,6 +35,9 @@ namespace WebTaimer.TabHorariosPublicos
         }
 
         protected void Page_Init(object sender, EventArgs e) {
+            if (Session["usuario"] == null)
+                Response.Redirect("~/TabHorariosPublicos/HorariosPublicosSin.aspx?error=true");
+
             listaHorarios.AutoPostBack = true;
             listaUsuarios.AutoPostBack = true;
             listaHorariosUsuario.AutoPostBack = true;

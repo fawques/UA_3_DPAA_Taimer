@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="Descarga de la aplicación Taimer" Language="C#" MasterPageFile="~/NoLogin.master" AutoEventWireup="true"
-    CodeBehind="DescargaSin.aspx.cs" Inherits="WebTaimer.TabDescarga.Descarga" %>
+    CodeBehind="DescargaSin.aspx.cs" Inherits="WebTaimer.TabDescarga.DescargaSin" %>
 
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
 </asp:Content>
