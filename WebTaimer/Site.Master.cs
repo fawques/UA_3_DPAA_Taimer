@@ -22,6 +22,7 @@ namespace WebTaimer
         protected void NavigationMenu_MenuItemClick(object sender, MenuEventArgs e) {
             //Response.Write("<script>alert(\"Salir!\")</script>");
             Session.Remove("usuario");
+            Session.Abandon();
             Response.Redirect("~/TabInicio/SinLogin.aspx");
         }
     }
