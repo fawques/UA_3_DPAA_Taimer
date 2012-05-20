@@ -60,7 +60,7 @@ namespace WebTaimer.TabInicio
                             if (count == 2) {
                                 HtmlGenericControl a = new HtmlGenericControl("a");
                                 a.Attributes.Add("href", "../TabHorarios/Horarios.aspx?id=" + i);
-                                a.InnerText = " Mas...";
+                                a.InnerText = " Más...";
                                 li.Controls.Add(a);
                                 break;
                             }
