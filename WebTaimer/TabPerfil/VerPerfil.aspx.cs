@@ -65,5 +65,15 @@ namespace WebTaimer.TabPerfil
             // Lleva a la página de editar perfil
             Response.Redirect("~/TabPerfil/EditarPerfil.aspx");
         }
+
+        protected void botEnviarMensaje_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/TabMensajes/Mensajes.aspx?usuario=" + labelEmail.Text);
+        }
+
+        protected void botVerHorarios_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/TabHorariosPublicos/HorariosPublicos.aspx?usuario=" + labelEmail.Text);
+        }
     }
 }

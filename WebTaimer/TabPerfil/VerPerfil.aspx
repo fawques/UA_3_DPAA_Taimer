@@ -77,10 +77,12 @@
                         onclick="botEditarPerfil_Click" Visible="True" />
 
             <asp:Button ID="botEnviarMensaje" runat="server" Text="Enviar mensaje"
-                    style="margin-top: 10px; width:100px; height:25px;" />
+                    style="margin-top: 10px; width:100px; height:25px;" 
+                onclick="botEnviarMensaje_Click" />
 
             <asp:Button ID="botVerHorarios" runat="server" Text="Ver horarios"
-                    style="margin-top: 10px; width:100px; height:25px;" />
+                    style="margin-top: 10px; width:100px; height:25px;" 
+                onclick="botVerHorarios_Click" />
         </div>
     </div>           
 

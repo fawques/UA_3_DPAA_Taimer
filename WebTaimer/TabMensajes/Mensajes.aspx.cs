@@ -41,7 +41,7 @@ namespace WebTaimer.TabMensajes
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            string email = Request.QueryString["email"];
+            string email = Request.QueryString["usuario"];
 
             if (email == null && labelConversador.Visible == false)
             {
@@ -53,8 +53,18 @@ namespace WebTaimer.TabMensajes
             {
                 receptor = Taimer.User.GetUserByEmail(email);
 
-                if(receptor != null)
+                if (receptor != null)
+                {
+                    for (int i = 0; i < listaUsuarios.Items.Count; i++)
+                    {
+                        if (listaUsuarios.Items[i].Text == receptor.Nombre)
+                        {
+                            listaUsuarios.SelectedIndex = i;
+                            break;
+                        }
+                    }
                     LoadUser();
+                }
                 else
                     conversacion = "<div style=\"color: #000000; float:center; border: 5px double #117777; background-color: #118888; overflow: visible; border-radius: 10px; margin: 4px; text-align:center \" >El usuario no existe.</div>";
             }
