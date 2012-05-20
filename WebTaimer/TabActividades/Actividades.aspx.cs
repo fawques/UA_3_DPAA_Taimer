@@ -138,7 +138,7 @@ namespace WebTaimer.TabActividades
 
         protected void seleccionar(object sender, EventArgs e)
         {
-            MessageBox.Show(ListAct.SelectedItem.Text);
+            //MessageBox.Show(ListAct.SelectedItem.Text);
             int indicelista = Convert.ToInt32(ListAct.SelectedValue);            
             rellenocuadro(indicelista);
         }

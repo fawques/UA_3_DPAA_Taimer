@@ -79,8 +79,8 @@
                                 <asp:ListItem Value="3">Miércoles</asp:ListItem>
                                 <asp:ListItem Value="4">Jueves</asp:ListItem>
                                 <asp:ListItem Value="5">Viernes</asp:ListItem>
-                                <asp:ListItem Value="5">Sábado</asp:ListItem>
-                                <asp:ListItem Value="5">Domingo</asp:ListItem>
+                                <asp:ListItem Value="6">Sábado</asp:ListItem>
+                                <asp:ListItem Value="7">Domingo</asp:ListItem>
                             </asp:DropDownList>
                             <br />
                             <asp:TextBox ID="tbCambiaHoraI" runat="server"></asp:TextBox>
