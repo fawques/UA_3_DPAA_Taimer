@@ -25,7 +25,7 @@ namespace WebTaimer.TabAsignaturas
         {
 
             if (Session["usuario"] == null)
-                Response.Redirect("~/TabInicio/SinLogin.aspx?error=true");
+                Response.Redirect("~/TabAsignaturas/AsignaturasSin.aspx?error=true");
             else
             {
                 actodas = Actividad_a.GetAllActividades_a();
