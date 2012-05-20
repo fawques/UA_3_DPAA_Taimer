@@ -31,7 +31,7 @@
             <div id="divCajaAvatarNombre" style="width:200px; height:48px">
 
             <div style="width:48px; float: left">
-                <asp:Image ID="imagenAvatar" runat="server" ImageUrl="~/Images/default.jpg" />
+                <asp:Image ID="imagenAvatar" runat="server" ImageUrl="~/Images/default.jpg" Width="48px" Height="48px" />
             </div>
 
             <div id="divNombre" style="float: left; width: 152px; height: 48px">
