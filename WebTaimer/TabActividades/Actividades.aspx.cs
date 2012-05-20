@@ -42,17 +42,24 @@ namespace WebTaimer.TabActividades
                 if (id != null)
                 {
                     int idact = Convert.ToInt32(id);
-
+                    
                     foreach (Actividad_p act in user.ActPersonales)
                     {
                         if (idact == act.Codigo)
                         {
                             listaFiltro.Add(act);
-                            llenarLista();
+                            
                             actividad = act;
                         }
                         
                     }
+
+                    foreach (Actividad_p act in user.ActPersonales)
+                    {
+                        if(act.Codigo!=idact)
+                            listaFiltro.Add(act);
+                    }
+                    llenarLista();
                     rellenocuadro(idact);
                 }
                 else

@@ -117,7 +117,7 @@
                         <br />
                         
                         <asp:Panel ID="ConfirmaBorrar" class="confirmaBorrado"  runat="server" BorderColor="Black" 
-                            BorderStyle="Solid" Visible="False" 
+                            BorderStyle="None" Visible="False" 
                             Width="300px" style="padding-left: 5px; font-size: medium; font-weight: normal" >
                              <p style="margin-left: 15px">
                                 ¿Deseas borrar el turno del 
