@@ -218,12 +218,20 @@ namespace WebTaimer.TabHorariosPublicos
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            //if (Session.Count > 0) {
                 if (!IsPostBack) {
+
+                    string user = Request.QueryString["usuario"];
+                    if (user != null)
+                    {
+                        textboxFiltro.Text = user;
+                        RBUsuarios.Checked = true;
+                        RBHorarios.Checked = false;
+                        BuscarUsuario(user);
+                    }
+
                     SelectHorario(0);
                     SelectUsuario(0);
                 }
-            //}
 
 
         }
@@ -265,23 +273,30 @@ namespace WebTaimer.TabHorariosPublicos
                 }
             }
             else {
-                listaUsuarios.Items.Clear();
-                if (Session.Count > 0)
-                    usuarios = Taimer.User.GetAllUsersExceptoUno(((User)Session["usuario"]).DNI);
-                else
-                    usuarios = Taimer.User.GetAllUsers();
+                BuscarUsuario(buscar);
+            }
+        }
 
-                int value = 0;
-                foreach (User usr in usuarios) {
-                    string nom = usr.Email;
-                    NormalizarCadena(ref nom);
+        private void BuscarUsuario(string buscar)
+        {
+            listaUsuarios.Items.Clear();
+            if (Session.Count > 0)
+                usuarios = Taimer.User.GetAllUsersExceptoUno(((User)Session["usuario"]).DNI);
+            else
+                usuarios = Taimer.User.GetAllUsers();
 
-                    if (nom.Contains(buscar)) {
-                        listaUsuarios.Items.Add(usr.Email);
-                        listaUsuarios.Items[listaUsuarios.Items.Count - 1].Value = value.ToString();
-                    }
-                    value++;
+            int value = 0;
+            foreach (User usr in usuarios)
+            {
+                string nom = usr.Email;
+                NormalizarCadena(ref nom);
+
+                if (nom.Contains(buscar))
+                {
+                    listaUsuarios.Items.Add(usr.Email);
+                    listaUsuarios.Items[listaUsuarios.Items.Count - 1].Value = value.ToString();
                 }
+                value++;
             }
         }
 
