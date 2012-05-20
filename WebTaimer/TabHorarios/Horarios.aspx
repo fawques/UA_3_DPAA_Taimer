@@ -153,7 +153,6 @@
 
 </asp:Content>
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
-<asp:ScriptManager ID="ScriptManager" runat="server" />
     <h2><asp:HyperLink style="color: Maroon; text-decoration:none;" ID="horarioDe" runat="server" NavigateUrl=""/>
         <asp:Label ID="Label1" runat="server" Text=""></asp:Label>
     </h2>
@@ -177,8 +176,7 @@
                 </asp:ListBox>
     </fieldset>
 
-    <asp:UpdatePanel ID="UpdatePanel" runat="server">
-    <ContentTemplate>
+    
     <fieldset class="fieldPropiedades" style="width: 120px; height:120px; margin-top:-10px">
         <legend>Propiedades</legend>
         <div style="margin-top:-15px"> 
@@ -189,12 +187,12 @@
                 <asp:Button ID="botBorrarHorario" runat="server" Text="Borrar horario" 
                     style="margin-top:5px; width:120px" onclick="botBorrarHorario_Click" />
                 <asp:CheckBox ID="checkPublico" style="margin-top: 5px;" runat="server" 
-                    Text="Hacer público" Width="100px"/>
+                    Text="Hacer público" Width="100px" AutoPostBack = true
+                    oncheckedchanged="checkPublico_CheckedChanged"/>
     
         </div>
     </fieldset>
-    </ContentTemplate>
-    </asp:UpdatePanel>
+
 
     <fieldset id="Det" class="fieldHorarios" style="width: 120px; height: auto; margin-top: -10px; display: none;">
         <legend>Detalles</legend>
@@ -225,7 +223,7 @@
     </div>
 
     <div style="text-align: center; width: 768px; float: right; background-color: Maroon; border: 1px solid Gray; border-bottom: none; margin-bottom: 0px; border-left: none;">
-      <asp:UpdatePanel ID="UpdatePanel1" runat="server"> <ContentTemplate> <label style="font-variant: small-caps; font-size: 16px; font-weight: bold; color: White;" id="nomHorario" runat="server"></label> </ContentTemplate></asp:UpdatePanel>
+      <label style="font-variant: small-caps; font-size: 16px; font-weight: bold; color: White;" id="nomHorario" runat="server"></label>
     </div>
     <!-- ZONA DE HORARIO -------------------------------------->
 

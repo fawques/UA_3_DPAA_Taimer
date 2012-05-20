@@ -151,6 +151,11 @@
 
 </asp:Content>
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
+<asp:ScriptManager ID="ScriptManager1" runat="server" />
+<legend>Horarios</legend>
+            <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+            <ContentTemplate>
+
     <h2><asp:HyperLink style="color: Maroon; text-decoration:none;" ID="horarioDe" runat="server" NavigateUrl=""/>
         <asp:Label ID="Label1" runat="server" Text=""></asp:Label>
     </h2>
@@ -164,10 +169,13 @@
     
     <fieldset class="fieldHorarios" 
             style="width: 110px; height: 291px; margin-top: -5px;">
-        <legend>Horarios</legend>
-        <!--<asp:ScriptManager ID="ScriptManager1" runat="server" />
-        <asp:UpdatePanel ID="UpdatePanel1" runat="server">
-            <ContentTemplate>-->
+        
+            
+                <label style="font-size: 10px"> <asp:RadioButton ID="RBHorarios" runat="server" 
+                    GroupName="filtro" Checked="true" oncheckedchanged="RBHorarios_CheckedChanged" AutoPostBack="true"/> Horarios </label>
+                <label style="font-size: 10px"> <asp:RadioButton ID="RBUsuarios" runat="server" 
+                    GroupName="filtro" AutoPostBack="true" 
+                    oncheckedchanged="RBUsuarios_CheckedChanged"/>  Usuarios </label>
                 <asp:TextBox ID="textboxFiltro" runat="server" Width="114px"
                     placeholder="Filtrar..."></asp:TextBox>
                 <asp:Button style="margin: 5px; float: right; " ID="Buscar" runat="server" 
@@ -175,8 +183,13 @@
                 <asp:ListBox ID="listaHorarios" runat="server" Height="200px" Font-Size="X-Small"
                     style="width:120px" onselectedindexchanged="listaHorarios_SelectedIndexChanged" >
                 </asp:ListBox>
-           <!-- </ContentTemplate>
-        </asp:UpdatePanel>-->
+                <asp:ListBox ID="listaUsuarios" runat="server" Height="200px" Font-Size="X-Small"
+                    style="width:120px; display: none;" onselectedindexchanged="listaUsuarios_SelectedIndexChanged">
+                </asp:ListBox>
+                <asp:ListBox ID="listaHorariosUsuario" runat="server" Height="200px" Font-Size="X-Small"
+                    style="width:120px; display: none;" onselectedindexchanged="listaHorariosUsuarios_SelectedIndexChanged">
+                </asp:ListBox>
+            
     </fieldset>
 
     <fieldset id="Det" class="fieldHorarios" style="width: 120px; height: auto; margin-top: -10px; display: none;">
@@ -236,4 +249,6 @@
         </div>
     </div>
 
+     </ContentTemplate>
+            </asp:UpdatePanel>
     </asp:Content>
