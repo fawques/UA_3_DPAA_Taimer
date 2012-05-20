@@ -65,8 +65,6 @@ namespace WebTaimer.TabAsignaturas
                  //rellenocuadro(Convert.ToInt16(ListAct.SelectedValue));
 
             }
-           
-           
         }
         // Carga todas las actividades de la lista
         protected void cargarTodasActividades()
@@ -240,7 +238,7 @@ namespace WebTaimer.TabAsignaturas
             string comentarios = "";
             if (comentariosAct.Count == 0)
             {
-                comentarios = "<div style=\"color: #000000; float:center; background-color:#fff199;; overflow: visible; border-radius: 10px; margin: 4px; text-align:center \" >No tiene comentarios en esta Actividad</div>";
+                comentarios = "<div style=\"color: #000000; float:center; background-color:#fff199;; overflow: visible; border-radius: 10px; margin: 4px; text-align:center \" >Esta atividad aún no tiene comentarios.</div>";
             }
             else
             {
@@ -264,26 +262,15 @@ namespace WebTaimer.TabAsignaturas
                     if (com.Usuario != null)
                     {
                         if (((User)Session["usuario"]).DNI == com.Usuario.DNI)
-                        {
-                            
-                            comentarios += "<div class='comentario'> <div style='width:120px; heigth:400px;  float:left; '><img src='" + imagen
-                            + "' style='height: 100px; width: 100px margin-left:10px;' class='comentario' /><br/>" + "<input type='submit' name='ctl00$MainContent$Button' TagName='"+com.ID+"'  value='Borrar' id='Button' />"
-                           + "</div>" + "<span class='comentario'><p class='comentario' >Comentario enviado por: " +
-                            nomUsuario + " (" + com.FechaToString() + ")</p><div><p style='color: #8c7052; width:400px; font-style:italic;  text-align: left;'>" + com.Texto + "</p></div></span></div>";
-                            
-                           
+                        { // debería poner un botón para borrar
+                            comentarios += "<div class='comentario'> <p class='cabecera'> Comentario enviado por: " + nomUsuario + " (" + com.FechaToString() + ")</p><span><span class='comentarioimg'><img class='comentario' src='" + imagen + "'/></span><span><p class='comentario'>" + com.Texto + "</p></span></span><span class='comentarioclear'></div>";                           
                         }
                         else
                         {
-                             comentarios += "<div class='comentario'> <img src='" + imagen
-                            + "' style='height: 100px; width: 100px' class='comentario' />"
-                            + "<span class='comentario'><p class='comentario' >Comentario enviado por: "
-                            + nomUsuario + " (" + com.FechaToString() + ")</p><div  ><p style='color: #8c7052; width:400px; font-style:italic;  text-align: left;'>" + com.Texto + "</p></div></span></div>";
+                            comentarios += "<div class='comentario'> <p class='cabecera'> Comentario enviado por: " + nomUsuario + " (" + com.FechaToString() + ")</p><span><span class='comentarioimg'><img class='comentario' src='" + imagen + "'/></span><span><p class='comentario'>" + com.Texto + "</p></span></span><span class='comentarioclear'></div>";
                         }
-                    }                    else                    {                         comentarios += "<div class='comentario'> <img src='" + imagen
-                            + "' style='height: 100px; width: 100px' class='comentario' />"
-                            + "<span class='comentario'><p class='comentario' >Comentario enviado por: "
-                            + nomUsuario + " (" + com.FechaToString() + ")</p><div  ><p style='color: #8c7052; width:400px; font-style:italic;  text-align: left;'>" + com.Texto + "</p></div></span></div>";                    }
+                    }                    else                    {
+                        comentarios += "<div class='comentario'> <p class='cabecera'> Comentario enviado por: " + nomUsuario + " (" + com.FechaToString() + ")</p><span><span class='comentarioimg'><img class='comentario' src='" + imagen + "'/></span><span><p class='comentario'>" + com.Texto + "</p></span></span><span class='comentarioclear'></div>";                    }
                 }
             }
             return comentarios;
