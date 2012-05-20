@@ -105,6 +105,5 @@
 
                 
 
-    <p style="margin-top: 75px;"><a href="SinLogin.aspx" title="Ver inicio sin Login">(Clic aquí para ver la página de inicio sin login)</a></p>
     </asp:Content>
     

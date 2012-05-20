@@ -26,7 +26,7 @@ namespace WebTaimer.TabInicio
                 lbBienvenida.Text = "Bienvenido, " + usuario.Nombre;
                 nombrePrincipalUser.Text = usuario.Nombre;
 
-                labelMensajesSinLeer.Text = "Tienes " + Taimer.Mensaje.getNunMensajesNoLeidos(usuario).ToString()
+                labelMensajesSinLeer.Text = "Tienes " + Taimer.Mensaje.getNumMensajesNoLeidos(usuario).ToString()
                     + " mensaje(s) sin leer.";
                 
                 if (usuario.Imagen != "" && usuario.Imagen != null)
@@ -44,29 +44,35 @@ namespace WebTaimer.TabInicio
                     Taimer.dias dia = getTaimerDia(DateTime.Now.DayOfWeek.ToString());
 
                     totAct += horario.getTurnosDia(dia).Count;
-                    if (i < 3) {
-                        li = new HtmlGenericControl("li");
-                        li.InnerText = horario.Nombre;
-                        listaActPer.Controls.Add(li);
-
-                        ul = new HtmlGenericControl("ul");
-                        int count = 0;
-                        foreach (Turno turno in horario.getTurnosDia(dia)) {
-
+                    if (totAct > 0)
+                    {
+                        if (i < 3)
+                        {
                             li = new HtmlGenericControl("li");
-                            li.InnerText = turno.Actividad.Nombre;
-                            ul.Controls.Add(li);
-                            count++;
-                            if (count == 2) {
-                                HtmlGenericControl a = new HtmlGenericControl("a");
-                                a.Attributes.Add("href", "../TabHorarios/Horarios.aspx?id=" + i);
-                                a.InnerText = " Más...";
-                                li.Controls.Add(a);
-                                break;
+                            li.InnerText = horario.Nombre;
+                            listaActPer.Controls.Add(li);
+
+                            ul = new HtmlGenericControl("ul");
+                            int count = 0;
+                            foreach (Turno turno in horario.getTurnosDia(dia))
+                            {
+
+                                li = new HtmlGenericControl("li");
+                                li.InnerText = turno.Actividad.Nombre;
+                                ul.Controls.Add(li);
+                                count++;
+                                if (count == 2)
+                                {
+                                    HtmlGenericControl a = new HtmlGenericControl("a");
+                                    a.Attributes.Add("href", "../TabHorarios/Horarios.aspx?id=" + i);
+                                    a.InnerText = " Más...";
+                                    li.Controls.Add(a);
+                                    break;
+                                }
                             }
+                            listaActPer.Controls.Add(ul);
+                            i++;
                         }
-                        listaActPer.Controls.Add(ul);
-                        i++;
                     }
                 }
 
