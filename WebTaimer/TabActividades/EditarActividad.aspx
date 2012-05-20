@@ -103,7 +103,8 @@
                             <br />
 
                             <asp:Button ID="btCancelaTurno" runat="server" Text="Cancelar" 
-                                style="width:120px; margin-left:5px" onclick="btCancelaTurno_Click"/>                                                
+                                style="width:120px; margin-left:5px" onclick="btCancelaTurno_Click" 
+                                CausesValidation="False"/>                                                
                         </div>                            
 
                         <asp:Button ID="btCambiaTurno" runat="server" Text="Cambiar turno"
@@ -129,7 +130,8 @@
                                  <asp:Button ID="btConfirmaBorrar" runat="server" Text="Confirmar" Visible="false"
                                    style="width:120px; float: left" onclick="btConfirmaBorrar_Click"/>                                
                                 <asp:Button ID="btCancelaBorrar" runat="server" Text="Cancelar" Visible="false"
-                                    style="float: left; width:120px" onclick="btCancelaBorrar_Click"/>                            
+                                    style="float: left; width:120px" onclick="btCancelaBorrar_Click" 
+                                     CausesValidation="False"/>                            
                               </p>
                          </asp:Panel>                      
                         
@@ -165,7 +167,8 @@
                                 style="width:120px; margin-left:5px; margin-top: 10px" onclick="btConfirmaNuevo_Click"/>
                             <br />
                             <asp:Button ID="btCancelaNuevo" runat="server" Text="Cancelar"
-                                style="width:120px; margin-left:5px" onclick="btCancelaNuevo_Click"/>
+                                style="width:120px; margin-left:5px" onclick="btCancelaNuevo_Click" 
+                                CausesValidation="False"/>
                         </div>                                                                    
                                                
                     </div>
