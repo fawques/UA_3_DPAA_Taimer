@@ -25,8 +25,12 @@ namespace WebTaimer.TabAsignaturas
             {
                 int idact = Convert.ToInt32(id);
                 actividades.Add(darActividad(idact));
+                foreach (Actividad_a a in actodas)
+                {
+                    if (a.Codigo != darActividad(idact).Codigo)
+                        actividades.Add(a);
+                }
                 llenarLista();
-                rellenocuadro(idact);
                 rellenocuadro(idact);
             }
             else
