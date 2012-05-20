@@ -43,6 +43,11 @@ namespace WebTaimer.TabHorariosPublicos
             listaHorariosUsuario.AutoPostBack = true;
         }
 
+        /// <summary>
+        /// NO USAR, HAY UNA FUNCION EN LOS EN QUE YA HACE ESTO
+        /// </summary>
+        /// <param name="h"></param>
+        /// <returns></returns>
         protected int getMaxHora(Horario h) {
             Hora maxHora =  new Hora(0, 1);
             foreach (List<Turno> turnosDia in h.ArrayTurnos) {
