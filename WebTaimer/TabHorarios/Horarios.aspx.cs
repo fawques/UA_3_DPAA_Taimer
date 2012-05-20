@@ -161,7 +161,7 @@ namespace WebTaimer.TabHorarios
                 nomHorario.InnerText = horarios[indice].Nombre;
                 _horas = setHoras(horarios[indice]);
                 _columnas = setColums(horarios[indice]);
-                checkPublico.Checked = horarios[indice].Publico;
+                Publico.Checked = horarios[indice].Publico;
             }
         }
 
@@ -233,15 +233,11 @@ namespace WebTaimer.TabHorarios
 
         protected void botCambiarNombre_Click(object sender, EventArgs e) {
 
-            int _indice = ((int)Session["indice"]);
-            horarios = ((User)Session["usuario"]).Horarios;
-            horarios[_indice].Nombre = newNomHorario.Text;
-            horarios[_indice].Modificar();
-            nomHorario.InnerText = newNomHorario.Text;
-            SelectHorario(_indice);
+            
         }
 
-        protected void botBorrarHorario_Click(object sender, EventArgs e) {
+        protected void botBorrarHorario_Click(object sender, ImageClickEventArgs e)
+        {
             int _indice = ((int)Session["indice"]);
             horarios = ((User)Session["usuario"]).Horarios;
             horarios[_indice].Borrar();
@@ -259,5 +255,42 @@ namespace WebTaimer.TabHorarios
             SelectHorario(_indice);
         }
 
+        protected void botCambiarNombre_Click(object sender, ImageClickEventArgs e)
+        {
+            int _indice = ((int)Session["indice"]);
+            Editar.Visible = false;
+            nomHorario.Visible = false;
+            NuevoNombre.Text = nomHorario.InnerText;
+            NuevoNombre.Visible = true;
+            btNuevoNomAceptar.Visible = true;
+            btNuevoNomCancelar.Visible = true;
+            SelectHorario(_indice);
+        }
+
+        protected void btNuevoNomAceptar_Click(object sender, ImageClickEventArgs e)
+        {
+            int _indice = ((int)Session["indice"]);
+            horarios = ((User)Session["usuario"]).Horarios;
+            horarios[_indice].Nombre = NuevoNombre.Text;
+            horarios[_indice].Modificar();
+            nomHorario.InnerText = NuevoNombre.Text;
+            NuevoNombre.Visible = false;
+            btNuevoNomAceptar.Visible = false;
+            btNuevoNomCancelar.Visible = false;
+            Editar.Visible = true;
+            nomHorario.Visible = true;
+            SelectHorario(_indice);
+        }
+
+        protected void btNuevoNomCancelar_Click(object sender, ImageClickEventArgs e)
+        {
+            int _indice = ((int)Session["indice"]);
+            NuevoNombre.Visible = false;
+            btNuevoNomAceptar.Visible = false;
+            btNuevoNomCancelar.Visible = false;
+            Editar.Visible = true;
+            nomHorario.Visible = true;
+            SelectHorario(_indice);
+        }
     }
 }

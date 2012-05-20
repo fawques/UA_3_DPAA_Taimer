@@ -63,8 +63,14 @@
     <Content Include="Default.aspx" />
     <Content Include="Images\avatar.png" />
     <Content Include="Images\calendario.png" />
+    <Content Include="Images\Cross.png" />
     <Content Include="Images\default.jpg" />
+    <Content Include="Images\edit_256.png" />
     <Content Include="Images\mensaje.gif" />
+    <Content Include="Images\pencil.gif" />
+    <Content Include="Images\recycle.gif" />
+    <Content Include="Images\recyclebin.png" />
+    <Content Include="Images\tick.png" />
     <Content Include="Styles\MyCSS.css" />
     <Content Include="TabActividades\Actividades.aspx" />
     <Content Include="TabActividades\EditarActividad.aspx" />
