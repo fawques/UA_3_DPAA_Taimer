@@ -42,9 +42,10 @@ namespace WebTaimer.TabInicio
 
                     //Taimer.dias dia = getTaimerDia("Monday");
                     Taimer.dias dia = getTaimerDia(DateTime.Now.DayOfWeek.ToString());
-
-                    totAct += horario.getTurnosDia(dia).Count;
-                    if (totAct > 0)
+                    
+                    int aux = horario.getTurnosDia(dia).Count;
+                    totAct += aux;
+                    if (aux > 0)
                     {
                         if (i < 3)
                         {
