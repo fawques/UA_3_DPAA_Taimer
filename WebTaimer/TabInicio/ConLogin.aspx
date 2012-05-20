@@ -6,7 +6,6 @@
         .style1
         {
             z-index: 1;
-            left: 100px;
             top: 0px;
             position: relative;
         }
