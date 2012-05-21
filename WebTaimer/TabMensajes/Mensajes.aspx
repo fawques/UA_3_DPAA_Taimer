@@ -46,6 +46,7 @@ p.texto
                     Mensajes<asp:Label ID="labelConversador" runat="server" Visible="False"> - Conversación con </asp:Label>
                     <asp:HyperLink ID="HyperLinkConversador" runat="server"></asp:HyperLink>
                     <asp:Label ID="labelDNI" runat="server" Visible="False"></asp:Label>
+                    <asp:Label ID="labelCargado" runat="server" Text="No cargado" Visible="False"></asp:Label>
                 </div>
             </ContentTemplate>
         </asp:UpdatePanel>
