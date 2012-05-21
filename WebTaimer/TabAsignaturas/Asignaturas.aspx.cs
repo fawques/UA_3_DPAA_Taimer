@@ -34,14 +34,27 @@ namespace WebTaimer.TabAsignaturas
                 if (id != null)
                 {
                     int idact = Convert.ToInt32(id);
-                    actividades.Add(darActividad(idact));
-                    foreach(Actividad_a a in actodas)
+                    if (darActividad(idact) != null)
                     {
-                        if (a.Codigo != darActividad(idact).Codigo)
-                            actividades.Add(a);
+                        actividades.Add(darActividad(idact));
+
+                        foreach (Actividad_a a in actodas)
+                        {
+                            if (a.Codigo != darActividad(idact).Codigo)
+                                actividades.Add(a);
+                        }
+                        llenarLista();
+                        rellenocuadro(idact);
+
+
                     }
-                    llenarLista();           
-                    rellenocuadro(idact);
+                    else
+                    {
+
+                        cargarTodasActividades();
+                        rellenocuadro(idact);
+                        
+                    }
                     
                 }
                 else
@@ -123,8 +136,11 @@ namespace WebTaimer.TabAsignaturas
                     tituPun.Visible = true;
                     tituloCoor.Visible = true;
                     labelTurnos.Visible = true;
+                    r1.Visible = true;
                     r1.CurrentRating = Convert.ToInt16(Math.Round(act.NotaMedia()));
                     listaTurnos.Visible = true;
+                    UpdatePanelConversacion.Visible = true;
+                    UpdatePanelEnviarMensaje.Visible = true;
                     //coment.Visible = true;
                     comentarios = cargarComentarios(act);
                     UpdatePanelConversacion.Update();
@@ -134,15 +150,17 @@ namespace WebTaimer.TabAsignaturas
             }
             if (existe == false)
             {
-                labelNombreAsignatura.Text = "El indice que se pasa no es correcto";
+                labelNombreAsignatura.Text = "La actividad no existe";
                 labelCoordinadorAsignatura.Text = "";
                 labelDescripcionAsignatura.Text = "";
                 tituPun.Visible = false;
                 tituloCoor.Visible = false;
                 labelTurnos.Visible = false;
-                
+                ListAct.SelectedIndex = -1;
                 listaTurnos.Visible = false;
-                //coment.Visible = false;
+                r1.Visible = false;
+                UpdatePanelConversacion.Visible = false;
+                UpdatePanelEnviarMensaje.Visible = false;
             }
 
         }
@@ -155,12 +173,16 @@ namespace WebTaimer.TabAsignaturas
                 labelNombreAsignatura.Text = actividades[indice].Nombre;
                 labelCoordinadorAsignatura.Text = actividades[indice].NombreCoordinador;
                 labelDescripcionAsignatura.Text = actividades[indice].Descripcion;
+                r1.Visible = true;
                 r1.CurrentRating = Convert.ToInt16(Math.Round(actividades[indice].NotaMedia()));
                 cargarTurnos(actividades[indice]);
                 tituPun.Visible = true;
                 tituloCoor.Visible = true;
                 labelTurnos.Visible = true;
                 listaTurnos.Visible = true;
+                UpdatePanelConversacion.Visible = true;
+                UpdatePanelEnviarMensaje.Visible = true;
+                r1.Visible = true;
                 //coment.Visible = true;
                 //cargarComentarios(actividades[indice]);
                 comentarios = cargarComentarios(actividades[indice]);
@@ -175,8 +197,10 @@ namespace WebTaimer.TabAsignaturas
                 tituPun.Visible = false;
                 tituloCoor.Visible = false;
                 labelTurnos.Visible = false;
-                
+                r1.Visible = false;
                 listaTurnos.Visible = false;
+                UpdatePanelConversacion.Visible = false;
+                UpdatePanelEnviarMensaje.Visible = false;
                 //coment.Visible = false;
 
             }
@@ -239,7 +263,7 @@ namespace WebTaimer.TabAsignaturas
             string comentarios = "";
             if (comentariosAct.Count == 0)
             {
-                comentarios = "<div style=\"color: #000000; float:center; background-color:#fff199;; overflow: visible; border-radius: 10px; margin: 4px; text-align:center \" >Esta atividad aún no tiene comentarios.</div>";
+                comentarios = "<div style=\"color: #000000; float:center; background-color:#fff199;; overflow: visible; border-radius: 10px; margin: 4px; text-align:center \" >Esta actividad aún no tiene comentarios.</div>";
             }
             else
             {

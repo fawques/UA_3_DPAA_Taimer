@@ -114,6 +114,9 @@ namespace WebTaimer.TabActividades
                 listaFiltro = aux;
                 rellenocuadroPrimero(0);
                 llenarLista();
+
+                if(listaFiltro.Count==0)
+                    labelNombreActividad.Text = "No se encontraron resultados";
             }
             else
             {
@@ -193,7 +196,6 @@ namespace WebTaimer.TabActividades
             }
             else
             {
-                labelNombreActividad.Text = "La actividad no existe";                
                 labelDescripcionActividad.Text = "";                
                 labelTurnos.Visible = false;
                 listaTurnos.Visible = false;

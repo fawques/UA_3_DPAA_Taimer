@@ -163,10 +163,12 @@ namespace WebTaimer.TabHorarios
                     value++;
                 }
 
-                nomHorario.InnerText = horarios[indice].Nombre;
-                _horas = setHoras(horarios[indice]);
-                _columnas = setColums(horarios[indice]);
-                Publico.Checked = horarios[indice].Publico;
+                if (indice < listaHorarios.Items.Count) {
+                    nomHorario.InnerText = horarios[indice].Nombre;
+                    _horas = setHoras(horarios[indice]);
+                    _columnas = setColums(horarios[indice]);
+                    Publico.Checked = horarios[indice].Publico;
+                }
             }
         }
 
@@ -184,13 +186,21 @@ namespace WebTaimer.TabHorarios
                         }
                     }
                     else {
-                        SelectHorario(int.Parse(id));
+                        int index = 0;
+                        try {
+                            index = int.Parse(id);
+                        } catch {
+                            return;
+                        }
+                        
+                        SelectHorario(index);
                         if (Session["indice"] == null)
                             Session.Add("indice", int.Parse(id));
                         else {
                             Session.Remove("indice");
                             Session.Add("indice", int.Parse(id));
                         }
+                        
 
 
                        /* horarios = ((User)Session["usuario"]).Horarios;
