@@ -56,7 +56,4 @@
     <p>
         <br />
         <br />
-    <a href="ConLogin.aspx"
-            title="Ver inicio con Login">(Clic aquí para ver la página de inicio con login)</a>
-    </p>
 </asp:Content>
