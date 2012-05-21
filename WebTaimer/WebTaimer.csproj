@@ -63,8 +63,13 @@
     <Content Include="Default.aspx" />
     <Content Include="Images\avatar.png" />
     <Content Include="Images\calendario.png" />
+    <Content Include="Images\Cross.png" />
     <Content Include="Images\default.jpg" />
+    <Content Include="Images\edit_256.png" />
     <Content Include="Images\mensaje.gif" />
+    <Content Include="Images\pencil.gif" />
+    <Content Include="Images\recycle.gif" />
+    <Content Include="Images\tick.png" />
     <Content Include="Styles\MyCSS.css" />
     <Content Include="TabActividades\Actividades.aspx" />
     <Content Include="TabActividades\EditarActividad.aspx" />
@@ -299,10 +304,6 @@
     <Content Include="NoLogin.Master" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CAD\CAD.csproj">
-      <Project>{376151DD-06C8-4BE0-8C72-86513ACB0FE1}</Project>
-      <Name>CAD</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Taimer\TaimerEN.csproj">
       <Project>{329AECE9-732D-4307-AF83-AFDAE3E04AA4}</Project>
       <Name>TaimerEN</Name>

@@ -1,12 +1,10 @@
 ﻿using System;
-//using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Taimer;
-//using System.Windows.Forms;
 
 namespace WebTaimer.TabMensajes
 {
@@ -27,36 +25,54 @@ namespace WebTaimer.TabMensajes
 
             if (usuarios == null)
                 cargarTodosUsuarios();
-
-            //if (conversacion == null)
-            //{
-            //    textoMensaje.Enabled = false;
-            //    botonEnviar.Enabled = false;
-            //    conversacion = "<div style=\"color: #000000; float:center; border: 5px double #117777; background-color: #118888; overflow: visible; border-radius: 10px; margin: 4px; text-align:center \" >Selecciona un usuario para ver sus mensajes.</div>";
-            //}
-
-            //if (listamensajes == null)
-            //    cargarTodosMensajes();
         }
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            string email = Request.QueryString["email"];
-
-            if (email == null && labelConversador.Visible == false)
+            if (labelCargado.Text == "No cargado")
             {
-                textoMensaje.Enabled = false;
-                botonEnviar.Enabled = false;
-                conversacion = "<div style=\"color: #000000; float:center; border: 5px double #117777; background-color: #118888; overflow: visible; border-radius: 10px; margin: 4px; text-align:center \" >Selecciona un usuario para ver sus mensajes.</div>";
-            }
-            else
-            {
-                receptor = Taimer.User.GetUserByEmail(email);
+                string email = Request.QueryString["usuario"];
 
-                if(receptor != null)
-                    LoadUser();
+                if (email == null && labelConversador.Visible == false)
+                {
+                    textoMensaje.Enabled = false;
+                    botonEnviar.Enabled = false;
+                    conversacion = "<div style=\"color: #000000; float:center; border: 5px double #117777; background-color: #118888; overflow: visible; border-radius: 10px; margin: 4px; text-align:center \" >Selecciona un usuario para ver sus mensajes.</div>";
+                }
+                else if (email == ((User)Session["usuario"]).Email)
+                {
+                    textoMensaje.Enabled = false;
+                    botonEnviar.Enabled = false;
+                    conversacion = "<div style=\"color: #000000; float:center; border: 5px double #117777; background-color: #118888; overflow: visible; border-radius: 10px; margin: 4px; text-align:center \" >No puedes enviarte mensajes a ti mismo.</div>";
+                }
                 else
-                    conversacion = "<div style=\"color: #000000; float:center; border: 5px double #117777; background-color: #118888; overflow: visible; border-radius: 10px; margin: 4px; text-align:center \" >El usuario no existe.</div>";
+                {
+                    receptor = Taimer.User.GetUserByEmail(email);
+
+                    if (receptor != null)
+                    {
+                        for (int i = 0; i < listaUsuarios.Items.Count; i++)
+                        {
+                            if (listaUsuarios.Items[i].Text == receptor.Nombre)
+                            {
+                                listaUsuarios.SelectedIndex = i;
+                                break;
+                            }
+                        }
+                        LoadUser();
+                    }
+                    else
+                    {
+                        if (labelConversador.Visible == false)
+                        {
+                            textoMensaje.Enabled = false;
+                            botonEnviar.Enabled = false;
+                            conversacion = "<div style=\"color: #000000; float:center; border: 5px double #117777; background-color: #118888; overflow: visible; border-radius: 10px; margin: 4px; text-align:center \" >El usuario no existe.</div>";
+                        }
+                    }
+                }
+
+                labelCargado.Text = "Cargado";
             }
         }
 
@@ -69,7 +85,9 @@ namespace WebTaimer.TabMensajes
             HyperLinkConversador.Text = receptor.Nombre;
             HyperLinkConversador.NavigateUrl = "~/TabPerfil/VerPerfil.aspx?user=" + receptor.Email;
             labelDNI.Text = receptor.DNI;
-            listaUsuarios.SelectedItem.Text = receptor.Nombre;  // De este modo se limpia el número de mensajes no leídos
+
+            if(listaUsuarios.SelectedItem != null)
+                listaUsuarios.SelectedItem.Text = receptor.Nombre;  // De este modo se limpia el número de mensajes no leídos
 
             conversacion = cargarConversacion();
             UpdatePanelConversacion.Update();
@@ -82,11 +100,20 @@ namespace WebTaimer.TabMensajes
         {
             if (receptor != null)
             {
+                
                 HyperLinkConversador.Text = receptor.Nombre;
                 HyperLinkConversador.NavigateUrl = "~/TabPerfil/VerPerfil.aspx?user=" + receptor.Email;
                 labelDNI.Text = receptor.DNI;
 
-                conversacion = cargarConversacion();
+                if (receptor.Email != ((User)Session["usuario"]).Email)
+                {
+                    conversacion = cargarConversacion();
+                }
+                else
+                {
+                    conversacion = "<div style=\"color: #000000; float:center; border: 5px double #117777; background-color: #118888; overflow: visible; border-radius: 10px; margin: 4px; text-align:center \" >No puedes enviarte mensajes a ti mismo.</div>";
+                }
+                
                 UpdatePanelConversacion.Update();
                 UpdatePanelNombreConversador.Update();
             }
@@ -154,49 +181,30 @@ namespace WebTaimer.TabMensajes
         {
             string contenido = textoMensaje.Text;
             string nuevotexto = "";
-            //bool advertencia = false;
-
+            
             // Fragmentar las palabras de más de 50 caracteres para no descuadrar el cuadro de mensajes
             int acumuladas = 0;
             for (int i = 0; i < contenido.Length; i++)
             {
-                if (contenido[i].Equals(" "))
+                if (contenido[i] == ' ')
                     acumuladas = 0;
                 else
                     acumuladas++;
 
                 if (acumuladas > 50)
                 {
-                    nuevotexto += " " + contenido[i];
-                    //advertencia = true;
+                    nuevotexto += " ";
                     acumuladas = 1;
                 }
-                else
-                {
-                    nuevotexto += contenido[i];
-                }
 
+                nuevotexto += contenido[i];
             }
 
-            /*
-            if (advertencia)
-            {
-                //Response.Write("<script>alert('Las palabras de más de 50 caracteres se fragmentarán.');</script>");
-                DialogResult enviar = MessageBox.Show("Las palabras de más de 50 caracteres se fragmentarán. ¿Continuar?","Atención",MessageBoxButtons.YesNo,MessageBoxIcon.Information);
-
-                if (enviar == DialogResult.Yes)
-                    advertencia = false;
-            }
-            */
-
-            //if (!advertencia)
-            //{
-                receptor = Taimer.User.GetUserByDNIQuick(labelDNI.Text);
-                Mensaje mensaje = new Mensaje(100, nuevotexto, ((User)Session["usuario"]), receptor, DateTime.Now, false);
-                mensaje.Agregar();
-                textoMensaje.Text = "";
-                SelectUser(receptor.DNI);
-            //}
+            receptor = Taimer.User.GetUserByDNIQuick(labelDNI.Text);
+            Mensaje mensaje = new Mensaje(100, nuevotexto, ((User)Session["usuario"]), receptor, DateTime.Now, false);
+            mensaje.Agregar();
+            textoMensaje.Text = "";
+            SelectUser(receptor.DNI);
         }
 
 
@@ -240,21 +248,16 @@ namespace WebTaimer.TabMensajes
         // Carga los usuarios a los que se aplique el filtro
         protected void cargaFiltro(string textofiltro, bool noleidos)
         {
-            //if (textofiltro != null && textofiltro != "")
-            //{
-                if (noleidos)
-                {
-                    usuarios = Taimer.User.GetUsersFiltroNoLeidosQuick(textofiltro, ((User)Session["usuario"]).DNI);
-                }
-                else
-                {
-                    usuarios = Taimer.User.GetUsersFiltroQuick(textofiltro, ((User)Session["usuario"]).DNI);
-                }
+            if (noleidos)
+            {
+                usuarios = Taimer.User.GetUsersFiltroNoLeidosQuick(textofiltro, ((User)Session["usuario"]).DNI);
+            }
+            else
+            {
+                usuarios = Taimer.User.GetUsersFiltroQuick(textofiltro, ((User)Session["usuario"]).DNI);
+            }
 
-                llenarLista();
-            //}
-            //else
-            //    cargarTodosUsuarios();
+            llenarLista();
         }
 
         // Carga el filtro del TextBox de filtrado
@@ -263,14 +266,10 @@ namespace WebTaimer.TabMensajes
             cargaFiltro(textboxFiltro.Text, checkSoloNoLeidos.Checked);
         }
 
+        // Comprueba si se ha marcado la casilla de "no leídos" y ordena filtrarlos
         protected void checkSoloNoLeidos_CheckedChanged(object sender, EventArgs e)
         {
             cargaFiltro(textboxFiltro.Text, checkSoloNoLeidos.Checked);
         }
-
-        //protected void cargarTodosMensajes()
-        //{
-        //    listamensajes = Taimer.Mensaje.getMensajesUsuario((User)Session["usuario"]);
-        //}
     }
 }

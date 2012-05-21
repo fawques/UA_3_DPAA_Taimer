@@ -250,6 +250,13 @@ namespace Taimer
         }
 
         /// <summary>
+        /// Devuelve un array de Turnos que contiene los turnos del dia
+        /// </summary>
+        public List<Turno> getTurnosDia(Taimer.dias dia){
+            return arrayTurnos[(int) dia];
+        }
+
+        /// <summary>
         /// Borrar turno (a partir de su código, si se encuentra)
         /// </summary>
         /// <param name="codigobuscado">Código del turno que se desea borrar</param>
@@ -489,7 +496,7 @@ namespace Taimer
                     id = (int)rows[i].ItemArray[0];
                     titulo = rows[i].ItemArray[1].ToString();
                     usuario = rows[i].ItemArray[2].ToString();
-                    publico = (bool)rows[0].ItemArray[3];
+                    publico = (bool)rows[i].ItemArray[3];
                     if (autor == null)
                     {
                         autor = User.UserToObject(user.GetDatosUser(usuario));

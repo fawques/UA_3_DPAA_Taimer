@@ -6,43 +6,59 @@
 div.comentario 
 {
      border: 1px solid Gray;
-     height: 230px;
      margin: 0 auto;
      background-color: #ead3ab;
      border-radius: 30px;
      margin-bottom: 10px;
      margin-top: 10px;
+     clear:both;
+     padding: 10px;
+     padding-top:0;
+     padding-bottom:0;
 }
 
 img.comentario 
 {
     border: 2px ridge White;
-    float: left;
-    margin: 20px;
-    margin-top: 40px;
-    width: 40px;
-    height: 40px;
-    display:inline;
+    margin-left:10px;
+    margin-top:-20px;
+    width: 60px;
+    height: 60px;
+    margin-bottom:20px;
 }
 
 p.comentario 
 {
+    text-align:left;
     color: #8c7052;
-    width: 400px;
+    width: 550px;
     font-style:italic;
+    left: 50px;
+    position: relative;
    
 }
 
-span.comentario 
+p.cabecera 
 {
-    float: right;
     color: #78532a;
+    width: 600px;
+    text-align:right;
     margin-left: 5px;
-    height: auto;
-    width: 463px;
     margin-right: 20px;
-    margin-top: 20px;
-    margin-bottom: 20px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+   
+}
+
+span.comentarioimg
+{
+    float: left;
+}
+
+span.comentarioclear
+{
+    clear:both;
+    display:block;
 }
 
 label.comentario 

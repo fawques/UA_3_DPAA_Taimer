@@ -13,13 +13,13 @@ namespace WebTaimer.TabActividades {
     public partial class EditarActividad {
         
         /// <summary>
-        /// Control Fieldset1.
+        /// Control fieldsetActividad.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Fieldset1;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl fieldsetActividad;
         
         /// <summary>
         /// Control labelNombreActividad.
@@ -76,13 +76,13 @@ namespace WebTaimer.TabActividades {
         protected global::System.Web.UI.WebControls.Button botonModificar;
         
         /// <summary>
-        /// Control botonCancelar.
+        /// Control fieldsetTurnos.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button botonCancelar;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl fieldsetTurnos;
         
         /// <summary>
         /// Control divTurnos.
@@ -121,22 +121,13 @@ namespace WebTaimer.TabActividades {
         protected global::System.Web.UI.WebControls.Label labelCambiaTurno;
         
         /// <summary>
-        /// Control tbCambiaDia.
+        /// Control cambiaDia.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbCambiaDia;
-        
-        /// <summary>
-        /// Control cambiaDiaValidate.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RegularExpressionValidator cambiaDiaValidate;
+        protected global::System.Web.UI.WebControls.DropDownList cambiaDia;
         
         /// <summary>
         /// Control tbCambiaHoraI.
@@ -238,6 +229,24 @@ namespace WebTaimer.TabActividades {
         protected global::System.Web.UI.WebControls.Button btNuevoTurno;
         
         /// <summary>
+        /// Control ConfirmaBorrar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel ConfirmaBorrar;
+        
+        /// <summary>
+        /// Control infoTurno.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl infoTurno;
+        
+        /// <summary>
         /// Control btConfirmaBorrar.
         /// </summary>
         /// <remarks>
@@ -274,22 +283,13 @@ namespace WebTaimer.TabActividades {
         protected global::System.Web.UI.WebControls.Label lbNuevoTurno;
         
         /// <summary>
-        /// Control tbNuevoDia.
+        /// Control NuevoDia.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbNuevoDia;
-        
-        /// <summary>
-        /// Control nuevoDiaValidate.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RegularExpressionValidator nuevoDiaValidate;
+        protected global::System.Web.UI.WebControls.DropDownList NuevoDia;
         
         /// <summary>
         /// Control tbNuevaHoraI.
@@ -353,5 +353,14 @@ namespace WebTaimer.TabActividades {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btCancelaNuevo;
+        
+        /// <summary>
+        /// Control botonCancelar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button botonCancelar;
     }
 }

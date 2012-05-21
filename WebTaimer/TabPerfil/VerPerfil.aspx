@@ -4,7 +4,7 @@
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
 </asp:Content>
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
-    <h2>
+    <h2 id="encabezado" runat="server">
         Ver perfil
     </h2>
 
@@ -43,7 +43,7 @@
         </style>    
     
     
-        <div id="divDatos" style="float: left; margin-left: 20px">
+        <div id="divDatos" style="float: left; margin-left: 20px" runat="server">
             <asp:Label ID="labelNombreUsuario" runat="server" Text="[ Nombre Usuario ]" 
                 Font-Bold="True" Font-Size="Large"></asp:Label>
             <br />
@@ -68,7 +68,7 @@
                 Text="[ Frase personal ]"></asp:Label>
         </div>
 
-        <div id="divAvatar" style="float: left; margin-left: 0px">
+        <div id="divAvatar" style="float: left; margin-left: 0px" runat="server">
             <asp:Image ID="imagenAvatar" runat="server" Height="100px" Width="100px" 
                     ImageUrl=""/>
                     <br />
@@ -77,10 +77,12 @@
                         onclick="botEditarPerfil_Click" Visible="True" />
 
             <asp:Button ID="botEnviarMensaje" runat="server" Text="Enviar mensaje"
-                    style="margin-top: 10px; width:100px; height:25px;" />
+                    style="margin-top: 10px; width:100px; height:25px;" 
+                onclick="botEnviarMensaje_Click" />
 
             <asp:Button ID="botVerHorarios" runat="server" Text="Ver horarios"
-                    style="margin-top: 10px; width:100px; height:25px;" />
+                    style="margin-top: 10px; width:100px; height:25px;" 
+                onclick="botVerHorarios_Click" />
         </div>
     </div>           
 

@@ -9,9 +9,13 @@ namespace WebTaimer.TabDescarga
 {
     public partial class Descarga : System.Web.UI.Page
     {
+        protected void Page_Init(object sender, EventArgs e) {
+            if (Session["usuario"] == null)
+                Response.Redirect("~/TabDescarga/DescargaSin.aspx");
+        }
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            
         }
     }
 }

@@ -53,6 +53,7 @@ h1
     font-size: 1.6em;
     padding-bottom: 0px;
     margin-bottom: 0px;
+    font-weight:600;
 }
 
 h2
@@ -117,7 +118,7 @@ first child of the left and right table columns */
 
 .main
 {
-    padding: 0px 12px;
+    padding: 0px 7px;
     margin: 12px 8px 8px 8px;
     min-height: 420px;
 }

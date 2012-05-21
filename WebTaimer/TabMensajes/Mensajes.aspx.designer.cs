@@ -58,6 +58,15 @@ namespace WebTaimer.TabMensajes {
         protected global::System.Web.UI.WebControls.Label labelDNI;
         
         /// <summary>
+        /// Control labelCargado.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label labelCargado;
+        
+        /// <summary>
         /// Control UpdatePanelIzquierdo.
         /// </summary>
         /// <remarks>
@@ -76,15 +85,6 @@ namespace WebTaimer.TabMensajes {
         protected global::System.Web.UI.WebControls.TextBox textboxFiltro;
         
         /// <summary>
-        /// Control botonBuscar.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button botonBuscar;
-        
-        /// <summary>
         /// Control checkSoloNoLeidos.
         /// </summary>
         /// <remarks>
@@ -92,6 +92,15 @@ namespace WebTaimer.TabMensajes {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.CheckBox checkSoloNoLeidos;
+        
+        /// <summary>
+        /// Control botonBuscar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button botonBuscar;
         
         /// <summary>
         /// Control listaUsuarios.

@@ -13,7 +13,6 @@ namespace WebTaimer.TabHorarios
     public partial class Horarios : System.Web.UI.Page
     {
         List<Horario> horarios;
-        Horario horarioAct;
         protected string _horas;
         protected string _columnas;
         protected string _script;
@@ -37,6 +36,11 @@ namespace WebTaimer.TabHorarios
             listaHorarios.AutoPostBack = true;
         }
 
+        /// <summary>
+        /// NO USAR, HAY UNA FUNCION EN LOS EN QUE YA HACE ESTO
+        /// </summary>
+        /// <param name="h"></param>
+        /// <returns></returns>
         protected int getMaxHora(Horario h) {
             Hora maxHora = new Hora(0, 1);
             foreach (List<Turno> turnosDia in h.ArrayTurnos) {
@@ -75,7 +79,7 @@ namespace WebTaimer.TabHorarios
 
         protected string setHoras(Horario h) {
             int minHora = h.minHora().Hor;
-            int maxHora = getMaxHora(h);
+            int maxHora = h.maxHora().Hor + 1;
 
             string horas = "";
             for (int i = minHora; i < maxHora; i++) {
@@ -95,7 +99,7 @@ namespace WebTaimer.TabHorarios
 
             int indice = 0;
 
-            horarioDe.Text = "Horario de " + h.Usuario.Nombre;
+            horarioDe.Text = "Mis Horarios";
             horarioDe.NavigateUrl = "~/TabPerfil/VerPerfil.aspx?user=" + h.Usuario.Email;
 
 
@@ -149,25 +153,77 @@ namespace WebTaimer.TabHorarios
         protected void SelectHorario(int indice) {
             horarios = ((User)Session["usuario"]).Horarios;
 
-            int value = 0;
-            listaHorarios.DataBind();
-            listaHorarios.Items.Clear();
-            foreach (Horario item in horarios) {
-                listaHorarios.Items.Add(item.Nombre);
-                listaHorarios.Items[listaHorarios.Items.Count - 1].Value = value.ToString();
-                value++;
-            }
+            if (horarios.Count > 0) {
+                int value = 0;
+                listaHorarios.DataBind();
+                listaHorarios.Items.Clear();
+                foreach (Horario item in horarios) {
+                    listaHorarios.Items.Add(item.Nombre);
+                    listaHorarios.Items[listaHorarios.Items.Count - 1].Value = value.ToString();
+                    value++;
+                }
 
-            nomHorario.InnerText = horarios[indice].Nombre;
-            _horas = setHoras(horarios[indice]);
-            _columnas = setColums(horarios[indice]);
+                nomHorario.InnerText = horarios[indice].Nombre;
+                _horas = setHoras(horarios[indice]);
+                _columnas = setColums(horarios[indice]);
+                Publico.Checked = horarios[indice].Publico;
+            }
         }
 
         protected void Page_Load(object sender, EventArgs e) {
             if (Session.Count > 0) {
                 if (!IsPostBack) {
-                    SelectHorario(0);
-                }
+                    string id = Request.QueryString["id"];
+                    if (id == null) {
+                        SelectHorario(0);
+                        if (Session["indice"] == null)
+                            Session.Add("indice", 0);
+                        else {
+                            Session.Remove("indice");
+                            Session.Add("indice", 0);
+                        }
+                    }
+                    else {
+                        SelectHorario(int.Parse(id));
+                        if (Session["indice"] == null)
+                            Session.Add("indice", int.Parse(id));
+                        else {
+                            Session.Remove("indice");
+                            Session.Add("indice", int.Parse(id));
+                        }
+
+
+                       /* horarios = ((User)Session["usuario"]).Horarios;
+
+                        if (horarios.Count > 0) {
+                            int value = 0;
+                            listaHorarios.DataBind();
+                            listaHorarios.Items.Clear();
+                            int indice = 0;
+                            foreach (Horario item in horarios) {
+                                if (item.ID == int.Parse(id))
+                                    indice = value;
+                                listaHorarios.Items.Add(item.Nombre);
+                                listaHorarios.Items[listaHorarios.Items.Count - 1].Value = value.ToString();
+                                value++;
+                            }
+
+                            nomHorario.InnerText = horarios[indice].Nombre;
+                            _horas = setHoras(horarios[indice]);
+                            _columnas = setColums(horarios[indice]);
+                            Publico.Checked = horarios[indice].Publico;
+                        }*/
+                    }
+                    }
+
+                    /*System.Collections.Specialized.NameValueCollection gets;
+                    gets = Request.QueryString;
+
+                    if (gets.Count == 1 && gets["id"] != "" && gets["id"] != null) {
+                        int id = Convert.ToInt16(gets["id"]);
+                        SelectHorario(id);
+                    } else {
+                        SelectHorario(0);*/
             }
             else {
                 Response.Redirect("~/TabInicio/SinLogin.aspx");
@@ -179,6 +235,8 @@ namespace WebTaimer.TabHorarios
         protected void listaHorarios_SelectedIndexChanged(object sender, EventArgs e) {
             _indice = int.Parse(listaHorarios.SelectedValue);
             SelectHorario(_indice);
+            Session.Remove("indice");
+            Session.Add("indice", _indice);
         }
 
         protected void Buscar_Click(object sender, EventArgs e) {
@@ -215,20 +273,64 @@ namespace WebTaimer.TabHorarios
 
         protected void botCambiarNombre_Click(object sender, EventArgs e) {
 
-            nomHorario.InnerText = "indice " + listaHorarios.SelectedValue;
             
-            //Response.Write("<script>alert('"+ _indice +"');</script>");
-            if (newNomHorario.Text.Count() > 0) {
-                Response.Write("<script>alert('No esta vacio');</script>");
-
-            }
-
-
         }
 
-        protected void botBorrarHorario_Click(object sender, EventArgs e) {
+        protected void botBorrarHorario_Click(object sender, ImageClickEventArgs e)
+        {
+            int _indice = ((int)Session["indice"]);
+            horarios = ((User)Session["usuario"]).Horarios;
+            horarios[_indice].Borrar();
+            horarios.Remove(horarios[_indice]);
+            SelectHorario(0);
+            Session.Remove("indice");
+            Session.Add("indice", 0);
+        }
 
+        protected void checkPublico_CheckedChanged(object sender, EventArgs e) {
+            int _indice = ((int)Session["indice"]);
+            horarios = ((User)Session["usuario"]).Horarios;
+            horarios[_indice].Publico = !(horarios[_indice].Publico);
+            horarios[_indice].Modificar();
+            SelectHorario(_indice);
+        }
 
+        protected void botCambiarNombre_Click(object sender, ImageClickEventArgs e)
+        {
+            int _indice = ((int)Session["indice"]);
+            Editar.Visible = false;
+            nomHorario.Visible = false;
+            NuevoNombre.Text = nomHorario.InnerText;
+            NuevoNombre.Visible = true;
+            btNuevoNomAceptar.Visible = true;
+            btNuevoNomCancelar.Visible = true;
+            SelectHorario(_indice);
+        }
+
+        protected void btNuevoNomAceptar_Click(object sender, ImageClickEventArgs e)
+        {
+            int _indice = ((int)Session["indice"]);
+            horarios = ((User)Session["usuario"]).Horarios;
+            horarios[_indice].Nombre = NuevoNombre.Text;
+            horarios[_indice].Modificar();
+            nomHorario.InnerText = NuevoNombre.Text;
+            NuevoNombre.Visible = false;
+            btNuevoNomAceptar.Visible = false;
+            btNuevoNomCancelar.Visible = false;
+            Editar.Visible = true;
+            nomHorario.Visible = true;
+            SelectHorario(_indice);
+        }
+
+        protected void btNuevoNomCancelar_Click(object sender, ImageClickEventArgs e)
+        {
+            int _indice = ((int)Session["indice"]);
+            NuevoNombre.Visible = false;
+            btNuevoNomAceptar.Visible = false;
+            btNuevoNomCancelar.Visible = false;
+            Editar.Visible = true;
+            nomHorario.Visible = true;
+            SelectHorario(_indice);
         }
     }
 }

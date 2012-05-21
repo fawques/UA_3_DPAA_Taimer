@@ -6,7 +6,7 @@
         #divPanelIzquierdo
         {
             width:150px;
-            height:765px;
+            /*height:765px;*/
         }
         
         #divZonaHorario
@@ -37,7 +37,7 @@
        div.horas 
        {
         width: 55px; 
-        height: 437px; 
+        /*height: 437px; */
         background-color: Maroon; 
         float: left; 
         clear:both; 
@@ -85,7 +85,7 @@
             font-size: 11px;
             margin: 0px;
             margin-left: -40px;
-            display; block;
+            display: block;
         }
         
         #nombre, #descripcion, #ubicacion, #turno 
@@ -153,10 +153,8 @@
 
 </asp:Content>
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
-<asp:ScriptManager ID="ScriptManager" runat="server" />
     <h2><asp:HyperLink style="color: Maroon; text-decoration:none;" ID="horarioDe" runat="server" NavigateUrl=""/>
-        <asp:Label ID="Label1" runat="server" Text=""></asp:Label>
-    </h2>
+    </h2><br />
     
 
     <!-- PANEL IZQUIERDO (seleccionar horario) ---------------->
@@ -177,24 +175,6 @@
                 </asp:ListBox>
     </fieldset>
 
-    <asp:UpdatePanel ID="UpdatePanel" runat="server">
-    <ContentTemplate>
-    <fieldset class="fieldPropiedades" style="width: 120px; height:120px; margin-top:-10px">
-        <legend>Propiedades</legend>
-        <div style="margin-top:-15px"> 
-        
-                <asp:TextBox ID="newNomHorario" runat="server" Width="110px" placeholder="Nuevo nombre"></asp:TextBox>
-                <asp:Button ID="botCambiarNombre" runat="server" Text="Cambiar nombre" 
-                    style="margin-top:5px; width:120px" onclick="botCambiarNombre_Click" />
-                <asp:Button ID="botBorrarHorario" runat="server" Text="Borrar horario" 
-                    style="margin-top:5px; width:120px" onclick="botBorrarHorario_Click" />
-                <asp:CheckBox ID="checkPublico" style="margin-top: 5px;" runat="server" 
-                    Text="Hacer público" Width="100px"/>
-    
-        </div>
-    </fieldset>
-    </ContentTemplate>
-    </asp:UpdatePanel>
 
     <fieldset id="Det" class="fieldHorarios" style="width: 120px; height: auto; margin-top: -10px; display: none;">
         <legend>Detalles</legend>
@@ -222,19 +202,38 @@
         </ul>
 
     </fieldset>
+  
     </div>
 
     <div style="text-align: center; width: 768px; float: right; background-color: Maroon; border: 1px solid Gray; border-bottom: none; margin-bottom: 0px; border-left: none;">
-      <asp:UpdatePanel ID="UpdatePanel1" runat="server"> <ContentTemplate> <label style="font-variant: small-caps; font-size: 16px; font-weight: bold; color: White;" id="nomHorario" runat="server"></label> </ContentTemplate></asp:UpdatePanel>
-    </div>
+      <label style="font-variant: small-caps; font-size: 16px; font-weight: bold; color: White;" id="nomHorario" runat="server"></label>
+    
+        <asp:TextBox ID="NuevoNombre" runat="server" Visible=false></asp:TextBox>
+    
+        <asp:ImageButton ID="btNuevoNomAceptar" runat="server" Height="20px" 
+            ImageUrl="~/Images/tick.png" onclick="btNuevoNomAceptar_Click" Visible="False" 
+            Width="20px" />
+        <asp:ImageButton ID="btNuevoNomCancelar" runat="server" Height="20px" 
+            ImageUrl="~/Images/Cross.png" onclick="btNuevoNomCancelar_Click" 
+            Visible="False" Width="20px" />
+    
+    <asp:ImageButton ID="Editar" runat="server" Height="20px" 
+            ImageUrl="~/Images/pencil.gif" Width="20px" AlternateText="Editar" 
+            onclick="botCambiarNombre_Click" />
+        <asp:ImageButton ID="Borrar"
+        runat="server" AlternateText="Borrar" Height="20px" 
+            ImageUrl="~/Images/recycle.gif" onclick="botBorrarHorario_Click" 
+            Width="20px" /><asp:CheckBox ID="Publico" runat="server" Text="Público" 
+            AutoPostBack="True" ForeColor="White" 
+            oncheckedchanged="checkPublico_CheckedChanged" /></div>
     <!-- ZONA DE HORARIO -------------------------------------->
 
     <div id="divZonaHorario" 
-        style="border-right: 1px solid Gray; border-bottom: 1px solid Gray; float: right; width: 768px; margin: 0px; height: 724px; border-left-style: none; border-left-color: inherit; border-left-width: medium; border-top-style: none; border-top-color: inherit; border-top-width: medium;">
+        style="border-right: 1px solid Gray; border-bottom: 1px solid Gray; float: right; width: 768px; margin-left:10px; margin: 0px; border-left-style: none; border-left-color: inherit; border-left-width: medium; border-top-style: none; border-top-color: inherit; border-top-width: medium; padding-bottom:15px;">
         <div style="color: Maroon; width: 760px; ">
 
                 <div style="background-color: Maroon; height: 23px; padding-left: 89px;">
-                    <p class="diasSem" style="margin-left: 0px">Lunes</p>
+                    <p class="diasSem" style="margin-left: 0px">Lunes
                     <p class="diasSem" style="margin-left: 60px">Martes</p>
                     <p class="diasSem" style="margin-left: 50px">Miércoles</p>
                     <p class="diasSem" style="margin-left: 50px">Jueves</p>

@@ -184,7 +184,7 @@ namespace Taimer
             mens.BorrarMensaje(id);
         }
 
-        public static int getNunMensajesNoLeidos(User emisor) {    // Cuidado, la función es getNun... no getNum. Supongo que será un error. Además, debería ser static.
+        public static int getNumMensajesNoLeidos(User emisor) {    // Cuidado, la función es getNun... no getNum. Supongo que será un error. Además, debería ser static.
             CADMensajes mens = new CADMensajes();
             return mens.getNumNotRead(emisor.DNI);
         }
