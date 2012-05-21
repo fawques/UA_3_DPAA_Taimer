@@ -43,6 +43,11 @@ namespace WebTaimer.TabHorariosPublicos
             listaHorariosUsuario.AutoPostBack = true;
         }
 
+        /// <summary>
+        /// NO USAR, HAY UNA FUNCION EN LOS EN QUE YA HACE ESTO
+        /// </summary>
+        /// <param name="h"></param>
+        /// <returns></returns>
         protected int getMaxHora(Horario h) {
             Hora maxHora =  new Hora(0, 1);
             foreach (List<Turno> turnosDia in h.ArrayTurnos) {
@@ -214,10 +219,20 @@ namespace WebTaimer.TabHorariosPublicos
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            //if (Session.Count > 0) {
                 if (!IsPostBack) {
+
+                    string user = Request.QueryString["usuario"];
+                    if (user != null)
+                    {
+                        textboxFiltro.Text = user;
+                        RBUsuarios.Checked = true;
+                        RBHorarios.Checked = false;
+                        BuscarUsuario(user);
+                    }
+
                     SelectHorario(0);
                     SelectUsuario(0);
+
                     string usuario = Request.QueryString["usuario"];
                     if (usuario != null) {
                         lh = Taimer.User.GetUserByEmail(usuario).Horarios;
@@ -247,6 +262,7 @@ namespace WebTaimer.TabHorariosPublicos
                         listaHorarios.Style["display"] = "none";
                         listaUsuarios.Style["display"] = "none";
                         listaHorariosUsuario.Style["display"] = "inherit";
+
 
                     }
 
@@ -292,23 +308,30 @@ namespace WebTaimer.TabHorariosPublicos
                 }
             }
             else {
-                listaUsuarios.Items.Clear();
-                if (Session.Count > 0)
-                    usuarios = Taimer.User.GetAllUsersExceptoUno(((User)Session["usuario"]).DNI);
-                else
-                    usuarios = Taimer.User.GetAllUsers();
+                BuscarUsuario(buscar);
+            }
+        }
 
-                int value = 0;
-                foreach (User usr in usuarios) {
-                    string nom = usr.Email;
-                    NormalizarCadena(ref nom);
+        private void BuscarUsuario(string buscar)
+        {
+            listaUsuarios.Items.Clear();
+            if (Session.Count > 0)
+                usuarios = Taimer.User.GetAllUsersExceptoUno(((User)Session["usuario"]).DNI);
+            else
+                usuarios = Taimer.User.GetAllUsers();
 
-                    if (nom.Contains(buscar)) {
-                        listaUsuarios.Items.Add(usr.Email);
-                        listaUsuarios.Items[listaUsuarios.Items.Count - 1].Value = value.ToString();
-                    }
-                    value++;
+            int value = 0;
+            foreach (User usr in usuarios)
+            {
+                string nom = usr.Email;
+                NormalizarCadena(ref nom);
+
+                if (nom.Contains(buscar))
+                {
+                    listaUsuarios.Items.Add(usr.Email);
+                    listaUsuarios.Items[listaUsuarios.Items.Count - 1].Value = value.ToString();
                 }
+                value++;
             }
         }
 

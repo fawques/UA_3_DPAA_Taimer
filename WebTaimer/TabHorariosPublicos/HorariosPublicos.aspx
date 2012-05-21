@@ -7,7 +7,7 @@
         #divPanelIzquierdo
         {
             width:150px;
-            height:632px;
+            /*height:632px;*/
         }
         
         #divZonaHorario
@@ -38,7 +38,7 @@
        div.horas 
        {
         width: 55px; 
-        height: 437px; 
+        /*height: 437px; */
         background-color: Maroon; 
         float: left; 
         clear:both; 
@@ -156,12 +156,15 @@
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
 <asp:ScriptManager ID="ScriptManager1" runat="server" />
 
+<h1 style="color: Maroon; text-decoration:none;">Horarios públicos</h1>
+    
+
+    <h2 style="font-size:medium;"><asp:HyperLink ID="horarioDe" runat="server" NavigateUrl="" 
+            style="color: Maroon; text-decoration:none;" />
+        <asp:Label ID="Label1" runat="server" Text=""></asp:Label>&nbsp;&nbsp;&nbsp; </h2>
+        <br />
             <asp:UpdatePanel ID="UpdatePanel1" runat="server">
             <ContentTemplate>
-
-    <h2><asp:HyperLink style="color: Maroon; text-decoration:none;" ID="horarioDe" runat="server" NavigateUrl=""/>
-        <asp:Label ID="Label1" runat="server" Text=""></asp:Label>
-    </h2>
     
 
     <!-- PANEL IZQUIERDO (seleccionar horario) ---------------->
@@ -224,11 +227,14 @@
     </div>
 
     <div style="text-align: center; width: 768px; float: right; background-color: Maroon; border: 1px solid Gray; border-bottom: none; margin-bottom: 0px; border-left: none;">
-        <label style="font-variant: small-caps; font-size: 16px; font-weight: bold; color: White;" id="nomHorario" runat="server"></label>
+        <label style="font-variant: small-caps; font-size: 16px; font-weight: bold; color: White;" id="nomHorario" runat="server">
+        
+    
+        </label>
     </div>
     <!-- ZONA DE HORARIO -------------------------------------->
 
-    <div id="divZonaHorario" style="float: right; width: 768px; margin: 0px; margin-top: 0px; border: 1px solid Gray; border-top: none; border-left: none;">
+    <div id="divZonaHorario" style="border-right: 1px solid Gray; border-bottom: 1px solid Gray; float: right; width: 768px; margin-left:10px; margin: 0px; border-left-style: none; border-left-color: inherit; border-left-width: medium; border-top-style: none; border-top-color: inherit; border-top-width: medium; padding-bottom:15px;">
         <div style="color: Maroon; width: 760px; ">
 
                 <div style="background-color: Maroon; height: 23px; padding-left: 89px;">
