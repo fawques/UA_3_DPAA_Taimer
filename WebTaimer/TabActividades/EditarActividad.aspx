@@ -43,7 +43,7 @@
         </style>
 
         <div id="divPanelContenido" style="width:780px; float: left; margin-left:15px">
-            <fieldset id="Fieldset1" class="infoAsig" style="width: 325px; height:300px; float: left" runat="server">
+            <fieldset id="fieldsetActividad" class="infoAsig" style="width: 325px; height:300px; float: left" runat="server">
                 <legend>Información de la actividad personal</legend>
 
                     <div style="float:left; width:330px; height: 226px;">
@@ -54,7 +54,7 @@
                         <asp:Label ID="labelDescripcionActividad" runat="server" Font-Size="Medium" Text="Descripción: ">
                         </asp:Label>
                          <br />
-                        <asp:TextBox ID="tbDescActividad" runat="server" TextMode="MultiLine" Width="300px"></asp:TextBox>
+                        <asp:TextBox ID="tbDescActividad" runat="server" TextMode="MultiLine" Width="300px" style="font-family: Calibri; resize: none" ></asp:TextBox>
                         
                         <div id="optionButtons" runat="server" style="margin-top: 50px">                                                        
                             <asp:Button ID="botonModificar" runat="server" Text="Modificar"
@@ -63,7 +63,7 @@
                     </div>
           </fieldset>
 
-          <fieldset id="Fieldset2" class="infoAsig" style="width: 325px; height:300px; float: right; margin-left: 10px" runat="server">
+          <fieldset id="fieldsetTurnos" class="infoAsig" style="width: 325px; height:300px; float: right; margin-left: 10px" runat="server">
                 <legend>Gestión de turnos de la actividad</legend>
 
                     <div style="float:right; width: 360px" id="divTurnos" runat="server">
