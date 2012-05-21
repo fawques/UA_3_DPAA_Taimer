@@ -69,10 +69,14 @@ namespace WebTaimer.TabActividades
                         listaTurnos.Visible = false;
                         botonBorrarActividad.Visible = false;
                         botonEditarActividad.Visible = false;
+                        ListAct.SelectedIndex = -1;
                     }
 
-                    else                                           
-                        rellenocuadro(idact);                    
+                    else
+                    {
+                        rellenocuadro(idact);
+                        ListAct.SelectedIndex = 0;
+                    }
 
                     llenarLista();
                     
@@ -81,9 +85,8 @@ namespace WebTaimer.TabActividades
                 {                    
                     cargarTodas();
                     rellenocuadroPrimero(0);
-
-                }
-                ListAct.SelectedIndex = 0;
+                    ListAct.SelectedIndex = 0;
+                }                
             }
         }
 
@@ -235,7 +238,7 @@ namespace WebTaimer.TabActividades
         {
             Response.Redirect("~/TabActividades/Actividades.aspx");
         }
-
+        
         protected void botonConfirmar_Click(object sender, EventArgs e)
         {
             int id = Convert.ToInt16(ListAct.SelectedValue);
