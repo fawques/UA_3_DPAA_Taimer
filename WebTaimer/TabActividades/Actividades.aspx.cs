@@ -47,8 +47,7 @@ namespace WebTaimer.TabActividades
                     {
                         if (idact == act.Codigo)
                         {
-                            listaFiltro.Add(act);
-                            
+                            listaFiltro.Add(act);                    
                             actividad = act;
                         }
                         
@@ -56,19 +55,38 @@ namespace WebTaimer.TabActividades
 
                     foreach (Actividad_p act in user.ActPersonales)
                     {
-                        if(act.Codigo!=idact)
-                            listaFiltro.Add(act);
+                        if (act.Codigo != idact)
+                        {
+                            listaFiltro.Add(act);                           
+                        }
                     }
+
+                    if (actividad == null)
+                    {
+                        labelNombreActividad.Text = "La actividad no existe";
+                        labelDescripcionActividad.Text = "";
+                        labelTurnos.Visible = false;
+                        listaTurnos.Visible = false;
+                        botonBorrarActividad.Visible = false;
+                        botonEditarActividad.Visible = false;
+                        ListAct.SelectedIndex = -1;
+                    }
+
+                    else
+                    {
+                        rellenocuadro(idact);
+                        ListAct.SelectedIndex = 0;
+                    }
+
                     llenarLista();
-                    rellenocuadro(idact);
+                    
                 }
                 else
-                {
+                {                    
                     cargarTodas();
                     rellenocuadroPrimero(0);
-
-                }
-                ListAct.SelectedIndex = 0;
+                    ListAct.SelectedIndex = 0;
+                }                
             }
         }
 
@@ -106,7 +124,7 @@ namespace WebTaimer.TabActividades
 
         protected void cargarTodas()
         {
-            listaFiltro = todas;
+            listaFiltro = todas;           
             llenarLista();
         }
 
@@ -115,7 +133,7 @@ namespace WebTaimer.TabActividades
         {
             ListAct.DataBind();
             ListAct.Items.Clear();
-            int i = 0;
+            int i = 0;            
             foreach (Actividad_p act in listaFiltro)
             {
                 ListAct.Items.Add(act.Nombre);
@@ -137,26 +155,28 @@ namespace WebTaimer.TabActividades
         }        
 
         protected void seleccionar(object sender, EventArgs e)
-        {
-            //MessageBox.Show(ListAct.SelectedItem.Text);
-            int indicelista = Convert.ToInt32(ListAct.SelectedValue);            
+        {            
+            int indicelista = Convert.ToInt32(ListAct.SelectedValue);         
             rellenocuadro(indicelista);
         }
 
         protected void rellenocuadro(int codigo)
         {
             listaFiltro=todas;
+            
             foreach (Actividad_p act in listaFiltro)
             {
                 if (act.Codigo == codigo)
                 {
                     labelNombreActividad.Text = act.Nombre;
-                    labelDescripcionActividad.Text = act.Descripcion;                    
-                    cargarTurnos(act);                                 
+                    labelDescripcionActividad.Text = act.Descripcion;
+                    cargarTurnos(act);
                     labelTurnos.Visible = true;
                     listaTurnos.Visible = true;
+                    botonBorrarActividad.Visible = true;
+                    botonEditarActividad.Visible = true;  
                 }
-            }            
+            }                               
         }
 
         protected void rellenocuadroPrimero(int indice)
@@ -167,18 +187,20 @@ namespace WebTaimer.TabActividades
                 labelDescripcionActividad.Text = listaFiltro[indice].Descripcion;                             
                 cargarTurnos(listaFiltro[indice]);                
                 labelTurnos.Visible = true;                
-                listaTurnos.Visible = true;                
+                listaTurnos.Visible = true;
+                botonBorrarActividad.Visible = true;
+                botonEditarActividad.Visible = true;  
             }
             else
             {
-                labelNombreActividad.Text = "No hay resultados en la lista de actividades";                
+                labelNombreActividad.Text = "La actividad no existe";                
                 labelDescripcionActividad.Text = "";                
                 labelTurnos.Visible = false;
                 listaTurnos.Visible = false;
                 botonBorrarActividad.Visible = false;
-                botonEditarActividad.Visible = false;
+                botonEditarActividad.Visible = false;                
             }
-
+            
         }
 
         protected void botonEditarActividad_Click(object sender, EventArgs e)
@@ -196,21 +218,37 @@ namespace WebTaimer.TabActividades
 
         protected void botonBorrarActividad_Click(object sender, EventArgs e)
         {
+            int id = Convert.ToInt16(ListAct.SelectedValue);
+
+            foreach (Actividad_p act in listaFiltro)
+            {
+                if (id == act.Codigo)
+                    actividad = act;
+            }
+            
             ConfirmaBorrar.Visible = true;
             botonBorrarActividad.Visible = false;
             botonEditarActividad.Visible = false;
    
             filtro.Visible = false;
-            asig.Visible = false;
+            asig.Visible = false;            
         }
 
         protected void botonCancelar_Click(object sender, EventArgs e)
         {
             Response.Redirect("~/TabActividades/Actividades.aspx");
         }
-
+        
         protected void botonConfirmar_Click(object sender, EventArgs e)
         {
+            int id = Convert.ToInt16(ListAct.SelectedValue);
+
+            foreach (Actividad_p act in listaFiltro)
+            {
+                if (id == act.Codigo)
+                    actividad = act;
+            }
+                    
             user.BorraActPersonal(actividad);
             Response.Redirect("~/TabActividades/Actividades.aspx");
         }

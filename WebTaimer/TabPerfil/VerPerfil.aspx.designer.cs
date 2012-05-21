@@ -13,6 +13,24 @@ namespace WebTaimer.TabPerfil {
     public partial class VerPerfil {
         
         /// <summary>
+        /// Control encabezado.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl encabezado;
+        
+        /// <summary>
+        /// Control divDatos.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divDatos;
+        
+        /// <summary>
         /// Control labelNombreUsuario.
         /// </summary>
         /// <remarks>
@@ -65,6 +83,15 @@ namespace WebTaimer.TabPerfil {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label labelFrasePersonal;
+        
+        /// <summary>
+        /// Control divAvatar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divAvatar;
         
         /// <summary>
         /// Control imagenAvatar.

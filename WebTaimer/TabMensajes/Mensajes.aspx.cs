@@ -29,32 +29,50 @@ namespace WebTaimer.TabMensajes
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            string email = Request.QueryString["usuario"];
-
-            if (email == null && labelConversador.Visible == false)
+            if (labelCargado.Text == "No cargado")
             {
-                textoMensaje.Enabled = false;
-                botonEnviar.Enabled = false;
-                conversacion = "<div style=\"color: #000000; float:center; border: 5px double #117777; background-color: #118888; overflow: visible; border-radius: 10px; margin: 4px; text-align:center \" >Selecciona un usuario para ver sus mensajes.</div>";
-            }
-            else
-            {
-                receptor = Taimer.User.GetUserByEmail(email);
+                string email = Request.QueryString["usuario"];
 
-                if (receptor != null)
+                if (email == null && labelConversador.Visible == false)
                 {
-                    for (int i = 0; i < listaUsuarios.Items.Count; i++)
-                    {
-                        if (listaUsuarios.Items[i].Text == receptor.Nombre)
-                        {
-                            listaUsuarios.SelectedIndex = i;
-                            break;
-                        }
-                    }
-                    LoadUser();
+                    textoMensaje.Enabled = false;
+                    botonEnviar.Enabled = false;
+                    conversacion = "<div style=\"color: #000000; float:center; border: 5px double #117777; background-color: #118888; overflow: visible; border-radius: 10px; margin: 4px; text-align:center \" >Selecciona un usuario para ver sus mensajes.</div>";
+                }
+                else if (email == ((User)Session["usuario"]).Email)
+                {
+                    textoMensaje.Enabled = false;
+                    botonEnviar.Enabled = false;
+                    conversacion = "<div style=\"color: #000000; float:center; border: 5px double #117777; background-color: #118888; overflow: visible; border-radius: 10px; margin: 4px; text-align:center \" >No puedes enviarte mensajes a ti mismo.</div>";
                 }
                 else
-                    conversacion = "<div style=\"color: #000000; float:center; border: 5px double #117777; background-color: #118888; overflow: visible; border-radius: 10px; margin: 4px; text-align:center \" >El usuario no existe.</div>";
+                {
+                    receptor = Taimer.User.GetUserByEmail(email);
+
+                    if (receptor != null)
+                    {
+                        for (int i = 0; i < listaUsuarios.Items.Count; i++)
+                        {
+                            if (listaUsuarios.Items[i].Text == receptor.Nombre)
+                            {
+                                listaUsuarios.SelectedIndex = i;
+                                break;
+                            }
+                        }
+                        LoadUser();
+                    }
+                    else
+                    {
+                        if (labelConversador.Visible == false)
+                        {
+                            textoMensaje.Enabled = false;
+                            botonEnviar.Enabled = false;
+                            conversacion = "<div style=\"color: #000000; float:center; border: 5px double #117777; background-color: #118888; overflow: visible; border-radius: 10px; margin: 4px; text-align:center \" >El usuario no existe.</div>";
+                        }
+                    }
+                }
+
+                labelCargado.Text = "Cargado";
             }
         }
 
@@ -67,7 +85,9 @@ namespace WebTaimer.TabMensajes
             HyperLinkConversador.Text = receptor.Nombre;
             HyperLinkConversador.NavigateUrl = "~/TabPerfil/VerPerfil.aspx?user=" + receptor.Email;
             labelDNI.Text = receptor.DNI;
-            listaUsuarios.SelectedItem.Text = receptor.Nombre;  // De este modo se limpia el número de mensajes no leídos
+
+            if(listaUsuarios.SelectedItem != null)
+                listaUsuarios.SelectedItem.Text = receptor.Nombre;  // De este modo se limpia el número de mensajes no leídos
 
             conversacion = cargarConversacion();
             UpdatePanelConversacion.Update();
@@ -80,11 +100,20 @@ namespace WebTaimer.TabMensajes
         {
             if (receptor != null)
             {
+                
                 HyperLinkConversador.Text = receptor.Nombre;
                 HyperLinkConversador.NavigateUrl = "~/TabPerfil/VerPerfil.aspx?user=" + receptor.Email;
                 labelDNI.Text = receptor.DNI;
 
-                conversacion = cargarConversacion();
+                if (receptor.Email != ((User)Session["usuario"]).Email)
+                {
+                    conversacion = cargarConversacion();
+                }
+                else
+                {
+                    conversacion = "<div style=\"color: #000000; float:center; border: 5px double #117777; background-color: #118888; overflow: visible; border-radius: 10px; margin: 4px; text-align:center \" >No puedes enviarte mensajes a ti mismo.</div>";
+                }
+                
                 UpdatePanelConversacion.Update();
                 UpdatePanelNombreConversador.Update();
             }
@@ -170,8 +199,6 @@ namespace WebTaimer.TabMensajes
 
                 nuevotexto += contenido[i];
             }
-
-            //contenido = nuevotexto;
 
             receptor = Taimer.User.GetUserByDNIQuick(labelDNI.Text);
             Mensaje mensaje = new Mensaje(100, nuevotexto, ((User)Session["usuario"]), receptor, DateTime.Now, false);

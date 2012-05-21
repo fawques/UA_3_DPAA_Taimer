@@ -24,22 +24,36 @@ namespace WebTaimer.TabActividades
             {                
                 user = (User)Session["usuario"];
                 actividad = getActividad();
-                tbNombreActividad.Text = actividad.Nombre;
-                tbDescActividad.Text = actividad.Descripcion;
 
-                if (actividad.Turnos.Count > 0)
+                if (actividad != null)
                 {
-                    cargarTurnos(actividad);
-                    listaTurnos.SelectedIndex = 0;
-                    int index = Convert.ToInt16(listaTurnos.SelectedValue);                    
+                    tbNombreActividad.Text = actividad.Nombre;
+                    tbDescActividad.Text = actividad.Descripcion;
 
-                    foreach (Turno t in actividad.Turnos)
+                    if (actividad.Turnos.Count > 0)
                     {
-                        if (t.Codigo == index)
-                        {                           
-                            turnoSelec = t;
+                        cargarTurnos(actividad);
+                        listaTurnos.SelectedIndex = 0;
+                        int index = Convert.ToInt16(listaTurnos.SelectedValue);
+
+                        foreach (Turno t in actividad.Turnos)
+                        {
+                            if (t.Codigo == index)
+                            {
+                                turnoSelec = t;
+                            }
                         }
                     }
+                }
+                else
+                {
+                    labelDescripcionActividad.Text = "La actividad no existe.";
+                    labelNombreActividad.Visible = false;
+                    tbNombreActividad.Visible = false;
+                    tbDescActividad.Visible = false;
+                    fieldsetTurnos.Visible = false;
+                    botonModificar.Visible = false;
+                    
                 }
             }
         }
@@ -78,8 +92,7 @@ namespace WebTaimer.TabActividades
         protected Actividad_p getActividad()
         {            
             int cod = Convert.ToInt32(Request.QueryString["id"]);
-            
-            
+                        
             foreach (Actividad_p a in user.ActPersonales)
             {
                 if (cod == a.Codigo)

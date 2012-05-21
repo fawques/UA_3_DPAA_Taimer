@@ -46,6 +46,7 @@ p.texto
                     Mensajes<asp:Label ID="labelConversador" runat="server" Visible="False"> - Conversación con </asp:Label>
                     <asp:HyperLink ID="HyperLinkConversador" runat="server"></asp:HyperLink>
                     <asp:Label ID="labelDNI" runat="server" Visible="False"></asp:Label>
+                    <asp:Label ID="labelCargado" runat="server" Text="No cargado" Visible="False"></asp:Label>
                 </div>
             </ContentTemplate>
         </asp:UpdatePanel>
@@ -111,9 +112,8 @@ p.texto
                             <div style="height: 150px; width: 687px; margin-top:-15px">
                                 <asp:TextBox ID="textoMensaje" TextMode="MultiLine" runat="server" 
                                     Height="135px" Width="622px" 
-                                    style="resize: none; position:relative; left:0px; top:0px; margin-top:5px" Font-Names="Calibri" 
-                                    ></asp:TextBox>
-                                <asp:Button ID="botonEnviar" runat="server" Width="50px" onclick="botonEnviar_Click" style="margin-left:5px; margin-top:-20px"
+                                    style="resize: none; position:relative; left:0px; top:0px; margin-top:5px" Font-Names="Calibri" ></asp:TextBox>
+                                <asp:Button ID="botonEnviar" runat="server" Width="50px" onclick="botonEnviar_Click" style="margin-left:5px; margin-bottom:3px"
                                     Text="Enviar" />
                             </ContentTemplate>
                         </asp:UpdatePanel>              
