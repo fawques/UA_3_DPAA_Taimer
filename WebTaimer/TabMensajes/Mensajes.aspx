@@ -37,7 +37,7 @@ p.texto
 </asp:Content>
 
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
-<asp:ScriptManager ID="ScriptManager" runat="server"></asp:ScriptManager>
+    <asp:ScriptManager ID="ScriptManager" runat="server"></asp:ScriptManager>
     <h2>
         &nbsp;<asp:UpdatePanel ID="UpdatePanelNombreConversador" runat="server" 
         UpdateMode="Conditional" style="float:left">

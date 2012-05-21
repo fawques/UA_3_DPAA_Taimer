@@ -68,18 +68,18 @@
                 Text="[ Frase personal ]"></asp:Label>
         </div>
 
-        <div id="divAvatar" style="float: left; margin-left: 0px" runat="server">
+        <div id="divAvatar" style="float: left; margin-left: 35px" runat="server">
             <asp:Image ID="imagenAvatar" runat="server" Height="100px" Width="100px" 
                     ImageUrl=""/>
                     <br />
             <asp:Button ID="botEditarPerfil" runat="server" Text="Editar perfil"
                     style="margin-top: 10px; width:100px; height:25px;"
                         onclick="botEditarPerfil_Click" Visible="True" />
-
+            <br />
             <asp:Button ID="botEnviarMensaje" runat="server" Text="Enviar mensaje"
                     style="margin-top: 10px; width:100px; height:25px;" 
                 onclick="botEnviarMensaje_Click" />
-
+            <br />
             <asp:Button ID="botVerHorarios" runat="server" Text="Ver horarios"
                     style="margin-top: 10px; width:100px; height:25px;" 
                 onclick="botVerHorarios_Click" />
