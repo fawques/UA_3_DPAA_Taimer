@@ -63,7 +63,7 @@
                             </td>
                             <td class="styleLogin">
                         <asp:TextBox ID="textboxUsuario" runat="server" Width="120px" 
-                                    placeholder="Nombre de usuario" ValidationGroup="loginValidation">alberto@alberto.es</asp:TextBox>
+                                    placeholder="Email" ValidationGroup="loginValidation"></asp:TextBox>
                                 <asp:RequiredFieldValidator ID="requiredTestuser" runat="server" 
                                     ErrorMessage="El campo no puede estar vacio" 
                                     ControlToValidate="textboxUsuario" ValidationGroup="loginValidation" 
