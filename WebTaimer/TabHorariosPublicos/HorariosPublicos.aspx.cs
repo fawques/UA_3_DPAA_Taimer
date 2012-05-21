@@ -194,6 +194,7 @@ namespace WebTaimer.TabHorariosPublicos
                 usuarios = Taimer.User.GetAllUsersExceptoUno(((User)Session["usuario"]).DNI);
             else
                 usuarios = Taimer.User.GetAllUsers();
+
             int i = int.Parse(listaUsuarios.SelectedValue);
             lh = usuarios[i].Horarios;
 
@@ -217,10 +218,41 @@ namespace WebTaimer.TabHorariosPublicos
                 if (!IsPostBack) {
                     SelectHorario(0);
                     SelectUsuario(0);
+                    string usuario = Request.QueryString["usuario"];
+                    if (usuario != null) {
+                        lh = Taimer.User.GetUserByEmail(usuario).Horarios;
+
+                        foreach (ListItem i in listaUsuarios.Items) {
+                            if(i.Text == usuario) {
+                                i.Selected = true;
+                                break;
+                            }
+                        }
+
+                        int value = 0;
+                        listaHorariosUsuario.DataBind();
+                        listaHorariosUsuario.Items.Clear();
+                        foreach (Horario item in lh) {
+                            if (item.Publico) {
+                                listaHorariosUsuario.Items.Add(item.Nombre);
+                                listaHorariosUsuario.Items[listaHorariosUsuario.Items.Count - 1].Value = value.ToString();
+                                value++;
+                            }
+                        }
+                        if (lh.Count > 0) {
+                            nomHorario.InnerText = lh[0].Nombre;
+                            _horas = setHoras(lh[0]);
+                            _columnas = setColums(lh[0]);
+                        }
+                        listaHorarios.Style["display"] = "none";
+                        listaUsuarios.Style["display"] = "none";
+                        listaHorariosUsuario.Style["display"] = "inherit";
+
+                    }
+
+                        
                 }
             //}
-
-
         }
 
         protected void listaHorarios_SelectedIndexChanged(object sender, EventArgs e) {

@@ -169,7 +169,7 @@
     
     <fieldset class="fieldHorarios" 
             style="width: 110px; height: 291px; margin-top: -5px;">
-        
+        <legend>Horarios</legend>
             
                 <label style="font-size: 10px"> <asp:RadioButton ID="RBHorarios" runat="server" 
                     GroupName="filtro" Checked="true" oncheckedchanged="RBHorarios_CheckedChanged" AutoPostBack="true"/> Horarios </label>

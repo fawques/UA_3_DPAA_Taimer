@@ -168,12 +168,49 @@ namespace WebTaimer.TabHorarios
         protected void Page_Load(object sender, EventArgs e) {
             if (Session.Count > 0) {
                 if (!IsPostBack) {
-                    SelectHorario(0);
-                    if (Session["indice"] == null)
-                        Session.Add("indice", 0);
+                    string id = Request.QueryString["id"];
+                    if (id == null) {
+                        SelectHorario(0);
+                        if (Session["indice"] == null)
+                            Session.Add("indice", 0);
+                        else {
+                            Session.Remove("indice");
+                            Session.Add("indice", 0);
+                        }
+                    }
                     else {
-                        Session.Remove("indice");
-                        Session.Add("indice", 0);
+                        SelectHorario(int.Parse(id));
+                        if (Session["indice"] == null)
+                            Session.Add("indice", int.Parse(id));
+                        else {
+                            Session.Remove("indice");
+                            Session.Add("indice", int.Parse(id));
+                        }
+
+
+                       /* horarios = ((User)Session["usuario"]).Horarios;
+
+                        if (horarios.Count > 0) {
+                            int value = 0;
+                            listaHorarios.DataBind();
+                            listaHorarios.Items.Clear();
+                            int indice = 0;
+                            foreach (Horario item in horarios) {
+                                if (item.ID == int.Parse(id))
+                                    indice = value;
+                                listaHorarios.Items.Add(item.Nombre);
+                                listaHorarios.Items[listaHorarios.Items.Count - 1].Value = value.ToString();
+                                value++;
+                            }
+
+                            nomHorario.InnerText = horarios[indice].Nombre;
+                            _horas = setHoras(horarios[indice]);
+                            _columnas = setColums(horarios[indice]);
+                            Publico.Checked = horarios[indice].Publico;
+                        }*/
+                    }
+                    }
+
                     /*System.Collections.Specialized.NameValueCollection gets;
                     gets = Request.QueryString;
 
@@ -182,8 +219,6 @@ namespace WebTaimer.TabHorarios
                         SelectHorario(id);
                     } else {
                         SelectHorario(0);*/
-                    }
-                }
             }
             else {
                 Response.Redirect("~/TabInicio/SinLogin.aspx");
