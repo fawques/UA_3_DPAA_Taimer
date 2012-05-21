@@ -150,7 +150,7 @@ namespace WebTaimer.TabAsignaturas
             }
             if (existe == false)
             {
-                labelNombreAsignatura.Text = "El indice que se pasa no es correcto";
+                labelNombreAsignatura.Text = "La actividad no existe";
                 labelCoordinadorAsignatura.Text = "";
                 labelDescripcionAsignatura.Text = "";
                 tituPun.Visible = false;
@@ -263,7 +263,7 @@ namespace WebTaimer.TabAsignaturas
             string comentarios = "";
             if (comentariosAct.Count == 0)
             {
-                comentarios = "<div style=\"color: #000000; float:center; background-color:#fff199;; overflow: visible; border-radius: 10px; margin: 4px; text-align:center \" >Esta atividad aún no tiene comentarios.</div>";
+                comentarios = "<div style=\"color: #000000; float:center; background-color:#fff199;; overflow: visible; border-radius: 10px; margin: 4px; text-align:center \" >Esta actividad aún no tiene comentarios.</div>";
             }
             else
             {

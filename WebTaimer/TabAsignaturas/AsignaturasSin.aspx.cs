@@ -235,7 +235,7 @@ namespace WebTaimer.TabAsignaturas
             comentariosAct = rellenoComenAct(act);
             if (comentariosAct.Count == 0)
             {
-                comentarios = "<div style=\"color: #000000; float:center; background-color:#fff199;; overflow: visible; border-radius: 10px; margin: 4px; text-align:center \" >No tiene comentarios en esta Actividad</div>";
+                comentarios = "<div style=\"color: #000000; float:center; background-color:#fff199;; overflow: visible; border-radius: 10px; margin: 4px; text-align:center \" >Esta actividad aún no tiene comentarios.</div>";
             }
             else
             {
@@ -254,10 +254,8 @@ namespace WebTaimer.TabAsignaturas
                         nomUsuario="Anónimo";
                         imagen = "../Images/default.jpg";
                     }
-                    comentarios+= "<div class='comentario'> <img src='"+ imagen
-                    +"' style='height: 100px; width: 100px' class='comentario' />"
-                    +"<span class='comentario'><p class='comentario'>Comentario enviado por: "
-                    + nomUsuario + " (" + com.FechaToString() + ")</p><div  ><p style='color: #8c7052; width:400px; font-style:italic;  text-align: left;'>" + com.Texto + "</p></div></span></div>";
+                    comentarios += "<div class='comentario'> <p class='cabecera'> Comentario enviado por: " + nomUsuario + " (" + com.FechaToString() + ")</p><span><span class='comentarioimg'><img class='comentario' src='" + imagen + "'/></span><span><p class='comentario'>" + com.Texto + "</p></span></span><span class='comentarioclear'></div>";
+                    
                                     
                 }
             }
