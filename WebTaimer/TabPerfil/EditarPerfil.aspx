@@ -26,7 +26,7 @@
 
              <div style="margin-left:10px; width: 333px; clear: both">                    
                 <asp:Label ID="labelFrasePersonal" runat="server">Frase personal:</asp:Label>
-                <asp:TextBox ID="FrasePersonal" runat="server" TextMode="MultiLine" Width="335px" Height="75px" CssClass="textEntry"></asp:TextBox>
+                <asp:TextBox ID="FrasePersonal" runat="server" TextMode="MultiLine" Width="335px" Height="75px" CssClass="textEntry" style="resize:none"></asp:TextBox>
             </div>
         </fieldset>
         </div>
