@@ -60,6 +60,7 @@
     <Content Include="Account\ChangeEmail.aspx" />
     <Content Include="Account\ChangePassword.aspx" />
     <Content Include="Account\ChangePasswordSuccess.aspx" />
+    <Content Include="AboutSin.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="Images\avatar.png" />
     <Content Include="Images\calendario.png" />
@@ -132,6 +133,13 @@
     </Compile>
     <Compile Include="Account\ChangePasswordSuccess.aspx.designer.cs">
       <DependentUpon>ChangePasswordSuccess.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AboutSin.aspx.cs">
+      <DependentUpon>AboutSin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AboutSin.aspx.designer.cs">
+      <DependentUpon>AboutSin.aspx</DependentUpon>
     </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>

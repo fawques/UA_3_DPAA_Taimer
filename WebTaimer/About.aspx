@@ -9,7 +9,8 @@
     </h2>
     <p>
         Taimer está creado por:
-        <br /><br />
+        <br />
+        <br />
 
 Francisco José Bueno Nieves<br />
 Martín Candela Calabuig<br />
