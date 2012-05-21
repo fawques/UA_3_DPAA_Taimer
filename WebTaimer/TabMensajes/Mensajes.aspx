@@ -77,19 +77,20 @@ p.texto
         <div id="divPanelIzquierdo" 
         style="width:200px; float: left; height: 623px;">
         
-        <fieldset class="asig" style="width: 160px; height: 540px">
+        <fieldset class="asig" style="width: 160px; height: 560px">
             <legend>Usuarios</legend>
             <asp:UpdatePanel ID="UpdatePanelIzquierdo" runat="server">
                 <ContentTemplate>
-                        <asp:TextBox ID="textboxFiltro" runat="server" Width="125px" style="float: left; margin-top:-10px"
+                        <asp:TextBox ID="textboxFiltro" runat="server" Width="160px" style="float: left; margin-top:-10px"
                 placeholder="Buscar usuario..."></asp:TextBox>
                         
-                        <asp:Button ID="botonBuscar" runat="server" Text="B" Width="25px" 
-                style="float: left; margin-left:5px; margin-top:-10px" onclick="botonBuscar_Click" />
-                        
-                    <asp:CheckBox ID="checkSoloNoLeidos" runat="server" Text="Sólo no leídos" 
-                            style="float:left; margin-top:5px" 
-                            oncheckedchanged="checkSoloNoLeidos_CheckedChanged" />
+                        <asp:CheckBox ID="checkSoloNoLeidos" runat="server" Text="Sólo no leídos" 
+                        style="float:left; margin-top:5px" 
+                        oncheckedchanged="checkSoloNoLeidos_CheckedChanged" />
+
+                        <asp:Button ID="botonBuscar" runat="server" Text="Filtrar" Width="60px" 
+                style="float: left; margin-left:10px; margin-top:2px" onclick="botonBuscar_Click" />
+                       
 
                         <asp:ListBox ID="listaUsuarios" runat="server" Height="490px" 
                 Width="160px" style="margin: 0 auto; float:left; margin-top:5px" 
@@ -109,7 +110,9 @@ p.texto
                             <ContentTemplate>
                             <div style="height: 150px; width: 687px; margin-top:-15px">
                                 <asp:TextBox ID="textoMensaje" TextMode="MultiLine" runat="server" 
-                                    Height="135px" Width="622px" style="resize: none; position:relative; left:0px; top:0px; margin-top:5px"></asp:TextBox>
+                                    Height="135px" Width="622px" 
+                                    style="resize: none; position:relative; left:0px; top:0px; margin-top:5px" Font-Names="Calibri" 
+                                    ></asp:TextBox>
                                 <asp:Button ID="botonEnviar" runat="server" Width="50px" onclick="botonEnviar_Click" style="margin-left:5px; margin-top:-20px"
                                     Text="Enviar" />
                             </ContentTemplate>
