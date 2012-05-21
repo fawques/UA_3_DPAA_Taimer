@@ -136,7 +136,7 @@
                             <ContentTemplate>
                         <div style="height: 60px; width: 658px;">
                             &nbsp;&nbsp;<asp:TextBox ID="textoComent" TextMode="MultiLine" runat="server" 
-                                Height="80px" Width="550px" style=" position:relative; left:0px; top:0px; margin-top:10px"></asp:TextBox>
+                                Height="80px" Width="550px" style=" position:relative; left:0px; top:0px; margin-top:10px; resize:none; " Font-Names="Calibri"></asp:TextBox>
                                 <asp:Button ID="botonEnviar" runat="server"  Text="Comentar" 
                                 style="margin-top:0px; width:70px;" onclick="botNuevoComentario_Click"/>
                                <br />
