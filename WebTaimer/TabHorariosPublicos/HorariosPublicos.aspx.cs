@@ -237,37 +237,40 @@ namespace WebTaimer.TabHorariosPublicos
 
                     string usuario = Request.QueryString["usuario"];
                     if (usuario != null) {
-                        lh = Taimer.User.GetUserByEmail(usuario).Horarios;
-                        if (lh.Count > 0) {
-                            SelectHorario(0);
-                            SelectUsuario(0);
-                        }
-
-                        foreach (ListItem i in listaUsuarios.Items) {
-                            if (i.Text == usuario) {
-                                i.Selected = true;
-                                break;
+                        User usr = Taimer.User.GetUserByEmail(usuario);
+                        if (usr != null) {
+                            lh = usr.Horarios;
+                            if (lh.Count > 0) {
+                                SelectHorario(0);
+                                SelectUsuario(0);
                             }
-                        }
 
-                        int value = 0;
-                        listaHorariosUsuario.DataBind();
-                        listaHorariosUsuario.Items.Clear();
-                        foreach (Horario item in lh) {
-                            if (item.Publico) {
-                                listaHorariosUsuario.Items.Add(item.Nombre);
-                                listaHorariosUsuario.Items[listaHorariosUsuario.Items.Count - 1].Value = value.ToString();
+                            foreach (ListItem i in listaUsuarios.Items) {
+                                if (i.Text == usuario) {
+                                    i.Selected = true;
+                                    break;
+                                }
                             }
-                            value++;
+
+                            int value = 0;
+                            listaHorariosUsuario.DataBind();
+                            listaHorariosUsuario.Items.Clear();
+                            foreach (Horario item in lh) {
+                                if (item.Publico) {
+                                    listaHorariosUsuario.Items.Add(item.Nombre);
+                                    listaHorariosUsuario.Items[listaHorariosUsuario.Items.Count - 1].Value = value.ToString();
+                                }
+                                value++;
+                            }
+                            if (lh.Count > 0) {
+                                nomHorario.InnerText = lh[int.Parse(listaHorariosUsuario.Items[0].Value)].Nombre;
+                                _horas = setHoras(lh[int.Parse(listaHorariosUsuario.Items[0].Value)]);
+                                _columnas = setColums(lh[int.Parse(listaHorariosUsuario.Items[0].Value)]);
+                            }
+                            listaHorarios.Style["display"] = "none";
+                            listaUsuarios.Style["display"] = "none";
+                            listaHorariosUsuario.Style["display"] = "inherit";
                         }
-                        if (lh.Count > 0) {
-                            nomHorario.InnerText = lh[int.Parse(listaHorariosUsuario.Items[0].Value)].Nombre;
-                            _horas = setHoras(lh[int.Parse(listaHorariosUsuario.Items[0].Value)]);
-                            _columnas = setColums(lh[int.Parse(listaHorariosUsuario.Items[0].Value)]);
-                        }
-                        listaHorarios.Style["display"] = "none";
-                        listaUsuarios.Style["display"] = "none";
-                        listaHorariosUsuario.Style["display"] = "inherit";
                     }
                     else {
                         SelectHorario(0);
