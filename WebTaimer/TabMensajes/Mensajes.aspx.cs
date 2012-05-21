@@ -37,6 +37,12 @@ namespace WebTaimer.TabMensajes
                 botonEnviar.Enabled = false;
                 conversacion = "<div style=\"color: #000000; float:center; border: 5px double #117777; background-color: #118888; overflow: visible; border-radius: 10px; margin: 4px; text-align:center \" >Selecciona un usuario para ver sus mensajes.</div>";
             }
+            else if (email == ((User)Session["usuario"]).Email)
+            {
+                textoMensaje.Enabled = false;
+                botonEnviar.Enabled = false;
+                conversacion = "<div style=\"color: #000000; float:center; border: 5px double #117777; background-color: #118888; overflow: visible; border-radius: 10px; margin: 4px; text-align:center \" >No puedes enviarte mensajes a ti mismo.</div>";
+            }
             else
             {
                 receptor = Taimer.User.GetUserByEmail(email);
@@ -54,7 +60,11 @@ namespace WebTaimer.TabMensajes
                     LoadUser();
                 }
                 else
+                {
+                    textoMensaje.Enabled = false;
+                    botonEnviar.Enabled = false;
                     conversacion = "<div style=\"color: #000000; float:center; border: 5px double #117777; background-color: #118888; overflow: visible; border-radius: 10px; margin: 4px; text-align:center \" >El usuario no existe.</div>";
+                }
             }
         }
 
@@ -80,11 +90,20 @@ namespace WebTaimer.TabMensajes
         {
             if (receptor != null)
             {
+                
                 HyperLinkConversador.Text = receptor.Nombre;
                 HyperLinkConversador.NavigateUrl = "~/TabPerfil/VerPerfil.aspx?user=" + receptor.Email;
                 labelDNI.Text = receptor.DNI;
 
-                conversacion = cargarConversacion();
+                if (receptor.Email != ((User)Session["usuario"]).Email)
+                {
+                    conversacion = cargarConversacion();
+                }
+                else
+                {
+                    conversacion = "<div style=\"color: #000000; float:center; border: 5px double #117777; background-color: #118888; overflow: visible; border-radius: 10px; margin: 4px; text-align:center \" >No puedes enviarte mensajes a ti mismo.</div>";
+                }
+                
                 UpdatePanelConversacion.Update();
                 UpdatePanelNombreConversador.Update();
             }
@@ -170,8 +189,6 @@ namespace WebTaimer.TabMensajes
 
                 nuevotexto += contenido[i];
             }
-
-            //contenido = nuevotexto;
 
             receptor = Taimer.User.GetUserByDNIQuick(labelDNI.Text);
             Mensaje mensaje = new Mensaje(100, nuevotexto, ((User)Session["usuario"]), receptor, DateTime.Now, false);

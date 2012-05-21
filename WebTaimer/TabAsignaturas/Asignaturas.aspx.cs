@@ -97,7 +97,8 @@ namespace WebTaimer.TabAsignaturas
                 i++;
 
             }
-            ListAct.SelectedIndex = 0;
+            if(ListAct.Items.Count > 0)
+                ListAct.SelectedIndex = 0;
         }
         protected void seleccionar(object sender, EventArgs e)
         {
