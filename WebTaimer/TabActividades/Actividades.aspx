@@ -48,7 +48,7 @@
 
                     <div style="float:left; width:330px; height: 226px;">
                         <asp:Label ID="labelNombreActividad" runat="server" Font-Bold="True" Font-Size="X-Large"
-                            Text="[ Nombre de la actividad ]"></asp:Label>
+                            Text="No hay actividades."></asp:Label>
                         <br />                        
                         <asp:Label ID="labelDescripcionActividad" runat="server" Font-Size="Medium" 
                             Text="[ Descripción de la actividad ]"></asp:Label>
